@@ -100,7 +100,6 @@ export type PlasmicLALogin__OverridesType = {
   form?: Flex__<typeof FormWrapper>;
   email2?: Flex__<typeof AntdInput>;
   password?: Flex__<typeof AntdPassword>;
-  loginButton?: Flex__<typeof LoginButton>;
   signInWithGoogle?: Flex__<typeof SignInWithGoogle>;
   createAccount?: Flex__<"div">;
 };
@@ -469,9 +468,10 @@ function PlasmicLALogin__RenderFunc(props: {
                     })()}
                   </FormItemWrapper>
                   <LoginButton
-                    data-plasmic-name={"loginButton"}
-                    data-plasmic-override={overrides.loginButton}
-                    className={classNames("__wab_instance", sty.loginButton)}
+                    className={classNames(
+                      "__wab_instance",
+                      sty.loginButton__vWBrb
+                    )}
                     submitsForm={true}
                   >
                     <div
@@ -479,6 +479,23 @@ function PlasmicLALogin__RenderFunc(props: {
                         projectcss.all,
                         projectcss.__wab_text,
                         sty.text__wFbv
+                      )}
+                    >
+                      {"Login"}
+                    </div>
+                  </LoginButton>
+                  <LoginButton
+                    className={classNames(
+                      "__wab_instance",
+                      sty.loginButton__inXpl
+                    )}
+                    submitsForm={true}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__mQnvI
                       )}
                     >
                       {"Login"}
@@ -550,7 +567,6 @@ const PlasmicDescendants = {
     "form",
     "email2",
     "password",
-    "loginButton",
     "signInWithGoogle",
     "createAccount"
   ],
@@ -561,15 +577,13 @@ const PlasmicDescendants = {
     "form",
     "email2",
     "password",
-    "loginButton",
     "signInWithGoogle",
     "createAccount"
   ],
   h6: ["h6"],
-  form: ["form", "email2", "password", "loginButton"],
+  form: ["form", "email2", "password"],
   email2: ["email2"],
   password: ["password"],
-  loginButton: ["loginButton"],
   signInWithGoogle: ["signInWithGoogle"],
   createAccount: ["createAccount"]
 } as const;
@@ -584,7 +598,6 @@ type NodeDefaultElementType = {
   form: typeof FormWrapper;
   email2: typeof AntdInput;
   password: typeof AntdPassword;
-  loginButton: typeof LoginButton;
   signInWithGoogle: typeof SignInWithGoogle;
   createAccount: "div";
 };
@@ -657,7 +670,6 @@ export const PlasmicLALogin = Object.assign(
     form: makeNodeComponent("form"),
     email2: makeNodeComponent("email2"),
     password: makeNodeComponent("password"),
-    loginButton: makeNodeComponent("loginButton"),
     signInWithGoogle: makeNodeComponent("signInWithGoogle"),
     createAccount: makeNodeComponent("createAccount"),
 

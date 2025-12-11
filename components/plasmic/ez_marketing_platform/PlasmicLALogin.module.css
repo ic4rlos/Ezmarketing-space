@@ -175,7 +175,7 @@
     top: auto;
   }
 }
-.loginButton:global(.__wab_instance) {
+.loginButton__vWBrb:global(.__wab_instance) {
   animation: none;
   max-width: 100%;
   width: 248px;
@@ -185,7 +185,7 @@
   top: auto;
 }
 @media (min-width: 0px) and (max-width: 768px) {
-  .loginButton:global(.__wab_instance) {
+  .loginButton__vWBrb:global(.__wab_instance) {
     animation: none;
     position: relative;
     left: auto;
@@ -215,6 +215,51 @@
   text-overflow: clip !important;
 }
 .svg__wMqUh {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.loginButton__inXpl:global(.__wab_instance) {
+  animation: none;
+  max-width: 100%;
+  width: 248px;
+  height: 37px;
+  position: relative;
+  left: auto;
+  top: auto;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .loginButton__inXpl:global(.__wab_instance) {
+    animation: none;
+    position: relative;
+    left: auto;
+    top: auto;
+  }
+}
+.svg__yB1O {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.text__mQnvI {
+  animation: none;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  color: #ededec;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre;
+  user-select: text;
+  text-decoration-line: none !important;
+  text-overflow: clip !important;
+}
+.svg__rUltr {
   position: relative;
   object-fit: cover;
   width: auto;

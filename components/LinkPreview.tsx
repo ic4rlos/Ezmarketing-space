@@ -37,7 +37,7 @@ function LinkPreview(props: LinkPreviewProps) {
   // By default, we are just piping all LinkPreviewProps here, but feel free
   // to do whatever works for you.
 
-  return <PlasmicLinkPreview {...props} />;
+  return <PlasmicLinkPreview  />;
 }
 
 export default LinkPreview;

@@ -19,3 +19,10 @@
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {},
+    "typeRoots": ["./types", "./node_modules/@types"]
+  }
+}

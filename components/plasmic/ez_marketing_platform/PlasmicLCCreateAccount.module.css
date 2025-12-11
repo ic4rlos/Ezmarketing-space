@@ -1,0 +1,352 @@
+.root {
+  display: grid;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  background: #d9d9d9;
+  align-content: center;
+  justify-items: center;
+  cursor: auto;
+  min-width: 0;
+  min-height: 0;
+  grid-template-columns:
+    var(--plsmc-viewport-gap) 1fr minmax(0, var(--plsmc-wide-chunk))
+    min(
+      var(--plsmc-standard-width),
+      calc(100% - var(--plsmc-viewport-gap) - var(--plsmc-viewport-gap))
+    )
+    minmax(0, var(--plsmc-wide-chunk)) 1fr var(--plsmc-viewport-gap);
+}
+.root > * {
+  grid-column: 4;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .root > * {
+    grid-column: 4;
+  }
+}
+.img {
+  object-fit: cover;
+  max-width: auto;
+  height: 100px;
+  width: 700px;
+  position: relative;
+  left: auto;
+  top: auto;
+  margin: auto auto 25px;
+}
+.img > picture > img {
+  object-fit: cover;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .img {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 400px;
+  }
+}
+.rectangle {
+  display: flex;
+  width: 100%;
+  height: 547px;
+  background: #ffffff;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  left: auto;
+  top: auto;
+  min-width: 0;
+  border-radius: 51px;
+  padding: 65px 100px;
+  margin: 0px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .rectangle {
+    margin-bottom: 0px;
+    height: 500px;
+    margin-right: 0px;
+    width: 375px;
+    border-radius: 48px;
+    padding: 48px;
+  }
+}
+.text__oCjRw {
+  position: relative;
+  width: 608px;
+  height: auto;
+  max-width: 70%;
+  color: #000000;
+  left: auto;
+  top: auto;
+}
+.h6 {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+}
+.form2:global(.__wab_instance) {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  object-fit: cover;
+  min-width: 0;
+  min-height: 0;
+  padding: 0px;
+}
+.formField__bwLhI:global(.__wab_instance) {
+  width: 100%;
+  padding-left: 25px;
+  padding-right: 25px;
+  min-width: 0;
+  margin: 0px;
+}
+.svg__f2O7 {
+  animation: none;
+  object-fit: cover;
+  max-width: 100%;
+  color: #000000;
+  position: relative;
+  left: auto;
+  top: auto;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .svg__f2O7 {
+    animation: none;
+    position: relative;
+    left: auto;
+    top: auto;
+  }
+}
+.input2:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
+.formField___4XlWd:global(.__wab_instance) {
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  padding-left: 25px;
+  padding-right: 25px;
+  min-width: 0;
+  margin: 0px;
+}
+.svg__elYWb {
+  object-fit: cover;
+  max-width: 100%;
+  color: #000000;
+  position: relative;
+  left: auto;
+  top: auto;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .svg__elYWb {
+    position: relative;
+    left: auto;
+    top: auto;
+  }
+}
+.input3:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
+.formField___0Hc3Z:global(.__wab_instance) {
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  padding-left: 25px;
+  padding-right: 25px;
+  min-width: 0;
+  margin: 0px;
+}
+.svg__hmebx {
+  object-fit: cover;
+  max-width: 100%;
+  color: #000000;
+  position: relative;
+  left: auto;
+  top: auto;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .svg__hmebx {
+    position: relative;
+    left: auto;
+    top: auto;
+  }
+}
+.input4:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
+.loginButton:global(.__wab_instance) {
+  max-width: 100%;
+  width: 248px;
+  height: 37px;
+  position: relative;
+  left: auto;
+  top: auto;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .loginButton:global(.__wab_instance) {
+    position: relative;
+    left: auto;
+    top: auto;
+  }
+}
+.svg__cGcPz {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.text__vk2Nl {
+  text-align: center;
+}
+.svg__nchvO {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.checkbox2:global(.__wab_instance):global(.__wab_instance) {
+  max-width: 100%;
+  width: auto;
+}
+.freeBox {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+}
+.text__uc3Vt {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  font-size: 10px;
+  color: #000000;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
+}
+.link__kwYd {
+  color: #000000;
+  font-size: 10px;
+  font-weight: 600;
+  text-decoration-line: underline;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  text-align: left;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre;
+  user-select: text;
+  text-overflow: clip;
+  width: 100%;
+  min-width: 0;
+}
+.signInWithGoogle:global(.__wab_instance) {
+  max-width: 100%;
+  width: 248px;
+  height: 37px;
+  position: relative;
+  left: auto;
+  top: auto;
+  flex-shrink: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .signInWithGoogle:global(.__wab_instance) {
+    position: relative;
+    left: auto;
+    top: auto;
+  }
+}
+.svg__ihfWv {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.svg__bn8D1 {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.createAccount {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  left: auto;
+  top: auto;
+  min-width: 0;
+  padding: 0px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .createAccount {
+    position: relative;
+    left: auto;
+    top: auto;
+  }
+}
+.text__j3Au8 {
+  width: auto;
+  height: 17px;
+  max-width: 100%;
+  font-size: 14px;
+  color: #000000;
+  text-align: center;
+}
+.link__z76Ps {
+  font-size: 14px;
+  color: #000000;
+  text-decoration-line: underline;
+  font-weight: 600;
+  padding-left: 4px;
+  cursor: pointer;
+  text-align: center;
+  width: auto;
+}
+.root .link__z76Ps:hover {
+  color: #a5e612;
+}
+.root .link__z76Ps:active {
+  color: #228b22;
+  cursor: pointer;
+}

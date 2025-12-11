@@ -237,7 +237,7 @@ function PlasmicCLandingPageContact__RenderFunc(props: {
 
   return (
     <React.Fragment>
-      <Head></Head>
+      <Head />
 
       <style>{`
         body {

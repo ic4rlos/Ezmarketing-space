@@ -59,13 +59,6 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
-import {
-  executePlasmicDataOp,
-  usePlasmicDataOp,
-  usePlasmicInvalidate
-} from "@plasmicapp/react-web/lib/data-sources";
-
 import { FormWrapper } from "@plasmicpkgs/antd5/skinny/Form";
 import { formHelpers as FormWrapper_Helpers } from "@plasmicpkgs/antd5/skinny/Form";
 import { FormItemWrapper } from "@plasmicpkgs/antd5/skinny/FormItem";
@@ -238,8 +231,6 @@ function PlasmicCLandingPageContact__RenderFunc(props: {
     $queries: {},
     $refs
   });
-  const dataSourcesCtx = usePlasmicDataSourceContext();
-  const plasmicInvalidate = usePlasmicInvalidate();
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -347,48 +338,6 @@ function PlasmicCLandingPageContact__RenderFunc(props: {
                   mode: "advanced",
                   onFinish: async values => {
                     const $steps = {};
-
-                    $steps["defaultSubmit"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            dataOp: {
-                              sourceId: "cXpDvHyf8LmX7xTCuzmAUU",
-                              opId: "412eee9a-ef20-47b7-bba1-4d8fb3dc2d92",
-                              userArgs: {
-                                variables: [$state.form.value]
-                              },
-                              cacheKey: null,
-                              invalidatedKeys: null,
-                              roleId: null
-                            }
-                          };
-                          return (async ({ dataOp, continueOnError }) => {
-                            try {
-                              const response = await executePlasmicDataOp(
-                                dataOp,
-                                {
-                                  userAuthToken: dataSourcesCtx?.userAuthToken,
-                                  user: dataSourcesCtx?.user
-                                }
-                              );
-                              await plasmicInvalidate(dataOp.invalidatedKeys);
-                              return response;
-                            } catch (e) {
-                              if (!continueOnError) {
-                                throw e;
-                              }
-                              return e;
-                            }
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["defaultSubmit"] != null &&
-                      typeof $steps["defaultSubmit"] === "object" &&
-                      typeof $steps["defaultSubmit"].then === "function"
-                    ) {
-                      $steps["defaultSubmit"] = await $steps["defaultSubmit"];
-                    }
                   },
                   onIsSubmittingChange: async (...eventArgs: any) => {
                     generateStateOnChangePropForCodeComponents(

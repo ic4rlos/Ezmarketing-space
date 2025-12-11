@@ -307,8 +307,3 @@
   color: #228b22;
   cursor: pointer;
 }
-.embedHtml:global(.__wab_instance) {
-  animation: none;
-  max-width: 100%;
-  object-fit: cover;
-}

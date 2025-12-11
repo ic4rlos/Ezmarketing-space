@@ -68,7 +68,6 @@ import { AntdPassword } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { inputHelpers as AntdPassword_Helpers } from "@plasmicpkgs/antd5/skinny/registerInput";
 import LoginButton from "../../LoginButton"; // plasmic-import: EirQVSsAP1l8/component
 import SignInWithGoogle from "../../SignInWithGoogle"; // plasmic-import: 1hBCXOAhDfpm/component
-import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: maKqnX1RyE1vKUCrTH51ZZ/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: maKqnX1RyE1vKUCrTH51ZZ/styleTokensProvider
 
@@ -104,7 +103,6 @@ export type PlasmicLALogin__OverridesType = {
   loginButton?: Flex__<typeof LoginButton>;
   signInWithGoogle?: Flex__<typeof SignInWithGoogle>;
   createAccount?: Flex__<"div">;
-  embedHtml?: Flex__<typeof Embed>;
 };
 
 export interface DefaultLALoginProps {}
@@ -602,14 +600,6 @@ function PlasmicLALogin__RenderFunc(props: {
               </PlasmicLink__>
             </div>
           </div>
-          <Embed
-            data-plasmic-name={"embedHtml"}
-            data-plasmic-override={overrides.embedHtml}
-            className={classNames("__wab_instance", sty.embedHtml)}
-            code={
-              '<script>\r\n  // INJETAR AQUI as suas vari\u00e1veis p\u00fablicas do supabase (ANON KEYS s\u00e3o p\u00fablicas por design)\r\n  window.__SUPABASE_CONFIG__ = {\r\n    company: {\r\n      url: "https://dgijmhkauccgansjktwl.supabase.co",\r\n      anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRnaWptaGthdWNjZ2Fuc2prdHdsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwNTA2MjQsImV4cCI6MjA3ODYyNjYyNH0.waKOb-Syq2KhCfVih9QzYlMxf9DZbf7mEtdj2p46fOs"\r\n    },\r\n    agency: {\r\n      url: "https://lrlylgcyvfrgbnimplwy.supabase.co",\r\n      anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxybHlsZ2N5dmZyZ2JuaW1wbHd5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQyNzI1OTQsImV4cCI6MjA3OTg0ODU5NH0.0xIRyl2HsuymeC2T7pJR0Qwa8n9pJAmexc04GTOq1kI"\r\n    }\r\n  };\r\n</script>\r\n<script src="/init-supabase.js" defer></script>\r\n'
-            }
-          />
         </div>
       </div>
     </React.Fragment>
@@ -627,8 +617,7 @@ const PlasmicDescendants = {
     "password",
     "loginButton",
     "signInWithGoogle",
-    "createAccount",
-    "embedHtml"
+    "createAccount"
   ],
   img: ["img"],
   rectangle: [
@@ -647,8 +636,7 @@ const PlasmicDescendants = {
   password: ["password"],
   loginButton: ["loginButton"],
   signInWithGoogle: ["signInWithGoogle"],
-  createAccount: ["createAccount"],
-  embedHtml: ["embedHtml"]
+  createAccount: ["createAccount"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -664,7 +652,6 @@ type NodeDefaultElementType = {
   loginButton: typeof LoginButton;
   signInWithGoogle: typeof SignInWithGoogle;
   createAccount: "div";
-  embedHtml: typeof Embed;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -738,7 +725,6 @@ export const PlasmicLALogin = Object.assign(
     loginButton: makeNodeComponent("loginButton"),
     signInWithGoogle: makeNodeComponent("signInWithGoogle"),
     createAccount: makeNodeComponent("createAccount"),
-    embedHtml: makeNodeComponent("embedHtml"),
 
     // Metadata about props expected for PlasmicLALogin
     internalVariantProps: PlasmicLALogin__VariantProps,

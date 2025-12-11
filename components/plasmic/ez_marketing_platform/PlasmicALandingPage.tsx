@@ -113,6 +113,7 @@ export type PlasmicALandingPage__OverridesType = {
   input2?: Flex__<typeof AntdInput>;
   input3?: Flex__<typeof AntdInput>;
   input4?: Flex__<typeof AntdInput>;
+  embedHtml?: Flex__<typeof Embed>;
   metaPixel?: Flex__<typeof Embed>;
   footerSection?: Flex__<typeof FooterSection>;
 };
@@ -2165,16 +2166,6 @@ function PlasmicALandingPage__RenderFunc(props: {
                           sty.freeBox__vZaxr
                         )}
                       >
-                        <Embed
-                          className={classNames(
-                            "__wab_instance",
-                            sty.embedHtml__tvDx
-                          )}
-                          code={
-                            '<div class="g-recaptcha" data-sitekey="6LfO7VMrAAAAAMX35PH4yiluTp0VqTqtKJMDfraA"></div>\r\n<script src="https://www.google.com/recaptcha/api.js" async defer></script>\r\n'
-                          }
-                        />
-
                         <LoginButton
                           className={classNames(
                             "__wab_instance",
@@ -2230,7 +2221,9 @@ function PlasmicALandingPage__RenderFunc(props: {
             />
           </Section>
           <Embed
-            className={classNames("__wab_instance", sty.embedHtml___1QSSr)}
+            data-plasmic-name={"embedHtml"}
+            data-plasmic-override={overrides.embedHtml}
+            className={classNames("__wab_instance", sty.embedHtml)}
             code={
               '<script>\r\n  document.addEventListener("DOMContentLoaded", function() {\r\n    const form = document.querySelector("form");\r\n    if (form) {\r\n      form.addEventListener("submit", function(e) {\r\n        const token = grecaptcha.getResponse();\r\n        if (!token) {\r\n          alert("Please tick the reCAPTCHA");\r\n          e.preventDefault();\r\n          e.stopImmediatePropagation();\r\n          return false;\r\n        }\r\n        // Preenche o hidden input\r\n        document.querySelector(\'input[name="captcha_token"]\').value = token;\r\n\r\n        // Pequeno delay pra garantir envio do Supabase\r\n        setTimeout(function() {\r\n          window.location.href = "/thank-you";\r\n        }, 300);\r\n      });\r\n    }\r\n  });\r\n</script>\r\n\r\n\r\n'
             }
@@ -2271,6 +2264,7 @@ const PlasmicDescendants = {
     "input2",
     "input3",
     "input4",
+    "embedHtml",
     "metaPixel",
     "footerSection"
   ],
@@ -2293,6 +2287,7 @@ const PlasmicDescendants = {
   input2: ["input2"],
   input3: ["input3"],
   input4: ["input4"],
+  embedHtml: ["embedHtml"],
   metaPixel: ["metaPixel"],
   footerSection: ["footerSection"]
 } as const;
@@ -2313,6 +2308,7 @@ type NodeDefaultElementType = {
   input2: typeof AntdInput;
   input3: typeof AntdInput;
   input4: typeof AntdInput;
+  embedHtml: typeof Embed;
   metaPixel: typeof Embed;
   footerSection: typeof FooterSection;
 };
@@ -2391,6 +2387,7 @@ export const PlasmicALandingPage = Object.assign(
     input2: makeNodeComponent("input2"),
     input3: makeNodeComponent("input3"),
     input4: makeNodeComponent("input4"),
+    embedHtml: makeNodeComponent("embedHtml"),
     metaPixel: makeNodeComponent("metaPixel"),
     footerSection: makeNodeComponent("footerSection"),
 

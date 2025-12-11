@@ -284,10 +284,6 @@
   max-width: 100%;
   object-fit: cover;
 }
-.embedHtml__gmDzW:global(.__wab_instance) {
-  max-width: 100%;
-  object-fit: cover;
-}
 .loginButton:global(.__wab_instance) {
   max-width: 100%;
   width: auto;
@@ -338,7 +334,7 @@
   max-width: 100%;
   object-fit: cover;
 }
-.embedHtml__d8YIx:global(.__wab_instance) {
+.embedHtml:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
 }

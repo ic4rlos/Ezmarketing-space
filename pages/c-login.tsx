@@ -1,7 +1,3 @@
-// File: pages/c-login.tsx
-// Reconstructed Company login page using Plasmic CSS module for styling.
-// No Plasmic runtime, no Plasmic state hooks — visual preserved by CSS module.
-
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import getSupabaseC from "../lib/c-supabaseClient";

@@ -31,27 +31,27 @@ export default function CLogin() {
   const $props = {};
   const $queries = {};
 
-  // Corrigido: type agora é literal válido
+  // Corrigido: variableType agora usa valores válidos
   const stateSpecs = React.useMemo(
     () => [
       {
         path: "email.value",
         type: "private" as const,
-        variableType: "text",
+        variableType: "text", // texto
         initFunc: ({ $props, $state, $queries, $ctx }: any) => undefined,
         onMutate: generateOnMutateForSpec("value", undefined),
       },
       {
         path: "password.value",
         type: "private" as const,
-        variableType: "text",
+        variableType: "text", // texto
         initFunc: ({ $props, $state, $queries, $ctx }: any) => undefined,
         onMutate: generateOnMutateForSpec("value", undefined),
       },
       {
         path: "form.value",
         type: "private" as const,
-        variableType: "object",
+        variableType: "object", // objeto
         initFunc: ({ $props, $state, $queries, $ctx }: any) => undefined,
         refName: "form",
         onMutate: generateOnMutateForSpec("value", undefined),
@@ -59,7 +59,7 @@ export default function CLogin() {
       {
         path: "form.isSubmitting",
         type: "private" as const,
-        variableType: "boolean",
+        variableType: "boolean", // booleano
         initFunc: ({ $props, $state, $queries, $ctx }: any) => false,
         refName: "form",
         onMutate: generateOnMutateForSpec("isSubmitting", undefined),

@@ -18,8 +18,10 @@ export default function CLogin() {
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
 
-  async function handleLogin(e?: React.FormEvent) {
-    e?.preventDefault();
+  async function handleLogin(
+    e?: React.FormEvent<HTMLFormElement> | React.MouseEvent
+  ) {
+    if (e) e.preventDefault();
 
     setLoading(true);
     setError(null);
@@ -29,8 +31,14 @@ export default function CLogin() {
       password,
     });
 
-    if (error) setError(error.message);
-    setLoading(false);
+    if (error) {
+      setError(error.message);
+      setLoading(false);
+      return;
+    }
+
+    // login OK → redireciona
+    router.push("/dashboard");
   }
 
   return (
@@ -42,7 +50,9 @@ export default function CLogin() {
       >
         <PlasmicLCLogin
           overrides={{
-            /* INPUT EMAIL */
+            /* =========================
+               INPUT EMAIL
+            ========================== */
             email: {
               props: {
                 value: email,
@@ -51,7 +61,9 @@ export default function CLogin() {
               },
             },
 
-            /* INPUT PASSWORD */
+            /* =========================
+               INPUT PASSWORD
+            ========================== */
             password: {
               props: {
                 value: password,
@@ -60,26 +72,51 @@ export default function CLogin() {
               },
             },
 
-            /* FORM */
-            Form: {
+            /* =========================
+               FORM
+            ========================== */
+            loginForm: {
               props: {
                 onSubmit: handleLogin,
+                noValidate: true,
               },
             },
 
-            /* BOTÃO LOGIN */
-            "Login button": {
+            /* =========================
+               BOTÃO LOGIN
+            ========================== */
+            loginButton: {
               props: {
+                type: "submit",      // 🔑 ESSENCIAL
                 disabled: loading,
-                onClick: handleLogin,
+                onClick: handleLogin // redundante por segurança
               },
             },
 
-            /* GOOGLE */
-            "Sign in with Google": {
+            /* =========================
+               ERRO
+            ========================== */
+            errorMessage: {
               props: {
-                onClick: () =>
-                  supabase.auth.signInWithOAuth({ provider: "google" }),
+                children: error,
+                style: {
+                  display: error ? "block" : "none",
+                  color: "red",
+                  marginTop: 8,
+                },
+              },
+            },
+
+            /* =========================
+               GOOGLE LOGIN
+            ========================== */
+            signInWithGoogle: {
+              props: {
+                onClick: async () => {
+                  await supabase.auth.signInWithOAuth({
+                    provider: "google",
+                  });
+                },
               },
             },
           }}

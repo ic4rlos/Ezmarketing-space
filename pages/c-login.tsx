@@ -29,10 +29,7 @@ export default function CLogin() {
       password,
     });
 
-    if (error) {
-      setError(error.message);
-    }
-
+    if (error) setError(error.message);
     setLoading(false);
   }
 
@@ -44,38 +41,47 @@ export default function CLogin() {
         query={router.query}
       >
         <PlasmicLCLogin
-          /* ========= INPUTS ========= */
-          email={{
-            value: email,
-            onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-              setEmail(e.target.value),
-          }}
-          password={{
-            value: password,
-            onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-              setPassword(e.target.value),
-          }}
+          overrides={{
+            /* INPUT EMAIL */
+            email: {
+              props: {
+                value: email,
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                  setEmail(e.target.value),
+              },
+            },
 
-          /* ========= FORM / LOGIN ========= */
-          loginForm={{
-            onSubmit: handleLogin,
-          }}
-          loginButton={{
-            disabled: loading,
-            onClick: handleLogin,
-            children: loading ? "Logando..." : "Login",
-          }}
+            /* INPUT PASSWORD */
+            password: {
+              props: {
+                value: password,
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                  setPassword(e.target.value),
+              },
+            },
 
-          /* ========= GOOGLE ========= */
-          signInWithGoogle={{
-            onClick: () =>
-              supabase.auth.signInWithOAuth({ provider: "google" }),
-          }}
+            /* FORM */
+            Form: {
+              props: {
+                onSubmit: handleLogin,
+              },
+            },
 
-          /* ========= ERROR ========= */
-          errorMessage={{
-            children: error,
-            style: { display: error ? "block" : "none" },
+            /* BOTÃO LOGIN */
+            "Login button": {
+              props: {
+                disabled: loading,
+                onClick: handleLogin,
+              },
+            },
+
+            /* GOOGLE */
+            "Sign in with Google": {
+              props: {
+                onClick: () =>
+                  supabase.auth.signInWithOAuth({ provider: "google" }),
+              },
+            },
           }}
         />
       </PageParamsProvider__>

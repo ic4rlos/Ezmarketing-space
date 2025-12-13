@@ -101,6 +101,7 @@ export type PlasmicLCLogin__OverridesType = {
   form?: Flex__<typeof FormWrapper>;
   email?: Flex__<typeof AntdInput>;
   password?: Flex__<typeof AntdPassword>;
+  errorText?: Flex__<"div">;
   loginButton?: Flex__<typeof LoginButton>;
   signInWithGoogle?: Flex__<typeof SignInWithGoogle>;
   createAccount?: Flex__<"div">;
@@ -469,6 +470,17 @@ function PlasmicLCLogin__RenderFunc(props: {
                       );
                     })()}
                   </FormItemWrapper>
+                  <div
+                    data-plasmic-name={"errorText"}
+                    data-plasmic-override={overrides.errorText}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.errorText
+                    )}
+                  >
+                    {"Invalid login credentials"}
+                  </div>
                   <LoginButton
                     data-plasmic-name={"loginButton"}
                     data-plasmic-override={overrides.loginButton}
@@ -553,6 +565,7 @@ const PlasmicDescendants = {
     "form",
     "email",
     "password",
+    "errorText",
     "loginButton",
     "signInWithGoogle",
     "createAccount"
@@ -564,14 +577,23 @@ const PlasmicDescendants = {
     "form",
     "email",
     "password",
+    "errorText",
     "loginButton",
     "signInWithGoogle",
     "createAccount"
   ],
   h6: ["h6"],
-  form: ["form", "email", "password", "loginButton", "signInWithGoogle"],
+  form: [
+    "form",
+    "email",
+    "password",
+    "errorText",
+    "loginButton",
+    "signInWithGoogle"
+  ],
   email: ["email"],
   password: ["password"],
+  errorText: ["errorText"],
   loginButton: ["loginButton"],
   signInWithGoogle: ["signInWithGoogle"],
   createAccount: ["createAccount"]
@@ -587,6 +609,7 @@ type NodeDefaultElementType = {
   form: typeof FormWrapper;
   email: typeof AntdInput;
   password: typeof AntdPassword;
+  errorText: "div";
   loginButton: typeof LoginButton;
   signInWithGoogle: typeof SignInWithGoogle;
   createAccount: "div";
@@ -660,6 +683,7 @@ export const PlasmicLCLogin = Object.assign(
     form: makeNodeComponent("form"),
     email: makeNodeComponent("email"),
     password: makeNodeComponent("password"),
+    errorText: makeNodeComponent("errorText"),
     loginButton: makeNodeComponent("loginButton"),
     signInWithGoogle: makeNodeComponent("signInWithGoogle"),
     createAccount: makeNodeComponent("createAccount"),

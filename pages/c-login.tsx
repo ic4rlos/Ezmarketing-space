@@ -5,38 +5,11 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
 import { PlasmicLCLogin } from "../components/plasmic/ez_marketing_platform/PlasmicLCLogin";
-
-// Supabase corporativo
-import getSupabaseC from "../lib/c-supabaseClient";
+import { useCLogin } from "../lib/useCLogin";
 
 export default function CLogin() {
   const router = useRouter();
-  const supabase = React.useMemo(() => getSupabaseC(), []);
-
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState<string | null>(null);
-
-  async function handleLogin() {
-    setLoading(true);
-    setError(null);
-
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    setLoading(false);
-
-    if (error) {
-      setError(error.message);
-      return;
-    }
-
-    // sucesso
-    router.push("/find-a-affiliate");
-  }
+  const { login, loading, error } = useCLogin();
 
   return (
     <GlobalContextsProvider>
@@ -47,38 +20,31 @@ export default function CLogin() {
       >
         <PlasmicLCLogin
           overrides={{
-            // FORM FIELD EMAIL
             email: {
               props: {
-                value: email,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setEmail(e.target.value),
+                onChange: (e) => (window as any).__email = e.target.value,
               },
             },
-
-            // FORM FIELD PASSWORD
             password: {
               props: {
-                value: password,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setPassword(e.target.value),
+                onChange: (e) => (window as any).__password = e.target.value,
               },
             },
-
-            // BOTÃO DE LOGIN (visual)
             loginButton: {
               props: {
-                onClick: handleLogin,
                 disabled: loading,
+                onClick: () =>
+                  login(
+                    (window as any).__email,
+                    (window as any).__password
+                  ),
               },
             },
-
-            // TEXTO DE ERRO (se existir no design)
-            errorText: error
-              ? {
-                  children: error,
-                }
-              : undefined,
+            errorText: {
+              props: {
+                children: error ?? "",
+              },
+            },
           }}
         />
       </PageParamsProvider__>

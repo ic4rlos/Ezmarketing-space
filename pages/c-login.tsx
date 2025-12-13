@@ -1,5 +1,7 @@
 import * as React from "react";
 import { useRouter } from "next/router";
+import { createClient } from "@supabase/supabase-js";
+
 import {
   PageParamsProvider as PageParamsProvider__,
 } from "@plasmicapp/react-web/lib/host";
@@ -7,24 +9,24 @@ import {
 import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
 import { PlasmicLCLogin } from "../components/plasmic/ez_marketing_platform/PlasmicLCLogin";
 
-import { getSupabaseC } from "../lib/c-supabaseClient";
+// 🔑 Supabase client
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
 
 export default function CLogin() {
   const router = useRouter();
-  const supabase = getSupabaseC();
 
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [errorMessage, setErrorMessage] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState<string | null>(null);
 
-  async function handleLogin(
-    e?: React.FormEvent<HTMLFormElement> | React.MouseEvent
-  ) {
-    if (e) e.preventDefault();
-
+  async function handleLogin(formData: any) {
     setLoading(true);
-    setError(null);
+    setErrorMessage(null);
+
+    const email = formData?.email;
+    const password = formData?.password;
 
     const { error } = await supabase.auth.signInWithPassword({
       email,
@@ -32,13 +34,18 @@ export default function CLogin() {
     });
 
     if (error) {
-      setError(error.message);
-      setLoading(false);
-      return;
+      // 🔴 Aqui entram TODAS as mensagens possíveis
+      if (error.message === "Invalid login credentials") {
+        setErrorMessage("Email ou senha inválidos");
+      } else {
+        setErrorMessage(error.message);
+      }
+    } else {
+      // ✅ Login ok
+      router.push("/find-a-affiliate"); // ajuste se quiser
     }
 
-    // login OK → redireciona
-    router.push("/dashboard");
+    setLoading(false);
   }
 
   return (
@@ -50,73 +57,26 @@ export default function CLogin() {
       >
         <PlasmicLCLogin
           overrides={{
-            /* =========================
-               INPUT EMAIL
-            ========================== */
-            email: {
+            form: {
               props: {
-                value: email,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setEmail(e.target.value),
+                onFinish: handleLogin,
               },
             },
 
-            /* =========================
-               INPUT PASSWORD
-            ========================== */
-            password: {
+            errorText: {
               props: {
-                value: password,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setPassword(e.target.value),
+                children: errorMessage ?? "",
+                style: {
+                  display: errorMessage ? "block" : "none",
+                  color: "red",
+                  marginTop: "8px",
+                },
               },
             },
 
-            /* =========================
-               FORM
-            ========================== */
-            loginForm: {
-              props: {
-                onSubmit: handleLogin,
-                noValidate: true,
-              },
-            },
-
-            /* =========================
-               BOTÃO LOGIN
-            ========================== */
             loginButton: {
               props: {
-                type: "submit",      // 🔑 ESSENCIAL
                 disabled: loading,
-                onClick: handleLogin // redundante por segurança
-              },
-            },
-
-            /* =========================
-               ERRO
-            ========================== */
-            errorMessage: {
-              props: {
-                children: error,
-                style: {
-                  display: error ? "block" : "none",
-                  color: "red",
-                  marginTop: 8,
-                },
-              },
-            },
-
-            /* =========================
-               GOOGLE LOGIN
-            ========================== */
-            signInWithGoogle: {
-              props: {
-                onClick: async () => {
-                  await supabase.auth.signInWithOAuth({
-                    provider: "google",
-                  });
-                },
               },
             },
           }}

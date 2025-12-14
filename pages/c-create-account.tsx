@@ -16,7 +16,6 @@ export default function CCreateAccount() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
-  const [acceptedTerms, setAcceptedTerms] = React.useState(false);
 
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
@@ -41,7 +40,12 @@ export default function CCreateAccount() {
       return;
     }
 
-    if (!acceptedTerms) {
+    // 🔒 TERMS CHECK (DOM-based, safe)
+    const termsCheckbox = document.querySelector(
+      'input[type="checkbox"]'
+    ) as HTMLInputElement | null;
+
+    if (!termsCheckbox || !termsCheckbox.checked) {
       setError("You must accept the terms and conditions.");
       return;
     }
@@ -90,9 +94,6 @@ export default function CCreateAccount() {
       >
         <PlasmicLCCreateAccount
           overrides={{
-            /* =========================
-               EMAIL
-            ========================== */
             input2: {
               props: {
                 value: email,
@@ -101,9 +102,6 @@ export default function CCreateAccount() {
               },
             },
 
-            /* =========================
-               PASSWORD
-            ========================== */
             input3: {
               props: {
                 value: password,
@@ -112,9 +110,6 @@ export default function CCreateAccount() {
               },
             },
 
-            /* =========================
-               CONFIRM PASSWORD
-            ========================== */
             input4: {
               props: {
                 value: confirmPassword,
@@ -123,9 +118,6 @@ export default function CCreateAccount() {
               },
             },
 
-            /* =========================
-               FORM
-            ========================== */
             form2: {
               props: {
                 onSubmit: handleCreateAccount,
@@ -133,9 +125,6 @@ export default function CCreateAccount() {
               },
             },
 
-            /* =========================
-               BUTTON
-            ========================== */
             loginButton: {
               props: {
                 type: "submit",
@@ -144,9 +133,6 @@ export default function CCreateAccount() {
               },
             },
 
-            /* =========================
-               ERROR TEXT
-            ========================== */
             errorText: {
               props: {
                 children: error,
@@ -158,19 +144,6 @@ export default function CCreateAccount() {
               },
             },
 
-            /* =========================
-               TERMS CHECKBOX
-            ========================== */
-            checkbox2: {
-              props: {
-                onChange: (_: any, checked: boolean) =>
-                  setAcceptedTerms(checked),
-              },
-            },
-
-            /* =========================
-               GOOGLE SIGN IN
-            ========================== */
             signInWithGoogle: {
               props: {
                 onClick: async () => {

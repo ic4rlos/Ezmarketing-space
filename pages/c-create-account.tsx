@@ -29,69 +29,69 @@ export default function CreateAccountPage() {
         },
 
         /* =========================
-           SUBMIT BUTTON
+           CREATE ACCOUNT BUTTON
         ========================== */
         loginButton: {
-          props: {
-            onClick: async (_, formInstance) => {
-              if (loading) return;
+          onClick: async (_e, formInstance) => {
+            if (loading) return;
 
-              setErrorMessage("");
-              setLoading(true);
+            setErrorMessage("");
+            setLoading(true);
 
-              try {
-                // 🔹 LENDO DIRETO DO FORM (FONTE ÚNICA DE VERDADE)
-                const values = formInstance?.getFieldsValue?.() || {};
+            try {
+              const values = formInstance?.getFieldsValue?.() || {};
 
-                const email = values.email;
-                const password = values.password;
-                const confirmPassword = values.confirmpassword;
-                const acceptedTerms = values.checkbox2;
+              const email = values.email;
+              const password = values.password;
+              const confirmPassword = values.confirmpassword;
+              const acceptedTerms = values.checkbox2;
 
-                // 🔸 VALIDAÇÕES FRONT-END
-                if (!email || !password || !confirmPassword) {
-                  setErrorMessage("All fields are required.");
-                  return;
-                }
-
-                if (password !== confirmPassword) {
-                  setErrorMessage("Passwords do not match.");
-                  return;
-                }
-
-                if (!acceptedTerms) {
-                  setErrorMessage("You must accept the terms and conditions.");
-                  return;
-                }
-
-                // 🔹 SUPABASE SIGN UP
-                const { error } = await supabase.auth.signUp({
-                  email,
-                  password,
-                });
-
-                if (error) {
-                  // 🔸 ERROS CONHECIDOS DO SUPABASE
-                  if (error.message.toLowerCase().includes("password")) {
-                    setErrorMessage(
-                      "Password does not meet security requirements."
-                    );
-                  } else if (
-                    error.message.toLowerCase().includes("email")
-                  ) {
-                    setErrorMessage("Invalid or already registered email.");
-                  } else {
-                    setErrorMessage(error.message);
-                  }
-                  return;
-                }
-
-                // ✅ SUCESSO
-                router.push("/c-edit-profile");
-              } finally {
-                setLoading(false);
+              // 🔹 Front-end validations
+              if (!email || !password || !confirmPassword) {
+                setErrorMessage("All fields are required.");
+                return;
               }
-            },
+
+              if (password !== confirmPassword) {
+                setErrorMessage("Passwords do not match.");
+                return;
+              }
+
+              if (!acceptedTerms) {
+                setErrorMessage(
+                  "You must accept the terms and conditions."
+                );
+                return;
+              }
+
+              // 🔹 Supabase signup
+              const { error } = await supabase.auth.signUp({
+                email,
+                password,
+              });
+
+              if (error) {
+                const msg = error.message.toLowerCase();
+
+                if (msg.includes("password")) {
+                  setErrorMessage(
+                    "Password does not meet security requirements."
+                  );
+                } else if (msg.includes("email")) {
+                  setErrorMessage(
+                    "Invalid or already registered email."
+                  );
+                } else {
+                  setErrorMessage(error.message);
+                }
+                return;
+              }
+
+              // ✅ Success
+              router.push("/c-edit-profile");
+            } finally {
+              setLoading(false);
+            }
           },
         },
       }}

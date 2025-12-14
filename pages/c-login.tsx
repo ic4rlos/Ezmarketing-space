@@ -30,8 +30,8 @@ export default function CLogin() {
     });
 
     if (error) {
-      // qualquer erro de login cai aqui
-      setError("Usuário ou senha inválidos");
+      // Supabase não diferencia usuário vs senha (e isso é correto)
+      setError("Invalid email or password");
       return;
     }
 
@@ -82,7 +82,6 @@ export default function CLogin() {
 
             /* =========================
                BOTÃO LOGIN
-               (sem disabled, sem risco)
             ========================== */
             loginButton: {
               props: {
@@ -93,7 +92,6 @@ export default function CLogin() {
 
             /* =========================
                TEXTO DE ERRO
-               (sempre visível quando existir erro)
             ========================== */
             errorText: {
               props: {

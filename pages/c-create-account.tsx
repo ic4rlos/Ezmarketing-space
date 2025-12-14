@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useRouter } from "next/router";
+
 import {
   PageParamsProvider as PageParamsProvider__,
 } from "@plasmicapp/react-web/lib/host";
@@ -17,35 +18,42 @@ export default function CCreateAccount() {
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [error, setError] = React.useState<string | null>(null);
+  const [loading, setLoading] = React.useState(false);
 
   async function handleCreateAccount(
     e?: React.FormEvent<HTMLFormElement> | React.MouseEvent
   ) {
     if (e) e.preventDefault();
+    if (loading) return;
+
     setError(null);
 
-    // validações básicas
+    // 🔹 Validações básicas (frontend)
     if (!email || !password || !confirmPassword) {
-      setError("All fields are required");
+      setError("All fields are required.");
       return;
     }
 
     if (password !== confirmPassword) {
-      setError("Passwords do not match");
+      setError("Passwords do not match.");
       return;
     }
+
+    setLoading(true);
 
     const { error } = await supabase.auth.signUp({
       email,
       password,
     });
 
+    setLoading(false);
+
     if (error) {
-      setError("Unable to create account");
+      setError(error.message);
       return;
     }
 
-    // sucesso
+    // ✅ Conta criada
     router.push("/c-edit-profile");
   }
 
@@ -102,17 +110,18 @@ export default function CCreateAccount() {
             },
 
             /* =========================
-               BOTÃO CREATE ACCOUNT
+               CREATE ACCOUNT BUTTON
             ========================== */
             loginButton: {
               props: {
                 type: "submit",
                 onClick: handleCreateAccount,
+                disabled: loading,
               },
             },
 
             /* =========================
-               TEXTO DE ERRO
+               ERROR TEXT
             ========================== */
             errorText: {
               props: {
@@ -121,6 +130,19 @@ export default function CCreateAccount() {
                   display: error ? "block" : "none",
                   color: "red",
                   marginTop: 8,
+                },
+              },
+            },
+
+            /* =========================
+               GOOGLE SIGNUP (opcional)
+            ========================== */
+            signInWithGoogle: {
+              props: {
+                onClick: async () => {
+                  await supabase.auth.signInWithOAuth({
+                    provider: "google",
+                  });
                 },
               },
             },

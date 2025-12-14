@@ -1,100 +1,169 @@
+import * as React from "react";
 import { useRouter } from "next/router";
-import { useState } from "react";
-import { PlasmicLCCreateAccount } from "@/components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount";
-import { createClient } from "@supabase/supabase-js";
+import {
+  PageParamsProvider as PageParamsProvider__,
+} from "@plasmicapp/react-web/lib/host";
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
+import { PlasmicLCCreateAccount } from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount";
 
-export default function CreateAccountPage() {
+import { getSupabaseC } from "../lib/c-supabaseClient";
+
+export default function CCreateAccount() {
   const router = useRouter();
+  const supabase = getSupabaseC();
 
-  const [errorMessage, setErrorMessage] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [confirmPassword, setConfirmPassword] = React.useState("");
+  const [acceptedTerms, setAcceptedTerms] = React.useState(false);
+
+  const [error, setError] = React.useState<string | null>(null);
+  const [loading, setLoading] = React.useState(false);
+
+  async function handleCreateAccount(
+    e?: React.FormEvent<HTMLFormElement> | React.MouseEvent
+  ) {
+    if (e) e.preventDefault();
+
+    if (loading) return;
+
+    setError(null);
+
+    // =========================
+    // FRONT-END VALIDATIONS
+    // =========================
+    if (!email || !password || !confirmPassword) {
+      setError("All fields are required.");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+
+    if (!acceptedTerms) {
+      setError("You must accept the terms and conditions.");
+      return;
+    }
+
+    setLoading(true);
+
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+
+    if (error) {
+      const msg = error.message.toLowerCase();
+
+      if (msg.includes("password")) {
+        setError("Password does not meet security requirements.");
+      } else if (msg.includes("email")) {
+        setError("Invalid or already registered email.");
+      } else {
+        setError("Unable to create account.");
+      }
+
+      setLoading(false);
+      return;
+    }
+
+    // ✅ Success
+    router.push("/c-edit-profile");
+  }
 
   return (
-    <PlasmicLCCreateAccount
-      overrides={{
-        /* =========================
-           ERROR TEXT
-        ========================== */
-        errorText: {
-          children: errorMessage,
-          style: {
-            display: errorMessage ? "block" : "none",
-            color: "red",
-          },
-        },
+    <GlobalContextsProvider>
+      <PageParamsProvider__
+        route={router.pathname}
+        params={router.query}
+        query={router.query}
+      >
+        <PlasmicLCCreateAccount
+          overrides={{
+            /* =========================
+               EMAIL
+            ========================== */
+            email: {
+              props: {
+                value: email,
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                  setEmail(e.target.value),
+              },
+            },
 
-        /* =========================
-           CREATE ACCOUNT BUTTON
-        ========================== */
-        loginButton: {
-          onClick: async (_e, formInstance) => {
-            if (loading) return;
+            /* =========================
+               PASSWORD
+            ========================== */
+            password: {
+              props: {
+                value: password,
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                  setPassword(e.target.value),
+              },
+            },
 
-            setErrorMessage("");
-            setLoading(true);
+            /* =========================
+               CONFIRM PASSWORD
+            ========================== */
+            confirmpassword: {
+              props: {
+                value: confirmPassword,
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                  setConfirmPassword(e.target.value),
+              },
+            },
 
-            try {
-              const values = formInstance?.getFieldsValue?.() || {};
+            /* =========================
+               TERMS CHECKBOX
+            ========================== */
+            checkbox2: {
+              props: {
+                checked: acceptedTerms,
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                  setAcceptedTerms(e.target.checked),
+              },
+            },
 
-              const email = values.email;
-              const password = values.password;
-              const confirmPassword = values.confirmpassword;
-              const acceptedTerms = values.checkbox2;
+            /* =========================
+               FORM
+            ========================== */
+            form: {
+              props: {
+                onSubmit: handleCreateAccount,
+                noValidate: true,
+              },
+            },
 
-              // 🔹 Front-end validations
-              if (!email || !password || !confirmPassword) {
-                setErrorMessage("All fields are required.");
-                return;
-              }
+            /* =========================
+               SUBMIT BUTTON
+            ========================== */
+            loginButton: {
+              props: {
+                type: "submit",
+                disabled: loading,
+                onClick: handleCreateAccount, // redundante por segurança
+              },
+            },
 
-              if (password !== confirmPassword) {
-                setErrorMessage("Passwords do not match.");
-                return;
-              }
-
-              if (!acceptedTerms) {
-                setErrorMessage(
-                  "You must accept the terms and conditions."
-                );
-                return;
-              }
-
-              // 🔹 Supabase signup
-              const { error } = await supabase.auth.signUp({
-                email,
-                password,
-              });
-
-              if (error) {
-                const msg = error.message.toLowerCase();
-
-                if (msg.includes("password")) {
-                  setErrorMessage(
-                    "Password does not meet security requirements."
-                  );
-                } else if (msg.includes("email")) {
-                  setErrorMessage(
-                    "Invalid or already registered email."
-                  );
-                } else {
-                  setErrorMessage(error.message);
-                }
-                return;
-              }
-
-              // ✅ Success
-              router.push("/c-edit-profile");
-            } finally {
-              setLoading(false);
-            }
-          },
-        },
-      }}
-    />
+            /* =========================
+               ERROR TEXT
+            ========================== */
+            errorText: {
+              props: {
+                children: error,
+                style: {
+                  display: error ? "block" : "none",
+                  color: "red",
+                  marginTop: 8,
+                },
+              },
+            },
+          }}
+        />
+      </PageParamsProvider__>
+    </GlobalContextsProvider>
   );
 }

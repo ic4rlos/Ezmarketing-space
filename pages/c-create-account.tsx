@@ -28,7 +28,9 @@ export default function CCreateAccount() {
 
     setError(null);
 
-    // 🔒 validações locais (antes de chamar Supabase)
+    /* =========================
+       FRONTEND VALIDATION
+    ========================== */
     if (!email || !password || !confirmPassword) {
       setError("All fields are required.");
       return;
@@ -46,17 +48,25 @@ export default function CCreateAccount() {
 
     setLoading(true);
 
-    const { error } = await supabase.auth.signUp({
+    /* =========================
+       SUPABASE SIGN UP
+    ========================== */
+    const { error: signUpError } = await supabase.auth.signUp({
       email,
       password,
     });
 
-    if (error) {
-      // Mensagens humanas e controladas
-      if (error.message.toLowerCase().includes("already")) {
-        setError("This email is already registered.");
-      } else if (error.message.toLowerCase().includes("password")) {
-        setError("Password must be at least 6 characters.");
+    if (signUpError) {
+      const msg = signUpError.message.toLowerCase();
+
+      if (msg.includes("already registered")) {
+        setError("An account with this email already exists.");
+      } else if (msg.includes("password")) {
+        setError(
+          "Password is too weak. Please choose a stronger password."
+        );
+      } else if (msg.includes("email")) {
+        setError("Please enter a valid email address.");
       } else {
         setError("Unable to create account. Please try again.");
       }
@@ -65,8 +75,10 @@ export default function CCreateAccount() {
       return;
     }
 
-    // ✅ sucesso
-    router.push("/find-a-affiliate");
+    /* =========================
+       SUCCESS
+    ========================== */
+    router.push("/c-edit-profile");
   }
 
   return (
@@ -122,7 +134,7 @@ export default function CCreateAccount() {
             },
 
             /* =========================
-               CREATE ACCOUNT BUTTON
+               BUTTON
             ========================== */
             loginButton: {
               props: {
@@ -133,7 +145,7 @@ export default function CCreateAccount() {
             },
 
             /* =========================
-               ERROR MESSAGE
+               ERROR TEXT
             ========================== */
             errorText: {
               props: {
@@ -151,14 +163,13 @@ export default function CCreateAccount() {
             ========================== */
             checkbox2: {
               props: {
-                onChange: (checked: boolean) => {
-                  setAcceptedTerms(checked);
-                },
+                onChange: (_: any, checked: boolean) =>
+                  setAcceptedTerms(checked),
               },
             },
 
             /* =========================
-               GOOGLE SIGNUP
+               GOOGLE SIGN IN
             ========================== */
             signInWithGoogle: {
               props: {

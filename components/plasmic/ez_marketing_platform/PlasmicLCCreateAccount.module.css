@@ -195,6 +195,17 @@
   max-width: 100%;
   object-fit: cover;
 }
+.errorText {
+  animation: none;
+  width: 145px;
+  height: 17px;
+  max-width: 100%;
+  font-size: 12px;
+  color: var(--token-lr218BAAY08X);
+  text-align: center;
+  font-style: italic;
+  display: none;
+}
 .loginButton:global(.__wab_instance) {
   max-width: 100%;
   width: 248px;

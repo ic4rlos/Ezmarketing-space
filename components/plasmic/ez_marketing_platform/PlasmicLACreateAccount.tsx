@@ -103,6 +103,7 @@ export type PlasmicLACreateAccount__OverridesType = {
   email2?: Flex__<typeof AntdInput>;
   password?: Flex__<typeof AntdPassword>;
   confirmPassword?: Flex__<typeof AntdPassword>;
+  errorText?: Flex__<"div">;
   loginButton?: Flex__<typeof LoginButton>;
   checkbox?: Flex__<typeof Checkbox>;
   signInWithGoogle?: Flex__<typeof SignInWithGoogle>;
@@ -541,6 +542,17 @@ function PlasmicLACreateAccount__RenderFunc(props: {
                       );
                     })()}
                   </FormItemWrapper>
+                  <div
+                    data-plasmic-name={"errorText"}
+                    data-plasmic-override={overrides.errorText}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.errorText
+                    )}
+                  >
+                    {"Invalid login credentials"}
+                  </div>
                   <LoginButton
                     data-plasmic-name={"loginButton"}
                     data-plasmic-override={overrides.loginButton}
@@ -664,6 +676,7 @@ const PlasmicDescendants = {
     "email2",
     "password",
     "confirmPassword",
+    "errorText",
     "loginButton",
     "checkbox",
     "signInWithGoogle",
@@ -677,6 +690,7 @@ const PlasmicDescendants = {
     "email2",
     "password",
     "confirmPassword",
+    "errorText",
     "loginButton",
     "checkbox",
     "signInWithGoogle",
@@ -688,12 +702,14 @@ const PlasmicDescendants = {
     "email2",
     "password",
     "confirmPassword",
+    "errorText",
     "loginButton",
     "checkbox"
   ],
   email2: ["email2"],
   password: ["password"],
   confirmPassword: ["confirmPassword"],
+  errorText: ["errorText"],
   loginButton: ["loginButton"],
   checkbox: ["checkbox"],
   signInWithGoogle: ["signInWithGoogle"],
@@ -711,6 +727,7 @@ type NodeDefaultElementType = {
   email2: typeof AntdInput;
   password: typeof AntdPassword;
   confirmPassword: typeof AntdPassword;
+  errorText: "div";
   loginButton: typeof LoginButton;
   checkbox: typeof Checkbox;
   signInWithGoogle: typeof SignInWithGoogle;
@@ -786,6 +803,7 @@ export const PlasmicLACreateAccount = Object.assign(
     email2: makeNodeComponent("email2"),
     password: makeNodeComponent("password"),
     confirmPassword: makeNodeComponent("confirmPassword"),
+    errorText: makeNodeComponent("errorText"),
     loginButton: makeNodeComponent("loginButton"),
     checkbox: makeNodeComponent("checkbox"),
     signInWithGoogle: makeNodeComponent("signInWithGoogle"),

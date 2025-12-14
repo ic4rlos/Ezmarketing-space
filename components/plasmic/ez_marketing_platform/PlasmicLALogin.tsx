@@ -100,6 +100,8 @@ export type PlasmicLALogin__OverridesType = {
   form?: Flex__<typeof FormWrapper>;
   email2?: Flex__<typeof AntdInput>;
   password?: Flex__<typeof AntdPassword>;
+  errorText?: Flex__<"div">;
+  loginButton?: Flex__<typeof LoginButton>;
   signInWithGoogle?: Flex__<typeof SignInWithGoogle>;
   createAccount?: Flex__<"div">;
 };
@@ -467,11 +469,21 @@ function PlasmicLALogin__RenderFunc(props: {
                       );
                     })()}
                   </FormItemWrapper>
-                  <LoginButton
+                  <div
+                    data-plasmic-name={"errorText"}
+                    data-plasmic-override={overrides.errorText}
                     className={classNames(
-                      "__wab_instance",
-                      sty.loginButton__vWBrb
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.errorText
                     )}
+                  >
+                    {"Invalid login credentials"}
+                  </div>
+                  <LoginButton
+                    data-plasmic-name={"loginButton"}
+                    data-plasmic-override={overrides.loginButton}
+                    className={classNames("__wab_instance", sty.loginButton)}
                     submitsForm={true}
                   >
                     <div
@@ -479,23 +491,6 @@ function PlasmicLALogin__RenderFunc(props: {
                         projectcss.all,
                         projectcss.__wab_text,
                         sty.text__wFbv
-                      )}
-                    >
-                      {"Login"}
-                    </div>
-                  </LoginButton>
-                  <LoginButton
-                    className={classNames(
-                      "__wab_instance",
-                      sty.loginButton__inXpl
-                    )}
-                    submitsForm={true}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__mQnvI
                       )}
                     >
                       {"Login"}
@@ -567,6 +562,8 @@ const PlasmicDescendants = {
     "form",
     "email2",
     "password",
+    "errorText",
+    "loginButton",
     "signInWithGoogle",
     "createAccount"
   ],
@@ -577,13 +574,17 @@ const PlasmicDescendants = {
     "form",
     "email2",
     "password",
+    "errorText",
+    "loginButton",
     "signInWithGoogle",
     "createAccount"
   ],
   h6: ["h6"],
-  form: ["form", "email2", "password"],
+  form: ["form", "email2", "password", "errorText", "loginButton"],
   email2: ["email2"],
   password: ["password"],
+  errorText: ["errorText"],
+  loginButton: ["loginButton"],
   signInWithGoogle: ["signInWithGoogle"],
   createAccount: ["createAccount"]
 } as const;
@@ -598,6 +599,8 @@ type NodeDefaultElementType = {
   form: typeof FormWrapper;
   email2: typeof AntdInput;
   password: typeof AntdPassword;
+  errorText: "div";
+  loginButton: typeof LoginButton;
   signInWithGoogle: typeof SignInWithGoogle;
   createAccount: "div";
 };
@@ -670,6 +673,8 @@ export const PlasmicLALogin = Object.assign(
     form: makeNodeComponent("form"),
     email2: makeNodeComponent("email2"),
     password: makeNodeComponent("password"),
+    errorText: makeNodeComponent("errorText"),
+    loginButton: makeNodeComponent("loginButton"),
     signInWithGoogle: makeNodeComponent("signInWithGoogle"),
     createAccount: makeNodeComponent("createAccount"),
 

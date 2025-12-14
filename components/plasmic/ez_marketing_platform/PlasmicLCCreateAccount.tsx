@@ -101,6 +101,7 @@ export type PlasmicLCCreateAccount__OverridesType = {
   input2?: Flex__<typeof AntdInput>;
   input3?: Flex__<typeof AntdInput>;
   input4?: Flex__<typeof AntdInput>;
+  errorText?: Flex__<"div">;
   loginButton?: Flex__<typeof LoginButton>;
   checkbox2?: Flex__<typeof Checkbox>;
   freeBox?: Flex__<"div">;
@@ -533,6 +534,17 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
                       );
                     })()}
                   </FormItemWrapper>
+                  <div
+                    data-plasmic-name={"errorText"}
+                    data-plasmic-override={overrides.errorText}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.errorText
+                    )}
+                  >
+                    {"Invalid login credentials"}
+                  </div>
                   <LoginButton
                     data-plasmic-name={"loginButton"}
                     data-plasmic-override={overrides.loginButton}
@@ -651,6 +663,7 @@ const PlasmicDescendants = {
     "input2",
     "input3",
     "input4",
+    "errorText",
     "loginButton",
     "checkbox2",
     "freeBox",
@@ -665,6 +678,7 @@ const PlasmicDescendants = {
     "input2",
     "input3",
     "input4",
+    "errorText",
     "loginButton",
     "checkbox2",
     "freeBox",
@@ -677,6 +691,7 @@ const PlasmicDescendants = {
     "input2",
     "input3",
     "input4",
+    "errorText",
     "loginButton",
     "checkbox2",
     "freeBox"
@@ -684,6 +699,7 @@ const PlasmicDescendants = {
   input2: ["input2"],
   input3: ["input3"],
   input4: ["input4"],
+  errorText: ["errorText"],
   loginButton: ["loginButton"],
   checkbox2: ["checkbox2", "freeBox"],
   freeBox: ["freeBox"],
@@ -702,6 +718,7 @@ type NodeDefaultElementType = {
   input2: typeof AntdInput;
   input3: typeof AntdInput;
   input4: typeof AntdInput;
+  errorText: "div";
   loginButton: typeof LoginButton;
   checkbox2: typeof Checkbox;
   freeBox: "div";
@@ -778,6 +795,7 @@ export const PlasmicLCCreateAccount = Object.assign(
     input2: makeNodeComponent("input2"),
     input3: makeNodeComponent("input3"),
     input4: makeNodeComponent("input4"),
+    errorText: makeNodeComponent("errorText"),
     loginButton: makeNodeComponent("loginButton"),
     checkbox2: makeNodeComponent("checkbox2"),
     freeBox: makeNodeComponent("freeBox"),

@@ -98,6 +98,7 @@ export type PlasmicLCResetPassword__OverridesType = {
   formField?: Flex__<typeof FormItemWrapper>;
   email2?: Flex__<typeof AntdInput>;
   svg?: Flex__<"svg">;
+  errorText?: Flex__<"div">;
   loginButton?: Flex__<typeof LoginButton>;
   link?: Flex__<"a"> & Partial<LinkProps>;
 };
@@ -407,6 +408,17 @@ function PlasmicLCResetPassword__RenderFunc(props: {
                     })()}
                   </FormItemWrapper>
                   <div
+                    data-plasmic-name={"errorText"}
+                    data-plasmic-override={overrides.errorText}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.errorText
+                    )}
+                  >
+                    {"Invalid login credentials"}
+                  </div>
+                  <div
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
@@ -468,6 +480,7 @@ const PlasmicDescendants = {
     "formField",
     "email2",
     "svg",
+    "errorText",
     "loginButton",
     "link"
   ],
@@ -479,14 +492,16 @@ const PlasmicDescendants = {
     "formField",
     "email2",
     "svg",
+    "errorText",
     "loginButton",
     "link"
   ],
   h6: ["h6"],
-  form: ["form", "formField", "email2", "svg", "loginButton"],
+  form: ["form", "formField", "email2", "svg", "errorText", "loginButton"],
   formField: ["formField", "email2", "svg"],
   email2: ["email2"],
   svg: ["svg"],
+  errorText: ["errorText"],
   loginButton: ["loginButton"],
   link: ["link"]
 } as const;
@@ -502,6 +517,7 @@ type NodeDefaultElementType = {
   formField: typeof FormItemWrapper;
   email2: typeof AntdInput;
   svg: "svg";
+  errorText: "div";
   loginButton: typeof LoginButton;
   link: "a";
 };
@@ -575,6 +591,7 @@ export const PlasmicLCResetPassword = Object.assign(
     formField: makeNodeComponent("formField"),
     email2: makeNodeComponent("email2"),
     svg: makeNodeComponent("svg"),
+    errorText: makeNodeComponent("errorText"),
     loginButton: makeNodeComponent("loginButton"),
     link: makeNodeComponent("link"),
 

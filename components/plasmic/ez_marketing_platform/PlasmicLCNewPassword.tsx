@@ -96,6 +96,7 @@ export type PlasmicLCNewPassword__OverridesType = {
   form?: Flex__<typeof FormWrapper>;
   password?: Flex__<typeof AntdPassword>;
   confirmPassword?: Flex__<typeof AntdPassword>;
+  errorText?: Flex__<"div">;
   loginButton?: Flex__<typeof LoginButton>;
 };
 
@@ -461,6 +462,17 @@ function PlasmicLCNewPassword__RenderFunc(props: {
                     })()}
                   </FormItemWrapper>
                   <div
+                    data-plasmic-name={"errorText"}
+                    data-plasmic-override={overrides.errorText}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.errorText
+                    )}
+                  >
+                    {"Invalid login credentials"}
+                  </div>
+                  <div
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
@@ -504,6 +516,7 @@ const PlasmicDescendants = {
     "form",
     "password",
     "confirmPassword",
+    "errorText",
     "loginButton"
   ],
   img: ["img"],
@@ -513,12 +526,14 @@ const PlasmicDescendants = {
     "form",
     "password",
     "confirmPassword",
+    "errorText",
     "loginButton"
   ],
   h6: ["h6"],
-  form: ["form", "password", "confirmPassword", "loginButton"],
+  form: ["form", "password", "confirmPassword", "errorText", "loginButton"],
   password: ["password"],
   confirmPassword: ["confirmPassword"],
+  errorText: ["errorText"],
   loginButton: ["loginButton"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -532,6 +547,7 @@ type NodeDefaultElementType = {
   form: typeof FormWrapper;
   password: typeof AntdPassword;
   confirmPassword: typeof AntdPassword;
+  errorText: "div";
   loginButton: typeof LoginButton;
 };
 
@@ -603,6 +619,7 @@ export const PlasmicLCNewPassword = Object.assign(
     form: makeNodeComponent("form"),
     password: makeNodeComponent("password"),
     confirmPassword: makeNodeComponent("confirmPassword"),
+    errorText: makeNodeComponent("errorText"),
     loginButton: makeNodeComponent("loginButton"),
 
     // Metadata about props expected for PlasmicLCNewPassword

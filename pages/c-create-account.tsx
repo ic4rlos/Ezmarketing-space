@@ -30,13 +30,13 @@ export default function CCreateAccount() {
     setError(null);
 
     // 🔹 Validações básicas
-    if (!email || !password || !confirmPassword) {
+    if (!email || !password || !confirmpassword) {
       console.log("❌ Campos obrigatórios não preenchidos");
       setError("All fields are required.");
       return;
     }
 
-    if (password !== confirmPassword) {
+    if (password !== confirmpassword) {
       console.log("❌ Senhas não conferem");
       setError("Passwords do not match.");
       return;
@@ -103,7 +103,7 @@ export default function CCreateAccount() {
             ========================== */
             confirmpassword: {
               props: {
-                value: confirmPassword,
+                value: confirmpassword,
                 onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
                   setConfirmPassword(e.target.value),
               },

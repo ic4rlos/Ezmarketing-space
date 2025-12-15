@@ -98,9 +98,9 @@ export type PlasmicLCCreateAccount__OverridesType = {
   rectangle?: Flex__<"div">;
   h6?: Flex__<"h6">;
   form2?: Flex__<typeof FormWrapper>;
-  input2?: Flex__<typeof AntdInput>;
-  input3?: Flex__<typeof AntdInput>;
-  input4?: Flex__<typeof AntdInput>;
+  email?: Flex__<typeof AntdInput>;
+  password?: Flex__<typeof AntdInput>;
+  confirmPassword?: Flex__<typeof AntdInput>;
   errorText?: Flex__<"div">;
   loginButton?: Flex__<typeof LoginButton>;
   checkbox2?: Flex__<typeof Checkbox>;
@@ -173,7 +173,7 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("isSubmitting", FormWrapper_Helpers)
       },
       {
-        path: "input2.value",
+        path: "email.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -181,7 +181,7 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input3.value",
+        path: "password.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -189,7 +189,7 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input4.value",
+        path: "confirmPassword.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -387,12 +387,12 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
                   >
                     {(() => {
                       const child$Props = {
-                        className: classNames("__wab_instance", sty.input2),
+                        className: classNames("__wab_instance", sty.email),
                         onChange: async (...eventArgs: any) => {
                           generateStateOnChangePropForCodeComponents(
                             $state,
                             "value",
-                            ["input2", "value"],
+                            ["email", "value"],
                             AntdInput_Helpers
                           ).apply(null, eventArgs);
                         },
@@ -400,7 +400,7 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
                         size: "middle",
                         type: "email",
                         value: generateStateValueProp($state, [
-                          "input2",
+                          "email",
                           "value"
                         ])
                       };
@@ -409,7 +409,7 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
                         [
                           {
                             name: "value",
-                            plasmicStateName: "input2.value"
+                            plasmicStateName: "email.value"
                           }
                         ],
                         [],
@@ -419,8 +419,8 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
 
                       return (
                         <AntdInput
-                          data-plasmic-name={"input2"}
-                          data-plasmic-override={overrides.input2}
+                          data-plasmic-name={"email"}
+                          data-plasmic-override={overrides.email}
                           {...child$Props}
                         />
                       );
@@ -441,12 +441,12 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
                   >
                     {(() => {
                       const child$Props = {
-                        className: classNames("__wab_instance", sty.input3),
+                        className: classNames("__wab_instance", sty.password),
                         onChange: async (...eventArgs: any) => {
                           generateStateOnChangePropForCodeComponents(
                             $state,
                             "value",
-                            ["input3", "value"],
+                            ["password", "value"],
                             AntdInput_Helpers
                           ).apply(null, eventArgs);
                         },
@@ -454,7 +454,7 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
                         size: "middle",
                         type: "password",
                         value: generateStateValueProp($state, [
-                          "input3",
+                          "password",
                           "value"
                         ])
                       };
@@ -463,7 +463,7 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
                         [
                           {
                             name: "value",
-                            plasmicStateName: "input3.value"
+                            plasmicStateName: "password.value"
                           }
                         ],
                         [],
@@ -473,8 +473,8 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
 
                       return (
                         <AntdInput
-                          data-plasmic-name={"input3"}
-                          data-plasmic-override={overrides.input3}
+                          data-plasmic-name={"password"}
+                          data-plasmic-override={overrides.password}
                           {...child$Props}
                         />
                       );
@@ -495,12 +495,15 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
                   >
                     {(() => {
                       const child$Props = {
-                        className: classNames("__wab_instance", sty.input4),
+                        className: classNames(
+                          "__wab_instance",
+                          sty.confirmPassword
+                        ),
                         onChange: async (...eventArgs: any) => {
                           generateStateOnChangePropForCodeComponents(
                             $state,
                             "value",
-                            ["input4", "value"],
+                            ["confirmPassword", "value"],
                             AntdInput_Helpers
                           ).apply(null, eventArgs);
                         },
@@ -508,7 +511,7 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
                         size: "middle",
                         type: "password",
                         value: generateStateValueProp($state, [
-                          "input4",
+                          "confirmPassword",
                           "value"
                         ])
                       };
@@ -517,7 +520,7 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
                         [
                           {
                             name: "value",
-                            plasmicStateName: "input4.value"
+                            plasmicStateName: "confirmPassword.value"
                           }
                         ],
                         [],
@@ -527,8 +530,8 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
 
                       return (
                         <AntdInput
-                          data-plasmic-name={"input4"}
-                          data-plasmic-override={overrides.input4}
+                          data-plasmic-name={"confirmPassword"}
+                          data-plasmic-override={overrides.confirmPassword}
                           {...child$Props}
                         />
                       );
@@ -660,9 +663,9 @@ const PlasmicDescendants = {
     "rectangle",
     "h6",
     "form2",
-    "input2",
-    "input3",
-    "input4",
+    "email",
+    "password",
+    "confirmPassword",
     "errorText",
     "loginButton",
     "checkbox2",
@@ -675,9 +678,9 @@ const PlasmicDescendants = {
     "rectangle",
     "h6",
     "form2",
-    "input2",
-    "input3",
-    "input4",
+    "email",
+    "password",
+    "confirmPassword",
     "errorText",
     "loginButton",
     "checkbox2",
@@ -688,17 +691,17 @@ const PlasmicDescendants = {
   h6: ["h6"],
   form2: [
     "form2",
-    "input2",
-    "input3",
-    "input4",
+    "email",
+    "password",
+    "confirmPassword",
     "errorText",
     "loginButton",
     "checkbox2",
     "freeBox"
   ],
-  input2: ["input2"],
-  input3: ["input3"],
-  input4: ["input4"],
+  email: ["email"],
+  password: ["password"],
+  confirmPassword: ["confirmPassword"],
   errorText: ["errorText"],
   loginButton: ["loginButton"],
   checkbox2: ["checkbox2", "freeBox"],
@@ -715,9 +718,9 @@ type NodeDefaultElementType = {
   rectangle: "div";
   h6: "h6";
   form2: typeof FormWrapper;
-  input2: typeof AntdInput;
-  input3: typeof AntdInput;
-  input4: typeof AntdInput;
+  email: typeof AntdInput;
+  password: typeof AntdInput;
+  confirmPassword: typeof AntdInput;
   errorText: "div";
   loginButton: typeof LoginButton;
   checkbox2: typeof Checkbox;
@@ -792,9 +795,9 @@ export const PlasmicLCCreateAccount = Object.assign(
     rectangle: makeNodeComponent("rectangle"),
     h6: makeNodeComponent("h6"),
     form2: makeNodeComponent("form2"),
-    input2: makeNodeComponent("input2"),
-    input3: makeNodeComponent("input3"),
-    input4: makeNodeComponent("input4"),
+    email: makeNodeComponent("email"),
+    password: makeNodeComponent("password"),
+    confirmPassword: makeNodeComponent("confirmPassword"),
     errorText: makeNodeComponent("errorText"),
     loginButton: makeNodeComponent("loginButton"),
     checkbox2: makeNodeComponent("checkbox2"),

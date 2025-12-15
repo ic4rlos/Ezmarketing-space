@@ -21,14 +21,14 @@ export default function CCreateAccount() {
   const [loading, setLoading] = React.useState(false);
 
   async function handleCreateAccount(
-    e?: React.FormEvent<HTMLFormElement> | React.MouseEvent
+    e?: React.MouseEvent
   ) {
     if (e) e.preventDefault();
     if (loading) return;
 
     setError(null);
 
-    // 🔹 Validações básicas (frontend)
+    // 🔹 Validações básicas
     if (!email || !password || !confirmPassword) {
       setError("All fields are required.");
       return;
@@ -53,7 +53,6 @@ export default function CCreateAccount() {
       return;
     }
 
-    // ✅ Conta criada
     router.push("/c-edit-profile");
   }
 
@@ -67,7 +66,7 @@ export default function CCreateAccount() {
         <PlasmicLCCreateAccount
           overrides={{
             /* =========================
-               INPUT EMAIL
+               EMAIL
             ========================== */
             email: {
               props: {
@@ -78,7 +77,7 @@ export default function CCreateAccount() {
             },
 
             /* =========================
-               INPUT PASSWORD
+               PASSWORD
             ========================== */
             password: {
               props: {
@@ -89,7 +88,7 @@ export default function CCreateAccount() {
             },
 
             /* =========================
-               INPUT CONFIRM PASSWORD
+               CONFIRM PASSWORD
             ========================== */
             confirmpassword: {
               props: {
@@ -100,28 +99,18 @@ export default function CCreateAccount() {
             },
 
             /* =========================
-               FORM
-            ========================== */
-            form: {
-              props: {
-                onSubmit: handleCreateAccount,
-                noValidate: true,
-              },
-            },
-
-            /* =========================
-               CREATE ACCOUNT BUTTON
+               BOTÃO (ÚNICO GATILHO)
             ========================== */
             loginButton: {
               props: {
-                type: "submit",
+                type: "button", // 🔑 CRÍTICO
                 onClick: handleCreateAccount,
                 disabled: loading,
               },
             },
 
             /* =========================
-               ERROR TEXT
+               ERRO
             ========================== */
             errorText: {
               props: {
@@ -135,7 +124,7 @@ export default function CCreateAccount() {
             },
 
             /* =========================
-               GOOGLE SIGNUP (opcional)
+               GOOGLE SIGNUP
             ========================== */
             signInWithGoogle: {
               props: {

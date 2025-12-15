@@ -491,7 +491,7 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
                         role={"img"}
                       />
                     }
-                    name={"confirmpassword"}
+                    name={"confirmPassword"}
                   >
                     {(() => {
                       const child$Props = {

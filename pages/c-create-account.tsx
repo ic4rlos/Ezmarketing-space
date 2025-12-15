@@ -102,13 +102,14 @@ export default function CCreateAccount() {
                CONFIRM PASSWORD
             ========================== */
             confirmpassword: {
-              props: {
-                value: confirmpassword,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setConfirmPassword(e.target.value),
-              },
-            },
-
+  props: {
+    value: confirmpassword,
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+      console.log("🟢 CONFIRM PASSWORD onChange DISPAROU:", e.target.value);
+      setConfirmPassword(e.target.value);
+    },
+  },
+},
             /* =========================
                BOTÃO (ÚNICO GATILHO)
             ========================== */

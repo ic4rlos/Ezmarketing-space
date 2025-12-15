@@ -16,7 +16,7 @@ export default function CCreateAccount() {
 
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [confirmpassword, setConfirmPassword] = React.useState("");
+  const [confirmPassword, setConfirmPassword] = React.useState(""); // ignorado
   const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(false);
 
@@ -25,20 +25,14 @@ export default function CCreateAccount() {
     if (loading) return;
 
     console.log("🔹 handleCreateAccount foi chamada");
-    console.log("Valores digitados:", { email, password, confirmpassword });
+    console.log("📌 STATE:", { email, password, confirmPassword });
 
     setError(null);
 
-    // 🔹 Validações básicas
-    if (!email || !password || !confirmpassword) {
-      console.log("❌ Campos obrigatórios não preenchidos");
-      setError("All fields are required.");
-      return;
-    }
-
-    if (password !== confirmpassword) {
-      console.log("❌ Senhas não conferem");
-      setError("Passwords do not match.");
+    // 🔥 TESTE: ignorando COMPLETAMENTE confirm password
+    if (!email || !password) {
+      console.log("❌ Email ou password vazio");
+      setError("Email and password required.");
       return;
     }
 
@@ -60,7 +54,7 @@ export default function CCreateAccount() {
 
       router.push("/c-edit-profile");
     } catch (err) {
-      console.log("🔥 Erro inesperado:", err);
+      console.error("🔥 Erro inesperado:", err);
       setError("Unexpected error");
     } finally {
       setLoading(false);
@@ -77,52 +71,60 @@ export default function CCreateAccount() {
         <PlasmicLCCreateAccount
           overrides={{
             /* =========================
-               EMAIL
+               EMAIL (COM ESPIÃO)
             ========================== */
             email: {
               props: {
                 value: email,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setEmail(e.target.value),
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+                  console.log("🟢 EMAIL onChange:", e.target.value);
+                  setEmail(e.target.value);
+                },
               },
             },
 
             /* =========================
-               PASSWORD
+               PASSWORD (COM ESPIÃO)
             ========================== */
             password: {
               props: {
                 value: password,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setPassword(e.target.value),
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+                  console.log("🟢 PASSWORD onChange:", e.target.value);
+                  setPassword(e.target.value);
+                },
               },
             },
 
             /* =========================
-               CONFIRM PASSWORD
+               CONFIRM PASSWORD (IGNORADO)
             ========================== */
             confirmpassword: {
-  props: {
-    value: confirmpassword,
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-      console.log("🟢 CONFIRM PASSWORD onChange DISPAROU:", e.target.value);
-      setConfirmPassword(e.target.value);
-    },
-  },
-},
+              props: {
+                value: confirmPassword,
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+                  console.log(
+                    "🔴 CONFIRM PASSWORD onChange (NÃO DEVERIA ACONTECER):",
+                    e.target.value
+                  );
+                  setConfirmPassword(e.target.value);
+                },
+              },
+            },
+
             /* =========================
                BOTÃO (ÚNICO GATILHO)
             ========================== */
             loginButton: {
               props: {
                 type: "button",
-                onClick: () => setTimeout(handleCreateAccount, 0),
+                onClick: handleCreateAccount,
                 disabled: loading,
               },
             },
 
             /* =========================
-               ERRO
+               TEXTO DE ERRO
             ========================== */
             errorText: {
               props: {

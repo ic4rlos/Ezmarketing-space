@@ -16,7 +16,7 @@ export default function CCreateAccount() {
 
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [confirmPassword, setConfirmPassword] = React.useState("");
+  const [confirmpassword, setConfirmPassword] = React.useState("");
   const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(false);
 

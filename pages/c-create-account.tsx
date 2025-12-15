@@ -16,49 +16,42 @@ export default function CCreateAccount() {
 
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [confirmPassword, setConfirmPassword] = React.useState(""); // ignorado
+  const [confirmPassword, setConfirmPassword] = React.useState("");
   const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(false);
 
-  async function handleCreateAccount(e?: React.MouseEvent) {
-    if (e) e.preventDefault();
+  async function handleCreateAccount() {
     if (loading) return;
 
-    console.log("🔹 handleCreateAccount foi chamada");
+    console.log("🔹 handleCreateAccount chamada");
     console.log("📌 STATE:", { email, password, confirmPassword });
 
     setError(null);
 
-    // 🔥 TESTE: ignorando COMPLETAMENTE confirm password
     if (!email || !password) {
       console.log("❌ Email ou password vazio");
-      setError("Email and password required.");
+      setError("Email and password required");
       return;
     }
 
     setLoading(true);
 
-    try {
-      const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-      });
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
 
-      console.log("📦 Supabase data:", data);
-      console.log("⚠️ Supabase error:", error);
+    console.log("📦 Supabase data:", data);
+    console.log("⚠️ Supabase error:", error);
 
-      if (error) {
-        setError(error.message);
-        return;
-      }
+    setLoading(false);
 
-      router.push("/c-edit-profile");
-    } catch (err) {
-      console.error("🔥 Erro inesperado:", err);
-      setError("Unexpected error");
-    } finally {
-      setLoading(false);
+    if (error) {
+      setError(error.message);
+      return;
     }
+
+    router.push("/c-edit-profile");
   }
 
   return (
@@ -71,7 +64,7 @@ export default function CCreateAccount() {
         <PlasmicLCCreateAccount
           overrides={{
             /* =========================
-               EMAIL (COM ESPIÃO)
+               EMAIL (ESPIÃO)
             ========================== */
             email: {
               props: {
@@ -84,7 +77,7 @@ export default function CCreateAccount() {
             },
 
             /* =========================
-               PASSWORD (COM ESPIÃO)
+               PASSWORD (ESPIÃO)
             ========================== */
             password: {
               props: {
@@ -97,14 +90,14 @@ export default function CCreateAccount() {
             },
 
             /* =========================
-               CONFIRM PASSWORD (IGNORADO)
+               CONFIRM PASSWORD (ESPIÃO)
             ========================== */
-            confirmpassword: {
+            confirmPassword: {
               props: {
                 value: confirmPassword,
                 onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
                   console.log(
-                    "🔴 CONFIRM PASSWORD onChange (NÃO DEVERIA ACONTECER):",
+                    "🟡 CONFIRM PASSWORD onChange:",
                     e.target.value
                   );
                   setConfirmPassword(e.target.value);
@@ -113,18 +106,19 @@ export default function CCreateAccount() {
             },
 
             /* =========================
-               BOTÃO (ÚNICO GATILHO)
+               BOTÃO — DOMINADO
             ========================== */
             loginButton: {
               props: {
                 type: "button",
+                submitsForm: false, // 🔥 CRÍTICO
                 onClick: handleCreateAccount,
                 disabled: loading,
               },
             },
 
             /* =========================
-               TEXTO DE ERRO
+               ERRO
             ========================== */
             errorText: {
               props: {
@@ -133,19 +127,6 @@ export default function CCreateAccount() {
                   display: error ? "block" : "none",
                   color: "red",
                   marginTop: 8,
-                },
-              },
-            },
-
-            /* =========================
-               GOOGLE SIGNUP
-            ========================== */
-            signInWithGoogle: {
-              props: {
-                onClick: async () => {
-                  await supabase.auth.signInWithOAuth({
-                    provider: "google",
-                  });
                 },
               },
             },

@@ -20,40 +20,51 @@ export default function CCreateAccount() {
   const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(false);
 
-  async function handleCreateAccount(
-    e?: React.MouseEvent
-  ) {
+  async function handleCreateAccount(e?: React.MouseEvent) {
     if (e) e.preventDefault();
     if (loading) return;
+
+    console.log("🔹 handleCreateAccount foi chamada");
+    console.log("Valores digitados:", { email, password, confirmPassword });
 
     setError(null);
 
     // 🔹 Validações básicas
     if (!email || !password || !confirmPassword) {
+      console.log("❌ Campos obrigatórios não preenchidos");
       setError("All fields are required.");
       return;
     }
 
     if (password !== confirmPassword) {
+      console.log("❌ Senhas não conferem");
       setError("Passwords do not match.");
       return;
     }
 
     setLoading(true);
 
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+      });
 
-    setLoading(false);
+      console.log("📦 Supabase data:", data);
+      console.log("⚠️ Supabase error:", error);
 
-    if (error) {
-      setError(error.message);
-      return;
+      if (error) {
+        setError(error.message);
+        return;
+      }
+
+      router.push("/c-edit-profile");
+    } catch (err) {
+      console.log("🔥 Erro inesperado:", err);
+      setError("Unexpected error");
+    } finally {
+      setLoading(false);
     }
-
-    router.push("/c-edit-profile");
   }
 
   return (
@@ -103,7 +114,7 @@ export default function CCreateAccount() {
             ========================== */
             loginButton: {
               props: {
-                type: "button", // 🔑 CRÍTICO
+                type: "button",
                 onClick: () => setTimeout(handleCreateAccount, 0),
                 disabled: loading,
               },

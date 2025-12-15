@@ -104,7 +104,7 @@ export default function CCreateAccount() {
             loginButton: {
               props: {
                 type: "button", // 🔑 CRÍTICO
-                onClick: handleCreateAccount,
+                onClick: () => setTimeout(handleCreateAccount, 0),
                 disabled: loading,
               },
             },

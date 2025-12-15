@@ -25,7 +25,7 @@ export default function CCreateAccount() {
     if (loading) return;
 
     console.log("🔹 handleCreateAccount foi chamada");
-    console.log("Valores digitados:", { email, password, confirmPassword });
+    console.log("Valores digitados:", { email, password, confirmpassword });
 
     setError(null);
 

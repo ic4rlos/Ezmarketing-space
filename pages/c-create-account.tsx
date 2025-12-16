@@ -5,6 +5,10 @@ import classNames from "classnames";
 
 import { PlasmicImg, PlasmicLink } from "@plasmicapp/react-web";
 
+// ✅ Ícones Plasmic como componentes React
+import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
+import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
+
 import styles from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount.module.css";
 import projectcss from "../components/plasmic/ez_marketing_platform/plasmic.module.css";
 
@@ -21,28 +25,10 @@ export default function CCreateAccount() {
   const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(false);
 
-  // ✅ Style tokens do Plasmic (permissão nova, controlada)
-  const styleTokensClassNames = (() => {
-    try {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const m = require(
-        "../components/plasmic/ez_marketing_platform/PlasmicStyleTokensProvider"
-      );
-      if (m && typeof m._useStyleTokens === "function") {
-        return m._useStyleTokens() || "";
-      }
-    } catch {}
-    return "";
-  })();
-
   async function handleCreateAccount() {
     if (loading) return;
 
-    console.log("🧪 STATE NO CLICK:", {
-      email,
-      password,
-      confirmPassword,
-    });
+    console.log("🧪 STATE NO CLICK:", { email, password, confirmPassword });
 
     setError(null);
 
@@ -58,13 +44,7 @@ export default function CCreateAccount() {
 
     setLoading(true);
 
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
-
-    console.log("📦 Supabase data:", data);
-    console.log("❌ Supabase error:", error);
+    const { error } = await supabase.auth.signUp({ email, password });
 
     setLoading(false);
 
@@ -80,11 +60,10 @@ export default function CCreateAccount() {
     <div
       className={classNames(
         projectcss?.plasmic_page_wrapper,
-        styles.root,
-        styleTokensClassNames
+        styles.root
       )}
     >
-      {/* ✅ PlasmicImg — runtime visual permitido */}
+      {/* Logo */}
       <PlasmicImg
         className={styles.img}
         src={{
@@ -95,49 +74,58 @@ export default function CCreateAccount() {
         alt="Ez Marketing Logo"
       />
 
-      {/* Caixa branca */}
+      {/* Card */}
       <div className={classNames(projectcss?.all, styles.rectangle)}>
         <h6>Create account</h6>
 
-        {/* 🔥 NÃO É FORM — continua blindado */}
+        {/* 🔥 NÃO É FORM */}
         <div className={styles.form2}>
           {/* EMAIL */}
           <div className={styles.formField__bwLhI}>
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => {
-                console.log("EMAIL:", e.target.value);
-                setEmail(e.target.value);
-              }}
-            />
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <UserSvgIcon className={styles.svg__f2O7} />
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => {
+                  console.log("EMAIL:", e.target.value);
+                  setEmail(e.target.value);
+                }}
+              />
+            </div>
           </div>
 
           {/* PASSWORD */}
           <div className={styles.formField___4XlWd}>
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => {
-                console.log("PASSWORD:", e.target.value);
-                setPassword(e.target.value);
-              }}
-            />
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <LockSvgIcon className={styles.svg__elYWb} />
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => {
+                  console.log("PASSWORD:", e.target.value);
+                  setPassword(e.target.value);
+                }}
+              />
+            </div>
           </div>
 
           {/* CONFIRM PASSWORD */}
           <div className={styles.formField___0Hc3Z}>
-            <input
-              type="password"
-              placeholder="Confirm password"
-              value={confirmPassword}
-              onChange={(e) => {
-                console.log("CONFIRM:", e.target.value);
-                setConfirmPassword(e.target.value);
-              }}
-            />
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <LockSvgIcon className={styles.svg__hmebx} />
+              <input
+                type="password"
+                placeholder="Confirm password"
+                value={confirmPassword}
+                onChange={(e) => {
+                  console.log("CONFIRM:", e.target.value);
+                  setConfirmPassword(e.target.value);
+                }}
+              />
+            </div>
           </div>
 
           {/* ERRO */}
@@ -145,7 +133,7 @@ export default function CCreateAccount() {
             <div style={{ color: "red", fontSize: 12 }}>{error}</div>
           )}
 
-          {/* BOTÃO — botão cru, sem submit */}
+          {/* BOTÃO */}
           <button
             type="button"
             onClick={handleCreateAccount}
@@ -155,7 +143,7 @@ export default function CCreateAccount() {
             {loading ? "Creating..." : "Create account"}
           </button>
 
-          {/* LINK — PlasmicLink permitido */}
+          {/* LINK */}
           <div className={styles.createAccount}>
             <span>Already have an account?</span>
             <PlasmicLink component={Link} href="/c-login">

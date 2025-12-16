@@ -1,5 +1,4 @@
-// pages/c-create-account.tsx
-import * as React from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import classNames from "classnames";
@@ -18,7 +17,7 @@ export default function CCreateAccount() {
   const router = useRouter();
   const supabase = getSupabaseC();
 
-  // 🔥 ÚNICA FONTE DA VERDADE
+  // 🔥 FONTE ÚNICA DA VERDADE
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
@@ -50,7 +49,7 @@ export default function CCreateAccount() {
     setLoading(false);
 
     if (error) {
-      setError("Invalid email or password");
+      setError(error.message);
       return;
     }
 
@@ -64,7 +63,7 @@ export default function CCreateAccount() {
         styles.root
       )}
     >
-      {/* LOGO */}
+      {/* Logo */}
       <PlasmicImg
         className={styles.img}
         src={{
@@ -75,48 +74,54 @@ export default function CCreateAccount() {
         alt="EZ Marketing"
       />
 
-      {/* CARD */}
+      {/* Card */}
       <div className={classNames(projectcss.all, styles.rectangle)}>
         <h6>Create account</h6>
 
-        {/* NÃO É FORM */}
+        {/* ⚠️ NÃO É FORM */}
         <div className={styles.form2}>
           {/* EMAIL */}
           <div className={styles.formField__bwLhI}>
-            <UserSvgIcon className={styles.svg__f2O7} />
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <UserSvgIcon className={styles.svg__f2O7} />
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
           </div>
 
           {/* PASSWORD */}
           <div className={styles.formField___4XlWd}>
-            <LockSvgIcon className={styles.svg__elYWb} />
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <LockSvgIcon className={styles.svg__elYWb} />
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
           </div>
 
           {/* CONFIRM PASSWORD */}
           <div className={styles.formField___0Hc3Z}>
-            <LockSvgIcon className={styles.svg__hmebx} />
-            <input
-              type="password"
-              placeholder="Confirm password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <LockSvgIcon className={styles.svg__hmebx} />
+              <input
+                type="password"
+                placeholder="Confirm password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+            </div>
           </div>
 
           {/* ERRO */}
           {error && (
-            <div style={{ color: "red", marginTop: 8 }}>
+            <div style={{ color: "red", fontSize: 12 }}>
               {error}
             </div>
           )}

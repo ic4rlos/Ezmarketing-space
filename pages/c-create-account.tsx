@@ -14,37 +14,38 @@ export default function CCreateAccount() {
   const router = useRouter();
   const supabase = getSupabaseC();
 
+  /* =========================
+     STATE — FONTE DA VERDADE
+  ========================== */
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [error, setError] = React.useState<string | null>(null);
-  const [loading, setLoading] = React.useState(false);
 
-  async function handleCreateAccount() {
-    if (loading) return;
-
-    console.log("🔹 handleCreateAccount chamada");
-    console.log("📌 STATE:", { email, password, confirmPassword });
+  /* =========================
+     CREATE ACCOUNT
+  ========================== */
+  async function handleCreateAccount(
+    e?: React.FormEvent<HTMLFormElement> | React.MouseEvent
+  ) {
+    if (e) e.preventDefault();
 
     setError(null);
 
     if (!email || !password) {
-      console.log("❌ Email ou password vazio");
       setError("Email and password required");
       return;
     }
 
-    setLoading(true);
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
 
-    const { data, error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signUp({
       email,
       password,
     });
-
-    console.log("📦 Supabase data:", data);
-    console.log("⚠️ Supabase error:", error);
-
-    setLoading(false);
 
     if (error) {
       setError(error.message);
@@ -64,61 +65,60 @@ export default function CCreateAccount() {
         <PlasmicLCCreateAccount
           overrides={{
             /* =========================
-               EMAIL (ESPIÃO)
+               INPUT EMAIL
             ========================== */
             email: {
               props: {
                 value: email,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-                  console.log("🟢 EMAIL onChange:", e.target.value);
-                  setEmail(e.target.value);
-                },
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                  setEmail(e.target.value),
               },
             },
 
             /* =========================
-               PASSWORD (ESPIÃO)
+               INPUT PASSWORD
             ========================== */
             password: {
               props: {
                 value: password,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-                  console.log("🟢 PASSWORD onChange:", e.target.value);
-                  setPassword(e.target.value);
-                },
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                  setPassword(e.target.value),
               },
             },
 
             /* =========================
-               CONFIRM PASSWORD (ESPIÃO)
+               INPUT CONFIRM PASSWORD
             ========================== */
             confirmPassword: {
               props: {
                 value: confirmPassword,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-                  console.log(
-                    "🟡 CONFIRM PASSWORD onChange:",
-                    e.target.value
-                  );
-                  setConfirmPassword(e.target.value);
-                },
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                  setConfirmPassword(e.target.value),
               },
             },
 
             /* =========================
-               BOTÃO — DOMINADO
+               FORM
+            ========================== */
+            form: {
+              props: {
+                onSubmit: handleCreateAccount,
+                noValidate: true,
+              },
+            },
+
+            /* =========================
+               BOTÃO CREATE ACCOUNT
             ========================== */
             loginButton: {
               props: {
-                type: "button",
-                submitsForm: false, // 🔥 CRÍTICO
+                type: "submit",
                 onClick: handleCreateAccount,
-                disabled: loading,
               },
             },
 
             /* =========================
-               ERRO
+               TEXTO DE ERRO
             ========================== */
             errorText: {
               props: {

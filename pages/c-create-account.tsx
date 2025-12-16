@@ -1,12 +1,63 @@
 import React from "react";
+import { useRouter } from "next/router";
 import styles from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount.module.css";
 import Link from "next/link";
 import { PlasmicLink } from "@plasmicapp/react-web";
 
+import { getSupabaseC } from "../lib/c-supabaseClient";
+
 export default function CCreateAccount() {
+  const router = useRouter();
+  const supabase = getSupabaseC();
+
+  // 🔥 FONTE ÚNICA DA VERDADE (LEI)
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
+  const [error, setError] = React.useState<string | null>(null);
+  const [loading, setLoading] = React.useState(false);
+
+  async function handleCreateAccount() {
+    if (loading) return;
+
+    console.log("🧪 STATE NO CLICK:", {
+      email,
+      password,
+      confirmPassword,
+    });
+
+    setError(null);
+
+    if (!email || !password) {
+      setError("Email and password required");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    setLoading(true);
+
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+
+    console.log("📦 Supabase data:", data);
+    console.log("❌ Supabase error:", error);
+
+    setLoading(false);
+
+    if (error) {
+      setError(error.message);
+      return;
+    }
+
+    // 👉 fluxo simples, sem mágica
+    router.push("/c-edit-profile");
+  }
 
   return (
     <div className={styles.root}>
@@ -19,123 +70,71 @@ export default function CCreateAccount() {
 
       {/* Caixa branca */}
       <div className={styles.rectangle}>
-        {/* Título */}
-        <div className={styles.text__oCjRw}>
-          <h6 className={styles.h6}>Create account</h6>
-        </div>
+        <h6>Create account</h6>
 
-        {/* FORM MANUAL — SEM ANT, SEM PLASMIC */}
-        <form className={styles.form2}>
+        {/* 🔥 NÃO É FORM */}
+        <div className={styles.form2}>
           {/* EMAIL */}
           <div className={styles.formField__bwLhI}>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <img
-                src="/plasmic/ez_marketing_platform/icons/user.svg"
-                className={styles.svg__f2O7}
-                alt=""
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => {
-                  console.log("EMAIL:", e.target.value);
-                  setEmail(e.target.value);
-                }}
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  border: "1px solid #ccc",
-                  borderRadius: "8px",
-                }}
-              />
-            </div>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => {
+                console.log("EMAIL:", e.target.value);
+                setEmail(e.target.value);
+              }}
+            />
           </div>
 
           {/* PASSWORD */}
           <div className={styles.formField___4XlWd}>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <img
-                src="/plasmic/ez_marketing_platform/icons/lock.svg"
-                className={styles.svg__elYWb}
-                alt=""
-              />
-              <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => {
-                  console.log("PASSWORD:", e.target.value);
-                  setPassword(e.target.value);
-                }}
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  border: "1px solid #ccc",
-                  borderRadius: "8px",
-                }}
-              />
-            </div>
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => {
+                console.log("PASSWORD:", e.target.value);
+                setPassword(e.target.value);
+              }}
+            />
           </div>
 
           {/* CONFIRM PASSWORD */}
           <div className={styles.formField___0Hc3Z}>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <img
-                src="/plasmic/ez_marketing_platform/icons/lock.svg"
-                className={styles.svg__hmebx}
-                alt=""
-              />
-              <input
-                type="password"
-                placeholder="Confirm password"
-                value={confirmPassword}
-                onChange={(e) => {
-                  console.log("CONFIRM:", e.target.value);
-                  setConfirmPassword(e.target.value);
-                }}
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  border: "1px solid #ccc",
-                  borderRadius: "8px",
-                }}
-              />
-            </div>
+            <input
+              type="password"
+              placeholder="Confirm password"
+              value={confirmPassword}
+              onChange={(e) => {
+                console.log("CONFIRM:", e.target.value);
+                setConfirmPassword(e.target.value);
+              }}
+            />
           </div>
 
-          {/* BOTÃO FEIO */}
+          {/* ERRO */}
+          {error && (
+            <div style={{ color: "red", fontSize: 12 }}>{error}</div>
+          )}
+
+          {/* BOTÃO */}
           <button
             type="button"
+            onClick={handleCreateAccount}
+            disabled={loading}
             className={styles.loginButton}
-            style={{
-              background: "#31c42f",
-              border: "none",
-              borderRadius: "8px",
-              color: "white",
-              width: "248px",
-              height: "37px",
-              cursor: "pointer",
-              marginTop: "15px",
-            }}
-            onClick={() => {
-              console.log("SUBMIT", { email, password, confirmPassword });
-            }}
           >
-            Create account
+            {loading ? "Creating..." : "Create account"}
           </button>
-        </form>
 
-        {/* LINK LOGIN */}
-        <div className={styles.createAccount}>
-          <div className={styles.text__j3Au8}>Already have an account?</div>
-          <PlasmicLink
-            component={Link}
-            href="/c-login"
-            className={styles.link__z76Ps}
-          >
-            Login
-          </PlasmicLink>
+          {/* LINK */}
+          <div className={styles.createAccount}>
+            <span>Already have an account?</span>
+            <PlasmicLink component={Link} href="/c-login">
+              Login
+            </PlasmicLink>
+          </div>
         </div>
       </div>
     </div>

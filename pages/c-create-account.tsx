@@ -1,148 +1,143 @@
-import * as React from "react";
-import { useRouter } from "next/router";
-
-import {
-  PageParamsProvider as PageParamsProvider__,
-} from "@plasmicapp/react-web/lib/host";
-
-import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
-import { PlasmicLCCreateAccount } from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount";
-
-import { getSupabaseC } from "../lib/c-supabaseClient";
+import React from "react";
+import styles from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount.module.css";
+import Link from "next/link";
+import { PlasmicLink } from "@plasmicapp/react-web";
 
 export default function CCreateAccount() {
-  const router = useRouter();
-  const supabase = getSupabaseC();
-
-  /* =========================
-     STATE — ÚNICA FONTE DA VERDADE
-  ========================== */
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
-  const [error, setError] = React.useState<string | null>(null);
-  const [loading, setLoading] = React.useState(false);
-
-  /* =========================
-     CREATE ACCOUNT (BURRO)
-  ========================== */
-  async function handleCreateAccount(
-    e?: React.FormEvent | React.MouseEvent
-  ) {
-    if (e) e.preventDefault();
-    if (loading) return;
-
-    console.log("🧠 STATE AT SUBMIT:", {
-      email,
-      password,
-      confirmPassword,
-    });
-
-    setError(null);
-
-    if (!email || !password || !confirmPassword) {
-      setError("All fields are required");
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
-      return;
-    }
-
-    setLoading(true);
-
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
-
-    setLoading(false);
-
-    if (error) {
-      setError(error.message);
-      return;
-    }
-
-    router.push("/c-edit-profile");
-  }
 
   return (
-    <GlobalContextsProvider>
-      <PageParamsProvider__
-        route={router.pathname}
-        params={router.query}
-        query={router.query}
-      >
-        <PlasmicLCCreateAccount
-          overrides={{
-            /* =========================
-               EMAIL — INPUT BURRO
-            ========================== */
-            email: {
-              props: {
-                value: email,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-                  console.log("🟢 EMAIL:", e.target.value);
+    <div className={styles.root}>
+      {/* Logo */}
+      <img
+        src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
+        className={styles.img}
+        alt="Ez Marketing Logo"
+      />
+
+      {/* Caixa branca */}
+      <div className={styles.rectangle}>
+        {/* Título */}
+        <div className={styles.text__oCjRw}>
+          <h6 className={styles.h6}>Create account</h6>
+        </div>
+
+        {/* FORM MANUAL — SEM ANT, SEM PLASMIC */}
+        <form className={styles.form2}>
+          {/* EMAIL */}
+          <div className={styles.formField__bwLhI}>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <img
+                src="/plasmic/ez_marketing_platform/icons/user.svg"
+                className={styles.svg__f2O7}
+                alt=""
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => {
+                  console.log("EMAIL:", e.target.value);
                   setEmail(e.target.value);
-                },
-              },
-            },
+                }}
+                style={{
+                  width: "100%",
+                  padding: "10px",
+                  border: "1px solid #ccc",
+                  borderRadius: "8px",
+                }}
+              />
+            </div>
+          </div>
 
-            /* =========================
-               PASSWORD — INPUT BURRO
-            ========================== */
-            password: {
-              props: {
-                value: password,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-                  console.log("🟢 PASSWORD:", e.target.value);
+          {/* PASSWORD */}
+          <div className={styles.formField___4XlWd}>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <img
+                src="/plasmic/ez_marketing_platform/icons/lock.svg"
+                className={styles.svg__elYWb}
+                alt=""
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => {
+                  console.log("PASSWORD:", e.target.value);
                   setPassword(e.target.value);
-                },
-              },
-            },
+                }}
+                style={{
+                  width: "100%",
+                  padding: "10px",
+                  border: "1px solid #ccc",
+                  borderRadius: "8px",
+                }}
+              />
+            </div>
+          </div>
 
-            /* =========================
-               CONFIRM PASSWORD — INPUT BURRO
-               ⚠️ ATENÇÃO AO NOME DO SLOT
-            ========================== */
-            confirmpassword: {
-              props: {
-                value: confirmPassword,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-                  console.log("🟡 CONFIRM:", e.target.value);
+          {/* CONFIRM PASSWORD */}
+          <div className={styles.formField___0Hc3Z}>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <img
+                src="/plasmic/ez_marketing_platform/icons/lock.svg"
+                className={styles.svg__hmebx}
+                alt=""
+              />
+              <input
+                type="password"
+                placeholder="Confirm password"
+                value={confirmPassword}
+                onChange={(e) => {
+                  console.log("CONFIRM:", e.target.value);
                   setConfirmPassword(e.target.value);
-                },
-              },
-            },
+                }}
+                style={{
+                  width: "100%",
+                  padding: "10px",
+                  border: "1px solid #ccc",
+                  borderRadius: "8px",
+                }}
+              />
+            </div>
+          </div>
 
-            /* =========================
-               BOTÃO — NÃO SUBMETE FORM
-            ========================== */
-            loginButton: {
-              props: {
-                type: "button",
-                onClick: handleCreateAccount,
-                disabled: loading,
-              },
-            },
+          {/* BOTÃO FEIO */}
+          <button
+            type="button"
+            className={styles.loginButton}
+            style={{
+              background: "#31c42f",
+              border: "none",
+              borderRadius: "8px",
+              color: "white",
+              width: "248px",
+              height: "37px",
+              cursor: "pointer",
+              marginTop: "15px",
+            }}
+            onClick={() => {
+              console.log("SUBMIT", { email, password, confirmPassword });
+            }}
+          >
+            Create account
+          </button>
+        </form>
 
-            /* =========================
-               TEXTO DE ERRO
-            ========================== */
-            errorText: {
-              props: {
-                children: error,
-                style: {
-                  display: error ? "block" : "none",
-                  color: "red",
-                  marginTop: 8,
-                },
-              },
-            },
-          }}
-        />
-      </PageParamsProvider__>
-    </GlobalContextsProvider>
+        {/* LINK LOGIN */}
+        <div className={styles.createAccount}>
+          <div className={styles.text__j3Au8}>Already have an account?</div>
+          <PlasmicLink
+            component={Link}
+            href="/c-login"
+            className={styles.link__z76Ps}
+          >
+            Login
+          </PlasmicLink>
+        </div>
+      </div>
+    </div>
   );
 }

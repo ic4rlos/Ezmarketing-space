@@ -15,25 +15,33 @@ export default function CCreateAccount() {
   const supabase = getSupabaseC();
 
   /* =========================
-     STATE — FONTE DA VERDADE
+     STATE — ÚNICA FONTE DA VERDADE
   ========================== */
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [error, setError] = React.useState<string | null>(null);
+  const [loading, setLoading] = React.useState(false);
 
   /* =========================
-     CREATE ACCOUNT
+     CREATE ACCOUNT (BURRO)
   ========================== */
   async function handleCreateAccount(
-    e?: React.FormEvent<HTMLFormElement> | React.MouseEvent
+    e?: React.FormEvent | React.MouseEvent
   ) {
     if (e) e.preventDefault();
+    if (loading) return;
+
+    console.log("🧠 STATE AT SUBMIT:", {
+      email,
+      password,
+      confirmPassword,
+    });
 
     setError(null);
 
-    if (!email || !password) {
-      setError("Email and password required");
+    if (!email || !password || !confirmPassword) {
+      setError("All fields are required");
       return;
     }
 
@@ -42,10 +50,14 @@ export default function CCreateAccount() {
       return;
     }
 
+    setLoading(true);
+
     const { error } = await supabase.auth.signUp({
       email,
       password,
     });
+
+    setLoading(false);
 
     if (error) {
       setError(error.message);
@@ -65,55 +77,53 @@ export default function CCreateAccount() {
         <PlasmicLCCreateAccount
           overrides={{
             /* =========================
-               INPUT EMAIL
+               EMAIL — INPUT BURRO
             ========================== */
             email: {
               props: {
                 value: email,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setEmail(e.target.value),
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+                  console.log("🟢 EMAIL:", e.target.value);
+                  setEmail(e.target.value);
+                },
               },
             },
 
             /* =========================
-               INPUT PASSWORD
+               PASSWORD — INPUT BURRO
             ========================== */
             password: {
               props: {
                 value: password,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setPassword(e.target.value),
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+                  console.log("🟢 PASSWORD:", e.target.value);
+                  setPassword(e.target.value);
+                },
               },
             },
 
             /* =========================
-               INPUT CONFIRM PASSWORD
+               CONFIRM PASSWORD — INPUT BURRO
+               ⚠️ ATENÇÃO AO NOME DO SLOT
             ========================== */
-            confirmPassword: {
+            confirmpassword: {
               props: {
                 value: confirmPassword,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setConfirmPassword(e.target.value),
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+                  console.log("🟡 CONFIRM:", e.target.value);
+                  setConfirmPassword(e.target.value);
+                },
               },
             },
 
             /* =========================
-               FORM
-            ========================== */
-            form: {
-              props: {
-                onSubmit: handleCreateAccount,
-                noValidate: true,
-              },
-            },
-
-            /* =========================
-               BOTÃO CREATE ACCOUNT
+               BOTÃO — NÃO SUBMETE FORM
             ========================== */
             loginButton: {
               props: {
-                type: "submit",
+                type: "button",
                 onClick: handleCreateAccount,
+                disabled: loading,
               },
             },
 

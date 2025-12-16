@@ -1,122 +1,145 @@
+// pages/c-create-account.tsx
 import * as React from "react";
-import Head from "next/head";
 import { useRouter } from "next/router";
+import Link from "next/link";
+import classNames from "classnames";
 
-import {
-  PageParamsProvider as PageParamsProvider__,
-  PlasmicLink,
-} from "@plasmicapp/react-web/lib/host";
+import { PlasmicImg, PlasmicLink } from "@plasmicapp/react-web";
 
-import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
-import { PlasmicLCLogin } from "../components/plasmic/ez_marketing_platform/PlasmicLCLogin";
+import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
+import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
+
+import styles from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount.module.css";
+import projectcss from "../components/plasmic/ez_marketing_platform/plasmic.module.css";
 
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
-/**
- * CLogin — Código TRUNFO
- *
- * ✔ Plasmic é o ROOT visual
- * ✔ React mantém a lógica
- * ✔ Supabase explícito
- * ✔ Fluxo auditável
- * ✔ Nada mágico
- */
-export default function CLogin() {
+export default function CCreateAccount() {
   const router = useRouter();
   const supabase = getSupabaseC();
 
-  // 🔥 Fonte única da verdade
+  // 🔥 ÚNICA FONTE DA VERDADE
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [loading, setLoading] = React.useState(false);
+  const [confirmPassword, setConfirmPassword] = React.useState("");
   const [error, setError] = React.useState<string | null>(null);
+  const [loading, setLoading] = React.useState(false);
 
-  async function handleLogin() {
+  async function handleCreateAccount() {
     if (loading) return;
 
-    console.log("🧪 LOGIN CLICK:", { email, password });
-
     setError(null);
+
+    if (!email || !password || !confirmPassword) {
+      setError("All fields are required.");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+
     setLoading(true);
 
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signUp({
       email,
       password,
     });
 
-    console.log("📦 Supabase data:", data);
-    console.log("❌ Supabase error:", error);
-
     setLoading(false);
 
     if (error) {
-      setError(error.message);
+      setError("Invalid email or password");
       return;
     }
 
-    router.push("/dashboard");
+    router.push("/c-edit-profile");
   }
 
   return (
-    <>
-      <Head>
-        <title>Login — Ez Marketing</title>
-        <meta name="robots" content="noindex" />
-      </Head>
+    <div
+      className={classNames(
+        projectcss.plasmic_page_wrapper,
+        styles.root
+      )}
+    >
+      {/* LOGO */}
+      <PlasmicImg
+        className={styles.img}
+        src={{
+          src: "/plasmic/ez_marketing_platform/images/logo2Svg.svg",
+          fullWidth: 297,
+          fullHeight: 210,
+        } as any}
+        alt="EZ Marketing"
+      />
 
-      <GlobalContextsProvider>
-        <PageParamsProvider__
-          route={router.pathname}
-          params={router.query}
-          query={router.query}
-        >
-          {/* 
-            🔥 PLASMIC COMO ROOT
-            Ele desenha.
-            Nós mandamos.
-          */}
-          <PlasmicLCLogin
-            // Inputs controlados (sem runtime de form)
-            emailInput={{
-              value: email,
-              onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-                console.log("EMAIL:", e.target.value);
-                setEmail(e.target.value);
-              },
-            }}
-            passwordInput={{
-              value: password,
-              onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-                console.log("PASSWORD:", e.target.value);
-                setPassword(e.target.value);
-              },
-            }}
+      {/* CARD */}
+      <div className={classNames(projectcss.all, styles.rectangle)}>
+        <h6>Create account</h6>
 
-            // Botão explícito
-            loginButton={{
-              onClick: handleLogin,
-              disabled: loading,
-            }}
+        {/* NÃO É FORM */}
+        <div className={styles.form2}>
+          {/* EMAIL */}
+          <div className={styles.formField__bwLhI}>
+            <UserSvgIcon className={styles.svg__f2O7} />
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
 
-            // Erro visível
-            errorText={{
-              children: error,
-              hidden: !error,
-            }}
+          {/* PASSWORD */}
+          <div className={styles.formField___4XlWd}>
+            <LockSvgIcon className={styles.svg__elYWb} />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
 
-            // Links continuam declarados
-            forgotPasswordLink={{
-              component: PlasmicLink,
-              href: "/c-reset-password",
-            }}
+          {/* CONFIRM PASSWORD */}
+          <div className={styles.formField___0Hc3Z}>
+            <LockSvgIcon className={styles.svg__hmebx} />
+            <input
+              type="password"
+              placeholder="Confirm password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+          </div>
 
-            createAccountLink={{
-              component: PlasmicLink,
-              href: "/c-create-account",
-            }}
-          />
-        </PageParamsProvider__>
-      </GlobalContextsProvider>
-    </>
+          {/* ERRO */}
+          {error && (
+            <div style={{ color: "red", marginTop: 8 }}>
+              {error}
+            </div>
+          )}
+
+          {/* BOTÃO */}
+          <button
+            type="button"
+            onClick={handleCreateAccount}
+            disabled={loading}
+            className={styles.loginButton}
+          >
+            {loading ? "Creating..." : "Create account"}
+          </button>
+
+          {/* LINK */}
+          <div className={styles.createAccount}>
+            <span>Already have an account?</span>
+            <PlasmicLink component={Link} href="/c-login">
+              Log in
+            </PlasmicLink>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

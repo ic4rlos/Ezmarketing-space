@@ -1,50 +1,51 @@
-import React from "react";
+import * as React from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import classNames from "classnames";
 
-import { PlasmicImg, PlasmicLink } from "@plasmicapp/react-web";
+import {
+  PageParamsProvider as PageParamsProvider__,
+  PlasmicLink,
+} from "@plasmicapp/react-web/lib/host";
 
-// ✅ Ícones Plasmic como componentes React
-import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
-import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
-
-import styles from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount.module.css";
-import projectcss from "../components/plasmic/ez_marketing_platform/plasmic.module.css";
+import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
+import { PlasmicLCLogin } from "../components/plasmic/ez_marketing_platform/PlasmicLCLogin";
 
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
-export default function CCreateAccount() {
+/**
+ * CLogin — Código TRUNFO
+ *
+ * ✔ Plasmic é o ROOT visual
+ * ✔ React mantém a lógica
+ * ✔ Supabase explícito
+ * ✔ Fluxo auditável
+ * ✔ Nada mágico
+ */
+export default function CLogin() {
   const router = useRouter();
   const supabase = getSupabaseC();
 
-  // 🔥 FONTE ÚNICA DA VERDADE (LEI IMUTÁVEL)
+  // 🔥 Fonte única da verdade
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [confirmPassword, setConfirmPassword] = React.useState("");
-  const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
 
-  async function handleCreateAccount() {
+  async function handleLogin() {
     if (loading) return;
 
-    console.log("🧪 STATE NO CLICK:", { email, password, confirmPassword });
+    console.log("🧪 LOGIN CLICK:", { email, password });
 
     setError(null);
-
-    if (!email || !password) {
-      setError("Email and password required");
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
-      return;
-    }
-
     setLoading(true);
 
-    const { error } = await supabase.auth.signUp({ email, password });
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    console.log("📦 Supabase data:", data);
+    console.log("❌ Supabase error:", error);
 
     setLoading(false);
 
@@ -53,105 +54,69 @@ export default function CCreateAccount() {
       return;
     }
 
-    router.push("/c-edit-profile");
+    router.push("/dashboard");
   }
 
   return (
-    <div
-      className={classNames(
-        projectcss?.plasmic_page_wrapper,
-        styles.root
-      )}
-    >
-      {/* Logo */}
-      <PlasmicImg
-        className={styles.img}
-        src={{
-          src: "/plasmic/ez_marketing_platform/images/logo2Svg.svg",
-          fullWidth: 297,
-          fullHeight: 210,
-        } as any}
-        alt="Ez Marketing Logo"
-      />
+    <>
+      <Head>
+        <title>Login — Ez Marketing</title>
+        <meta name="robots" content="noindex" />
+      </Head>
 
-      {/* Card */}
-      <div className={classNames(projectcss?.all, styles.rectangle)}>
-        <h6>Create account</h6>
+      <GlobalContextsProvider>
+        <PageParamsProvider__
+          route={router.pathname}
+          params={router.query}
+          query={router.query}
+        >
+          {/* 
+            🔥 PLASMIC COMO ROOT
+            Ele desenha.
+            Nós mandamos.
+          */}
+          <PlasmicLCLogin
+            // Inputs controlados (sem runtime de form)
+            emailInput={{
+              value: email,
+              onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+                console.log("EMAIL:", e.target.value);
+                setEmail(e.target.value);
+              },
+            }}
+            passwordInput={{
+              value: password,
+              onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+                console.log("PASSWORD:", e.target.value);
+                setPassword(e.target.value);
+              },
+            }}
 
-        {/* 🔥 NÃO É FORM */}
-        <div className={styles.form2}>
-          {/* EMAIL */}
-          <div className={styles.formField__bwLhI}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <UserSvgIcon className={styles.svg__f2O7} />
-              <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => {
-                  console.log("EMAIL:", e.target.value);
-                  setEmail(e.target.value);
-                }}
-              />
-            </div>
-          </div>
+            // Botão explícito
+            loginButton={{
+              onClick: handleLogin,
+              disabled: loading,
+            }}
 
-          {/* PASSWORD */}
-          <div className={styles.formField___4XlWd}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <LockSvgIcon className={styles.svg__elYWb} />
-              <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => {
-                  console.log("PASSWORD:", e.target.value);
-                  setPassword(e.target.value);
-                }}
-              />
-            </div>
-          </div>
+            // Erro visível
+            errorText={{
+              children: error,
+              hidden: !error,
+            }}
 
-          {/* CONFIRM PASSWORD */}
-          <div className={styles.formField___0Hc3Z}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <LockSvgIcon className={styles.svg__hmebx} />
-              <input
-                type="password"
-                placeholder="Confirm password"
-                value={confirmPassword}
-                onChange={(e) => {
-                  console.log("CONFIRM:", e.target.value);
-                  setConfirmPassword(e.target.value);
-                }}
-              />
-            </div>
-          </div>
+            // Links continuam declarados
+            forgotPasswordLink={{
+              component: PlasmicLink,
+              href: "/c-reset-password",
+            }}
 
-          {/* ERRO */}
-          {error && (
-            <div style={{ color: "red", fontSize: 12 }}>{error}</div>
-          )}
-
-          {/* BOTÃO */}
-          <button
-            type="button"
-            onClick={handleCreateAccount}
-            disabled={loading}
-            className={styles.loginButton}
-          >
-            {loading ? "Creating..." : "Create account"}
-          </button>
-
-          {/* LINK */}
-          <div className={styles.createAccount}>
-            <span>Already have an account?</span>
-            <PlasmicLink component={Link} href="/c-login">
-              Login
-            </PlasmicLink>
-          </div>
-        </div>
-      </div>
-    </div>
+            createAccountLink={{
+              component: PlasmicLink,
+              href: "/c-create-account",
+            }}
+          />
+        </PageParamsProvider__>
+      </GlobalContextsProvider>
+    </>
   );
 }

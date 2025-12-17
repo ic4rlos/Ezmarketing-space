@@ -6,7 +6,6 @@ import classNames from "classnames";
 import { PlasmicImg, PlasmicLink } from "@plasmicapp/react-web";
 
 import LoginButton from "../components/LoginButton";
-import Checkbox from "../components/Checkbox";
 import SignInWithGoogle from "../components/SignInWithGoogle";
 
 import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
@@ -21,11 +20,10 @@ export default function CCreateAccount() {
   const router = useRouter();
   const supabase = getSupabaseC();
 
+  // 🔥 FONTE ÚNICA DA VERDADE
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
-  const [acceptedTerms, setAcceptedTerms] = React.useState(false);
-
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
 
@@ -41,11 +39,6 @@ export default function CCreateAccount() {
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
-      return;
-    }
-
-    if (!acceptedTerms) {
-      setError("You must accept the terms and conditions");
       return;
     }
 
@@ -73,6 +66,7 @@ export default function CCreateAccount() {
         styles.root
       )}
     >
+      {/* LOGO */}
       <PlasmicImg
         className={styles.img}
         src={{
@@ -83,6 +77,7 @@ export default function CCreateAccount() {
         alt="Ez Marketing Logo"
       />
 
+      {/* CARD */}
       <div className={classNames(projectcss.all, styles.rectangle)}>
         <h6 className={styles.h6}>Create corporative account</h6>
 
@@ -93,8 +88,8 @@ export default function CCreateAccount() {
             <input
               type="email"
               placeholder="Email"
-              value={email}
               className={styles.email}
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
@@ -105,26 +100,32 @@ export default function CCreateAccount() {
             <input
               type="password"
               placeholder="Password"
-              value={password}
               className={styles.password}
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
-          {/* CONFIRM */}
+          {/* CONFIRM PASSWORD */}
           <div className={styles.formField___0Hc3Z}>
             <LockSvgIcon className={styles.svg__hmebx} />
             <input
               type="password"
               placeholder="Confirm Password"
-              value={confirmPassword}
               className={styles.confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              value={confirmPassword}
+              onChange={(e) =>
+                setConfirmPassword(e.target.value)
+              }
             />
           </div>
 
+          {/* ERRO */}
           {error && (
-            <div className={styles.errorText} style={{ display: "block" }}>
+            <div
+              className={styles.errorText}
+              style={{ display: "block" }}
+            >
               {error}
             </div>
           )}
@@ -138,26 +139,15 @@ export default function CCreateAccount() {
             {loading ? "Creating..." : "Create account"}
           </LoginButton>
 
-          {/* CHECKBOX — API CORRETA */}
-          <Checkbox
-            isChecked={acceptedTerms}
-            onCheckedChange={(v: boolean) => setAcceptedTerms(v)}
-            className={styles.checkbox2}
-            label={
-              <div className={styles.freeBox}>
-                <span className={styles.text__uc3Vt}>I accept the </span>
-                <PlasmicLink component={Link} href="/terms">
-                  terms and conditions
-                </PlasmicLink>
-              </div>
-            }
+          {/* GOOGLE */}
+          <SignInWithGoogle
+            className={styles.signInWithGoogle}
           />
 
-          <SignInWithGoogle className={styles.signInWithGoogle} />
-
+          {/* LOGIN */}
           <div className={styles.createAccount}>
             <span className={styles.text__j3Au8}>
-              Already have account?
+              Already have an account?
             </span>
             <PlasmicLink component={Link} href="/c-login">
               Log in

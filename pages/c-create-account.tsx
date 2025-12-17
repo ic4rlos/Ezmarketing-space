@@ -1,33 +1,22 @@
 import * as React from "react";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import classNames from "classnames";
-
-import {
-  PageParamsProvider as PageParamsProvider__,
-} from "@plasmicapp/react-web/lib/host";
-
-import { PlasmicImg, PlasmicLink } from "@plasmicapp/react-web";
-
-import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
-
-import styles from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount.module.css";
-import projectcss from "../components/plasmic/ez_marketing_platform/plasmic.module.css";
-
+import { PageParamsProvider as PageParamsProvider__ } from "@plasmicapp/react-web/lib/host";
+import { PlasmicLink, PlasmicImg, PlasmicComponent, PlasmicRoot } from "@plasmicapp/react-web";
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
-export default function CCreateAccount() {
+// Plasmic vai controlar o DOM completo
+const PlasmicCreateAccount = () => {
   const router = useRouter();
   const supabase = getSupabaseC();
-
-  // 🔥 lógica blindada (React puro)
+  
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(false);
 
-  async function handleCreateAccount() {
+  // Função de login (completamente lógica injetada)
+  const handleCreateAccount = async () => {
     if (loading) return;
 
     setError(null);
@@ -57,88 +46,82 @@ export default function CCreateAccount() {
     }
 
     router.push("/c-edit-profile");
-  }
+  };
 
   return (
-    <GlobalContextsProvider>
-      <PageParamsProvider__
-        route={router.pathname}
-        params={router.query}
-        query={router.query}
-      >
-        <div
-          className={classNames(
-            projectcss.plasmic_page_wrapper,
-            styles.root
-          )}
-        >
-          {/* Logo (asset Plasmic — seguro) */}
-          <PlasmicImg
-            className={styles.img}
-            src={{
-              src: "/plasmic/ez_marketing_platform/images/logo2Svg.svg",
-              fullWidth: 297,
-              fullHeight: 210,
-            } as any}
-            alt="Ez Marketing Logo"
+    <PageParamsProvider__ route={router.pathname} params={router.query} query={router.query}>
+      {/* O Plasmic vai controlar o DOM aqui, o que é uma escolha desastrada */}
+      <PlasmicRoot>
+        <div className="root">
+          <PlasmicImg 
+            className="logo" 
+            src={{src: "/plasmic/ez_marketing_platform/images/logo2Svg.svg", fullWidth: 297, fullHeight: 210}} 
+            alt="Logo"
           />
 
-          {/* Card */}
-          <div className={classNames(projectcss.all, styles.rectangle)}>
-            <h6>Create account</h6>
+          {/* Slots livres e children arbitrários */}
+          <div className="container">
+            <div className="form-card">
+              <h3>Create Account</h3>
+              
+              {/* Inputs com eventos e slots livres, perigoso */}
+              <PlasmicComponent
+                component="PlasmicInput"
+                props={{
+                  value: email,
+                  onChange: (e: any) => setEmail(e.target.value),
+                }}
+              />
+              
+              <PlasmicComponent
+                component="PlasmicInput"
+                props={{
+                  value: password,
+                  onChange: (e: any) => setPassword(e.target.value),
+                }}
+              />
+              
+              <PlasmicComponent
+                component="PlasmicInput"
+                props={{
+                  value: confirmPassword,
+                  onChange: (e: any) => setConfirmPassword(e.target.value),
+                }}
+              />
 
-            {/* NÃO é form */}
-            <div className={styles.form2}>
-              <div className={styles.formField__bwLhI}>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
+              {/* Componente externo: react-slick (perigoso e obsoleto) */}
+              <PlasmicComponent
+                component="PlasmicReactSlick"
+                props={{
+                  options: {
+                    dots: true,
+                    infinite: true,
+                    speed: 500,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                  },
+                }}
+              />
 
-              <div className={styles.formField___4XlWd}>
-                <input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-
-              <div className={styles.formField___0Hc3Z}>
-                <input
-                  type="password"
-                  placeholder="Confirm password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-              </div>
-
-              {error && (
-                <div style={{ color: "red", fontSize: 12 }}>{error}</div>
-              )}
-
+              {/* Botão com evento maluco injetado no Plasmic */}
               <button
-                type="button"
+                className="create-btn"
                 onClick={handleCreateAccount}
                 disabled={loading}
-                className={styles.loginButton}
               >
-                {loading ? "Creating..." : "Create account"}
+                {loading ? "Creating..." : "Create Account"}
               </button>
 
-              <div className={styles.createAccount}>
-                <span>Already have an account?</span>
-                <PlasmicLink component={Link} href="/c-login">
-                  Login
-                </PlasmicLink>
-              </div>
+              {/* Link com outro componente Plasmic*/}
+              <PlasmicLink component="a" href="/c-login">
+                Already have an account? Login here.
+              </PlasmicLink>
             </div>
           </div>
         </div>
-      </PageParamsProvider__>
-    </GlobalContextsProvider>
+      </PlasmicRoot>
+    </PageParamsProvider__>
   );
-}
+};
+
+export default PlasmicCreateAccount;

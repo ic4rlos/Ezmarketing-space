@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useRouter } from "next/router";
-import classNames from "classnames";
 
 import {
   PageParamsProvider as PageParamsProvider__,
@@ -15,6 +14,7 @@ export default function CCreateAccount() {
   const router = useRouter();
   const supabase = getSupabaseC();
 
+  // 🔥 React é a ÚNICA fonte da verdade
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
@@ -57,12 +57,60 @@ export default function CCreateAccount() {
       >
         <PlasmicLCCreateAccount
           overrides={{
-            /** ❌ MATAMOS OS INPUTS PLASMIC */
-            email: { render: () => null },
-            password: { render: () => null },
-            confirmPassword: { render: () => null },
+            /* =========================
+               EMAIL — INPUT REAL
+            ========================== */
+            email: {
+              render: () => (
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => {
+                    console.log("EMAIL:", e.target.value);
+                    setEmail(e.target.value);
+                  }}
+                />
+              ),
+            },
 
-            /** ✅ BOTÃO CONTINUA PLASMIC */
+            /* =========================
+               PASSWORD — INPUT REAL
+            ========================== */
+            password: {
+              render: () => (
+                <input
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => {
+                    console.log("PASSWORD:", e.target.value);
+                    setPassword(e.target.value);
+                  }}
+                />
+              ),
+            },
+
+            /* =========================
+               CONFIRM PASSWORD — INPUT REAL
+            ========================== */
+            confirmPassword: {
+              render: () => (
+                <input
+                  type="password"
+                  placeholder="Confirm password"
+                  value={confirmPassword}
+                  onChange={(e) => {
+                    console.log("CONFIRM:", e.target.value);
+                    setConfirmPassword(e.target.value);
+                  }}
+                />
+              ),
+            },
+
+            /* =========================
+               BOTÃO — PLASMIC
+            ========================== */
             loginButton: {
               props: {
                 type: "button",
@@ -71,6 +119,9 @@ export default function CCreateAccount() {
               },
             },
 
+            /* =========================
+               ERRO
+            ========================== */
             errorText: {
               props: {
                 children: error,
@@ -79,32 +130,6 @@ export default function CCreateAccount() {
                   color: "red",
                 },
               },
-            },
-
-            /** ✅ SLOT PARA INPUTS REAIS */
-            form: {
-              render: () => (
-                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  <input
-                    type="password"
-                    placeholder="Confirm password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                  />
-                </div>
-              ),
             },
           }}
         />

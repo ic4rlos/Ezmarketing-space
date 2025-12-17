@@ -1,52 +1,40 @@
-import React from "react";
-import classNames from "classnames";
+/* eslint-disable */
+/* tslint:disable */
+// @ts-nocheck
+
+import * as React from "react";
+import Head from "next/head";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
-import { PlasmicImg, PlasmicLink } from "@plasmicapp/react-web";
+import {
+  PlasmicImg as PlasmicImg__,
+  PlasmicLink as PlasmicLink__,
+  classNames
+} from "@plasmicapp/react-web";
 
-// 🔥 COMPONENTES VISUAIS ORIGINAIS (BELEZA)
+import { FormItemWrapper } from "@plasmicpkgs/antd5/skinny/FormItem";
+import { AntdInput } from "@plasmicpkgs/antd5/skinny/registerInput";
+
 import LoginButton from "../components/LoginButton";
 import SignInWithGoogle from "../components/SignInWithGoogle";
 
-// 🔥 CSS ORIGINAL DO PLASMIC
-import styles from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount.module.css";
 import projectcss from "../components/plasmic/ez_marketing_platform/plasmic.module.css";
+import sty from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount.module.css";
 
-// 🔥 SUPABASE (CORRETO)
-import { getSupabaseC } from "../lib/c-supabaseClient";
+import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
+import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
 
-export default function CCreateAccount() {
-  const router = useRouter();
-  const supabase = getSupabaseC();
-
-  // 🔒 ESTADO CONTROLADO (FONTE ÚNICA DA VERDADE)
+export default function CreateAccountPage() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
-  const [error, setError] = React.useState<string | null>(null);
-  const [loading, setLoading] = React.useState(false);
-
-  // 🎨 TOKENS DE ESTILO DO PLASMIC (VISUAL PURO)
-  const styleTokensClassNames = (() => {
-    try {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const m = require(
-        "../components/plasmic/ez_marketing_platform/PlasmicStyleTokensProvider"
-      );
-      return m?._useStyleTokens?.() || "";
-    } catch {
-      return "";
-    }
-  })();
+  const [error, setError] = React.useState("");
 
   async function handleCreateAccount() {
-    if (loading) return;
+    setError("");
 
-    setError(null);
-
-    if (!email || !password) {
-      setError("Email and password are required");
+    if (!email || !password || !confirmPassword) {
+      setError("Fill in all fields");
       return;
     }
 
@@ -55,107 +43,162 @@ export default function CCreateAccount() {
       return;
     }
 
-    setLoading(true);
-
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
-
-    setLoading(false);
-
-    if (error) {
-      setError(error.message);
-      return;
-    }
-
-    router.push("/c-edit-profile");
+    // 👉 SUPABASE ENTRA AQUI
+    // await supabase.auth.signUp({ email, password });
   }
 
   return (
-    <div
-      className={classNames(
-        projectcss.plasmic_page_wrapper,
-        styles.root,
-        styleTokensClassNames
-      )}
-    >
-      {/* LOGO */}
-      <PlasmicImg
-        className={styles.img}
-        src={{
-          src: "/plasmic/ez_marketing_platform/images/logo2Svg.svg",
-          fullWidth: 297,
-          fullHeight: 210,
-        } as any}
-        alt="Ez Marketing Logo"
-      />
+    <>
+      <Head>
+        <title>Create Account</title>
+      </Head>
 
-      {/* CARD */}
-      <div className={classNames(projectcss.all, styles.rectangle)}>
-        <h6 className={styles.h6}>Create corporate account</h6>
+      <div className={projectcss.plasmic_page_wrapper}>
+        <div
+          className={classNames(
+            projectcss.all,
+            projectcss.root_reset,
+            projectcss.plasmic_default_styles,
+            projectcss.plasmic_mixins,
+            sty.root
+          )}
+        >
+          <PlasmicImg__
+            className={sty.img}
+            alt=""
+            displayWidth="700px"
+            src={{
+              src: "/plasmic/ez_marketing_platform/images/logo2Svg.svg",
+              fullWidth: 297,
+              fullHeight: 210
+            }}
+          />
 
-        {/* FORM (NÃO SUBMIT HTML – CONTROLE TOTAL) */}
-        <div className={styles.form2}>
-          {/* EMAIL */}
-          <div className={styles.formField__bwLhI}>
-            <input
-              type="email"
-              className={styles.email}
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+          <div className={classNames(projectcss.all, sty.rectangle)}>
+            <h6
+              className={classNames(
+                projectcss.all,
+                projectcss.h6,
+                projectcss.__wab_text,
+                sty.h6
+              )}
+            >
+              Create corporative account
+            </h6>
+
+            {/* EMAIL */}
+            <FormItemWrapper
+              className={classNames("__wab_instance", sty.formField__bwLhI)}
+              label={
+                <UserSvgIcon
+                  className={classNames(projectcss.all, sty.svg__f2O7)}
+                />
+              }
+            >
+              <AntdInput
+                className={classNames("__wab_instance", sty.email)}
+                placeholder="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </FormItemWrapper>
+
+            {/* PASSWORD */}
+            <FormItemWrapper
+              className={classNames("__wab_instance", sty.formField___4XlWd)}
+              label={
+                <LockSvgIcon
+                  className={classNames(projectcss.all, sty.svg__elYWb)}
+                />
+              }
+            >
+              <AntdInput
+                className={classNames("__wab_instance", sty.password)}
+                placeholder="Password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </FormItemWrapper>
+
+            {/* CONFIRM PASSWORD */}
+            <FormItemWrapper
+              className={classNames("__wab_instance", sty.formField___0Hc3Z)}
+              label={
+                <LockSvgIcon
+                  className={classNames(projectcss.all, sty.svg__hmebx)}
+                />
+              }
+            >
+              <AntdInput
+                className={classNames("__wab_instance", sty.confirmPassword)}
+                placeholder="Confirm Password"
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+            </FormItemWrapper>
+
+            {error && (
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.errorText
+                )}
+              >
+                {error}
+              </div>
+            )}
+
+            <LoginButton
+              className={classNames("__wab_instance", sty.loginButton)}
+              onClick={handleCreateAccount}
+            >
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__vk2Nl
+                )}
+              >
+                Create account
+              </div>
+            </LoginButton>
+
+            <SignInWithGoogle
+              className={classNames("__wab_instance", sty.signInWithGoogle)}
             />
-          </div>
 
-          {/* PASSWORD */}
-          <div className={styles.formField___4XlWd}>
-            <input
-              type="password"
-              className={styles.password}
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
+            <div className={classNames(projectcss.all, sty.createAccount)}>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__j3Au8
+                )}
+              >
+                Already have account?
+              </div>
 
-          {/* CONFIRM PASSWORD */}
-          <div className={styles.formField___0Hc3Z}>
-            <input
-              type="password"
-              className={styles.confirmPassword}
-              placeholder="Confirm password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-          </div>
-
-          {/* ERROR */}
-          {error && <div className={styles.errorText}>{error}</div>}
-
-          {/* CREATE ACCOUNT BUTTON (BELEZA ORIGINAL) */}
-          <LoginButton
-            className={styles.loginButton}
-            onClick={handleCreateAccount}
-            isDisabled={loading}
-          >
-            {loading ? "Creating..." : "Create account"}
-          </LoginButton>
-
-          {/* GOOGLE */}
-          <SignInWithGoogle />
-
-          {/* LOGIN LINK */}
-          <div className={styles.createAccount}>
-            <span className={styles.text__j3Au8}>
-              Already have an account?
-            </span>
-            <PlasmicLink component={Link} href="/c-login">
-              <span className={styles.link__z76Ps}>Log in</span>
-            </PlasmicLink>
+              <PlasmicLink__
+                className={classNames(
+                  projectcss.all,
+                  projectcss.a,
+                  projectcss.__wab_text,
+                  sty.link__z76Ps
+                )}
+                component={Link}
+                href="/c-login"
+                platform="nextjs"
+              >
+                Log in
+              </PlasmicLink__>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

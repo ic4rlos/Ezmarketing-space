@@ -1,7 +1,12 @@
+"use client";
+
 import * as React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
+
+import { Input } from "antd";
+import "antd/dist/reset.css";
 
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
@@ -84,45 +89,39 @@ export default function CCreateAccount() {
             {/* EMAIL */}
             <div className={sty.formField__bwLhI}>
               <UserSvgIcon className={sty.svg__f2O7} />
-              <input
+              <Input
                 type="email"
                 placeholder="email"
-                className={sty.email}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                className={sty.email}
               />
             </div>
 
             {/* PASSWORD */}
             <div className={sty.formField___4XlWd}>
               <LockSvgIcon className={sty.svg__elYWb} />
-              <input
-                type="password"
+              <Input.Password
                 placeholder="Password"
-                className={sty.password}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                className={sty.password}
               />
             </div>
 
             {/* CONFIRM PASSWORD */}
             <div className={sty.formField___0Hc3Z}>
               <LockSvgIcon className={sty.svg__hmebx} />
-              <input
-                type="password"
+              <Input.Password
                 placeholder="Confirm Password"
-                className={sty.confirmPassword}
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
+                className={sty.confirmPassword}
               />
             </div>
 
             {/* ERROR */}
-            {error && (
-              <div className={sty.errorText}>
-                {error}
-              </div>
-            )}
+            {error && <div className={sty.errorText}>{error}</div>}
 
             {/* BUTTON */}
             <LoginButton

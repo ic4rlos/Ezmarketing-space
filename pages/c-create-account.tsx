@@ -1,31 +1,44 @@
 import React from "react";
-import { useRouter } from "next/router";
-import Link from "next/link";
 import classNames from "classnames";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { PlasmicImg, PlasmicLink } from "@plasmicapp/react-web";
 
+// 🔥 COMPONENTES VISUAIS ORIGINAIS (BELEZA)
 import LoginButton from "../components/LoginButton";
 import SignInWithGoogle from "../components/SignInWithGoogle";
 
-import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
-import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
-
+// 🔥 CSS ORIGINAL DO PLASMIC
 import styles from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount.module.css";
 import projectcss from "../components/plasmic/ez_marketing_platform/plasmic.module.css";
 
+// 🔥 SUPABASE (CORRETO)
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
 export default function CCreateAccount() {
   const router = useRouter();
   const supabase = getSupabaseC();
 
-  // 🔥 FONTE ÚNICA DA VERDADE
+  // 🔒 ESTADO CONTROLADO (FONTE ÚNICA DA VERDADE)
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
-  const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
+  const [loading, setLoading] = React.useState(false);
+
+  // 🎨 TOKENS DE ESTILO DO PLASMIC (VISUAL PURO)
+  const styleTokensClassNames = (() => {
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const m = require(
+        "../components/plasmic/ez_marketing_platform/PlasmicStyleTokensProvider"
+      );
+      return m?._useStyleTokens?.() || "";
+    } catch {
+      return "";
+    }
+  })();
 
   async function handleCreateAccount() {
     if (loading) return;
@@ -63,7 +76,8 @@ export default function CCreateAccount() {
     <div
       className={classNames(
         projectcss.plasmic_page_wrapper,
-        styles.root
+        styles.root,
+        styleTokensClassNames
       )}
     >
       {/* LOGO */}
@@ -79,16 +93,16 @@ export default function CCreateAccount() {
 
       {/* CARD */}
       <div className={classNames(projectcss.all, styles.rectangle)}>
-        <h6 className={styles.h6}>Create corporative account</h6>
+        <h6 className={styles.h6}>Create corporate account</h6>
 
+        {/* FORM (NÃO SUBMIT HTML – CONTROLE TOTAL) */}
         <div className={styles.form2}>
           {/* EMAIL */}
           <div className={styles.formField__bwLhI}>
-            <UserSvgIcon className={styles.svg__f2O7} />
             <input
               type="email"
-              placeholder="Email"
               className={styles.email}
+              placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -96,11 +110,10 @@ export default function CCreateAccount() {
 
           {/* PASSWORD */}
           <div className={styles.formField___4XlWd}>
-            <LockSvgIcon className={styles.svg__elYWb} />
             <input
               type="password"
-              placeholder="Password"
               className={styles.password}
+              placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -108,29 +121,19 @@ export default function CCreateAccount() {
 
           {/* CONFIRM PASSWORD */}
           <div className={styles.formField___0Hc3Z}>
-            <LockSvgIcon className={styles.svg__hmebx} />
             <input
               type="password"
-              placeholder="Confirm Password"
               className={styles.confirmPassword}
+              placeholder="Confirm password"
               value={confirmPassword}
-              onChange={(e) =>
-                setConfirmPassword(e.target.value)
-              }
+              onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </div>
 
-          {/* ERRO */}
-          {error && (
-            <div
-              className={styles.errorText}
-              style={{ display: "block" }}
-            >
-              {error}
-            </div>
-          )}
+          {/* ERROR */}
+          {error && <div className={styles.errorText}>{error}</div>}
 
-          {/* BOTÃO */}
+          {/* CREATE ACCOUNT BUTTON (BELEZA ORIGINAL) */}
           <LoginButton
             className={styles.loginButton}
             onClick={handleCreateAccount}
@@ -140,17 +143,15 @@ export default function CCreateAccount() {
           </LoginButton>
 
           {/* GOOGLE */}
-          <SignInWithGoogle
-            className={styles.signInWithGoogle}
-          />
+          <SignInWithGoogle />
 
-          {/* LOGIN */}
+          {/* LOGIN LINK */}
           <div className={styles.createAccount}>
             <span className={styles.text__j3Au8}>
               Already have an account?
             </span>
             <PlasmicLink component={Link} href="/c-login">
-              Log in
+              <span className={styles.link__z76Ps}>Log in</span>
             </PlasmicLink>
           </div>
         </div>

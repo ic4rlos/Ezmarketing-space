@@ -92,9 +92,7 @@ export default function CCreateAccount() {
         <div className={styles.form2}>
           {/* EMAIL */}
           <div className={styles.formField__bwLhI}>
-            <label>
-              <UserSvgIcon className={styles.svg__f2O7} />
-            </label>
+            <UserSvgIcon className={styles.svg__f2O7} />
             <input
               type="email"
               placeholder="Email"
@@ -106,9 +104,7 @@ export default function CCreateAccount() {
 
           {/* PASSWORD */}
           <div className={styles.formField___4XlWd}>
-            <label>
-              <LockSvgIcon className={styles.svg__elYWb} />
-            </label>
+            <LockSvgIcon className={styles.svg__elYWb} />
             <input
               type="password"
               placeholder="Password"
@@ -120,9 +116,7 @@ export default function CCreateAccount() {
 
           {/* CONFIRM PASSWORD */}
           <div className={styles.formField___0Hc3Z}>
-            <label>
-              <LockSvgIcon className={styles.svg__hmebx} />
-            </label>
+            <LockSvgIcon className={styles.svg__hmebx} />
             <input
               type="password"
               placeholder="Confirm Password"
@@ -143,7 +137,7 @@ export default function CCreateAccount() {
           <LoginButton
             className={styles.loginButton}
             onClick={handleCreateAccount}
-            disabled={loading}
+            isDisabled={loading}
           >
             {loading ? "Creating..." : "Create account"}
           </LoginButton>

@@ -6,14 +6,10 @@ import classNames from "classnames";
 import styles from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount.module.css";
 import projectcss from "../components/plasmic/ez_marketing_platform/plasmic.module.css";
 
-import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
-import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
-
-import { getSupabaseC } from "../lib/c-supabaseClient";
+import { supabase } from "../lib/supabaseClient";
 
 export default function CCreateAccount() {
   const router = useRouter();
-  const supabase = getSupabaseC();
 
   // 🔥 FONTE ÚNICA DA VERDADE
   const [email, setEmail] = React.useState("");
@@ -57,7 +53,7 @@ export default function CCreateAccount() {
   return (
     <div
       className={classNames(
-        projectcss.plasmic_page_wrapper,
+        projectcss?.plasmic_page_wrapper,
         styles.root
       )}
     >
@@ -68,59 +64,50 @@ export default function CCreateAccount() {
         alt="Ez Marketing Logo"
       />
 
-      {/* CARD */}
-      <div className={classNames(projectcss.all, styles.rectangle)}>
-        <h6 className={styles.h6}>Create corporative account</h6>
+      {/* CAIXA BRANCA */}
+      <div className={classNames(projectcss?.all, styles.rectangle)}>
+        <h6>Create corporate account</h6>
 
-        {/* FORM (REACT REAL) */}
+        {/* FORM VISUAL (SEM <form>) */}
         <div className={styles.form2}>
           {/* EMAIL */}
           <div className={styles.formField__bwLhI}>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <UserSvgIcon className={styles.svg__f2O7} />
-              <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
 
           {/* PASSWORD */}
           <div className={styles.formField___4XlWd}>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <LockSvgIcon className={styles.svg__elYWb} />
-              <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
 
           {/* CONFIRM PASSWORD */}
           <div className={styles.formField___0Hc3Z}>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <LockSvgIcon className={styles.svg__hmebx} />
-              <input
-                type="password"
-                placeholder="Confirm password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-            </div>
+            <input
+              type="password"
+              placeholder="Confirm password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
           </div>
 
-          {/* ERROR */}
+          {/* ERRO */}
           {error && (
-            <div className={styles.errorText} style={{ display: "block" }}>
+            <div style={{ color: "red", fontSize: 12 }}>
               {error}
             </div>
           )}
 
-          {/* BUTTON */}
+          {/* BOTÃO */}
           <button
             type="button"
             onClick={handleCreateAccount}
@@ -130,10 +117,10 @@ export default function CCreateAccount() {
             {loading ? "Creating..." : "Create account"}
           </button>
 
-          {/* FOOTER */}
+          {/* LINK LOGIN */}
           <div className={styles.createAccount}>
-            <span>Already have account?</span>
-            <Link href="/c-login" className={styles.link__z76Ps}>
+            <span>Already have an account?</span>
+            <Link href="/c-login" style={{ marginLeft: 4 }}>
               Log in
             </Link>
           </div>

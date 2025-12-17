@@ -1,43 +1,68 @@
 import * as React from "react";
-import Head from "next/head";
 import { useRouter } from "next/router";
+import classNames from "classnames";
 
 import {
   PageParamsProvider as PageParamsProvider__,
+  PlasmicLink,
 } from "@plasmicapp/react-web/lib/host";
 
-import { PlasmicLink } from "@plasmicapp/react-web";
-
 import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
-import { PlasmicLCLogin } from "../components/plasmic/ez_marketing_platform/PlasmicLCLogin";
+
+import { PlasmicImg } from "@plasmicapp/react-web";
+
+import styles from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount.module.css";
+import projectcss from "../components/plasmic/ez_marketing_platform/plasmic.module.css";
 
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
-export default function CLogin() {
+export default function CCreateAccount(): JSX.Element {
   const router = useRouter();
   const supabase = getSupabaseC();
 
   // 🔥 FONTE ÚNICA DA VERDADE
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [loading, setLoading] = React.useState(false);
+  const [confirmPassword, setConfirmPassword] = React.useState("");
   const [error, setError] = React.useState<string | null>(null);
+  const [loading, setLoading] = React.useState(false);
 
-  async function handleLogin() {
+  // ⚠️ STYLE TOKENS — ARRISCADO, MAS CONTROLADO
+  const styleTokensClassNames = (() => {
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const m = require(
+        "../components/plasmic/ez_marketing_platform/PlasmicStyleTokensProvider"
+      );
+      return typeof m?._useStyleTokens === "function"
+        ? m._useStyleTokens()
+        : "";
+    } catch {
+      return "";
+    }
+  })();
+
+  async function handleCreateAccount() {
     if (loading) return;
 
-    console.log("🧪 LOGIN CLICK:", { email, password });
-
     setError(null);
+
+    if (!email || !password) {
+      setError("Email and password required");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
     setLoading(true);
 
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signUp({
       email,
       password,
     });
-
-    console.log("📦 Supabase data:", data);
-    console.log("❌ Supabase error:", error);
 
     setLoading(false);
 
@@ -46,61 +71,98 @@ export default function CLogin() {
       return;
     }
 
-    router.push("/dashboard");
+    router.push("/c-edit-profile");
   }
 
   return (
-    <>
-      <Head>
-        <title>Login — Ez Marketing</title>
-        <meta name="robots" content="noindex" />
-      </Head>
-
-      <GlobalContextsProvider>
-        <PageParamsProvider__
-          route={router.pathname}
-          params={router.query}
-          query={router.query}
+    <GlobalContextsProvider>
+      <PageParamsProvider__
+        route={router.pathname}
+        params={router.query}
+        query={router.query}
+      >
+        {/* 
+          ✅ Root visual 100% Plasmic
+          ❌ Nenhum wrapper lógico
+        */}
+        <div
+          className={classNames(
+            projectcss.plasmic_page_wrapper,
+            styles.root,
+            styleTokensClassNames
+          )}
         >
-          {/* 
-            ✔ Plasmic é o root visual
-            ✔ React governa lógica
-            ✔ Nada escondido
-          */}
-          <PlasmicLCLogin
-            emailInput={{
-              value: email,
-              onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-                console.log("EMAIL:", e.target.value);
-                setEmail(e.target.value);
-              },
-            }}
-            passwordInput={{
-              value: password,
-              onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-                console.log("PASSWORD:", e.target.value);
-                setPassword(e.target.value);
-              },
-            }}
-            loginButton={{
-              onClick: handleLogin,
-              disabled: loading,
-            }}
-            errorText={{
-              children: error,
-              hidden: !error,
-            }}
-            forgotPasswordLink={{
-              component: PlasmicLink,
-              href: "/c-reset-password",
-            }}
-            createAccountLink={{
-              component: PlasmicLink,
-              href: "/c-create-account",
-            }}
+          {/* 🖼️ Asset Plasmic */}
+          <PlasmicImg
+            className={styles.img}
+            src={{
+              src: "/plasmic/ez_marketing_platform/images/logo2Svg.svg",
+              fullWidth: 297,
+              fullHeight: 210,
+            } as any}
+            alt="Ez Marketing Logo"
           />
-        </PageParamsProvider__>
-      </GlobalContextsProvider>
-    </>
+
+          {/* 📦 Card */}
+          <div className={classNames(projectcss.all, styles.rectangle)}>
+            <h6 className={classNames(projectcss.h6)}>Create account</h6>
+
+            {/* 🔒 Estrutura visual pura */}
+            <div className={styles.form2}>
+              <div className={styles.formField__bwLhI}>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  autoComplete="email"
+                />
+              </div>
+
+              <div className={styles.formField___4XlWd}>
+                <input
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  autoComplete="new-password"
+                />
+              </div>
+
+              <div className={styles.formField___0Hc3Z}>
+                <input
+                  type="password"
+                  placeholder="Confirm password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  autoComplete="new-password"
+                />
+              </div>
+
+              {error && (
+                <div className={styles.errorText}>{error}</div>
+              )}
+
+              <button
+                type="button"
+                onClick={handleCreateAccount}
+                disabled={loading}
+                className={styles.loginButton}
+              >
+                {loading ? "Creating..." : "Create account"}
+              </button>
+
+              {/* ⚠️ PlasmicLink — isolado */}
+              <div className={styles.createAccount}>
+                <span>Already have an account?</span>
+                <PlasmicLink href="/c-login">
+                  Login
+                </PlasmicLink>
+              </div>
+            </div>
+          </div>
+        </div>
+      </PageParamsProvider__>
+    </GlobalContextsProvider>
   );
 }

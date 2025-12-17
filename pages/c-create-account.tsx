@@ -1,42 +1,43 @@
 import * as React from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 
 import {
   PageParamsProvider as PageParamsProvider__,
 } from "@plasmicapp/react-web/lib/host";
 
+import { PlasmicLink } from "@plasmicapp/react-web";
+
 import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
-import { PlasmicLCCreateAccount } from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount";
+import { PlasmicLCLogin } from "../components/plasmic/ez_marketing_platform/PlasmicLCLogin";
 
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
-export default function CCreateAccount() {
+export default function CLogin() {
   const router = useRouter();
   const supabase = getSupabaseC();
 
-  // 🔥 React é a ÚNICA fonte da verdade
+  // 🔥 FONTE ÚNICA DA VERDADE
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [confirmPassword, setConfirmPassword] = React.useState("");
-  const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
 
-  async function handleCreateAccount() {
+  async function handleLogin() {
+    if (loading) return;
+
+    console.log("🧪 LOGIN CLICK:", { email, password });
+
     setError(null);
-
-    if (!email || !password || !confirmPassword) {
-      setError("Email and password are required");
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
-      return;
-    }
-
     setLoading(true);
 
-    const { error } = await supabase.auth.signUp({ email, password });
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    console.log("📦 Supabase data:", data);
+    console.log("❌ Supabase error:", error);
 
     setLoading(false);
 
@@ -45,95 +46,61 @@ export default function CCreateAccount() {
       return;
     }
 
-    router.push("/c-edit-profile");
+    router.push("/dashboard");
   }
 
   return (
-    <GlobalContextsProvider>
-      <PageParamsProvider__
-        route={router.pathname}
-        params={router.query}
-        query={router.query}
-      >
-        <PlasmicLCCreateAccount
-          overrides={{
-            /* =========================
-               EMAIL — INPUT REAL
-            ========================== */
-            email: {
-              render: () => (
-                <input
-                  type="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => {
-                    console.log("EMAIL:", e.target.value);
-                    setEmail(e.target.value);
-                  }}
-                />
-              ),
-            },
+    <>
+      <Head>
+        <title>Login — Ez Marketing</title>
+        <meta name="robots" content="noindex" />
+      </Head>
 
-            /* =========================
-               PASSWORD — INPUT REAL
-            ========================== */
-            password: {
-              render: () => (
-                <input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => {
-                    console.log("PASSWORD:", e.target.value);
-                    setPassword(e.target.value);
-                  }}
-                />
-              ),
-            },
-
-            /* =========================
-               CONFIRM PASSWORD — INPUT REAL
-            ========================== */
-            confirmPassword: {
-              render: () => (
-                <input
-                  type="password"
-                  placeholder="Confirm password"
-                  value={confirmPassword}
-                  onChange={(e) => {
-                    console.log("CONFIRM:", e.target.value);
-                    setConfirmPassword(e.target.value);
-                  }}
-                />
-              ),
-            },
-
-            /* =========================
-               BOTÃO — PLASMIC
-            ========================== */
-            loginButton: {
-              props: {
-                type: "button",
-                disabled: loading,
-                onClick: handleCreateAccount,
+      <GlobalContextsProvider>
+        <PageParamsProvider__
+          route={router.pathname}
+          params={router.query}
+          query={router.query}
+        >
+          {/* 
+            ✔ Plasmic é o root visual
+            ✔ React governa lógica
+            ✔ Nada escondido
+          */}
+          <PlasmicLCLogin
+            emailInput={{
+              value: email,
+              onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+                console.log("EMAIL:", e.target.value);
+                setEmail(e.target.value);
               },
-            },
-
-            /* =========================
-               ERRO
-            ========================== */
-            errorText: {
-              props: {
-                children: error,
-                style: {
-                  display: error ? "block" : "none",
-                  color: "red",
-                },
+            }}
+            passwordInput={{
+              value: password,
+              onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+                console.log("PASSWORD:", e.target.value);
+                setPassword(e.target.value);
               },
-            },
-          }}
-        />
-      </PageParamsProvider__>
-    </GlobalContextsProvider>
+            }}
+            loginButton={{
+              onClick: handleLogin,
+              disabled: loading,
+            }}
+            errorText={{
+              children: error,
+              hidden: !error,
+            }}
+            forgotPasswordLink={{
+              component: PlasmicLink,
+              href: "/c-reset-password",
+            }}
+            createAccountLink={{
+              component: PlasmicLink,
+              href: "/c-create-account",
+            }}
+          />
+        </PageParamsProvider__>
+      </GlobalContextsProvider>
+    </>
   );
 }

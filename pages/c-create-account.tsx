@@ -3,6 +3,15 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import classNames from "classnames";
 
+import { PlasmicImg, PlasmicLink } from "@plasmicapp/react-web";
+
+import LoginButton from "../components/LoginButton";
+import Checkbox from "../components/Checkbox";
+import SignInWithGoogle from "../components/SignInWithGoogle";
+
+import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
+import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
+
 import styles from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount.module.css";
 import projectcss from "../components/plasmic/ez_marketing_platform/plasmic.module.css";
 
@@ -12,12 +21,14 @@ export default function CCreateAccount() {
   const router = useRouter();
   const supabase = getSupabaseC();
 
-  // 🔥 FONTE ÚNICA DA VERDADE
+  // 🔥 Fonte única da verdade
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
-  const [error, setError] = React.useState<string | null>(null);
+  const [acceptedTerms, setAcceptedTerms] = React.useState(false);
+
   const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
 
   async function handleCreateAccount() {
     if (loading) return;
@@ -25,12 +36,17 @@ export default function CCreateAccount() {
     setError(null);
 
     if (!email || !password) {
-      setError("Email and password required");
+      setError("Email and password are required");
       return;
     }
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
+      return;
+    }
+
+    if (!acceptedTerms) {
+      setError("You must accept the terms and conditions");
       return;
     }
 
@@ -54,78 +70,110 @@ export default function CCreateAccount() {
   return (
     <div
       className={classNames(
-        projectcss?.plasmic_page_wrapper,
+        projectcss.plasmic_page_wrapper,
         styles.root
       )}
     >
-      {/* LOGO */}
-      <img
+      {/* Logo */}
+      <PlasmicImg
         className={styles.img}
-        src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
+        src={{
+          src: "/plasmic/ez_marketing_platform/images/logo2Svg.svg",
+          fullWidth: 297,
+          fullHeight: 210,
+        } as any}
         alt="Ez Marketing Logo"
       />
 
-      {/* CAIXA BRANCA */}
-      <div className={classNames(projectcss?.all, styles.rectangle)}>
-        <h6>Create corporate account</h6>
+      {/* Caixa branca */}
+      <div className={classNames(projectcss.all, styles.rectangle)}>
+        <h6 className={styles.h6}>Create corporative account</h6>
 
-        {/* FORM VISUAL */}
         <div className={styles.form2}>
           {/* EMAIL */}
           <div className={styles.formField__bwLhI}>
+            <label>
+              <UserSvgIcon className={styles.svg__f2O7} />
+            </label>
             <input
               type="email"
               placeholder="Email"
               value={email}
+              className={styles.email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
           {/* PASSWORD */}
           <div className={styles.formField___4XlWd}>
+            <label>
+              <LockSvgIcon className={styles.svg__elYWb} />
+            </label>
             <input
               type="password"
               placeholder="Password"
               value={password}
+              className={styles.password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
           {/* CONFIRM PASSWORD */}
           <div className={styles.formField___0Hc3Z}>
+            <label>
+              <LockSvgIcon className={styles.svg__hmebx} />
+            </label>
             <input
               type="password"
-              placeholder="Confirm password"
+              placeholder="Confirm Password"
               value={confirmPassword}
-              onChange={(e) =>
-                setConfirmPassword(e.target.value)
-              }
+              className={styles.confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </div>
 
           {/* ERRO */}
           {error && (
-            <div style={{ color: "red", fontSize: 12 }}>
+            <div className={styles.errorText} style={{ display: "block" }}>
               {error}
             </div>
           )}
 
           {/* BOTÃO */}
-          <button
-            type="button"
+          <LoginButton
+            className={styles.loginButton}
             onClick={handleCreateAccount}
             disabled={loading}
-            className={styles.loginButton}
           >
             {loading ? "Creating..." : "Create account"}
-          </button>
+          </LoginButton>
 
-          {/* LINK LOGIN */}
+          {/* CHECKBOX */}
+          <Checkbox
+            checked={acceptedTerms}
+            onChange={(v: boolean) => setAcceptedTerms(v)}
+            className={styles.checkbox2}
+            label={
+              <div className={styles.freeBox}>
+                <span className={styles.text__uc3Vt}>I accept the </span>
+                <PlasmicLink component={Link} href="/terms">
+                  terms and conditions
+                </PlasmicLink>
+              </div>
+            }
+          />
+
+          {/* GOOGLE */}
+          <SignInWithGoogle className={styles.signInWithGoogle} />
+
+          {/* FOOTER */}
           <div className={styles.createAccount}>
-            <span>Already have an account?</span>
-            <Link href="/c-login" style={{ marginLeft: 4 }}>
+            <span className={styles.text__j3Au8}>
+              Already have account?
+            </span>
+            <PlasmicLink component={Link} href="/c-login">
               Log in
-            </Link>
+            </PlasmicLink>
           </div>
         </div>
       </div>

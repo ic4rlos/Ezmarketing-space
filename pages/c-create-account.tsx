@@ -11,24 +11,25 @@ export default function CCreateAccount() {
   const supabase = getSupabaseC();
 
   const [error, setError] = React.useState<string | null>(null);
-  const [loading, setLoading] = React.useState(false);
+  const [submitting, setSubmitting] = React.useState(false);
 
   async function handleSubmit(formValue: any) {
-    if (loading) return;
+    if (submitting) return;
+
+    setSubmitting(true);
     setError(null);
-    setLoading(true);
 
     const { email, password, confirmPassword } = formValue || {};
 
     if (!email || !password) {
       setError("Missing credentials");
-      setLoading(false);
+      setSubmitting(false);
       return;
     }
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
-      setLoading(false);
+      setSubmitting(false);
       return;
     }
 
@@ -37,7 +38,7 @@ export default function CCreateAccount() {
       password,
     });
 
-    setLoading(false);
+    setSubmitting(false);
 
     if (error) {
       setError(error.message);
@@ -54,22 +55,19 @@ export default function CCreateAccount() {
         params={router.query}
         query={router.query}
       >
-        {/* ☢️ CÓDIGO SUICIDA ☢️
-            - Plasmic controla TUDO
-            - Inputs são internos (cegos)
-            - Tokens, breakpoints, layout ativos
-        */}
         <PlasmicLCCreateAccount
           overrides={{
             form2: {
               onFinish: handleSubmit,
             },
+
             errorText: {
               children: error ?? "",
               style: { display: error ? "block" : "none" },
             },
+
             loginButton: {
-              loading,
+              disabled: submitting,
             },
           }}
         />

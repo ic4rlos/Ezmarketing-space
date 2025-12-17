@@ -12,7 +12,6 @@ import { PlasmicLCCreateAccount } from "../components/plasmic/ez_marketing_platf
 export default function CCreateAccount() {
   const router = useRouter();
 
-  // Estado React (fonte da verdade)
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
@@ -34,7 +33,6 @@ export default function CCreateAccount() {
 
     setSubmitting(true);
 
-    // ✅ Supabase criado SOMENTE no evento (client-side)
     const supabase = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
@@ -65,22 +63,29 @@ export default function CCreateAccount() {
         <PlasmicLCCreateAccount
           overrides={{
             email: {
-              value: email,
-              onChange: (e: any) => setEmail(e.target.value),
+              defaultValue: "",
+              onChangeCapture: (e: any) => {
+                setEmail(e.target.value);
+              },
             },
 
             password: {
-              value: password,
-              onChange: (e: any) => setPassword(e.target.value),
+              defaultValue: "",
+              onChangeCapture: (e: any) => {
+                setPassword(e.target.value);
+              },
             },
 
             confirmPassword: {
-              value: confirmPassword,
-              onChange: (e: any) => setConfirmPassword(e.target.value),
+              defaultValue: "",
+              onChangeCapture: (e: any) => {
+                setConfirmPassword(e.target.value);
+              },
             },
 
             loginButton: {
               onClick: handleCreateAccount,
+              disabled: submitting,
             },
 
             errorText: {

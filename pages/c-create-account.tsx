@@ -1,46 +1,31 @@
 import * as React from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import classNames from "classnames";
 
 import {
   PageParamsProvider as PageParamsProvider__,
-  PlasmicLink,
 } from "@plasmicapp/react-web/lib/host";
 
-import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
+import { PlasmicImg, PlasmicLink } from "@plasmicapp/react-web";
 
-import { PlasmicImg } from "@plasmicapp/react-web";
+import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
 
 import styles from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount.module.css";
 import projectcss from "../components/plasmic/ez_marketing_platform/plasmic.module.css";
 
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
-export default function CCreateAccount(): JSX.Element {
+export default function CCreateAccount() {
   const router = useRouter();
   const supabase = getSupabaseC();
 
-  // 🔥 FONTE ÚNICA DA VERDADE
+  // 🔥 lógica blindada (React puro)
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(false);
-
-  // ⚠️ STYLE TOKENS — ARRISCADO, MAS CONTROLADO
-  const styleTokensClassNames = (() => {
-    try {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const m = require(
-        "../components/plasmic/ez_marketing_platform/PlasmicStyleTokensProvider"
-      );
-      return typeof m?._useStyleTokens === "function"
-        ? m._useStyleTokens()
-        : "";
-    } catch {
-      return "";
-    }
-  })();
 
   async function handleCreateAccount() {
     if (loading) return;
@@ -81,18 +66,13 @@ export default function CCreateAccount(): JSX.Element {
         params={router.query}
         query={router.query}
       >
-        {/* 
-          ✅ Root visual 100% Plasmic
-          ❌ Nenhum wrapper lógico
-        */}
         <div
           className={classNames(
             projectcss.plasmic_page_wrapper,
-            styles.root,
-            styleTokensClassNames
+            styles.root
           )}
         >
-          {/* 🖼️ Asset Plasmic */}
+          {/* Logo (asset Plasmic — seguro) */}
           <PlasmicImg
             className={styles.img}
             src={{
@@ -103,11 +83,11 @@ export default function CCreateAccount(): JSX.Element {
             alt="Ez Marketing Logo"
           />
 
-          {/* 📦 Card */}
+          {/* Card */}
           <div className={classNames(projectcss.all, styles.rectangle)}>
-            <h6 className={classNames(projectcss.h6)}>Create account</h6>
+            <h6>Create account</h6>
 
-            {/* 🔒 Estrutura visual pura */}
+            {/* NÃO é form */}
             <div className={styles.form2}>
               <div className={styles.formField__bwLhI}>
                 <input
@@ -115,7 +95,6 @@ export default function CCreateAccount(): JSX.Element {
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  autoComplete="email"
                 />
               </div>
 
@@ -125,7 +104,6 @@ export default function CCreateAccount(): JSX.Element {
                   placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  autoComplete="new-password"
                 />
               </div>
 
@@ -135,12 +113,11 @@ export default function CCreateAccount(): JSX.Element {
                   placeholder="Confirm password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  autoComplete="new-password"
                 />
               </div>
 
               {error && (
-                <div className={styles.errorText}>{error}</div>
+                <div style={{ color: "red", fontSize: 12 }}>{error}</div>
               )}
 
               <button
@@ -152,10 +129,9 @@ export default function CCreateAccount(): JSX.Element {
                 {loading ? "Creating..." : "Create account"}
               </button>
 
-              {/* ⚠️ PlasmicLink — isolado */}
               <div className={styles.createAccount}>
                 <span>Already have an account?</span>
-                <PlasmicLink href="/c-login">
+                <PlasmicLink component={Link} href="/c-login">
                   Login
                 </PlasmicLink>
               </div>

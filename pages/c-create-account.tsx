@@ -1,119 +1,138 @@
 import React from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
-import styles from "./PlasmicLCCreateAccount.module.css";
+import classNames from "classnames";
 
-import UserSvgIcon from "./icons/PlasmicIcon__UserSvg";
-import LockSvgIcon from "./icons/PlasmicIcon__LockSvg";
-import SignInWithGoogle from "../../SignInWithGoogle";
+import styles from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount.module.css";
+import projectcss from "../components/plasmic/ez_marketing_platform/plasmic.module.css";
 
-// 🔒 Componente React REAL, controlado, sem Plasmic
+import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
+import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
 
-export type PlasmicLCCreateAccountProps = {
-  email: string;
-  password: string;
-  confirmPassword: string;
-  onEmailChange: (v: string) => void;
-  onPasswordChange: (v: string) => void;
-  onConfirmPasswordChange: (v: string) => void;
-  onSubmit: () => void;
-  error?: string | null;
-  loading?: boolean;
-};
+import { getSupabaseC } from "../lib/c-supabaseClient";
 
-export function PlasmicLCCreateAccount({
-  email,
-  password,
-  confirmPassword,
-  onEmailChange,
-  onPasswordChange,
-  onConfirmPasswordChange,
-  onSubmit,
-  error,
-  loading = false
-}: PlasmicLCCreateAccountProps) {
+export default function CCreateAccount() {
+  const router = useRouter();
+  const supabase = getSupabaseC();
+
+  // 🔥 FONTE ÚNICA DA VERDADE
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [confirmPassword, setConfirmPassword] = React.useState("");
+  const [error, setError] = React.useState<string | null>(null);
+  const [loading, setLoading] = React.useState(false);
+
+  async function handleCreateAccount() {
+    if (loading) return;
+
+    setError(null);
+
+    if (!email || !password) {
+      setError("Email and password required");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    setLoading(true);
+
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+
+    setLoading(false);
+
+    if (error) {
+      setError(error.message);
+      return;
+    }
+
+    router.push("/c-edit-profile");
+  }
+
   return (
-    <div className={styles.root}>
-      {/* Logo */}
+    <div
+      className={classNames(
+        projectcss.plasmic_page_wrapper,
+        styles.root
+      )}
+    >
+      {/* LOGO */}
       <img
         className={styles.img}
         src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
-        alt="Ez Marketing"
+        alt="Ez Marketing Logo"
       />
 
-      {/* Card */}
-      <div className={styles.rectangle}>
+      {/* CARD */}
+      <div className={classNames(projectcss.all, styles.rectangle)}>
         <h6 className={styles.h6}>Create corporative account</h6>
 
-        {/* FORM VISUAL (React puro) */}
+        {/* FORM (REACT REAL) */}
         <div className={styles.form2}>
           {/* EMAIL */}
           <div className={styles.formField__bwLhI}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <div style={{ display: "flex", alignItems: "center" }}>
               <UserSvgIcon className={styles.svg__f2O7} />
               <input
                 type="email"
                 placeholder="Email"
                 value={email}
-                onChange={(e) => onEmailChange(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
           </div>
 
           {/* PASSWORD */}
           <div className={styles.formField___4XlWd}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <div style={{ display: "flex", alignItems: "center" }}>
               <LockSvgIcon className={styles.svg__elYWb} />
               <input
                 type="password"
                 placeholder="Password"
                 value={password}
-                onChange={(e) => onPasswordChange(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
           </div>
 
           {/* CONFIRM PASSWORD */}
           <div className={styles.formField___0Hc3Z}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <div style={{ display: "flex", alignItems: "center" }}>
               <LockSvgIcon className={styles.svg__hmebx} />
               <input
                 type="password"
                 placeholder="Confirm password"
                 value={confirmPassword}
-                onChange={(e) => onConfirmPasswordChange(e.target.value)}
+                onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </div>
           </div>
 
-          {/* ERRO */}
-          {error && <div className={styles.errorText}>{error}</div>}
+          {/* ERROR */}
+          {error && (
+            <div className={styles.errorText} style={{ display: "block" }}>
+              {error}
+            </div>
+          )}
 
-          {/* BOTÃO */}
+          {/* BUTTON */}
           <button
             type="button"
-            onClick={onSubmit}
+            onClick={handleCreateAccount}
             disabled={loading}
             className={styles.loginButton}
           >
             {loading ? "Creating..." : "Create account"}
           </button>
 
-          {/* CHECKBOX (visual) */}
-          <div className={styles.checkbox2}>
-            <label style={{ display: "flex", alignItems: "center", gap: 6 }}>
-              <input type="checkbox" />
-              <span className={styles.text__uc3Vt}>
-                I accept the <a className={styles.link__kwYd}>terms and conditions</a>
-              </span>
-            </label>
-          </div>
-
-          {/* GOOGLE */}
-          <SignInWithGoogle className={styles.signInWithGoogle} />
-
           {/* FOOTER */}
           <div className={styles.createAccount}>
-            <span className={styles.text__j3Au8}>Already have account?</span>
+            <span>Already have account?</span>
             <Link href="/c-login" className={styles.link__z76Ps}>
               Log in
             </Link>
@@ -123,5 +142,3 @@ export function PlasmicLCCreateAccount({
     </div>
   );
 }
-
-export default PlasmicLCCreateAccount;

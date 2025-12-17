@@ -1,15 +1,12 @@
-import React from "react";
+import * as React from "react";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import classNames from "classnames";
 
-import { PlasmicImg, PlasmicLink } from "@plasmicapp/react-web";
+import {
+  PageParamsProvider as PageParamsProvider__,
+} from "@plasmicapp/react-web/lib/host";
 
-import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
-import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
-
-import styles from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount.module.css";
-import projectcss from "../components/plasmic/ez_marketing_platform/plasmic.module.css";
+import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
+import { PlasmicLCCreateAccount } from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount";
 
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
@@ -17,25 +14,28 @@ export default function CCreateAccount() {
   const router = useRouter();
   const supabase = getSupabaseC();
 
-  // 🔥 FONTE ÚNICA DA VERDADE
+  // 🔥 ÚNICA FONTE DA VERDADE
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(false);
 
-  async function handleCreateAccount() {
+  async function handleCreateAccount(
+    e?: React.FormEvent<HTMLFormElement> | React.MouseEvent
+  ) {
+    if (e) e.preventDefault();
     if (loading) return;
 
     setError(null);
 
     if (!email || !password || !confirmPassword) {
-      setError("All fields are required.");
+      setError("Email and password required");
       return;
     }
 
     if (password !== confirmPassword) {
-      setError("Passwords do not match.");
+      setError("Passwords do not match");
       return;
     }
 
@@ -57,94 +57,84 @@ export default function CCreateAccount() {
   }
 
   return (
-    <div
-      className={classNames(
-        projectcss.plasmic_page_wrapper,
-        styles.root
-      )}
-    >
-      {/* Logo */}
-      <PlasmicImg
-        className={styles.img}
-        src={{
-          src: "/plasmic/ez_marketing_platform/images/logo2Svg.svg",
-          fullWidth: 297,
-          fullHeight: 210,
-        } as any}
-        alt="EZ Marketing"
-      />
+    <GlobalContextsProvider>
+      <PageParamsProvider__
+        route={router.pathname}
+        params={router.query}
+        query={router.query}
+      >
+        <PlasmicLCCreateAccount
+          overrides={{
+            /* =========================
+               FORM (CRÍTICO)
+            ========================== */
+            form: {
+              props: {
+                onSubmit: handleCreateAccount,
+                noValidate: true,
+              },
+            },
 
-      {/* Card */}
-      <div className={classNames(projectcss.all, styles.rectangle)}>
-        <h6>Create account</h6>
+            /* =========================
+               EMAIL
+            ========================== */
+            email: {
+              props: {
+                value: email,
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                  setEmail(e.target.value),
+              },
+            },
 
-        {/* ⚠️ NÃO É FORM */}
-        <div className={styles.form2}>
-          {/* EMAIL */}
-          <div className={styles.formField__bwLhI}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <UserSvgIcon className={styles.svg__f2O7} />
-              <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-          </div>
+            /* =========================
+               PASSWORD
+            ========================== */
+            password: {
+              props: {
+                value: password,
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                  setPassword(e.target.value),
+              },
+            },
 
-          {/* PASSWORD */}
-          <div className={styles.formField___4XlWd}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <LockSvgIcon className={styles.svg__elYWb} />
-              <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-          </div>
+            /* =========================
+               CONFIRM PASSWORD
+            ========================== */
+            confirmPassword: {
+              props: {
+                value: confirmPassword,
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                  setConfirmPassword(e.target.value),
+              },
+            },
 
-          {/* CONFIRM PASSWORD */}
-          <div className={styles.formField___0Hc3Z}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <LockSvgIcon className={styles.svg__hmebx} />
-              <input
-                type="password"
-                placeholder="Confirm password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-            </div>
-          </div>
+            /* =========================
+               BOTÃO
+            ========================== */
+            loginButton: {
+              props: {
+                type: "submit",
+                disabled: loading,
+                onClick: handleCreateAccount,
+              },
+            },
 
-          {/* ERRO */}
-          {error && (
-            <div style={{ color: "red", fontSize: 12 }}>
-              {error}
-            </div>
-          )}
-
-          {/* BOTÃO */}
-          <button
-            type="button"
-            onClick={handleCreateAccount}
-            disabled={loading}
-            className={styles.loginButton}
-          >
-            {loading ? "Creating..." : "Create account"}
-          </button>
-
-          {/* LINK */}
-          <div className={styles.createAccount}>
-            <span>Already have an account?</span>
-            <PlasmicLink component={Link} href="/c-login">
-              Log in
-            </PlasmicLink>
-          </div>
-        </div>
-      </div>
-    </div>
+            /* =========================
+               ERRO
+            ========================== */
+            errorText: {
+              props: {
+                children: error,
+                style: {
+                  display: error ? "block" : "none",
+                  color: "red",
+                  marginTop: 8,
+                },
+              },
+            },
+          }}
+        />
+      </PageParamsProvider__>
+    </GlobalContextsProvider>
   );
 }

@@ -21,7 +21,6 @@ export default function CCreateAccount() {
   const router = useRouter();
   const supabase = getSupabaseC();
 
-  // 🔥 Fonte única da verdade
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
@@ -74,7 +73,6 @@ export default function CCreateAccount() {
         styles.root
       )}
     >
-      {/* Logo */}
       <PlasmicImg
         className={styles.img}
         src={{
@@ -85,7 +83,6 @@ export default function CCreateAccount() {
         alt="Ez Marketing Logo"
       />
 
-      {/* Caixa branca */}
       <div className={classNames(projectcss.all, styles.rectangle)}>
         <h6 className={styles.h6}>Create corporative account</h6>
 
@@ -114,7 +111,7 @@ export default function CCreateAccount() {
             />
           </div>
 
-          {/* CONFIRM PASSWORD */}
+          {/* CONFIRM */}
           <div className={styles.formField___0Hc3Z}>
             <LockSvgIcon className={styles.svg__hmebx} />
             <input
@@ -126,7 +123,6 @@ export default function CCreateAccount() {
             />
           </div>
 
-          {/* ERRO */}
           {error && (
             <div className={styles.errorText} style={{ display: "block" }}>
               {error}
@@ -142,10 +138,10 @@ export default function CCreateAccount() {
             {loading ? "Creating..." : "Create account"}
           </LoginButton>
 
-          {/* CHECKBOX */}
+          {/* CHECKBOX — API CORRETA */}
           <Checkbox
-            checked={acceptedTerms}
-            onChange={(v: boolean) => setAcceptedTerms(v)}
+            isChecked={acceptedTerms}
+            onCheckedChange={(v: boolean) => setAcceptedTerms(v)}
             className={styles.checkbox2}
             label={
               <div className={styles.freeBox}>
@@ -157,10 +153,8 @@ export default function CCreateAccount() {
             }
           />
 
-          {/* GOOGLE */}
           <SignInWithGoogle className={styles.signInWithGoogle} />
 
-          {/* FOOTER */}
           <div className={styles.createAccount}>
             <span className={styles.text__j3Au8}>
               Already have account?

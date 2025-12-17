@@ -4,37 +4,21 @@ import {
   PageParamsProvider as PageParamsProvider__,
 } from "@plasmicapp/react-web/lib/host";
 
-import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
-import { PlasmicLCCreateAccount } from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount";
-import { getSupabaseC } from "../lib/c-supabaseClient";
+import GlobalContextsProvider from
+  "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
+
+import { PlasmicLCCreateAccount } from
+  "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount";
 
 export default function CCreateAccount() {
   const router = useRouter();
-  const supabase = getSupabaseC();
 
-  const [submitting, setSubmitting] = React.useState(false);
-  const [error, setError] = React.useState<string | null>(null);
-
-  const handleSubmit = async (values: any) => {
-    setSubmitting(true);
-    setError(null);
-
-    const { email, password } = values;
-
-    const { error: signUpError } = await supabase.auth.signUp({
-      email,
-      password,
-    });
-
-    setSubmitting(false);
-
-    if (signUpError) {
-      setError(signUpError.message);
-      return;
-    }
-
-    router.push("/c-login");
-  };
+  /**
+   * Código suicida:
+   * - ZERO controle de input
+   * - ZERO estado no Plasmic
+   * - 100% layout, breakpoints, tokens e estrutura no Studio
+   */
 
   return (
     <GlobalContextsProvider>
@@ -44,31 +28,24 @@ export default function CCreateAccount() {
         query={router.query}
       >
         {/* 
-          ⚠️ SONDA SUICIDA ATIVA
-          Plasmic controla:
-          - layout
-          - tokens
-          - breakpoints
-          - assets
-          - estrutura interna
-          React só injeta comportamento
+          ⚠️ Plasmic controla TUDO:
+          - DOM
+          - Grid
+          - Espaçamento
+          - Tokens
+          - Breakpoints
+          Inputs continuam "cegos" propositalmente
         */}
         <PlasmicLCCreateAccount
           overrides={{
-            form2: {
-              onFinish: handleSubmit,
-            },
-
-            errorText: {
-              children: error ?? "",
+            /**
+             * Overrides VISUAIS apenas.
+             * Nada de props funcionais.
+             * Nada de estado.
+             */
+            root: {
               style: {
-                display: error ? "block" : "none",
-              },
-            },
-
-            loginButton: {
-              props: {
-                disabled: submitting,
+                minHeight: "100vh",
               },
             },
           }}

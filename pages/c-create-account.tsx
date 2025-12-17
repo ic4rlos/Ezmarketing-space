@@ -9,16 +9,10 @@ import {
 import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
 import { PlasmicLCCreateAccount } from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount";
 
-// Supabase client (ajuste se já existir em outro lugar)
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
-
 export default function CCreateAccount() {
   const router = useRouter();
 
-  // 🔒 Estado controlado (React)
+  // Estado React (fonte da verdade)
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
@@ -38,23 +32,27 @@ export default function CCreateAccount() {
       return;
     }
 
-    try {
-      setSubmitting(true);
+    setSubmitting(true);
 
-      const { error } = await supabase.auth.signUp({
-        email,
-        password,
-      });
+    // ✅ Supabase criado SOMENTE no evento (client-side)
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    );
 
-      if (error) {
-        setError(error.message);
-        return;
-      }
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
 
-      router.push("/c-login");
-    } finally {
-      setSubmitting(false);
+    setSubmitting(false);
+
+    if (error) {
+      setError(error.message);
+      return;
     }
+
+    router.push("/c-login");
   }
 
   return (
@@ -64,27 +62,21 @@ export default function CCreateAccount() {
         params={router.query}
         query={router.query}
       >
-        {/* 
-          🔥 Código trunfo:
-          - Plasmic como root
-          - Nenhum wrapper visual
-          - Lógica isolada
-        */}
         <PlasmicLCCreateAccount
           overrides={{
             email: {
-              onChange: (e: any) => setEmail(e.target.value),
               value: email,
+              onChange: (e: any) => setEmail(e.target.value),
             },
 
             password: {
-              onChange: (e: any) => setPassword(e.target.value),
               value: password,
+              onChange: (e: any) => setPassword(e.target.value),
             },
 
             confirmPassword: {
-              onChange: (e: any) => setConfirmPassword(e.target.value),
               value: confirmPassword,
+              onChange: (e: any) => setConfirmPassword(e.target.value),
             },
 
             loginButton: {
@@ -93,9 +85,7 @@ export default function CCreateAccount() {
 
             errorText: {
               children: error ?? "",
-              style: {
-                display: error ? "block" : "none",
-              },
+              style: { display: error ? "block" : "none" },
             },
           }}
         />

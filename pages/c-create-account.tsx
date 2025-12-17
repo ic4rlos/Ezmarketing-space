@@ -3,8 +3,6 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import { Input } from "antd";
-
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
 import LoginButton from "../components/LoginButton";
@@ -41,10 +39,7 @@ export default function CCreateAccount() {
     setLoading(true);
 
     const supabase = getSupabaseC();
-    const { error } = await supabase.auth.signUp({
-      email,
-      password
-    });
+    const { error } = await supabase.auth.signUp({ email, password });
 
     setLoading(false);
 
@@ -72,7 +67,6 @@ export default function CCreateAccount() {
             sty.root
           ].join(" ")}
         >
-          {/* LOGO */}
           <img
             src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
             className={sty.img}
@@ -85,43 +79,41 @@ export default function CCreateAccount() {
             {/* EMAIL */}
             <div className={sty.formField__bwLhI}>
               <UserSvgIcon className={sty.svg__f2O7} />
-              <Input
+              <input
                 type="email"
                 placeholder="email"
+                className={sty.email}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className={sty.email}
               />
             </div>
 
             {/* PASSWORD */}
             <div className={sty.formField___4XlWd}>
               <LockSvgIcon className={sty.svg__elYWb} />
-              <Input
+              <input
                 type="password"
                 placeholder="Password"
+                className={sty.password}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className={sty.password}
               />
             </div>
 
             {/* CONFIRM PASSWORD */}
             <div className={sty.formField___0Hc3Z}>
               <LockSvgIcon className={sty.svg__hmebx} />
-              <Input
+              <input
                 type="password"
                 placeholder="Confirm Password"
+                className={sty.confirmPassword}
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className={sty.confirmPassword}
               />
             </div>
 
-            {/* ERROR */}
             {error && <div className={sty.errorText}>{error}</div>}
 
-            {/* BUTTON */}
             <LoginButton
               className={sty.loginButton}
               onClick={handleCreateAccount}
@@ -130,10 +122,8 @@ export default function CCreateAccount() {
               {loading ? "Creating..." : "Create account"}
             </LoginButton>
 
-            {/* GOOGLE */}
             <SignInWithGoogle className={sty.signInWithGoogle} />
 
-            {/* FOOTER */}
             <div className={sty.createAccount}>
               <span>Already have account?</span>
               <Link href="/c-login">Log in</Link>

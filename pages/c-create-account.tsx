@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useRouter } from "next/router";
+import classNames from "classnames";
 
 import {
   PageParamsProvider as PageParamsProvider__,
@@ -14,23 +15,17 @@ export default function CCreateAccount() {
   const router = useRouter();
   const supabase = getSupabaseC();
 
-  // 🔥 ÚNICA FONTE DA VERDADE
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(false);
 
-  async function handleCreateAccount(
-    e?: React.FormEvent<HTMLFormElement> | React.MouseEvent
-  ) {
-    if (e) e.preventDefault();
-    if (loading) return;
-
+  async function handleCreateAccount() {
     setError(null);
 
     if (!email || !password || !confirmPassword) {
-      setError("Email and password required");
+      setError("Email and password are required");
       return;
     }
 
@@ -41,10 +36,7 @@ export default function CCreateAccount() {
 
     setLoading(true);
 
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
+    const { error } = await supabase.auth.signUp({ email, password });
 
     setLoading(false);
 
@@ -65,72 +57,54 @@ export default function CCreateAccount() {
       >
         <PlasmicLCCreateAccount
           overrides={{
-            /* =========================
-               FORM (CRÍTICO)
-            ========================== */
-            form: {
-              props: {
-                onSubmit: handleCreateAccount,
-                noValidate: true,
-              },
-            },
+            /** ❌ MATAMOS OS INPUTS PLASMIC */
+            email: { render: () => null },
+            password: { render: () => null },
+            confirmPassword: { render: () => null },
 
-            /* =========================
-               EMAIL
-            ========================== */
-            email: {
-              props: {
-                value: email,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setEmail(e.target.value),
-              },
-            },
-
-            /* =========================
-               PASSWORD
-            ========================== */
-            password: {
-              props: {
-                value: password,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setPassword(e.target.value),
-              },
-            },
-
-            /* =========================
-               CONFIRM PASSWORD
-            ========================== */
-            confirmPassword: {
-              props: {
-                value: confirmPassword,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setConfirmPassword(e.target.value),
-              },
-            },
-
-            /* =========================
-               BOTÃO
-            ========================== */
+            /** ✅ BOTÃO CONTINUA PLASMIC */
             loginButton: {
               props: {
-                type: "submit",
+                type: "button",
                 disabled: loading,
                 onClick: handleCreateAccount,
               },
             },
 
-            /* =========================
-               ERRO
-            ========================== */
             errorText: {
               props: {
                 children: error,
                 style: {
                   display: error ? "block" : "none",
                   color: "red",
-                  marginTop: 8,
                 },
               },
+            },
+
+            /** ✅ SLOT PARA INPUTS REAIS */
+            form: {
+              render: () => (
+                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <input
+                    type="password"
+                    placeholder="Confirm password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                  />
+                </div>
+              ),
             },
           }}
         />

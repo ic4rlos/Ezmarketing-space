@@ -6,10 +6,11 @@ import classNames from "classnames";
 import styles from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount.module.css";
 import projectcss from "../components/plasmic/ez_marketing_platform/plasmic.module.css";
 
-import { supabase } from "../lib/supabaseClient";
+import { getSupabaseC } from "../lib/c-supabaseClient";
 
 export default function CCreateAccount() {
   const router = useRouter();
+  const supabase = getSupabaseC();
 
   // 🔥 FONTE ÚNICA DA VERDADE
   const [email, setEmail] = React.useState("");
@@ -68,7 +69,7 @@ export default function CCreateAccount() {
       <div className={classNames(projectcss?.all, styles.rectangle)}>
         <h6>Create corporate account</h6>
 
-        {/* FORM VISUAL (SEM <form>) */}
+        {/* FORM VISUAL */}
         <div className={styles.form2}>
           {/* EMAIL */}
           <div className={styles.formField__bwLhI}>
@@ -96,7 +97,9 @@ export default function CCreateAccount() {
               type="password"
               placeholder="Confirm password"
               value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              onChange={(e) =>
+                setConfirmPassword(e.target.value)
+              }
             />
           </div>
 

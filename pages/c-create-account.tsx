@@ -1,6 +1,8 @@
 import * as React from "react";
 import { useRouter } from "next/router";
-import { PageParamsProvider as PageParamsProvider__ } from "@plasmicapp/react-web/lib/host";
+import {
+  PageParamsProvider as PageParamsProvider__,
+} from "@plasmicapp/react-web/lib/host";
 
 import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
 import { PlasmicLCCreateAccount } from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount";
@@ -10,43 +12,29 @@ export default function CCreateAccount() {
   const router = useRouter();
   const supabase = getSupabaseC();
 
-  const [error, setError] = React.useState<string | null>(null);
   const [submitting, setSubmitting] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
 
-  async function handleSubmit(formValue: any) {
-    if (submitting) return;
-
+  const handleSubmit = async (values: any) => {
     setSubmitting(true);
     setError(null);
 
-    const { email, password, confirmPassword } = formValue || {};
+    const { email, password } = values;
 
-    if (!email || !password) {
-      setError("Missing credentials");
-      setSubmitting(false);
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
-      setSubmitting(false);
-      return;
-    }
-
-    const { error } = await supabase.auth.signUp({
+    const { error: signUpError } = await supabase.auth.signUp({
       email,
       password,
     });
 
     setSubmitting(false);
 
-    if (error) {
-      setError(error.message);
+    if (signUpError) {
+      setError(signUpError.message);
       return;
     }
 
-    router.push("/c-edit-profile");
-  }
+    router.push("/c-login");
+  };
 
   return (
     <GlobalContextsProvider>
@@ -55,6 +43,16 @@ export default function CCreateAccount() {
         params={router.query}
         query={router.query}
       >
+        {/* 
+          ⚠️ SONDA SUICIDA ATIVA
+          Plasmic controla:
+          - layout
+          - tokens
+          - breakpoints
+          - assets
+          - estrutura interna
+          React só injeta comportamento
+        */}
         <PlasmicLCCreateAccount
           overrides={{
             form2: {
@@ -63,11 +61,15 @@ export default function CCreateAccount() {
 
             errorText: {
               children: error ?? "",
-              style: { display: error ? "block" : "none" },
+              style: {
+                display: error ? "block" : "none",
+              },
             },
 
             loginButton: {
-              disabled: submitting,
+              props: {
+                disabled: submitting,
+              },
             },
           }}
         />

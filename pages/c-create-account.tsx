@@ -1,10 +1,9 @@
-"use client";
-
 import * as React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
+
+import { Input } from "antd";
 
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
@@ -16,14 +15,6 @@ import sty from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAcco
 
 import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
 import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
-
-/**
- * Ant Design – carregado SOMENTE no browser
- */
-const AntdInput = dynamic(
-  () => import("../components/AntdInput"),
-  { ssr: false }
-);
 
 export default function CCreateAccount() {
   const router = useRouter();
@@ -94,7 +85,7 @@ export default function CCreateAccount() {
             {/* EMAIL */}
             <div className={sty.formField__bwLhI}>
               <UserSvgIcon className={sty.svg__f2O7} />
-              <AntdInput
+              <Input
                 type="email"
                 placeholder="email"
                 value={email}
@@ -106,7 +97,8 @@ export default function CCreateAccount() {
             {/* PASSWORD */}
             <div className={sty.formField___4XlWd}>
               <LockSvgIcon className={sty.svg__elYWb} />
-              <AntdInput.Password
+              <Input
+                type="password"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -117,7 +109,8 @@ export default function CCreateAccount() {
             {/* CONFIRM PASSWORD */}
             <div className={sty.formField___0Hc3Z}>
               <LockSvgIcon className={sty.svg__hmebx} />
-              <AntdInput.Password
+              <Input
+                type="password"
                 placeholder="Confirm Password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}

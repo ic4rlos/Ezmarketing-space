@@ -42,7 +42,7 @@ export default function CCreateAccount() {
     const supabase = getSupabaseC();
     const { error } = await supabase.auth.signUp({
       email,
-      password
+      password,
     });
 
     setLoading(false);
@@ -61,6 +61,9 @@ export default function CCreateAccount() {
         <title>Create Account</title>
       </Head>
 
+      {/* 🔑 TESTE 8 APLICADO CORRETAMENTE:
+          Plasmic manda no layout (.root),
+          React manda no motor */}
       <div className={projectcss.plasmic_page_wrapper}>
         <div
           className={[
@@ -68,7 +71,7 @@ export default function CCreateAccount() {
             projectcss.root_reset,
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
-            sty.root
+            sty.root,
           ].join(" ")}
         >
           {/* LOGO */}
@@ -78,64 +81,72 @@ export default function CCreateAccount() {
             alt="Logo"
           />
 
+          {/* CARD */}
           <div className={sty.rectangle}>
             <h6 className={sty.h6}>Create corporative account</h6>
 
-            {/* EMAIL */}
-            <div className={sty.formField__bwLhI}>
-              <UserSvgIcon className={sty.svg__f2O7} />
-              <AntdInput
-                type="email"
-                placeholder="email"
-                className={sty.email}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
+            {/* FORM (SEM <form>, SEM AntD Form) */}
+            <div className={sty.form2}>
+              {/* EMAIL */}
+              <div className={sty.formField__bwLhI}>
+                <UserSvgIcon className={sty.svg__f2O7} />
+                <AntdInput
+                  type="email"
+                  placeholder="Email"
+                  className={sty.email}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
 
-            {/* PASSWORD */}
-            <div className={sty.formField___4XlWd}>
-              <LockSvgIcon className={sty.svg__elYWb} />
-              <AntdInput
-                type="password"
-                placeholder="Password"
-                className={sty.password}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
+              {/* PASSWORD */}
+              <div className={sty.formField___4XlWd}>
+                <LockSvgIcon className={sty.svg__elYWb} />
+                <AntdInput
+                  type="password"
+                  placeholder="Password"
+                  className={sty.password}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
 
-            {/* CONFIRM PASSWORD */}
-            <div className={sty.formField___0Hc3Z}>
-              <LockSvgIcon className={sty.svg__hmebx} />
-              <AntdInput
-                type="password"
-                placeholder="Confirm Password"
-                className={sty.confirmPassword}
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-            </div>
+              {/* CONFIRM PASSWORD */}
+              <div className={sty.formField___0Hc3Z}>
+                <LockSvgIcon className={sty.svg__hmebx} />
+                <AntdInput
+                  type="password"
+                  placeholder="Confirm password"
+                  className={sty.confirmPassword}
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+              </div>
 
-            {/* ERROR */}
-            {error && <div className={sty.errorText}>{error}</div>}
+              {/* ERROR */}
+              {error && (
+                <div className={sty.errorText} style={{ display: "block" }}>
+                  {error}
+                </div>
+              )}
 
-            {/* BUTTON */}
-            <LoginButton
-              className={sty.loginButton}
-              onClick={handleCreateAccount}
-              isDisabled={loading}
-            >
-              {loading ? "Creating..." : "Create account"}
-            </LoginButton>
+              {/* BUTTON */}
+              <LoginButton
+                className={sty.loginButton}
+                onClick={handleCreateAccount}
+                isDisabled={loading}
+              >
+                {loading ? "Creating..." : "Create account"}
+              </LoginButton>
 
-            {/* GOOGLE */}
-            <SignInWithGoogle className={sty.signInWithGoogle} />
+              {/* GOOGLE */}
+              <SignInWithGoogle className={sty.signInWithGoogle} />
 
-            {/* FOOTER */}
-            <div className={sty.createAccount}>
-              <span>Already have account?</span>
-              <Link href="/c-login">Log in</Link>
+              {/* FOOTER */}
+              <div className={sty.createAccount}>
+                <span>Already have account?</span>
+                <Link href="/c-login">Log in</Link>
+              </div>
             </div>
           </div>
         </div>

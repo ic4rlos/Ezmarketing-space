@@ -61,9 +61,6 @@ export default function CCreateAccount() {
         <title>Create Account</title>
       </Head>
 
-      {/* 🔑 TESTE 8 APLICADO CORRETAMENTE:
-          Plasmic manda no layout (.root),
-          React manda no motor */}
       <div className={projectcss.plasmic_page_wrapper}>
         <div
           className={[
@@ -85,54 +82,59 @@ export default function CCreateAccount() {
           <div className={sty.rectangle}>
             <h6 className={sty.h6}>Create corporative account</h6>
 
-            {/* FORM (SEM <form>, SEM AntD Form) */}
-            <div className={sty.form2}>
+            {/* FORM ROOT — finge ser Plasmic */}
+            <div className={`__wab_instance ${sty.form2}`}>
               {/* EMAIL */}
-              <div className={sty.formField__bwLhI}>
+              <div className={`__wab_instance ${sty.formField__bwLhI}`}>
                 <UserSvgIcon className={sty.svg__f2O7} />
                 <AntdInput
                   type="email"
                   placeholder="Email"
-                  className={sty.email}
+                  className={`__wab_instance ${sty.email}`}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
 
               {/* PASSWORD */}
-              <div className={sty.formField___4XlWd}>
+              <div className={`__wab_instance ${sty.formField___4XlWd}`}>
                 <LockSvgIcon className={sty.svg__elYWb} />
                 <AntdInput
                   type="password"
                   placeholder="Password"
-                  className={sty.password}
+                  className={`__wab_instance ${sty.password}`}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
 
               {/* CONFIRM PASSWORD */}
-              <div className={sty.formField___0Hc3Z}>
+              <div className={`__wab_instance ${sty.formField___0Hc3Z}`}>
                 <LockSvgIcon className={sty.svg__hmebx} />
                 <AntdInput
                   type="password"
                   placeholder="Confirm password"
-                  className={sty.confirmPassword}
+                  className={`__wab_instance ${sty.confirmPassword}`}
                   value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  onChange={(e) =>
+                    setConfirmPassword(e.target.value)
+                  }
                 />
               </div>
 
               {/* ERROR */}
               {error && (
-                <div className={sty.errorText} style={{ display: "block" }}>
+                <div
+                  className={sty.errorText}
+                  style={{ display: "block" }}
+                >
                   {error}
                 </div>
               )}
 
-              {/* BUTTON */}
+              {/* BUTTON — ESTE ERA O DESALINHADO */}
               <LoginButton
-                className={sty.loginButton}
+                className={`__wab_instance ${sty.loginButton}`}
                 onClick={handleCreateAccount}
                 isDisabled={loading}
               >
@@ -140,7 +142,9 @@ export default function CCreateAccount() {
               </LoginButton>
 
               {/* GOOGLE */}
-              <SignInWithGoogle className={sty.signInWithGoogle} />
+              <SignInWithGoogle
+                className={`__wab_instance ${sty.signInWithGoogle}`}
+              />
 
               {/* FOOTER */}
               <div className={sty.createAccount}>

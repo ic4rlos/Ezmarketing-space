@@ -1,8 +1,17 @@
 "use client";
 
-import { Input } from "antd";
-import type { InputProps } from "antd";
+import * as React from "react";
+import { AntdInput } from "@plasmicpkgs/antd5/skinny/registerInput";
 
-export default function AntdInput(props: InputProps) {
-  return <Input {...props} />;
+type Props = {
+  type?: string;
+  value?: string;
+  placeholder?: string;
+  className?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+export default function Input(props: Props) {
+  return <AntdInput {...props} />;
 }
+

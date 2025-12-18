@@ -3,6 +3,8 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
+import { Form, Input, ConfigProvider } from "antd";
+
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
 import LoginButton from "../components/LoginButton";
@@ -16,20 +18,19 @@ import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/Plasm
 
 export default function CCreateAccount() {
   const router = useRouter();
+  const [form] = Form.useForm();
 
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [confirmPassword, setConfirmPassword] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
 
-  async function handleCreateAccount() {
+  async function handleCreateAccount(values: {
+    email: string;
+    password: string;
+    confirmPassword: string;
+  }) {
     setError(null);
 
-    if (!email || !password || !confirmPassword) {
-      setError("Fill in all fields");
-      return;
-    }
+    const { email, password, confirmPassword } = values;
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
@@ -76,51 +77,60 @@ export default function CCreateAccount() {
           <div className={sty.rectangle}>
             <h6 className={sty.h6}>Create corporative account</h6>
 
-            {/* EMAIL */}
-            <div className={sty.formField__bwLhI}>
-              <UserSvgIcon className={sty.svg__f2O7} />
-              <input
-                type="email"
-                placeholder="email"
-                className={sty.email}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
+            <ConfigProvider>
+              <Form
+                form={form}
+                layout="vertical"
+                onFinish={handleCreateAccount}
+              >
+                {/* EMAIL */}
+                <Form.Item
+                  name="email"
+                  rules={[{ required: true, message: "Email required" }]}
+                >
+                  <Input
+                    type="email"
+                    placeholder="email"
+                    prefix={<UserSvgIcon className={sty.svg__f2O7} />}
+                    className={sty.email}
+                  />
+                </Form.Item>
 
-            {/* PASSWORD */}
-            <div className={sty.formField___4XlWd}>
-              <LockSvgIcon className={sty.svg__elYWb} />
-              <input
-                type="password"
-                placeholder="Password"
-                className={sty.password}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
+                {/* PASSWORD */}
+                <Form.Item
+                  name="password"
+                  rules={[{ required: true, message: "Password required" }]}
+                >
+                  <Input.Password
+                    placeholder="Password"
+                    prefix={<LockSvgIcon className={sty.svg__elYWb} />}
+                    className={sty.password}
+                  />
+                </Form.Item>
 
-            {/* CONFIRM PASSWORD */}
-            <div className={sty.formField___0Hc3Z}>
-              <LockSvgIcon className={sty.svg__hmebx} />
-              <input
-                type="password"
-                placeholder="Confirm Password"
-                className={sty.confirmPassword}
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-            </div>
+                {/* CONFIRM PASSWORD */}
+                <Form.Item
+                  name="confirmPassword"
+                  rules={[{ required: true, message: "Confirm password" }]}
+                >
+                  <Input.Password
+                    placeholder="Confirm Password"
+                    prefix={<LockSvgIcon className={sty.svg__hmebx} />}
+                    className={sty.confirmPassword}
+                  />
+                </Form.Item>
 
-            {error && <div className={sty.errorText}>{error}</div>}
+                {error && <div className={sty.errorText}>{error}</div>}
 
-            <LoginButton
-              className={sty.loginButton}
-              onClick={handleCreateAccount}
-              isDisabled={loading}
-            >
-              {loading ? "Creating..." : "Create account"}
-            </LoginButton>
+                <LoginButton
+                  className={sty.loginButton}
+                  isDisabled={loading}
+                  onClick={() => form.submit()}
+                >
+                  {loading ? "Creating..." : "Create account"}
+                </LoginButton>
+              </Form>
+            </ConfigProvider>
 
             <SignInWithGoogle className={sty.signInWithGoogle} />
 

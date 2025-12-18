@@ -8,7 +8,6 @@ import { getSupabaseC } from "../lib/c-supabaseClient";
 import AntdInput from "../components/ui/AntdInput";
 import LoginButton from "../components/LoginButton";
 import SignInWithGoogle from "../components/SignInWithGoogle";
-import Checkbox from "../components/Checkbox";
 
 import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
 import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
@@ -19,7 +18,6 @@ export default function CCreateAccount() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
-  const [acceptedTerms, setAcceptedTerms] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
 
@@ -33,11 +31,6 @@ export default function CCreateAccount() {
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
-      return;
-    }
-
-    if (!acceptedTerms) {
-      setError("You must accept the terms and conditions");
       return;
     }
 
@@ -65,7 +58,6 @@ export default function CCreateAccount() {
         <title>Create Account</title>
       </Head>
 
-      {/* PAGE */}
       <div
         style={{
           minHeight: "100vh",
@@ -179,22 +171,6 @@ export default function CCreateAccount() {
                 />
               </div>
             </div>
-          </div>
-
-          {/* TERMS */}
-          <div style={{ marginBottom: 24 }}>
-            <Checkbox
-              checked={acceptedTerms}
-              onChange={(e) => setAcceptedTerms(e.target.checked)}
-              label={
-                <>
-                  I accept the{" "}
-                  <Link href="#" style={{ textDecoration: "underline" }}>
-                    terms and conditions
-                  </Link>
-                </>
-              }
-            />
           </div>
 
           {/* ERROR */}

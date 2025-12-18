@@ -81,7 +81,7 @@ export default function CCreateAccount() {
           src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
           alt="ezmarketing"
           style={{
-            width: 700,
+            width: 360,
             maxWidth: "90%",
             marginBottom: 32
           }}
@@ -90,11 +90,11 @@ export default function CCreateAccount() {
         {/* CARD */}
         <div
           style={{
-            width: 420,
+            width: 440,
             maxWidth: "90%",
             background: "#fff",
             borderRadius: 48,
-            padding: "48px 40px",
+            padding: "56px 40px",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -102,14 +102,15 @@ export default function CCreateAccount() {
           }}
         >
           {/* TITLE */}
-          <h6
+          <h5
             style={{
               marginBottom: 32,
-              fontWeight: 500
+              fontWeight: 500,
+              textAlign: "center"
             }}
           >
             Create corporative account
-          </h6>
+          </h5>
 
           {/* EMAIL */}
           <div style={{ width: "100%", marginBottom: 16 }}>
@@ -117,18 +118,20 @@ export default function CCreateAccount() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: 12,
+                gap: 8,
                 paddingLeft: 8
               }}
             >
               <UserSvgIcon width={20} height={20} />
-              <AntdInput
-                type="email"
-                placeholder="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                style={{ flex: 1 }}
-              />
+              <span style={{ opacity: 0.6 }}>:</span>
+              <div style={{ flex: 1 }}>
+                <AntdInput
+                  type="email"
+                  placeholder="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
             </div>
           </div>
 
@@ -138,18 +141,20 @@ export default function CCreateAccount() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: 12,
+                gap: 8,
                 paddingLeft: 8
               }}
             >
               <LockSvgIcon width={20} height={20} />
-              <AntdInput
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                style={{ flex: 1 }}
-              />
+              <span style={{ opacity: 0.6 }}>:</span>
+              <div style={{ flex: 1 }}>
+                <AntdInput
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
             </div>
           </div>
 
@@ -159,18 +164,20 @@ export default function CCreateAccount() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: 12,
+                gap: 8,
                 paddingLeft: 8
               }}
             >
               <LockSvgIcon width={20} height={20} />
-              <AntdInput
-                type="password"
-                placeholder="Confirm Password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                style={{ flex: 1 }}
-              />
+              <span style={{ opacity: 0.6 }}>:</span>
+              <div style={{ flex: 1 }}>
+                <AntdInput
+                  type="password"
+                  placeholder="Confirm Password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+              </div>
             </div>
           </div>
 
@@ -194,7 +201,7 @@ export default function CCreateAccount() {
           {error && (
             <div
               style={{
-                fontSize: 12,
+                fontSize: 11,
                 color: "red",
                 marginBottom: 16,
                 textAlign: "center"
@@ -217,7 +224,7 @@ export default function CCreateAccount() {
           <SignInWithGoogle style={{ width: 248, marginBottom: 24 }} />
 
           {/* FOOTER */}
-          <div style={{ fontSize: 14 }}>
+          <div style={{ fontSize: 13 }}>
             Already have account?
             <Link href="/c-login" style={{ marginLeft: 4, fontWeight: 600 }}>
               Log in

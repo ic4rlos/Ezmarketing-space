@@ -3,12 +3,11 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import { Form, Input, ConfigProvider } from "antd";
-
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
 import LoginButton from "../components/LoginButton";
 import SignInWithGoogle from "../components/SignInWithGoogle";
+import AntdInput from "../components/ui/AntdInput";
 
 import projectcss from "../components/plasmic/ez_marketing_platform/plasmic.module.css";
 import sty from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount.module.css";
@@ -18,19 +17,20 @@ import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/Plasm
 
 export default function CCreateAccount() {
   const router = useRouter();
-  const [form] = Form.useForm();
 
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [confirmPassword, setConfirmPassword] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
 
-  async function handleCreateAccount(values: {
-    email: string;
-    password: string;
-    confirmPassword: string;
-  }) {
+  async function handleCreateAccount() {
     setError(null);
 
-    const { email, password, confirmPassword } = values;
+    if (!email || !password || !confirmPassword) {
+      setError("Fill in all fields");
+      return;
+    }
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
@@ -40,7 +40,10 @@ export default function CCreateAccount() {
     setLoading(true);
 
     const supabase = getSupabaseC();
-    const { error } = await supabase.auth.signUp({ email, password });
+    const { error } = await supabase.auth.signUp({
+      email,
+      password
+    });
 
     setLoading(false);
 
@@ -68,6 +71,7 @@ export default function CCreateAccount() {
             sty.root
           ].join(" ")}
         >
+          {/* LOGO */}
           <img
             src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
             className={sty.img}
@@ -77,63 +81,58 @@ export default function CCreateAccount() {
           <div className={sty.rectangle}>
             <h6 className={sty.h6}>Create corporative account</h6>
 
-            <ConfigProvider>
-              <Form
-                form={form}
-                layout="vertical"
-                onFinish={handleCreateAccount}
-              >
-                {/* EMAIL */}
-                <Form.Item
-                  name="email"
-                  rules={[{ required: true, message: "Email required" }]}
-                >
-                  <Input
-                    type="email"
-                    placeholder="email"
-                    prefix={<UserSvgIcon className={sty.svg__f2O7} />}
-                    className={sty.email}
-                  />
-                </Form.Item>
+            {/* EMAIL */}
+            <div className={sty.formField__bwLhI}>
+              <UserSvgIcon className={sty.svg__f2O7} />
+              <AntdInput
+                type="email"
+                placeholder="email"
+                className={sty.email}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
 
-                {/* PASSWORD */}
-                <Form.Item
-                  name="password"
-                  rules={[{ required: true, message: "Password required" }]}
-                >
-                  <Input.Password
-                    placeholder="Password"
-                    prefix={<LockSvgIcon className={sty.svg__elYWb} />}
-                    className={sty.password}
-                  />
-                </Form.Item>
+            {/* PASSWORD */}
+            <div className={sty.formField___4XlWd}>
+              <LockSvgIcon className={sty.svg__elYWb} />
+              <AntdInput
+                type="password"
+                placeholder="Password"
+                className={sty.password}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
 
-                {/* CONFIRM PASSWORD */}
-                <Form.Item
-                  name="confirmPassword"
-                  rules={[{ required: true, message: "Confirm password" }]}
-                >
-                  <Input.Password
-                    placeholder="Confirm Password"
-                    prefix={<LockSvgIcon className={sty.svg__hmebx} />}
-                    className={sty.confirmPassword}
-                  />
-                </Form.Item>
+            {/* CONFIRM PASSWORD */}
+            <div className={sty.formField___0Hc3Z}>
+              <LockSvgIcon className={sty.svg__hmebx} />
+              <AntdInput
+                type="password"
+                placeholder="Confirm Password"
+                className={sty.confirmPassword}
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+            </div>
 
-                {error && <div className={sty.errorText}>{error}</div>}
+            {/* ERROR */}
+            {error && <div className={sty.errorText}>{error}</div>}
 
-                <LoginButton
-                  className={sty.loginButton}
-                  isDisabled={loading}
-                  onClick={() => form.submit()}
-                >
-                  {loading ? "Creating..." : "Create account"}
-                </LoginButton>
-              </Form>
-            </ConfigProvider>
+            {/* BUTTON */}
+            <LoginButton
+              className={sty.loginButton}
+              onClick={handleCreateAccount}
+              isDisabled={loading}
+            >
+              {loading ? "Creating..." : "Create account"}
+            </LoginButton>
 
+            {/* GOOGLE */}
             <SignInWithGoogle className={sty.signInWithGoogle} />
 
+            {/* FOOTER */}
             <div className={sty.createAccount}>
               <span>Already have account?</span>
               <Link href="/c-login">Log in</Link>

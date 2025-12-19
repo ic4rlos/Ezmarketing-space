@@ -55,13 +55,14 @@ export default function CCreateAccount() {
         <title>Create Account</title>
       </Head>
 
-      {/* ROOT GRID */}
+      {/* ROOT */}
       <div
         style={{
           minHeight: "100vh",
           background: "#d9d9d9",
           display: "grid",
-          placeItems: "center"
+          placeItems: "center",
+          gridAutoRows: "min-content"
         }}
       >
         {/* LOGO */}
@@ -89,22 +90,14 @@ export default function CCreateAccount() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            justifyContent: "space-between"
+            justifyContent: "space-between",
+            marginTop: 10 // 🔧 leve ajuste vertical
           }}
         >
-          {/* TITLE */}
-          <h6
-            style={{
-              fontFamily: "Inter, sans-serif",
-              fontSize: 16,
-              fontWeight: 500,
-              margin: 0
-            }}
-          >
+          <h6 style={{ fontWeight: 500, margin: 0 }}>
             Create corporative account
           </h6>
 
-          {/* FORM */}
           <div
             style={{
               width: "100%",
@@ -112,7 +105,8 @@ export default function CCreateAccount() {
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-around",
-              height: "100%"
+              height: "100%",
+              alignItems: "center" // 🔧 centraliza tudo melhor
             }}
           >
             <Field
@@ -140,46 +134,25 @@ export default function CCreateAccount() {
             />
 
             {error && (
-              <div
-                style={{
-                  fontSize: 12,
-                  color: "red",
-                  fontStyle: "italic",
-                  textAlign: "center"
-                }}
-              >
-                {error}
-              </div>
+              <div style={{ fontSize: 12, color: "red" }}>{error}</div>
             )}
 
-            <LoginButton
-              onClick={handleCreateAccount}
-              isDisabled={loading}
-              style={{ width: 248, height: 37 }}
-            >
-              {loading ? "Creating..." : "Create account"}
-            </LoginButton>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
+              <LoginButton
+                onClick={handleCreateAccount}
+                isDisabled={loading}
+                style={{ width: 248, height: 37 }}
+              >
+                {loading ? "Creating..." : "Create account"}
+              </LoginButton>
 
-            <SignInWithGoogle style={{ width: 248, height: 37 }} />
+              <SignInWithGoogle style={{ width: 248, height: 37 }} />
+            </div>
           </div>
 
-          {/* FOOTER */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              fontSize: 14
-            }}
-          >
-            <span>Already have account?</span>
-            <Link
-              href="/c-login"
-              style={{
-                marginLeft: 4,
-                fontWeight: 600,
-                textDecoration: "underline"
-              }}
-            >
+          <div style={{ fontSize: 14 }}>
+            Already have account?
+            <Link href="/c-login" style={{ marginLeft: 4, fontWeight: 600 }}>
               Log in
             </Link>
           </div>
@@ -189,23 +162,9 @@ export default function CCreateAccount() {
   );
 }
 
-/* ===== Helper ===== */
-
-function Field({
-  icon,
-  value,
-  onChange,
-  placeholder,
-  type
-}: {
-  icon: React.ReactNode;
-  value: string;
-  onChange: (v: string) => void;
-  placeholder: string;
-  type: string;
-}) {
+function Field({ icon, value, onChange, placeholder, type }: any) {
   return (
-    <div style={{ padding: "0 25px" }}>
+    <div style={{ width: "100%", padding: "0 25px" }}>
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
         {icon}
         <AntdInput

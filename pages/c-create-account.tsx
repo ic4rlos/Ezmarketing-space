@@ -6,7 +6,6 @@ import dynamic from "next/dynamic";
 
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
-// Client-only UI
 const AntdInput = dynamic(
   () => import("../components/ui/AntdInput"),
   { ssr: false }
@@ -56,10 +55,7 @@ export default function CCreateAccount() {
 
     setLoading(true);
 
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
+    const { error } = await supabase.auth.signUp({ email, password });
 
     setLoading(false);
 
@@ -87,7 +83,7 @@ export default function CCreateAccount() {
           justifyContent: "center",
         }}
       >
-        {/* LOGO */}
+        {/* LOGO — 700x100 */}
         <img
           src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
           alt="ezmarketing"
@@ -95,28 +91,28 @@ export default function CCreateAccount() {
             width: 700,
             height: 100,
             objectFit: "contain",
-            marginBottom: 40,
+            marginBottom: 25,
           }}
         />
 
-        {/* CARD */}
+        {/* CARD — 800 x 547 */}
         <div
           style={{
             width: 800,
-            maxWidth: "90%",
-            background: "#fff",
-            borderRadius: 48,
-            padding: "56px 48px",
+            height: 547,
+            background: "#ffffff",
+            borderRadius: 51,
+            padding: "65px 100px",
             display: "flex",
             flexDirection: "column",
+            justifyContent: "space-between",
             alignItems: "center",
             boxSizing: "border-box",
           }}
         >
           {/* TITLE */}
-          <h5
+          <div
             style={{
-              marginBottom: 32,
               fontFamily: "Inter, sans-serif",
               fontWeight: 500,
               fontSize: 16,
@@ -124,111 +120,114 @@ export default function CCreateAccount() {
             }}
           >
             Create corporative account
-          </h5>
-
-          {/* EMAIL */}
-          <div style={{ width: "100%", marginBottom: 16 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <UserSvgIcon width={20} height={20} />
-              <div style={{ flex: 1 }}>
-                <AntdInput
-                  type="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e: any) => setEmail(e.target.value)}
-                />
-              </div>
-            </div>
           </div>
 
-          {/* PASSWORD */}
-          <div style={{ width: "100%", marginBottom: 16 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <LockSvgIcon width={20} height={20} />
-              <div style={{ flex: 1 }}>
-                <AntdInput
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e: any) => setPassword(e.target.value)}
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* CONFIRM PASSWORD */}
-          <div style={{ width: "100%", marginBottom: 20 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <LockSvgIcon width={20} height={20} />
-              <div style={{ flex: 1 }}>
-                <AntdInput
-                  type="password"
-                  placeholder="Confirm Password"
-                  value={confirmPassword}
-                  onChange={(e: any) =>
-                    setConfirmPassword(e.target.value)
-                  }
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* CHECKBOX */}
+          {/* FORM */}
           <div
             style={{
+              width: "100%",
               display: "flex",
+              flexDirection: "column",
+              gap: 18,
               alignItems: "center",
-              gap: 6,
-              fontSize: 10,
-              marginBottom: 16,
             }}
           >
-            <input
-              type="checkbox"
-              checked={acceptedTerms}
-              onChange={(e) => setAcceptedTerms(e.target.checked)}
+            {/* EMAIL */}
+            <Field
+              icon={<UserSvgIcon width={24} height={24} />}
+              placeholder="Email"
+              type="email"
+              value={email}
+              onChange={setEmail}
             />
-            <span>
-              I accept the{" "}
-              <a
-                href="#"
-                style={{ fontWeight: 600, textDecoration: "underline" }}
-              >
-                terms and conditions
-              </a>
-            </span>
+
+            {/* PASSWORD */}
+            <Field
+              icon={<LockSvgIcon width={24} height={24} />}
+              placeholder="Password"
+              type="password"
+              value={password}
+              onChange={setPassword}
+            />
+
+            {/* CONFIRM PASSWORD */}
+            <Field
+              icon={<LockSvgIcon width={24} height={24} />}
+              placeholder="Confirm Password"
+              type="password"
+              value={confirmPassword}
+              onChange={setConfirmPassword}
+            />
           </div>
 
           {/* ERROR */}
           {error && (
             <div
               style={{
-                fontSize: 11,
+                fontSize: 12,
                 color: "red",
-                marginBottom: 16,
-                textAlign: "center",
+                fontStyle: "italic",
               }}
             >
               {error}
             </div>
           )}
 
-          {/* BUTTON */}
-          <LoginButton
-            onClick={handleCreateAccount}
-            isDisabled={loading}
-            style={{ width: 248, marginBottom: 12 }}
+          {/* ACTIONS */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 14,
+            }}
           >
-            {loading ? "Creating..." : "Create account"}
-          </LoginButton>
+            {/* BUTTON — 248x37 */}
+            <LoginButton
+              onClick={handleCreateAccount}
+              isDisabled={loading}
+              style={{ width: 248, height: 37 }}
+            >
+              {loading ? "Creating..." : "Create account"}
+            </LoginButton>
 
-          {/* GOOGLE SIGNUP */}
-          <div style={{ marginBottom: 20 }}>
-            <SignInWithGoogle />
+            {/* CHECKBOX */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                fontSize: 10,
+                gap: 6,
+              }}
+            >
+              <input
+                type="checkbox"
+                checked={acceptedTerms}
+                onChange={(e) =>
+                  setAcceptedTerms(e.target.checked)
+                }
+              />
+              <span>
+                I accept the{" "}
+                <a
+                  href="#"
+                  style={{
+                    fontWeight: 600,
+                    textDecoration: "underline",
+                  }}
+                >
+                  terms and conditions
+                </a>
+              </span>
+            </div>
+
+            <SignInWithGoogle
+              style={{ width: 248, height: 37 }}
+            />
           </div>
 
           {/* FOOTER */}
-          <div style={{ fontSize: 13 }}>
+          <div style={{ fontSize: 14 }}>
             Already have account?
             <Link
               href="/c-login"
@@ -240,5 +239,44 @@ export default function CCreateAccount() {
         </div>
       </div>
     </>
+  );
+}
+
+/* ===== Field helper — 504x32 ===== */
+
+function Field({
+  icon,
+  placeholder,
+  type,
+  value,
+  onChange,
+}: {
+  icon: React.ReactNode;
+  placeholder: string;
+  type: string;
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  return (
+    <div
+      style={{
+        width: 504,
+        height: 32,
+        display: "flex",
+        alignItems: "center",
+        gap: 10,
+        paddingLeft: 25,
+        paddingRight: 25,
+        boxSizing: "border-box",
+      }}
+    >
+      {icon}
+      <AntdInput
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={(e: any) => onChange(e.target.value)}
+      />
+    </div>
   );
 }

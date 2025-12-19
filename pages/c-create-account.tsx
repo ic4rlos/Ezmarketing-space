@@ -1,5 +1,8 @@
 import * as React from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
+
+import { getSupabaseC } from "../lib/c-supabaseClient";
 
 import {
   PageParamsProvider as PageParamsProvider__,
@@ -8,50 +11,32 @@ import {
 import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
 import { PlasmicLCCreateAccount } from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount";
 
-import { getSupabaseC } from "../lib/c-supabaseClient";
-
 export default function CCreateAccount() {
   const router = useRouter();
-  const supabase = getSupabaseC();
 
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [confirmPassword, setConfirmPassword] = React.useState("");
-  const [error, setError] = React.useState<string | null>(null);
- const [loading, setLoading] = React.useState(false);
+  async function handleSubmit(formValues: any) {
+    const { email, password, confirmPassword } = formValues || {};
 
-  async function handleCreateAccount() {
-    if (loading) return;
-
-    console.log("🔹 handleCreateAccount chamada");
-    console.log("📌 STATE:", { email, password, confirmPassword });
-
-    setError(null);
-
-    if (!email || !password) {
-      console.log("❌ Email ou password vazio");
-      setError("Email and password required");
-      return;
+    if (!email || !password || !confirmPassword) {
+      throw new Error("Fill in all fields");
     }
 
-    setLoading(true);
+    if (password !== confirmPassword) {
+      throw new Error("Passwords do not match");
+    }
 
-    const { data, error } = await supabase.auth.signUp({
+    const supabase = getSupabaseC();
+
+    const { error } = await supabase.auth.signUp({
       email,
-      password,
+      password
     });
 
-    console.log("📦 Supabase data:", data);
-    console.log("⚠️ Supabase error:", error);
-
-    setLoading(false);
-
     if (error) {
-      setError(error.message);
-      return;
+      throw error;
     }
 
-    router.push("/c-edit-profile");
+    router.push("/c-login");
   }
 
   return (
@@ -61,76 +46,12 @@ export default function CCreateAccount() {
         params={router.query}
         query={router.query}
       >
+        <Head>
+          <title>Create Account</title>
+        </Head>
+
         <PlasmicLCCreateAccount
-          overrides={{
-            /* =========================
-               EMAIL (ESPIÃO)
-            ========================== */
-            email: {
-              props: {
-                value: email,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-                  console.log("🟢 EMAIL onChange:", e.target.value);
-                  setEmail(e.target.value);
-                },
-              },
-            },
-
-            /* =========================
-               PASSWORD (ESPIÃO)
-            ========================== */
-            password: {
-              props: {
-                value: password,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-                  console.log("🟢 PASSWORD onChange:", e.target.value);
-                  setPassword(e.target.value);
-                },
-              },
-            },
-
-            /* =========================
-               CONFIRM PASSWORD (ESPIÃO)
-            ========================== */
-            confirmPassword: {
-              props: {
-                value: confirmPassword,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-                  console.log(
-                    "🟡 CONFIRM PASSWORD onChange:",
-                    e.target.value
-                  );
-                  setConfirmPassword(e.target.value);
-                },
-              },
-            },
-
-            /* =========================
-               BOTÃO — DOMINADO
-            ========================== */
-            loginButton: {
-              props: {
-                type: "submit",
-                submitsForm: false, // 🔥 CRÍTICO
-                onClick: handleCreateAccount,
-                
-              },
-            },
-
-            /* =========================
-               ERRO
-            ========================== */
-            errorText: {
-              props: {
-                children: error,
-                style: {
-                  display: error ? "block" : "none",
-                  color: "red",
-                  marginTop: 8,
-                },
-              },
-            },
-          }}
+          onSubmit={handleSubmit}
         />
       </PageParamsProvider__>
     </GlobalContextsProvider>

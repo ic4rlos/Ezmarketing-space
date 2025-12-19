@@ -8,6 +8,7 @@ import { getSupabaseC } from "../lib/c-supabaseClient";
 import AntdInput from "../components/ui/AntdInput";
 import LoginButton from "../components/LoginButton";
 import SignInWithGoogle from "../components/SignInWithGoogle";
+import Checkbox from "../components/Checkbox";
 
 import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
 import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
@@ -18,6 +19,7 @@ export default function CCreateAccount() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
+  const [accepted, setAccepted] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
 
@@ -34,13 +36,15 @@ export default function CCreateAccount() {
       return;
     }
 
+    if (!accepted) {
+      setError("Accept the terms and conditions");
+      return;
+    }
+
     setLoading(true);
 
     const supabase = getSupabaseC();
-    const { error } = await supabase.auth.signUp({
-      email,
-      password
-    });
+    const { error } = await supabase.auth.signUp({ email, password });
 
     setLoading(false);
 
@@ -58,7 +62,7 @@ export default function CCreateAccount() {
         <title>Create Account</title>
       </Head>
 
-      {/* ROOT */}
+      {/* ROOT GRID (igual Plasmic) */}
       <div
         style={{
           minHeight: "100vh",
@@ -83,16 +87,16 @@ export default function CCreateAccount() {
         <div
           style={{
             width: "100%",
-            maxWidth: 608,
+            maxWidth: 860,
             height: 547,
             background: "#fff",
             borderRadius: 51,
             padding: "65px 100px",
+            boxSizing: "border-box",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            justifyContent: "space-between",
-            boxSizing: "border-box"
+            justifyContent: "space-between"
           }}
         >
           {/* TITLE */}
@@ -101,7 +105,6 @@ export default function CCreateAccount() {
               fontFamily: "Inter, sans-serif",
               fontSize: 16,
               fontWeight: 500,
-              textAlign: "center",
               margin: 0
             }}
           >
@@ -112,52 +115,40 @@ export default function CCreateAccount() {
           <div
             style={{
               width: "100%",
+              maxWidth: 608,
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-around",
-              alignItems: "center"
+              height: "100%"
             }}
           >
             {/* EMAIL */}
-            <div style={{ width: "100%", padding: "0 25px" }}>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <UserSvgIcon width={24} height={24} style={{ marginRight: 10 }} />
-                <AntdInput
-                  type="email"
-                  placeholder="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-            </div>
+            <Field
+              icon={<UserSvgIcon width={24} height={24} />}
+              value={email}
+              onChange={setEmail}
+              placeholder="email"
+              type="email"
+            />
 
             {/* PASSWORD */}
-            <div style={{ width: "100%", padding: "0 25px" }}>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <LockSvgIcon width={24} height={24} style={{ marginRight: 10 }} />
-                <AntdInput
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-            </div>
+            <Field
+              icon={<LockSvgIcon width={24} height={24} />}
+              value={password}
+              onChange={setPassword}
+              placeholder="Password"
+              type="password"
+            />
 
             {/* CONFIRM PASSWORD */}
-            <div style={{ width: "100%", padding: "0 25px" }}>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <LockSvgIcon width={24} height={24} style={{ marginRight: 10 }} />
-                <AntdInput
-                  type="password"
-                  placeholder="Confirm Password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-              </div>
-            </div>
+            <Field
+              icon={<LockSvgIcon width={24} height={24} />}
+              value={confirmPassword}
+              onChange={setConfirmPassword}
+              placeholder="Confirm Password"
+              type="password"
+            />
 
-            {/* ERROR */}
             {error && (
               <div
                 style={{
@@ -171,7 +162,6 @@ export default function CCreateAccount() {
               </div>
             )}
 
-            {/* BUTTON */}
             <LoginButton
               onClick={handleCreateAccount}
               isDisabled={loading}
@@ -180,7 +170,19 @@ export default function CCreateAccount() {
               {loading ? "Creating..." : "Create account"}
             </LoginButton>
 
-            {/* GOOGLE */}
+            <Checkbox
+              checked={accepted}
+              onChange={(v) => setAccepted(v)}
+              label={
+                <span style={{ fontSize: 10 }}>
+                  I accept the{" "}
+                  <span style={{ fontWeight: 600, textDecoration: "underline" }}>
+                    terms and conditions
+                  </span>
+                </span>
+              }
+            />
+
             <SignInWithGoogle style={{ width: 248, height: 37 }} />
           </div>
 
@@ -189,7 +191,6 @@ export default function CCreateAccount() {
             style={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
               fontSize: 14
             }}
           >
@@ -208,5 +209,35 @@ export default function CCreateAccount() {
         </div>
       </div>
     </>
+  );
+}
+
+/* ====== Helper ====== */
+
+function Field({
+  icon,
+  value,
+  onChange,
+  placeholder,
+  type
+}: {
+  icon: React.ReactNode;
+  value: string;
+  onChange: (v: string) => void;
+  placeholder: string;
+  type: string;
+}) {
+  return (
+    <div style={{ padding: "0 25px" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+        {icon}
+        <AntdInput
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+        />
+      </div>
+    </div>
   );
 }

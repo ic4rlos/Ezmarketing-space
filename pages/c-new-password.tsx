@@ -1,36 +1,31 @@
 import * as React from "react";
 import { useRouter } from "next/router";
-
-import {
-  PageParamsProvider as PageParamsProvider__,
-} from "@plasmicapp/react-web/lib/host";
-
-import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
-import { PlasmicLCNewPassword } from "../components/plasmic/ez_marketing_platform/PlasmicLCNewPassword";
-
 import { getSupabaseC } from "../lib/c-supabaseClient";
+import LoginButton from "../components/LoginButton";
+import { Input } from "antd";
+
+const AntdPassword = Input.Password;
 
 export default function CNewPassword() {
   const router = useRouter();
   const supabase = getSupabaseC();
 
-  // 🔥 FONTE ÚNICA DA VERDADE (ALPHA)
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(false);
 
-  async function handleSetNewPassword(
-    e?: React.FormEvent<HTMLFormElement> | React.MouseEvent
-  ) {
-    if (e) e.preventDefault();
-    if (loading) return;
-
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
     setError(null);
 
-    // ✅ ÚNICA validação local PERMITIDA
+    if (!password || !confirmPassword) {
+      setError("All fields are required");
+      return;
+    }
+
     if (password !== confirmPassword) {
-      setError("Passwords do not match");
+      setError("Passwords must match");
       return;
     }
 
@@ -42,7 +37,6 @@ export default function CNewPassword() {
 
     setLoading(false);
 
-    // 🔥 Supabase é o juiz final
     if (error) {
       setError(error.message);
       return;
@@ -52,72 +46,114 @@ export default function CNewPassword() {
   }
 
   return (
-    <GlobalContextsProvider>
-      <PageParamsProvider__
-        route={router.pathname}
-        params={router.query}
-        query={router.query}
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+        background: "#d9d9d9",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+        fontFamily: "Inter, sans-serif",
+      }}
+    >
+      {/* LOGO */}
+      <img
+        src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
+        alt="EZ Marketing"
+        style={{
+          width: 700,
+          height: 100,
+          marginBottom: 25,
+          objectFit: "contain",
+        }}
+      />
+
+      {/* CARD */}
+      <div
+        style={{
+          width: 800,
+          height: 547,
+          background: "#ffffff",
+          borderRadius: 51,
+          padding: "65px 100px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
       >
-        <PlasmicLCNewPassword
-          overrides={{
-            /* =========================
-               NEW PASSWORD
-            ========================== */
-            password: {
-              props: {
-                value: password,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setPassword(e.target.value),
-              },
-            },
-
-            /* =========================
-               CONFIRM PASSWORD
-            ========================== */
-            confirmPassword: {
-              props: {
-                value: confirmPassword,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setConfirmPassword(e.target.value),
-              },
-            },
-
-            /* =========================
-               FORM
-            ========================== */
-            form: {
-              props: {
-                onSubmit: handleSetNewPassword,
-                noValidate: true,
-              },
-            },
-
-            /* =========================
-               BOTÃO
-            ========================== */
-            loginButton: {
-              props: {
-                type: "submit",
-                onClick: handleSetNewPassword,
-                disabled: loading,
-              },
-            },
-
-            /* =========================
-               ERRO — SEM FILTRO
-            ========================== */
-            errorText: {
-              props: {
-                children: error,
-                style: {
-                  display: error ? "block" : "none",
-                  color: "red",
-                },
-              },
-            },
+        {/* TITLE */}
+        <h3
+          style={{
+            fontWeight: 500,
+            fontSize: 16,
+            margin: 0,
           }}
-        />
-      </PageParamsProvider__>
-    </GlobalContextsProvider>
+        >
+          Create a new password
+        </h3>
+
+        {/* FORM */}
+        <form
+          onSubmit={handleSubmit}
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            gap: 20,
+            alignItems: "center",
+          }}
+        >
+          {/* PASSWORD */}
+          <div style={{ width: 504 }}>
+            <AntdPassword
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="New password"
+              style={{ height: 32 }}
+            />
+          </div>
+
+          {/* CONFIRM PASSWORD */}
+          <div style={{ width: 504 }}>
+            <AntdPassword
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder="Confirm password"
+              style={{ height: 32 }}
+            />
+          </div>
+
+          {/* ERROR */}
+          {error && (
+            <div
+              style={{
+                fontSize: 12,
+                fontStyle: "italic",
+                color: "red",
+                marginTop: 8,
+              }}
+            >
+              {error}
+            </div>
+          )}
+
+          {/* BUTTON */}
+          <LoginButton
+            type="submit"
+            disabled={loading}
+            style={{
+              width: 248,
+              height: 37,
+              marginTop: 10,
+            }}
+          >
+            Save new password
+          </LoginButton>
+        </form>
+      </div>
+    </div>
   );
 }

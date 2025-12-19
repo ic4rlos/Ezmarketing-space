@@ -44,7 +44,10 @@ export default function CCreateAccount() {
     setLoading(true);
 
     const supabase = getSupabaseC();
-    const { error } = await supabase.auth.signUp({ email, password });
+    const { error } = await supabase.auth.signUp({
+      email,
+      password
+    });
 
     setLoading(false);
 
@@ -62,7 +65,7 @@ export default function CCreateAccount() {
         <title>Create Account</title>
       </Head>
 
-      {/* ROOT GRID — replica do .root */}
+      {/* ROOT GRID */}
       <div
         style={{
           minHeight: "100vh",
@@ -75,7 +78,6 @@ export default function CCreateAccount() {
         }}
       >
         <div style={{ gridColumn: 2, width: "100%" }}>
-
           {/* LOGO */}
           <img
             src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
@@ -89,11 +91,11 @@ export default function CCreateAccount() {
             }}
           />
 
-          {/* CARD — replica do .rectangle */}
+          {/* CARD */}
           <div
             style={{
               width: "100%",
-              maxWidth: 900,
+              maxWidth: 800, // corrigido (Plasmic real)
               height: 547,
               background: "#fff",
               borderRadius: 51,
@@ -102,7 +104,9 @@ export default function CCreateAccount() {
               flexDirection: "column",
               justifyContent: "space-between",
               alignItems: "center",
-              margin: "0 auto"
+              margin: "0 auto",
+              position: "relative",
+              top: 12 // desce levemente para evitar bug visual
             }}
           >
             {/* TITLE */}
@@ -126,7 +130,6 @@ export default function CCreateAccount() {
                 gap: 18
               }}
             >
-              {/* EMAIL */}
               <Field
                 icon={<UserSvgIcon width={24} height={24} />}
                 placeholder="email"
@@ -135,7 +138,6 @@ export default function CCreateAccount() {
                 onChange={setEmail}
               />
 
-              {/* PASSWORD */}
               <Field
                 icon={<LockSvgIcon width={24} height={24} />}
                 placeholder="Password"
@@ -144,7 +146,6 @@ export default function CCreateAccount() {
                 onChange={setPassword}
               />
 
-              {/* CONFIRM PASSWORD */}
               <Field
                 icon={<LockSvgIcon width={24} height={24} />}
                 placeholder="Confirm Password"
@@ -156,12 +157,19 @@ export default function CCreateAccount() {
 
             {/* ERROR */}
             {error && (
-              <div style={{ fontSize: 12, color: "red", fontStyle: "italic" }}>
+              <div
+                style={{
+                  fontSize: 12,
+                  color: "red",
+                  fontStyle: "italic",
+                  textAlign: "center"
+                }}
+              >
                 {error}
               </div>
             )}
 
-            {/* BUTTONS */}
+            {/* ACTIONS */}
             <div
               style={{
                 display: "flex",
@@ -178,9 +186,9 @@ export default function CCreateAccount() {
                 {loading ? "Creating..." : "Create account"}
               </LoginButton>
 
-              {/* CHECKBOX — reintroduzido */}
+              {/* PLASMIC CHECKBOX */}
               <Checkbox
-                checked={acceptedTerms}
+                value={acceptedTerms}
                 onChange={(v) => setAcceptedTerms(v)}
                 label={
                   <span style={{ fontSize: 10 }}>

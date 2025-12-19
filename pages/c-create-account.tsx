@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
-// Client-only UI (AntD / custom)
+// Client-only UI
 const AntdInput = dynamic(
   () => import("../components/ui/AntdInput"),
   { ssr: false }
@@ -14,6 +14,11 @@ const AntdInput = dynamic(
 
 const LoginButton = dynamic(
   () => import("../components/LoginButton"),
+  { ssr: false }
+);
+
+const SignInWithGoogle = dynamic(
+  () => import("../components/SignInWithGoogle"),
   { ssr: false }
 );
 
@@ -87,20 +92,21 @@ export default function CCreateAccount() {
           src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
           alt="ezmarketing"
           style={{
-            width: 360,
-            maxWidth: "90%",
-            marginBottom: 32,
+            width: 700,
+            height: 100,
+            objectFit: "contain",
+            marginBottom: 40,
           }}
         />
 
         {/* CARD */}
         <div
           style={{
-            width: 640,
+            width: 800,
             maxWidth: "90%",
             background: "#fff",
             borderRadius: 48,
-            padding: "56px 40px",
+            padding: "56px 48px",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -127,7 +133,7 @@ export default function CCreateAccount() {
               <div style={{ flex: 1 }}>
                 <AntdInput
                   type="email"
-                  placeholder="email"
+                  placeholder="Email"
                   value={email}
                   onChange={(e: any) => setEmail(e.target.value)}
                 />
@@ -167,7 +173,7 @@ export default function CCreateAccount() {
             </div>
           </div>
 
-          {/* CHECKBOX — HTML NATIVO, POSICIONADO COMO NO PLASMIC */}
+          {/* CHECKBOX */}
           <div
             style={{
               display: "flex",
@@ -180,18 +186,13 @@ export default function CCreateAccount() {
             <input
               type="checkbox"
               checked={acceptedTerms}
-              onChange={(e) =>
-                setAcceptedTerms(e.target.checked)
-              }
+              onChange={(e) => setAcceptedTerms(e.target.checked)}
             />
             <span>
               I accept the{" "}
               <a
                 href="#"
-                style={{
-                  fontWeight: 600,
-                  textDecoration: "underline",
-                }}
+                style={{ fontWeight: 600, textDecoration: "underline" }}
               >
                 terms and conditions
               </a>
@@ -216,10 +217,15 @@ export default function CCreateAccount() {
           <LoginButton
             onClick={handleCreateAccount}
             isDisabled={loading}
-            style={{ width: 248, marginBottom: 16 }}
+            style={{ width: 248, marginBottom: 12 }}
           >
             {loading ? "Creating..." : "Create account"}
           </LoginButton>
+
+          {/* GOOGLE SIGNUP */}
+          <div style={{ marginBottom: 20 }}>
+            <SignInWithGoogle />
+          </div>
 
           {/* FOOTER */}
           <div style={{ fontSize: 13 }}>

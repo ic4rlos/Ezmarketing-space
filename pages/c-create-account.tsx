@@ -18,7 +18,7 @@ export default function CCreateAccount() {
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [error, setError] = React.useState<string | null>(null);
- 
+ const [loading, setLoading] = React.useState(false);
 
   async function handleCreateAccount() {
     if (loading) return;

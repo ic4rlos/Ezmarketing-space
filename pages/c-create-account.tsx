@@ -37,7 +37,10 @@ export default function CCreateAccount() {
     setLoading(true);
 
     const supabase = getSupabaseC();
-    const { error } = await supabase.auth.signUp({ email, password });
+    const { error } = await supabase.auth.signUp({
+      email,
+      password
+    });
 
     setLoading(false);
 
@@ -55,14 +58,13 @@ export default function CCreateAccount() {
         <title>Create Account</title>
       </Head>
 
-      {/* ROOT */}
       <div
         style={{
           minHeight: "100vh",
           background: "#d9d9d9",
-          display: "grid",
-          placeItems: "center",
-          gridAutoRows: "min-content"
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center"
         }}
       >
         {/* LOGO */}
@@ -71,8 +73,9 @@ export default function CCreateAccount() {
           alt="ezmarketing"
           style={{
             width: 700,
+            maxWidth: "90%",
             height: 100,
-            objectFit: "cover",
+            marginTop: 40,
             marginBottom: 25
           }}
         />
@@ -81,76 +84,121 @@ export default function CCreateAccount() {
         <div
           style={{
             width: "100%",
-            maxWidth: 860,
-            height: 547,
+            maxWidth: 900,
             background: "#fff",
             borderRadius: 51,
             padding: "65px 100px",
-            boxSizing: "border-box",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            justifyContent: "space-between",
-            marginTop: 10 // 🔧 leve ajuste vertical
+            boxSizing: "border-box",
+            marginTop: 20 // ⬅️ card levemente mais para baixo
           }}
         >
-          <h6 style={{ fontWeight: 500, margin: 0 }}>
+          {/* TITLE */}
+          <h6
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontWeight: 500,
+              fontSize: 16,
+              marginBottom: 40,
+              textAlign: "center"
+            }}
+          >
             Create corporative account
           </h6>
 
-          <div
-            style={{
-              width: "100%",
-              maxWidth: 608,
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-around",
-              height: "100%",
-              alignItems: "center" // 🔧 centraliza tudo melhor
-            }}
-          >
-            <Field
-              icon={<UserSvgIcon width={24} height={24} />}
-              value={email}
-              onChange={setEmail}
-              placeholder="email"
-              type="email"
-            />
-
-            <Field
-              icon={<LockSvgIcon width={24} height={24} />}
-              value={password}
-              onChange={setPassword}
-              placeholder="Password"
-              type="password"
-            />
-
-            <Field
-              icon={<LockSvgIcon width={24} height={24} />}
-              value={confirmPassword}
-              onChange={setConfirmPassword}
-              placeholder="Confirm Password"
-              type="password"
-            />
-
-            {error && (
-              <div style={{ fontSize: 12, color: "red" }}>{error}</div>
-            )}
-
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
-              <LoginButton
-                onClick={handleCreateAccount}
-                isDisabled={loading}
-                style={{ width: 248, height: 37 }}
-              >
-                {loading ? "Creating..." : "Create account"}
-              </LoginButton>
-
-              <SignInWithGoogle style={{ width: 248, height: 37 }} />
+          {/* EMAIL */}
+          <div style={{ width: "100%", marginBottom: 20 }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+                paddingLeft: 25,
+                paddingRight: 25
+              }}
+            >
+              <UserSvgIcon width={24} height={24} />
+              <AntdInput
+                type="email"
+                placeholder="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
           </div>
 
-          <div style={{ fontSize: 14 }}>
+          {/* PASSWORD */}
+          <div style={{ width: "100%", marginBottom: 20 }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+                paddingLeft: 25,
+                paddingRight: 25
+              }}
+            >
+              <LockSvgIcon width={24} height={24} />
+              <AntdInput
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+          </div>
+
+          {/* CONFIRM PASSWORD */}
+          <div style={{ width: "100%", marginBottom: 40 }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+                paddingLeft: 25,
+                paddingRight: 25
+              }}
+            >
+              <LockSvgIcon width={24} height={24} />
+              <AntdInput
+                type="password"
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+            </div>
+          </div>
+
+          {/* ERROR */}
+          {error && (
+            <div
+              style={{
+                fontSize: 12,
+                color: "red",
+                marginBottom: 16,
+                textAlign: "center",
+                fontStyle: "italic"
+              }}
+            >
+              {error}
+            </div>
+          )}
+
+          {/* BUTTONS */}
+          <LoginButton
+            onClick={handleCreateAccount}
+            isDisabled={loading}
+            style={{ width: 248, marginBottom: 16 }}
+          >
+            {loading ? "Creating..." : "Create account"}
+          </LoginButton>
+
+          <SignInWithGoogle style={{ width: 248, marginBottom: 20 }} />
+
+          {/* FOOTER */}
+          <div style={{ fontSize: 14, textAlign: "center" }}>
             Already have account?
             <Link href="/c-login" style={{ marginLeft: 4, fontWeight: 600 }}>
               Log in
@@ -159,21 +207,5 @@ export default function CCreateAccount() {
         </div>
       </div>
     </>
-  );
-}
-
-function Field({ icon, value, onChange, placeholder, type }: any) {
-  return (
-    <div style={{ width: "100%", padding: "0 25px" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-        {icon}
-        <AntdInput
-          type={type}
-          placeholder={placeholder}
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-        />
-      </div>
-    </div>
   );
 }

@@ -8,7 +8,6 @@ import { getSupabaseC } from "../lib/c-supabaseClient";
 import AntdInput from "../components/ui/AntdInput";
 import LoginButton from "../components/LoginButton";
 import SignInWithGoogle from "../components/SignInWithGoogle";
-import Checkbox from "../components/Checkbox";
 
 import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
 import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
@@ -19,7 +18,6 @@ export default function CCreateAccount() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
-  const [accepted, setAccepted] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
 
@@ -33,11 +31,6 @@ export default function CCreateAccount() {
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
-      return;
-    }
-
-    if (!accepted) {
-      setError("Accept the terms and conditions");
       return;
     }
 
@@ -62,7 +55,7 @@ export default function CCreateAccount() {
         <title>Create Account</title>
       </Head>
 
-      {/* ROOT GRID (igual Plasmic) */}
+      {/* ROOT GRID */}
       <div
         style={{
           minHeight: "100vh",
@@ -122,7 +115,6 @@ export default function CCreateAccount() {
               height: "100%"
             }}
           >
-            {/* EMAIL */}
             <Field
               icon={<UserSvgIcon width={24} height={24} />}
               value={email}
@@ -131,7 +123,6 @@ export default function CCreateAccount() {
               type="email"
             />
 
-            {/* PASSWORD */}
             <Field
               icon={<LockSvgIcon width={24} height={24} />}
               value={password}
@@ -140,7 +131,6 @@ export default function CCreateAccount() {
               type="password"
             />
 
-            {/* CONFIRM PASSWORD */}
             <Field
               icon={<LockSvgIcon width={24} height={24} />}
               value={confirmPassword}
@@ -169,19 +159,6 @@ export default function CCreateAccount() {
             >
               {loading ? "Creating..." : "Create account"}
             </LoginButton>
-
-            <Checkbox
-              checked={accepted}
-              onChange={(v) => setAccepted(v)}
-              label={
-                <span style={{ fontSize: 10 }}>
-                  I accept the{" "}
-                  <span style={{ fontWeight: 600, textDecoration: "underline" }}>
-                    terms and conditions
-                  </span>
-                </span>
-              }
-            />
 
             <SignInWithGoogle style={{ width: 248, height: 37 }} />
           </div>
@@ -212,7 +189,7 @@ export default function CCreateAccount() {
   );
 }
 
-/* ====== Helper ====== */
+/* ===== Helper ===== */
 
 function Field({
   icon,

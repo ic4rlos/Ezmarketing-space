@@ -1,59 +1,212 @@
 import * as React from "react";
 import Head from "next/head";
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
-import {
-  PageParamsProvider as PageParamsProvider__,
-} from "@plasmicapp/react-web/lib/host";
+import AntdInput from "../components/ui/AntdInput";
+import LoginButton from "../components/LoginButton";
+import SignInWithGoogle from "../components/SignInWithGoogle";
 
-import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
-import { PlasmicLCCreateAccount } from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount";
+import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
+import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
 
 export default function CCreateAccount() {
   const router = useRouter();
 
-  async function handleSubmit(formValues: any) {
-    const { email, password, confirmPassword } = formValues || {};
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [confirmPassword, setConfirmPassword] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
+
+  async function handleCreateAccount() {
+    setError(null);
 
     if (!email || !password || !confirmPassword) {
-      throw new Error("Fill in all fields");
+      setError("Fill in all fields");
+      return;
     }
 
     if (password !== confirmPassword) {
-      throw new Error("Passwords do not match");
+      setError("Passwords do not match");
+      return;
     }
 
-    const supabase = getSupabaseC();
+    setLoading(true);
 
+    const supabase = getSupabaseC();
     const { error } = await supabase.auth.signUp({
       email,
       password
     });
 
+    setLoading(false);
+
     if (error) {
-      throw error;
+      setError(error.message);
+      return;
     }
 
     router.push("/c-login");
   }
 
   return (
-    <GlobalContextsProvider>
-      <PageParamsProvider__
-        route={router.pathname}
-        params={router.query}
-        query={router.query}
-      >
-        <Head>
-          <title>Create Account</title>
-        </Head>
+    <>
+      <Head>
+        <title>Create Account</title>
+      </Head>
 
-        <PlasmicLCCreateAccount
-          onSubmit={handleSubmit}
+      {/* ROOT */}
+      <div
+        style={{
+          minHeight: "100vh",
+          background: "#d9d9d9",
+          display: "grid",
+          placeItems: "center"
+        }}
+      >
+        {/* LOGO */}
+        <img
+          src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
+          alt="ezmarketing"
+          style={{
+            width: 700,
+            height: 100,
+            objectFit: "cover",
+            marginBottom: 25
+          }}
         />
-      </PageParamsProvider__>
-    </GlobalContextsProvider>
+
+        {/* CARD */}
+        <div
+          style={{
+            width: "100%",
+            maxWidth: 608,
+            height: 547,
+            background: "#fff",
+            borderRadius: 51,
+            padding: "65px 100px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "space-between",
+            boxSizing: "border-box"
+          }}
+        >
+          {/* TITLE */}
+          <h6
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontSize: 16,
+              fontWeight: 500,
+              textAlign: "center",
+              margin: 0
+            }}
+          >
+            Create corporative account
+          </h6>
+
+          {/* FORM */}
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-around",
+              alignItems: "center"
+            }}
+          >
+            {/* EMAIL */}
+            <div style={{ width: "100%", padding: "0 25px" }}>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <UserSvgIcon width={24} height={24} style={{ marginRight: 10 }} />
+                <AntdInput
+                  type="email"
+                  placeholder="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+            </div>
+
+            {/* PASSWORD */}
+            <div style={{ width: "100%", padding: "0 25px" }}>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <LockSvgIcon width={24} height={24} style={{ marginRight: 10 }} />
+                <AntdInput
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+            </div>
+
+            {/* CONFIRM PASSWORD */}
+            <div style={{ width: "100%", padding: "0 25px" }}>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <LockSvgIcon width={24} height={24} style={{ marginRight: 10 }} />
+                <AntdInput
+                  type="password"
+                  placeholder="Confirm Password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+              </div>
+            </div>
+
+            {/* ERROR */}
+            {error && (
+              <div
+                style={{
+                  fontSize: 12,
+                  color: "red",
+                  fontStyle: "italic",
+                  textAlign: "center"
+                }}
+              >
+                {error}
+              </div>
+            )}
+
+            {/* BUTTON */}
+            <LoginButton
+              onClick={handleCreateAccount}
+              isDisabled={loading}
+              style={{ width: 248, height: 37 }}
+            >
+              {loading ? "Creating..." : "Create account"}
+            </LoginButton>
+
+            {/* GOOGLE */}
+            <SignInWithGoogle style={{ width: 248, height: 37 }} />
+          </div>
+
+          {/* FOOTER */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 14
+            }}
+          >
+            <span>Already have account?</span>
+            <Link
+              href="/c-login"
+              style={{
+                marginLeft: 4,
+                fontWeight: 600,
+                textDecoration: "underline"
+              }}
+            >
+              Log in
+            </Link>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

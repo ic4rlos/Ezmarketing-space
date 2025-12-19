@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import { Checkbox } from "antd";
 
 import { getSupabaseC } from "../lib/c-supabaseClient";
-
 import AntdInput from "../components/ui/AntdInput";
 import LoginButton from "../components/LoginButton";
 
@@ -25,7 +24,7 @@ export default function CreateAccountPage() {
     setError(null);
 
     if (!acceptedTerms) {
-      setError("Você precisa aceitar os termos para continuar.");
+      setError("You must accept the terms to continue.");
       return;
     }
 
@@ -49,7 +48,7 @@ export default function CreateAccountPage() {
   return (
     <>
       <Head>
-        <title>Criar conta</title>
+        <title>Create account</title>
       </Head>
 
       <div
@@ -70,51 +69,59 @@ export default function CreateAccountPage() {
           }}
         >
           <h1 style={{ fontSize: 26, marginBottom: 24 }}>
-            Criar conta
+            Create account
           </h1>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-            <AntdInput
-              label="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+            {/* EMAIL */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              <label>Email</label>
+              <AntdInput
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
 
-            <AntdInput
-              label="Senha"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            {/* PASSWORD */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              <label>Password</label>
+              <AntdInput
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
 
-            {/* CHECKBOX — ANT DESIGN (CORRETO) */}
+            {/* CHECKBOX — ANT DESIGN */}
             <Checkbox
               checked={acceptedTerms}
               onChange={(e) => setAcceptedTerms(e.target.checked)}
             >
               <span style={{ fontSize: 10 }}>
-                Eu aceito os termos de uso e política de privacidade
+                I accept the terms of use and privacy policy
               </span>
             </Checkbox>
 
+            {/* ERROR */}
             {error && (
               <div className={styles.errorText}>
                 {error}
               </div>
             )}
 
+            {/* BUTTON */}
             <div style={{ display: "flex", justifyContent: "center" }}>
               <LoginButton
                 loading={loading}
                 onClick={handleCreateAccount}
               >
-                Criar conta
+                Create account
               </LoginButton>
             </div>
 
             <div style={{ textAlign: "center", fontSize: 12 }}>
-              Já tem conta?{" "}
-              <Link href="/c-login">Entrar</Link>
+              Already have an account?{" "}
+              <Link href="/c-login">Sign in</Link>
             </div>
           </div>
         </div>

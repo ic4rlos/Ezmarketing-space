@@ -95,7 +95,7 @@ export default function CCreateAccount() {
           <div
             style={{
               width: "100%",
-              maxWidth: 800, // corrigido (Plasmic real)
+              maxWidth: 800,
               height: 547,
               background: "#fff",
               borderRadius: 51,
@@ -106,7 +106,7 @@ export default function CCreateAccount() {
               alignItems: "center",
               margin: "0 auto",
               position: "relative",
-              top: 12 // desce levemente para evitar bug visual
+              top: 12
             }}
           >
             {/* TITLE */}
@@ -186,10 +186,11 @@ export default function CCreateAccount() {
                 {loading ? "Creating..." : "Create account"}
               </LoginButton>
 
-              {/* PLASMIC CHECKBOX */}
+              {/* ✅ PLASMIC CHECKBOX — CORRETO */}
               <Checkbox
-                value={acceptedTerms}
-                onChange={(v) => setAcceptedTerms(v)}
+                value="accept-terms"
+                isChecked={acceptedTerms}
+                onChange={(checked) => setAcceptedTerms(checked)}
                 label={
                   <span style={{ fontSize: 10 }}>
                     I accept the{" "}

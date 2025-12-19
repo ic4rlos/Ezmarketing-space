@@ -8,8 +8,6 @@ import { getSupabaseC } from "../lib/c-supabaseClient";
 import AntdInput from "../components/ui/AntdInput";
 import LoginButton from "../components/LoginButton";
 
-import styles from "../components/plasmic/projectcss.module.css";
-
 export default function CreateAccountPage() {
   const router = useRouter();
   const supabase = getSupabaseC();
@@ -71,6 +69,7 @@ export default function CreateAccountPage() {
             padding: 40,
             borderRadius: 24,
             background: "#fff",
+            marginTop: 20, // leve ajuste para não colar no topo
           }}
         >
           <h1 style={{ fontSize: 26, marginBottom: 32 }}>
@@ -107,9 +106,15 @@ export default function CreateAccountPage() {
               </span>
             </Checkbox>
 
-            {/* ERROR */}
+            {/* ERROR MESSAGE */}
             {error && (
-              <div className={styles.errorText}>
+              <div
+                style={{
+                  color: "#d32f2f",
+                  fontSize: 12,
+                  textAlign: "center",
+                }}
+              >
                 {error}
               </div>
             )}

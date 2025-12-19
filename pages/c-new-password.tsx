@@ -1,5 +1,7 @@
 import * as React from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
+
 import {
   PageParamsProvider as PageParamsProvider__,
 } from "@plasmicapp/react-web/lib/host";
@@ -13,16 +15,28 @@ export default function CNewPassword() {
   const router = useRouter();
   const supabase = getSupabaseC();
 
+  /* =========================
+     STATE — ALPHA STYLE
+  ========================== */
   const [email, setEmail] = React.useState("");
-  const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
 
+  /* =========================
+     HANDLER — FONTE DE VERDADE
+  ========================== */
   async function handleRequestReset(
     e?: React.FormEvent<HTMLFormElement> | React.MouseEvent
   ) {
     if (e) e.preventDefault();
 
     setError(null);
+
+    if (!email) {
+      setError("Enter a valid email");
+      return;
+    }
+
     setLoading(true);
 
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
@@ -36,67 +50,76 @@ export default function CNewPassword() {
       return;
     }
 
-    // sucesso → segue o fluxo
     router.push("/c-code-verification-new-password");
   }
 
+  /* =========================
+     RENDER — VIEW ONLY
+  ========================== */
   return (
-    <GlobalContextsProvider>
-      <PageParamsProvider__
-        route={router.pathname}
-        params={router.query}
-        query={router.query}
-      >
-        <PlasmicLCNewPassword
-          overrides={{
-            /* =========================
-               INPUT EMAIL
-            ========================== */
-            email: {
-              props: {
-                value: email,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setEmail(e.target.value),
-              },
-            },
+    <>
+      <Head>
+        <title>New password</title>
+      </Head>
 
-            /* =========================
-               FORM
-            ========================== */
-            form: {
-              props: {
-                onSubmit: handleRequestReset,
-                noValidate: true,
-              },
-            },
-
-            /* =========================
-               BOTÃO SUBMIT
-            ========================== */
-            submitButton: {
-              props: {
-                type: "submit",
-                onClick: handleRequestReset,
-                disabled: loading,
-              },
-            },
-
-            /* =========================
-               TEXTO DE ERRO
-            ========================== */
-            errorText: {
-              props: {
-                children: error,
-                style: {
-                  display: error ? "block" : "none",
-                  color: "red",
-                  marginTop: 8,
+      <GlobalContextsProvider>
+        <PageParamsProvider__
+          route={router.pathname}
+          params={router.query}
+          query={router.query}
+        >
+          <PlasmicLCNewPassword
+            overrides={{
+              /* =========================
+                 EMAIL INPUT
+              ========================== */
+              email: {
+                props: {
+                  value: email,
+                  type: "email",
+                  placeholder: "Email",
+                  onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                    setEmail(e.target.value),
                 },
               },
-            },
-          }}
-        />
-      </PageParamsProvider__>
-    </GlobalContextsProvider>
+
+              /* =========================
+                 FORM
+              ========================== */
+              form: {
+                props: {
+                  onSubmit: handleRequestReset,
+                  noValidate: true,
+                },
+              },
+
+              /* =========================
+                 SUBMIT BUTTON
+              ========================== */
+              loginButton: {
+                props: {
+                  onClick: handleRequestReset,
+                  disabled: loading,
+                },
+                children: loading ? "Sending..." : "Send recovery email",
+              },
+
+              /* =========================
+                 ERROR TEXT
+              ========================== */
+              errorText: {
+                props: {
+                  children: error,
+                  style: {
+                    display: error ? "block" : "none",
+                    color: "red",
+                  },
+                },
+              },
+            }}
+          />
+        </PageParamsProvider__>
+      </GlobalContextsProvider>
+    </>
   );
 }

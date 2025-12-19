@@ -23,6 +23,11 @@ export default function CreateAccountPage() {
   async function handleCreateAccount() {
     setError(null);
 
+    if (!email || !password) {
+      setError("Please fill in all fields.");
+      return;
+    }
+
     if (!acceptedTerms) {
       setError("You must accept the terms to continue.");
       return;
@@ -56,19 +61,19 @@ export default function CreateAccountPage() {
           minHeight: "100vh",
           display: "grid",
           placeItems: "center",
+          background: "#f2f2f2",
         }}
       >
         <div
           style={{
             width: "100%",
             maxWidth: 800,
-            padding: 32,
-            borderRadius: 12,
+            padding: 40,
+            borderRadius: 24,
             background: "#fff",
-            boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
           }}
         >
-          <h1 style={{ fontSize: 26, marginBottom: 24 }}>
+          <h1 style={{ fontSize: 26, marginBottom: 32 }}>
             Create account
           </h1>
 
@@ -92,7 +97,7 @@ export default function CreateAccountPage() {
               />
             </div>
 
-            {/* CHECKBOX — ANT DESIGN */}
+            {/* CHECKBOX */}
             <Checkbox
               checked={acceptedTerms}
               onChange={(e) => setAcceptedTerms(e.target.checked)}
@@ -112,10 +117,10 @@ export default function CreateAccountPage() {
             {/* BUTTON */}
             <div style={{ display: "flex", justifyContent: "center" }}>
               <LoginButton
-                loading={loading}
+                isDisabled={loading}
                 onClick={handleCreateAccount}
               >
-                Create account
+                {loading ? "Creating..." : "Create account"}
               </LoginButton>
             </div>
 

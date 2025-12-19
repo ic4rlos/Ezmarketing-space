@@ -1,8 +1,8 @@
 import * as React from "react";
 import { useRouter } from "next/router";
-import { getSupabaseC } from "../lib/c-supabaseClient";
-import LoginButton from "../components/LoginButton";
 import { Input } from "antd";
+import LoginButton from "../components/LoginButton";
+import { getSupabaseC } from "../lib/c-supabaseClient";
 
 const AntdPassword = Input.Password;
 
@@ -52,9 +52,9 @@ export default function CNewPassword() {
         height: "100vh",
         background: "#d9d9d9",
         display: "flex",
+        flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        flexDirection: "column",
         fontFamily: "Inter, sans-serif",
       }}
     >
@@ -102,11 +102,10 @@ export default function CNewPassword() {
             width: "100%",
             display: "flex",
             flexDirection: "column",
-            gap: 20,
             alignItems: "center",
+            gap: 20,
           }}
         >
-          {/* PASSWORD */}
           <div style={{ width: 504 }}>
             <AntdPassword
               value={password}
@@ -116,7 +115,6 @@ export default function CNewPassword() {
             />
           </div>
 
-          {/* CONFIRM PASSWORD */}
           <div style={{ width: 504 }}>
             <AntdPassword
               value={confirmPassword}
@@ -126,7 +124,6 @@ export default function CNewPassword() {
             />
           </div>
 
-          {/* ERROR */}
           {error && (
             <div
               style={{
@@ -140,10 +137,9 @@ export default function CNewPassword() {
             </div>
           )}
 
-          {/* BUTTON */}
           <LoginButton
             type="submit"
-            disabled={loading}
+            isDisabled={loading}   // ✅ API CORRETA DO ALPHA
             style={{
               width: 248,
               height: 37,

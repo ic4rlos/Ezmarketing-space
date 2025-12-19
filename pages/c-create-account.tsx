@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
-// 🔥 CLIENT-ONLY COMPONENTS
+// Client-only UI
 const AntdInput = dynamic(
   () => import("../components/ui/AntdInput"),
   { ssr: false }
@@ -14,14 +14,6 @@ const AntdInput = dynamic(
 
 const LoginButton = dynamic(
   () => import("../components/LoginButton"),
-  { ssr: false }
-);
-
-const Checkbox = dynamic(
-  () =>
-    import(
-      "../components/plasmic/blank_project/PlasmicCheckbox"
-    ),
   { ssr: false }
 );
 
@@ -100,42 +92,51 @@ export default function CreateAccountPage() {
             }}
           >
             <AntdInput
+              placeholder="Email"
               value={email}
               onChange={(e: any) =>
                 setEmail(e.target.value)
               }
-              placeholder="Email"
             />
 
             <AntdInput
               type="password"
+              placeholder="Password"
               value={password}
               onChange={(e: any) =>
                 setPassword(e.target.value)
               }
-              placeholder="Password"
             />
 
-            <Checkbox
-              value={acceptedTerms}
-              onChange={(v: boolean) =>
-                setAcceptedTerms(v)
-              }
-              label={
-                <span style={{ fontSize: 10 }}>
-                  I accept the{" "}
-                  <a
-                    href="#"
-                    style={{
-                      fontWeight: 600,
-                      textDecoration: "underline",
-                    }}
-                  >
-                    terms and conditions
-                  </a>
-                </span>
-              }
-            />
+            {/* ✅ CHECKBOX NATIVO (CONTROLADO) */}
+            <label
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 8,
+                fontSize: 10,
+              }}
+            >
+              <input
+                type="checkbox"
+                checked={acceptedTerms}
+                onChange={(e) =>
+                  setAcceptedTerms(e.target.checked)
+                }
+              />
+              <span>
+                I accept the{" "}
+                <a
+                  href="#"
+                  style={{
+                    fontWeight: 600,
+                    textDecoration: "underline",
+                  }}
+                >
+                  terms and conditions
+                </a>
+              </span>
+            </label>
 
             {error && (
               <div

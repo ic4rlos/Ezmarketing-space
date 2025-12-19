@@ -1,16 +1,13 @@
 import * as React from "react";
 import Head from "next/head";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
+import { PlasmicLCCreateAccount } from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount";
+
 import AntdInput from "../components/ui/AntdInput";
 import LoginButton from "../components/LoginButton";
-import SignInWithGoogle from "../components/SignInWithGoogle";
-
-import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
-import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
 
 export default function CCreateAccount() {
   const router = useRouter();
@@ -58,157 +55,67 @@ export default function CCreateAccount() {
         <title>Create Account</title>
       </Head>
 
-      {/* PAGE */}
-      <div
-        style={{
-          minHeight: "100vh",
-          background: "#d9d9d9",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center"
-        }}
-      >
-        {/* LOGO */}
-        <img
-          src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
-          alt="ezmarketing"
-          style={{
-            width: 520,
-            maxWidth: "90%",
-            marginBottom: 40
-          }}
-        />
+      <PlasmicLCCreateAccount
+        overrides={{
+          // EMAIL
+          email: {
+            as: AntdInput,
+            props: {
+              type: "email",
+              placeholder: "email",
+              value: email,
+              onChange: (e: any) => setEmail(e.target.value)
+            }
+          },
 
-        {/* CARD */}
-        <div
-          style={{
-            width: 620,
-            maxWidth: "90%",
-            background: "#fff",
-            borderRadius: 51,
-            padding: "64px 96px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            boxSizing: "border-box"
-          }}
-        >
-          {/* TITLE */}
-          <h5
-            style={{
-              marginBottom: 40,
-              fontWeight: 500,
-              textAlign: "center"
-            }}
-          >
-            Create corporative account
-          </h5>
+          // PASSWORD
+          password: {
+            as: AntdInput,
+            props: {
+              type: "password",
+              placeholder: "Password",
+              value: password,
+              onChange: (e: any) => setPassword(e.target.value)
+            }
+          },
 
-          {/* EMAIL */}
-          <div style={{ width: "100%", marginBottom: 20 }}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 12,
-                paddingLeft: 24
-              }}
-            >
-              <UserSvgIcon width={22} height={22} />
-              <span style={{ opacity: 0.6 }}>:</span>
-              <div style={{ flex: 1 }}>
-                <AntdInput
-                  type="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-            </div>
-          </div>
+          // CONFIRM PASSWORD
+          confirmPassword: {
+            as: AntdInput,
+            props: {
+              type: "password",
+              placeholder: "Confirm Password",
+              value: confirmPassword,
+              onChange: (e: any) =>
+                setConfirmPassword(e.target.value)
+            }
+          },
 
-          {/* PASSWORD */}
-          <div style={{ width: "100%", marginBottom: 20 }}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 12,
-                paddingLeft: 24
-              }}
-            >
-              <LockSvgIcon width={22} height={22} />
-              <span style={{ opacity: 0.6 }}>:</span>
-              <div style={{ flex: 1 }}>
-                <AntdInput
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* CONFIRM PASSWORD */}
-          <div style={{ width: "100%", marginBottom: 32 }}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 12,
-                paddingLeft: 24
-              }}
-            >
-              <LockSvgIcon width={22} height={22} />
-              <span style={{ opacity: 0.6 }}>:</span>
-              <div style={{ flex: 1 }}>
-                <AntdInput
-                  type="password"
-                  placeholder="Confirm Password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* ERROR */}
-          {error && (
-            <div
-              style={{
-                fontSize: 12,
+          // ERROR TEXT
+          errorText: {
+            props: {
+              children: error ?? null,
+              style: {
+                display: error ? "block" : "none",
                 color: "red",
-                marginBottom: 20,
-                textAlign: "center"
-              }}
-            >
-              {error}
-            </div>
-          )}
+                fontSize: 12
+              }
+            }
+          },
 
-          {/* BUTTON */}
-          <LoginButton
-            onClick={handleCreateAccount}
-            isDisabled={loading}
-            style={{ width: 260, marginBottom: 20 }}
-          >
-            {loading ? "Creating..." : "Create account"}
-          </LoginButton>
-
-          {/* GOOGLE */}
-          <SignInWithGoogle style={{ width: 260, marginBottom: 28 }} />
-
-          {/* FOOTER */}
-          <div style={{ fontSize: 14 }}>
-            Already have account?
-            <Link href="/c-login" style={{ marginLeft: 6, fontWeight: 600 }}>
-              Log in
-            </Link>
-          </div>
-        </div>
-      </div>
+          // BUTTON
+          loginButton: {
+            as: LoginButton,
+            props: {
+              onClick: handleCreateAccount,
+              isDisabled: loading,
+              children: loading
+                ? "Creating..."
+                : "Create account"
+            }
+          }
+        }}
+      />
     </>
   );
 }

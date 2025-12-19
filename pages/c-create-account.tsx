@@ -2,11 +2,28 @@ import * as React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Checkbox } from "antd";
+import dynamic from "next/dynamic";
 
 import { getSupabaseC } from "../lib/c-supabaseClient";
-import AntdInput from "../components/ui/AntdInput";
-import LoginButton from "../components/LoginButton";
+
+// 🔥 CLIENT-ONLY COMPONENTS
+const AntdInput = dynamic(
+  () => import("../components/ui/AntdInput"),
+  { ssr: false }
+);
+
+const LoginButton = dynamic(
+  () => import("../components/LoginButton"),
+  { ssr: false }
+);
+
+const Checkbox = dynamic(
+  () =>
+    import(
+      "../components/plasmic/blank_project/PlasmicCheckbox"
+    ),
+  { ssr: false }
+);
 
 export default function CreateAccountPage() {
   const router = useRouter();
@@ -15,19 +32,19 @@ export default function CreateAccountPage() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [acceptedTerms, setAcceptedTerms] = React.useState(false);
-  const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
 
   async function handleCreateAccount() {
     setError(null);
 
     if (!email || !password) {
-      setError("Please fill in all fields.");
+      setError("All fields are required.");
       return;
     }
 
     if (!acceptedTerms) {
-      setError("You must accept the terms to continue.");
+      setError("You must accept the terms and conditions.");
       return;
     }
 
@@ -59,79 +76,105 @@ export default function CreateAccountPage() {
           minHeight: "100vh",
           display: "grid",
           placeItems: "center",
-          background: "#f2f2f2",
         }}
       >
         <div
           style={{
             width: "100%",
             maxWidth: 800,
-            padding: 40,
-            borderRadius: 24,
+            padding: 32,
+            borderRadius: 12,
+            border: "1px solid #eaeaea",
             background: "#fff",
-            marginTop: 20, // leve ajuste para não colar no topo
           }}
         >
-          <h1 style={{ fontSize: 26, marginBottom: 32 }}>
-            Create account
+          <h1 style={{ marginBottom: 24 }}>
+            Create your account
           </h1>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-            {/* EMAIL */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-              <label>Email</label>
-              <AntdInput
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 18,
+            }}
+          >
+            <AntdInput
+              value={email}
+              onChange={(e: any) =>
+                setEmail(e.target.value)
+              }
+              placeholder="Email"
+            />
 
-            {/* PASSWORD */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-              <label>Password</label>
-              <AntdInput
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
+            <AntdInput
+              type="password"
+              value={password}
+              onChange={(e: any) =>
+                setPassword(e.target.value)
+              }
+              placeholder="Password"
+            />
 
-            {/* CHECKBOX */}
             <Checkbox
-              checked={acceptedTerms}
-              onChange={(e) => setAcceptedTerms(e.target.checked)}
-            >
-              <span style={{ fontSize: 10 }}>
-                I accept the terms of use and privacy policy
-              </span>
-            </Checkbox>
+              value={acceptedTerms}
+              onChange={(v: boolean) =>
+                setAcceptedTerms(v)
+              }
+              label={
+                <span style={{ fontSize: 10 }}>
+                  I accept the{" "}
+                  <a
+                    href="#"
+                    style={{
+                      fontWeight: 600,
+                      textDecoration: "underline",
+                    }}
+                  >
+                    terms and conditions
+                  </a>
+                </span>
+              }
+            />
 
-            {/* ERROR MESSAGE */}
             {error && (
               <div
                 style={{
                   color: "#d32f2f",
                   fontSize: 12,
-                  textAlign: "center",
                 }}
               >
                 {error}
               </div>
             )}
 
-            {/* BUTTON */}
-            <div style={{ display: "flex", justifyContent: "center" }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: 12,
+              }}
+            >
               <LoginButton
-                isDisabled={loading}
                 onClick={handleCreateAccount}
               >
-                {loading ? "Creating..." : "Create account"}
+                {loading
+                  ? "Creating..."
+                  : "Create account"}
               </LoginButton>
             </div>
 
-            <div style={{ textAlign: "center", fontSize: 12 }}>
+            <div
+              style={{
+                marginTop: 16,
+                textAlign: "center",
+                fontSize: 12,
+              }}
+            >
               Already have an account?{" "}
-              <Link href="/c-login">Sign in</Link>
+              <Link href="/c-login">
+                Sign in
+              </Link>
             </div>
           </div>
         </div>

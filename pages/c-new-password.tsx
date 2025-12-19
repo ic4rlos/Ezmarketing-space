@@ -1,25 +1,34 @@
 import * as React from "react";
 import { useRouter } from "next/router";
+
+import {
+  PageParamsProvider as PageParamsProvider__,
+} from "@plasmicapp/react-web/lib/host";
+
+import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
+import { PlasmicLCNewPassword } from "../components/plasmic/ez_marketing_platform/PlasmicLCNewPassword";
+
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
 export default function CNewPassword() {
   const router = useRouter();
   const supabase = getSupabaseC();
 
+  // 🔥 FONTE ÚNICA DA VERDADE (ALPHA)
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
-  const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
+  const [loading, setLoading] = React.useState(false);
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+  async function handleSetNewPassword(
+    e?: React.FormEvent<HTMLFormElement> | React.MouseEvent
+  ) {
+    if (e) e.preventDefault();
+    if (loading) return;
+
     setError(null);
 
-    if (!password || !confirmPassword) {
-      setError("Fill in all fields");
-      return;
-    }
-
+    // ✅ ÚNICA validação local PERMITIDA
     if (password !== confirmPassword) {
       setError("Passwords do not match");
       return;
@@ -33,8 +42,9 @@ export default function CNewPassword() {
 
     setLoading(false);
 
+    // 🔥 Supabase é o juiz final
     if (error) {
-      setError(error.message || "Unable to update password");
+      setError(error.message);
       return;
     }
 
@@ -42,34 +52,72 @@ export default function CNewPassword() {
   }
 
   return (
-    <div>
-      <h1>New password (debug)</h1>
+    <GlobalContextsProvider>
+      <PageParamsProvider__
+        route={router.pathname}
+        params={router.query}
+        query={router.query}
+      >
+        <PlasmicLCNewPassword
+          overrides={{
+            /* =========================
+               NEW PASSWORD
+            ========================== */
+            password: {
+              props: {
+                value: password,
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                  setPassword(e.target.value),
+              },
+            },
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input
-            type="password"
-            placeholder="New password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
+            /* =========================
+               CONFIRM PASSWORD
+            ========================== */
+            confirmPassword: {
+              props: {
+                value: confirmPassword,
+                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                  setConfirmPassword(e.target.value),
+              },
+            },
 
-        <div>
-          <input
-            type="password"
-            placeholder="Confirm password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </div>
+            /* =========================
+               FORM
+            ========================== */
+            form: {
+              props: {
+                onSubmit: handleSetNewPassword,
+                noValidate: true,
+              },
+            },
 
-        <button type="submit" disabled={loading}>
-          {loading ? "Saving..." : "Save new password"}
-        </button>
-      </form>
+            /* =========================
+               BOTÃO
+            ========================== */
+            loginButton: {
+              props: {
+                type: "submit",
+                onClick: handleSetNewPassword,
+                disabled: loading,
+              },
+            },
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
-    </div>
+            /* =========================
+               ERRO — SEM FILTRO
+            ========================== */
+            errorText: {
+              props: {
+                children: error,
+                style: {
+                  display: error ? "block" : "none",
+                  color: "red",
+                },
+              },
+            },
+          }}
+        />
+      </PageParamsProvider__>
+    </GlobalContextsProvider>
   );
 }

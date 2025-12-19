@@ -1,10 +1,19 @@
 import * as React from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
-import { Input } from "antd";
+import dynamic from "next/dynamic";
+
 import LoginButton from "../components/LoginButton";
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
-const AntdPassword = Input.Password;
+import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
+
+// ✅ MESMO PADRÃO DO ALPHA — NADA DE SSR
+const AntdPassword = dynamic(
+  () =>
+    import("antd").then((mod) => mod.Input.Password),
+  { ssr: false }
+);
 
 export default function CNewPassword() {
   const router = useRouter();
@@ -15,8 +24,7 @@ export default function CNewPassword() {
   const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(false);
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+  async function handleSaveNewPassword() {
     setError(null);
 
     if (!password || !confirmPassword) {
@@ -46,110 +54,146 @@ export default function CNewPassword() {
   }
 
   return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        background: "#d9d9d9",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        fontFamily: "Inter, sans-serif",
-      }}
-    >
-      {/* LOGO */}
-      <img
-        src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
-        alt="EZ Marketing"
-        style={{
-          width: 700,
-          height: 100,
-          marginBottom: 25,
-          objectFit: "contain",
-        }}
-      />
+    <>
+      <Head>
+        <title>Create a new password</title>
+      </Head>
 
-      {/* CARD */}
+      {/* WRAPPER — IGUAL AO ALPHA */}
       <div
         style={{
-          width: 800,
-          height: 547,
-          background: "#ffffff",
-          borderRadius: 51,
-          padding: "65px 100px",
+          minHeight: "100vh",
+          background: "#d9d9d9",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-between",
           alignItems: "center",
+          justifyContent: "center",
         }}
       >
-        {/* TITLE */}
-        <h3
+        {/* LOGO */}
+        <img
+          src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
+          alt="ezmarketing"
           style={{
-            fontWeight: 500,
-            fontSize: 16,
-            margin: 0,
+            width: 700,
+            height: 100,
+            objectFit: "contain",
+            marginBottom: 25,
           }}
-        >
-          Create a new password
-        </h3>
+        />
 
-        {/* FORM */}
-        <form
-          onSubmit={handleSubmit}
+        {/* CARD */}
+        <div
           style={{
-            width: "100%",
+            width: 800,
+            height: 547,
+            background: "#ffffff",
+            borderRadius: 51,
+            padding: "65px 100px",
             display: "flex",
             flexDirection: "column",
+            justifyContent: "space-between",
             alignItems: "center",
-            gap: 20,
+            boxSizing: "border-box",
           }}
         >
-          <div style={{ width: 504 }}>
-            <AntdPassword
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+          {/* TITLE */}
+          <div
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontWeight: 500,
+              fontSize: 16,
+            }}
+          >
+            Create a new password
+          </div>
+
+          {/* FORM */}
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              gap: 18,
+              alignItems: "center",
+            }}
+          >
+            {/* PASSWORD */}
+            <Field
+              icon={<LockSvgIcon width={24} height={24} />}
               placeholder="New password"
-              style={{ height: 32 }}
+              value={password}
+              onChange={setPassword}
             />
-          </div>
 
-          <div style={{ width: 504 }}>
-            <AntdPassword
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+            {/* CONFIRM PASSWORD */}
+            <Field
+              icon={<LockSvgIcon width={24} height={24} />}
               placeholder="Confirm password"
-              style={{ height: 32 }}
+              value={confirmPassword}
+              onChange={setConfirmPassword}
             />
           </div>
 
+          {/* ERROR */}
           {error && (
             <div
               style={{
                 fontSize: 12,
-                fontStyle: "italic",
                 color: "red",
-                marginTop: 8,
+                fontStyle: "italic",
               }}
             >
               {error}
             </div>
           )}
 
+          {/* ACTION */}
           <LoginButton
-            type="submit"
-            isDisabled={loading}   // ✅ API CORRETA DO ALPHA
-            style={{
-              width: 248,
-              height: 37,
-              marginTop: 10,
-            }}
+            onClick={handleSaveNewPassword}
+            isDisabled={loading}
+            style={{ width: 248, height: 37 }}
           >
-            Save new password
+            {loading ? "Saving..." : "Save new password"}
           </LoginButton>
-        </form>
+        </div>
       </div>
+    </>
+  );
+}
+
+/* ===== FIELD — MESMO PADRÃO DO ALPHA ===== */
+
+function Field({
+  icon,
+  placeholder,
+  value,
+  onChange,
+}: {
+  icon: React.ReactNode;
+  placeholder: string;
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  return (
+    <div
+      style={{
+        width: 504,
+        height: 32,
+        display: "flex",
+        alignItems: "center",
+        gap: 10,
+        paddingLeft: 25,
+        paddingRight: 25,
+        boxSizing: "border-box",
+      }}
+    >
+      {icon}
+      <AntdPassword
+        placeholder={placeholder}
+        value={value}
+        onChange={(e: any) => onChange(e.target.value)}
+      />
     </div>
   );
 }

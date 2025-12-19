@@ -18,39 +18,45 @@ export default function CNewPassword() {
   /* =========================
      STATE — ALPHA STYLE
   ========================== */
-  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [confirmPassword, setConfirmPassword] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
 
   /* =========================
-     HANDLER — FONTE DE VERDADE
+     HANDLER — APPLY NEW PASSWORD
   ========================== */
-  async function handleRequestReset(
+  async function handleSetNewPassword(
     e?: React.FormEvent<HTMLFormElement> | React.MouseEvent
   ) {
     if (e) e.preventDefault();
 
     setError(null);
 
-    if (!email) {
-      setError("Enter a valid email");
+    if (!password || !confirmPassword) {
+      setError("Fill in all fields");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
       return;
     }
 
     setLoading(true);
 
-    const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/c-code-verification-new-password`,
+    const { error } = await supabase.auth.updateUser({
+      password,
     });
 
     setLoading(false);
 
     if (error) {
-      setError("Unable to send recovery email");
+      setError("Unable to update password");
       return;
     }
 
-    router.push("/c-code-verification-new-password");
+    router.push("/find-a-affiliate");
   }
 
   /* =========================
@@ -59,7 +65,7 @@ export default function CNewPassword() {
   return (
     <>
       <Head>
-        <title>New password</title>
+        <title>Create new password</title>
       </Head>
 
       <GlobalContextsProvider>
@@ -71,15 +77,24 @@ export default function CNewPassword() {
           <PlasmicLCNewPassword
             overrides={{
               /* =========================
-                 EMAIL INPUT
+                 NEW PASSWORD
               ========================== */
-              email: {
+              password: {
                 props: {
-                  value: email,
-                  type: "email",
-                  placeholder: "Email",
+                  value: password,
                   onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                    setEmail(e.target.value),
+                    setPassword(e.target.value),
+                },
+              },
+
+              /* =========================
+                 CONFIRM PASSWORD
+              ========================== */
+              confirmPassword: {
+                props: {
+                  value: confirmPassword,
+                  onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
+                    setConfirmPassword(e.target.value),
                 },
               },
 
@@ -88,7 +103,7 @@ export default function CNewPassword() {
               ========================== */
               form: {
                 props: {
-                  onSubmit: handleRequestReset,
+                  onSubmit: handleSetNewPassword,
                   noValidate: true,
                 },
               },
@@ -98,10 +113,10 @@ export default function CNewPassword() {
               ========================== */
               loginButton: {
                 props: {
-                  onClick: handleRequestReset,
+                  onClick: handleSetNewPassword,
                   disabled: loading,
                 },
-                children: loading ? "Sending..." : "Send recovery email",
+                children: loading ? "Saving..." : "Save new password",
               },
 
               /* =========================

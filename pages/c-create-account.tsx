@@ -4,118 +4,63 @@ import { useRouter } from "next/router";
 
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
-import { PlasmicLCCreateAccount } from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount";
+import {
+  PageParamsProvider as PageParamsProvider__,
+} from "@plasmicapp/react-web/lib/host";
 
-import AntdInput from "../components/ui/AntdInput";
-import LoginButton from "../components/LoginButton";
+import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
+import { PlasmicLCCreateAccount } from "../components/plasmic/ez_marketing_platform/PlasmicLCCreateAccount";
 
 export default function CCreateAccount() {
   const router = useRouter();
 
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [confirmPassword, setConfirmPassword] = React.useState("");
-  const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState<string | null>(null);
-
-  async function handleCreateAccount() {
-    setError(null);
+  async function handleSubmit(_: any, formValues: any) {
+    const { email, password, confirmPassword } = formValues || {};
 
     if (!email || !password || !confirmPassword) {
-      setError("Fill in all fields");
-      return;
+      throw new Error("kkkkkkkkkkkkkkkk fudeu");
     }
 
     if (password !== confirmPassword) {
-      setError("Passwords do not match");
-      return;
+      throw new Error("Passwords do not match");
     }
 
-    setLoading(true);
-
     const supabase = getSupabaseC();
+
     const { error } = await supabase.auth.signUp({
       email,
       password
     });
 
-    setLoading(false);
-
     if (error) {
-      setError(error.message);
-      return;
+      throw error;
     }
 
     router.push("/c-login");
   }
 
   return (
-    <>
-      <Head>
-        <title>Create Account</title>
-      </Head>
+    <GlobalContextsProvider>
+      <PageParamsProvider__
+        route={router.pathname}
+        params={router.query}
+        query={router.query}
+      >
+        <Head>
+          <title>Create Account</title>
+        </Head>
 
-      <PlasmicLCCreateAccount
-        overrides={{
-          // EMAIL
-          email: {
-            as: AntdInput,
-            props: {
-              type: "email",
-              placeholder: "email",
-              value: email,
-              onChange: (e: any) => setEmail(e.target.value)
-            }
-          },
-
-          // PASSWORD
-          password: {
-            as: AntdInput,
-            props: {
-              type: "password",
-              placeholder: "Password",
-              value: password,
-              onChange: (e: any) => setPassword(e.target.value)
-            }
-          },
-
-          // CONFIRM PASSWORD
-          confirmPassword: {
-            as: AntdInput,
-            props: {
-              type: "password",
-              placeholder: "Confirm Password",
-              value: confirmPassword,
-              onChange: (e: any) =>
-                setConfirmPassword(e.target.value)
-            }
-          },
-
-          // ERROR TEXT
-          errorText: {
-            props: {
-              children: error ?? null,
-              style: {
-                display: error ? "block" : "none",
-                color: "red",
-                fontSize: 12
+        <PlasmicLCCreateAccount
+          overrides={{
+            loginButton: {
+              props: {
+                submitsForm: true,
+                onClick: handleSubmit
               }
             }
-          },
-
-          // BUTTON
-          loginButton: {
-            as: LoginButton,
-            props: {
-              onClick: handleCreateAccount,
-              isDisabled: loading,
-              children: loading
-                ? "Creating..."
-                : "Create account"
-            }
-          }
-        }}
-      />
-    </>
+          }}
+        />
+      </PageParamsProvider__>
+    </GlobalContextsProvider>
   );
 }

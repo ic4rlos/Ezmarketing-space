@@ -1,7 +1,6 @@
 import * as React from "react";
 import Head from "next/head";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 
 import { getSupabaseC } from "../lib/c-supabaseClient";
@@ -19,13 +18,12 @@ const LoginButton = dynamic(
 import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
 
 export default function CResetPassword() {
-  const router = useRouter();
   const supabase = getSupabaseC();
 
   const [email, setEmail] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
-  const [sent, setSent] = React.useState(false);
+  const [requested, setRequested] = React.useState(false);
 
   async function handleResetPassword() {
     setError(null);
@@ -48,8 +46,8 @@ export default function CResetPassword() {
       return;
     }
 
-    // ✅ NÃO redireciona — apenas muda o estado
-    setSent(true);
+    // ⚠️ Não afirma sucesso — apenas confirma tentativa
+    setRequested(true);
   }
 
   return (
@@ -125,7 +123,7 @@ export default function CResetPassword() {
               onChange={setEmail}
             />
 
-            {/* MESSAGE — CONTROLADA POR ESTADO */}
+            {/* SUPABASE-CORRECT MESSAGE */}
             <div
               style={{
                 fontSize: 14,
@@ -133,9 +131,9 @@ export default function CResetPassword() {
                 maxWidth: 420,
               }}
             >
-              {sent
-                ? "Check your email for the password reset link."
-                : "Enter your email address and we’ll send you a link to reset your password."}
+              {requested
+                ? "If an account exists for this email, you will receive a password reset link."
+                : "Enter your email address to reset your password."}
             </div>
           </div>
 
@@ -152,7 +150,7 @@ export default function CResetPassword() {
             </div>
           )}
 
-          {/* ACTIONS */}
+          {/* ACTION */}
           <div
             style={{
               display: "flex",
@@ -163,14 +161,10 @@ export default function CResetPassword() {
           >
             <LoginButton
               onClick={handleResetPassword}
-              isDisabled={loading || sent}
+              isDisabled={loading || requested}
               style={{ width: 248, height: 37 }}
             >
-              {loading
-                ? "Sending..."
-                : sent
-                ? "Email sent"
-                : "Send"}
+              {loading ? "Sending..." : "Send"}
             </LoginButton>
           </div>
 

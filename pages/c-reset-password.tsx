@@ -25,6 +25,7 @@ export default function CResetPassword() {
   const [email, setEmail] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
+  const [sent, setSent] = React.useState(false);
 
   async function handleResetPassword() {
     setError(null);
@@ -37,7 +38,7 @@ export default function CResetPassword() {
     setLoading(true);
 
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/c-code-verification-new-password`,
+      redirectTo: `${window.location.origin}/c-newpassword`,
     });
 
     setLoading(false);
@@ -47,7 +48,8 @@ export default function CResetPassword() {
       return;
     }
 
-    router.push("/c-code-verification-new-password");
+    // ✅ NÃO redireciona — apenas muda o estado
+    setSent(true);
   }
 
   return (
@@ -123,6 +125,7 @@ export default function CResetPassword() {
               onChange={setEmail}
             />
 
+            {/* MESSAGE — CONTROLADA POR ESTADO */}
             <div
               style={{
                 fontSize: 14,
@@ -130,12 +133,13 @@ export default function CResetPassword() {
                 maxWidth: 420,
               }}
             >
-              Enter your email address and we’ll send you a link to reset your
-              password
+              {sent
+                ? "Check your email for the password reset link."
+                : "Enter your email address and we’ll send you a link to reset your password."}
             </div>
           </div>
 
-          {/* ERROR — ALPHA COPY */}
+          {/* ERROR — ALPHA STYLE */}
           {error && (
             <div
               style={{
@@ -159,10 +163,14 @@ export default function CResetPassword() {
           >
             <LoginButton
               onClick={handleResetPassword}
-              isDisabled={loading}
+              isDisabled={loading || sent}
               style={{ width: 248, height: 37 }}
             >
-              {loading ? "Sending..." : "Send"}
+              {loading
+                ? "Sending..."
+                : sent
+                ? "Email sent"
+                : "Send"}
             </LoginButton>
           </div>
 

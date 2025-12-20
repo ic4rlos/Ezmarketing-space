@@ -1,13 +1,25 @@
 import * as React from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
-import {
-  PageParamsProvider as PageParamsProvider__,
-} from "@plasmicapp/react-web/lib/host";
+import dynamic from "next/dynamic";
 
-import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
-import { PlasmicLCLogin } from "../components/plasmic/ez_marketing_platform/PlasmicLCLogin";
-
+import LoginButton from "../components/LoginButton";
 import { getSupabaseC } from "../lib/c-supabaseClient";
+
+import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
+import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
+
+// ✅ MESMO PADRÃO DO ALPHA — NADA DE SSR
+const AntdInput = dynamic(
+  () => import("../components/ui/AntdInput"),
+  { ssr: false }
+);
+
+const AntdPassword = dynamic(
+  () =>
+    import("antd").then((mod) => mod.Input.Password),
+  { ssr: false }
+);
 
 export default function CLogin() {
   const router = useRouter();
@@ -16,109 +28,212 @@ export default function CLogin() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState<string | null>(null);
+  const [loading, setLoading] = React.useState(false);
 
-  async function handleLogin(
-    e?: React.FormEvent<HTMLFormElement> | React.MouseEvent
-  ) {
-    if (e) e.preventDefault();
-
+  async function handleLogin() {
     setError(null);
+
+    if (!email || !password) {
+      setError("All fields are required");
+      return;
+    }
+
+    setLoading(true);
 
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
+    setLoading(false);
+
     if (error) {
-      // Supabase não diferencia usuário vs senha (e isso é correto)
-      setError("Invalid email or password");
+      setError("Invalid login credentials");
       return;
     }
 
-    // login OK → redireciona
-    router.push("/find-a-affiliate");
+    router.push("/dashboard");
   }
 
   return (
-    <GlobalContextsProvider>
-      <PageParamsProvider__
-        route={router.pathname}
-        params={router.query}
-        query={router.query}
+    <>
+      <Head>
+        <title>Login</title>
+      </Head>
+
+      {/* WRAPPER — IGUAL AO ALPHA */}
+      <div
+        style={{
+          minHeight: "100vh",
+          background: "#d9d9d9",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
-        <PlasmicLCLogin
-          overrides={{
-            /* =========================
-               INPUT EMAIL
-            ========================== */
-            email: {
-              props: {
-                value: email,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setEmail(e.target.value),
-              },
-            },
-
-            /* =========================
-               INPUT PASSWORD
-            ========================== */
-            password: {
-              props: {
-                value: password,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-                  setPassword(e.target.value),
-              },
-            },
-
-            /* =========================
-               FORM
-            ========================== */
-            form: {
-              props: {
-                onSubmit: handleLogin,
-                noValidate: true,
-              },
-            },
-
-            /* =========================
-               BOTÃO LOGIN
-            ========================== */
-            loginButton: {
-              props: {
-                type: "submit",
-                onClick: handleLogin,
-              },
-            },
-
-            /* =========================
-               TEXTO DE ERRO
-            ========================== */
-            errorText: {
-              props: {
-                children: error,
-                style: {
-                  display: error ? "block" : "none",
-                  color: "red",
-                  marginTop: 8,
-                },
-              },
-            },
-
-            /* =========================
-               GOOGLE LOGIN
-            ========================== */
-            signInWithGoogle: {
-              props: {
-                onClick: async () => {
-                  await supabase.auth.signInWithOAuth({
-                    provider: "google",
-                  });
-                },
-              },
-            },
+        {/* LOGO */}
+        <img
+          src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
+          alt="ezmarketing"
+          style={{
+            width: 700,
+            height: 100,
+            objectFit: "contain",
+            marginBottom: 25,
           }}
         />
-      </PageParamsProvider__>
-    </GlobalContextsProvider>
+
+        {/* CARD */}
+        <div
+          style={{
+            width: 800,
+            height: 547,
+            background: "#ffffff",
+            borderRadius: 51,
+            padding: "65px 100px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            alignItems: "center",
+            boxSizing: "border-box",
+          }}
+        >
+          {/* TITLE */}
+          <div
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontWeight: 500,
+              fontSize: 16,
+            }}
+          >
+            Login
+          </div>
+
+          {/* FORM */}
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              gap: 18,
+              alignItems: "center",
+            }}
+          >
+            {/* EMAIL */}
+            <Field
+              icon={<UserSvgIcon width={24} height={24} />}
+              placeholder="Email"
+              value={email}
+              onChange={setEmail}
+              type="text"
+            />
+
+            {/* PASSWORD */}
+            <PasswordField
+              icon={<LockSvgIcon width={24} height={24} />}
+              placeholder="Password"
+              value={password}
+              onChange={setPassword}
+            />
+          </div>
+
+          {/* ERROR */}
+          {error && (
+            <div
+              style={{
+                fontSize: 12,
+                color: "red",
+                fontStyle: "italic",
+              }}
+            >
+              {error}
+            </div>
+          )}
+
+          {/* ACTION */}
+          <LoginButton
+            onClick={handleLogin}
+            isDisabled={loading}
+            style={{ width: 248, height: 37 }}
+          >
+            {loading ? "Logging in..." : "Login"}
+          </LoginButton>
+        </div>
+      </div>
+    </>
+  );
+}
+
+/* ===== FIELD — MESMO PADRÃO DO ALPHA ===== */
+
+function Field({
+  icon,
+  placeholder,
+  value,
+  onChange,
+  type,
+}: {
+  icon: React.ReactNode;
+  placeholder: string;
+  value: string;
+  onChange: (v: string) => void;
+  type: string;
+}) {
+  return (
+    <div
+      style={{
+        width: 504,
+        height: 32,
+        display: "flex",
+        alignItems: "center",
+        gap: 10,
+        paddingLeft: 25,
+        paddingRight: 25,
+        boxSizing: "border-box",
+      }}
+    >
+      {icon}
+      <AntdInput
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={(e: any) => onChange(e.target.value)}
+      />
+    </div>
+  );
+}
+
+function PasswordField({
+  icon,
+  placeholder,
+  value,
+  onChange,
+}: {
+  icon: React.ReactNode;
+  placeholder: string;
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  return (
+    <div
+      style={{
+        width: 504,
+        height: 32,
+        display: "flex",
+        alignItems: "center",
+        gap: 10,
+        paddingLeft: 25,
+        paddingRight: 25,
+        boxSizing: "border-box",
+      }}
+    >
+      {icon}
+      <AntdPassword
+        placeholder={placeholder}
+        value={value}
+        onChange={(e: any) => onChange(e.target.value)}
+      />
+    </div>
   );
 }

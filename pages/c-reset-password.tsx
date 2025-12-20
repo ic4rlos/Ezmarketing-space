@@ -1,32 +1,29 @@
-// pages/c-reset-password.tsx
 import * as React from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
 
-import LoginButton from "../components/LoginButton";
 import { getSupabaseC } from "../lib/c-supabaseClient";
+
 import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
 
-// Antd Input must be loaded client-side (SSR-safe) — mesma regra que o Alpha
-const AntdInput = dynamic(() => import("antd").then((m) => m.Input), {
-  ssr: false,
-});
+const AntdInput = dynamic(
+  () => import("../components/ui/AntdInput"),
+  { ssr: false }
+);
+
+const LoginButton = dynamic(
+  () => import("../components/LoginButton"),
+  { ssr: false }
+);
 
 export default function CResetPassword() {
-  const router = useRouter();
   const supabase = getSupabaseC();
 
   const [email, setEmail] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
 
-  async function handleRequestReset(
-    e?: React.FormEvent<HTMLFormElement> | React.MouseEvent
-  ) {
-    if (e) e.preventDefault();
-    if (loading) return;
-
+  async function handleResetPassword() {
     setError(null);
 
     if (!email) {
@@ -43,12 +40,12 @@ export default function CResetPassword() {
     setLoading(false);
 
     if (error) {
-      setError("Unable to send recovery email");
+      setError(error.message);
       return;
     }
 
-    // sucesso → segue o fluxo
-    router.push("/c-code-verification-new-password");
+    // ⚠️ NENHUM redirect aqui
+    // Fluxo continua exclusivamente via email
   }
 
   return (
@@ -67,7 +64,7 @@ export default function CResetPassword() {
           justifyContent: "center",
         }}
       >
-        {/* LOGO — 700x100 */}
+        {/* LOGO */}
         <img
           src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
           alt="ezmarketing"
@@ -79,7 +76,7 @@ export default function CResetPassword() {
           }}
         />
 
-        {/* CARD — 800 x 547 (Alpha) */}
+        {/* CARD */}
         <div
           style={{
             width: 800,
@@ -107,9 +104,7 @@ export default function CResetPassword() {
           </div>
 
           {/* FORM */}
-          <form
-            onSubmit={handleRequestReset}
-            noValidate
+          <div
             style={{
               width: "100%",
               display: "flex",
@@ -125,54 +120,40 @@ export default function CResetPassword() {
               value={email}
               onChange={setEmail}
             />
+          </div>
 
-            {/* helper text */}
-            <div style={{ fontSize: 14, textAlign: "center" }}>
-              Enter your email address and we'll send you a link to reset your
-              password
-            </div>
-
-            {/* ERROR */}
-            {error && (
-              <div
-                style={{
-                  fontSize: 12,
-                  fontStyle: "italic",
-                  color: "red",
-                  marginTop: 8,
-                }}
-              >
-                {error}
-              </div>
-            )}
-
-            {/* ACTION */}
-            <LoginButton
-              type="submit"
-              onClick={handleRequestReset}
-              isDisabled={loading}
-              style={{ width: 248, height: 37 }}
+          {/* ERROR */}
+          {error && (
+            <div
+              style={{
+                fontSize: 12,
+                color: "red",
+                fontStyle: "italic",
+              }}
             >
-              {loading ? "Sending..." : "Send"}
-            </LoginButton>
-          </form>
+              {error}
+            </div>
+          )}
+
+          {/* ACTION */}
+          <LoginButton
+            onClick={handleResetPassword}
+            isDisabled={loading}
+            style={{ width: 248, height: 37 }}
+          >
+            {loading ? "Sending..." : "Send"}
+          </LoginButton>
 
           {/* FOOTER */}
-          <div style={{ fontSize: 14 }}>
-            <a
-              href="/c-login"
-              style={{ marginLeft: 4, fontWeight: 600, textDecoration: "underline" }}
-            >
-              Back to login
-            </a>
-          </div>
+          <div style={{ fontSize: 14 }} />
         </div>
       </div>
     </>
   );
 }
 
-/* ===== Field helper — replicates Alpha field geometry ===== */
+/* ===== Field helper — IDÊNTICO AO ALPHA ===== */
+
 function Field({
   icon,
   placeholder,
@@ -182,7 +163,7 @@ function Field({
 }: {
   icon: React.ReactNode;
   placeholder: string;
-  type?: string;
+  type: string;
   value: string;
   onChange: (v: string) => void;
 }) {
@@ -200,9 +181,8 @@ function Field({
       }}
     >
       {icon}
-      {/* Antd Input (client-only) */}
       <AntdInput
-        type={type || "text"}
+        type={type}
         placeholder={placeholder}
         value={value}
         onChange={(e: any) => onChange(e.target.value)}

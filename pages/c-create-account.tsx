@@ -64,7 +64,7 @@ export default function CCreateAccount() {
       return;
     }
 
-    router.push("/c-login");
+    router.push("/c-code-verification-create-account");
   }
 
   return (

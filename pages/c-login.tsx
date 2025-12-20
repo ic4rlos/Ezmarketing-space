@@ -1,23 +1,24 @@
 import * as React from "react";
 import Head from "next/head";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 
 import LoginButton from "../components/LoginButton";
+import SignInWithGoogle from "../components/SignInWithGoogle";
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
 import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
 import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
 
-// ✅ MESMO PADRÃO DO ALPHA — NADA DE SSR
+// ✅ MESMO PADRÃO DO ALPHA — SEM SSR
 const AntdInput = dynamic(
   () => import("../components/ui/AntdInput"),
   { ssr: false }
 );
 
 const AntdPassword = dynamic(
-  () =>
-    import("antd").then((mod) => mod.Input.Password),
+  () => import("antd").then((mod) => mod.Input.Password),
   { ssr: false }
 );
 
@@ -52,7 +53,8 @@ export default function CLogin() {
       return;
     }
 
-    router.push("/dashboard");
+    // ✅ REDIRECT CORRETO
+    router.push("/find-a-affiliate");
   }
 
   return (
@@ -126,7 +128,6 @@ export default function CLogin() {
               placeholder="Email"
               value={email}
               onChange={setEmail}
-              type="text"
             />
 
             {/* PASSWORD */}
@@ -136,6 +137,20 @@ export default function CLogin() {
               value={password}
               onChange={setPassword}
             />
+
+            {/* FORGOT PASSWORD */}
+            <div
+              style={{
+                width: 504,
+                display: "flex",
+                justifyContent: "flex-end",
+                fontSize: 12,
+              }}
+            >
+              <Link href="/c-reset-password">
+                Forgot password?
+              </Link>
+            </div>
           </div>
 
           {/* ERROR */}
@@ -151,14 +166,34 @@ export default function CLogin() {
             </div>
           )}
 
-          {/* ACTION */}
-          <LoginButton
-            onClick={handleLogin}
-            isDisabled={loading}
-            style={{ width: 248, height: 37 }}
+          {/* ACTIONS */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 14,
+            }}
           >
-            {loading ? "Logging in..." : "Login"}
-          </LoginButton>
+            <LoginButton
+              onClick={handleLogin}
+              isDisabled={loading}
+              style={{ width: 248, height: 37 }}
+            >
+              {loading ? "Logging in..." : "Login"}
+            </LoginButton>
+
+            {/* GOOGLE */}
+            <SignInWithGoogle />
+          </div>
+
+          {/* FOOTER */}
+          <div style={{ fontSize: 14 }}>
+            New to Ez Marketing?{" "}
+            <Link href="/c-create-account">
+              <strong>Create account</strong>
+            </Link>
+          </div>
         </div>
       </div>
     </>
@@ -172,13 +207,11 @@ function Field({
   placeholder,
   value,
   onChange,
-  type,
 }: {
   icon: React.ReactNode;
   placeholder: string;
   value: string;
   onChange: (v: string) => void;
-  type: string;
 }) {
   return (
     <div
@@ -195,7 +228,6 @@ function Field({
     >
       {icon}
       <AntdInput
-        type={type}
         placeholder={placeholder}
         value={value}
         onChange={(e: any) => onChange(e.target.value)}

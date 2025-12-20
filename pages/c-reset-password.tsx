@@ -1,10 +1,10 @@
 import * as React from "react";
 import Head from "next/head";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 
 import { getSupabaseC } from "../lib/c-supabaseClient";
-
-import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
 
 const AntdInput = dynamic(
   () => import("../components/ui/AntdInput"),
@@ -16,7 +16,10 @@ const LoginButton = dynamic(
   { ssr: false }
 );
 
+import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
+
 export default function CResetPassword() {
+  const router = useRouter();
   const supabase = getSupabaseC();
 
   const [email, setEmail] = React.useState("");
@@ -27,7 +30,7 @@ export default function CResetPassword() {
     setError(null);
 
     if (!email) {
-      setError("Enter a valid email");
+      setError("Fill in all fields");
       return;
     }
 
@@ -44,8 +47,7 @@ export default function CResetPassword() {
       return;
     }
 
-    // ⚠️ NENHUM redirect aqui
-    // Fluxo continua exclusivamente via email
+    router.push("/c-code-verification-new-password");
   }
 
   return (
@@ -64,7 +66,7 @@ export default function CResetPassword() {
           justifyContent: "center",
         }}
       >
-        {/* LOGO */}
+        {/* LOGO — 700x100 */}
         <img
           src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
           alt="ezmarketing"
@@ -76,7 +78,7 @@ export default function CResetPassword() {
           }}
         />
 
-        {/* CARD */}
+        {/* CARD — 800 x 547 */}
         <div
           style={{
             width: 800,
@@ -120,9 +122,20 @@ export default function CResetPassword() {
               value={email}
               onChange={setEmail}
             />
+
+            <div
+              style={{
+                fontSize: 14,
+                textAlign: "center",
+                maxWidth: 420,
+              }}
+            >
+              Enter your email address and we’ll send you a link to reset your
+              password
+            </div>
           </div>
 
-          {/* ERROR */}
+          {/* ERROR — ALPHA COPY */}
           {error && (
             <div
               style={{
@@ -135,24 +148,41 @@ export default function CResetPassword() {
             </div>
           )}
 
-          {/* ACTION */}
-          <LoginButton
-            onClick={handleResetPassword}
-            isDisabled={loading}
-            style={{ width: 248, height: 37 }}
+          {/* ACTIONS */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 14,
+            }}
           >
-            {loading ? "Sending..." : "Send"}
-          </LoginButton>
+            <LoginButton
+              onClick={handleResetPassword}
+              isDisabled={loading}
+              style={{ width: 248, height: 37 }}
+            >
+              {loading ? "Sending..." : "Send"}
+            </LoginButton>
+          </div>
 
           {/* FOOTER */}
-          <div style={{ fontSize: 14 }} />
+          <div style={{ fontSize: 14 }}>
+            Back to
+            <Link
+              href="/c-login"
+              style={{ marginLeft: 4, fontWeight: 600 }}
+            >
+              login
+            </Link>
+          </div>
         </div>
       </div>
     </>
   );
 }
 
-/* ===== Field helper — IDÊNTICO AO ALPHA ===== */
+/* ===== Field helper — 504x32 ===== */
 
 function Field({
   icon,

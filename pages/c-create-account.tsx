@@ -32,7 +32,6 @@ export default function CCreateAccount() {
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [acceptedTerms, setAcceptedTerms] = React.useState(false);
-
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
 
@@ -96,11 +95,12 @@ export default function CCreateAccount() {
           minHeight: "100vh",
           background: "#d9d9d9",
           display: "flex",
+          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
         }}
       >
-        {/* LOGO */}
+        {/* LOGO — 700x100 */}
         <img
           src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
           alt="ezmarketing"
@@ -112,7 +112,7 @@ export default function CCreateAccount() {
           }}
         />
 
-        {/* CARD */}
+        {/* CARD — 800 x 547 */}
         <div
           style={{
             width: 800,
@@ -133,6 +133,7 @@ export default function CCreateAccount() {
               fontFamily: "Inter, sans-serif",
               fontWeight: 500,
               fontSize: 16,
+              textAlign: "center",
             }}
           >
             Create corporative account

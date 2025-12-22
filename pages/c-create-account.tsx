@@ -105,8 +105,8 @@ export default function CCreateAccount() {
 
           {error && <p className={projectcss.error}>{error}</p>}
 
-          <LoginButton onClick={handleCreateAccount} loading={loading}>
-            Create account
+          <LoginButton onClick={handleCreateAccount}>
+            {loading ? "Creating account..." : "Create account"}
           </LoginButton>
 
           <SignInWithGoogle onClick={handleGoogleSignUp}>

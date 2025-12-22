@@ -8,9 +8,6 @@ import AntdInput from "../components/ui/AntdInput";
 import LoginButton from "../components/LoginButton";
 import SignInWithGoogle from "../components/SignInWithGoogle";
 
-// ⚠️ CSS REAL EXISTENTE NO REPO
-import projectcss from "../components/plasmic/projectcss.module.css";
-
 export default function CCreateAccount() {
   const router = useRouter();
   const supabase = getSupabaseC();
@@ -71,9 +68,30 @@ export default function CCreateAccount() {
         <title>Create account</title>
       </Head>
 
-      <div className={projectcss.root}>
-        <div className={projectcss.card}>
-          <h2 className={projectcss.title}>Create corporate account</h2>
+      <div
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "#f7f7f7",
+        }}
+      >
+        <div
+          style={{
+            width: 800,
+            minHeight: 547,
+            background: "#fff",
+            padding: 32,
+            borderRadius: 8,
+            display: "flex",
+            flexDirection: "column",
+            gap: 16,
+          }}
+        >
+          <h2 style={{ textAlign: "center" }}>
+            Create corporate account
+          </h2>
 
           <AntdInput
             placeholder="Email"
@@ -95,16 +113,19 @@ export default function CCreateAccount() {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
 
-          <label className={projectcss.checkbox}>
+          <label style={{ fontSize: 12 }}>
             <input
               type="checkbox"
               checked={acceptedTerms}
               onChange={(e) => setAcceptedTerms(e.target.checked)}
+              style={{ marginRight: 8 }}
             />
             I accept the terms and conditions
           </label>
 
-          {error && <p className={projectcss.error}>{error}</p>}
+          {error && (
+            <p style={{ color: "red", fontSize: 12 }}>{error}</p>
+          )}
 
           <LoginButton onClick={handleCreateAccount}>
             {loading ? "Creating account..." : "Create account"}
@@ -114,8 +135,9 @@ export default function CCreateAccount() {
             Sign up with Google
           </SignInWithGoogle>
 
-          <p className={projectcss.footer}>
-            Already have an account? <a href="/c-login">Log in</a>
+          <p style={{ fontSize: 12, textAlign: "center" }}>
+            Already have an account?{" "}
+            <a href="/c-login">Log in</a>
           </p>
         </div>
       </div>

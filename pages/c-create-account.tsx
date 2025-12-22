@@ -1,28 +1,14 @@
 import * as React from "react";
 import Head from "next/head";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
 
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
-const AntdInput = dynamic(
-  () => import("../components/ui/AntdInput"),
-  { ssr: false }
-);
+import AntdInput from "../components/ui/AntdInput";
+import LoginButton from "../components/LoginButton";
+import SignInWithGoogle from "../components/SignInWithGoogle";
 
-const LoginButton = dynamic(
-  () => import("../components/LoginButton"),
-  { ssr: false }
-);
-
-const SignInWithGoogle = dynamic(
-  () => import("../components/SignInWithGoogle"),
-  { ssr: false }
-);
-
-import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
-import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
+import projectcss from "../components/plasmic/ez_marketing_platform/PlasmicCreateAccount.module.css";
 
 export default function CCreateAccount() {
   const router = useRouter();
@@ -32,37 +18,32 @@ export default function CCreateAccount() {
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [acceptedTerms, setAcceptedTerms] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
+
   const [error, setError] = React.useState<string | null>(null);
+  const [loading, setLoading] = React.useState(false);
 
   async function handleCreateAccount() {
     setError(null);
 
-    if (!email || !password || !confirmPassword) {
-      setError("Fill in all fields");
+    if (!acceptedTerms) {
+      setError("You must accept the terms and conditions.");
       return;
     }
 
     if (password !== confirmPassword) {
-      setError("Passwords do not match");
-      return;
-    }
-
-    if (!acceptedTerms) {
-      setError("You must accept the terms and conditions");
+      setError("Passwords do not match.");
       return;
     }
 
     setLoading(true);
 
     const { error } = await supabase.auth.signUp({
-  email,
-  password,
-  options: {
-    emailRedirectTo: "https://www.ezmarketing.space/c-login",
-  },
-});
-
+      email,
+      password,
+      options: {
+        emailRedirectTo: "https://www.ezmarketing.space/c-edit-profile",
+      },
+    });
 
     setLoading(false);
 
@@ -71,7 +52,16 @@ export default function CCreateAccount() {
       return;
     }
 
-    router.push("/c-code-verification-create-account");
+    router.push("/c-check-email");
+  }
+
+  async function handleGoogleSignUp() {
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: "https://www.ezmarketing.space/c-edit-profile",
+      },
+    });
   }
 
   return (
@@ -80,210 +70,60 @@ export default function CCreateAccount() {
         <title>Create account</title>
       </Head>
 
-      <div
-        style={{
-          minHeight: "100vh",
-          background: "#d9d9d9",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        {/* LOGO — 700x100 */}
-        <img
-          src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
-          alt="ezmarketing"
-          style={{
-            width: 700,
-            height: 100,
-            objectFit: "contain",
-            marginBottom: 25,
-          }}
-        />
+      <div className={projectcss.root}>
+        <div className={projectcss.card}>
+          <h2 className={projectcss.title}>Create corporate account</h2>
 
-        {/* CARD — 800 x 547 */}
-        <div
-          style={{
-            width: 800,
-            height: 547,
-            background: "#ffffff",
-            borderRadius: 51,
-            padding: "65px 100px",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            alignItems: "center",
-            boxSizing: "border-box",
-          }}
-        >
-          {/* TITLE */}
-          <div
-            style={{
-              fontFamily: "Inter, sans-serif",
-              fontWeight: 500,
-              fontSize: 16,
-              textAlign: "center",
-            }}
-          >
-            Create corporative account
-          </div>
+          <AntdInput
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            icon="user"
+          />
 
-          {/* FORM */}
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              gap: 18,
-              alignItems: "center",
-            }}
-          >
-            {/* EMAIL */}
-            <Field
-              icon={<UserSvgIcon width={24} height={24} />}
-              placeholder="Email"
-              type="email"
-              value={email}
-              onChange={setEmail}
+          <AntdInput
+            placeholder="Password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            icon="lock"
+          />
+
+          <AntdInput
+            placeholder="Confirm Password"
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            icon="lock"
+          />
+
+          <label className={projectcss.checkbox}>
+            <input
+              type="checkbox"
+              checked={acceptedTerms}
+              onChange={(e) => setAcceptedTerms(e.target.checked)}
             />
+            I accept the terms and conditions
+          </label>
 
-            {/* PASSWORD */}
-            <Field
-              icon={<LockSvgIcon width={24} height={24} />}
-              placeholder="Password"
-              type="password"
-              value={password}
-              onChange={setPassword}
-            />
+          {error && <p className={projectcss.error}>{error}</p>}
 
-            {/* CONFIRM PASSWORD */}
-            <Field
-              icon={<LockSvgIcon width={24} height={24} />}
-              placeholder="Confirm Password"
-              type="password"
-              value={confirmPassword}
-              onChange={setConfirmPassword}
-            />
-          </div>
+          <LoginButton
+            label="Create account"
+            onClick={handleCreateAccount}
+            loading={loading}
+          />
 
-          {/* ERROR */}
-          {error && (
-            <div
-              style={{
-                fontSize: 12,
-                color: "red",
-                fontStyle: "italic",
-              }}
-            >
-              {error}
-            </div>
-          )}
+          <SignInWithGoogle
+            label="Sign up with Google"
+            onClick={handleGoogleSignUp}
+          />
 
-          {/* ACTIONS */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: 14,
-            }}
-          >
-            {/* BUTTON — 248x37 */}
-            <LoginButton
-              onClick={handleCreateAccount}
-              isDisabled={loading}
-              style={{ width: 248, height: 37 }}
-            >
-              {loading ? "Creating..." : "Create account"}
-            </LoginButton>
-
-            {/* CHECKBOX */}
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                fontSize: 10,
-                gap: 6,
-              }}
-            >
-              <input
-                type="checkbox"
-                checked={acceptedTerms}
-                onChange={(e) =>
-                  setAcceptedTerms(e.target.checked)
-                }
-              />
-              <span>
-                I accept the{" "}
-                <a
-                  href="#"
-                  style={{
-                    fontWeight: 600,
-                    textDecoration: "underline",
-                  }}
-                >
-                  terms and conditions
-                </a>
-              </span>
-            </div>
-
-            <SignInWithGoogle
-              style={{ width: 248, height: 37 }}
-            />
-          </div>
-
-          {/* FOOTER */}
-          <div style={{ fontSize: 14 }}>
-            Already have account?
-            <Link
-              href="/c-login"
-              style={{ marginLeft: 4, fontWeight: 600 }}
-            >
-              Log in
-            </Link>
-          </div>
+          <p className={projectcss.footer}>
+            Already have an account? <a href="/c-login">Log in</a>
+          </p>
         </div>
       </div>
     </>
-  );
-}
-
-/* ===== Field helper — 504x32 ===== */
-
-function Field({
-  icon,
-  placeholder,
-  type,
-  value,
-  onChange,
-}: {
-  icon: React.ReactNode;
-  placeholder: string;
-  type: string;
-  value: string;
-  onChange: (v: string) => void;
-}) {
-  return (
-    <div
-      style={{
-        width: 504,
-        height: 32,
-        display: "flex",
-        alignItems: "center",
-        gap: 10,
-        paddingLeft: 25,
-        paddingRight: 25,
-        boxSizing: "border-box",
-      }}
-    >
-      {icon}
-      <AntdInput
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={(e: any) => onChange(e.target.value)}
-      />
-    </div>
   );
 }

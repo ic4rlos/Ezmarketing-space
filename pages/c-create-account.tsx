@@ -78,7 +78,6 @@ export default function CCreateAccount() {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            icon="user"
           />
 
           <AntdInput
@@ -86,7 +85,6 @@ export default function CCreateAccount() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            icon="lock"
           />
 
           <AntdInput
@@ -94,7 +92,6 @@ export default function CCreateAccount() {
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            icon="lock"
           />
 
           <label className={projectcss.checkbox}>
@@ -108,16 +105,13 @@ export default function CCreateAccount() {
 
           {error && <p className={projectcss.error}>{error}</p>}
 
-          <LoginButton
-            label="Create account"
-            onClick={handleCreateAccount}
-            loading={loading}
-          />
+          <LoginButton onClick={handleCreateAccount} loading={loading}>
+            Create account
+          </LoginButton>
 
-          <SignInWithGoogle
-            label="Sign up with Google"
-            onClick={handleGoogleSignUp}
-          />
+          <SignInWithGoogle onClick={handleGoogleSignUp}>
+            Sign up with Google
+          </SignInWithGoogle>
 
           <p className={projectcss.footer}>
             Already have an account? <a href="/c-login">Log in</a>

@@ -1,12 +1,28 @@
 import * as React from "react";
 import Head from "next/head";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
-import AntdInput from "../components/ui/AntdInput";
-import LoginButton from "../components/LoginButton";
-import SignInWithGoogle from "../components/SignInWithGoogle";
+const AntdInput = dynamic(
+  () => import("../components/ui/AntdInput"),
+  { ssr: false }
+);
+
+const LoginButton = dynamic(
+  () => import("../components/LoginButton"),
+  { ssr: false }
+);
+
+const SignInWithGoogle = dynamic(
+  () => import("../components/SignInWithGoogle"),
+  { ssr: false }
+);
+
+import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
+import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
 
 export default function CCreateAccount() {
   const router = useRouter();
@@ -17,19 +33,24 @@ export default function CCreateAccount() {
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [acceptedTerms, setAcceptedTerms] = React.useState(false);
 
-  const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
 
   async function handleCreateAccount() {
     setError(null);
 
-    if (!acceptedTerms) {
-      setError("You must accept the terms and conditions.");
+    if (!email || !password || !confirmPassword) {
+      setError("Fill in all fields");
       return;
     }
 
     if (password !== confirmPassword) {
-      setError("Passwords do not match.");
+      setError("Passwords do not match");
+      return;
+    }
+
+    if (!acceptedTerms) {
+      setError("You must accept the terms and conditions");
       return;
     }
 
@@ -39,7 +60,8 @@ export default function CCreateAccount() {
       email,
       password,
       options: {
-        emailRedirectTo: "https://www.ezmarketing.space/c-edit-profile",
+        emailRedirectTo:
+          "https://www.ezmarketing.space/c-edit-profile",
       },
     });
 
@@ -57,7 +79,8 @@ export default function CCreateAccount() {
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: "https://www.ezmarketing.space/c-edit-profile",
+        redirectTo:
+          "https://www.ezmarketing.space/c-edit-profile",
       },
     });
   }
@@ -71,76 +94,202 @@ export default function CCreateAccount() {
       <div
         style={{
           minHeight: "100vh",
+          background: "#d9d9d9",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#f7f7f7",
         }}
       >
+        {/* LOGO */}
+        <img
+          src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
+          alt="ezmarketing"
+          style={{
+            width: 700,
+            height: 100,
+            objectFit: "contain",
+            marginBottom: 25,
+          }}
+        />
+
+        {/* CARD */}
         <div
           style={{
             width: 800,
-            minHeight: 547,
-            background: "#fff",
-            padding: 32,
-            borderRadius: 8,
+            height: 547,
+            background: "#ffffff",
+            borderRadius: 51,
+            padding: "65px 100px",
             display: "flex",
             flexDirection: "column",
-            gap: 16,
+            justifyContent: "space-between",
+            alignItems: "center",
+            boxSizing: "border-box",
           }}
         >
-          <h2 style={{ textAlign: "center" }}>
-            Create corporate account
-          </h2>
+          {/* TITLE */}
+          <div
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontWeight: 500,
+              fontSize: 16,
+            }}
+          >
+            Create corporative account
+          </div>
 
-          <AntdInput
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-
-          <AntdInput
-            placeholder="Password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          <AntdInput
-            placeholder="Confirm Password"
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-
-          <label style={{ fontSize: 12 }}>
-            <input
-              type="checkbox"
-              checked={acceptedTerms}
-              onChange={(e) => setAcceptedTerms(e.target.checked)}
-              style={{ marginRight: 8 }}
+          {/* FORM */}
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              gap: 18,
+              alignItems: "center",
+            }}
+          >
+            <Field
+              icon={<UserSvgIcon width={24} height={24} />}
+              placeholder="Email"
+              type="email"
+              value={email}
+              onChange={setEmail}
             />
-            I accept the terms and conditions
-          </label>
 
+            <Field
+              icon={<LockSvgIcon width={24} height={24} />}
+              placeholder="Password"
+              type="password"
+              value={password}
+              onChange={setPassword}
+            />
+
+            <Field
+              icon={<LockSvgIcon width={24} height={24} />}
+              placeholder="Confirm Password"
+              type="password"
+              value={confirmPassword}
+              onChange={setConfirmPassword}
+            />
+          </div>
+
+          {/* ERROR */}
           {error && (
-            <p style={{ color: "red", fontSize: 12 }}>{error}</p>
+            <div
+              style={{
+                fontSize: 12,
+                color: "red",
+                fontStyle: "italic",
+              }}
+            >
+              {error}
+            </div>
           )}
 
-          <LoginButton onClick={handleCreateAccount}>
-            {loading ? "Creating account..." : "Create account"}
-          </LoginButton>
+          {/* ACTIONS */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 14,
+            }}
+          >
+            <LoginButton
+              onClick={handleCreateAccount}
+              isDisabled={loading}
+              style={{ width: 248, height: 37 }}
+            >
+              {loading ? "Creating..." : "Sign up"}
+            </LoginButton>
 
-          <SignInWithGoogle onClick={handleGoogleSignUp}>
-            Sign up with Google
-          </SignInWithGoogle>
+            {/* CHECKBOX */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                fontSize: 10,
+                gap: 6,
+              }}
+            >
+              <input
+                type="checkbox"
+                checked={acceptedTerms}
+                onChange={(e) =>
+                  setAcceptedTerms(e.target.checked)
+                }
+              />
+              <span>
+                I accept the{" "}
+                <a
+                  href="#"
+                  style={{
+                    fontWeight: 600,
+                    textDecoration: "underline",
+                  }}
+                >
+                  terms and conditions
+                </a>
+              </span>
+            </div>
 
-          <p style={{ fontSize: 12, textAlign: "center" }}>
-            Already have an account?{" "}
-            <a href="/c-login">Log in</a>
-          </p>
+            <SignInWithGoogle
+              onClick={handleGoogleSignUp}
+              style={{ width: 248, height: 37 }}
+            />
+          </div>
+
+          {/* FOOTER */}
+          <div style={{ fontSize: 14 }}>
+            Already have account?
+            <Link
+              href="/c-login"
+              style={{ marginLeft: 4, fontWeight: 600 }}
+            >
+              Log in
+            </Link>
+          </div>
         </div>
       </div>
     </>
+  );
+}
+
+/* ===== Field helper — 504x32 ===== */
+
+function Field({
+  icon,
+  placeholder,
+  type,
+  value,
+  onChange,
+}: {
+  icon: React.ReactNode;
+  placeholder: string;
+  type: string;
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  return (
+    <div
+      style={{
+        width: 504,
+        height: 32,
+        display: "flex",
+        alignItems: "center",
+        gap: 10,
+        paddingLeft: 25,
+        paddingRight: 25,
+        boxSizing: "border-box",
+      }}
+    >
+      {icon}
+      <AntdInput
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={(e: any) => onChange(e.target.value)}
+      />
+    </div>
   );
 }

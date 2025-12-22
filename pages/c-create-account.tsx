@@ -234,10 +234,13 @@ export default function CCreateAccount() {
               </span>
             </div>
 
+            {/* 👇 ÚNICA LINHA DIFERENTE 👇 */}
             <SignInWithGoogle
               onClick={handleGoogleSignUp}
               style={{ width: 248, height: 37 }}
-            />
+            >
+              Sign up with Google
+            </SignInWithGoogle>
           </div>
 
           {/* FOOTER */}

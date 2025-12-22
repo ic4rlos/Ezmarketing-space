@@ -8,7 +8,8 @@ import AntdInput from "../components/ui/AntdInput";
 import LoginButton from "../components/LoginButton";
 import SignInWithGoogle from "../components/SignInWithGoogle";
 
-import projectcss from "../components/plasmic/ez_marketing_platform/PlasmicCreateAccount.module.css";
+// ⚠️ CSS REAL EXISTENTE NO REPO
+import projectcss from "../components/plasmic/projectcss.module.css";
 
 export default function CCreateAccount() {
   const router = useRouter();

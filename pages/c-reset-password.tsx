@@ -36,7 +36,7 @@ export default function CResetPassword() {
     setLoading(true);
 
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/c-newpassword`,
+      redirectTo: `${window.location.origin}/c-new-password`,
     });
 
     setLoading(false);

@@ -11,7 +11,7 @@ import { getSupabaseC } from "../lib/c-supabaseClient";
 import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
 import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
 
-// ✅ MESMO PADRÃO DO ALPHA — SEM SSR
+// ✅ MESMO PADRÃO — SEM SSR
 const AntdInput = dynamic(
   () => import("../components/ui/AntdInput"),
   { ssr: false }
@@ -53,8 +53,17 @@ export default function CLogin() {
       return;
     }
 
-    // ✅ REDIRECT CORRETO
     router.push("/find-a-affiliate");
+  }
+
+  // ✅ GOOGLE LOGIN
+  async function handleGoogleLogin() {
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: "https://www.ezmarketing.space/find-a-affiliate",
+      },
+    });
   }
 
   return (
@@ -63,7 +72,6 @@ export default function CLogin() {
         <title>Login</title>
       </Head>
 
-      {/* WRAPPER — IGUAL AO ALPHA */}
       <div
         style={{
           minHeight: "100vh",
@@ -122,7 +130,6 @@ export default function CLogin() {
               alignItems: "center",
             }}
           >
-            {/* EMAIL */}
             <Field
               icon={<UserSvgIcon width={24} height={24} />}
               placeholder="Email"
@@ -130,7 +137,6 @@ export default function CLogin() {
               onChange={setEmail}
             />
 
-            {/* PASSWORD */}
             <PasswordField
               icon={<LockSvgIcon width={24} height={24} />}
               placeholder="Password"
@@ -138,7 +144,6 @@ export default function CLogin() {
               onChange={setPassword}
             />
 
-            {/* FORGOT PASSWORD */}
             <div
               style={{
                 width: 504,
@@ -183,8 +188,13 @@ export default function CLogin() {
               {loading ? "Logging in..." : "Login"}
             </LoginButton>
 
-            {/* GOOGLE */}
-            <SignInWithGoogle />
+            {/* ✅ GOOGLE LOGIN — MESMO TAMANHO */}
+            <SignInWithGoogle
+              onClick={handleGoogleLogin}
+              style={{ width: 248, height: 37 }}
+            >
+              Login with Google
+            </SignInWithGoogle>
           </div>
 
           {/* FOOTER */}
@@ -200,7 +210,7 @@ export default function CLogin() {
   );
 }
 
-/* ===== FIELD — MESMO PADRÃO DO ALPHA ===== */
+/* ===== FIELD ===== */
 
 function Field({
   icon,

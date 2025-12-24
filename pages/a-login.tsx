@@ -53,7 +53,8 @@ export default function ALogin() {
       return;
     }
 
-    router.push("/find-a-affiliate");
+    // ✅ DESTINO CORRETO — AGÊNCIA
+    router.push("/find-a-business");
   }
 
   // ✅ GOOGLE LOGIN — AGÊNCIA
@@ -61,7 +62,8 @@ export default function ALogin() {
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: "https://www.ezmarketing.space/find-a-affiliate",
+        redirectTo:
+          "https://www.ezmarketing.space/find-a-business",
       },
     });
   }

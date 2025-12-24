@@ -71,7 +71,7 @@ export default function ACreateAccount() {
       return;
     }
 
-    router.push("/a-login");
+    router.push("/a-code-verification-2");
   }
 
   async function handleGoogleSignUp() {

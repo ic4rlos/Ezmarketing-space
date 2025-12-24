@@ -60,7 +60,7 @@ export default function ACreateAccount() {
       password,
       options: {
         emailRedirectTo:
-          "https://www.ezmarketing.space/a-login",
+          "https://www.ezmarketing.space/a-edit-profile",
       },
     });
 
@@ -79,7 +79,7 @@ export default function ACreateAccount() {
       provider: "google",
       options: {
         redirectTo:
-          "https://www.ezmarketing.space/a-login",
+          "https://www.ezmarketing.space/a-edit-profile",
       },
     });
   }

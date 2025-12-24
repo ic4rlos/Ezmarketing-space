@@ -71,7 +71,7 @@ export default function CCreateAccount() {
       return;
     }
 
-    router.push("/c-check-email");
+    router.push("/c-code-verification-create-account");
   }
 
   async function handleGoogleSignUp() {

@@ -2201,7 +2201,7 @@ function PlasmicCHomepage__RenderFunc(props: {
                       sty.link__cpkGd
                     )}
                     component={Link}
-                    href={`/profile`}
+                    href={`/a-profile`}
                     platform={"nextjs"}
                   >
                     {"Cool User"}

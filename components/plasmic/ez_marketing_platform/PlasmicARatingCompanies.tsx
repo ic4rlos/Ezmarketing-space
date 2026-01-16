@@ -108,15 +108,32 @@ export type PlasmicARatingCompanies__OverridesType = {
   account?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
   countainer1?: Flex__<"div">;
-  rate29?: Flex__<typeof AntdRate>;
+  companyLogo?: Flex__<typeof PlasmicImg__>;
+  companyName?: Flex__<"div">;
+  companyType?: Flex__<"div">;
+  averageRate?: Flex__<typeof AntdRate>;
+  rateSum?: Flex__<"div">;
+  area?: Flex__<"div">;
+  subArea?: Flex__<"div">;
+  location?: Flex__<"div">;
+  foundationDate?: Flex__<"div">;
   loginButton?: Flex__<typeof LoginButton>;
-  rating?: Flex__<"div">;
+  companyTagline?: Flex__<"div">;
+  linkedIn?: Flex__<"a"> & Partial<LinkProps>;
+  instagram?: Flex__<"a"> & Partial<LinkProps>;
+  x?: Flex__<"a"> & Partial<LinkProps>;
+  website?: Flex__<"a"> & Partial<LinkProps>;
+  rateThisCompany?: Flex__<"div">;
   modal?: Flex__<typeof Modal>;
-  rate4?: Flex__<typeof AntdRate>;
+  rating?: Flex__<typeof AntdRate>;
   h3?: Flex__<"h3">;
   textArea2?: Flex__<typeof AntdTextArea>;
-  rate5?: Flex__<typeof AntdRate>;
-  rate6?: Flex__<typeof AntdRate>;
+  confirmRate?: Flex__<typeof Button2>;
+  button2?: Flex__<typeof Button2>;
+  ratingCustomer?: Flex__<typeof AntdRate>;
+  rateSum2?: Flex__<"div">;
+  customerRate?: Flex__<typeof AntdRate>;
+  rateSum3?: Flex__<"div">;
   rate7?: Flex__<typeof AntdRate>;
   rate8?: Flex__<typeof AntdRate>;
   rate9?: Flex__<typeof AntdRate>;
@@ -181,7 +198,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
-        path: "rate29.value",
+        path: "averageRate.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 5
@@ -301,7 +318,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
-        path: "rate4.value",
+        path: "rating.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
@@ -315,13 +332,13 @@ function PlasmicARatingCompanies__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
       {
-        path: "rate5.value",
+        path: "ratingCustomer.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "rate6.value",
+        path: "customerRate.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
@@ -426,7 +443,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                           sty.link__xZruD
                         )}
                         component={Link}
-                        href={`/community-dashboard`}
+                        href={`/a-community-dashboard`}
                         platform={"nextjs"}
                       >
                         {"Community Dashboard"}
@@ -439,7 +456,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                           sty.link__oIdfd
                         )}
                         component={Link}
-                        href={`/service-dashboard`}
+                        href={`/a-service-dashboard`}
                         platform={"nextjs"}
                       >
                         {"Service\nDashboard"}
@@ -464,7 +481,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                           sty.link___7RLlo
                         )}
                         component={Link}
-                        href={`/find-a-business`}
+                        href={`/a-find-a-business`}
                         platform={"nextjs"}
                       >
                         {"Find a \nbusiness"}
@@ -610,8 +627,10 @@ function PlasmicARatingCompanies__RenderFunc(props: {
           >
             <div className={classNames(projectcss.all, sty.freeBox__nrmmg)}>
               <PlasmicImg__
+                data-plasmic-name={"companyLogo"}
+                data-plasmic-override={overrides.companyLogo}
                 alt={""}
-                className={classNames(sty.img___7YRt1)}
+                className={classNames(sty.companyLogo)}
                 displayHeight={"100px"}
                 displayMaxHeight={"none"}
                 displayMaxWidth={"100%"}
@@ -624,19 +643,23 @@ function PlasmicARatingCompanies__RenderFunc(props: {
               <div className={classNames(projectcss.all, sty.freeBox__yrEkf)}>
                 <div className={classNames(projectcss.all, sty.freeBox__qMeH)}>
                   <div
+                    data-plasmic-name={"companyName"}
+                    data-plasmic-override={overrides.companyName}
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text___5Obif
+                      sty.companyName
                     )}
                   >
                     {"Company"}
                   </div>
                   <div
+                    data-plasmic-name={"companyType"}
+                    data-plasmic-override={overrides.companyType}
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__rTyoo
+                      sty.companyType
                     )}
                   >
                     {"INC"}
@@ -645,16 +668,16 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                     className={classNames(projectcss.all, sty.freeBox__wdRmS)}
                   >
                     <AntdRate
-                      data-plasmic-name={"rate29"}
-                      data-plasmic-override={overrides.rate29}
+                      data-plasmic-name={"averageRate"}
+                      data-plasmic-override={overrides.averageRate}
                       allowHalf={true}
-                      className={classNames("__wab_instance", sty.rate29)}
+                      className={classNames("__wab_instance", sty.averageRate)}
                       defaultValue={5}
                       disabled={true}
                       multiCharacter={false}
                       onChange={async (...eventArgs: any) => {
                         generateStateOnChangeProp($state, [
-                          "rate29",
+                          "averageRate",
                           "value"
                         ]).apply(null, eventArgs);
                       }}
@@ -708,16 +731,18 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                         </React.Fragment>
                       }
                       value={generateStateValueProp($state, [
-                        "rate29",
+                        "averageRate",
                         "value"
                       ])}
                     />
 
                     <div
+                      data-plasmic-name={"rateSum"}
+                      data-plasmic-override={overrides.rateSum}
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text__ituV
+                        sty.rateSum
                       )}
                     >
                       {"(50)"}
@@ -726,41 +751,58 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__gq1EP)}>
                   <div
+                    data-plasmic-name={"area"}
+                    data-plasmic-override={overrides.area}
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__sh1Io
+                      sty.area
                     )}
                   >
                     {"Niche"}
                   </div>
                   <div
+                    data-plasmic-name={"subArea"}
+                    data-plasmic-override={overrides.subArea}
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__jJkP
+                      sty.subArea
                     )}
                   >
                     {"Subniche"}
                   </div>
                 </div>
                 <div
+                  data-plasmic-name={"location"}
+                  data-plasmic-override={overrides.location}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__ejxJx
+                    sty.location
                   )}
                 >
                   {"New York"}
                 </div>
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__rflHt)}>
-                <div className={classNames(projectcss.all, sty.freeBox__sn3YV)}>
+                <div className={classNames(projectcss.all, sty.freeBox__f2H4X)}>
                   <div
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__blwvz
+                      sty.text__vowyo
+                    )}
+                  >
+                    {"Since"}
+                  </div>
+                  <div
+                    data-plasmic-name={"foundationDate"}
+                    data-plasmic-override={overrides.foundationDate}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.foundationDate
                     )}
                   >
                     {"Botstrap"}
@@ -808,10 +850,12 @@ function PlasmicARatingCompanies__RenderFunc(props: {
               </div>
             </div>
             <div
+              data-plasmic-name={"companyTagline"}
+              data-plasmic-override={overrides.companyTagline}
               className={classNames(
                 projectcss.all,
                 projectcss.__wab_text,
-                sty.text__zv4P
+                sty.companyTagline
               )}
             >
               {"Startup tagline"}
@@ -824,11 +868,13 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                 />
 
                 <PlasmicLink__
+                  data-plasmic-name={"linkedIn"}
+                  data-plasmic-override={overrides.linkedIn}
                   className={classNames(
                     projectcss.all,
                     projectcss.a,
                     projectcss.__wab_text,
-                    sty.link__vkWd1
+                    sty.linkedIn
                   )}
                   component={Link}
                   href={"https://www.plasmic.app/"}
@@ -844,11 +890,13 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                 />
 
                 <PlasmicLink__
+                  data-plasmic-name={"instagram"}
+                  data-plasmic-override={overrides.instagram}
                   className={classNames(
                     projectcss.all,
                     projectcss.a,
                     projectcss.__wab_text,
-                    sty.link__xelAa
+                    sty.instagram
                   )}
                   component={Link}
                   href={"https://www.plasmic.app/"}
@@ -864,11 +912,13 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                 />
 
                 <PlasmicLink__
+                  data-plasmic-name={"x"}
+                  data-plasmic-override={overrides.x}
                   className={classNames(
                     projectcss.all,
                     projectcss.a,
                     projectcss.__wab_text,
-                    sty.link___45Vxn
+                    sty.x
                   )}
                   component={Link}
                   href={"https://www.plasmic.app/"}
@@ -884,11 +934,13 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                 />
 
                 <PlasmicLink__
+                  data-plasmic-name={"website"}
+                  data-plasmic-override={overrides.website}
                   className={classNames(
                     projectcss.all,
                     projectcss.a,
                     projectcss.__wab_text,
-                    sty.link__oKvYw
+                    sty.website
                   )}
                   component={Link}
                   href={"https://www.plasmic.app/"}
@@ -900,9 +952,9 @@ function PlasmicARatingCompanies__RenderFunc(props: {
             </div>
           </div>
           <div
-            data-plasmic-name={"rating"}
-            data-plasmic-override={overrides.rating}
-            className={classNames(projectcss.all, sty.rating)}
+            data-plasmic-name={"rateThisCompany"}
+            data-plasmic-override={overrides.rateThisCompany}
+            className={classNames(projectcss.all, sty.rateThisCompany)}
           >
             <div
               className={classNames(
@@ -1015,6 +1067,8 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                       className={classNames(projectcss.all, sty.freeBox__e0ZOv)}
                     >
                       <Button2
+                        data-plasmic-name={"confirmRate"}
+                        data-plasmic-override={overrides.confirmRate}
                         color={"muted"}
                         label={
                           <div
@@ -1071,6 +1125,8 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                       />
 
                       <Button2
+                        data-plasmic-name={"button2"}
+                        data-plasmic-override={overrides.button2}
                         color={"muted"}
                         label={
                           <div
@@ -1158,13 +1214,13 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                   }}
                   trigger={
                     <AntdRate
-                      data-plasmic-name={"rate4"}
-                      data-plasmic-override={overrides.rate4}
+                      data-plasmic-name={"rating"}
+                      data-plasmic-override={overrides.rating}
                       allowHalf={true}
-                      className={classNames("__wab_instance", sty.rate4)}
+                      className={classNames("__wab_instance", sty.rating)}
                       onChange={async (...eventArgs: any) => {
                         generateStateOnChangeProp($state, [
-                          "rate4",
+                          "rating",
                           "value"
                         ]).apply(null, eventArgs);
                       }}
@@ -1217,7 +1273,10 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                           </div>
                         </React.Fragment>
                       }
-                      value={generateStateValueProp($state, ["rate4", "value"])}
+                      value={generateStateValueProp($state, [
+                        "rating",
+                        "value"
+                      ])}
                     />
                   }
                 />
@@ -1249,16 +1308,16 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                   }
                 </div>
                 <AntdRate
-                  data-plasmic-name={"rate5"}
-                  data-plasmic-override={overrides.rate5}
+                  data-plasmic-name={"ratingCustomer"}
+                  data-plasmic-override={overrides.ratingCustomer}
                   allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate5)}
+                  className={classNames("__wab_instance", sty.ratingCustomer)}
                   disabled={true}
                   onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, ["rate5", "value"]).apply(
-                      null,
-                      eventArgs
-                    );
+                    generateStateOnChangeProp($state, [
+                      "ratingCustomer",
+                      "value"
+                    ]).apply(null, eventArgs);
                   }}
                   symbols={
                     <React.Fragment>
@@ -1309,8 +1368,23 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                       </div>
                     </React.Fragment>
                   }
-                  value={generateStateValueProp($state, ["rate5", "value"])}
+                  value={generateStateValueProp($state, [
+                    "ratingCustomer",
+                    "value"
+                  ])}
                 />
+
+                <div
+                  data-plasmic-name={"rateSum2"}
+                  data-plasmic-override={overrides.rateSum2}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.rateSum2
+                  )}
+                >
+                  {"(50)"}
+                </div>
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__yk72K)}>
                 <CustomerRatesSvgIcon
@@ -1339,16 +1413,16 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                   }
                 </div>
                 <AntdRate
-                  data-plasmic-name={"rate6"}
-                  data-plasmic-override={overrides.rate6}
+                  data-plasmic-name={"customerRate"}
+                  data-plasmic-override={overrides.customerRate}
                   allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate6)}
+                  className={classNames("__wab_instance", sty.customerRate)}
                   disabled={true}
                   onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, ["rate6", "value"]).apply(
-                      null,
-                      eventArgs
-                    );
+                    generateStateOnChangeProp($state, [
+                      "customerRate",
+                      "value"
+                    ]).apply(null, eventArgs);
                   }}
                   symbols={
                     <React.Fragment>
@@ -1399,8 +1473,23 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                       </div>
                     </React.Fragment>
                   }
-                  value={generateStateValueProp($state, ["rate6", "value"])}
+                  value={generateStateValueProp($state, [
+                    "customerRate",
+                    "value"
+                  ])}
                 />
+
+                <div
+                  data-plasmic-name={"rateSum3"}
+                  data-plasmic-override={overrides.rateSum3}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.rateSum3
+                  )}
+                >
+                  {"(50)"}
+                </div>
               </div>
             </div>
           </div>
@@ -2684,15 +2773,32 @@ const PlasmicDescendants = {
     "account",
     "button",
     "countainer1",
-    "rate29",
+    "companyLogo",
+    "companyName",
+    "companyType",
+    "averageRate",
+    "rateSum",
+    "area",
+    "subArea",
+    "location",
+    "foundationDate",
     "loginButton",
-    "rating",
+    "companyTagline",
+    "linkedIn",
+    "instagram",
+    "x",
+    "website",
+    "rateThisCompany",
     "modal",
-    "rate4",
+    "rating",
     "h3",
     "textArea2",
-    "rate5",
-    "rate6",
+    "confirmRate",
+    "button2",
+    "ratingCustomer",
+    "rateSum2",
+    "customerRate",
+    "rateSum3",
     "rate7",
     "rate8",
     "rate9",
@@ -2716,16 +2822,62 @@ const PlasmicDescendants = {
   navigationBar: ["navigationBar"],
   account: ["account", "button"],
   button: ["button"],
-  countainer1: ["countainer1", "rate29", "loginButton"],
-  rate29: ["rate29"],
+  countainer1: [
+    "countainer1",
+    "companyLogo",
+    "companyName",
+    "companyType",
+    "averageRate",
+    "rateSum",
+    "area",
+    "subArea",
+    "location",
+    "foundationDate",
+    "loginButton",
+    "companyTagline",
+    "linkedIn",
+    "instagram",
+    "x",
+    "website"
+  ],
+  companyLogo: ["companyLogo"],
+  companyName: ["companyName"],
+  companyType: ["companyType"],
+  averageRate: ["averageRate"],
+  rateSum: ["rateSum"],
+  area: ["area"],
+  subArea: ["subArea"],
+  location: ["location"],
+  foundationDate: ["foundationDate"],
   loginButton: ["loginButton"],
-  rating: ["rating", "modal", "rate4", "h3", "textArea2", "rate5", "rate6"],
-  modal: ["modal", "rate4", "h3", "textArea2"],
-  rate4: ["rate4"],
+  companyTagline: ["companyTagline"],
+  linkedIn: ["linkedIn"],
+  instagram: ["instagram"],
+  x: ["x"],
+  website: ["website"],
+  rateThisCompany: [
+    "rateThisCompany",
+    "modal",
+    "rating",
+    "h3",
+    "textArea2",
+    "confirmRate",
+    "button2",
+    "ratingCustomer",
+    "rateSum2",
+    "customerRate",
+    "rateSum3"
+  ],
+  modal: ["modal", "rating", "h3", "textArea2", "confirmRate", "button2"],
+  rating: ["rating"],
   h3: ["h3"],
   textArea2: ["textArea2"],
-  rate5: ["rate5"],
-  rate6: ["rate6"],
+  confirmRate: ["confirmRate"],
+  button2: ["button2"],
+  ratingCustomer: ["ratingCustomer"],
+  rateSum2: ["rateSum2"],
+  customerRate: ["customerRate"],
+  rateSum3: ["rateSum3"],
   rate7: ["rate7"],
   rate8: ["rate8"],
   rate9: ["rate9"],
@@ -2755,15 +2907,32 @@ type NodeDefaultElementType = {
   account: typeof AntdDropdown;
   button: typeof AntdButton;
   countainer1: "div";
-  rate29: typeof AntdRate;
+  companyLogo: typeof PlasmicImg__;
+  companyName: "div";
+  companyType: "div";
+  averageRate: typeof AntdRate;
+  rateSum: "div";
+  area: "div";
+  subArea: "div";
+  location: "div";
+  foundationDate: "div";
   loginButton: typeof LoginButton;
-  rating: "div";
+  companyTagline: "div";
+  linkedIn: "a";
+  instagram: "a";
+  x: "a";
+  website: "a";
+  rateThisCompany: "div";
   modal: typeof Modal;
-  rate4: typeof AntdRate;
+  rating: typeof AntdRate;
   h3: "h3";
   textArea2: typeof AntdTextArea;
-  rate5: typeof AntdRate;
-  rate6: typeof AntdRate;
+  confirmRate: typeof Button2;
+  button2: typeof Button2;
+  ratingCustomer: typeof AntdRate;
+  rateSum2: "div";
+  customerRate: typeof AntdRate;
+  rateSum3: "div";
   rate7: typeof AntdRate;
   rate8: typeof AntdRate;
   rate9: typeof AntdRate;
@@ -2851,15 +3020,32 @@ export const PlasmicARatingCompanies = Object.assign(
     account: makeNodeComponent("account"),
     button: makeNodeComponent("button"),
     countainer1: makeNodeComponent("countainer1"),
-    rate29: makeNodeComponent("rate29"),
+    companyLogo: makeNodeComponent("companyLogo"),
+    companyName: makeNodeComponent("companyName"),
+    companyType: makeNodeComponent("companyType"),
+    averageRate: makeNodeComponent("averageRate"),
+    rateSum: makeNodeComponent("rateSum"),
+    area: makeNodeComponent("area"),
+    subArea: makeNodeComponent("subArea"),
+    location: makeNodeComponent("location"),
+    foundationDate: makeNodeComponent("foundationDate"),
     loginButton: makeNodeComponent("loginButton"),
-    rating: makeNodeComponent("rating"),
+    companyTagline: makeNodeComponent("companyTagline"),
+    linkedIn: makeNodeComponent("linkedIn"),
+    instagram: makeNodeComponent("instagram"),
+    x: makeNodeComponent("x"),
+    website: makeNodeComponent("website"),
+    rateThisCompany: makeNodeComponent("rateThisCompany"),
     modal: makeNodeComponent("modal"),
-    rate4: makeNodeComponent("rate4"),
+    rating: makeNodeComponent("rating"),
     h3: makeNodeComponent("h3"),
     textArea2: makeNodeComponent("textArea2"),
-    rate5: makeNodeComponent("rate5"),
-    rate6: makeNodeComponent("rate6"),
+    confirmRate: makeNodeComponent("confirmRate"),
+    button2: makeNodeComponent("button2"),
+    ratingCustomer: makeNodeComponent("ratingCustomer"),
+    rateSum2: makeNodeComponent("rateSum2"),
+    customerRate: makeNodeComponent("customerRate"),
+    rateSum3: makeNodeComponent("rateSum3"),
     rate7: makeNodeComponent("rate7"),
     rate8: makeNodeComponent("rate8"),
     rate9: makeNodeComponent("rate9"),

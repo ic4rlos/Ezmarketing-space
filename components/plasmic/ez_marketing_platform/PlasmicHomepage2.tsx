@@ -299,7 +299,7 @@ function PlasmicHomepage2__RenderFunc(props: {
                           sty.link___3HpLw
                         )}
                         component={Link}
-                        href={`/find-a-business`}
+                        href={`/a-find-a-business`}
                         platform={"nextjs"}
                       >
                         {"Find a \nbusiness"}

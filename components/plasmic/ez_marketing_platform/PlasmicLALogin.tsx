@@ -209,7 +209,7 @@ function PlasmicLALogin__RenderFunc(props: {
         />
         <meta
           key="twitter:title"
-          name="twitter:title"
+          property="twitter:title"
           content={PlasmicLALogin.pageMetadata.title}
         />
       </Head>

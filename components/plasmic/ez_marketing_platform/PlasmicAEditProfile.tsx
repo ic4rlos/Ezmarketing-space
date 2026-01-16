@@ -113,30 +113,30 @@ export type PlasmicAEditProfile__OverridesType = {
   stepsStack?: Flex__<"div">;
   steps?: Flex__<typeof AntdSteps>;
   basicInfo?: Flex__<"div">;
-  upload?: Flex__<typeof UploadWrapper>;
-  input?: Flex__<typeof AntdInput>;
-  input2?: Flex__<typeof AntdInput>;
-  input3?: Flex__<typeof AntdInput>;
-  input4?: Flex__<typeof AntdInput>;
+  profilePic?: Flex__<typeof UploadWrapper>;
+  firstName?: Flex__<typeof AntdInput>;
+  lastName?: Flex__<typeof AntdInput>;
+  location?: Flex__<typeof AntdInput>;
+  birthday?: Flex__<typeof AntdInput>;
   links?: Flex__<"div">;
-  input5?: Flex__<typeof AntdInput>;
-  input6?: Flex__<typeof AntdInput>;
-  input7?: Flex__<typeof AntdInput>;
+  linkedIn?: Flex__<typeof AntdInput>;
+  instagram?: Flex__<typeof AntdInput>;
+  x?: Flex__<typeof AntdInput>;
   education?: Flex__<"div">;
   education2?: Flex__<"section">;
-  input11?: Flex__<typeof AntdInput>;
-  input12?: Flex__<typeof AntdInput>;
-  input13?: Flex__<typeof AntdInput>;
-  select3?: Flex__<typeof AntdSelect>;
-  upload2?: Flex__<typeof UploadWrapper>;
+  university?: Flex__<typeof AntdInput>;
+  major?: Flex__<typeof AntdInput>;
+  graduationYear?: Flex__<typeof AntdInput>;
+  educationLevel?: Flex__<typeof AntdSelect>;
+  degree?: Flex__<typeof UploadWrapper>;
   experience?: Flex__<"div">;
   job2?: Flex__<"section">;
-  input14?: Flex__<typeof AntdInput>;
-  input15?: Flex__<typeof AntdInput>;
-  input16?: Flex__<typeof AntdInput>;
+  charge?: Flex__<typeof AntdInput>;
+  company?: Flex__<typeof AntdInput>;
+  howLongInOffice?: Flex__<typeof AntdInput>;
   skills?: Flex__<"div">;
-  select2?: Flex__<typeof AntdSelect>;
-  textArea?: Flex__<typeof AntdTextArea>;
+  office?: Flex__<typeof AntdSelect>;
+  impressive?: Flex__<typeof AntdTextArea>;
 };
 
 export interface DefaultAEditProfileProps {}
@@ -193,7 +193,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => []
       },
       {
-        path: "input.value",
+        path: "firstName.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -223,10 +223,10 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "currentStep",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 2
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
       },
       {
-        path: "input2.value",
+        path: "lastName.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -234,7 +234,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input3.value",
+        path: "location.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -242,7 +242,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input4.value",
+        path: "birthday.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -250,13 +250,13 @@ function PlasmicAEditProfile__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "upload.files",
+        path: "profilePic.files",
         type: "private",
         variableType: "array",
         initFunc: ({ $props, $state, $queries, $ctx }) => []
       },
       {
-        path: "input5.value",
+        path: "linkedIn.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -264,7 +264,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input6.value",
+        path: "instagram.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -272,7 +272,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input7.value",
+        path: "x.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -280,21 +280,21 @@ function PlasmicAEditProfile__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input11[].value",
+        path: "university[].value",
         type: "private",
         variableType: "text",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input12[].value",
+        path: "major[].value",
         type: "private",
         variableType: "text",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input13[].value",
+        path: "graduationYear[].value",
         type: "private",
         variableType: "text",
 
@@ -310,21 +310,21 @@ function PlasmicAEditProfile__RenderFunc(props: {
         ]
       },
       {
-        path: "input14[].value",
+        path: "charge[].value",
         type: "private",
         variableType: "text",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input15[].value",
+        path: "company[].value",
         type: "private",
         variableType: "text",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input16[].value",
+        path: "howLongInOffice[].value",
         type: "private",
         variableType: "text",
 
@@ -340,18 +340,18 @@ function PlasmicAEditProfile__RenderFunc(props: {
         ]
       },
       {
-        path: "upload2[].files",
+        path: "degree[].files",
         type: "private",
         variableType: "array"
       },
       {
-        path: "select2.value",
+        path: "office.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "textArea.value",
+        path: "impressive.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -365,7 +365,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "select3[].value",
+        path: "educationLevel[].value",
         type: "private",
         variableType: "text"
       }
@@ -393,7 +393,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
         />
         <meta
           key="twitter:title"
-          name="twitter:title"
+          property="twitter:title"
           content={PlasmicAEditProfile.pageMetadata.title}
         />
       </Head>
@@ -565,16 +565,19 @@ function PlasmicAEditProfile__RenderFunc(props: {
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__oGhdP)}>
                 <UploadWrapper
-                  data-plasmic-name={"upload"}
-                  data-plasmic-override={overrides.upload}
+                  data-plasmic-name={"profilePic"}
+                  data-plasmic-override={overrides.profilePic}
                   accept={"image/*"}
-                  className={classNames("__wab_instance", sty.upload)}
-                  files={generateStateValueProp($state, ["upload", "files"])}
+                  className={classNames("__wab_instance", sty.profilePic)}
+                  files={generateStateValueProp($state, [
+                    "profilePic",
+                    "files"
+                  ])}
                   listType={"picture-circle"}
                   maxCount={1}
                   onFilesChange={async (...eventArgs: any) => {
                     generateStateOnChangeProp($state, [
-                      "upload",
+                      "profilePic",
                       "files"
                     ]).apply(null, eventArgs);
 
@@ -653,12 +656,12 @@ function PlasmicAEditProfile__RenderFunc(props: {
                   const child$Props = {
                     autoFocus: false,
                     bordered: true,
-                    className: classNames("__wab_instance", sty.input),
+                    className: classNames("__wab_instance", sty.firstName),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["input", "value"],
+                        ["firstName", "value"],
                         AntdInput_Helpers
                       ).apply(null, eventArgs);
                     },
@@ -666,14 +669,17 @@ function PlasmicAEditProfile__RenderFunc(props: {
                     readOnly: false,
                     size: "middle",
                     type: "text",
-                    value: generateStateValueProp($state, ["input", "value"])
+                    value: generateStateValueProp($state, [
+                      "firstName",
+                      "value"
+                    ])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "input.value"
+                        plasmicStateName: "firstName.value"
                       }
                     ],
                     [],
@@ -683,8 +689,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
 
                   return (
                     <AntdInput
-                      data-plasmic-name={"input"}
-                      data-plasmic-override={overrides.input}
+                      data-plasmic-name={"firstName"}
+                      data-plasmic-override={overrides.firstName}
                       {...child$Props}
                     />
                   );
@@ -700,12 +706,12 @@ function PlasmicAEditProfile__RenderFunc(props: {
                   const child$Props = {
                     autoFocus: false,
                     bordered: true,
-                    className: classNames("__wab_instance", sty.input2),
+                    className: classNames("__wab_instance", sty.lastName),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["input2", "value"],
+                        ["lastName", "value"],
                         AntdInput_Helpers
                       ).apply(null, eventArgs);
                     },
@@ -713,14 +719,14 @@ function PlasmicAEditProfile__RenderFunc(props: {
                     readOnly: false,
                     size: "middle",
                     type: "text",
-                    value: generateStateValueProp($state, ["input2", "value"])
+                    value: generateStateValueProp($state, ["lastName", "value"])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "input2.value"
+                        plasmicStateName: "lastName.value"
                       }
                     ],
                     [],
@@ -730,8 +736,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
 
                   return (
                     <AntdInput
-                      data-plasmic-name={"input2"}
-                      data-plasmic-override={overrides.input2}
+                      data-plasmic-name={"lastName"}
+                      data-plasmic-override={overrides.lastName}
                       {...child$Props}
                     />
                   );
@@ -747,12 +753,12 @@ function PlasmicAEditProfile__RenderFunc(props: {
                   const child$Props = {
                     autoFocus: false,
                     bordered: true,
-                    className: classNames("__wab_instance", sty.input3),
+                    className: classNames("__wab_instance", sty.location),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["input3", "value"],
+                        ["location", "value"],
                         AntdInput_Helpers
                       ).apply(null, eventArgs);
                     },
@@ -760,14 +766,14 @@ function PlasmicAEditProfile__RenderFunc(props: {
                     readOnly: false,
                     size: "middle",
                     type: "text",
-                    value: generateStateValueProp($state, ["input3", "value"])
+                    value: generateStateValueProp($state, ["location", "value"])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "input3.value"
+                        plasmicStateName: "location.value"
                       }
                     ],
                     [],
@@ -777,8 +783,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
 
                   return (
                     <AntdInput
-                      data-plasmic-name={"input3"}
-                      data-plasmic-override={overrides.input3}
+                      data-plasmic-name={"location"}
+                      data-plasmic-override={overrides.location}
                       {...child$Props}
                     />
                   );
@@ -794,12 +800,12 @@ function PlasmicAEditProfile__RenderFunc(props: {
                   const child$Props = {
                     autoFocus: false,
                     bordered: true,
-                    className: classNames("__wab_instance", sty.input4),
+                    className: classNames("__wab_instance", sty.birthday),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["input4", "value"],
+                        ["birthday", "value"],
                         AntdInput_Helpers
                       ).apply(null, eventArgs);
 
@@ -831,14 +837,14 @@ function PlasmicAEditProfile__RenderFunc(props: {
                     readOnly: false,
                     size: "middle",
                     type: "date",
-                    value: generateStateValueProp($state, ["input4", "value"])
+                    value: generateStateValueProp($state, ["birthday", "value"])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "input4.value"
+                        plasmicStateName: "birthday.value"
                       }
                     ],
                     [],
@@ -848,8 +854,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
 
                   return (
                     <AntdInput
-                      data-plasmic-name={"input4"}
-                      data-plasmic-override={overrides.input4}
+                      data-plasmic-name={"birthday"}
+                      data-plasmic-override={overrides.birthday}
                       {...child$Props}
                     />
                   );
@@ -945,12 +951,12 @@ function PlasmicAEditProfile__RenderFunc(props: {
                   const child$Props = {
                     autoFocus: false,
                     bordered: true,
-                    className: classNames("__wab_instance", sty.input5),
+                    className: classNames("__wab_instance", sty.linkedIn),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["input5", "value"],
+                        ["linkedIn", "value"],
                         AntdInput_Helpers
                       ).apply(null, eventArgs);
                     },
@@ -958,14 +964,14 @@ function PlasmicAEditProfile__RenderFunc(props: {
                     readOnly: false,
                     size: "middle",
                     type: "text",
-                    value: generateStateValueProp($state, ["input5", "value"])
+                    value: generateStateValueProp($state, ["linkedIn", "value"])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "input5.value"
+                        plasmicStateName: "linkedIn.value"
                       }
                     ],
                     [],
@@ -975,8 +981,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
 
                   return (
                     <AntdInput
-                      data-plasmic-name={"input5"}
-                      data-plasmic-override={overrides.input5}
+                      data-plasmic-name={"linkedIn"}
+                      data-plasmic-override={overrides.linkedIn}
                       {...child$Props}
                     />
                   );
@@ -992,12 +998,12 @@ function PlasmicAEditProfile__RenderFunc(props: {
                   const child$Props = {
                     autoFocus: false,
                     bordered: true,
-                    className: classNames("__wab_instance", sty.input6),
+                    className: classNames("__wab_instance", sty.instagram),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["input6", "value"],
+                        ["instagram", "value"],
                         AntdInput_Helpers
                       ).apply(null, eventArgs);
                     },
@@ -1005,14 +1011,17 @@ function PlasmicAEditProfile__RenderFunc(props: {
                     readOnly: false,
                     size: "middle",
                     type: "text",
-                    value: generateStateValueProp($state, ["input6", "value"])
+                    value: generateStateValueProp($state, [
+                      "instagram",
+                      "value"
+                    ])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "input6.value"
+                        plasmicStateName: "instagram.value"
                       }
                     ],
                     [],
@@ -1022,8 +1031,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
 
                   return (
                     <AntdInput
-                      data-plasmic-name={"input6"}
-                      data-plasmic-override={overrides.input6}
+                      data-plasmic-name={"instagram"}
+                      data-plasmic-override={overrides.instagram}
                       {...child$Props}
                     />
                   );
@@ -1039,12 +1048,12 @@ function PlasmicAEditProfile__RenderFunc(props: {
                   const child$Props = {
                     autoFocus: false,
                     bordered: true,
-                    className: classNames("__wab_instance", sty.input7),
+                    className: classNames("__wab_instance", sty.x),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["input7", "value"],
+                        ["x", "value"],
                         AntdInput_Helpers
                       ).apply(null, eventArgs);
                     },
@@ -1052,14 +1061,14 @@ function PlasmicAEditProfile__RenderFunc(props: {
                     readOnly: false,
                     size: "middle",
                     type: "text",
-                    value: generateStateValueProp($state, ["input7", "value"])
+                    value: generateStateValueProp($state, ["x", "value"])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "input7.value"
+                        plasmicStateName: "x.value"
                       }
                     ],
                     [],
@@ -1069,8 +1078,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
 
                   return (
                     <AntdInput
-                      data-plasmic-name={"input7"}
-                      data-plasmic-override={overrides.input7}
+                      data-plasmic-name={"x"}
+                      data-plasmic-override={overrides.x}
                       {...child$Props}
                     />
                   );
@@ -1240,13 +1249,13 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             bordered: true,
                             className: classNames(
                               "__wab_instance",
-                              sty.input11
+                              sty.university
                             ),
                             onChange: async (...eventArgs: any) => {
                               generateStateOnChangePropForCodeComponents(
                                 $state,
                                 "value",
-                                ["input11", __plasmic_idx_0, "value"],
+                                ["university", __plasmic_idx_0, "value"],
                                 AntdInput_Helpers
                               ).apply(null, eventArgs);
                             },
@@ -1255,7 +1264,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             size: "middle",
                             type: "text",
                             value: generateStateValueProp($state, [
-                              "input11",
+                              "university",
                               __plasmic_idx_0,
                               "value"
                             ])
@@ -1265,7 +1274,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             [
                               {
                                 name: "value",
-                                plasmicStateName: "input11[].value"
+                                plasmicStateName: "university[].value"
                               }
                             ],
                             [__plasmic_idx_0],
@@ -1276,7 +1285,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             $state,
                             [
                               {
-                                name: "input11[].value",
+                                name: "university[].value",
                                 initFunc: ({ $props, $state, $queries }) =>
                                   undefined
                               }
@@ -1285,8 +1294,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
                           );
                           return (
                             <AntdInput
-                              data-plasmic-name={"input11"}
-                              data-plasmic-override={overrides.input11}
+                              data-plasmic-name={"university"}
+                              data-plasmic-override={overrides.university}
                               {...child$Props}
                             />
                           );
@@ -1296,6 +1305,72 @@ function PlasmicAEditProfile__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__iuKVm
+                        )}
+                      >
+                        <TeacherSvgrepoComSvgIcon
+                          className={classNames(projectcss.all, sty.svg__lgWkj)}
+                          role={"img"}
+                        />
+
+                        {(() => {
+                          const child$Props = {
+                            autoFocus: false,
+                            bordered: true,
+                            className: classNames("__wab_instance", sty.major),
+                            onChange: async (...eventArgs: any) => {
+                              generateStateOnChangePropForCodeComponents(
+                                $state,
+                                "value",
+                                ["major", __plasmic_idx_0, "value"],
+                                AntdInput_Helpers
+                              ).apply(null, eventArgs);
+                            },
+                            placeholder: "Major",
+                            readOnly: false,
+                            size: "middle",
+                            type: "text",
+                            value: generateStateValueProp($state, [
+                              "major",
+                              __plasmic_idx_0,
+                              "value"
+                            ])
+                          };
+                          initializeCodeComponentStates(
+                            $state,
+                            [
+                              {
+                                name: "value",
+                                plasmicStateName: "major[].value"
+                              }
+                            ],
+                            [__plasmic_idx_0],
+                            AntdInput_Helpers ?? {},
+                            child$Props
+                          );
+                          initializePlasmicStates(
+                            $state,
+                            [
+                              {
+                                name: "major[].value",
+                                initFunc: ({ $props, $state, $queries }) =>
+                                  undefined
+                              }
+                            ],
+                            [__plasmic_idx_0]
+                          );
+                          return (
+                            <AntdInput
+                              data-plasmic-name={"major"}
+                              data-plasmic-override={overrides.major}
+                              {...child$Props}
+                            />
+                          );
+                        })()}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__gG67
                         )}
                       >
                         <Icon8Icon
@@ -1309,82 +1384,13 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             bordered: true,
                             className: classNames(
                               "__wab_instance",
-                              sty.input12
+                              sty.graduationYear
                             ),
                             onChange: async (...eventArgs: any) => {
                               generateStateOnChangePropForCodeComponents(
                                 $state,
                                 "value",
-                                ["input12", __plasmic_idx_0, "value"],
-                                AntdInput_Helpers
-                              ).apply(null, eventArgs);
-                            },
-                            placeholder: "Year",
-                            readOnly: false,
-                            size: "middle",
-                            type: "text",
-                            value: generateStateValueProp($state, [
-                              "input12",
-                              __plasmic_idx_0,
-                              "value"
-                            ])
-                          };
-                          initializeCodeComponentStates(
-                            $state,
-                            [
-                              {
-                                name: "value",
-                                plasmicStateName: "input12[].value"
-                              }
-                            ],
-                            [__plasmic_idx_0],
-                            AntdInput_Helpers ?? {},
-                            child$Props
-                          );
-                          initializePlasmicStates(
-                            $state,
-                            [
-                              {
-                                name: "input12[].value",
-                                initFunc: ({ $props, $state, $queries }) =>
-                                  undefined
-                              }
-                            ],
-                            [__plasmic_idx_0]
-                          );
-                          return (
-                            <AntdInput
-                              data-plasmic-name={"input12"}
-                              data-plasmic-override={overrides.input12}
-                              {...child$Props}
-                            />
-                          );
-                        })()}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__gG67
-                        )}
-                      >
-                        <TeacherSvgrepoComSvgIcon
-                          className={classNames(projectcss.all, sty.svg__lgWkj)}
-                          role={"img"}
-                        />
-
-                        {(() => {
-                          const child$Props = {
-                            autoFocus: false,
-                            bordered: true,
-                            className: classNames(
-                              "__wab_instance",
-                              sty.input13
-                            ),
-                            onChange: async (...eventArgs: any) => {
-                              generateStateOnChangePropForCodeComponents(
-                                $state,
-                                "value",
-                                ["input13", __plasmic_idx_0, "value"],
+                                ["graduationYear", __plasmic_idx_0, "value"],
                                 AntdInput_Helpers
                               ).apply(null, eventArgs);
                             },
@@ -1393,7 +1399,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             size: "middle",
                             type: "text",
                             value: generateStateValueProp($state, [
-                              "input13",
+                              "graduationYear",
                               __plasmic_idx_0,
                               "value"
                             ])
@@ -1403,7 +1409,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             [
                               {
                                 name: "value",
-                                plasmicStateName: "input13[].value"
+                                plasmicStateName: "graduationYear[].value"
                               }
                             ],
                             [__plasmic_idx_0],
@@ -1414,7 +1420,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             $state,
                             [
                               {
-                                name: "input13[].value",
+                                name: "graduationYear[].value",
                                 initFunc: ({ $props, $state, $queries }) =>
                                   undefined
                               }
@@ -1423,8 +1429,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
                           );
                           return (
                             <AntdInput
-                              data-plasmic-name={"input13"}
-                              data-plasmic-override={overrides.input13}
+                              data-plasmic-name={"graduationYear"}
+                              data-plasmic-override={overrides.graduationYear}
                               {...child$Props}
                             />
                           );
@@ -1448,7 +1454,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             bordered: true,
                             className: classNames(
                               "__wab_instance",
-                              sty.select3
+                              sty.educationLevel
                             ),
                             defaultOpen: false,
                             defaultStylesClassName: classNames(
@@ -1461,7 +1467,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             mode: "single",
                             onChange: async (...eventArgs: any) => {
                               generateStateOnChangeProp($state, [
-                                "select3",
+                                "educationLevel",
                                 __plasmic_idx_0,
                                 "value"
                               ]).apply(null, eventArgs);
@@ -1492,12 +1498,12 @@ function PlasmicAEditProfile__RenderFunc(props: {
                                 {"Education level"}
                               </div>
                             ),
-                            popupScopeClassName: sty["select3__popup"],
+                            popupScopeClassName: sty["educationLevel__popup"],
                             showSearch: false,
                             size: "middle",
                             useChildren: true,
                             value: generateStateValueProp($state, [
-                              "select3",
+                              "educationLevel",
                               __plasmic_idx_0,
                               "value"
                             ])
@@ -1507,7 +1513,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             [
                               {
                                 name: "value",
-                                plasmicStateName: "select3[].value"
+                                plasmicStateName: "educationLevel[].value"
                               }
                             ],
                             [__plasmic_idx_0],
@@ -1518,7 +1524,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             $state,
                             [
                               {
-                                name: "select3[].value",
+                                name: "educationLevel[].value",
                                 initFunc: ({ $props, $state, $queries }) =>
                                   undefined
                               }
@@ -1527,8 +1533,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
                           );
                           return (
                             <AntdSelect
-                              data-plasmic-name={"select3"}
-                              data-plasmic-override={overrides.select3}
+                              data-plasmic-name={"educationLevel"}
+                              data-plasmic-override={overrides.educationLevel}
                               {...child$Props}
                             >
                               <AntdOption
@@ -1701,19 +1707,16 @@ function PlasmicAEditProfile__RenderFunc(props: {
                         {(() => {
                           const child$Props = {
                             accept: "image/*",
-                            className: classNames(
-                              "__wab_instance",
-                              sty.upload2
-                            ),
+                            className: classNames("__wab_instance", sty.degree),
                             files: generateStateValueProp($state, [
-                              "upload2",
+                              "degree",
                               __plasmic_idx_0,
                               "files"
                             ]),
                             listType: "text",
                             onFilesChange: async (...eventArgs: any) => {
                               generateStateOnChangeProp($state, [
-                                "upload2",
+                                "degree",
                                 __plasmic_idx_0,
                                 "files"
                               ]).apply(null, eventArgs);
@@ -1725,7 +1728,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             [
                               {
                                 name: "files",
-                                plasmicStateName: "upload2[].files"
+                                plasmicStateName: "degree[].files"
                               }
                             ],
                             [__plasmic_idx_0],
@@ -1736,7 +1739,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             $state,
                             [
                               {
-                                name: "upload2[].files",
+                                name: "degree[].files",
                                 initFunc: ({ $props, $state, $queries }) => []
                               }
                             ],
@@ -1744,8 +1747,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
                           );
                           return (
                             <UploadWrapper
-                              data-plasmic-name={"upload2"}
-                              data-plasmic-override={overrides.upload2}
+                              data-plasmic-name={"degree"}
+                              data-plasmic-override={overrides.degree}
                               {...child$Props}
                             >
                               <AntdButton
@@ -2028,15 +2031,12 @@ function PlasmicAEditProfile__RenderFunc(props: {
                           const child$Props = {
                             autoFocus: false,
                             bordered: true,
-                            className: classNames(
-                              "__wab_instance",
-                              sty.input14
-                            ),
+                            className: classNames("__wab_instance", sty.charge),
                             onChange: async (...eventArgs: any) => {
                               generateStateOnChangePropForCodeComponents(
                                 $state,
                                 "value",
-                                ["input14", __plasmic_idx_0, "value"],
+                                ["charge", __plasmic_idx_0, "value"],
                                 AntdInput_Helpers
                               ).apply(null, eventArgs);
                             },
@@ -2045,7 +2045,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             size: "middle",
                             type: "text",
                             value: generateStateValueProp($state, [
-                              "input14",
+                              "charge",
                               __plasmic_idx_0,
                               "value"
                             ])
@@ -2055,7 +2055,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             [
                               {
                                 name: "value",
-                                plasmicStateName: "input14[].value"
+                                plasmicStateName: "charge[].value"
                               }
                             ],
                             [__plasmic_idx_0],
@@ -2066,7 +2066,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             $state,
                             [
                               {
-                                name: "input14[].value",
+                                name: "charge[].value",
                                 initFunc: ({ $props, $state, $queries }) =>
                                   undefined
                               }
@@ -2075,8 +2075,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
                           );
                           return (
                             <AntdInput
-                              data-plasmic-name={"input14"}
-                              data-plasmic-override={overrides.input14}
+                              data-plasmic-name={"charge"}
+                              data-plasmic-override={overrides.charge}
                               {...child$Props}
                             />
                           );
@@ -2099,13 +2099,13 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             bordered: true,
                             className: classNames(
                               "__wab_instance",
-                              sty.input15
+                              sty.company
                             ),
                             onChange: async (...eventArgs: any) => {
                               generateStateOnChangePropForCodeComponents(
                                 $state,
                                 "value",
-                                ["input15", __plasmic_idx_0, "value"],
+                                ["company", __plasmic_idx_0, "value"],
                                 AntdInput_Helpers
                               ).apply(null, eventArgs);
                             },
@@ -2114,7 +2114,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             size: "middle",
                             type: "text",
                             value: generateStateValueProp($state, [
-                              "input15",
+                              "company",
                               __plasmic_idx_0,
                               "value"
                             ])
@@ -2124,7 +2124,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             [
                               {
                                 name: "value",
-                                plasmicStateName: "input15[].value"
+                                plasmicStateName: "company[].value"
                               }
                             ],
                             [__plasmic_idx_0],
@@ -2135,7 +2135,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             $state,
                             [
                               {
-                                name: "input15[].value",
+                                name: "company[].value",
                                 initFunc: ({ $props, $state, $queries }) =>
                                   undefined
                               }
@@ -2144,8 +2144,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
                           );
                           return (
                             <AntdInput
-                              data-plasmic-name={"input15"}
-                              data-plasmic-override={overrides.input15}
+                              data-plasmic-name={"company"}
+                              data-plasmic-override={overrides.company}
                               {...child$Props}
                             />
                           );
@@ -2168,13 +2168,13 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             bordered: true,
                             className: classNames(
                               "__wab_instance",
-                              sty.input16
+                              sty.howLongInOffice
                             ),
                             onChange: async (...eventArgs: any) => {
                               generateStateOnChangePropForCodeComponents(
                                 $state,
                                 "value",
-                                ["input16", __plasmic_idx_0, "value"],
+                                ["howLongInOffice", __plasmic_idx_0, "value"],
                                 AntdInput_Helpers
                               ).apply(null, eventArgs);
                             },
@@ -2183,7 +2183,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             size: "middle",
                             type: "text",
                             value: generateStateValueProp($state, [
-                              "input16",
+                              "howLongInOffice",
                               __plasmic_idx_0,
                               "value"
                             ])
@@ -2193,7 +2193,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             [
                               {
                                 name: "value",
-                                plasmicStateName: "input16[].value"
+                                plasmicStateName: "howLongInOffice[].value"
                               }
                             ],
                             [__plasmic_idx_0],
@@ -2204,7 +2204,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             $state,
                             [
                               {
-                                name: "input16[].value",
+                                name: "howLongInOffice[].value",
                                 initFunc: ({ $props, $state, $queries }) =>
                                   undefined
                               }
@@ -2213,8 +2213,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
                           );
                           return (
                             <AntdInput
-                              data-plasmic-name={"input16"}
-                              data-plasmic-override={overrides.input16}
+                              data-plasmic-name={"howLongInOffice"}
+                              data-plasmic-override={overrides.howLongInOffice}
                               {...child$Props}
                             />
                           );
@@ -2430,12 +2430,12 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 </React.Fragment>
               </div>
               <AntdSelect
-                data-plasmic-name={"select2"}
-                data-plasmic-override={overrides.select2}
+                data-plasmic-name={"office"}
+                data-plasmic-override={overrides.office}
                 allowClear={true}
                 autoFocus={false}
                 bordered={true}
-                className={classNames("__wab_instance", sty.select2)}
+                className={classNames("__wab_instance", sty.office)}
                 defaultOpen={false}
                 defaultStylesClassName={classNames(
                   projectcss.root_reset,
@@ -2446,7 +2446,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 dropdownMatchSelectWidth={false}
                 mode={"multiple"}
                 onChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, ["select2", "value"]).apply(
+                  generateStateOnChangeProp($state, ["office", "value"]).apply(
                     null,
                     eventArgs
                   );
@@ -2476,11 +2476,11 @@ function PlasmicAEditProfile__RenderFunc(props: {
                     {"Select..."}
                   </div>
                 }
-                popupScopeClassName={sty["select2__popup"]}
+                popupScopeClassName={sty["office__popup"]}
                 showSearch={false}
                 size={"middle"}
                 useChildren={true}
-                value={generateStateValueProp($state, ["select2", "value"])}
+                value={generateStateValueProp($state, ["office", "value"])}
               >
                 <AntdOption
                   className={classNames("__wab_instance", sty.option__emHlh)}
@@ -2841,25 +2841,28 @@ function PlasmicAEditProfile__RenderFunc(props: {
 
                 {(() => {
                   const child$Props = {
-                    className: classNames("__wab_instance", sty.textArea),
+                    className: classNames("__wab_instance", sty.impressive),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["textArea", "value"],
+                        ["impressive", "value"],
                         AntdTextArea_Helpers
                       ).apply(null, eventArgs);
                     },
                     placeholder:
                       "Tell about something impressive you've built.",
-                    value: generateStateValueProp($state, ["textArea", "value"])
+                    value: generateStateValueProp($state, [
+                      "impressive",
+                      "value"
+                    ])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "textArea.value"
+                        plasmicStateName: "impressive.value"
                       }
                     ],
                     [],
@@ -2869,8 +2872,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
 
                   return (
                     <AntdTextArea
-                      data-plasmic-name={"textArea"}
-                      data-plasmic-override={overrides.textArea}
+                      data-plasmic-name={"impressive"}
+                      data-plasmic-override={overrides.impressive}
                       {...child$Props}
                     />
                   );
@@ -2981,30 +2984,30 @@ const PlasmicDescendants = {
     "stepsStack",
     "steps",
     "basicInfo",
-    "upload",
-    "input",
-    "input2",
-    "input3",
-    "input4",
+    "profilePic",
+    "firstName",
+    "lastName",
+    "location",
+    "birthday",
     "links",
-    "input5",
-    "input6",
-    "input7",
+    "linkedIn",
+    "instagram",
+    "x",
     "education",
     "education2",
-    "input11",
-    "input12",
-    "input13",
-    "select3",
-    "upload2",
+    "university",
+    "major",
+    "graduationYear",
+    "educationLevel",
+    "degree",
     "experience",
     "job2",
-    "input14",
-    "input15",
-    "input16",
+    "charge",
+    "company",
+    "howLongInOffice",
     "skills",
-    "select2",
-    "textArea"
+    "office",
+    "impressive"
   ],
   img: ["img"],
   rectangle: [
@@ -3012,73 +3015,80 @@ const PlasmicDescendants = {
     "stepsStack",
     "steps",
     "basicInfo",
-    "upload",
-    "input",
-    "input2",
-    "input3",
-    "input4",
+    "profilePic",
+    "firstName",
+    "lastName",
+    "location",
+    "birthday",
     "links",
-    "input5",
-    "input6",
-    "input7",
+    "linkedIn",
+    "instagram",
+    "x",
     "education",
     "education2",
-    "input11",
-    "input12",
-    "input13",
-    "select3",
-    "upload2",
+    "university",
+    "major",
+    "graduationYear",
+    "educationLevel",
+    "degree",
     "experience",
     "job2",
-    "input14",
-    "input15",
-    "input16",
+    "charge",
+    "company",
+    "howLongInOffice",
     "skills",
-    "select2",
-    "textArea"
+    "office",
+    "impressive"
   ],
   stepsStack: ["stepsStack", "steps"],
   steps: ["steps"],
-  basicInfo: ["basicInfo", "upload", "input", "input2", "input3", "input4"],
-  upload: ["upload"],
-  input: ["input"],
-  input2: ["input2"],
-  input3: ["input3"],
-  input4: ["input4"],
-  links: ["links", "input5", "input6", "input7"],
-  input5: ["input5"],
-  input6: ["input6"],
-  input7: ["input7"],
+  basicInfo: [
+    "basicInfo",
+    "profilePic",
+    "firstName",
+    "lastName",
+    "location",
+    "birthday"
+  ],
+  profilePic: ["profilePic"],
+  firstName: ["firstName"],
+  lastName: ["lastName"],
+  location: ["location"],
+  birthday: ["birthday"],
+  links: ["links", "linkedIn", "instagram", "x"],
+  linkedIn: ["linkedIn"],
+  instagram: ["instagram"],
+  x: ["x"],
   education: [
     "education",
     "education2",
-    "input11",
-    "input12",
-    "input13",
-    "select3",
-    "upload2"
+    "university",
+    "major",
+    "graduationYear",
+    "educationLevel",
+    "degree"
   ],
   education2: [
     "education2",
-    "input11",
-    "input12",
-    "input13",
-    "select3",
-    "upload2"
+    "university",
+    "major",
+    "graduationYear",
+    "educationLevel",
+    "degree"
   ],
-  input11: ["input11"],
-  input12: ["input12"],
-  input13: ["input13"],
-  select3: ["select3"],
-  upload2: ["upload2"],
-  experience: ["experience", "job2", "input14", "input15", "input16"],
-  job2: ["job2", "input14", "input15", "input16"],
-  input14: ["input14"],
-  input15: ["input15"],
-  input16: ["input16"],
-  skills: ["skills", "select2", "textArea"],
-  select2: ["select2"],
-  textArea: ["textArea"]
+  university: ["university"],
+  major: ["major"],
+  graduationYear: ["graduationYear"],
+  educationLevel: ["educationLevel"],
+  degree: ["degree"],
+  experience: ["experience", "job2", "charge", "company", "howLongInOffice"],
+  job2: ["job2", "charge", "company", "howLongInOffice"],
+  charge: ["charge"],
+  company: ["company"],
+  howLongInOffice: ["howLongInOffice"],
+  skills: ["skills", "office", "impressive"],
+  office: ["office"],
+  impressive: ["impressive"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -3090,30 +3100,30 @@ type NodeDefaultElementType = {
   stepsStack: "div";
   steps: typeof AntdSteps;
   basicInfo: "div";
-  upload: typeof UploadWrapper;
-  input: typeof AntdInput;
-  input2: typeof AntdInput;
-  input3: typeof AntdInput;
-  input4: typeof AntdInput;
+  profilePic: typeof UploadWrapper;
+  firstName: typeof AntdInput;
+  lastName: typeof AntdInput;
+  location: typeof AntdInput;
+  birthday: typeof AntdInput;
   links: "div";
-  input5: typeof AntdInput;
-  input6: typeof AntdInput;
-  input7: typeof AntdInput;
+  linkedIn: typeof AntdInput;
+  instagram: typeof AntdInput;
+  x: typeof AntdInput;
   education: "div";
   education2: "section";
-  input11: typeof AntdInput;
-  input12: typeof AntdInput;
-  input13: typeof AntdInput;
-  select3: typeof AntdSelect;
-  upload2: typeof UploadWrapper;
+  university: typeof AntdInput;
+  major: typeof AntdInput;
+  graduationYear: typeof AntdInput;
+  educationLevel: typeof AntdSelect;
+  degree: typeof UploadWrapper;
   experience: "div";
   job2: "section";
-  input14: typeof AntdInput;
-  input15: typeof AntdInput;
-  input16: typeof AntdInput;
+  charge: typeof AntdInput;
+  company: typeof AntdInput;
+  howLongInOffice: typeof AntdInput;
   skills: "div";
-  select2: typeof AntdSelect;
-  textArea: typeof AntdTextArea;
+  office: typeof AntdSelect;
+  impressive: typeof AntdTextArea;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -3183,30 +3193,30 @@ export const PlasmicAEditProfile = Object.assign(
     stepsStack: makeNodeComponent("stepsStack"),
     steps: makeNodeComponent("steps"),
     basicInfo: makeNodeComponent("basicInfo"),
-    upload: makeNodeComponent("upload"),
-    input: makeNodeComponent("input"),
-    input2: makeNodeComponent("input2"),
-    input3: makeNodeComponent("input3"),
-    input4: makeNodeComponent("input4"),
+    profilePic: makeNodeComponent("profilePic"),
+    firstName: makeNodeComponent("firstName"),
+    lastName: makeNodeComponent("lastName"),
+    location: makeNodeComponent("location"),
+    birthday: makeNodeComponent("birthday"),
     links: makeNodeComponent("links"),
-    input5: makeNodeComponent("input5"),
-    input6: makeNodeComponent("input6"),
-    input7: makeNodeComponent("input7"),
+    linkedIn: makeNodeComponent("linkedIn"),
+    instagram: makeNodeComponent("instagram"),
+    x: makeNodeComponent("x"),
     education: makeNodeComponent("education"),
     education2: makeNodeComponent("education2"),
-    input11: makeNodeComponent("input11"),
-    input12: makeNodeComponent("input12"),
-    input13: makeNodeComponent("input13"),
-    select3: makeNodeComponent("select3"),
-    upload2: makeNodeComponent("upload2"),
+    university: makeNodeComponent("university"),
+    major: makeNodeComponent("major"),
+    graduationYear: makeNodeComponent("graduationYear"),
+    educationLevel: makeNodeComponent("educationLevel"),
+    degree: makeNodeComponent("degree"),
     experience: makeNodeComponent("experience"),
     job2: makeNodeComponent("job2"),
-    input14: makeNodeComponent("input14"),
-    input15: makeNodeComponent("input15"),
-    input16: makeNodeComponent("input16"),
+    charge: makeNodeComponent("charge"),
+    company: makeNodeComponent("company"),
+    howLongInOffice: makeNodeComponent("howLongInOffice"),
     skills: makeNodeComponent("skills"),
-    select2: makeNodeComponent("select2"),
-    textArea: makeNodeComponent("textArea"),
+    office: makeNodeComponent("office"),
+    impressive: makeNodeComponent("impressive"),
 
     // Metadata about props expected for PlasmicAEditProfile
     internalVariantProps: PlasmicAEditProfile__VariantProps,

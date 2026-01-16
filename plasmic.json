@@ -1769,7 +1769,7 @@
           "projectId": "maKqnX1RyE1vKUCrTH51ZZ",
           "renderModuleFilePath": "plasmic/ez_marketing_platform/PlasmicAFindABusiness.tsx",
           "importSpec": {
-            "modulePath": "../pages/find-a-business.tsx"
+            "modulePath": "../pages/a-find-a-business.tsx"
           },
           "cssFilePath": "plasmic/ez_marketing_platform/PlasmicAFindABusiness.module.css",
           "scheme": "blackbox",
@@ -1810,7 +1810,7 @@
           "projectId": "maKqnX1RyE1vKUCrTH51ZZ",
           "renderModuleFilePath": "plasmic/ez_marketing_platform/PlasmicAServiceDashboard.tsx",
           "importSpec": {
-            "modulePath": "../pages/service-dashboard.tsx"
+            "modulePath": "../pages/a-service-dashboard.tsx"
           },
           "cssFilePath": "plasmic/ez_marketing_platform/PlasmicAServiceDashboard.module.css",
           "scheme": "blackbox",
@@ -1850,7 +1850,7 @@
           "projectId": "maKqnX1RyE1vKUCrTH51ZZ",
           "renderModuleFilePath": "plasmic/ez_marketing_platform/PlasmicACommunityDashboard.tsx",
           "importSpec": {
-            "modulePath": "../pages/community-dashboard.tsx"
+            "modulePath": "../pages/a-community-dashboard.tsx"
           },
           "cssFilePath": "plasmic/ez_marketing_platform/PlasmicACommunityDashboard.module.css",
           "scheme": "blackbox",
@@ -1864,7 +1864,7 @@
           "projectId": "maKqnX1RyE1vKUCrTH51ZZ",
           "renderModuleFilePath": "plasmic/ez_marketing_platform/PlasmicACreateCommunity.tsx",
           "importSpec": {
-            "modulePath": "../pages/create-community.tsx"
+            "modulePath": "../pages/a-create-community.tsx"
           },
           "cssFilePath": "plasmic/ez_marketing_platform/PlasmicACreateCommunity.module.css",
           "scheme": "blackbox",
@@ -1878,7 +1878,7 @@
           "projectId": "maKqnX1RyE1vKUCrTH51ZZ",
           "renderModuleFilePath": "plasmic/ez_marketing_platform/PlasmicAProfile.tsx",
           "importSpec": {
-            "modulePath": "../pages/profile.tsx"
+            "modulePath": "../pages/a-profile.tsx"
           },
           "cssFilePath": "plasmic/ez_marketing_platform/PlasmicAProfile.module.css",
           "scheme": "blackbox",
@@ -1892,7 +1892,7 @@
           "projectId": "maKqnX1RyE1vKUCrTH51ZZ",
           "renderModuleFilePath": "plasmic/ez_marketing_platform/PlasmicAApplyToACommunity.tsx",
           "importSpec": {
-            "modulePath": "../pages/apply-to-a-community.tsx"
+            "modulePath": "../pages/a-apply-to-a-community.tsx"
           },
           "cssFilePath": "plasmic/ez_marketing_platform/PlasmicAApplyToACommunity.module.css",
           "scheme": "blackbox",
@@ -4303,6 +4303,6 @@
   "nextjsConfig": {
     "pagesDir": "../pages"
   },
-  "cliVersion": "0.1.348",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.348/dist/plasmic.schema.json"
+  "cliVersion": "0.1.352",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.352/dist/plasmic.schema.json"
 }

@@ -104,14 +104,23 @@ export type PlasmicCRateACommunitie__OverridesType = {
   account?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
   container3?: Flex__<"div">;
-  sliderCarousel?: Flex__<typeof SliderWrapper>;
-  rating?: Flex__<"div">;
+  communityLogo?: Flex__<typeof PlasmicImg__>;
+  type?: Flex__<"svg">;
+  communityName?: Flex__<"div">;
+  sliderCarousel2?: Flex__<typeof SliderWrapper>;
+  member?: Flex__<"div">;
+  office?: Flex__<"div">;
+  profilePic?: Flex__<typeof PlasmicImg__>;
   modal6?: Flex__<typeof Modal>;
-  rate4?: Flex__<typeof AntdRate>;
+  rating?: Flex__<typeof AntdRate>;
   h3?: Flex__<"h3">;
-  textArea2?: Flex__<typeof AntdTextArea>;
-  rate5?: Flex__<typeof AntdRate>;
-  rate6?: Flex__<typeof AntdRate>;
+  comment?: Flex__<typeof AntdTextArea>;
+  confirmRate?: Flex__<typeof Button2>;
+  button2?: Flex__<typeof Button2>;
+  agencysRate?: Flex__<typeof AntdRate>;
+  rateSum?: Flex__<"div">;
+  averageCustomerRate?: Flex__<typeof AntdRate>;
+  rateSum2?: Flex__<"div">;
   rate7?: Flex__<typeof AntdRate>;
   rate8?: Flex__<typeof AntdRate>;
   rate9?: Flex__<typeof AntdRate>;
@@ -175,15 +184,6 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
 
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
-      {
-        path: "sliderCarousel.currentSlide",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0,
-
-        refName: "sliderCarousel",
-        onMutate: generateOnMutateForSpec("currentSlide", SliderWrapper_Helpers)
-      },
       {
         path: "rate7.value",
         type: "private",
@@ -299,13 +299,13 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
-        path: "rate4.value",
+        path: "rating.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "textArea2.value",
+        path: "comment.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -313,16 +313,25 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
       {
-        path: "rate5.value",
+        path: "agencysRate.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "rate6.value",
+        path: "averageCustomerRate.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "sliderCarousel2.currentSlide",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0,
+
+        refName: "sliderCarousel2",
+        onMutate: generateOnMutateForSpec("currentSlide", SliderWrapper_Helpers)
       }
     ],
     [$props, $ctx, $refs]
@@ -348,7 +357,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
         />
         <meta
           key="twitter:title"
-          name="twitter:title"
+          property="twitter:title"
           content={PlasmicCRateACommunitie.pageMetadata.title}
         />
       </Head>
@@ -606,10 +615,12 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
           data-plasmic-override={overrides.container3}
           className={classNames(projectcss.all, sty.container3)}
         >
-          <div className={classNames(projectcss.all, sty.freeBox__rxULp)}>
+          <div className={classNames(projectcss.all, sty.freeBox__uyog)}>
             <PlasmicImg__
+              data-plasmic-name={"communityLogo"}
+              data-plasmic-override={overrides.communityLogo}
               alt={""}
-              className={classNames(sty.img__znpA)}
+              className={classNames(sty.communityLogo)}
               displayHeight={"100px"}
               displayMaxHeight={"none"}
               displayMaxWidth={"100%"}
@@ -626,15 +637,19 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
             />
 
             <SemTitulo1SvgIcon
-              className={classNames(projectcss.all, sty.svg__nenpk)}
+              data-plasmic-name={"type"}
+              data-plasmic-override={overrides.type}
+              className={classNames(projectcss.all, sty.type)}
               role={"img"}
             />
 
             <div
+              data-plasmic-name={"communityName"}
+              data-plasmic-override={overrides.communityName}
               className={classNames(
                 projectcss.all,
                 projectcss.__wab_text,
-                sty.text__aoAjL
+                sty.communityName
               )}
             >
               {"Community"}
@@ -658,23 +673,23 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                   generateStateOnChangePropForCodeComponents(
                     $state,
                     "currentSlide",
-                    ["sliderCarousel", "currentSlide"],
+                    ["sliderCarousel2", "currentSlide"],
                     SliderWrapper_Helpers
                   ).apply(null, eventArgs);
                 },
                 centerMode: false,
-                className: classNames("__wab_instance", sty.sliderCarousel),
+                className: classNames("__wab_instance", sty.sliderCarousel2),
                 dots: true,
                 fade: true,
                 focusOnSelect: true,
                 initialSlide: generateStateValueProp($state, [
-                  "sliderCarousel",
+                  "sliderCarousel2",
                   "currentSlide"
                 ]),
                 ref: ref => {
-                  $refs["sliderCarousel"] = ref;
+                  $refs["sliderCarousel2"] = ref;
                 },
-                sliderScopeClassName: sty["sliderCarousel__slider"],
+                sliderScopeClassName: sty["sliderCarousel2__slider"],
                 slidesPerRow: 4
               };
               initializeCodeComponentStates(
@@ -682,7 +697,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                 [
                   {
                     name: "currentSlide",
-                    plasmicStateName: "sliderCarousel.currentSlide"
+                    plasmicStateName: "sliderCarousel2.currentSlide"
                   }
                 ],
                 [],
@@ -692,28 +707,34 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
 
               return (
                 <SliderWrapper
-                  data-plasmic-name={"sliderCarousel"}
-                  data-plasmic-override={overrides.sliderCarousel}
+                  data-plasmic-name={"sliderCarousel2"}
+                  data-plasmic-override={overrides.sliderCarousel2}
                   {...child$Props}
                 >
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__zb8Q5)}
+                    className={classNames(projectcss.all, sty.freeBox__tB60P)}
                   >
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__bHPvw)}
+                      data-plasmic-name={"member"}
+                      data-plasmic-override={overrides.member}
+                      className={classNames(projectcss.all, sty.member)}
                     >
                       <div
+                        data-plasmic-name={"office"}
+                        data-plasmic-override={overrides.office}
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text___2VRa
+                          sty.office
                         )}
                       >
                         {"Market Mananger"}
                       </div>
                       <PlasmicImg__
+                        data-plasmic-name={"profilePic"}
+                        data-plasmic-override={overrides.profilePic}
                         alt={""}
-                        className={classNames(sty.img__h5Y3V)}
+                        className={classNames(sty.profilePic)}
                         displayHeight={"150px"}
                         displayMaxHeight={"none"}
                         displayMaxWidth={"100%"}
@@ -732,179 +753,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text___6I1B5
-                        )}
-                      >
-                        {"Gold"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__bexOz)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__yBaag)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__o76Gv
-                        )}
-                      >
-                        {"Market Mananger"}
-                      </div>
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__ucoDm)}
-                        displayHeight={"150px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"120px"}
-                        src={{
-                          src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                          fullWidth: 2551,
-                          fullHeight: 2551,
-                          aspectRatio: undefined
-                        }}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__iFtS
-                        )}
-                      >
-                        {"Gold"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__gWn1J)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__jCfg)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__t1A3
-                        )}
-                      >
-                        {"Market Mananger"}
-                      </div>
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__vnKk9)}
-                        displayHeight={"150px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"120px"}
-                        src={{
-                          src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                          fullWidth: 2551,
-                          fullHeight: 2551,
-                          aspectRatio: undefined
-                        }}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__hc2Wq
-                        )}
-                      >
-                        {"Gold"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__rofaJ)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__emDcb)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__r0Tx8
-                        )}
-                      >
-                        {"Market Mananger"}
-                      </div>
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__nwIDf)}
-                        displayHeight={"150px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"120px"}
-                        src={{
-                          src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                          fullWidth: 2551,
-                          fullHeight: 2551,
-                          aspectRatio: undefined
-                        }}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ftuOs
-                        )}
-                      >
-                        {"Gold"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__dwMem)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__mwbdt)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__jTYfd
-                        )}
-                      >
-                        {"Market Mananger"}
-                      </div>
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__eNqe2)}
-                        displayHeight={"150px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"120px"}
-                        src={{
-                          src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                          fullWidth: 2551,
-                          fullHeight: 2551,
-                          aspectRatio: undefined
-                        }}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__snpEd
+                          sty.text__qrjTk
                         )}
                       >
                         {"Gold"}
@@ -916,11 +765,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
             })()}
           </div>
         </div>
-        <div
-          data-plasmic-name={"rating"}
-          data-plasmic-override={overrides.rating}
-          className={classNames(projectcss.all, sty.rating)}
-        >
+        <div className={classNames(projectcss.all, sty.freeBox__tl9Ye)}>
           <div
             className={classNames(
               projectcss.all,
@@ -980,17 +825,17 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                     </div>
                     {(() => {
                       const child$Props = {
-                        className: classNames("__wab_instance", sty.textArea2),
+                        className: classNames("__wab_instance", sty.comment),
                         onChange: async (...eventArgs: any) => {
                           generateStateOnChangePropForCodeComponents(
                             $state,
                             "value",
-                            ["textArea2", "value"],
+                            ["comment", "value"],
                             AntdTextArea_Helpers
                           ).apply(null, eventArgs);
                         },
                         value: generateStateValueProp($state, [
-                          "textArea2",
+                          "comment",
                           "value"
                         ])
                       };
@@ -999,7 +844,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                         [
                           {
                             name: "value",
-                            plasmicStateName: "textArea2.value"
+                            plasmicStateName: "comment.value"
                           }
                         ],
                         [],
@@ -1009,8 +854,8 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
 
                       return (
                         <AntdTextArea
-                          data-plasmic-name={"textArea2"}
-                          data-plasmic-override={overrides.textArea2}
+                          data-plasmic-name={"comment"}
+                          data-plasmic-override={overrides.comment}
                           {...child$Props}
                         />
                       );
@@ -1022,6 +867,8 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                     className={classNames(projectcss.all, sty.freeBox__aTvUr)}
                   >
                     <Button2
+                      data-plasmic-name={"confirmRate"}
+                      data-plasmic-override={overrides.confirmRate}
                       color={"muted"}
                       label={
                         <div
@@ -1039,6 +886,8 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                     />
 
                     <Button2
+                      data-plasmic-name={"button2"}
+                      data-plasmic-override={overrides.button2}
                       color={"muted"}
                       label={
                         <div
@@ -1087,13 +936,13 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                 }}
                 trigger={
                   <AntdRate
-                    data-plasmic-name={"rate4"}
-                    data-plasmic-override={overrides.rate4}
+                    data-plasmic-name={"rating"}
+                    data-plasmic-override={overrides.rating}
                     allowHalf={true}
-                    className={classNames("__wab_instance", sty.rate4)}
+                    className={classNames("__wab_instance", sty.rating)}
                     onChange={async (...eventArgs: any) => {
                       generateStateOnChangeProp($state, [
-                        "rate4",
+                        "rating",
                         "value"
                       ]).apply(null, eventArgs);
                     }}
@@ -1146,7 +995,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                         </div>
                       </React.Fragment>
                     }
-                    value={generateStateValueProp($state, ["rate4", "value"])}
+                    value={generateStateValueProp($state, ["rating", "value"])}
                   />
                 }
               />
@@ -1178,16 +1027,16 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                 }
               </div>
               <AntdRate
-                data-plasmic-name={"rate5"}
-                data-plasmic-override={overrides.rate5}
+                data-plasmic-name={"agencysRate"}
+                data-plasmic-override={overrides.agencysRate}
                 allowHalf={true}
-                className={classNames("__wab_instance", sty.rate5)}
+                className={classNames("__wab_instance", sty.agencysRate)}
                 disabled={true}
                 onChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, ["rate5", "value"]).apply(
-                    null,
-                    eventArgs
-                  );
+                  generateStateOnChangeProp($state, [
+                    "agencysRate",
+                    "value"
+                  ]).apply(null, eventArgs);
                 }}
                 symbols={
                   <React.Fragment>
@@ -1238,8 +1087,20 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                     </div>
                   </React.Fragment>
                 }
-                value={generateStateValueProp($state, ["rate5", "value"])}
+                value={generateStateValueProp($state, ["agencysRate", "value"])}
               />
+
+              <div
+                data-plasmic-name={"rateSum"}
+                data-plasmic-override={overrides.rateSum}
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.rateSum
+                )}
+              >
+                {"(50)"}
+              </div>
             </div>
             <div className={classNames(projectcss.all, sty.freeBox___23Rw)}>
               <CustomerRatesSvgIcon
@@ -1268,16 +1129,19 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                 }
               </div>
               <AntdRate
-                data-plasmic-name={"rate6"}
-                data-plasmic-override={overrides.rate6}
+                data-plasmic-name={"averageCustomerRate"}
+                data-plasmic-override={overrides.averageCustomerRate}
                 allowHalf={true}
-                className={classNames("__wab_instance", sty.rate6)}
+                className={classNames(
+                  "__wab_instance",
+                  sty.averageCustomerRate
+                )}
                 disabled={true}
                 onChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, ["rate6", "value"]).apply(
-                    null,
-                    eventArgs
-                  );
+                  generateStateOnChangeProp($state, [
+                    "averageCustomerRate",
+                    "value"
+                  ]).apply(null, eventArgs);
                 }}
                 symbols={
                   <React.Fragment>
@@ -1328,8 +1192,23 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                     </div>
                   </React.Fragment>
                 }
-                value={generateStateValueProp($state, ["rate6", "value"])}
+                value={generateStateValueProp($state, [
+                  "averageCustomerRate",
+                  "value"
+                ])}
               />
+
+              <div
+                data-plasmic-name={"rateSum2"}
+                data-plasmic-override={overrides.rateSum2}
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.rateSum2
+                )}
+              >
+                {"(50)"}
+              </div>
             </div>
           </div>
         </div>
@@ -2612,14 +2491,23 @@ const PlasmicDescendants = {
     "account",
     "button",
     "container3",
-    "sliderCarousel",
-    "rating",
+    "communityLogo",
+    "type",
+    "communityName",
+    "sliderCarousel2",
+    "member",
+    "office",
+    "profilePic",
     "modal6",
-    "rate4",
+    "rating",
     "h3",
-    "textArea2",
-    "rate5",
-    "rate6",
+    "comment",
+    "confirmRate",
+    "button2",
+    "agencysRate",
+    "rateSum",
+    "averageCustomerRate",
+    "rateSum2",
     "rate7",
     "rate8",
     "rate9",
@@ -2643,15 +2531,33 @@ const PlasmicDescendants = {
   navigationBar: ["navigationBar"],
   account: ["account", "button"],
   button: ["button"],
-  container3: ["container3", "sliderCarousel"],
-  sliderCarousel: ["sliderCarousel"],
-  rating: ["rating", "modal6", "rate4", "h3", "textArea2", "rate5", "rate6"],
-  modal6: ["modal6", "rate4", "h3", "textArea2"],
-  rate4: ["rate4"],
+  container3: [
+    "container3",
+    "communityLogo",
+    "type",
+    "communityName",
+    "sliderCarousel2",
+    "member",
+    "office",
+    "profilePic"
+  ],
+  communityLogo: ["communityLogo"],
+  type: ["type"],
+  communityName: ["communityName"],
+  sliderCarousel2: ["sliderCarousel2", "member", "office", "profilePic"],
+  member: ["member", "office", "profilePic"],
+  office: ["office"],
+  profilePic: ["profilePic"],
+  modal6: ["modal6", "rating", "h3", "comment", "confirmRate", "button2"],
+  rating: ["rating"],
   h3: ["h3"],
-  textArea2: ["textArea2"],
-  rate5: ["rate5"],
-  rate6: ["rate6"],
+  comment: ["comment"],
+  confirmRate: ["confirmRate"],
+  button2: ["button2"],
+  agencysRate: ["agencysRate"],
+  rateSum: ["rateSum"],
+  averageCustomerRate: ["averageCustomerRate"],
+  rateSum2: ["rateSum2"],
   rate7: ["rate7"],
   rate8: ["rate8"],
   rate9: ["rate9"],
@@ -2681,14 +2587,23 @@ type NodeDefaultElementType = {
   account: typeof AntdDropdown;
   button: typeof AntdButton;
   container3: "div";
-  sliderCarousel: typeof SliderWrapper;
-  rating: "div";
+  communityLogo: typeof PlasmicImg__;
+  type: "svg";
+  communityName: "div";
+  sliderCarousel2: typeof SliderWrapper;
+  member: "div";
+  office: "div";
+  profilePic: typeof PlasmicImg__;
   modal6: typeof Modal;
-  rate4: typeof AntdRate;
+  rating: typeof AntdRate;
   h3: "h3";
-  textArea2: typeof AntdTextArea;
-  rate5: typeof AntdRate;
-  rate6: typeof AntdRate;
+  comment: typeof AntdTextArea;
+  confirmRate: typeof Button2;
+  button2: typeof Button2;
+  agencysRate: typeof AntdRate;
+  rateSum: "div";
+  averageCustomerRate: typeof AntdRate;
+  rateSum2: "div";
   rate7: typeof AntdRate;
   rate8: typeof AntdRate;
   rate9: typeof AntdRate;
@@ -2776,14 +2691,23 @@ export const PlasmicCRateACommunitie = Object.assign(
     account: makeNodeComponent("account"),
     button: makeNodeComponent("button"),
     container3: makeNodeComponent("container3"),
-    sliderCarousel: makeNodeComponent("sliderCarousel"),
-    rating: makeNodeComponent("rating"),
+    communityLogo: makeNodeComponent("communityLogo"),
+    type: makeNodeComponent("type"),
+    communityName: makeNodeComponent("communityName"),
+    sliderCarousel2: makeNodeComponent("sliderCarousel2"),
+    member: makeNodeComponent("member"),
+    office: makeNodeComponent("office"),
+    profilePic: makeNodeComponent("profilePic"),
     modal6: makeNodeComponent("modal6"),
-    rate4: makeNodeComponent("rate4"),
+    rating: makeNodeComponent("rating"),
     h3: makeNodeComponent("h3"),
-    textArea2: makeNodeComponent("textArea2"),
-    rate5: makeNodeComponent("rate5"),
-    rate6: makeNodeComponent("rate6"),
+    comment: makeNodeComponent("comment"),
+    confirmRate: makeNodeComponent("confirmRate"),
+    button2: makeNodeComponent("button2"),
+    agencysRate: makeNodeComponent("agencysRate"),
+    rateSum: makeNodeComponent("rateSum"),
+    averageCustomerRate: makeNodeComponent("averageCustomerRate"),
+    rateSum2: makeNodeComponent("rateSum2"),
     rate7: makeNodeComponent("rate7"),
     rate8: makeNodeComponent("rate8"),
     rate9: makeNodeComponent("rate9"),

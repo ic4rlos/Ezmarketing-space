@@ -117,34 +117,36 @@ export type PlasmicCEditProfile__OverridesType = {
   stepsStack?: Flex__<"div">;
   steps?: Flex__<typeof AntdSteps>;
   basicInfo?: Flex__<"div">;
-  upload?: Flex__<typeof UploadWrapper>;
-  input?: Flex__<typeof AntdInput>;
-  select3?: Flex__<typeof AntdSelect>;
-  input3?: Flex__<typeof AntdInput>;
-  input4?: Flex__<typeof AntdInput>;
+  companyLogo?: Flex__<typeof UploadWrapper>;
+  companyName?: Flex__<typeof AntdInput>;
+  companyType?: Flex__<typeof AntdSelect>;
+  location?: Flex__<typeof AntdInput>;
+  foundationDate?: Flex__<typeof AntdInput>;
   links?: Flex__<"div">;
-  input5?: Flex__<typeof AntdInput>;
-  input6?: Flex__<typeof AntdInput>;
-  input8?: Flex__<typeof AntdInput>;
-  input7?: Flex__<typeof AntdInput>;
+  linkedIn?: Flex__<typeof AntdInput>;
+  instagram?: Flex__<typeof AntdInput>;
+  website?: Flex__<typeof AntdInput>;
+  x?: Flex__<typeof AntdInput>;
   companysAreaOfActivity?: Flex__<"div">;
-  input2?: Flex__<typeof AntdInput>;
-  select4?: Flex__<typeof AntdSelect>;
-  select5?: Flex__<typeof AntdSelect>;
+  companyTagline?: Flex__<typeof AntdInput>;
+  area?: Flex__<typeof AntdSelect>;
+  subArea?: Flex__<typeof AntdSelect>;
   radioGroup2?: Flex__<typeof AntdRadioGroup>;
   radioGroup3?: Flex__<typeof AntdRadioGroup>;
-  input9?: Flex__<typeof AntdInput>;
+  googleCalendar?: Flex__<typeof AntdInput>;
+  companyNature?: Flex__<"div">;
   services?: Flex__<"div">;
-  job2?: Flex__<"section">;
-  input14?: Flex__<typeof AntdInput>;
-  textArea2?: Flex__<typeof AntdTextArea>;
-  input16?: Flex__<typeof AntdInput>;
-  input15?: Flex__<typeof AntdInput>;
+  solutions?: Flex__<"section">;
+  title?: Flex__<typeof AntdInput>;
+  description?: Flex__<typeof AntdTextArea>;
+  price?: Flex__<typeof AntdInput>;
+  solutionsSteps?: Flex__<"div">;
+  stepText?: Flex__<typeof AntdInput>;
   about?: Flex__<"div">;
-  upload2?: Flex__<typeof UploadWrapper>;
-  textArea?: Flex__<typeof AntdTextArea>;
-  textArea3?: Flex__<typeof AntdTextArea>;
-  textArea4?: Flex__<typeof AntdTextArea>;
+  companyImage?: Flex__<typeof UploadWrapper>;
+  customerProblem?: Flex__<typeof AntdTextArea>;
+  solutionDescription?: Flex__<typeof AntdTextArea>;
+  whyShouldTheyChoose?: Flex__<typeof AntdTextArea>;
 };
 
 export interface DefaultCEditProfileProps {}
@@ -195,7 +197,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
-        path: "input.value",
+        path: "companyName.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -228,7 +230,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
       },
       {
-        path: "input3.value",
+        path: "location.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -236,7 +238,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input4.value",
+        path: "foundationDate.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -244,13 +246,13 @@ function PlasmicCEditProfile__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "upload.files",
+        path: "companyLogo.files",
         type: "private",
         variableType: "array",
         initFunc: ({ $props, $state, $queries, $ctx }) => []
       },
       {
-        path: "input5.value",
+        path: "linkedIn.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -258,7 +260,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input6.value",
+        path: "instagram.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -266,7 +268,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input7.value",
+        path: "x.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -283,14 +285,14 @@ function PlasmicCEditProfile__RenderFunc(props: {
         ]
       },
       {
-        path: "input14[].value",
+        path: "title[].value",
         type: "private",
         variableType: "text",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input16[].value",
+        path: "price[].value",
         type: "private",
         variableType: "text",
 
@@ -306,7 +308,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         ]
       },
       {
-        path: "textArea.value",
+        path: "customerProblem.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -320,19 +322,19 @@ function PlasmicCEditProfile__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "select3.value",
+        path: "companyType.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "select4.value",
+        path: "area.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "input2.value",
+        path: "companyTagline.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -340,7 +342,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "select5.value",
+        path: "subArea.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
@@ -358,21 +360,21 @@ function PlasmicCEditProfile__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => []
       },
       {
-        path: "textArea2[].value",
+        path: "description[].value",
         type: "private",
         variableType: "text",
 
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
       {
-        path: "input15[][].value",
+        path: "stepText[][].value",
         type: "private",
         variableType: "text",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "textArea3.value",
+        path: "solutionDescription.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -380,7 +382,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
       {
-        path: "textArea4.value",
+        path: "whyShouldTheyChoose.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -388,13 +390,13 @@ function PlasmicCEditProfile__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
       {
-        path: "upload2.files",
+        path: "companyImage.files",
         type: "private",
         variableType: "array",
         initFunc: ({ $props, $state, $queries, $ctx }) => []
       },
       {
-        path: "input8.value",
+        path: "website.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -414,7 +416,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "companyNature",
+        path: "companyNature3",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
@@ -448,7 +450,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
           })()
       },
       {
-        path: "input9.value",
+        path: "googleCalendar.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -479,7 +481,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         />
         <meta
           key="twitter:title"
-          name="twitter:title"
+          property="twitter:title"
           content={PlasmicCEditProfile.pageMetadata.title}
         />
       </Head>
@@ -651,16 +653,19 @@ function PlasmicCEditProfile__RenderFunc(props: {
               </div>
               <div className={classNames(projectcss.all, sty.freeBox___7H2S4)}>
                 <UploadWrapper
-                  data-plasmic-name={"upload"}
-                  data-plasmic-override={overrides.upload}
+                  data-plasmic-name={"companyLogo"}
+                  data-plasmic-override={overrides.companyLogo}
                   accept={"image/*"}
-                  className={classNames("__wab_instance", sty.upload)}
-                  files={generateStateValueProp($state, ["upload", "files"])}
+                  className={classNames("__wab_instance", sty.companyLogo)}
+                  files={generateStateValueProp($state, [
+                    "companyLogo",
+                    "files"
+                  ])}
                   listType={"picture-circle"}
                   maxCount={1}
                   onFilesChange={async (...eventArgs: any) => {
                     generateStateOnChangeProp($state, [
-                      "upload",
+                      "companyLogo",
                       "files"
                     ]).apply(null, eventArgs);
 
@@ -739,12 +744,12 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   const child$Props = {
                     autoFocus: false,
                     bordered: true,
-                    className: classNames("__wab_instance", sty.input),
+                    className: classNames("__wab_instance", sty.companyName),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["input", "value"],
+                        ["companyName", "value"],
                         AntdInput_Helpers
                       ).apply(null, eventArgs);
                     },
@@ -752,14 +757,17 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     readOnly: false,
                     size: "middle",
                     type: "text",
-                    value: generateStateValueProp($state, ["input", "value"])
+                    value: generateStateValueProp($state, [
+                      "companyName",
+                      "value"
+                    ])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "input.value"
+                        plasmicStateName: "companyName.value"
                       }
                     ],
                     [],
@@ -769,8 +777,8 @@ function PlasmicCEditProfile__RenderFunc(props: {
 
                   return (
                     <AntdInput
-                      data-plasmic-name={"input"}
-                      data-plasmic-override={overrides.input}
+                      data-plasmic-name={"companyName"}
+                      data-plasmic-override={overrides.companyName}
                       {...child$Props}
                     />
                   );
@@ -783,12 +791,12 @@ function PlasmicCEditProfile__RenderFunc(props: {
                 />
 
                 <AntdSelect
-                  data-plasmic-name={"select3"}
-                  data-plasmic-override={overrides.select3}
+                  data-plasmic-name={"companyType"}
+                  data-plasmic-override={overrides.companyType}
                   allowClear={true}
                   autoFocus={false}
                   bordered={true}
-                  className={classNames("__wab_instance", sty.select3)}
+                  className={classNames("__wab_instance", sty.companyType)}
                   defaultOpen={false}
                   defaultStylesClassName={classNames(
                     projectcss.root_reset,
@@ -800,7 +808,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   mode={"single"}
                   onChange={async (...eventArgs: any) => {
                     generateStateOnChangeProp($state, [
-                      "select3",
+                      "companyType",
                       "value"
                     ]).apply(null, eventArgs);
                   }}
@@ -829,11 +837,14 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       {"Company type"}
                     </div>
                   }
-                  popupScopeClassName={sty["select3__popup"]}
+                  popupScopeClassName={sty["companyType__popup"]}
                   showSearch={false}
                   size={"middle"}
                   useChildren={true}
-                  value={generateStateValueProp($state, ["select3", "value"])}
+                  value={generateStateValueProp($state, [
+                    "companyType",
+                    "value"
+                  ])}
                 >
                   <AntdOption
                     className={classNames("__wab_instance", sty.option__izyVw)}
@@ -959,12 +970,12 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   const child$Props = {
                     autoFocus: false,
                     bordered: true,
-                    className: classNames("__wab_instance", sty.input3),
+                    className: classNames("__wab_instance", sty.location),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["input3", "value"],
+                        ["location", "value"],
                         AntdInput_Helpers
                       ).apply(null, eventArgs);
                     },
@@ -972,14 +983,14 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     readOnly: false,
                     size: "middle",
                     type: "text",
-                    value: generateStateValueProp($state, ["input3", "value"])
+                    value: generateStateValueProp($state, ["location", "value"])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "input3.value"
+                        plasmicStateName: "location.value"
                       }
                     ],
                     [],
@@ -989,8 +1000,8 @@ function PlasmicCEditProfile__RenderFunc(props: {
 
                   return (
                     <AntdInput
-                      data-plasmic-name={"input3"}
-                      data-plasmic-override={overrides.input3}
+                      data-plasmic-name={"location"}
+                      data-plasmic-override={overrides.location}
                       {...child$Props}
                     />
                   );
@@ -1006,12 +1017,12 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   const child$Props = {
                     autoFocus: false,
                     bordered: true,
-                    className: classNames("__wab_instance", sty.input4),
+                    className: classNames("__wab_instance", sty.foundationDate),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["input4", "value"],
+                        ["foundationDate", "value"],
                         AntdInput_Helpers
                       ).apply(null, eventArgs);
 
@@ -1043,14 +1054,17 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     readOnly: false,
                     size: "middle",
                     type: "date",
-                    value: generateStateValueProp($state, ["input4", "value"])
+                    value: generateStateValueProp($state, [
+                      "foundationDate",
+                      "value"
+                    ])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "input4.value"
+                        plasmicStateName: "foundationDate.value"
                       }
                     ],
                     [],
@@ -1060,8 +1074,8 @@ function PlasmicCEditProfile__RenderFunc(props: {
 
                   return (
                     <AntdInput
-                      data-plasmic-name={"input4"}
-                      data-plasmic-override={overrides.input4}
+                      data-plasmic-name={"foundationDate"}
+                      data-plasmic-override={overrides.foundationDate}
                       {...child$Props}
                     />
                   );
@@ -1157,12 +1171,12 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   const child$Props = {
                     autoFocus: false,
                     bordered: true,
-                    className: classNames("__wab_instance", sty.input5),
+                    className: classNames("__wab_instance", sty.linkedIn),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["input5", "value"],
+                        ["linkedIn", "value"],
                         AntdInput_Helpers
                       ).apply(null, eventArgs);
                     },
@@ -1170,14 +1184,14 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     readOnly: false,
                     size: "middle",
                     type: "text",
-                    value: generateStateValueProp($state, ["input5", "value"])
+                    value: generateStateValueProp($state, ["linkedIn", "value"])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "input5.value"
+                        plasmicStateName: "linkedIn.value"
                       }
                     ],
                     [],
@@ -1187,8 +1201,8 @@ function PlasmicCEditProfile__RenderFunc(props: {
 
                   return (
                     <AntdInput
-                      data-plasmic-name={"input5"}
-                      data-plasmic-override={overrides.input5}
+                      data-plasmic-name={"linkedIn"}
+                      data-plasmic-override={overrides.linkedIn}
                       {...child$Props}
                     />
                   );
@@ -1204,12 +1218,12 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   const child$Props = {
                     autoFocus: false,
                     bordered: true,
-                    className: classNames("__wab_instance", sty.input6),
+                    className: classNames("__wab_instance", sty.instagram),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["input6", "value"],
+                        ["instagram", "value"],
                         AntdInput_Helpers
                       ).apply(null, eventArgs);
                     },
@@ -1217,14 +1231,17 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     readOnly: false,
                     size: "middle",
                     type: "text",
-                    value: generateStateValueProp($state, ["input6", "value"])
+                    value: generateStateValueProp($state, [
+                      "instagram",
+                      "value"
+                    ])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "input6.value"
+                        plasmicStateName: "instagram.value"
                       }
                     ],
                     [],
@@ -1234,8 +1251,8 @@ function PlasmicCEditProfile__RenderFunc(props: {
 
                   return (
                     <AntdInput
-                      data-plasmic-name={"input6"}
-                      data-plasmic-override={overrides.input6}
+                      data-plasmic-name={"instagram"}
+                      data-plasmic-override={overrides.instagram}
                       {...child$Props}
                     />
                   );
@@ -1251,12 +1268,12 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   const child$Props = {
                     autoFocus: false,
                     bordered: true,
-                    className: classNames("__wab_instance", sty.input8),
+                    className: classNames("__wab_instance", sty.website),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["input8", "value"],
+                        ["website", "value"],
                         AntdInput_Helpers
                       ).apply(null, eventArgs);
                     },
@@ -1264,14 +1281,14 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     readOnly: false,
                     size: "middle",
                     type: "text",
-                    value: generateStateValueProp($state, ["input8", "value"])
+                    value: generateStateValueProp($state, ["website", "value"])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "input8.value"
+                        plasmicStateName: "website.value"
                       }
                     ],
                     [],
@@ -1281,8 +1298,8 @@ function PlasmicCEditProfile__RenderFunc(props: {
 
                   return (
                     <AntdInput
-                      data-plasmic-name={"input8"}
-                      data-plasmic-override={overrides.input8}
+                      data-plasmic-name={"website"}
+                      data-plasmic-override={overrides.website}
                       {...child$Props}
                     />
                   );
@@ -1298,12 +1315,12 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   const child$Props = {
                     autoFocus: false,
                     bordered: true,
-                    className: classNames("__wab_instance", sty.input7),
+                    className: classNames("__wab_instance", sty.x),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["input7", "value"],
+                        ["x", "value"],
                         AntdInput_Helpers
                       ).apply(null, eventArgs);
                     },
@@ -1311,14 +1328,14 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     readOnly: false,
                     size: "middle",
                     type: "text",
-                    value: generateStateValueProp($state, ["input7", "value"])
+                    value: generateStateValueProp($state, ["x", "value"])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "input7.value"
+                        plasmicStateName: "x.value"
                       }
                     ],
                     [],
@@ -1328,8 +1345,8 @@ function PlasmicCEditProfile__RenderFunc(props: {
 
                   return (
                     <AntdInput
-                      data-plasmic-name={"input7"}
-                      data-plasmic-override={overrides.input7}
+                      data-plasmic-name={"x"}
+                      data-plasmic-override={overrides.x}
                       {...child$Props}
                     />
                   );
@@ -1470,12 +1487,12 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   const child$Props = {
                     autoFocus: false,
                     bordered: true,
-                    className: classNames("__wab_instance", sty.input2),
+                    className: classNames("__wab_instance", sty.companyTagline),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["input2", "value"],
+                        ["companyTagline", "value"],
                         AntdInput_Helpers
                       ).apply(null, eventArgs);
                     },
@@ -1483,14 +1500,17 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     readOnly: false,
                     size: "middle",
                     type: "text",
-                    value: generateStateValueProp($state, ["input2", "value"])
+                    value: generateStateValueProp($state, [
+                      "companyTagline",
+                      "value"
+                    ])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "input2.value"
+                        plasmicStateName: "companyTagline.value"
                       }
                     ],
                     [],
@@ -1500,8 +1520,8 @@ function PlasmicCEditProfile__RenderFunc(props: {
 
                   return (
                     <AntdInput
-                      data-plasmic-name={"input2"}
-                      data-plasmic-override={overrides.input2}
+                      data-plasmic-name={"companyTagline"}
+                      data-plasmic-override={overrides.companyTagline}
                       {...child$Props}
                     />
                   );
@@ -1514,12 +1534,12 @@ function PlasmicCEditProfile__RenderFunc(props: {
                 />
 
                 <AntdSelect
-                  data-plasmic-name={"select4"}
-                  data-plasmic-override={overrides.select4}
+                  data-plasmic-name={"area"}
+                  data-plasmic-override={overrides.area}
                   allowClear={true}
                   autoFocus={false}
                   bordered={true}
-                  className={classNames("__wab_instance", sty.select4)}
+                  className={classNames("__wab_instance", sty.area)}
                   defaultOpen={false}
                   defaultStylesClassName={classNames(
                     projectcss.root_reset,
@@ -1530,10 +1550,10 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   dropdownMatchSelectWidth={false}
                   mode={"single"}
                   onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "select4",
-                      "value"
-                    ]).apply(null, eventArgs);
+                    generateStateOnChangeProp($state, ["area", "value"]).apply(
+                      null,
+                      eventArgs
+                    );
 
                     (async (value, option) => {
                       const $steps = {};
@@ -1546,7 +1566,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                 variablePath: ["selectedMainOption"]
                               },
                               operation: 0,
-                              value: $state.select4.value
+                              value: $state.area.value
                             };
                             return (({
                               variable,
@@ -2064,11 +2084,11 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       {"Area..."}
                     </div>
                   }
-                  popupScopeClassName={sty["select4__popup"]}
+                  popupScopeClassName={sty["area__popup"]}
                   showSearch={false}
                   size={"middle"}
                   useChildren={true}
-                  value={generateStateValueProp($state, ["select4", "value"])}
+                  value={generateStateValueProp($state, ["area", "value"])}
                 >
                   <AntdOption
                     className={classNames("__wab_instance", sty.option__rmKQh)}
@@ -2247,12 +2267,12 @@ function PlasmicCEditProfile__RenderFunc(props: {
                 />
 
                 <AntdSelect
-                  data-plasmic-name={"select5"}
-                  data-plasmic-override={overrides.select5}
+                  data-plasmic-name={"subArea"}
+                  data-plasmic-override={overrides.subArea}
                   allowClear={true}
                   autoFocus={false}
                   bordered={true}
-                  className={classNames("__wab_instance", sty.select5)}
+                  className={classNames("__wab_instance", sty.subArea)}
                   defaultOpen={false}
                   defaultStylesClassName={classNames(
                     projectcss.root_reset,
@@ -2264,7 +2284,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   mode={"multiple"}
                   onChange={async (...eventArgs: any) => {
                     generateStateOnChangeProp($state, [
-                      "select5",
+                      "subArea",
                       "value"
                     ]).apply(null, eventArgs);
                   }}
@@ -2303,11 +2323,11 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       {"Select..."}
                     </div>
                   }
-                  popupScopeClassName={sty["select5__popup"]}
+                  popupScopeClassName={sty["subArea__popup"]}
                   showSearch={false}
                   size={"middle"}
                   useChildren={false}
-                  value={generateStateValueProp($state, ["select5", "value"])}
+                  value={generateStateValueProp($state, ["subArea", "value"])}
                 >
                   <AntdOption
                     className={classNames("__wab_instance", sty.option__zpNv7)}
@@ -2794,8 +2814,8 @@ function PlasmicCEditProfile__RenderFunc(props: {
               {(() => {
                 try {
                   return (
-                    $state.companyNature === "Table - At Company Location" ||
-                    $state.companyNature === "Analysis - At Company Location"
+                    $state.companyNature3 === "Table - At Company Location" ||
+                    $state.companyNature3 === "Analysis - At Company Location"
                   );
                 } catch (e) {
                   if (
@@ -2817,12 +2837,15 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     const child$Props = {
                       autoFocus: false,
                       bordered: true,
-                      className: classNames("__wab_instance", sty.input9),
+                      className: classNames(
+                        "__wab_instance",
+                        sty.googleCalendar
+                      ),
                       onChange: async (...eventArgs: any) => {
                         generateStateOnChangePropForCodeComponents(
                           $state,
                           "value",
-                          ["input9", "value"],
+                          ["googleCalendar", "value"],
                           AntdInput_Helpers
                         ).apply(null, eventArgs);
                       },
@@ -2830,14 +2853,17 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       readOnly: false,
                       size: "middle",
                       type: "text",
-                      value: generateStateValueProp($state, ["input9", "value"])
+                      value: generateStateValueProp($state, [
+                        "googleCalendar",
+                        "value"
+                      ])
                     };
                     initializeCodeComponentStates(
                       $state,
                       [
                         {
                           name: "value",
-                          plasmicStateName: "input9.value"
+                          plasmicStateName: "googleCalendar.value"
                         }
                       ],
                       [],
@@ -2847,8 +2873,8 @@ function PlasmicCEditProfile__RenderFunc(props: {
 
                     return (
                       <AntdInput
-                        data-plasmic-name={"input9"}
-                        data-plasmic-override={overrides.input9}
+                        data-plasmic-name={"googleCalendar"}
+                        data-plasmic-override={overrides.googleCalendar}
                         {...child$Props}
                       />
                     );
@@ -2937,16 +2963,18 @@ function PlasmicCEditProfile__RenderFunc(props: {
                 </LoginButton>
               </div>
               <div
+                data-plasmic-name={"companyNature"}
+                data-plasmic-override={overrides.companyNature}
                 className={classNames(
                   projectcss.all,
                   projectcss.__wab_text,
-                  sty.text__suc4E
+                  sty.companyNature
                 )}
               >
                 <React.Fragment>
                   {(() => {
                     try {
-                      return $state.companyNature;
+                      return $state.companyNature3;
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
@@ -3023,9 +3051,9 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   const currentIndex = __plasmic_idx_0;
                   return (
                     <section
-                      data-plasmic-name={"job2"}
-                      data-plasmic-override={overrides.job2}
-                      className={classNames(projectcss.all, sty.job2)}
+                      data-plasmic-name={"solutions"}
+                      data-plasmic-override={overrides.solutions}
+                      className={classNames(projectcss.all, sty.solutions)}
                       key={currentIndex}
                     >
                       <div
@@ -3046,13 +3074,13 @@ function PlasmicCEditProfile__RenderFunc(props: {
                               bordered: true,
                               className: classNames(
                                 "__wab_instance",
-                                sty.input14
+                                sty.title
                               ),
                               onChange: async (...eventArgs: any) => {
                                 generateStateOnChangePropForCodeComponents(
                                   $state,
                                   "value",
-                                  ["input14", __plasmic_idx_0, "value"],
+                                  ["title", __plasmic_idx_0, "value"],
                                   AntdInput_Helpers
                                 ).apply(null, eventArgs);
                               },
@@ -3061,7 +3089,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                               size: "middle",
                               type: "text",
                               value: generateStateValueProp($state, [
-                                "input14",
+                                "title",
                                 __plasmic_idx_0,
                                 "value"
                               ])
@@ -3071,7 +3099,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                               [
                                 {
                                   name: "value",
-                                  plasmicStateName: "input14[].value"
+                                  plasmicStateName: "title[].value"
                                 }
                               ],
                               [__plasmic_idx_0],
@@ -3082,7 +3110,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                               $state,
                               [
                                 {
-                                  name: "input14[].value",
+                                  name: "title[].value",
                                   initFunc: ({ $props, $state, $queries }) =>
                                     undefined
                                 }
@@ -3091,8 +3119,8 @@ function PlasmicCEditProfile__RenderFunc(props: {
                             );
                             return (
                               <AntdInput
-                                data-plasmic-name={"input14"}
-                                data-plasmic-override={overrides.input14}
+                                data-plasmic-name={"title"}
+                                data-plasmic-override={overrides.title}
                                 {...child$Props}
                               />
                             );
@@ -3108,19 +3136,19 @@ function PlasmicCEditProfile__RenderFunc(props: {
                             const child$Props = {
                               className: classNames(
                                 "__wab_instance",
-                                sty.textArea2
+                                sty.description
                               ),
                               onChange: async (...eventArgs: any) => {
                                 generateStateOnChangePropForCodeComponents(
                                   $state,
                                   "value",
-                                  ["textArea2", __plasmic_idx_0, "value"],
+                                  ["description", __plasmic_idx_0, "value"],
                                   AntdTextArea_Helpers
                                 ).apply(null, eventArgs);
                               },
                               placeholder: "Description",
                               value: generateStateValueProp($state, [
-                                "textArea2",
+                                "description",
                                 __plasmic_idx_0,
                                 "value"
                               ])
@@ -3130,7 +3158,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                               [
                                 {
                                   name: "value",
-                                  plasmicStateName: "textArea2[].value"
+                                  plasmicStateName: "description[].value"
                                 }
                               ],
                               [__plasmic_idx_0],
@@ -3141,7 +3169,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                               $state,
                               [
                                 {
-                                  name: "textArea2[].value",
+                                  name: "description[].value",
                                   initFunc: ({ $props, $state, $queries }) =>
                                     undefined
                                 }
@@ -3150,8 +3178,8 @@ function PlasmicCEditProfile__RenderFunc(props: {
                             );
                             return (
                               <AntdTextArea
-                                data-plasmic-name={"textArea2"}
-                                data-plasmic-override={overrides.textArea2}
+                                data-plasmic-name={"description"}
+                                data-plasmic-override={overrides.description}
                                 {...child$Props}
                               />
                             );
@@ -3160,9 +3188,9 @@ function PlasmicCEditProfile__RenderFunc(props: {
                         {(() => {
                           try {
                             return (
-                              $state.companyNature ===
+                              $state.companyNature3 ===
                                 "Table - At Customer Location" ||
-                              $state.companyNature ===
+                              $state.companyNature3 ===
                                 "Table - At Company Location"
                             );
                           } catch (e) {
@@ -3187,13 +3215,13 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                 bordered: true,
                                 className: classNames(
                                   "__wab_instance",
-                                  sty.input16
+                                  sty.price
                                 ),
                                 onChange: async (...eventArgs: any) => {
                                   generateStateOnChangePropForCodeComponents(
                                     $state,
                                     "value",
-                                    ["input16", __plasmic_idx_0, "value"],
+                                    ["price", __plasmic_idx_0, "value"],
                                     AntdInput_Helpers
                                   ).apply(null, eventArgs);
                                 },
@@ -3202,7 +3230,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                 size: "middle",
                                 type: "number",
                                 value: generateStateValueProp($state, [
-                                  "input16",
+                                  "price",
                                   __plasmic_idx_0,
                                   "value"
                                 ])
@@ -3212,7 +3240,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                 [
                                   {
                                     name: "value",
-                                    plasmicStateName: "input16[].value"
+                                    plasmicStateName: "price[].value"
                                   }
                                 ],
                                 [__plasmic_idx_0],
@@ -3223,7 +3251,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                 $state,
                                 [
                                   {
-                                    name: "input16[].value",
+                                    name: "price[].value",
                                     initFunc: ({ $props, $state, $queries }) =>
                                       undefined
                                   }
@@ -3232,8 +3260,8 @@ function PlasmicCEditProfile__RenderFunc(props: {
                               );
                               return (
                                 <AntdInput
-                                  data-plasmic-name={"input16"}
-                                  data-plasmic-override={overrides.input16}
+                                  data-plasmic-name={"price"}
+                                  data-plasmic-override={overrides.price}
                                   {...child$Props}
                                 />
                               );
@@ -3242,9 +3270,11 @@ function PlasmicCEditProfile__RenderFunc(props: {
                         ) : null}
                       </div>
                       <div
+                        data-plasmic-name={"solutionsSteps"}
+                        data-plasmic-override={overrides.solutionsSteps}
                         className={classNames(
                           projectcss.all,
-                          sty.freeBox__g3Ao
+                          sty.solutionsSteps
                         )}
                       >
                         {(_par =>
@@ -3279,14 +3309,14 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                   bordered: true,
                                   className: classNames(
                                     "__wab_instance",
-                                    sty.input15
+                                    sty.stepText
                                   ),
                                   onChange: async (...eventArgs: any) => {
                                     generateStateOnChangePropForCodeComponents(
                                       $state,
                                       "value",
                                       [
-                                        "input15",
+                                        "stepText",
                                         __plasmic_idx_0,
                                         __plasmic_idx_1,
                                         "value"
@@ -3299,7 +3329,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                   size: "middle",
                                   type: "text",
                                   value: generateStateValueProp($state, [
-                                    "input15",
+                                    "stepText",
                                     __plasmic_idx_0,
                                     __plasmic_idx_1,
                                     "value"
@@ -3310,7 +3340,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                   [
                                     {
                                       name: "value",
-                                      plasmicStateName: "input15[][].value"
+                                      plasmicStateName: "stepText[][].value"
                                     }
                                   ],
                                   [__plasmic_idx_0, __plasmic_idx_1],
@@ -3321,7 +3351,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                   $state,
                                   [
                                     {
-                                      name: "input15[][].value",
+                                      name: "stepText[][].value",
                                       initFunc: ({
                                         $props,
                                         $state,
@@ -3333,8 +3363,8 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                 );
                                 return (
                                   <AntdInput
-                                    data-plasmic-name={"input15"}
-                                    data-plasmic-override={overrides.input15}
+                                    data-plasmic-name={"stepText"}
+                                    data-plasmic-override={overrides.stepText}
                                     {...child$Props}
                                   />
                                 );
@@ -3660,16 +3690,19 @@ function PlasmicCEditProfile__RenderFunc(props: {
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__b0Whj)}>
                 <UploadWrapper
-                  data-plasmic-name={"upload2"}
-                  data-plasmic-override={overrides.upload2}
+                  data-plasmic-name={"companyImage"}
+                  data-plasmic-override={overrides.companyImage}
                   accept={"image/*"}
-                  className={classNames("__wab_instance", sty.upload2)}
-                  files={generateStateValueProp($state, ["upload2", "files"])}
+                  className={classNames("__wab_instance", sty.companyImage)}
+                  files={generateStateValueProp($state, [
+                    "companyImage",
+                    "files"
+                  ])}
                   listType={"picture-circle"}
                   maxCount={1}
                   onFilesChange={async (...eventArgs: any) => {
                     generateStateOnChangeProp($state, [
-                      "upload2",
+                      "companyImage",
                       "files"
                     ]).apply(null, eventArgs);
 
@@ -3746,24 +3779,30 @@ function PlasmicCEditProfile__RenderFunc(props: {
 
                 {(() => {
                   const child$Props = {
-                    className: classNames("__wab_instance", sty.textArea),
+                    className: classNames(
+                      "__wab_instance",
+                      sty.customerProblem
+                    ),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["textArea", "value"],
+                        ["customerProblem", "value"],
                         AntdTextArea_Helpers
                       ).apply(null, eventArgs);
                     },
                     placeholder: "What is your customers' problem?",
-                    value: generateStateValueProp($state, ["textArea", "value"])
+                    value: generateStateValueProp($state, [
+                      "customerProblem",
+                      "value"
+                    ])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "textArea.value"
+                        plasmicStateName: "customerProblem.value"
                       }
                     ],
                     [],
@@ -3773,8 +3812,8 @@ function PlasmicCEditProfile__RenderFunc(props: {
 
                   return (
                     <AntdTextArea
-                      data-plasmic-name={"textArea"}
-                      data-plasmic-override={overrides.textArea}
+                      data-plasmic-name={"customerProblem"}
+                      data-plasmic-override={overrides.customerProblem}
                       {...child$Props}
                     />
                   );
@@ -3788,18 +3827,21 @@ function PlasmicCEditProfile__RenderFunc(props: {
 
                 {(() => {
                   const child$Props = {
-                    className: classNames("__wab_instance", sty.textArea3),
+                    className: classNames(
+                      "__wab_instance",
+                      sty.solutionDescription
+                    ),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["textArea3", "value"],
+                        ["solutionDescription", "value"],
                         AntdTextArea_Helpers
                       ).apply(null, eventArgs);
                     },
                     placeholder: "What is your solution for them?",
                     value: generateStateValueProp($state, [
-                      "textArea3",
+                      "solutionDescription",
                       "value"
                     ])
                   };
@@ -3808,7 +3850,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     [
                       {
                         name: "value",
-                        plasmicStateName: "textArea3.value"
+                        plasmicStateName: "solutionDescription.value"
                       }
                     ],
                     [],
@@ -3818,8 +3860,8 @@ function PlasmicCEditProfile__RenderFunc(props: {
 
                   return (
                     <AntdTextArea
-                      data-plasmic-name={"textArea3"}
-                      data-plasmic-override={overrides.textArea3}
+                      data-plasmic-name={"solutionDescription"}
+                      data-plasmic-override={overrides.solutionDescription}
                       {...child$Props}
                     />
                   );
@@ -3833,19 +3875,22 @@ function PlasmicCEditProfile__RenderFunc(props: {
 
                 {(() => {
                   const child$Props = {
-                    className: classNames("__wab_instance", sty.textArea4),
+                    className: classNames(
+                      "__wab_instance",
+                      sty.whyShouldTheyChoose
+                    ),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["textArea4", "value"],
+                        ["whyShouldTheyChoose", "value"],
                         AntdTextArea_Helpers
                       ).apply(null, eventArgs);
                     },
                     placeholder:
                       "Why would they choose you over your competitor?",
                     value: generateStateValueProp($state, [
-                      "textArea4",
+                      "whyShouldTheyChoose",
                       "value"
                     ])
                   };
@@ -3854,7 +3899,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     [
                       {
                         name: "value",
-                        plasmicStateName: "textArea4.value"
+                        plasmicStateName: "whyShouldTheyChoose.value"
                       }
                     ],
                     [],
@@ -3864,8 +3909,8 @@ function PlasmicCEditProfile__RenderFunc(props: {
 
                   return (
                     <AntdTextArea
-                      data-plasmic-name={"textArea4"}
-                      data-plasmic-override={overrides.textArea4}
+                      data-plasmic-name={"whyShouldTheyChoose"}
+                      data-plasmic-override={overrides.whyShouldTheyChoose}
                       {...child$Props}
                     />
                   );
@@ -3976,34 +4021,36 @@ const PlasmicDescendants = {
     "stepsStack",
     "steps",
     "basicInfo",
-    "upload",
-    "input",
-    "select3",
-    "input3",
-    "input4",
+    "companyLogo",
+    "companyName",
+    "companyType",
+    "location",
+    "foundationDate",
     "links",
-    "input5",
-    "input6",
-    "input8",
-    "input7",
+    "linkedIn",
+    "instagram",
+    "website",
+    "x",
     "companysAreaOfActivity",
-    "input2",
-    "select4",
-    "select5",
+    "companyTagline",
+    "area",
+    "subArea",
     "radioGroup2",
     "radioGroup3",
-    "input9",
+    "googleCalendar",
+    "companyNature",
     "services",
-    "job2",
-    "input14",
-    "textArea2",
-    "input16",
-    "input15",
+    "solutions",
+    "title",
+    "description",
+    "price",
+    "solutionsSteps",
+    "stepText",
     "about",
-    "upload2",
-    "textArea",
-    "textArea3",
-    "textArea4"
+    "companyImage",
+    "customerProblem",
+    "solutionDescription",
+    "whyShouldTheyChoose"
   ],
   img: ["img"],
   rectangle: [
@@ -4011,74 +4058,107 @@ const PlasmicDescendants = {
     "stepsStack",
     "steps",
     "basicInfo",
-    "upload",
-    "input",
-    "select3",
-    "input3",
-    "input4",
+    "companyLogo",
+    "companyName",
+    "companyType",
+    "location",
+    "foundationDate",
     "links",
-    "input5",
-    "input6",
-    "input8",
-    "input7",
+    "linkedIn",
+    "instagram",
+    "website",
+    "x",
     "companysAreaOfActivity",
-    "input2",
-    "select4",
-    "select5",
+    "companyTagline",
+    "area",
+    "subArea",
     "radioGroup2",
     "radioGroup3",
-    "input9",
+    "googleCalendar",
+    "companyNature",
     "services",
-    "job2",
-    "input14",
-    "textArea2",
-    "input16",
-    "input15",
+    "solutions",
+    "title",
+    "description",
+    "price",
+    "solutionsSteps",
+    "stepText",
     "about",
-    "upload2",
-    "textArea",
-    "textArea3",
-    "textArea4"
+    "companyImage",
+    "customerProblem",
+    "solutionDescription",
+    "whyShouldTheyChoose"
   ],
   stepsStack: ["stepsStack", "steps"],
   steps: ["steps"],
-  basicInfo: ["basicInfo", "upload", "input", "select3", "input3", "input4"],
-  upload: ["upload"],
-  input: ["input"],
-  select3: ["select3"],
-  input3: ["input3"],
-  input4: ["input4"],
-  links: ["links", "input5", "input6", "input8", "input7"],
-  input5: ["input5"],
-  input6: ["input6"],
-  input8: ["input8"],
-  input7: ["input7"],
+  basicInfo: [
+    "basicInfo",
+    "companyLogo",
+    "companyName",
+    "companyType",
+    "location",
+    "foundationDate"
+  ],
+  companyLogo: ["companyLogo"],
+  companyName: ["companyName"],
+  companyType: ["companyType"],
+  location: ["location"],
+  foundationDate: ["foundationDate"],
+  links: ["links", "linkedIn", "instagram", "website", "x"],
+  linkedIn: ["linkedIn"],
+  instagram: ["instagram"],
+  website: ["website"],
+  x: ["x"],
   companysAreaOfActivity: [
     "companysAreaOfActivity",
-    "input2",
-    "select4",
-    "select5",
+    "companyTagline",
+    "area",
+    "subArea",
     "radioGroup2",
     "radioGroup3",
-    "input9"
+    "googleCalendar",
+    "companyNature"
   ],
-  input2: ["input2"],
-  select4: ["select4"],
-  select5: ["select5"],
+  companyTagline: ["companyTagline"],
+  area: ["area"],
+  subArea: ["subArea"],
   radioGroup2: ["radioGroup2"],
   radioGroup3: ["radioGroup3"],
-  input9: ["input9"],
-  services: ["services", "job2", "input14", "textArea2", "input16", "input15"],
-  job2: ["job2", "input14", "textArea2", "input16", "input15"],
-  input14: ["input14"],
-  textArea2: ["textArea2"],
-  input16: ["input16"],
-  input15: ["input15"],
-  about: ["about", "upload2", "textArea", "textArea3", "textArea4"],
-  upload2: ["upload2"],
-  textArea: ["textArea"],
-  textArea3: ["textArea3"],
-  textArea4: ["textArea4"]
+  googleCalendar: ["googleCalendar"],
+  companyNature: ["companyNature"],
+  services: [
+    "services",
+    "solutions",
+    "title",
+    "description",
+    "price",
+    "solutionsSteps",
+    "stepText"
+  ],
+  solutions: [
+    "solutions",
+    "title",
+    "description",
+    "price",
+    "solutionsSteps",
+    "stepText"
+  ],
+  title: ["title"],
+  description: ["description"],
+  price: ["price"],
+  solutionsSteps: ["solutionsSteps", "stepText"],
+  stepText: ["stepText"],
+  about: [
+    "about",
+    "companyImage",
+    "customerProblem",
+    "solutionDescription",
+    "whyShouldTheyChoose"
+  ],
+  companyImage: ["companyImage"],
+  customerProblem: ["customerProblem"],
+  solutionDescription: ["solutionDescription"],
+  whyShouldTheyChoose: ["whyShouldTheyChoose"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -4090,34 +4170,36 @@ type NodeDefaultElementType = {
   stepsStack: "div";
   steps: typeof AntdSteps;
   basicInfo: "div";
-  upload: typeof UploadWrapper;
-  input: typeof AntdInput;
-  select3: typeof AntdSelect;
-  input3: typeof AntdInput;
-  input4: typeof AntdInput;
+  companyLogo: typeof UploadWrapper;
+  companyName: typeof AntdInput;
+  companyType: typeof AntdSelect;
+  location: typeof AntdInput;
+  foundationDate: typeof AntdInput;
   links: "div";
-  input5: typeof AntdInput;
-  input6: typeof AntdInput;
-  input8: typeof AntdInput;
-  input7: typeof AntdInput;
+  linkedIn: typeof AntdInput;
+  instagram: typeof AntdInput;
+  website: typeof AntdInput;
+  x: typeof AntdInput;
   companysAreaOfActivity: "div";
-  input2: typeof AntdInput;
-  select4: typeof AntdSelect;
-  select5: typeof AntdSelect;
+  companyTagline: typeof AntdInput;
+  area: typeof AntdSelect;
+  subArea: typeof AntdSelect;
   radioGroup2: typeof AntdRadioGroup;
   radioGroup3: typeof AntdRadioGroup;
-  input9: typeof AntdInput;
+  googleCalendar: typeof AntdInput;
+  companyNature: "div";
   services: "div";
-  job2: "section";
-  input14: typeof AntdInput;
-  textArea2: typeof AntdTextArea;
-  input16: typeof AntdInput;
-  input15: typeof AntdInput;
+  solutions: "section";
+  title: typeof AntdInput;
+  description: typeof AntdTextArea;
+  price: typeof AntdInput;
+  solutionsSteps: "div";
+  stepText: typeof AntdInput;
   about: "div";
-  upload2: typeof UploadWrapper;
-  textArea: typeof AntdTextArea;
-  textArea3: typeof AntdTextArea;
-  textArea4: typeof AntdTextArea;
+  companyImage: typeof UploadWrapper;
+  customerProblem: typeof AntdTextArea;
+  solutionDescription: typeof AntdTextArea;
+  whyShouldTheyChoose: typeof AntdTextArea;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -4187,34 +4269,36 @@ export const PlasmicCEditProfile = Object.assign(
     stepsStack: makeNodeComponent("stepsStack"),
     steps: makeNodeComponent("steps"),
     basicInfo: makeNodeComponent("basicInfo"),
-    upload: makeNodeComponent("upload"),
-    input: makeNodeComponent("input"),
-    select3: makeNodeComponent("select3"),
-    input3: makeNodeComponent("input3"),
-    input4: makeNodeComponent("input4"),
+    companyLogo: makeNodeComponent("companyLogo"),
+    companyName: makeNodeComponent("companyName"),
+    companyType: makeNodeComponent("companyType"),
+    location: makeNodeComponent("location"),
+    foundationDate: makeNodeComponent("foundationDate"),
     links: makeNodeComponent("links"),
-    input5: makeNodeComponent("input5"),
-    input6: makeNodeComponent("input6"),
-    input8: makeNodeComponent("input8"),
-    input7: makeNodeComponent("input7"),
+    linkedIn: makeNodeComponent("linkedIn"),
+    instagram: makeNodeComponent("instagram"),
+    website: makeNodeComponent("website"),
+    x: makeNodeComponent("x"),
     companysAreaOfActivity: makeNodeComponent("companysAreaOfActivity"),
-    input2: makeNodeComponent("input2"),
-    select4: makeNodeComponent("select4"),
-    select5: makeNodeComponent("select5"),
+    companyTagline: makeNodeComponent("companyTagline"),
+    area: makeNodeComponent("area"),
+    subArea: makeNodeComponent("subArea"),
     radioGroup2: makeNodeComponent("radioGroup2"),
     radioGroup3: makeNodeComponent("radioGroup3"),
-    input9: makeNodeComponent("input9"),
+    googleCalendar: makeNodeComponent("googleCalendar"),
+    companyNature: makeNodeComponent("companyNature"),
     services: makeNodeComponent("services"),
-    job2: makeNodeComponent("job2"),
-    input14: makeNodeComponent("input14"),
-    textArea2: makeNodeComponent("textArea2"),
-    input16: makeNodeComponent("input16"),
-    input15: makeNodeComponent("input15"),
+    solutions: makeNodeComponent("solutions"),
+    title: makeNodeComponent("title"),
+    description: makeNodeComponent("description"),
+    price: makeNodeComponent("price"),
+    solutionsSteps: makeNodeComponent("solutionsSteps"),
+    stepText: makeNodeComponent("stepText"),
     about: makeNodeComponent("about"),
-    upload2: makeNodeComponent("upload2"),
-    textArea: makeNodeComponent("textArea"),
-    textArea3: makeNodeComponent("textArea3"),
-    textArea4: makeNodeComponent("textArea4"),
+    companyImage: makeNodeComponent("companyImage"),
+    customerProblem: makeNodeComponent("customerProblem"),
+    solutionDescription: makeNodeComponent("solutionDescription"),
+    whyShouldTheyChoose: makeNodeComponent("whyShouldTheyChoose"),
 
     // Metadata about props expected for PlasmicCEditProfile
     internalVariantProps: PlasmicCEditProfile__VariantProps,

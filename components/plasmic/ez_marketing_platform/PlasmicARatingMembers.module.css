@@ -379,7 +379,7 @@
   flex-shrink: 0;
   padding: 8px;
 }
-.img__wMumx {
+.profilePic {
   animation: none;
   object-fit: cover;
   max-width: 100%;
@@ -388,10 +388,10 @@
   flex-shrink: 0;
   border-radius: 100px;
 }
-.img__wMumx > picture > img {
+.profilePic > picture > img {
   object-fit: cover;
 }
-.img__hsucT {
+.communityLogo {
   animation: none;
   object-fit: cover;
   max-width: 100%;
@@ -403,7 +403,7 @@
   flex-shrink: 0;
   border-radius: 8px;
 }
-.img__hsucT > picture > img {
+.communityLogo > picture > img {
   object-fit: cover;
 }
 .freeBox__mV8Mz {
@@ -432,7 +432,7 @@
   min-width: 0;
   padding: 0px;
 }
-.text___2J3Jx {
+.firstName {
   animation: none;
   width: auto;
   height: auto;
@@ -451,7 +451,7 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.text__uhGuR {
+.lastName {
   animation: none;
   width: auto;
   height: auto;
@@ -484,7 +484,7 @@
   min-width: 0;
   padding: 0px;
 }
-.text__l2Nbb {
+.birthday {
   animation: none;
   width: auto;
   height: auto;
@@ -523,7 +523,7 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.text__oFsm {
+.location {
   animation: none;
   width: auto;
   height: auto;
@@ -816,7 +816,7 @@
   text-overflow: clip;
   padding: 0px 0px 0px 10px;
 }
-.text__qhjp {
+.charge2 {
   animation: none;
   width: 100%;
   height: auto;
@@ -872,7 +872,7 @@
   margin-top: -7px;
   height: 1em;
 }
-.link__dfOzN {
+.linkedIn {
   animation: none;
   color: #228b22;
   font-size: 11px;
@@ -909,7 +909,7 @@
   max-width: 100%;
   height: 1em;
 }
-.link__zNgna {
+.instagram {
   animation: none;
   color: #228b22;
   font-size: 11px;
@@ -946,7 +946,7 @@
   max-width: 100%;
   height: 1em;
 }
-.link__qsFgz {
+.x {
   animation: none;
   color: #228b22;
   font-size: 11px;
@@ -962,7 +962,7 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.rating {
+.rateThisMember {
   animation: none;
   display: flex;
   flex-direction: column;
@@ -1098,7 +1098,7 @@
   max-width: 100%;
   z-index: 9999;
 }
-.rate4:global(.__wab_instance) {
+.rateEthics:global(.__wab_instance) {
   animation: none;
   max-width: 100%;
   object-fit: cover;
@@ -1233,7 +1233,7 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.textArea2:global(.__wab_instance) {
+.comment:global(.__wab_instance) {
   animation: none;
   max-width: 100%;
   object-fit: cover;
@@ -1248,7 +1248,7 @@
   width: 100%;
   min-width: 0;
 }
-.button2__gPkt:global(.__wab_instance):global(.__wab_instance) {
+.confirmRate:global(.__wab_instance):global(.__wab_instance) {
   animation: none;
 }
 .svg___2XcCz {
@@ -1368,7 +1368,7 @@
   max-width: 100%;
   z-index: 9999;
 }
-.rate25:global(.__wab_instance) {
+.rateTechnical:global(.__wab_instance) {
   animation: none;
   max-width: 100%;
   object-fit: cover;
@@ -1503,7 +1503,7 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.textArea3:global(.__wab_instance) {
+.comment2:global(.__wab_instance) {
   animation: none;
   max-width: 100%;
   object-fit: cover;
@@ -1518,7 +1518,7 @@
   width: 100%;
   min-width: 0;
 }
-.button2__t2L6H:global(.__wab_instance):global(.__wab_instance) {
+.confirmRate2:global(.__wab_instance):global(.__wab_instance) {
   animation: none;
 }
 .svg__tAtxs {
@@ -1632,7 +1632,7 @@
   text-overflow: clip;
   padding: 8px;
 }
-.rate6:global(.__wab_instance) {
+.rating:global(.__wab_instance) {
   animation: none;
   max-width: 100%;
   object-fit: cover;

@@ -159,7 +159,7 @@ function PlasmicUAnalysisAtCustomerLocationConfirmService__RenderFunc(props: {
         />
         <meta
           key="twitter:title"
-          name="twitter:title"
+          property="twitter:title"
           content={
             PlasmicUAnalysisAtCustomerLocationConfirmService.pageMetadata.title
           }

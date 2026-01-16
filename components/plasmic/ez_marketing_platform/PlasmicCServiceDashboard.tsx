@@ -82,11 +82,10 @@ import { AntdOptionGroup } from "@plasmicpkgs/antd5/skinny/registerSelect";
 import { AntdProgress } from "@plasmicpkgs/antd5/skinny/registerProgress";
 import Statistic from "../../Statistic"; // plasmic-import: y0yj7DfWm_Zy/component
 import { SimpleChart } from "@plasmicpkgs/react-chartjs-2";
-import TableAtCustomerLocation from "../../TableAtCustomerLocation"; // plasmic-import: dEuLCRQvIKrY/component
+import EmailInput from "../../EmailInput"; // plasmic-import: G0LERtvqWNy_/component
 import { AntdRate } from "@plasmicpkgs/antd5/skinny/registerRate";
 import { AntdRadioGroup } from "@plasmicpkgs/antd5/skinny/registerRadio";
 import { AntdRadio } from "@plasmicpkgs/antd5/skinny/registerRadio";
-import EmailInput from "../../EmailInput"; // plasmic-import: G0LERtvqWNy_/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: maKqnX1RyE1vKUCrTH51ZZ/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: maKqnX1RyE1vKUCrTH51ZZ/styleTokensProvider
 
@@ -100,8 +99,8 @@ import Icon38Icon from "./icons/PlasmicIcon__Icon38"; // plasmic-import: GHhSOYX
 import CircleIcon from "./icons/PlasmicIcon__Circle"; // plasmic-import: 4JgiKKNVUuUK/icon
 import ChevronDownIcon from "./icons/PlasmicIcon__ChevronDown"; // plasmic-import: qQ9FpkDVW9kl/icon
 import ChevronDownSvgIcon from "./icons/PlasmicIcon__ChevronDownSvg"; // plasmic-import: yX6nmNznw-Pw/icon
-import Icon12Icon from "./icons/PlasmicIcon__Icon12"; // plasmic-import: 1zOQ_1O2Pi6b/icon
 import SearchSvgIcon from "./icons/PlasmicIcon__SearchSvg"; // plasmic-import: 2CF1JK7pRFx7/icon
+import Icon12Icon from "./icons/PlasmicIcon__Icon12"; // plasmic-import: 1zOQ_1O2Pi6b/icon
 
 createPlasmicElementProxy;
 
@@ -122,14 +121,17 @@ export type PlasmicCServiceDashboard__OverridesType = {
   account?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
   countainer1?: Flex__<"div">;
+  _7Days?: Flex__<typeof LoginButton>;
+  _30Days?: Flex__<typeof LoginButton>;
+  _60Days?: Flex__<typeof LoginButton>;
   modal?: Flex__<typeof Modal>;
   basicData?: Flex__<"div">;
-  input?: Flex__<typeof AntdInput>;
-  input2?: Flex__<typeof AntdInput>;
-  slider2?: Flex__<typeof AntdSingleSlider>;
+  companyExpenses?: Flex__<typeof AntdInput>;
+  desiredProfit?: Flex__<typeof AntdInput>;
+  comissionPercent?: Flex__<typeof AntdSingleSlider>;
   servicosRepeat?: Flex__<"div">;
   serviceName?: Flex__<"div">;
-  input3?: Flex__<typeof AntdInput>;
+  ofTheDemand?: Flex__<typeof AntdInput>;
   numbers?: Flex__<"div">;
   withdraw?: Flex__<typeof Modal>;
   period?: Flex__<"div">;
@@ -148,12 +150,22 @@ export type PlasmicCServiceDashboard__OverridesType = {
   cashIn3?: Flex__<"div">;
   cashIn4?: Flex__<"div">;
   cashIn5?: Flex__<"div">;
-  select?: Flex__<typeof AntdSelect>;
+  solutions?: Flex__<typeof AntdSelect>;
+  title2?: Flex__<"div">;
   optionGroup?: Flex__<typeof AntdOptionGroup>;
-  statistic?: Flex__<typeof Statistic>;
+  solution?: Flex__<typeof AntdOption>;
+  companyLogo?: Flex__<typeof PlasmicImg__>;
+  title?: Flex__<"div">;
+  totalSales?: Flex__<"div">;
+  companyProfit?: Flex__<"div">;
+  comissionPaid?: Flex__<"div">;
+  price?: Flex__<"div">;
+  comissionPerSale?: Flex__<"div">;
   chart?: Flex__<typeof SimpleChart>;
   tableAtCustomerLocation?: Flex__<"div">;
   colunsName?: Flex__<"div">;
+  waitingConfirmation?: Flex__<"div">;
+  emailInput4?: Flex__<typeof EmailInput>;
   customerCanceled?: Flex__<"div">;
   waitingLocomotion?: Flex__<"div">;
   customerTaxed?: Flex__<"div">;
@@ -304,7 +316,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
-        path: "select.value",
+        path: "solutions.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
@@ -328,7 +340,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
-        path: "input.value",
+        path: "companyExpenses.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -336,7 +348,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input2.value",
+        path: "desiredProfit.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -344,7 +356,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input3.value",
+        path: "ofTheDemand.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -352,7 +364,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "slider2.value",
+        path: "comissionPercent.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
@@ -1022,6 +1034,12 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "emailInput4.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -1049,7 +1067,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
         />
         <meta
           key="twitter:title"
-          name="twitter:title"
+          property="twitter:title"
           content={PlasmicCServiceDashboard.pageMetadata.title}
         />
       </Head>
@@ -1444,7 +1462,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
               </div>
             </LoginButton>
             <LoginButton
-              className={classNames("__wab_instance", sty.loginButton__rbf0)}
+              data-plasmic-name={"_7Days"}
+              data-plasmic-override={overrides._7Days}
+              className={classNames("__wab_instance", sty._7Days)}
               color={"softSand"}
               size={"minimal"}
             >
@@ -1459,7 +1479,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
               </div>
             </LoginButton>
             <LoginButton
-              className={classNames("__wab_instance", sty.loginButton__wvUfs)}
+              data-plasmic-name={"_30Days"}
+              data-plasmic-override={overrides._30Days}
+              className={classNames("__wab_instance", sty._30Days)}
               color={"softSand"}
               size={"minimal"}
             >
@@ -1474,7 +1496,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
               </div>
             </LoginButton>
             <LoginButton
-              className={classNames("__wab_instance", sty.loginButton__ijNyL)}
+              data-plasmic-name={"_60Days"}
+              data-plasmic-override={overrides._60Days}
+              className={classNames("__wab_instance", sty._60Days)}
               color={"softSand"}
               size={"minimal"}
             >
@@ -1521,12 +1545,15 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                             allowClear: false,
                             autoFocus: false,
                             bordered: true,
-                            className: classNames("__wab_instance", sty.input),
+                            className: classNames(
+                              "__wab_instance",
+                              sty.companyExpenses
+                            ),
                             onChange: async (...eventArgs: any) => {
                               generateStateOnChangePropForCodeComponents(
                                 $state,
                                 "value",
-                                ["input", "value"],
+                                ["companyExpenses", "value"],
                                 AntdInput_Helpers
                               ).apply(null, eventArgs);
 
@@ -1541,7 +1568,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                                           variablePath: ["fExpenses"]
                                         },
                                         operation: 0,
-                                        value: $state.input.value
+                                        value: $state.companyExpenses.value
                                       };
                                       return (({
                                         variable,
@@ -1577,7 +1604,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                             size: "middle",
                             type: "number",
                             value: generateStateValueProp($state, [
-                              "input",
+                              "companyExpenses",
                               "value"
                             ])
                           };
@@ -1586,7 +1613,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                             [
                               {
                                 name: "value",
-                                plasmicStateName: "input.value"
+                                plasmicStateName: "companyExpenses.value"
                               }
                             ],
                             [],
@@ -1596,8 +1623,8 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
 
                           return (
                             <AntdInput
-                              data-plasmic-name={"input"}
-                              data-plasmic-override={overrides.input}
+                              data-plasmic-name={"companyExpenses"}
+                              data-plasmic-override={overrides.companyExpenses}
                               {...child$Props}
                             />
                           );
@@ -1606,12 +1633,15 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                           const child$Props = {
                             autoFocus: false,
                             bordered: true,
-                            className: classNames("__wab_instance", sty.input2),
+                            className: classNames(
+                              "__wab_instance",
+                              sty.desiredProfit
+                            ),
                             onChange: async (...eventArgs: any) => {
                               generateStateOnChangePropForCodeComponents(
                                 $state,
                                 "value",
-                                ["input2", "value"],
+                                ["desiredProfit", "value"],
                                 AntdInput_Helpers
                               ).apply(null, eventArgs);
 
@@ -1626,7 +1656,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                                           variablePath: ["fDesiredProfit"]
                                         },
                                         operation: 0,
-                                        value: $state.input2.value
+                                        value: $state.desiredProfit.value
                                       };
                                       return (({
                                         variable,
@@ -1662,7 +1692,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                             size: "middle",
                             type: "number",
                             value: generateStateValueProp($state, [
-                              "input2",
+                              "desiredProfit",
                               "value"
                             ])
                           };
@@ -1671,7 +1701,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                             [
                               {
                                 name: "value",
-                                plasmicStateName: "input2.value"
+                                plasmicStateName: "desiredProfit.value"
                               }
                             ],
                             [],
@@ -1681,8 +1711,8 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
 
                           return (
                             <AntdInput
-                              data-plasmic-name={"input2"}
-                              data-plasmic-override={overrides.input2}
+                              data-plasmic-name={"desiredProfit"}
+                              data-plasmic-override={overrides.desiredProfit}
                               {...child$Props}
                             />
                           );
@@ -1715,9 +1745,12 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                         )}
                       >
                         <AntdSingleSlider
-                          data-plasmic-name={"slider2"}
-                          data-plasmic-override={overrides.slider2}
-                          className={classNames("__wab_instance", sty.slider2)}
+                          data-plasmic-name={"comissionPercent"}
+                          data-plasmic-override={overrides.comissionPercent}
+                          className={classNames(
+                            "__wab_instance",
+                            sty.comissionPercent
+                          )}
                           marks={[]}
                           max={(() => {
                             try {
@@ -1735,7 +1768,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                           min={15}
                           onChange={async (...eventArgs: any) => {
                             generateStateOnChangeProp($state, [
-                              "slider2",
+                              "comissionPercent",
                               "value"
                             ]).apply(null, eventArgs);
 
@@ -1750,7 +1783,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                                         variablePath: ["fComissionChosen"]
                                       },
                                       operation: 0,
-                                      value: $state.slider2.value
+                                      value: $state.comissionPercent.value
                                     };
                                     return (({
                                       variable,
@@ -1781,11 +1814,11 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                               }
                             }).apply(null, eventArgs);
                           }}
-                          sliderScopeClassName={sty["slider2__slider"]}
+                          sliderScopeClassName={sty["comissionPercent__slider"]}
                           stylableMarks={null}
                           tooltipVisible={"unset"}
                           value={generateStateValueProp($state, [
-                            "slider2",
+                            "comissionPercent",
                             "value"
                           ])}
                           vertical={false}
@@ -1870,14 +1903,14 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                                 bordered: true,
                                 className: classNames(
                                   "__wab_instance",
-                                  sty.input3
+                                  sty.ofTheDemand
                                 ),
                                 maxLength: 20,
                                 onChange: async (...eventArgs: any) => {
                                   generateStateOnChangePropForCodeComponents(
                                     $state,
                                     "value",
-                                    ["input3", "value"],
+                                    ["ofTheDemand", "value"],
                                     AntdInput_Helpers
                                   ).apply(null, eventArgs);
 
@@ -1894,7 +1927,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                                               ]
                                             },
                                             operation: 0,
-                                            value: $state.input3.value
+                                            value: $state.ofTheDemand.value
                                           };
                                           return (({
                                             variable,
@@ -1938,7 +1971,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                                 size: "middle",
                                 type: "number",
                                 value: generateStateValueProp($state, [
-                                  "input3",
+                                  "ofTheDemand",
                                   "value"
                                 ])
                               };
@@ -1947,7 +1980,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                                 [
                                   {
                                     name: "value",
-                                    plasmicStateName: "input3.value"
+                                    plasmicStateName: "ofTheDemand.value"
                                   }
                                 ],
                                 [],
@@ -1957,8 +1990,8 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
 
                               return (
                                 <AntdInput
-                                  data-plasmic-name={"input3"}
-                                  data-plasmic-override={overrides.input3}
+                                  data-plasmic-name={"ofTheDemand"}
+                                  data-plasmic-override={overrides.ofTheDemand}
                                   {...child$Props}
                                 />
                               );
@@ -4028,10 +4061,10 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                 />
               </div>
               <AntdSelect
-                data-plasmic-name={"select"}
-                data-plasmic-override={overrides.select}
+                data-plasmic-name={"solutions"}
+                data-plasmic-override={overrides.solutions}
                 allowClear={true}
-                className={classNames("__wab_instance", sty.select)}
+                className={classNames("__wab_instance", sty.solutions)}
                 defaultOpen={false}
                 defaultStylesClassName={classNames(
                   projectcss.root_reset,
@@ -4040,10 +4073,10 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                   styleTokensClassNames
                 )}
                 onChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, ["select", "value"]).apply(
-                    null,
-                    eventArgs
-                  );
+                  generateStateOnChangeProp($state, [
+                    "solutions",
+                    "value"
+                  ]).apply(null, eventArgs);
                 }}
                 options={[
                   { value: "option1", label: "Option 1", type: "option" },
@@ -4051,16 +4084,18 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                 ]}
                 placeholder={
                   <div
+                    data-plasmic-name={"title2"}
+                    data-plasmic-override={overrides.title2}
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__wVtx
+                      sty.title2
                     )}
                   >
                     {"Solution"}
                   </div>
                 }
-                popupScopeClassName={sty["select__popup"]}
+                popupScopeClassName={sty["solutions__popup"]}
                 suffixIcon={
                   <ChevronDownSvgIcon
                     className={classNames(projectcss.all, sty.svg__j2Drm)}
@@ -4068,7 +4103,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                   />
                 }
                 useChildren={true}
-                value={generateStateValueProp($state, ["select", "value"])}
+                value={generateStateValueProp($state, ["solutions", "value"])}
               >
                 <AntdOptionGroup
                   data-plasmic-name={"optionGroup"}
@@ -4077,15 +4112,19 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                   label={null}
                 >
                   <AntdOption
-                    className={classNames("__wab_instance", sty.option___3W9Xr)}
+                    data-plasmic-name={"solution"}
+                    data-plasmic-override={overrides.solution}
+                    className={classNames("__wab_instance", sty.solution)}
                     value={"option1"}
                   >
                     <div
                       className={classNames(projectcss.all, sty.freeBox__r4DB9)}
                     >
                       <PlasmicImg__
+                        data-plasmic-name={"companyLogo"}
+                        data-plasmic-override={overrides.companyLogo}
                         alt={""}
-                        className={classNames(sty.img___1S6Bh)}
+                        className={classNames(sty.companyLogo)}
                         displayHeight={"25px"}
                         displayMaxHeight={"none"}
                         displayMaxWidth={"100%"}
@@ -4096,40 +4135,12 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                       />
 
                       <div
+                        data-plasmic-name={"title"}
+                        data-plasmic-override={overrides.title}
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__hHk8V
-                        )}
-                      >
-                        {"Option 1"}
-                      </div>
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__bKhvi)}
-                    value={"option1"}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__fq0R4)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__b3811)}
-                        displayHeight={"25px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"25px"}
-                        loading={"lazy"}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__pw9Cn
+                          sty.title
                         )}
                       >
                         {"Option 1"}
@@ -4161,10 +4172,12 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__m0A93)}>
                 <div
+                  data-plasmic-name={"totalSales"}
+                  data-plasmic-override={overrides.totalSales}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__qDh6S
+                    sty.totalSales
                   )}
                 >
                   {"27"}
@@ -4185,7 +4198,27 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                     sty.text___1IlzY
                   )}
                 >
-                  {"???"}
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return ($state.salesForComissionChosen = Math.ceil(
+                          ((Number($state.fExpenses) +
+                            Number($state.fDesiredProfit)) *
+                            ($state.percentageOfService / 100)) /
+                            ((1 - $state.fComissionChosen / 100) *
+                              $state.servicePrice)
+                        ));
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "???";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
                 </div>
               </div>
             </div>
@@ -4218,10 +4251,12 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                   {"U$$"}
                 </div>
                 <div
+                  data-plasmic-name={"companyProfit"}
+                  data-plasmic-override={overrides.companyProfit}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__gblU
+                    sty.companyProfit
                   )}
                 >
                   {"2,405.00"}
@@ -4253,7 +4288,21 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                     sty.text__esacm
                   )}
                 >
-                  {"2,405.00"}
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return $state.fDesiredProfit;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "2,405.00";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
                 </div>
               </div>
             </div>
@@ -4286,10 +4335,12 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                   {"U$$"}
                 </div>
                 <div
+                  data-plasmic-name={"comissionPaid"}
+                  data-plasmic-override={overrides.comissionPaid}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__qYfIh
+                    sty.comissionPaid
                   )}
                 >
                   {"2,405.00"}
@@ -4338,9 +4389,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
           </div>
           <div className={classNames(projectcss.all, sty.freeBox__sGnZf)}>
             <Statistic
-              data-plasmic-name={"statistic"}
-              data-plasmic-override={overrides.statistic}
-              className={classNames("__wab_instance", sty.statistic)}
+              className={classNames("__wab_instance", sty.statistic__lbc7Y)}
               number={
                 <div className={classNames(projectcss.all, sty.freeBox___44Wi)}>
                   <div
@@ -4353,10 +4402,12 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                     {"U$"}
                   </div>
                   <div
+                    data-plasmic-name={"price"}
+                    data-plasmic-override={overrides.price}
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__x0Usb
+                      sty.price
                     )}
                   >
                     {"3,193"}
@@ -4369,6 +4420,59 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                     projectcss.all,
                     projectcss.__wab_text,
                     sty.text__u5Hc5
+                  )}
+                >
+                  {"Service price"}
+                </div>
+              }
+            />
+
+            <Statistic
+              className={classNames("__wab_instance", sty.statistic__fQbHt)}
+              number={
+                <div className={classNames(projectcss.all, sty.freeBox__doI0D)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__sfM5W
+                    )}
+                  >
+                    {"U$"}
+                  </div>
+                  <div
+                    data-plasmic-name={"comissionPerSale"}
+                    data-plasmic-override={overrides.comissionPerSale}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.comissionPerSale
+                    )}
+                  >
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return $state.servicePrice * $state.comissionPercent;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "3193";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
+                  </div>
+                </div>
+              }
+              unit={
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__oj2S8
                   )}
                 >
                   {"Comission per sale"}
@@ -4436,7 +4540,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                   sty.text__adNnP
                 )}
               >
-                {"ID"}
+                {"Created at"}
               </div>
             </section>
             <section className={classNames(projectcss.all, sty.section__mXpsw)}>
@@ -4484,13 +4588,151 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
               </div>
             </section>
           </div>
-          <TableAtCustomerLocation
-            className={classNames(
-              "__wab_instance",
-              sty.tableAtCustomerLocation__wa7Br
-            )}
-          />
+          <div
+            data-plasmic-name={"waitingConfirmation"}
+            data-plasmic-override={overrides.waitingConfirmation}
+            className={classNames(projectcss.all, sty.waitingConfirmation)}
+          >
+            <section className={classNames(projectcss.all, sty.section__cyZ6I)}>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__htZes
+                )}
+              >
+                {"Solution"}
+              </div>
+            </section>
+            <section className={classNames(projectcss.all, sty.section__aBfLr)}>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text___8CBpG
+                )}
+              >
+                {"Community"}
+              </div>
+            </section>
+            <section className={classNames(projectcss.all, sty.section__mHsD)}>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text___5RDf
+                )}
+              >
+                {"#000000000"}
+              </div>
+            </section>
+            <section className={classNames(projectcss.all, sty.section__yUyOn)}>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__u5MRz
+                )}
+              >
+                {"Community"}
+              </div>
+            </section>
+            <section className={classNames(projectcss.all, sty.section__xyvPa)}>
+              <EmailInput
+                data-plasmic-name={"emailInput4"}
+                data-plasmic-override={overrides.emailInput4}
+                className={classNames("__wab_instance", sty.emailInput4)}
+                onChange={async (...eventArgs: any) => {
+                  ((...eventArgs) => {
+                    generateStateOnChangeProp($state, ["emailInput4", "value"])(
+                      (e => e.target?.value).apply(null, eventArgs)
+                    );
+                  }).apply(null, eventArgs);
 
+                  if (
+                    eventArgs.length > 1 &&
+                    eventArgs[1] &&
+                    eventArgs[1]._plasmic_state_init_
+                  ) {
+                    return;
+                  }
+                }}
+                string={"Proposal"}
+                type={"time"}
+                value={
+                  generateStateValueProp($state, ["emailInput4", "value"]) ?? ""
+                }
+              />
+            </section>
+            <section className={classNames(projectcss.all, sty.section__aOgMu)}>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__wfFgv
+                )}
+              >
+                {"U$"}
+              </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__aqFyi
+                )}
+              >
+                {"2,405.00"}
+              </div>
+            </section>
+            <section
+              className={classNames(projectcss.all, sty.section___8T0Ip)}
+            >
+              <LoginButton
+                className={classNames("__wab_instance", sty.loginButton__hqpuj)}
+                size={"minimal"}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__hh35
+                  )}
+                >
+                  {"Confirm"}
+                </div>
+              </LoginButton>
+              <LoginButton
+                className={classNames("__wab_instance", sty.loginButton__ijRJo)}
+                color={"red"}
+                size={"minimal"}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__ryTqi
+                  )}
+                >
+                  {"Trouble with Address?"}
+                </div>
+              </LoginButton>
+              <LoginButton
+                className={classNames("__wab_instance", sty.loginButton__sobUm)}
+                color={"red"}
+                size={"minimal"}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__kExJm
+                  )}
+                >
+                  {"Cancel"}
+                </div>
+              </LoginButton>
+            </section>
+          </div>
           <div
             data-plasmic-name={"customerCanceled"}
             data-plasmic-override={overrides.customerCanceled}
@@ -6905,7 +7147,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                   sty.text__pVtgh
                 )}
               >
-                {"ID"}
+                {"Created at"}
               </div>
             </section>
             <section
@@ -9182,7 +9424,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                   sty.text__quXm5
                 )}
               >
-                {"ID"}
+                {"Created at"}
               </div>
             </section>
             <section className={classNames(projectcss.all, sty.section__hmcD)}>
@@ -12096,7 +12338,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                   sty.text__qweLb
                 )}
               >
-                {"ID"}
+                {"Created at"}
               </div>
             </section>
             <section className={classNames(projectcss.all, sty.section__fiX34)}>
@@ -14792,14 +15034,17 @@ const PlasmicDescendants = {
     "account",
     "button",
     "countainer1",
+    "_7Days",
+    "_30Days",
+    "_60Days",
     "modal",
     "basicData",
-    "input",
-    "input2",
-    "slider2",
+    "companyExpenses",
+    "desiredProfit",
+    "comissionPercent",
     "servicosRepeat",
     "serviceName",
-    "input3",
+    "ofTheDemand",
     "numbers",
     "withdraw",
     "period",
@@ -14818,12 +15063,22 @@ const PlasmicDescendants = {
     "cashIn3",
     "cashIn4",
     "cashIn5",
-    "select",
+    "solutions",
+    "title2",
     "optionGroup",
-    "statistic",
+    "solution",
+    "companyLogo",
+    "title",
+    "totalSales",
+    "companyProfit",
+    "comissionPaid",
+    "price",
+    "comissionPerSale",
     "chart",
     "tableAtCustomerLocation",
     "colunsName",
+    "waitingConfirmation",
+    "emailInput4",
     "customerCanceled",
     "waitingLocomotion",
     "customerTaxed",
@@ -14935,14 +15190,17 @@ const PlasmicDescendants = {
   button: ["button"],
   countainer1: [
     "countainer1",
+    "_7Days",
+    "_30Days",
+    "_60Days",
     "modal",
     "basicData",
-    "input",
-    "input2",
-    "slider2",
+    "companyExpenses",
+    "desiredProfit",
+    "comissionPercent",
     "servicosRepeat",
     "serviceName",
-    "input3",
+    "ofTheDemand",
     "numbers",
     "withdraw",
     "period",
@@ -14961,29 +15219,40 @@ const PlasmicDescendants = {
     "cashIn3",
     "cashIn4",
     "cashIn5",
-    "select",
+    "solutions",
+    "title2",
     "optionGroup",
-    "statistic",
+    "solution",
+    "companyLogo",
+    "title",
+    "totalSales",
+    "companyProfit",
+    "comissionPaid",
+    "price",
+    "comissionPerSale",
     "chart"
   ],
+  _7Days: ["_7Days"],
+  _30Days: ["_30Days"],
+  _60Days: ["_60Days"],
   modal: [
     "modal",
     "basicData",
-    "input",
-    "input2",
-    "slider2",
+    "companyExpenses",
+    "desiredProfit",
+    "comissionPercent",
     "servicosRepeat",
     "serviceName",
-    "input3",
+    "ofTheDemand",
     "numbers"
   ],
-  basicData: ["basicData", "input", "input2"],
-  input: ["input"],
-  input2: ["input2"],
-  slider2: ["slider2"],
-  servicosRepeat: ["servicosRepeat", "serviceName", "input3", "numbers"],
-  serviceName: ["serviceName", "input3"],
-  input3: ["input3"],
+  basicData: ["basicData", "companyExpenses", "desiredProfit"],
+  companyExpenses: ["companyExpenses"],
+  desiredProfit: ["desiredProfit"],
+  comissionPercent: ["comissionPercent"],
+  servicosRepeat: ["servicosRepeat", "serviceName", "ofTheDemand", "numbers"],
+  serviceName: ["serviceName", "ofTheDemand"],
+  ofTheDemand: ["ofTheDemand"],
   numbers: ["numbers"],
   withdraw: [
     "withdraw",
@@ -15020,13 +15289,30 @@ const PlasmicDescendants = {
   cashIn3: ["cashIn3"],
   cashIn4: ["cashIn4"],
   cashIn5: ["cashIn5"],
-  select: ["select", "optionGroup"],
-  optionGroup: ["optionGroup"],
-  statistic: ["statistic"],
+  solutions: [
+    "solutions",
+    "title2",
+    "optionGroup",
+    "solution",
+    "companyLogo",
+    "title"
+  ],
+  title2: ["title2"],
+  optionGroup: ["optionGroup", "solution", "companyLogo", "title"],
+  solution: ["solution", "companyLogo", "title"],
+  companyLogo: ["companyLogo"],
+  title: ["title"],
+  totalSales: ["totalSales"],
+  companyProfit: ["companyProfit"],
+  comissionPaid: ["comissionPaid"],
+  price: ["price"],
+  comissionPerSale: ["comissionPerSale"],
   chart: ["chart"],
   tableAtCustomerLocation: [
     "tableAtCustomerLocation",
     "colunsName",
+    "waitingConfirmation",
+    "emailInput4",
     "customerCanceled",
     "waitingLocomotion",
     "customerTaxed",
@@ -15051,6 +15337,8 @@ const PlasmicDescendants = {
     "rate10"
   ],
   colunsName: ["colunsName"],
+  waitingConfirmation: ["waitingConfirmation", "emailInput4"],
+  emailInput4: ["emailInput4"],
   customerCanceled: ["customerCanceled"],
   waitingLocomotion: ["waitingLocomotion"],
   customerTaxed: ["customerTaxed"],
@@ -15371,14 +15659,17 @@ type NodeDefaultElementType = {
   account: typeof AntdDropdown;
   button: typeof AntdButton;
   countainer1: "div";
+  _7Days: typeof LoginButton;
+  _30Days: typeof LoginButton;
+  _60Days: typeof LoginButton;
   modal: typeof Modal;
   basicData: "div";
-  input: typeof AntdInput;
-  input2: typeof AntdInput;
-  slider2: typeof AntdSingleSlider;
+  companyExpenses: typeof AntdInput;
+  desiredProfit: typeof AntdInput;
+  comissionPercent: typeof AntdSingleSlider;
   servicosRepeat: "div";
   serviceName: "div";
-  input3: typeof AntdInput;
+  ofTheDemand: typeof AntdInput;
   numbers: "div";
   withdraw: typeof Modal;
   period: "div";
@@ -15397,12 +15688,22 @@ type NodeDefaultElementType = {
   cashIn3: "div";
   cashIn4: "div";
   cashIn5: "div";
-  select: typeof AntdSelect;
+  solutions: typeof AntdSelect;
+  title2: "div";
   optionGroup: typeof AntdOptionGroup;
-  statistic: typeof Statistic;
+  solution: typeof AntdOption;
+  companyLogo: typeof PlasmicImg__;
+  title: "div";
+  totalSales: "div";
+  companyProfit: "div";
+  comissionPaid: "div";
+  price: "div";
+  comissionPerSale: "div";
   chart: typeof SimpleChart;
   tableAtCustomerLocation: "div";
   colunsName: "div";
+  waitingConfirmation: "div";
+  emailInput4: typeof EmailInput;
   customerCanceled: "div";
   waitingLocomotion: "div";
   customerTaxed: "div";
@@ -15576,14 +15877,17 @@ export const PlasmicCServiceDashboard = Object.assign(
     account: makeNodeComponent("account"),
     button: makeNodeComponent("button"),
     countainer1: makeNodeComponent("countainer1"),
+    _7Days: makeNodeComponent("_7Days"),
+    _30Days: makeNodeComponent("_30Days"),
+    _60Days: makeNodeComponent("_60Days"),
     modal: makeNodeComponent("modal"),
     basicData: makeNodeComponent("basicData"),
-    input: makeNodeComponent("input"),
-    input2: makeNodeComponent("input2"),
-    slider2: makeNodeComponent("slider2"),
+    companyExpenses: makeNodeComponent("companyExpenses"),
+    desiredProfit: makeNodeComponent("desiredProfit"),
+    comissionPercent: makeNodeComponent("comissionPercent"),
     servicosRepeat: makeNodeComponent("servicosRepeat"),
     serviceName: makeNodeComponent("serviceName"),
-    input3: makeNodeComponent("input3"),
+    ofTheDemand: makeNodeComponent("ofTheDemand"),
     numbers: makeNodeComponent("numbers"),
     withdraw: makeNodeComponent("withdraw"),
     period: makeNodeComponent("period"),
@@ -15602,12 +15906,22 @@ export const PlasmicCServiceDashboard = Object.assign(
     cashIn3: makeNodeComponent("cashIn3"),
     cashIn4: makeNodeComponent("cashIn4"),
     cashIn5: makeNodeComponent("cashIn5"),
-    select: makeNodeComponent("select"),
+    solutions: makeNodeComponent("solutions"),
+    title2: makeNodeComponent("title2"),
     optionGroup: makeNodeComponent("optionGroup"),
-    statistic: makeNodeComponent("statistic"),
+    solution: makeNodeComponent("solution"),
+    companyLogo: makeNodeComponent("companyLogo"),
+    title: makeNodeComponent("title"),
+    totalSales: makeNodeComponent("totalSales"),
+    companyProfit: makeNodeComponent("companyProfit"),
+    comissionPaid: makeNodeComponent("comissionPaid"),
+    price: makeNodeComponent("price"),
+    comissionPerSale: makeNodeComponent("comissionPerSale"),
     chart: makeNodeComponent("chart"),
     tableAtCustomerLocation: makeNodeComponent("tableAtCustomerLocation"),
     colunsName: makeNodeComponent("colunsName"),
+    waitingConfirmation: makeNodeComponent("waitingConfirmation"),
+    emailInput4: makeNodeComponent("emailInput4"),
     customerCanceled: makeNodeComponent("customerCanceled"),
     waitingLocomotion: makeNodeComponent("waitingLocomotion"),
     customerTaxed: makeNodeComponent("customerTaxed"),

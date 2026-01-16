@@ -109,19 +109,49 @@ export type PlasmicACompanyProfile__OverridesType = {
   account?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
   countainer7?: Flex__<"div">;
-  rate30?: Flex__<typeof AntdRate>;
-  loginButton?: Flex__<typeof LoginButton>;
+  companyLogo?: Flex__<typeof PlasmicImg__>;
+  companyName?: Flex__<"div">;
+  companyType?: Flex__<"div">;
+  averageRate?: Flex__<typeof AntdRate>;
+  rateSum?: Flex__<"div">;
+  apply?: Flex__<typeof LoginButton>;
+  area?: Flex__<"div">;
+  subArea?: Flex__<"div">;
+  location?: Flex__<"div">;
+  foundationDate?: Flex__<"div">;
+  goalsSum?: Flex__<"div">;
+  companyTagline?: Flex__<"div">;
+  linkedIn?: Flex__<"a"> & Partial<LinkProps>;
+  instagram?: Flex__<"a"> & Partial<LinkProps>;
+  x?: Flex__<"a"> & Partial<LinkProps>;
+  website?: Flex__<"a"> & Partial<LinkProps>;
   countainer8?: Flex__<"div">;
   sliderCarousel5?: Flex__<typeof SliderWrapper>;
+  solution?: Flex__<"div">;
+  title?: Flex__<"div">;
+  steps?: Flex__<"div">;
+  stepText?: Flex__<"div">;
+  description?: Flex__<"div">;
+  price?: Flex__<"div">;
   countainer9?: Flex__<"div">;
-  rate32?: Flex__<typeof AntdRate>;
-  rate33?: Flex__<typeof AntdRate>;
-  rate34?: Flex__<typeof AntdRate>;
+  communityReplies?: Flex__<"div">;
+  communityLogo?: Flex__<typeof PlasmicImg__>;
+  communityName?: Flex__<"a"> & Partial<LinkProps>;
+  companyName2?: Flex__<"a"> & Partial<LinkProps>;
+  comment?: Flex__<"div">;
+  rating?: Flex__<typeof AntdRate>;
   countainer10?: Flex__<"div">;
-  rate41?: Flex__<typeof AntdRate>;
-  rate42?: Flex__<typeof AntdRate>;
-  rate43?: Flex__<typeof AntdRate>;
+  communityReviews?: Flex__<"div">;
+  companyLogo2?: Flex__<typeof PlasmicImg__>;
+  companyName3?: Flex__<"a"> & Partial<LinkProps>;
+  communityName2?: Flex__<"a"> & Partial<LinkProps>;
+  comment2?: Flex__<"div">;
+  rating2?: Flex__<typeof AntdRate>;
   countainer11?: Flex__<"div">;
+  companyImage?: Flex__<typeof PlasmicImg__>;
+  customerProblem?: Flex__<"div">;
+  solutionDescription?: Flex__<"div">;
+  whyShouldTheyChoose?: Flex__<"div">;
   countainer12?: Flex__<"div">;
   sliderCarousel6?: Flex__<typeof SliderWrapper>;
 };
@@ -170,7 +200,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
-        path: "rate30.value",
+        path: "averageRate.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 5
@@ -185,37 +215,13 @@ function PlasmicACompanyProfile__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("currentSlide", SliderWrapper_Helpers)
       },
       {
-        path: "rate32.value",
+        path: "rating.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "rate33.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "rate34.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "rate41.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "rate42.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "rate43.value",
+        path: "rating2.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
@@ -255,7 +261,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
         />
         <meta
           key="twitter:title"
-          name="twitter:title"
+          property="twitter:title"
           content={PlasmicACompanyProfile.pageMetadata.title}
         />
       </Head>
@@ -367,7 +373,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                         sty.link__qi75Z
                       )}
                       component={Link}
-                      href={`/community-dashboard`}
+                      href={`/a-community-dashboard`}
                       platform={"nextjs"}
                     >
                       {"Community Dashboard"}
@@ -380,7 +386,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                         sty.link___3CkTa
                       )}
                       component={Link}
-                      href={`/service-dashboard`}
+                      href={`/a-service-dashboard`}
                       platform={"nextjs"}
                     >
                       {"Service\nDashboard"}
@@ -405,7 +411,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                         sty.link__lW3Pe
                       )}
                       component={Link}
-                      href={`/find-a-business`}
+                      href={`/a-find-a-business`}
                       platform={"nextjs"}
                     >
                       {"Find a \nbusiness"}
@@ -502,7 +508,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
 
                       $steps["goToAProfile"] = true
                         ? (() => {
-                            const actionArgs = { destination: `/profile` };
+                            const actionArgs = { destination: `/a-profile` };
                             return (({ destination }) => {
                               if (
                                 typeof destination === "string" &&
@@ -694,8 +700,10 @@ function PlasmicACompanyProfile__RenderFunc(props: {
         >
           <div className={classNames(projectcss.all, sty.freeBox__kkCpy)}>
             <PlasmicImg__
+              data-plasmic-name={"companyLogo"}
+              data-plasmic-override={overrides.companyLogo}
               alt={""}
-              className={classNames(sty.img__nKOmZ)}
+              className={classNames(sty.companyLogo)}
               displayHeight={"100px"}
               displayMaxHeight={"none"}
               displayMaxWidth={"100%"}
@@ -708,35 +716,39 @@ function PlasmicACompanyProfile__RenderFunc(props: {
             <div className={classNames(projectcss.all, sty.freeBox__wPMlz)}>
               <div className={classNames(projectcss.all, sty.freeBox__t7C3B)}>
                 <div
+                  data-plasmic-name={"companyName"}
+                  data-plasmic-override={overrides.companyName}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__gjmHu
+                    sty.companyName
                   )}
                 >
                   {"Company"}
                 </div>
                 <div
+                  data-plasmic-name={"companyType"}
+                  data-plasmic-override={overrides.companyType}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__vXWlU
+                    sty.companyType
                   )}
                 >
                   {"INC"}
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__iSo9O)}>
                   <AntdRate
-                    data-plasmic-name={"rate30"}
-                    data-plasmic-override={overrides.rate30}
+                    data-plasmic-name={"averageRate"}
+                    data-plasmic-override={overrides.averageRate}
                     allowHalf={true}
-                    className={classNames("__wab_instance", sty.rate30)}
+                    className={classNames("__wab_instance", sty.averageRate)}
                     defaultValue={5}
                     disabled={true}
                     multiCharacter={false}
                     onChange={async (...eventArgs: any) => {
                       generateStateOnChangeProp($state, [
-                        "rate30",
+                        "averageRate",
                         "value"
                       ]).apply(null, eventArgs);
                     }}
@@ -789,23 +801,28 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                         </div>
                       </React.Fragment>
                     }
-                    value={generateStateValueProp($state, ["rate30", "value"])}
+                    value={generateStateValueProp($state, [
+                      "averageRate",
+                      "value"
+                    ])}
                   />
 
                   <div
+                    data-plasmic-name={"rateSum"}
+                    data-plasmic-override={overrides.rateSum}
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__jlrDb
+                      sty.rateSum
                     )}
                   >
                     {"(50)"}
                   </div>
                 </div>
                 <LoginButton
-                  data-plasmic-name={"loginButton"}
-                  data-plasmic-override={overrides.loginButton}
-                  className={classNames("__wab_instance", sty.loginButton)}
+                  data-plasmic-name={"apply"}
+                  data-plasmic-override={overrides.apply}
+                  className={classNames("__wab_instance", sty.apply)}
                 >
                   <div
                     className={classNames(
@@ -820,29 +837,35 @@ function PlasmicACompanyProfile__RenderFunc(props: {
               </div>
               <div className={classNames(projectcss.all, sty.freeBox___38WB4)}>
                 <div
+                  data-plasmic-name={"area"}
+                  data-plasmic-override={overrides.area}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__wrq88
+                    sty.area
                   )}
                 >
                   {"Niche"}
                 </div>
                 <div
+                  data-plasmic-name={"subArea"}
+                  data-plasmic-override={overrides.subArea}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__hjZnb
+                    sty.subArea
                   )}
                 >
                   {"Subniche"}
                 </div>
               </div>
               <div
+                data-plasmic-name={"location"}
+                data-plasmic-override={overrides.location}
                 className={classNames(
                   projectcss.all,
                   projectcss.__wab_text,
-                  sty.text__fWyc9
+                  sty.location
                 )}
               >
                 {"New York"}
@@ -850,22 +873,37 @@ function PlasmicACompanyProfile__RenderFunc(props: {
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__yeIqB)}>
               <div className={classNames(projectcss.all, sty.freeBox__boCm5)}>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__q6KuH
-                  )}
-                >
-                  {"Botstrap"}
+                <div className={classNames(projectcss.all, sty.freeBox__uhGcy)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__rv5D1
+                    )}
+                  >
+                    {"Since"}
+                  </div>
+                  <div
+                    data-plasmic-name={"foundationDate"}
+                    data-plasmic-override={overrides.foundationDate}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.foundationDate
+                    )}
+                  >
+                    {"Botstrap"}
+                  </div>
                 </div>
               </div>
               <div className={classNames(projectcss.all, sty.freeBox___0GZFn)}>
                 <div
+                  data-plasmic-name={"goalsSum"}
+                  data-plasmic-override={overrides.goalsSum}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__j85Z4
+                    sty.goalsSum
                   )}
                 >
                   {"80"}
@@ -883,10 +921,12 @@ function PlasmicACompanyProfile__RenderFunc(props: {
             </div>
           </div>
           <div
+            data-plasmic-name={"companyTagline"}
+            data-plasmic-override={overrides.companyTagline}
             className={classNames(
               projectcss.all,
               projectcss.__wab_text,
-              sty.text__s2Ply
+              sty.companyTagline
             )}
           >
             {"Startup tagline"}
@@ -899,11 +939,13 @@ function PlasmicACompanyProfile__RenderFunc(props: {
               />
 
               <PlasmicLink__
+                data-plasmic-name={"linkedIn"}
+                data-plasmic-override={overrides.linkedIn}
                 className={classNames(
                   projectcss.all,
                   projectcss.a,
                   projectcss.__wab_text,
-                  sty.link__xRzop
+                  sty.linkedIn
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
@@ -919,11 +961,13 @@ function PlasmicACompanyProfile__RenderFunc(props: {
               />
 
               <PlasmicLink__
+                data-plasmic-name={"instagram"}
+                data-plasmic-override={overrides.instagram}
                 className={classNames(
                   projectcss.all,
                   projectcss.a,
                   projectcss.__wab_text,
-                  sty.link__sTeio
+                  sty.instagram
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
@@ -939,11 +983,13 @@ function PlasmicACompanyProfile__RenderFunc(props: {
               />
 
               <PlasmicLink__
+                data-plasmic-name={"x"}
+                data-plasmic-override={overrides.x}
                 className={classNames(
                   projectcss.all,
                   projectcss.a,
                   projectcss.__wab_text,
-                  sty.link__rWsoj
+                  sty.x
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
@@ -959,11 +1005,13 @@ function PlasmicACompanyProfile__RenderFunc(props: {
               />
 
               <PlasmicLink__
+                data-plasmic-name={"website"}
+                data-plasmic-override={overrides.website}
                 className={classNames(
                   projectcss.all,
                   projectcss.a,
                   projectcss.__wab_text,
-                  sty.link__asSu
+                  sty.website
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
@@ -1035,7 +1083,11 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                 data-plasmic-override={overrides.sliderCarousel5}
                 {...child$Props}
               >
-                <div className={classNames(projectcss.all, sty.freeBox__xb2Bf)}>
+                <div
+                  data-plasmic-name={"solution"}
+                  data-plasmic-override={overrides.solution}
+                  className={classNames(projectcss.all, sty.solution)}
+                >
                   <AntdTooltip
                     className={classNames(
                       "__wab_instance",
@@ -1050,10 +1102,9 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                         )}
                       >
                         <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__joJoR
-                          )}
+                          data-plasmic-name={"steps"}
+                          data-plasmic-override={overrides.steps}
+                          className={classNames(projectcss.all, sty.steps)}
                         >
                           <div
                             className={classNames(
@@ -1065,37 +1116,12 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                             {"Steps"}
                           </div>
                           <div
+                            data-plasmic-name={"stepText"}
+                            data-plasmic-override={overrides.stepText}
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text___3VyOv
-                            )}
-                          >
-                            {"Working"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__kg2B
-                            )}
-                          >
-                            {"Working"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__yG1Kj
-                            )}
-                          >
-                            {"Working"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__bhZv
+                              sty.stepText
                             )}
                           >
                             {"Working"}
@@ -1108,10 +1134,12 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                           )}
                         >
                           <div
+                            data-plasmic-name={"description"}
+                            data-plasmic-override={overrides.description}
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text__bbsJ
+                              sty.description
                             )}
                           >
                             {
@@ -1134,10 +1162,12 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                               {"U$"}
                             </div>
                             <div
+                              data-plasmic-name={"price"}
+                              data-plasmic-override={overrides.price}
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text__e3Yeb
+                                sty.price
                               )}
                             >
                               {"2,405.00"}
@@ -1149,497 +1179,12 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                     titleText={"Tooltip contents"}
                   >
                     <div
+                      data-plasmic-name={"title"}
+                      data-plasmic-override={overrides.title}
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text__oZji5
-                      )}
-                    >
-                      {"Solution"}
-                    </div>
-                  </AntdTooltip>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__ntUT)}>
-                  <AntdTooltip
-                    className={classNames(
-                      "__wab_instance",
-                      sty.tooltip___2WAvy
-                    )}
-                    placement={"right"}
-                    title={
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__hLksy
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__n7NSp
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__cdGst
-                            )}
-                          >
-                            {"Steps"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__ght59
-                            )}
-                          >
-                            {"Working"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__lv3Sf
-                            )}
-                          >
-                            {"Working"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__qjAao
-                            )}
-                          >
-                            {"Working"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__gfGlB
-                            )}
-                          >
-                            {"Working"}
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__iPu0N
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___1BTxD
-                            )}
-                          >
-                            {
-                              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                            }
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__fRbkz
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__uha5V
-                              )}
-                            >
-                              {"U$"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__luJax
-                              )}
-                            >
-                              {"2,405.00"}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    }
-                    titleText={"Tooltip contents"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___4Rv1D
-                      )}
-                    >
-                      {"Solution"}
-                    </div>
-                  </AntdTooltip>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__hPyly)}>
-                  <AntdTooltip
-                    className={classNames("__wab_instance", sty.tooltip__nmFxR)}
-                    placement={"right"}
-                    title={
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__uHyXu
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__f1Jz8
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__lYOs
-                            )}
-                          >
-                            {"Steps"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__x8Dxo
-                            )}
-                          >
-                            {"Working"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___0JcA4
-                            )}
-                          >
-                            {"Working"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__z7Ucb
-                            )}
-                          >
-                            {"Working"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__jacbx
-                            )}
-                          >
-                            {"Working"}
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox___5T7Dn
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__ueP0K
-                            )}
-                          >
-                            {
-                              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                            }
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__tHq8B
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__ioQ00
-                              )}
-                            >
-                              {"U$"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__x6Cdu
-                              )}
-                            >
-                              {"2,405.00"}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    }
-                    titleText={"Tooltip contents"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__dp4Fe
-                      )}
-                    >
-                      {"Solution"}
-                    </div>
-                  </AntdTooltip>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__wieWg)}>
-                  <AntdTooltip
-                    className={classNames("__wab_instance", sty.tooltip__xJf6)}
-                    placement={"right"}
-                    title={
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___5YgZp
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__xuKXv
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__noO6
-                            )}
-                          >
-                            {"Steps"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__yqLzd
-                            )}
-                          >
-                            {"Working"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__nv2LM
-                            )}
-                          >
-                            {"Working"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__g6Q18
-                            )}
-                          >
-                            {"Working"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__easR
-                            )}
-                          >
-                            {"Working"}
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__bUk9F
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__nCkhp
-                            )}
-                          >
-                            {
-                              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                            }
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__kjv3O
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__f75S
-                              )}
-                            >
-                              {"U$"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__vdFrT
-                              )}
-                            >
-                              {"2,405.00"}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    }
-                    titleText={"Tooltip contents"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__ebLwD
-                      )}
-                    >
-                      {"Solution"}
-                    </div>
-                  </AntdTooltip>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox___1UXK)}>
-                  <AntdTooltip
-                    className={classNames("__wab_instance", sty.tooltip__wRyBh)}
-                    placement={"right"}
-                    title={
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__chHmE
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__dekKn
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__z5YI
-                            )}
-                          >
-                            {"Steps"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__ssMya
-                            )}
-                          >
-                            {"Working"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__aHcZe
-                            )}
-                          >
-                            {"Working"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__nvNp7
-                            )}
-                          >
-                            {"Working"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__hjfiG
-                            )}
-                          >
-                            {"Working"}
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__fdgws
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__wcihE
-                            )}
-                          >
-                            {
-                              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                            }
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__j57W
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__ltjnw
-                              )}
-                            >
-                              {"U$"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__dCs2F
-                              )}
-                            >
-                              {"2,405.00"}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    }
-                    titleText={"Tooltip contents"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__mixLv
+                        sty.title
                       )}
                     >
                       {"Solution"}
@@ -1666,11 +1211,17 @@ function PlasmicACompanyProfile__RenderFunc(props: {
               {"Company Reviews"}
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__tB8GX)}>
-              <div className={classNames(projectcss.all, sty.freeBox__a5O8R)}>
+              <div
+                data-plasmic-name={"communityReplies"}
+                data-plasmic-override={overrides.communityReplies}
+                className={classNames(projectcss.all, sty.communityReplies)}
+              >
                 <div className={classNames(projectcss.all, sty.freeBox__x5JaO)}>
                   <PlasmicImg__
+                    data-plasmic-name={"communityLogo"}
+                    data-plasmic-override={overrides.communityLogo}
                     alt={""}
-                    className={classNames(sty.img__kAypY)}
+                    className={classNames(sty.communityLogo)}
                     displayHeight={"30px"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"100%"}
@@ -1681,11 +1232,13 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                   />
 
                   <PlasmicLink__
+                    data-plasmic-name={"communityName"}
+                    data-plasmic-override={overrides.communityName}
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
                       projectcss.__wab_text,
-                      sty.link__uWdgf
+                      sty.communityName
                     )}
                     component={Link}
                     platform={"nextjs"}
@@ -1702,11 +1255,13 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                     {"commented about"}
                   </div>
                   <PlasmicLink__
+                    data-plasmic-name={"companyName2"}
+                    data-plasmic-override={overrides.companyName2}
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
                       projectcss.__wab_text,
-                      sty.link__eYgIg
+                      sty.companyName2
                     )}
                     component={Link}
                     href={"https://www.plasmic.app/"}
@@ -1716,10 +1271,12 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                   </PlasmicLink__>
                 </div>
                 <div
+                  data-plasmic-name={"comment"}
+                  data-plasmic-override={overrides.comment}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__wxOlj
+                    sty.comment
                   )}
                 >
                   {
@@ -1727,14 +1284,14 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                   }
                 </div>
                 <AntdRate
-                  data-plasmic-name={"rate32"}
-                  data-plasmic-override={overrides.rate32}
+                  data-plasmic-name={"rating"}
+                  data-plasmic-override={overrides.rating}
                   allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate32)}
+                  className={classNames("__wab_instance", sty.rating)}
                   disabled={true}
                   onChange={async (...eventArgs: any) => {
                     generateStateOnChangeProp($state, [
-                      "rate32",
+                      "rating",
                       "value"
                     ]).apply(null, eventArgs);
                   }}
@@ -1787,257 +1344,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                       </div>
                     </React.Fragment>
                   }
-                  value={generateStateValueProp($state, ["rate32", "value"])}
-                />
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__ynpTo)}>
-                <div className={classNames(projectcss.all, sty.freeBox__u6AXf)}>
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img___9Ljty)}
-                    displayHeight={"30px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"30px"}
-                    loading={"lazy"}
-                  />
-
-                  <PlasmicLink__
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
-                      sty.link__rx5V4
-                    )}
-                    component={Link}
-                    href={"https://www.plasmic.app/"}
-                    platform={"nextjs"}
-                  >
-                    {"Customer/Community"}
-                  </PlasmicLink__>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__sbuDn
-                    )}
-                  >
-                    {"commented about"}
-                  </div>
-                  <PlasmicLink__
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
-                      sty.link__cYrSe
-                    )}
-                    component={Link}
-                    href={"https://www.plasmic.app/"}
-                    platform={"nextjs"}
-                  >
-                    {"Company"}
-                  </PlasmicLink__>
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__pmPi3
-                  )}
-                >
-                  {
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                  }
-                </div>
-                <AntdRate
-                  data-plasmic-name={"rate33"}
-                  data-plasmic-override={overrides.rate33}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate33)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate33",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__khaMs
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__oFsP
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__cggRl
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__alYlw
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__nAoUb
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate33", "value"])}
-                />
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__d1SLt)}>
-                <div className={classNames(projectcss.all, sty.freeBox__eSwo3)}>
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__za0Fs)}
-                    displayHeight={"30px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"30px"}
-                    loading={"lazy"}
-                  />
-
-                  <PlasmicLink__
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
-                      sty.link___494Km
-                    )}
-                    component={Link}
-                    href={"https://www.plasmic.app/"}
-                    platform={"nextjs"}
-                  >
-                    {"Customer/Community"}
-                  </PlasmicLink__>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__mSao2
-                    )}
-                  >
-                    {"commented about"}
-                  </div>
-                  <PlasmicLink__
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
-                      sty.link__nDlab
-                    )}
-                    component={Link}
-                    href={"https://www.plasmic.app/"}
-                    platform={"nextjs"}
-                  >
-                    {"Company"}
-                  </PlasmicLink__>
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__y7Kb
-                  )}
-                >
-                  {
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                  }
-                </div>
-                <AntdRate
-                  data-plasmic-name={"rate34"}
-                  data-plasmic-override={overrides.rate34}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate34)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate34",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___83R0P
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__j0LAa
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__at2Ko
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___30Xj
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__tlVfW
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate34", "value"])}
+                  value={generateStateValueProp($state, ["rating", "value"])}
                 />
               </div>
             </div>
@@ -2057,261 +1364,17 @@ function PlasmicACompanyProfile__RenderFunc(props: {
               {"Company Replies"}
             </div>
             <div className={classNames(projectcss.all, sty.freeBox___96J6N)}>
-              <div className={classNames(projectcss.all, sty.freeBox__hatUg)}>
-                <div className={classNames(projectcss.all, sty.freeBox__vkjSf)}>
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__y6Ank)}
-                    displayHeight={"30px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"30px"}
-                    loading={"lazy"}
-                  />
-
-                  <PlasmicLink__
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
-                      sty.link__apNw0
-                    )}
-                    component={Link}
-                    href={"https://www.plasmic.app/"}
-                    platform={"nextjs"}
-                  >
-                    {"Company"}
-                  </PlasmicLink__>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__p9Tmt
-                    )}
-                  >
-                    {"commented about"}
-                  </div>
-                  <PlasmicLink__
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
-                      sty.link__lySwQ
-                    )}
-                    component={Link}
-                    href={"https://www.plasmic.app/"}
-                    platform={"nextjs"}
-                  >
-                    {"Customer/Community"}
-                  </PlasmicLink__>
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__uzVgp
-                  )}
-                >
-                  {
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                  }
-                </div>
-                <AntdRate
-                  data-plasmic-name={"rate41"}
-                  data-plasmic-override={overrides.rate41}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate41)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate41",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__hGPxX
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__nvYfN
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__im2Zf
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__lsqWa
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__lcTm8
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate41", "value"])}
-                />
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__jZuZ)}>
-                <div className={classNames(projectcss.all, sty.freeBox__um1Hr)}>
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img___7HoKf)}
-                    displayHeight={"30px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"30px"}
-                    loading={"lazy"}
-                  />
-
-                  <PlasmicLink__
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
-                      sty.link__lEhYv
-                    )}
-                    component={Link}
-                    href={"https://www.plasmic.app/"}
-                    platform={"nextjs"}
-                  >
-                    {"Company"}
-                  </PlasmicLink__>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__tAvij
-                    )}
-                  >
-                    {"commented about"}
-                  </div>
-                  <PlasmicLink__
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
-                      sty.link__iMpF
-                    )}
-                    component={Link}
-                    href={"https://www.plasmic.app/"}
-                    platform={"nextjs"}
-                  >
-                    {"Customer/Community"}
-                  </PlasmicLink__>
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__lhlH
-                  )}
-                >
-                  {
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                  }
-                </div>
-                <AntdRate
-                  data-plasmic-name={"rate42"}
-                  data-plasmic-override={overrides.rate42}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate42)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate42",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__hdBsU
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__i1Gxs
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___25Tz
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__cTlCw
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___5U8Lu
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate42", "value"])}
-                />
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__zte8Z)}>
+              <div
+                data-plasmic-name={"communityReviews"}
+                data-plasmic-override={overrides.communityReviews}
+                className={classNames(projectcss.all, sty.communityReviews)}
+              >
                 <div className={classNames(projectcss.all, sty.freeBox__ya3EW)}>
                   <PlasmicImg__
+                    data-plasmic-name={"companyLogo2"}
+                    data-plasmic-override={overrides.companyLogo2}
                     alt={""}
-                    className={classNames(sty.img___5Jsif)}
+                    className={classNames(sty.companyLogo2)}
                     displayHeight={"30px"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"100%"}
@@ -2322,11 +1385,13 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                   />
 
                   <PlasmicLink__
+                    data-plasmic-name={"companyName3"}
+                    data-plasmic-override={overrides.companyName3}
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
                       projectcss.__wab_text,
-                      sty.link__ktcLy
+                      sty.companyName3
                     )}
                     component={Link}
                     href={"https://www.plasmic.app/"}
@@ -2344,11 +1409,13 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                     {"commented about"}
                   </div>
                   <PlasmicLink__
+                    data-plasmic-name={"communityName2"}
+                    data-plasmic-override={overrides.communityName2}
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
                       projectcss.__wab_text,
-                      sty.link__oi2Lr
+                      sty.communityName2
                     )}
                     component={Link}
                     href={"https://www.plasmic.app/"}
@@ -2358,10 +1425,12 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                   </PlasmicLink__>
                 </div>
                 <div
+                  data-plasmic-name={"comment2"}
+                  data-plasmic-override={overrides.comment2}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__s97Ew
+                    sty.comment2
                   )}
                 >
                   {
@@ -2369,14 +1438,14 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                   }
                 </div>
                 <AntdRate
-                  data-plasmic-name={"rate43"}
-                  data-plasmic-override={overrides.rate43}
+                  data-plasmic-name={"rating2"}
+                  data-plasmic-override={overrides.rating2}
                   allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate43)}
+                  className={classNames("__wab_instance", sty.rating2)}
                   disabled={true}
                   onChange={async (...eventArgs: any) => {
                     generateStateOnChangeProp($state, [
-                      "rate43",
+                      "rating2",
                       "value"
                     ]).apply(null, eventArgs);
                   }}
@@ -2429,7 +1498,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                       </div>
                     </React.Fragment>
                   }
-                  value={generateStateValueProp($state, ["rate43", "value"])}
+                  value={generateStateValueProp($state, ["rating2", "value"])}
                 />
               </div>
             </div>
@@ -2451,8 +1520,10 @@ function PlasmicACompanyProfile__RenderFunc(props: {
           </div>
           <div className={classNames(projectcss.all, sty.freeBox__aEm9S)}>
             <PlasmicImg__
+              data-plasmic-name={"companyImage"}
+              data-plasmic-override={overrides.companyImage}
               alt={""}
-              className={classNames(sty.img__ax8Vm)}
+              className={classNames(sty.companyImage)}
               displayHeight={"200px"}
               displayMaxHeight={"none"}
               displayMaxWidth={"100%"}
@@ -2473,10 +1544,12 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                 {"Problem"}
               </div>
               <div
+                data-plasmic-name={"customerProblem"}
+                data-plasmic-override={overrides.customerProblem}
                 className={classNames(
                   projectcss.all,
                   projectcss.__wab_text,
-                  sty.text__qBfoS
+                  sty.customerProblem
                 )}
               >
                 {"Enter some text"}
@@ -2491,10 +1564,12 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                 {"Solution"}
               </div>
               <div
+                data-plasmic-name={"solutionDescription"}
+                data-plasmic-override={overrides.solutionDescription}
                 className={classNames(
                   projectcss.all,
                   projectcss.__wab_text,
-                  sty.text__aB9Of
+                  sty.solutionDescription
                 )}
               >
                 {"Enter some text"}
@@ -2509,10 +1584,12 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                 {"Competitive advantage"}
               </div>
               <div
+                data-plasmic-name={"whyShouldTheyChoose"}
+                data-plasmic-override={overrides.whyShouldTheyChoose}
                 className={classNames(
                   projectcss.all,
                   projectcss.__wab_text,
-                  sty.text__qy55
+                  sty.whyShouldTheyChoose
                 )}
               >
                 {
@@ -3213,19 +2290,49 @@ const PlasmicDescendants = {
     "account",
     "button",
     "countainer7",
-    "rate30",
-    "loginButton",
+    "companyLogo",
+    "companyName",
+    "companyType",
+    "averageRate",
+    "rateSum",
+    "apply",
+    "area",
+    "subArea",
+    "location",
+    "foundationDate",
+    "goalsSum",
+    "companyTagline",
+    "linkedIn",
+    "instagram",
+    "x",
+    "website",
     "countainer8",
     "sliderCarousel5",
+    "solution",
+    "title",
+    "steps",
+    "stepText",
+    "description",
+    "price",
     "countainer9",
-    "rate32",
-    "rate33",
-    "rate34",
+    "communityReplies",
+    "communityLogo",
+    "communityName",
+    "companyName2",
+    "comment",
+    "rating",
     "countainer10",
-    "rate41",
-    "rate42",
-    "rate43",
+    "communityReviews",
+    "companyLogo2",
+    "companyName3",
+    "communityName2",
+    "comment2",
+    "rating2",
     "countainer11",
+    "companyImage",
+    "customerProblem",
+    "solutionDescription",
+    "whyShouldTheyChoose",
     "countainer12",
     "sliderCarousel6"
   ],
@@ -3233,20 +2340,121 @@ const PlasmicDescendants = {
   navigationBar: ["navigationBar"],
   account: ["account", "button"],
   button: ["button"],
-  countainer7: ["countainer7", "rate30", "loginButton"],
-  rate30: ["rate30"],
-  loginButton: ["loginButton"],
-  countainer8: ["countainer8", "sliderCarousel5"],
-  sliderCarousel5: ["sliderCarousel5"],
-  countainer9: ["countainer9", "rate32", "rate33", "rate34"],
-  rate32: ["rate32"],
-  rate33: ["rate33"],
-  rate34: ["rate34"],
-  countainer10: ["countainer10", "rate41", "rate42", "rate43"],
-  rate41: ["rate41"],
-  rate42: ["rate42"],
-  rate43: ["rate43"],
-  countainer11: ["countainer11"],
+  countainer7: [
+    "countainer7",
+    "companyLogo",
+    "companyName",
+    "companyType",
+    "averageRate",
+    "rateSum",
+    "apply",
+    "area",
+    "subArea",
+    "location",
+    "foundationDate",
+    "goalsSum",
+    "companyTagline",
+    "linkedIn",
+    "instagram",
+    "x",
+    "website"
+  ],
+  companyLogo: ["companyLogo"],
+  companyName: ["companyName"],
+  companyType: ["companyType"],
+  averageRate: ["averageRate"],
+  rateSum: ["rateSum"],
+  apply: ["apply"],
+  area: ["area"],
+  subArea: ["subArea"],
+  location: ["location"],
+  foundationDate: ["foundationDate"],
+  goalsSum: ["goalsSum"],
+  companyTagline: ["companyTagline"],
+  linkedIn: ["linkedIn"],
+  instagram: ["instagram"],
+  x: ["x"],
+  website: ["website"],
+  countainer8: [
+    "countainer8",
+    "sliderCarousel5",
+    "solution",
+    "title",
+    "steps",
+    "stepText",
+    "description",
+    "price"
+  ],
+  sliderCarousel5: [
+    "sliderCarousel5",
+    "solution",
+    "title",
+    "steps",
+    "stepText",
+    "description",
+    "price"
+  ],
+  solution: ["solution", "title", "steps", "stepText", "description", "price"],
+  title: ["title"],
+  steps: ["steps", "stepText"],
+  stepText: ["stepText"],
+  description: ["description"],
+  price: ["price"],
+  countainer9: [
+    "countainer9",
+    "communityReplies",
+    "communityLogo",
+    "communityName",
+    "companyName2",
+    "comment",
+    "rating"
+  ],
+  communityReplies: [
+    "communityReplies",
+    "communityLogo",
+    "communityName",
+    "companyName2",
+    "comment",
+    "rating"
+  ],
+  communityLogo: ["communityLogo"],
+  communityName: ["communityName"],
+  companyName2: ["companyName2"],
+  comment: ["comment"],
+  rating: ["rating"],
+  countainer10: [
+    "countainer10",
+    "communityReviews",
+    "companyLogo2",
+    "companyName3",
+    "communityName2",
+    "comment2",
+    "rating2"
+  ],
+  communityReviews: [
+    "communityReviews",
+    "companyLogo2",
+    "companyName3",
+    "communityName2",
+    "comment2",
+    "rating2"
+  ],
+  companyLogo2: ["companyLogo2"],
+  companyName3: ["companyName3"],
+  communityName2: ["communityName2"],
+  comment2: ["comment2"],
+  rating2: ["rating2"],
+  countainer11: [
+    "countainer11",
+    "companyImage",
+    "customerProblem",
+    "solutionDescription",
+    "whyShouldTheyChoose"
+  ],
+  companyImage: ["companyImage"],
+  customerProblem: ["customerProblem"],
+  solutionDescription: ["solutionDescription"],
+  whyShouldTheyChoose: ["whyShouldTheyChoose"],
   countainer12: ["countainer12", "sliderCarousel6"],
   sliderCarousel6: ["sliderCarousel6"]
 } as const;
@@ -3260,19 +2468,49 @@ type NodeDefaultElementType = {
   account: typeof AntdDropdown;
   button: typeof AntdButton;
   countainer7: "div";
-  rate30: typeof AntdRate;
-  loginButton: typeof LoginButton;
+  companyLogo: typeof PlasmicImg__;
+  companyName: "div";
+  companyType: "div";
+  averageRate: typeof AntdRate;
+  rateSum: "div";
+  apply: typeof LoginButton;
+  area: "div";
+  subArea: "div";
+  location: "div";
+  foundationDate: "div";
+  goalsSum: "div";
+  companyTagline: "div";
+  linkedIn: "a";
+  instagram: "a";
+  x: "a";
+  website: "a";
   countainer8: "div";
   sliderCarousel5: typeof SliderWrapper;
+  solution: "div";
+  title: "div";
+  steps: "div";
+  stepText: "div";
+  description: "div";
+  price: "div";
   countainer9: "div";
-  rate32: typeof AntdRate;
-  rate33: typeof AntdRate;
-  rate34: typeof AntdRate;
+  communityReplies: "div";
+  communityLogo: typeof PlasmicImg__;
+  communityName: "a";
+  companyName2: "a";
+  comment: "div";
+  rating: typeof AntdRate;
   countainer10: "div";
-  rate41: typeof AntdRate;
-  rate42: typeof AntdRate;
-  rate43: typeof AntdRate;
+  communityReviews: "div";
+  companyLogo2: typeof PlasmicImg__;
+  companyName3: "a";
+  communityName2: "a";
+  comment2: "div";
+  rating2: typeof AntdRate;
   countainer11: "div";
+  companyImage: typeof PlasmicImg__;
+  customerProblem: "div";
+  solutionDescription: "div";
+  whyShouldTheyChoose: "div";
   countainer12: "div";
   sliderCarousel6: typeof SliderWrapper;
 };
@@ -3344,19 +2582,49 @@ export const PlasmicACompanyProfile = Object.assign(
     account: makeNodeComponent("account"),
     button: makeNodeComponent("button"),
     countainer7: makeNodeComponent("countainer7"),
-    rate30: makeNodeComponent("rate30"),
-    loginButton: makeNodeComponent("loginButton"),
+    companyLogo: makeNodeComponent("companyLogo"),
+    companyName: makeNodeComponent("companyName"),
+    companyType: makeNodeComponent("companyType"),
+    averageRate: makeNodeComponent("averageRate"),
+    rateSum: makeNodeComponent("rateSum"),
+    apply: makeNodeComponent("apply"),
+    area: makeNodeComponent("area"),
+    subArea: makeNodeComponent("subArea"),
+    location: makeNodeComponent("location"),
+    foundationDate: makeNodeComponent("foundationDate"),
+    goalsSum: makeNodeComponent("goalsSum"),
+    companyTagline: makeNodeComponent("companyTagline"),
+    linkedIn: makeNodeComponent("linkedIn"),
+    instagram: makeNodeComponent("instagram"),
+    x: makeNodeComponent("x"),
+    website: makeNodeComponent("website"),
     countainer8: makeNodeComponent("countainer8"),
     sliderCarousel5: makeNodeComponent("sliderCarousel5"),
+    solution: makeNodeComponent("solution"),
+    title: makeNodeComponent("title"),
+    steps: makeNodeComponent("steps"),
+    stepText: makeNodeComponent("stepText"),
+    description: makeNodeComponent("description"),
+    price: makeNodeComponent("price"),
     countainer9: makeNodeComponent("countainer9"),
-    rate32: makeNodeComponent("rate32"),
-    rate33: makeNodeComponent("rate33"),
-    rate34: makeNodeComponent("rate34"),
+    communityReplies: makeNodeComponent("communityReplies"),
+    communityLogo: makeNodeComponent("communityLogo"),
+    communityName: makeNodeComponent("communityName"),
+    companyName2: makeNodeComponent("companyName2"),
+    comment: makeNodeComponent("comment"),
+    rating: makeNodeComponent("rating"),
     countainer10: makeNodeComponent("countainer10"),
-    rate41: makeNodeComponent("rate41"),
-    rate42: makeNodeComponent("rate42"),
-    rate43: makeNodeComponent("rate43"),
+    communityReviews: makeNodeComponent("communityReviews"),
+    companyLogo2: makeNodeComponent("companyLogo2"),
+    companyName3: makeNodeComponent("companyName3"),
+    communityName2: makeNodeComponent("communityName2"),
+    comment2: makeNodeComponent("comment2"),
+    rating2: makeNodeComponent("rating2"),
     countainer11: makeNodeComponent("countainer11"),
+    companyImage: makeNodeComponent("companyImage"),
+    customerProblem: makeNodeComponent("customerProblem"),
+    solutionDescription: makeNodeComponent("solutionDescription"),
+    whyShouldTheyChoose: makeNodeComponent("whyShouldTheyChoose"),
     countainer12: makeNodeComponent("countainer12"),
     sliderCarousel6: makeNodeComponent("sliderCarousel6"),
 

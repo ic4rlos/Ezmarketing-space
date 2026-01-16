@@ -348,7 +348,7 @@ function PlasmicAHomepage__RenderFunc(props: {
                         sty.link__v19L
                       )}
                       component={Link}
-                      href={`/community-dashboard`}
+                      href={`/a-community-dashboard`}
                       platform={"nextjs"}
                     >
                       {"Community Dashboard"}
@@ -361,7 +361,7 @@ function PlasmicAHomepage__RenderFunc(props: {
                         sty.link__hbsZg
                       )}
                       component={Link}
-                      href={`/service-dashboard`}
+                      href={`/a-service-dashboard`}
                       platform={"nextjs"}
                     >
                       {"Service\nDashboard"}
@@ -387,7 +387,7 @@ function PlasmicAHomepage__RenderFunc(props: {
                         sty.link___2RKWg
                       )}
                       component={Link}
-                      href={`/find-a-business`}
+                      href={`/a-find-a-business`}
                       platform={"nextjs"}
                     >
                       {"Find a \nbusiness"}
@@ -490,7 +490,7 @@ function PlasmicAHomepage__RenderFunc(props: {
 
                       $steps["goToAProfile"] = true
                         ? (() => {
-                            const actionArgs = { destination: `/profile` };
+                            const actionArgs = { destination: `/a-profile` };
                             return (({ destination }) => {
                               if (
                                 typeof destination === "string" &&
@@ -771,7 +771,9 @@ function PlasmicAHomepage__RenderFunc(props: {
 
               $steps["goToAFindCommunities"] = true
                 ? (() => {
-                    const actionArgs = { destination: `/apply-to-a-community` };
+                    const actionArgs = {
+                      destination: `/a-apply-to-a-community`
+                    };
                     return (({ destination }) => {
                       if (
                         typeof destination === "string" &&
@@ -1161,7 +1163,7 @@ function PlasmicAHomepage__RenderFunc(props: {
                       sty.link__s4RhE
                     )}
                     component={Link}
-                    href={`/profile`}
+                    href={`/a-profile`}
                     platform={"nextjs"}
                   >
                     {"Cool User"}

@@ -593,7 +593,7 @@
   min-width: 0;
   padding: 8px;
 }
-.upload:global(.__wab_instance) {
+.communityLogo:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   text-align: left;
@@ -682,7 +682,7 @@
     top: auto;
   }
 }
-.select3:global(.__wab_instance) {
+.type:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   width: 460px;
@@ -793,7 +793,7 @@
     top: auto;
   }
 }
-.input2:global(.__wab_instance) {
+.communityName:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   font-family: "Montserrat", sans-serif;
@@ -837,7 +837,7 @@
     top: auto;
   }
 }
-.input3:global(.__wab_instance) {
+.location:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   font-family: "Montserrat", sans-serif;
@@ -991,7 +991,7 @@
     top: auto;
   }
 }
-.input5:global(.__wab_instance) {
+.youtubeChannel:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   font-family: "Montserrat", sans-serif;
@@ -1035,7 +1035,7 @@
     top: auto;
   }
 }
-.input6:global(.__wab_instance) {
+.instagram:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   font-family: "Montserrat", sans-serif;
@@ -1079,7 +1079,7 @@
     top: auto;
   }
 }
-.input8:global(.__wab_instance) {
+.tiktok:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   font-family: "Montserrat", sans-serif;
@@ -1123,7 +1123,7 @@
     top: auto;
   }
 }
-.input7:global(.__wab_instance) {
+.x:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   font-family: "Montserrat", sans-serif;
@@ -1298,7 +1298,7 @@
   min-width: 0;
   padding: 8px;
 }
-.upload2:global(.__wab_instance) {
+.agencyPic:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   text-align: left;
@@ -1386,7 +1386,7 @@
     top: auto;
   }
 }
-.input9:global(.__wab_instance) {
+.youtubeVideo:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   font-family: "Montserrat", sans-serif;
@@ -1430,7 +1430,7 @@
     top: auto;
   }
 }
-.input10:global(.__wab_instance) {
+.website:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   font-family: "Montserrat", sans-serif;
@@ -1474,7 +1474,7 @@
     top: auto;
   }
 }
-.textArea:global(.__wab_instance) {
+.about:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
 }
@@ -1534,7 +1534,7 @@
   width: auto;
   height: 1em;
 }
-.loginButton__bpTo3:global(.__wab_instance) {
+.done:global(.__wab_instance) {
   max-width: 100%;
   width: 150px;
   height: 37px;

@@ -227,7 +227,7 @@ function PlasmicLACreateAccount__RenderFunc(props: {
         />
         <meta
           key="twitter:title"
-          name="twitter:title"
+          property="twitter:title"
           content={PlasmicLACreateAccount.pageMetadata.title}
         />
       </Head>

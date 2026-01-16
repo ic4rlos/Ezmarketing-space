@@ -1,4 +1,3 @@
-export const dynamic = "force-dynamic";
 /* eslint-disable */
 /* tslint:disable */
 // @ts-nocheck
@@ -237,8 +236,7 @@ function PlasmicCLandingPageContact__RenderFunc(props: {
 
   return (
     <React.Fragment>
-      <Head>{null}</Head>
-
+      <Head></Head>
 
       <style>{`
         body {
@@ -871,7 +869,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       () =>
         deriveRenderOpts(props, {
           name: nodeName,
-          descendantNames: [...PlasmicDescendants[nodeName]],
+          descendantNames: PlasmicDescendants[nodeName],
           internalArgPropNames: PlasmicCLandingPageContact__ArgProps,
           internalVariantPropNames: PlasmicCLandingPageContact__VariantProps
         }),

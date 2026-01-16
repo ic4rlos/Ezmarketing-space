@@ -111,12 +111,34 @@ export type PlasmicAProfile__OverridesType = {
   account?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
   container1?: Flex__<"div">;
+  profilePic?: Flex__<typeof PlasmicImg__>;
+  communityLogo?: Flex__<typeof PlasmicImg__>;
+  firstName?: Flex__<"div">;
+  lastName?: Flex__<"div">;
+  age?: Flex__<"div">;
+  location?: Flex__<"div">;
   loginButton?: Flex__<typeof LoginButton>;
+  linkedIn?: Flex__<"a"> & Partial<LinkProps>;
+  instagram?: Flex__<"a"> & Partial<LinkProps>;
+  x?: Flex__<"a"> & Partial<LinkProps>;
   container3?: Flex__<"div">;
   container2?: Flex__<"div">;
   sliderCarousel?: Flex__<typeof SliderWrapper>;
+  education?: Flex__<"div">;
+  degree?: Flex__<typeof PlasmicImg__>;
+  section?: Flex__<"section">;
+  university?: Flex__<"div">;
+  graduationYear?: Flex__<"div">;
+  major?: Flex__<"div">;
+  educationLevel?: Flex__<"div">;
   container4?: Flex__<"div">;
+  office?: Flex__<"div">;
+  chargeContainer?: Flex__<"div">;
+  charge?: Flex__<"div">;
+  company?: Flex__<"div">;
+  howLongInOffice?: Flex__<"div">;
   container5?: Flex__<"div">;
+  impressive?: Flex__<"div">;
   container6?: Flex__<"div">;
   sliderCarousel2?: Flex__<typeof SliderWrapper>;
   dialogSkill?: Flex__<typeof Dialog>;
@@ -754,7 +776,7 @@ function PlasmicAProfile__RenderFunc(props: {
         />
         <meta
           key="twitter:title"
-          name="twitter:title"
+          property="twitter:title"
           content={PlasmicAProfile.pageMetadata.title}
         />
       </Head>
@@ -867,7 +889,7 @@ function PlasmicAProfile__RenderFunc(props: {
                         sty.link__hzhvY
                       )}
                       component={Link}
-                      href={`/community-dashboard`}
+                      href={`/a-community-dashboard`}
                       platform={"nextjs"}
                     >
                       {"Community Dashboard"}
@@ -880,7 +902,7 @@ function PlasmicAProfile__RenderFunc(props: {
                         sty.link__svurP
                       )}
                       component={Link}
-                      href={`/service-dashboard`}
+                      href={`/a-service-dashboard`}
                       platform={"nextjs"}
                     >
                       {"Service\nDashboard"}
@@ -905,7 +927,7 @@ function PlasmicAProfile__RenderFunc(props: {
                         sty.link__np7JW
                       )}
                       component={Link}
-                      href={`/find-a-business`}
+                      href={`/a-find-a-business`}
                       platform={"nextjs"}
                     >
                       {"Find a \nbusiness"}
@@ -1215,8 +1237,10 @@ function PlasmicAProfile__RenderFunc(props: {
           <div className={classNames(projectcss.all, sty.freeBox__yEee7)}>
             <div className={classNames(projectcss.all, sty.freeBox__lPSvi)}>
               <PlasmicImg__
+                data-plasmic-name={"profilePic"}
+                data-plasmic-override={overrides.profilePic}
                 alt={""}
-                className={classNames(sty.img__oaYuO)}
+                className={classNames(sty.profilePic)}
                 displayHeight={"100px"}
                 displayMaxHeight={"none"}
                 displayMaxWidth={"100%"}
@@ -1227,8 +1251,10 @@ function PlasmicAProfile__RenderFunc(props: {
               />
 
               <PlasmicImg__
+                data-plasmic-name={"communityLogo"}
+                data-plasmic-override={overrides.communityLogo}
                 alt={""}
-                className={classNames(sty.img__g0SMr)}
+                className={classNames(sty.communityLogo)}
                 displayHeight={"50px"}
                 displayMaxHeight={"none"}
                 displayMaxWidth={"100%"}
@@ -1247,19 +1273,23 @@ function PlasmicAProfile__RenderFunc(props: {
             <div className={classNames(projectcss.all, sty.freeBox__t5Ros)}>
               <div className={classNames(projectcss.all, sty.freeBox__rCTyb)}>
                 <div
+                  data-plasmic-name={"firstName"}
+                  data-plasmic-override={overrides.firstName}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__wz6N7
+                    sty.firstName
                   )}
                 >
                   {"Name"}
                 </div>
                 <div
+                  data-plasmic-name={"lastName"}
+                  data-plasmic-override={overrides.lastName}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__ziApz
+                    sty.lastName
                   )}
                 >
                   {"Last Name"}
@@ -1267,10 +1297,12 @@ function PlasmicAProfile__RenderFunc(props: {
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__oRx5)}>
                 <div
+                  data-plasmic-name={"age"}
+                  data-plasmic-override={overrides.age}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__euqMp
+                    sty.age
                   )}
                 >
                   {"28"}
@@ -1286,10 +1318,12 @@ function PlasmicAProfile__RenderFunc(props: {
                 </div>
               </div>
               <div
+                data-plasmic-name={"location"}
+                data-plasmic-override={overrides.location}
                 className={classNames(
                   projectcss.all,
                   projectcss.__wab_text,
-                  sty.text___3EUvM
+                  sty.location
                 )}
               >
                 {"New York"}
@@ -1323,11 +1357,13 @@ function PlasmicAProfile__RenderFunc(props: {
               />
 
               <PlasmicLink__
+                data-plasmic-name={"linkedIn"}
+                data-plasmic-override={overrides.linkedIn}
                 className={classNames(
                   projectcss.all,
                   projectcss.a,
                   projectcss.__wab_text,
-                  sty.link__oT5Nw
+                  sty.linkedIn
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
@@ -1343,11 +1379,13 @@ function PlasmicAProfile__RenderFunc(props: {
               />
 
               <PlasmicLink__
+                data-plasmic-name={"instagram"}
+                data-plasmic-override={overrides.instagram}
                 className={classNames(
                   projectcss.all,
                   projectcss.a,
                   projectcss.__wab_text,
-                  sty.link__xfLbW
+                  sty.instagram
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
@@ -1363,11 +1401,13 @@ function PlasmicAProfile__RenderFunc(props: {
               />
 
               <PlasmicLink__
+                data-plasmic-name={"x"}
+                data-plasmic-override={overrides.x}
                 className={classNames(
                   projectcss.all,
                   projectcss.a,
                   projectcss.__wab_text,
-                  sty.link__quHJt
+                  sty.x
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
@@ -1438,14 +1478,18 @@ function PlasmicAProfile__RenderFunc(props: {
                   {...child$Props}
                 >
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__deZv2)}
+                    data-plasmic-name={"education"}
+                    data-plasmic-override={overrides.education}
+                    className={classNames(projectcss.all, sty.education)}
                   >
                     <div
                       className={classNames(projectcss.all, sty.freeBox__sYlF9)}
                     >
                       <PlasmicImg__
+                        data-plasmic-name={"degree"}
+                        data-plasmic-override={overrides.degree}
                         alt={""}
-                        className={classNames(sty.img__u0FKv)}
+                        className={classNames(sty.degree)}
                         displayHeight={"107px"}
                         displayMaxHeight={"none"}
                         displayMaxWidth={"100%"}
@@ -1456,422 +1500,51 @@ function PlasmicAProfile__RenderFunc(props: {
                       />
 
                       <section
-                        className={classNames(
-                          projectcss.all,
-                          sty.section__dGsLh
-                        )}
+                        data-plasmic-name={"section"}
+                        data-plasmic-override={overrides.section}
+                        className={classNames(projectcss.all, sty.section)}
                       >
                         <div
+                          data-plasmic-name={"university"}
+                          data-plasmic-override={overrides.university}
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__lj5MH
+                            sty.university
                           )}
                         >
                           {"University"}
                         </div>
                         <div
+                          data-plasmic-name={"graduationYear"}
+                          data-plasmic-override={overrides.graduationYear}
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__w9Awx
+                            sty.graduationYear
                           )}
                         >
                           {"Year"}
                         </div>
                         <div
+                          data-plasmic-name={"major"}
+                          data-plasmic-override={overrides.major}
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__l3EUp
+                            sty.major
                           )}
                         >
                           {"Course"}
                         </div>
                       </section>
                       <div
+                        data-plasmic-name={"educationLevel"}
+                        data-plasmic-override={overrides.educationLevel}
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__hSqsN
-                        )}
-                      >
-                        {"Graduation"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__p3QQe)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__lvKuQ)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__tisKw)}
-                        displayHeight={"107px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"180px"}
-                        loading={"lazy"}
-                      />
-
-                      <section
-                        className={classNames(
-                          projectcss.all,
-                          sty.section___3Eaan
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__eNs7M
-                          )}
-                        >
-                          {"University"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__f5QKw
-                          )}
-                        >
-                          {"Year"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___5Rm2P
-                          )}
-                        >
-                          {"Course"}
-                        </div>
-                      </section>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ooPxO
-                        )}
-                      >
-                        {"Graduation"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__sCVvO)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__gjnG)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__ykf48)}
-                        displayHeight={"107px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"180px"}
-                        loading={"lazy"}
-                      />
-
-                      <section
-                        className={classNames(
-                          projectcss.all,
-                          sty.section__gkkn8
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__fgJgy
-                          )}
-                        >
-                          {"University"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___3WPlq
-                          )}
-                        >
-                          {"Year"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__l8IdJ
-                          )}
-                        >
-                          {"Course"}
-                        </div>
-                      </section>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__q63Qj
-                        )}
-                      >
-                        {"Graduation"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___1ThP)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox___2DcE)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__pgSiZ)}
-                        displayHeight={"107px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"180px"}
-                        loading={"lazy"}
-                      />
-
-                      <section
-                        className={classNames(
-                          projectcss.all,
-                          sty.section__dqjjg
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__mgr7R
-                          )}
-                        >
-                          {"University"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__ojYuE
-                          )}
-                        >
-                          {"Year"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___7G8B
-                          )}
-                        >
-                          {"Course"}
-                        </div>
-                      </section>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__gSatl
-                        )}
-                      >
-                        {"Graduation"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__bdf97)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__bAMiu)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__glHhG)}
-                        displayHeight={"107px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"180px"}
-                        loading={"lazy"}
-                      />
-
-                      <section
-                        className={classNames(
-                          projectcss.all,
-                          sty.section__zyfzx
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__eaJlr
-                          )}
-                        >
-                          {"University"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__fzM5T
-                          )}
-                        >
-                          {"Year"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__giBv9
-                          )}
-                        >
-                          {"Course"}
-                        </div>
-                      </section>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__tjeAi
-                        )}
-                      >
-                        {"Graduation"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__t9H3)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__bWA7)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__brmIq)}
-                        displayHeight={"107px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"180px"}
-                        loading={"lazy"}
-                      />
-
-                      <section
-                        className={classNames(
-                          projectcss.all,
-                          sty.section__tvsuT
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__s590T
-                          )}
-                        >
-                          {"University"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__ae9Xw
-                          )}
-                        >
-                          {"Year"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___5FQch
-                          )}
-                        >
-                          {"Course"}
-                        </div>
-                      </section>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__uWqFa
-                        )}
-                      >
-                        {"Graduation"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__c060G)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__kcRx1)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__giKC)}
-                        displayHeight={"107px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"180px"}
-                        loading={"lazy"}
-                      />
-
-                      <section
-                        className={classNames(
-                          projectcss.all,
-                          sty.section__ny1B9
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__nw9Pb
-                          )}
-                        >
-                          {"University"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___7ILfl
-                          )}
-                        >
-                          {"Year"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__xzugw
-                          )}
-                        >
-                          {"Course"}
-                        </div>
-                      </section>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ghvhw
+                          sty.educationLevel
                         )}
                       >
                         {"Graduation"}
@@ -1920,43 +1593,57 @@ function PlasmicAProfile__RenderFunc(props: {
             <div className={classNames(projectcss.all, sty.freeBox__vV9W)}>
               <div className={classNames(projectcss.all, sty.freeBox__m3Vzi)}>
                 <div
+                  data-plasmic-name={"office"}
+                  data-plasmic-override={overrides.office}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__l0Ac
+                    sty.office
                   )}
                 >
                   {"Office"}
+                </div>
+              </div>
+              <div
+                data-plasmic-name={"chargeContainer"}
+                data-plasmic-override={overrides.chargeContainer}
+                className={classNames(projectcss.all, sty.chargeContainer)}
+              >
+                <div
+                  data-plasmic-name={"charge"}
+                  data-plasmic-override={overrides.charge}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.charge
+                  )}
+                >
+                  {"Employment"}
                 </div>
                 <div
+                  data-plasmic-name={"company"}
+                  data-plasmic-override={overrides.company}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__vuni
+                    sty.company
                   )}
                 >
-                  {"Office"}
+                  {
+                    "Employers, position / titles, and dates. Use a separate line for each job, most recent first."
+                  }
                 </div>
-              </div>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__b2Xy
-                )}
-              >
-                {"Employment"}
-              </div>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__x742R
-                )}
-              >
-                {
-                  "Employers, position / titles, and dates. Use a separate line for each job, most recent first."
-                }
+                <div
+                  data-plasmic-name={"howLongInOffice"}
+                  data-plasmic-override={overrides.howLongInOffice}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.howLongInOffice
+                  )}
+                >
+                  {"2 years"}
+                </div>
               </div>
             </div>
           </div>
@@ -1982,10 +1669,12 @@ function PlasmicAProfile__RenderFunc(props: {
             />
 
             <div
+              data-plasmic-name={"impressive"}
+              data-plasmic-override={overrides.impressive}
               className={classNames(
                 projectcss.all,
                 projectcss.__wab_text,
-                sty.text__grIi
+                sty.impressive
               )}
             >
               {
@@ -9811,12 +9500,34 @@ const PlasmicDescendants = {
     "account",
     "button",
     "container1",
+    "profilePic",
+    "communityLogo",
+    "firstName",
+    "lastName",
+    "age",
+    "location",
     "loginButton",
+    "linkedIn",
+    "instagram",
+    "x",
     "container3",
     "container2",
     "sliderCarousel",
+    "education",
+    "degree",
+    "section",
+    "university",
+    "graduationYear",
+    "major",
+    "educationLevel",
     "container4",
+    "office",
+    "chargeContainer",
+    "charge",
+    "company",
+    "howLongInOffice",
     "container5",
+    "impressive",
     "container6",
     "sliderCarousel2",
     "dialogSkill",
@@ -9992,13 +9703,92 @@ const PlasmicDescendants = {
   navigationBar: ["navigationBar"],
   account: ["account", "button"],
   button: ["button"],
-  container1: ["container1", "loginButton"],
+  container1: [
+    "container1",
+    "profilePic",
+    "communityLogo",
+    "firstName",
+    "lastName",
+    "age",
+    "location",
+    "loginButton",
+    "linkedIn",
+    "instagram",
+    "x"
+  ],
+  profilePic: ["profilePic"],
+  communityLogo: ["communityLogo"],
+  firstName: ["firstName"],
+  lastName: ["lastName"],
+  age: ["age"],
+  location: ["location"],
   loginButton: ["loginButton"],
-  container3: ["container3", "container2", "sliderCarousel"],
-  container2: ["container2", "sliderCarousel"],
-  sliderCarousel: ["sliderCarousel"],
-  container4: ["container4"],
-  container5: ["container5"],
+  linkedIn: ["linkedIn"],
+  instagram: ["instagram"],
+  x: ["x"],
+  container3: [
+    "container3",
+    "container2",
+    "sliderCarousel",
+    "education",
+    "degree",
+    "section",
+    "university",
+    "graduationYear",
+    "major",
+    "educationLevel"
+  ],
+  container2: [
+    "container2",
+    "sliderCarousel",
+    "education",
+    "degree",
+    "section",
+    "university",
+    "graduationYear",
+    "major",
+    "educationLevel"
+  ],
+  sliderCarousel: [
+    "sliderCarousel",
+    "education",
+    "degree",
+    "section",
+    "university",
+    "graduationYear",
+    "major",
+    "educationLevel"
+  ],
+  education: [
+    "education",
+    "degree",
+    "section",
+    "university",
+    "graduationYear",
+    "major",
+    "educationLevel"
+  ],
+  degree: ["degree"],
+  section: ["section", "university", "graduationYear", "major"],
+  university: ["university"],
+  graduationYear: ["graduationYear"],
+  major: ["major"],
+  educationLevel: ["educationLevel"],
+  container4: [
+    "container4",
+    "office",
+    "chargeContainer",
+    "charge",
+    "company",
+    "howLongInOffice"
+  ],
+  office: ["office"],
+  chargeContainer: ["chargeContainer", "charge", "company", "howLongInOffice"],
+  charge: ["charge"],
+  company: ["company"],
+  howLongInOffice: ["howLongInOffice"],
+  container5: ["container5", "impressive"],
+  impressive: ["impressive"],
   container6: [
     "container6",
     "sliderCarousel2",
@@ -11187,12 +10977,34 @@ type NodeDefaultElementType = {
   account: typeof AntdDropdown;
   button: typeof AntdButton;
   container1: "div";
+  profilePic: typeof PlasmicImg__;
+  communityLogo: typeof PlasmicImg__;
+  firstName: "div";
+  lastName: "div";
+  age: "div";
+  location: "div";
   loginButton: typeof LoginButton;
+  linkedIn: "a";
+  instagram: "a";
+  x: "a";
   container3: "div";
   container2: "div";
   sliderCarousel: typeof SliderWrapper;
+  education: "div";
+  degree: typeof PlasmicImg__;
+  section: "section";
+  university: "div";
+  graduationYear: "div";
+  major: "div";
+  educationLevel: "div";
   container4: "div";
+  office: "div";
+  chargeContainer: "div";
+  charge: "div";
+  company: "div";
+  howLongInOffice: "div";
   container5: "div";
+  impressive: "div";
   container6: "div";
   sliderCarousel2: typeof SliderWrapper;
   dialogSkill: typeof Dialog;
@@ -11432,12 +11244,34 @@ export const PlasmicAProfile = Object.assign(
     account: makeNodeComponent("account"),
     button: makeNodeComponent("button"),
     container1: makeNodeComponent("container1"),
+    profilePic: makeNodeComponent("profilePic"),
+    communityLogo: makeNodeComponent("communityLogo"),
+    firstName: makeNodeComponent("firstName"),
+    lastName: makeNodeComponent("lastName"),
+    age: makeNodeComponent("age"),
+    location: makeNodeComponent("location"),
     loginButton: makeNodeComponent("loginButton"),
+    linkedIn: makeNodeComponent("linkedIn"),
+    instagram: makeNodeComponent("instagram"),
+    x: makeNodeComponent("x"),
     container3: makeNodeComponent("container3"),
     container2: makeNodeComponent("container2"),
     sliderCarousel: makeNodeComponent("sliderCarousel"),
+    education: makeNodeComponent("education"),
+    degree: makeNodeComponent("degree"),
+    section: makeNodeComponent("section"),
+    university: makeNodeComponent("university"),
+    graduationYear: makeNodeComponent("graduationYear"),
+    major: makeNodeComponent("major"),
+    educationLevel: makeNodeComponent("educationLevel"),
     container4: makeNodeComponent("container4"),
+    office: makeNodeComponent("office"),
+    chargeContainer: makeNodeComponent("chargeContainer"),
+    charge: makeNodeComponent("charge"),
+    company: makeNodeComponent("company"),
+    howLongInOffice: makeNodeComponent("howLongInOffice"),
     container5: makeNodeComponent("container5"),
+    impressive: makeNodeComponent("impressive"),
     container6: makeNodeComponent("container6"),
     sliderCarousel2: makeNodeComponent("sliderCarousel2"),
     dialogSkill: makeNodeComponent("dialogSkill"),

@@ -367,7 +367,7 @@
   padding: 8px;
   border: 1px solid #f2dea926;
 }
-.img___7YRt1 {
+.companyLogo {
   animation: none;
   object-fit: cover;
   max-width: 100%;
@@ -376,7 +376,7 @@
   flex-shrink: 0;
   border-radius: 8px;
 }
-.img___7YRt1 > picture > img {
+.companyLogo > picture > img {
   object-fit: cover;
 }
 .freeBox__yrEkf {
@@ -405,7 +405,7 @@
   min-width: 0;
   padding: 0px;
 }
-.text___5Obif {
+.companyName {
   animation: none;
   width: auto;
   height: auto;
@@ -427,7 +427,7 @@
   text-overflow: clip;
   padding: 0px;
 }
-.text__rTyoo {
+.companyType {
   animation: none;
   width: auto;
   height: auto;
@@ -463,7 +463,7 @@
   min-height: 0;
   padding: 0px;
 }
-.rate29:global(.__wab_instance) {
+.averageRate:global(.__wab_instance) {
   animation: none;
   max-width: 100%;
   object-fit: cover;
@@ -553,7 +553,7 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
 }
-.text__ituV {
+.rateSum {
   animation: none;
   width: auto;
   height: auto;
@@ -585,7 +585,7 @@
   min-width: 0;
   padding: 0px;
 }
-.text__sh1Io {
+.area {
   animation: none;
   width: auto;
   height: auto;
@@ -606,7 +606,7 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.text__jJkP {
+.subArea {
   animation: none;
   width: auto;
   height: auto;
@@ -627,7 +627,7 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.text__ejxJx {
+.location {
   animation: none;
   width: auto;
   height: auto;
@@ -661,22 +661,41 @@
   min-width: 0;
   padding: 8px;
 }
-.freeBox__sn3YV {
+.freeBox__f2H4X {
   animation: none;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   position: relative;
-  width: auto;
-  height: 100%;
-  max-width: 100%;
-  justify-content: space-evenly;
   align-items: center;
-  margin-left: 3px;
-  margin-right: 3px;
-  min-height: 0;
+  justify-content: center;
+  width: 138px;
+  height: auto;
+  max-width: 100%;
+  flex-shrink: 0;
   padding: 0px;
 }
-.text__blwvz {
+.text__vowyo {
+  animation: none;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  color: #535353;
+  text-align: left;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
+  min-width: 0;
+}
+.foundationDate {
   animation: none;
   width: auto;
   height: auto;
@@ -694,7 +713,7 @@
   user-select: text;
   text-decoration-line: none;
   text-overflow: clip;
-  padding: 8px 21px 8px 8px;
+  padding: 0px;
 }
 .freeBox__dOyTl {
   animation: none;
@@ -794,7 +813,7 @@
   width: auto;
   height: 1em;
 }
-.text__zv4P {
+.companyTagline {
   animation: none;
   position: relative;
   width: auto;
@@ -849,7 +868,7 @@
   margin-top: -7px;
   height: 1em;
 }
-.link__vkWd1 {
+.linkedIn {
   animation: none;
   color: #228b22;
   font-size: 11px;
@@ -887,7 +906,7 @@
   margin-top: -7px;
   height: 1em;
 }
-.link__xelAa {
+.instagram {
   animation: none;
   color: #228b22;
   font-size: 11px;
@@ -926,7 +945,7 @@
   margin-top: -7px;
   height: 1em;
 }
-.link___45Vxn {
+.x {
   animation: none;
   color: #228b22;
   font-size: 11px;
@@ -964,7 +983,7 @@
   max-width: 100%;
   height: 1em;
 }
-.link__oKvYw {
+.website {
   animation: none;
   color: #228b22;
   font-size: 11px;
@@ -980,7 +999,7 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.rating {
+.rateThisCompany {
   animation: none;
   display: flex;
   flex-direction: column;
@@ -1116,7 +1135,7 @@
   max-width: 100%;
   z-index: 9999;
 }
-.rate4:global(.__wab_instance) {
+.rating:global(.__wab_instance) {
   animation: none;
   max-width: 100%;
   object-fit: cover;
@@ -1266,7 +1285,7 @@
   width: 100%;
   min-width: 0;
 }
-.button2__wyPUh:global(.__wab_instance):global(.__wab_instance) {
+.confirmRate:global(.__wab_instance):global(.__wab_instance) {
   animation: none;
 }
 .svg__jcktK {
@@ -1293,7 +1312,7 @@
   position: relative;
   height: 1em;
 }
-.button2___8Knwh:global(.__wab_instance):global(.__wab_instance) {
+.button2:global(.__wab_instance):global(.__wab_instance) {
   animation: none;
 }
 .svg__bRc2F {
@@ -1381,7 +1400,7 @@
   text-overflow: clip;
   padding: 8px;
 }
-.rate5:global(.__wab_instance) {
+.ratingCustomer:global(.__wab_instance) {
   animation: none;
   max-width: 100%;
   object-fit: cover;
@@ -1468,6 +1487,25 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
 }
+.rateSum2 {
+  animation: none;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  font-size: 12px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #535353;
+  text-align: left;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
+}
 .freeBox__yk72K {
   animation: none;
   display: flex;
@@ -1529,7 +1567,7 @@
   text-overflow: clip;
   padding: 8px;
 }
-.rate6:global(.__wab_instance) {
+.customerRate:global(.__wab_instance) {
   animation: none;
   max-width: 100%;
   object-fit: cover;
@@ -1615,6 +1653,25 @@
   user-select: text;
   text-decoration-line: none !important;
   text-overflow: clip !important;
+}
+.rateSum3 {
+  animation: none;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  font-size: 12px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #535353;
+  text-align: left;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
 }
 .freeBox__ptbaS {
   animation: none;

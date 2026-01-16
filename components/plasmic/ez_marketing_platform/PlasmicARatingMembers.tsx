@@ -103,14 +103,26 @@ export type PlasmicARatingMembers__OverridesType = {
   account?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
   container1?: Flex__<"div">;
-  rating?: Flex__<"div">;
+  profilePic?: Flex__<typeof PlasmicImg__>;
+  communityLogo?: Flex__<typeof PlasmicImg__>;
+  firstName?: Flex__<"div">;
+  lastName?: Flex__<"div">;
+  birthday?: Flex__<"div">;
+  location?: Flex__<"div">;
+  charge2?: Flex__<"div">;
+  linkedIn?: Flex__<"a"> & Partial<LinkProps>;
+  instagram?: Flex__<"a"> & Partial<LinkProps>;
+  x?: Flex__<"a"> & Partial<LinkProps>;
+  rateThisMember?: Flex__<"div">;
   modal?: Flex__<typeof Modal>;
-  rate4?: Flex__<typeof AntdRate>;
-  textArea2?: Flex__<typeof AntdTextArea>;
+  rateEthics?: Flex__<typeof AntdRate>;
+  comment?: Flex__<typeof AntdTextArea>;
+  confirmRate?: Flex__<typeof Button2>;
   modal2?: Flex__<typeof Modal>;
-  rate25?: Flex__<typeof AntdRate>;
-  textArea3?: Flex__<typeof AntdTextArea>;
-  rate6?: Flex__<typeof AntdRate>;
+  rateTechnical?: Flex__<typeof AntdRate>;
+  comment2?: Flex__<typeof AntdTextArea>;
+  confirmRate2?: Flex__<typeof Button2>;
+  rating?: Flex__<typeof AntdRate>;
   rate7?: Flex__<typeof AntdRate>;
   rate8?: Flex__<typeof AntdRate>;
   rate9?: Flex__<typeof AntdRate>;
@@ -289,13 +301,13 @@ function PlasmicARatingMembers__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
-        path: "rate4.value",
+        path: "rateEthics.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "textArea2.value",
+        path: "comment.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -303,7 +315,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
       {
-        path: "rate6.value",
+        path: "rating.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
@@ -315,13 +327,13 @@ function PlasmicARatingMembers__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
-        path: "rate25.value",
+        path: "rateTechnical.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "textArea3.value",
+        path: "comment2.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -352,7 +364,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
         />
         <meta
           key="twitter:title"
-          name="twitter:title"
+          property="twitter:title"
           content={PlasmicARatingMembers.pageMetadata.title}
         />
       </Head>
@@ -441,7 +453,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                           sty.link___4OnLk
                         )}
                         component={Link}
-                        href={`/community-dashboard`}
+                        href={`/a-community-dashboard`}
                         platform={"nextjs"}
                       >
                         {"Community Dashboard"}
@@ -454,7 +466,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                           sty.link___8ZvSe
                         )}
                         component={Link}
-                        href={`/service-dashboard`}
+                        href={`/a-service-dashboard`}
                         platform={"nextjs"}
                       >
                         {"Service\nDashboard"}
@@ -479,7 +491,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                           sty.link__jC0
                         )}
                         component={Link}
-                        href={`/find-a-business`}
+                        href={`/a-find-a-business`}
                         platform={"nextjs"}
                       >
                         {"Find a \nbusiness"}
@@ -626,8 +638,10 @@ function PlasmicARatingMembers__RenderFunc(props: {
             <div className={classNames(projectcss.all, sty.freeBox__cN9X)}>
               <div className={classNames(projectcss.all, sty.freeBox__pVfv)}>
                 <PlasmicImg__
+                  data-plasmic-name={"profilePic"}
+                  data-plasmic-override={overrides.profilePic}
                   alt={""}
-                  className={classNames(sty.img__wMumx)}
+                  className={classNames(sty.profilePic)}
                   displayHeight={"100px"}
                   displayMaxHeight={"none"}
                   displayMaxWidth={"100%"}
@@ -638,8 +652,10 @@ function PlasmicARatingMembers__RenderFunc(props: {
                 />
 
                 <PlasmicImg__
+                  data-plasmic-name={"communityLogo"}
+                  data-plasmic-override={overrides.communityLogo}
                   alt={""}
-                  className={classNames(sty.img__hsucT)}
+                  className={classNames(sty.communityLogo)}
                   displayHeight={"50px"}
                   displayMaxHeight={"none"}
                   displayMaxWidth={"100%"}
@@ -658,19 +674,23 @@ function PlasmicARatingMembers__RenderFunc(props: {
               <div className={classNames(projectcss.all, sty.freeBox__mV8Mz)}>
                 <div className={classNames(projectcss.all, sty.freeBox__tcDrW)}>
                   <div
+                    data-plasmic-name={"firstName"}
+                    data-plasmic-override={overrides.firstName}
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text___2J3Jx
+                      sty.firstName
                     )}
                   >
                     {"Name"}
                   </div>
                   <div
+                    data-plasmic-name={"lastName"}
+                    data-plasmic-override={overrides.lastName}
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__uhGuR
+                      sty.lastName
                     )}
                   >
                     {"Last Name"}
@@ -678,10 +698,12 @@ function PlasmicARatingMembers__RenderFunc(props: {
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__kzTaj)}>
                   <div
+                    data-plasmic-name={"birthday"}
+                    data-plasmic-override={overrides.birthday}
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__l2Nbb
+                      sty.birthday
                     )}
                   >
                     {"28"}
@@ -697,10 +719,12 @@ function PlasmicARatingMembers__RenderFunc(props: {
                   </div>
                 </div>
                 <div
+                  data-plasmic-name={"location"}
+                  data-plasmic-override={overrides.location}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__oFsm
+                    sty.location
                   )}
                 >
                   {"New York"}
@@ -785,10 +809,12 @@ function PlasmicARatingMembers__RenderFunc(props: {
                   </div>
                 </div>
                 <div
+                  data-plasmic-name={"charge2"}
+                  data-plasmic-override={overrides.charge2}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__qhjp
+                    sty.charge2
                   )}
                 >
                   {"Charge"}
@@ -803,11 +829,13 @@ function PlasmicARatingMembers__RenderFunc(props: {
                 />
 
                 <PlasmicLink__
+                  data-plasmic-name={"linkedIn"}
+                  data-plasmic-override={overrides.linkedIn}
                   className={classNames(
                     projectcss.all,
                     projectcss.a,
                     projectcss.__wab_text,
-                    sty.link__dfOzN
+                    sty.linkedIn
                   )}
                   component={Link}
                   href={"https://www.plasmic.app/"}
@@ -823,11 +851,13 @@ function PlasmicARatingMembers__RenderFunc(props: {
                 />
 
                 <PlasmicLink__
+                  data-plasmic-name={"instagram"}
+                  data-plasmic-override={overrides.instagram}
                   className={classNames(
                     projectcss.all,
                     projectcss.a,
                     projectcss.__wab_text,
-                    sty.link__zNgna
+                    sty.instagram
                   )}
                   component={Link}
                   href={"https://www.plasmic.app/"}
@@ -843,11 +873,13 @@ function PlasmicARatingMembers__RenderFunc(props: {
                 />
 
                 <PlasmicLink__
+                  data-plasmic-name={"x"}
+                  data-plasmic-override={overrides.x}
                   className={classNames(
                     projectcss.all,
                     projectcss.a,
                     projectcss.__wab_text,
-                    sty.link__qsFgz
+                    sty.x
                   )}
                   component={Link}
                   href={"https://www.plasmic.app/"}
@@ -859,9 +891,9 @@ function PlasmicARatingMembers__RenderFunc(props: {
             </div>
           </div>
           <div
-            data-plasmic-name={"rating"}
-            data-plasmic-override={overrides.rating}
-            className={classNames(projectcss.all, sty.rating)}
+            data-plasmic-name={"rateThisMember"}
+            data-plasmic-override={overrides.rateThisMember}
+            className={classNames(projectcss.all, sty.rateThisMember)}
           >
             <div
               className={classNames(
@@ -929,20 +961,17 @@ function PlasmicARatingMembers__RenderFunc(props: {
                       </div>
                       {(() => {
                         const child$Props = {
-                          className: classNames(
-                            "__wab_instance",
-                            sty.textArea2
-                          ),
+                          className: classNames("__wab_instance", sty.comment),
                           onChange: async (...eventArgs: any) => {
                             generateStateOnChangePropForCodeComponents(
                               $state,
                               "value",
-                              ["textArea2", "value"],
+                              ["comment", "value"],
                               AntdTextArea_Helpers
                             ).apply(null, eventArgs);
                           },
                           value: generateStateValueProp($state, [
-                            "textArea2",
+                            "comment",
                             "value"
                           ])
                         };
@@ -951,7 +980,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                           [
                             {
                               name: "value",
-                              plasmicStateName: "textArea2.value"
+                              plasmicStateName: "comment.value"
                             }
                           ],
                           [],
@@ -961,8 +990,8 @@ function PlasmicARatingMembers__RenderFunc(props: {
 
                         return (
                           <AntdTextArea
-                            data-plasmic-name={"textArea2"}
-                            data-plasmic-override={overrides.textArea2}
+                            data-plasmic-name={"comment"}
+                            data-plasmic-override={overrides.comment}
                             {...child$Props}
                           />
                         );
@@ -974,6 +1003,8 @@ function PlasmicARatingMembers__RenderFunc(props: {
                       className={classNames(projectcss.all, sty.freeBox__ukQdH)}
                     >
                       <Button2
+                        data-plasmic-name={"confirmRate"}
+                        data-plasmic-override={overrides.confirmRate}
                         color={"muted"}
                         label={
                           <div
@@ -1115,13 +1146,13 @@ function PlasmicARatingMembers__RenderFunc(props: {
                   }}
                   trigger={
                     <AntdRate
-                      data-plasmic-name={"rate4"}
-                      data-plasmic-override={overrides.rate4}
+                      data-plasmic-name={"rateEthics"}
+                      data-plasmic-override={overrides.rateEthics}
                       allowHalf={true}
-                      className={classNames("__wab_instance", sty.rate4)}
+                      className={classNames("__wab_instance", sty.rateEthics)}
                       onChange={async (...eventArgs: any) => {
                         generateStateOnChangeProp($state, [
-                          "rate4",
+                          "rateEthics",
                           "value"
                         ]).apply(null, eventArgs);
                       }}
@@ -1174,7 +1205,10 @@ function PlasmicARatingMembers__RenderFunc(props: {
                           </div>
                         </React.Fragment>
                       }
-                      value={generateStateValueProp($state, ["rate4", "value"])}
+                      value={generateStateValueProp($state, [
+                        "rateEthics",
+                        "value"
+                      ])}
                     />
                   }
                 />
@@ -1226,20 +1260,17 @@ function PlasmicARatingMembers__RenderFunc(props: {
                       </div>
                       {(() => {
                         const child$Props = {
-                          className: classNames(
-                            "__wab_instance",
-                            sty.textArea3
-                          ),
+                          className: classNames("__wab_instance", sty.comment2),
                           onChange: async (...eventArgs: any) => {
                             generateStateOnChangePropForCodeComponents(
                               $state,
                               "value",
-                              ["textArea3", "value"],
+                              ["comment2", "value"],
                               AntdTextArea_Helpers
                             ).apply(null, eventArgs);
                           },
                           value: generateStateValueProp($state, [
-                            "textArea3",
+                            "comment2",
                             "value"
                           ])
                         };
@@ -1248,7 +1279,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                           [
                             {
                               name: "value",
-                              plasmicStateName: "textArea3.value"
+                              plasmicStateName: "comment2.value"
                             }
                           ],
                           [],
@@ -1258,8 +1289,8 @@ function PlasmicARatingMembers__RenderFunc(props: {
 
                         return (
                           <AntdTextArea
-                            data-plasmic-name={"textArea3"}
-                            data-plasmic-override={overrides.textArea3}
+                            data-plasmic-name={"comment2"}
+                            data-plasmic-override={overrides.comment2}
                             {...child$Props}
                           />
                         );
@@ -1274,6 +1305,8 @@ function PlasmicARatingMembers__RenderFunc(props: {
                       )}
                     >
                       <Button2
+                        data-plasmic-name={"confirmRate2"}
+                        data-plasmic-override={overrides.confirmRate2}
                         color={"muted"}
                         label={
                           <div
@@ -1415,13 +1448,16 @@ function PlasmicARatingMembers__RenderFunc(props: {
                   }}
                   trigger={
                     <AntdRate
-                      data-plasmic-name={"rate25"}
-                      data-plasmic-override={overrides.rate25}
+                      data-plasmic-name={"rateTechnical"}
+                      data-plasmic-override={overrides.rateTechnical}
                       allowHalf={true}
-                      className={classNames("__wab_instance", sty.rate25)}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.rateTechnical
+                      )}
                       onChange={async (...eventArgs: any) => {
                         generateStateOnChangeProp($state, [
-                          "rate25",
+                          "rateTechnical",
                           "value"
                         ]).apply(null, eventArgs);
                       }}
@@ -1475,7 +1511,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                         </React.Fragment>
                       }
                       value={generateStateValueProp($state, [
-                        "rate25",
+                        "rateTechnical",
                         "value"
                       ])}
                     />
@@ -1509,16 +1545,16 @@ function PlasmicARatingMembers__RenderFunc(props: {
                   }
                 </div>
                 <AntdRate
-                  data-plasmic-name={"rate6"}
-                  data-plasmic-override={overrides.rate6}
+                  data-plasmic-name={"rating"}
+                  data-plasmic-override={overrides.rating}
                   allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate6)}
+                  className={classNames("__wab_instance", sty.rating)}
                   disabled={true}
                   onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, ["rate6", "value"]).apply(
-                      null,
-                      eventArgs
-                    );
+                    generateStateOnChangeProp($state, [
+                      "rating",
+                      "value"
+                    ]).apply(null, eventArgs);
                   }}
                   symbols={
                     <React.Fragment>
@@ -1569,7 +1605,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                       </div>
                     </React.Fragment>
                   }
-                  value={generateStateValueProp($state, ["rate6", "value"])}
+                  value={generateStateValueProp($state, ["rating", "value"])}
                 />
               </div>
             </div>
@@ -2854,14 +2890,26 @@ const PlasmicDescendants = {
     "account",
     "button",
     "container1",
-    "rating",
+    "profilePic",
+    "communityLogo",
+    "firstName",
+    "lastName",
+    "birthday",
+    "location",
+    "charge2",
+    "linkedIn",
+    "instagram",
+    "x",
+    "rateThisMember",
     "modal",
-    "rate4",
-    "textArea2",
+    "rateEthics",
+    "comment",
+    "confirmRate",
     "modal2",
-    "rate25",
-    "textArea3",
-    "rate6",
+    "rateTechnical",
+    "comment2",
+    "confirmRate2",
+    "rating",
     "rate7",
     "rate8",
     "rate9",
@@ -2885,24 +2933,50 @@ const PlasmicDescendants = {
   navigationBar: ["navigationBar"],
   account: ["account", "button"],
   button: ["button"],
-  container1: ["container1"],
-  rating: [
-    "rating",
-    "modal",
-    "rate4",
-    "textArea2",
-    "modal2",
-    "rate25",
-    "textArea3",
-    "rate6"
+  container1: [
+    "container1",
+    "profilePic",
+    "communityLogo",
+    "firstName",
+    "lastName",
+    "birthday",
+    "location",
+    "charge2",
+    "linkedIn",
+    "instagram",
+    "x"
   ],
-  modal: ["modal", "rate4", "textArea2"],
-  rate4: ["rate4"],
-  textArea2: ["textArea2"],
-  modal2: ["modal2", "rate25", "textArea3"],
-  rate25: ["rate25"],
-  textArea3: ["textArea3"],
-  rate6: ["rate6"],
+  profilePic: ["profilePic"],
+  communityLogo: ["communityLogo"],
+  firstName: ["firstName"],
+  lastName: ["lastName"],
+  birthday: ["birthday"],
+  location: ["location"],
+  charge2: ["charge2"],
+  linkedIn: ["linkedIn"],
+  instagram: ["instagram"],
+  x: ["x"],
+  rateThisMember: [
+    "rateThisMember",
+    "modal",
+    "rateEthics",
+    "comment",
+    "confirmRate",
+    "modal2",
+    "rateTechnical",
+    "comment2",
+    "confirmRate2",
+    "rating"
+  ],
+  modal: ["modal", "rateEthics", "comment", "confirmRate"],
+  rateEthics: ["rateEthics"],
+  comment: ["comment"],
+  confirmRate: ["confirmRate"],
+  modal2: ["modal2", "rateTechnical", "comment2", "confirmRate2"],
+  rateTechnical: ["rateTechnical"],
+  comment2: ["comment2"],
+  confirmRate2: ["confirmRate2"],
+  rating: ["rating"],
   rate7: ["rate7"],
   rate8: ["rate8"],
   rate9: ["rate9"],
@@ -2932,14 +3006,26 @@ type NodeDefaultElementType = {
   account: typeof AntdDropdown;
   button: typeof AntdButton;
   container1: "div";
-  rating: "div";
+  profilePic: typeof PlasmicImg__;
+  communityLogo: typeof PlasmicImg__;
+  firstName: "div";
+  lastName: "div";
+  birthday: "div";
+  location: "div";
+  charge2: "div";
+  linkedIn: "a";
+  instagram: "a";
+  x: "a";
+  rateThisMember: "div";
   modal: typeof Modal;
-  rate4: typeof AntdRate;
-  textArea2: typeof AntdTextArea;
+  rateEthics: typeof AntdRate;
+  comment: typeof AntdTextArea;
+  confirmRate: typeof Button2;
   modal2: typeof Modal;
-  rate25: typeof AntdRate;
-  textArea3: typeof AntdTextArea;
-  rate6: typeof AntdRate;
+  rateTechnical: typeof AntdRate;
+  comment2: typeof AntdTextArea;
+  confirmRate2: typeof Button2;
+  rating: typeof AntdRate;
   rate7: typeof AntdRate;
   rate8: typeof AntdRate;
   rate9: typeof AntdRate;
@@ -3027,14 +3113,26 @@ export const PlasmicARatingMembers = Object.assign(
     account: makeNodeComponent("account"),
     button: makeNodeComponent("button"),
     container1: makeNodeComponent("container1"),
-    rating: makeNodeComponent("rating"),
+    profilePic: makeNodeComponent("profilePic"),
+    communityLogo: makeNodeComponent("communityLogo"),
+    firstName: makeNodeComponent("firstName"),
+    lastName: makeNodeComponent("lastName"),
+    birthday: makeNodeComponent("birthday"),
+    location: makeNodeComponent("location"),
+    charge2: makeNodeComponent("charge2"),
+    linkedIn: makeNodeComponent("linkedIn"),
+    instagram: makeNodeComponent("instagram"),
+    x: makeNodeComponent("x"),
+    rateThisMember: makeNodeComponent("rateThisMember"),
     modal: makeNodeComponent("modal"),
-    rate4: makeNodeComponent("rate4"),
-    textArea2: makeNodeComponent("textArea2"),
+    rateEthics: makeNodeComponent("rateEthics"),
+    comment: makeNodeComponent("comment"),
+    confirmRate: makeNodeComponent("confirmRate"),
     modal2: makeNodeComponent("modal2"),
-    rate25: makeNodeComponent("rate25"),
-    textArea3: makeNodeComponent("textArea3"),
-    rate6: makeNodeComponent("rate6"),
+    rateTechnical: makeNodeComponent("rateTechnical"),
+    comment2: makeNodeComponent("comment2"),
+    confirmRate2: makeNodeComponent("confirmRate2"),
+    rating: makeNodeComponent("rating"),
     rate7: makeNodeComponent("rate7"),
     rate8: makeNodeComponent("rate8"),
     rate9: makeNodeComponent("rate9"),

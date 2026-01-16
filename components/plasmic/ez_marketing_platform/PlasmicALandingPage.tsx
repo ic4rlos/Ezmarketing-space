@@ -1,4 +1,3 @@
-export const dynamic = "force-dynamic";
 /* eslint-disable */
 /* tslint:disable */
 // @ts-nocheck
@@ -229,7 +228,7 @@ function PlasmicALandingPage__RenderFunc(props: {
         />
         <meta
           key="twitter:title"
-          name="twitter:title"
+          property="twitter:title"
           content={PlasmicALandingPage.pageMetadata.title}
         />
       </Head>
@@ -2298,7 +2297,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       () =>
         deriveRenderOpts(props, {
           name: nodeName,
-          descendantNames: [...PlasmicDescendants[nodeName]],
+          descendantNames: PlasmicDescendants[nodeName],
           internalArgPropNames: PlasmicALandingPage__ArgProps,
           internalVariantPropNames: PlasmicALandingPage__VariantProps
         }),

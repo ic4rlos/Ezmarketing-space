@@ -198,7 +198,7 @@ function PlasmicLAResetPassword__RenderFunc(props: {
         />
         <meta
           key="twitter:title"
-          name="twitter:title"
+          property="twitter:title"
           content={PlasmicLAResetPassword.pageMetadata.title}
         />
       </Head>

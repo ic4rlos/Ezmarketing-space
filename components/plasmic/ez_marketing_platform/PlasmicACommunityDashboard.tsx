@@ -121,53 +121,106 @@ export type PlasmicACommunityDashboard__OverridesType = {
   button?: Flex__<typeof AntdButton>;
   container1?: Flex__<"div">;
   htmlVideo?: Flex__<typeof Video>;
-  modal?: Flex__<typeof Modal>;
+  goalsSum?: Flex__<"div">;
+  youtubeChannel?: Flex__<"a"> & Partial<LinkProps>;
+  x?: Flex__<"a"> & Partial<LinkProps>;
+  tiktok?: Flex__<"a"> & Partial<LinkProps>;
+  instagram?: Flex__<"a"> & Partial<LinkProps>;
+  quitCommunity?: Flex__<typeof Modal>;
+  confirmQuitCommunity?: Flex__<typeof Button2>;
+  communityLogo?: Flex__<typeof PlasmicImg__>;
+  type?: Flex__<"svg">;
+  communityName?: Flex__<"div">;
   modal2?: Flex__<typeof Modal>;
-  rate4?: Flex__<typeof AntdRate>;
+  communityRate?: Flex__<typeof AntdRate>;
   textArea2?: Flex__<typeof AntdTextArea>;
+  confirmCommunityRate?: Flex__<typeof Button2>;
+  rateSum?: Flex__<"div">;
   container3?: Flex__<"div">;
   membersCarousel?: Flex__<typeof SliderWrapper>;
+  member?: Flex__<"div">;
+  profilePic?: Flex__<typeof PlasmicImg__>;
+  office?: Flex__<"div">;
   container10?: Flex__<"div">;
   linkedCompanies?: Flex__<typeof Modal>;
-  communities25?: Flex__<"div">;
-  rate29?: Flex__<typeof AntdRate>;
+  connectedCompany?: Flex__<"div">;
+  companyLogo?: Flex__<typeof PlasmicImg__>;
+  companyName?: Flex__<"a"> & Partial<LinkProps>;
+  companyName2?: Flex__<"div">;
+  companyType?: Flex__<"div">;
+  averageRate?: Flex__<typeof AntdRate>;
+  rateSum2?: Flex__<"div">;
+  area?: Flex__<"div">;
+  subArea?: Flex__<"div">;
+  location?: Flex__<"div">;
   disconnectCompany?: Flex__<typeof Modal>;
-  communities26?: Flex__<"div">;
-  rate30?: Flex__<typeof AntdRate>;
-  disconnectCompany2?: Flex__<typeof Modal>;
-  communities27?: Flex__<"div">;
-  rate31?: Flex__<typeof AntdRate>;
-  disconnectCompany3?: Flex__<typeof Modal>;
-  communities29?: Flex__<"div">;
-  rate33?: Flex__<typeof AntdRate>;
+  confirmDisconnect?: Flex__<typeof Button2>;
+  requestCompany?: Flex__<"div">;
+  companyLogo2?: Flex__<typeof PlasmicImg__>;
+  companyName3?: Flex__<"a"> & Partial<LinkProps>;
+  companyName4?: Flex__<"div">;
+  companyType2?: Flex__<"div">;
+  averageRate2?: Flex__<typeof AntdRate>;
+  rateSum3?: Flex__<"div">;
+  area2?: Flex__<"div">;
+  subArea2?: Flex__<"div">;
+  location2?: Flex__<"div">;
   requestInf?: Flex__<typeof Modal>;
-  rate12?: Flex__<typeof AntdRate>;
+  companyLogo3?: Flex__<typeof PlasmicImg__>;
+  companyName5?: Flex__<"a"> & Partial<LinkProps>;
+  averageRate3?: Flex__<typeof AntdRate>;
+  shortMessage?: Flex__<"div">;
+  confirmConnection?: Flex__<typeof Button2>;
+  cancelConnection?: Flex__<typeof Button2>;
   linkedMembers?: Flex__<typeof Modal>;
-  communities28?: Flex__<"div">;
+  connectedMembers?: Flex__<"div">;
+  profilePic2?: Flex__<typeof PlasmicImg__>;
+  firstName?: Flex__<"a"> & Partial<LinkProps>;
+  firstName2?: Flex__<"div">;
+  lastName?: Flex__<"div">;
+  age?: Flex__<"div">;
+  location3?: Flex__<"div">;
+  office2?: Flex__<"div">;
   disconnectCompany4?: Flex__<typeof Modal>;
-  rate32?: Flex__<typeof AntdRate>;
-  communities31?: Flex__<"div">;
-  disconnectCompany5?: Flex__<typeof Modal>;
-  rate35?: Flex__<typeof AntdRate>;
-  communities32?: Flex__<"div">;
-  disconnectCompany6?: Flex__<typeof Modal>;
-  rate36?: Flex__<typeof AntdRate>;
-  communities30?: Flex__<"div">;
+  confirmDisconnection?: Flex__<typeof Button2>;
+  requestMember?: Flex__<"div">;
+  profilePic3?: Flex__<typeof PlasmicImg__>;
+  firstName3?: Flex__<"a"> & Partial<LinkProps>;
+  firstName4?: Flex__<"div">;
+  lastName2?: Flex__<"div">;
+  age2?: Flex__<"div">;
+  location4?: Flex__<"div">;
+  office3?: Flex__<"div">;
   requestInf2?: Flex__<typeof Modal>;
-  rate13?: Flex__<typeof AntdRate>;
-  rate34?: Flex__<typeof AntdRate>;
+  profilePic4?: Flex__<typeof PlasmicImg__>;
+  firstName5?: Flex__<"a"> & Partial<LinkProps>;
+  shortMessage2?: Flex__<"div">;
+  confirmConnection2?: Flex__<typeof Button2>;
   sliderCarousel2?: Flex__<typeof SliderWrapper>;
+  company?: Flex__<"div">;
+  companyLogo4?: Flex__<typeof PlasmicImg__>;
+  companyName6?: Flex__<"div">;
   countainer3?: Flex__<"div">;
-  rate25?: Flex__<typeof AntdRate>;
-  rate26?: Flex__<typeof AntdRate>;
-  rate27?: Flex__<typeof AntdRate>;
-  rate28?: Flex__<typeof AntdRate>;
+  communityReviews?: Flex__<"div">;
+  companyLogo5?: Flex__<typeof PlasmicImg__>;
+  companyName7?: Flex__<"a"> & Partial<LinkProps>;
+  communityName2?: Flex__<"a"> & Partial<LinkProps>;
+  comment?: Flex__<"div">;
+  rating?: Flex__<typeof AntdRate>;
   countainer4?: Flex__<"div">;
-  rate41?: Flex__<typeof AntdRate>;
-  rate42?: Flex__<typeof AntdRate>;
-  rate43?: Flex__<typeof AntdRate>;
+  communityReplies?: Flex__<"div">;
+  communityLogo2?: Flex__<typeof PlasmicImg__>;
+  communityName3?: Flex__<"a"> & Partial<LinkProps>;
+  companyName8?: Flex__<"a"> & Partial<LinkProps>;
+  comment2?: Flex__<"div">;
+  rating2?: Flex__<typeof AntdRate>;
   container6?: Flex__<"div">;
   sliderCarousel3?: Flex__<typeof SliderWrapper>;
+  memberTraining?: Flex__<"div">;
+  profilePic5?: Flex__<typeof PlasmicImg__>;
+  firstName6?: Flex__<"div">;
+  graduationYear?: Flex__<"div">;
+  university?: Flex__<"div">;
   container7?: Flex__<"div">;
   popover?: Flex__<typeof AntdPopover>;
   popover3?: Flex__<typeof AntdPopover>;
@@ -190,7 +243,9 @@ export type PlasmicACommunityDashboard__OverridesType = {
   popover19?: Flex__<typeof AntdPopover>;
   popover20?: Flex__<typeof AntdPopover>;
   container8?: Flex__<"div">;
-  youTube?: Flex__<typeof YouTube>;
+  youtubeVideo?: Flex__<typeof YouTube>;
+  about?: Flex__<"div">;
+  website?: Flex__<"a"> & Partial<LinkProps>;
 };
 
 export interface DefaultACommunityDashboardProps {}
@@ -300,43 +355,13 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
-        path: "rate25.value",
+        path: "rating2.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "rate41.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "rate26.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "rate27.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "rate28.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "rate42.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "rate43.value",
+        path: "rating.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
@@ -360,49 +385,19 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
-        path: "rate12.value",
+        path: "averageRate3.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 3.5
       },
       {
-        path: "rate29.value",
+        path: "averageRate.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 5
       },
       {
-        path: "rate30.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
-      },
-      {
-        path: "disconnectCompany2.isOpen",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
-      },
-      {
-        path: "rate31.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
-      },
-      {
-        path: "disconnectCompany3.isOpen",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
-      },
-      {
-        path: "rate33.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
-      },
-      {
-        path: "modal.isOpen",
+        path: "quitCommunity.isOpen",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
@@ -414,7 +409,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
-        path: "rate4.value",
+        path: "communityRate.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 4
@@ -444,48 +439,6 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
-      },
-      {
-        path: "rate13.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 3.5
-      },
-      {
-        path: "rate32.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
-      },
-      {
-        path: "rate34.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
-      },
-      {
-        path: "disconnectCompany5.isOpen",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
-      },
-      {
-        path: "rate35.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
-      },
-      {
-        path: "disconnectCompany6.isOpen",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
-      },
-      {
-        path: "rate36.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
       },
       {
         path: "popover7.open",
@@ -589,6 +542,12 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
               throw e;
             }
           })()
+      },
+      {
+        path: "averageRate2.value",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 5
       }
     ],
     [$props, $ctx, $refs]
@@ -618,7 +577,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
         />
         <meta
           key="twitter:title"
-          name="twitter:title"
+          property="twitter:title"
           content={PlasmicACommunityDashboard.pageMetadata.title}
         />
       </Head>
@@ -730,7 +689,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         sty.link__kEyj
                       )}
                       component={Link}
-                      href={`/community-dashboard`}
+                      href={`/a-community-dashboard`}
                       platform={"nextjs"}
                     >
                       {"Community Dashboard"}
@@ -743,7 +702,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         sty.link__ht1Kp
                       )}
                       component={Link}
-                      href={`/service-dashboard`}
+                      href={`/a-service-dashboard`}
                       platform={"nextjs"}
                     >
                       {"Service\nDashboard"}
@@ -768,7 +727,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         sty.link__v2T64
                       )}
                       component={Link}
-                      href={`/find-a-business`}
+                      href={`/a-find-a-business`}
                       platform={"nextjs"}
                     >
                       {"Find a \nbusiness"}
@@ -865,7 +824,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
 
                       $steps["goToAProfile"] = true
                         ? (() => {
-                            const actionArgs = { destination: `/profile` };
+                            const actionArgs = { destination: `/a-profile` };
                             return (({ destination }) => {
                               if (
                                 typeof destination === "string" &&
@@ -1073,10 +1032,12 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
               <div className={classNames(projectcss.all, sty.freeBox__yNzoo)}>
                 <div className={classNames(projectcss.all, sty.freeBox__kq3Qn)}>
                   <div
+                    data-plasmic-name={"goalsSum"}
+                    data-plasmic-override={overrides.goalsSum}
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__zViT
+                      sty.goalsSum
                     )}
                   >
                     {"80"}
@@ -1136,10 +1097,12 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     className={classNames(projectcss.all, sty.freeBox__lhXgO)}
                   >
                     <PlasmicLink__
+                      data-plasmic-name={"youtubeChannel"}
+                      data-plasmic-override={overrides.youtubeChannel}
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
-                        sty.link__qCmrP
+                        sty.youtubeChannel
                       )}
                       component={Link}
                       platform={"nextjs"}
@@ -1163,10 +1126,12 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     className={classNames(projectcss.all, sty.freeBox__au09)}
                   >
                     <PlasmicLink__
+                      data-plasmic-name={"x"}
+                      data-plasmic-override={overrides.x}
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
-                        sty.link__uN5Mu
+                        sty.x
                       )}
                       component={Link}
                       platform={"nextjs"}
@@ -1190,10 +1155,12 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     className={classNames(projectcss.all, sty.freeBox__qSEy)}
                   >
                     <PlasmicLink__
+                      data-plasmic-name={"tiktok"}
+                      data-plasmic-override={overrides.tiktok}
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
-                        sty.link__j75B9
+                        sty.tiktok
                       )}
                       component={Link}
                       platform={"nextjs"}
@@ -1217,10 +1184,12 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     className={classNames(projectcss.all, sty.freeBox__flD5Z)}
                   >
                     <PlasmicLink__
+                      data-plasmic-name={"instagram"}
+                      data-plasmic-override={overrides.instagram}
                       className={classNames(
                         projectcss.all,
                         projectcss.a,
-                        sty.link__hPlss
+                        sty.instagram
                       )}
                       component={Link}
                       platform={"nextjs"}
@@ -1278,7 +1247,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       sty.loginButton__oLuVd
                     )}
                     color={"softSand"}
-                    link={`/create-community`}
+                    link={`/a-create-community`}
                     shape={"sharp"}
                     size={"minimal"}
                   >
@@ -1293,9 +1262,9 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     </div>
                   </LoginButton>
                   <Modal
-                    data-plasmic-name={"modal"}
-                    data-plasmic-override={overrides.modal}
-                    className={classNames("__wab_instance", sty.modal)}
+                    data-plasmic-name={"quitCommunity"}
+                    data-plasmic-override={overrides.quitCommunity}
+                    className={classNames("__wab_instance", sty.quitCommunity)}
                     content={
                       <div
                         className={classNames(
@@ -1322,6 +1291,8 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         )}
                       >
                         <Button2
+                          data-plasmic-name={"confirmQuitCommunity"}
+                          data-plasmic-override={overrides.confirmQuitCommunity}
                           color={"muted"}
                           label={
                             <div
@@ -1342,7 +1313,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                   const actionArgs = {
                                     variable: {
                                       objRoot: $state,
-                                      variablePath: ["modal", "isOpen"]
+                                      variablePath: ["quitCommunity", "isOpen"]
                                     },
                                     operation: 0,
                                     value: false
@@ -1427,7 +1398,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                   const actionArgs = {
                                     variable: {
                                       objRoot: $state,
-                                      variablePath: ["modal", "isOpen"]
+                                      variablePath: ["quitCommunity", "isOpen"]
                                     },
                                     operation: 0,
                                     value: false
@@ -1474,10 +1445,13 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         {"Quit community"}
                       </h3>
                     }
-                    isOpen={generateStateValueProp($state, ["modal", "isOpen"])}
+                    isOpen={generateStateValueProp($state, [
+                      "quitCommunity",
+                      "isOpen"
+                    ])}
                     onOpenChange={async (...eventArgs: any) => {
                       generateStateOnChangeProp($state, [
-                        "modal",
+                        "quitCommunity",
                         "isOpen"
                       ]).apply(null, eventArgs);
 
@@ -1517,8 +1491,10 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
           </div>
           <div className={classNames(projectcss.all, sty.freeBox__qrx9W)}>
             <PlasmicImg__
+              data-plasmic-name={"communityLogo"}
+              data-plasmic-override={overrides.communityLogo}
               alt={""}
-              className={classNames(sty.img___2Rbvg)}
+              className={classNames(sty.communityLogo)}
               displayHeight={"170px"}
               displayMaxHeight={"none"}
               displayMaxWidth={"100%"}
@@ -1535,16 +1511,20 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
             />
 
             <SemTitulo1SvgIcon
-              className={classNames(projectcss.all, sty.svg__jMonI)}
+              data-plasmic-name={"type"}
+              data-plasmic-override={overrides.type}
+              className={classNames(projectcss.all, sty.type)}
               role={"img"}
             />
           </div>
         </div>
         <div
+          data-plasmic-name={"communityName"}
+          data-plasmic-override={overrides.communityName}
           className={classNames(
             projectcss.all,
             projectcss.__wab_text,
-            sty.text___1HQz
+            sty.communityName
           )}
         >
           {"Community"}
@@ -1605,6 +1585,8 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
           footer={
             <div className={classNames(projectcss.all, sty.freeBox__xjn94)}>
               <Button2
+                data-plasmic-name={"confirmCommunityRate"}
+                data-plasmic-override={overrides.confirmCommunityRate}
                 color={"muted"}
                 label={
                   <div
@@ -1668,16 +1650,16 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
           }}
           trigger={
             <AntdRate
-              data-plasmic-name={"rate4"}
-              data-plasmic-override={overrides.rate4}
+              data-plasmic-name={"communityRate"}
+              data-plasmic-override={overrides.communityRate}
               allowHalf={true}
-              className={classNames("__wab_instance", sty.rate4)}
+              className={classNames("__wab_instance", sty.communityRate)}
               defaultValue={4}
               onChange={async (...eventArgs: any) => {
-                generateStateOnChangeProp($state, ["rate4", "value"]).apply(
-                  null,
-                  eventArgs
-                );
+                generateStateOnChangeProp($state, [
+                  "communityRate",
+                  "value"
+                ]).apply(null, eventArgs);
               }}
               symbols={
                 <React.Fragment>
@@ -1728,16 +1710,18 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                   </div>
                 </React.Fragment>
               }
-              value={generateStateValueProp($state, ["rate4", "value"])}
+              value={generateStateValueProp($state, ["communityRate", "value"])}
             />
           }
         />
 
         <div
+          data-plasmic-name={"rateSum"}
+          data-plasmic-override={overrides.rateSum}
           className={classNames(
             projectcss.all,
             projectcss.__wab_text,
-            sty.text__uoLow
+            sty.rateSum
           )}
         >
           {"(50)"}
@@ -1790,1703 +1774,11 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                 data-plasmic-override={overrides.membersCarousel}
                 {...child$Props}
               >
-                <div className={classNames(projectcss.all, sty.freeBox__n2DYv)}>
-                  <div className={classNames(projectcss.all, sty.freeBox__qTc)}>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__dnCmm
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__irSgZ
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__bxkW1)}
-                      displayHeight={"250px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"200px"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToAProfile"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/profile` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToAProfile"] != null &&
-                          typeof $steps["goToAProfile"] === "object" &&
-                          typeof $steps["goToAProfile"].then === "function"
-                        ) {
-                          $steps["goToAProfile"] = await $steps["goToAProfile"];
-                        }
-                      }}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__kTsdp
-                    )}
-                  >
-                    {"COO/Managing Director"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__h0H59)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__dTe8G)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__y8Epy
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___8L29B
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__edDyH)}
-                      displayHeight={"250px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"200px"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToAProfile"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/profile` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToAProfile"] != null &&
-                          typeof $steps["goToAProfile"] === "object" &&
-                          typeof $steps["goToAProfile"].then === "function"
-                        ) {
-                          $steps["goToAProfile"] = await $steps["goToAProfile"];
-                        }
-                      }}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__vdiY
-                    )}
-                  >
-                    {"Account Manager"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__n4GEb)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__dpzFo)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__tltmu
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___59F
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__ggm4)}
-                      displayHeight={"250px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"200px"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToAProfile"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/profile` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToAProfile"] != null &&
-                          typeof $steps["goToAProfile"] === "object" &&
-                          typeof $steps["goToAProfile"].then === "function"
-                        ) {
-                          $steps["goToAProfile"] = await $steps["goToAProfile"];
-                        }
-                      }}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__hZPU
-                    )}
-                  >
-                    {"Client Services Director"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__dgbSh)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__g4SA)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__aiEoJ
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__xbMf2
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__siWzl)}
-                      displayHeight={"250px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"200px"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToAProfile"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/profile` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToAProfile"] != null &&
-                          typeof $steps["goToAProfile"] === "object" &&
-                          typeof $steps["goToAProfile"].then === "function"
-                        ) {
-                          $steps["goToAProfile"] = await $steps["goToAProfile"];
-                        }
-                      }}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__bpWy
-                    )}
-                  >
-                    {"Project Manager"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__bfpln)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__jsMd)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___2EdKd
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__maMqK
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img___6BjWj)}
-                      displayHeight={"250px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"200px"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToAProfile"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/profile` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToAProfile"] != null &&
-                          typeof $steps["goToAProfile"] === "object" &&
-                          typeof $steps["goToAProfile"].then === "function"
-                        ) {
-                          $steps["goToAProfile"] = await $steps["goToAProfile"];
-                        }
-                      }}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__bGeQy
-                    )}
-                  >
-                    {"Marketing Automation Specialist"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__yg7Hm)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___0Pw3C)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___4Oa2H
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__cz8Us
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img___5FNil)}
-                      displayHeight={"250px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"200px"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToAProfile"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/profile` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToAProfile"] != null &&
-                          typeof $steps["goToAProfile"] === "object" &&
-                          typeof $steps["goToAProfile"].then === "function"
-                        ) {
-                          $steps["goToAProfile"] = await $steps["goToAProfile"];
-                        }
-                      }}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__irrKm
-                    )}
-                  >
-                    {"Influencer Marketing Manager"}
-                  </div>
-                </div>
                 <div
-                  className={classNames(projectcss.all, sty.freeBox___2QnFk)}
+                  data-plasmic-name={"member"}
+                  data-plasmic-override={overrides.member}
+                  className={classNames(projectcss.all, sty.member)}
                 >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__a9Yvu)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__zVzJ
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__m2HwK
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__mUc4Z)}
-                      displayHeight={"250px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"200px"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToAProfile"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/profile` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToAProfile"] != null &&
-                          typeof $steps["goToAProfile"] === "object" &&
-                          typeof $steps["goToAProfile"].then === "function"
-                        ) {
-                          $steps["goToAProfile"] = await $steps["goToAProfile"];
-                        }
-                      }}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___614Qh
-                    )}
-                  >
-                    {"Social Media Manager"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__eRyZq)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__vZttM)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__u1J5W
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__mvmI
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__ypSl)}
-                      displayHeight={"250px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"200px"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToAProfile"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/profile` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToAProfile"] != null &&
-                          typeof $steps["goToAProfile"] === "object" &&
-                          typeof $steps["goToAProfile"].then === "function"
-                        ) {
-                          $steps["goToAProfile"] = await $steps["goToAProfile"];
-                        }
-                      }}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__pxDgx
-                    )}
-                  >
-                    {"Copywriter"}
-                  </div>
-                </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___4Aj8S)}
-                >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__bFc3H)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__itc1E
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___4HLes
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__hofI)}
-                      displayHeight={"250px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"200px"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToAProfile"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/profile` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToAProfile"] != null &&
-                          typeof $steps["goToAProfile"] === "object" &&
-                          typeof $steps["goToAProfile"].then === "function"
-                        ) {
-                          $steps["goToAProfile"] = await $steps["goToAProfile"];
-                        }
-                      }}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___0HVmh
-                    )}
-                  >
-                    {"Videographer"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__zCi78)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__ph3Ox)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__bvfSv
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__raH6F
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img___6XBw3)}
-                      displayHeight={"250px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"200px"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToAProfile"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/profile` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToAProfile"] != null &&
-                          typeof $steps["goToAProfile"] === "object" &&
-                          typeof $steps["goToAProfile"].then === "function"
-                        ) {
-                          $steps["goToAProfile"] = await $steps["goToAProfile"];
-                        }
-                      }}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__mWOje
-                    )}
-                  >
-                    {"Content Strategist"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__hnTm1)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__yIYlU)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__nQrts
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__iDMsO
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__dfj74)}
-                      displayHeight={"250px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"200px"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToAProfile"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/profile` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToAProfile"] != null &&
-                          typeof $steps["goToAProfile"] === "object" &&
-                          typeof $steps["goToAProfile"].then === "function"
-                        ) {
-                          $steps["goToAProfile"] = await $steps["goToAProfile"];
-                        }
-                      }}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___231Ku
-                    )}
-                  >
-                    {"Public Relations Specialist"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__atzVa)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__bwpi1)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__xrSmt
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__e0Ls
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__flKsy)}
-                      displayHeight={"250px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"200px"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToAProfile"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/profile` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToAProfile"] != null &&
-                          typeof $steps["goToAProfile"] === "object" &&
-                          typeof $steps["goToAProfile"].then === "function"
-                        ) {
-                          $steps["goToAProfile"] = await $steps["goToAProfile"];
-                        }
-                      }}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__tPryY
-                    )}
-                  >
-                    {"Creative Director"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__mNtz)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__wwj17)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__nn1K
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__rkza
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__aFqma)}
-                      displayHeight={"250px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"200px"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToAProfile"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/profile` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToAProfile"] != null &&
-                          typeof $steps["goToAProfile"] === "object" &&
-                          typeof $steps["goToAProfile"].then === "function"
-                        ) {
-                          $steps["goToAProfile"] = await $steps["goToAProfile"];
-                        }
-                      }}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__llvQ2
-                    )}
-                  >
-                    {"Art Director"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__e20Ul)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__r5Se)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__dpxRn
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__mAgM2
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img___7KWl)}
-                      displayHeight={"250px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"200px"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToAProfile"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/profile` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToAProfile"] != null &&
-                          typeof $steps["goToAProfile"] === "object" &&
-                          typeof $steps["goToAProfile"].then === "function"
-                        ) {
-                          $steps["goToAProfile"] = await $steps["goToAProfile"];
-                        }
-                      }}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__bKwrz
-                    )}
-                  >
-                    {"Graphic Designer"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__v9WDv)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__zkkHy)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__hAZy2
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__vyfb2
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img___0Ifj7)}
-                      displayHeight={"250px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"200px"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToAProfile"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/profile` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToAProfile"] != null &&
-                          typeof $steps["goToAProfile"] === "object" &&
-                          typeof $steps["goToAProfile"].then === "function"
-                        ) {
-                          $steps["goToAProfile"] = await $steps["goToAProfile"];
-                        }
-                      }}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__bsV63
-                    )}
-                  >
-                    {"Brand Strategist"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__aq3VC)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__k3TxH)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___4YV0W
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__luxyy
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img___8Pt0M)}
-                      displayHeight={"250px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"200px"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToAProfile"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/profile` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToAProfile"] != null &&
-                          typeof $steps["goToAProfile"] === "object" &&
-                          typeof $steps["goToAProfile"].then === "function"
-                        ) {
-                          $steps["goToAProfile"] = await $steps["goToAProfile"];
-                        }
-                      }}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__bPeyZ
-                    )}
-                  >
-                    {"Marketing Analyst"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__hcuii)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___13CXo)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__kcDef
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__ryq2O
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__h0GgX)}
-                      displayHeight={"250px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"200px"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToAProfile"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/profile` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToAProfile"] != null &&
-                          typeof $steps["goToAProfile"] === "object" &&
-                          typeof $steps["goToAProfile"].then === "function"
-                        ) {
-                          $steps["goToAProfile"] = await $steps["goToAProfile"];
-                        }
-                      }}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___0LnbH
-                    )}
-                  >
-                    {"SEO Specialist"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__etRjF)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__jjSs6)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__mL04Q
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__gTjv
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__trBtA)}
-                      displayHeight={"250px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"200px"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToAProfile"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/profile` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToAProfile"] != null &&
-                          typeof $steps["goToAProfile"] === "object" &&
-                          typeof $steps["goToAProfile"].then === "function"
-                        ) {
-                          $steps["goToAProfile"] = await $steps["goToAProfile"];
-                        }
-                      }}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__meBmw
-                    )}
-                  >
-                    {"PPC Specialist"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__l1Urt)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__qLcYj)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__wRUbx
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__kg9Kz
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__geHiy)}
-                      displayHeight={"250px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"200px"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToAProfile"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/profile` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToAProfile"] != null &&
-                          typeof $steps["goToAProfile"] === "object" &&
-                          typeof $steps["goToAProfile"].then === "function"
-                        ) {
-                          $steps["goToAProfile"] = await $steps["goToAProfile"];
-                        }
-                      }}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__aNzwb
-                    )}
-                  >
-                    {"Business Development Manager"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__xMaAu)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__pmv3T)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__bsGqw
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___8IcNj
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__kqbGx)}
-                      displayHeight={"250px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"200px"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToAProfile"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/profile` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToAProfile"] != null &&
-                          typeof $steps["goToAProfile"] === "object" &&
-                          typeof $steps["goToAProfile"].then === "function"
-                        ) {
-                          $steps["goToAProfile"] = await $steps["goToAProfile"];
-                        }
-                      }}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__ci3Wr
-                    )}
-                  >
-                    {"Marketing Coordinator"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__to1Ln)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__wo1Vg)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___8Cmh2
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___0MJyK
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__d8Qe)}
-                      displayHeight={"250px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"200px"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToAProfile"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/profile` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToAProfile"] != null &&
-                          typeof $steps["goToAProfile"] === "object" &&
-                          typeof $steps["goToAProfile"].then === "function"
-                        ) {
-                          $steps["goToAProfile"] = await $steps["goToAProfile"];
-                        }
-                      }}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___2MfdI
-                    )}
-                  >
-                    {"UX/UI Designer"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__r055X)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__jZ0X)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__dHtZq
-                      )}
-                    >
-                      {"Bacharel"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__tgkbQ
-                      )}
-                    >
-                      {"Gold"}
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__t4Vvn)}
-                      displayHeight={"250px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"200px"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToAProfile"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/profile` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToAProfile"] != null &&
-                          typeof $steps["goToAProfile"] === "object" &&
-                          typeof $steps["goToAProfile"].then === "function"
-                        ) {
-                          $steps["goToAProfile"] = await $steps["goToAProfile"];
-                        }
-                      }}
-                      src={{
-                        src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
-                        fullWidth: 2551,
-                        fullHeight: 2551,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__ovtnk
-                    )}
-                  >
-                    {"Digital Marketing Manager"}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__brTjR)}>
                   <div
                     className={classNames(projectcss.all, sty.freeBox__dqD88)}
                   >
@@ -3509,8 +1801,10 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       {"Gold"}
                     </div>
                     <PlasmicImg__
+                      data-plasmic-name={"profilePic"}
+                      data-plasmic-override={overrides.profilePic}
                       alt={""}
-                      className={classNames(sty.img__p2OLe)}
+                      className={classNames(sty.profilePic)}
                       displayHeight={"250px"}
                       displayMaxHeight={"none"}
                       displayMaxWidth={"100%"}
@@ -3522,7 +1816,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
 
                         $steps["goToAProfile"] = true
                           ? (() => {
-                              const actionArgs = { destination: `/profile` };
+                              const actionArgs = { destination: `/a-profile` };
                               return (({ destination }) => {
                                 if (
                                   typeof destination === "string" &&
@@ -3554,10 +1848,12 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     />
                   </div>
                   <div
+                    data-plasmic-name={"office"}
+                    data-plasmic-override={overrides.office}
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text___9CbCx
+                      sty.office
                     )}
                   >
                     {"Data Analyst"}
@@ -3580,16 +1876,18 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
               content={
                 <React.Fragment>
                   <div
-                    data-plasmic-name={"communities25"}
-                    data-plasmic-override={overrides.communities25}
-                    className={classNames(projectcss.all, sty.communities25)}
+                    data-plasmic-name={"connectedCompany"}
+                    data-plasmic-override={overrides.connectedCompany}
+                    className={classNames(projectcss.all, sty.connectedCompany)}
                   >
                     <div
                       className={classNames(projectcss.all, sty.freeBox__q4B9P)}
                     >
                       <PlasmicImg__
+                        data-plasmic-name={"companyLogo"}
+                        data-plasmic-override={overrides.companyLogo}
                         alt={""}
-                        className={classNames(sty.img__jsnsj)}
+                        className={classNames(sty.companyLogo)}
                         displayHeight={"30px"}
                         displayMaxHeight={"none"}
                         displayMaxWidth={"100%"}
@@ -3600,11 +1898,13 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       />
 
                       <PlasmicLink__
+                        data-plasmic-name={"companyName"}
+                        data-plasmic-override={overrides.companyName}
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
                           projectcss.__wab_text,
-                          sty.link___2RmVj
+                          sty.companyName
                         )}
                         component={Link}
                         href={`/a-rating-companies`}
@@ -3623,19 +1923,23 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         )}
                       >
                         <div
+                          data-plasmic-name={"companyName2"}
+                          data-plasmic-override={overrides.companyName2}
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__ab8V7
+                            sty.companyName2
                           )}
                         >
                           {"Company"}
                         </div>
                         <div
+                          data-plasmic-name={"companyType"}
+                          data-plasmic-override={overrides.companyType}
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text___2MYXb
+                            sty.companyType
                           )}
                         >
                           {"INC"}
@@ -3647,16 +1951,19 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                           )}
                         >
                           <AntdRate
-                            data-plasmic-name={"rate29"}
-                            data-plasmic-override={overrides.rate29}
+                            data-plasmic-name={"averageRate"}
+                            data-plasmic-override={overrides.averageRate}
                             allowHalf={true}
-                            className={classNames("__wab_instance", sty.rate29)}
+                            className={classNames(
+                              "__wab_instance",
+                              sty.averageRate
+                            )}
                             defaultValue={5}
                             disabled={true}
                             multiCharacter={false}
                             onChange={async (...eventArgs: any) => {
                               generateStateOnChangeProp($state, [
-                                "rate29",
+                                "averageRate",
                                 "value"
                               ]).apply(null, eventArgs);
                             }}
@@ -3710,16 +2017,18 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                               </React.Fragment>
                             }
                             value={generateStateValueProp($state, [
-                              "rate29",
+                              "averageRate",
                               "value"
                             ])}
                           />
 
                           <div
+                            data-plasmic-name={"rateSum2"}
+                            data-plasmic-override={overrides.rateSum2}
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text__mKwPt
+                              sty.rateSum2
                             )}
                           >
                             {"(50)"}
@@ -3733,29 +2042,35 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         )}
                       >
                         <div
+                          data-plasmic-name={"area"}
+                          data-plasmic-override={overrides.area}
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__mzQ0I
+                            sty.area
                           )}
                         >
                           {"Niche"}
                         </div>
                         <div
+                          data-plasmic-name={"subArea"}
+                          data-plasmic-override={overrides.subArea}
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__heQwi
+                            sty.subArea
                           )}
                         >
                           {"Subniche"}
                         </div>
                       </div>
                       <div
+                        data-plasmic-name={"location"}
+                        data-plasmic-override={overrides.location}
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__o0Um
+                          sty.location
                         )}
                       >
                         {"New York"}
@@ -3964,6 +2279,10 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                             )}
                           >
                             <Button2
+                              data-plasmic-name={"confirmDisconnect"}
+                              data-plasmic-override={
+                                overrides.confirmDisconnect
+                              }
                               color={"muted"}
                               label={
                                 <div
@@ -4145,1141 +2464,6 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       />
                     </div>
                   </div>
-                  <div
-                    data-plasmic-name={"communities26"}
-                    data-plasmic-override={overrides.communities26}
-                    className={classNames(projectcss.all, sty.communities26)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__wjRLv)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__oVugc)}
-                        displayHeight={"30px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"30px"}
-                        loading={"lazy"}
-                      />
-
-                      <PlasmicLink__
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.a,
-                          projectcss.__wab_text,
-                          sty.link___1MF
-                        )}
-                        component={Link}
-                        href={`/a-rating-companies`}
-                        platform={"nextjs"}
-                      >
-                        {"Company"}
-                      </PlasmicLink__>
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___2HsfQ
-                      )}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___0T1D
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__iCfOe
-                          )}
-                        >
-                          {"Company"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___1Fc9K
-                          )}
-                        >
-                          {"INC"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__fyKs6
-                          )}
-                        >
-                          <AntdRate
-                            data-plasmic-name={"rate30"}
-                            data-plasmic-override={overrides.rate30}
-                            allowHalf={true}
-                            className={classNames("__wab_instance", sty.rate30)}
-                            defaultValue={5}
-                            disabled={true}
-                            multiCharacter={false}
-                            onChange={async (...eventArgs: any) => {
-                              generateStateOnChangeProp($state, [
-                                "rate30",
-                                "value"
-                              ]).apply(null, eventArgs);
-                            }}
-                            symbols={
-                              <React.Fragment>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__ahQQw
-                                  )}
-                                >
-                                  {"1"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__dl2Mv
-                                  )}
-                                >
-                                  {"2"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text___7BxCx
-                                  )}
-                                >
-                                  {"3"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__zLyy3
-                                  )}
-                                >
-                                  {"4"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__ud1F
-                                  )}
-                                >
-                                  {"5"}
-                                </div>
-                              </React.Fragment>
-                            }
-                            value={generateStateValueProp($state, [
-                              "rate30",
-                              "value"
-                            ])}
-                          />
-
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__ulzh3
-                            )}
-                          >
-                            {"(50)"}
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__xztR
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___48H6T
-                          )}
-                        >
-                          {"Niche"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__diavw
-                          )}
-                        >
-                          {"Subniche"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__kaeWr
-                        )}
-                      >
-                        {"New York"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__wsAgA)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__zpR59
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___4CnYs
-                          )}
-                        >
-                          {"80"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__ruEmr
-                          )}
-                        >
-                          {"Goals achieved"}
-                        </div>
-                      </div>
-                      <Modal
-                        data-plasmic-name={"disconnectCompany2"}
-                        data-plasmic-override={overrides.disconnectCompany2}
-                        className={classNames(
-                          "__wab_instance",
-                          sty.disconnectCompany2
-                        )}
-                        content={
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__t7Xv
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__bljH2
-                              )}
-                            >
-                              {"Why do you want to leave this company?"}
-                            </div>
-                            <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton__cqeCi
-                              )}
-                              color={"softRed"}
-                              shape={"rounded"}
-                              size={"minimal"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text___4CRd0
-                                )}
-                              >
-                                <React.Fragment>
-                                  <span
-                                    className={
-                                      "plasmic_default__all plasmic_default__span"
-                                    }
-                                    style={{ color: "#000000" }}
-                                  >
-                                    {"Waste of customer"}
-                                  </span>
-                                </React.Fragment>
-                              </div>
-                            </LoginButton>
-                            <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton__jxygr
-                              )}
-                              color={"softRed"}
-                              shape={"rounded"}
-                              size={"minimal"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__si6Xi
-                                )}
-                              >
-                                <React.Fragment>
-                                  <span
-                                    className={
-                                      "plasmic_default__all plasmic_default__span"
-                                    }
-                                    style={{ color: "#000000" }}
-                                  >
-                                    {"Lack of professionalism"}
-                                  </span>
-                                </React.Fragment>
-                              </div>
-                            </LoginButton>
-                            <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton__ob6XK
-                              )}
-                              color={"softRed"}
-                              shape={"rounded"}
-                              size={"minimal"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text___4D6Jv
-                                )}
-                              >
-                                <React.Fragment>
-                                  <span
-                                    className={
-                                      "plasmic_default__all plasmic_default__span"
-                                    }
-                                    style={{ color: "#000000" }}
-                                  >
-                                    {"Unsatisfactory commission"}
-                                  </span>
-                                </React.Fragment>
-                              </div>
-                            </LoginButton>
-                            <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton__vhpsu
-                              )}
-                              color={"softRed"}
-                              shape={"rounded"}
-                              size={"minimal"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text___7YBc8
-                                )}
-                              >
-                                <React.Fragment>
-                                  <span
-                                    className={
-                                      "plasmic_default__all plasmic_default__span"
-                                    }
-                                    style={{ color: "#000000" }}
-                                  >
-                                    {
-                                      "Failure to meet proposal and market requirements"
-                                    }
-                                  </span>
-                                </React.Fragment>
-                              </div>
-                            </LoginButton>
-                            <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton__v1Kc
-                              )}
-                              color={"softRed"}
-                              shape={"rounded"}
-                              size={"minimal"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text___5XexF
-                                )}
-                              >
-                                <React.Fragment>
-                                  <span
-                                    className={
-                                      "plasmic_default__all plasmic_default__span"
-                                    }
-                                    style={{ color: "#000000" }}
-                                  >
-                                    {"No growth/business plan"}
-                                  </span>
-                                </React.Fragment>
-                              </div>
-                            </LoginButton>
-                          </div>
-                        }
-                        footer={
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__rwH80
-                            )}
-                          >
-                            <Button2
-                              color={"muted"}
-                              label={
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__h3Rym
-                                  )}
-                                >
-                                  {"Confirm"}
-                                </div>
-                              }
-                              onClick={async event => {
-                                const $steps = {};
-
-                                $steps["updateDisconnectCompanyIsOpen"] = true
-                                  ? (() => {
-                                      const actionArgs = {
-                                        variable: {
-                                          objRoot: $state,
-                                          variablePath: [
-                                            "disconnectCompany2",
-                                            "isOpen"
-                                          ]
-                                        },
-                                        operation: 0,
-                                        value: false
-                                      };
-                                      return (({
-                                        variable,
-                                        value,
-                                        startIndex,
-                                        deleteCount
-                                      }) => {
-                                        if (!variable) {
-                                          return;
-                                        }
-                                        const { objRoot, variablePath } =
-                                          variable;
-
-                                        $stateSet(objRoot, variablePath, value);
-                                        return value;
-                                      })?.apply(null, [actionArgs]);
-                                    })()
-                                  : undefined;
-                                if (
-                                  $steps["updateDisconnectCompanyIsOpen"] !=
-                                    null &&
-                                  typeof $steps[
-                                    "updateDisconnectCompanyIsOpen"
-                                  ] === "object" &&
-                                  typeof $steps["updateDisconnectCompanyIsOpen"]
-                                    .then === "function"
-                                ) {
-                                  $steps["updateDisconnectCompanyIsOpen"] =
-                                    await $steps[
-                                      "updateDisconnectCompanyIsOpen"
-                                    ];
-                                }
-                              }}
-                              size={"extraSmall"}
-                              type={"soft"}
-                            />
-
-                            <Button2
-                              color={"muted"}
-                              label={
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__bKgSv
-                                  )}
-                                >
-                                  {"Cancel"}
-                                </div>
-                              }
-                              onClick={async event => {
-                                const $steps = {};
-
-                                $steps["updateDisconnectCompanyIsOpen"] = true
-                                  ? (() => {
-                                      const actionArgs = {
-                                        variable: {
-                                          objRoot: $state,
-                                          variablePath: [
-                                            "disconnectCompany2",
-                                            "isOpen"
-                                          ]
-                                        },
-                                        operation: 0,
-                                        value: false
-                                      };
-                                      return (({
-                                        variable,
-                                        value,
-                                        startIndex,
-                                        deleteCount
-                                      }) => {
-                                        if (!variable) {
-                                          return;
-                                        }
-                                        const { objRoot, variablePath } =
-                                          variable;
-
-                                        $stateSet(objRoot, variablePath, value);
-                                        return value;
-                                      })?.apply(null, [actionArgs]);
-                                    })()
-                                  : undefined;
-                                if (
-                                  $steps["updateDisconnectCompanyIsOpen"] !=
-                                    null &&
-                                  typeof $steps[
-                                    "updateDisconnectCompanyIsOpen"
-                                  ] === "object" &&
-                                  typeof $steps["updateDisconnectCompanyIsOpen"]
-                                    .then === "function"
-                                ) {
-                                  $steps["updateDisconnectCompanyIsOpen"] =
-                                    await $steps[
-                                      "updateDisconnectCompanyIsOpen"
-                                    ];
-                                }
-                              }}
-                              size={"extraSmall"}
-                              type={"soft"}
-                            />
-                          </div>
-                        }
-                        heading={
-                          <h3
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.h3,
-                              projectcss.__wab_text,
-                              sty.h3__ua9U5
-                            )}
-                          >
-                            {"disconnect"}
-                          </h3>
-                        }
-                        isOpen={generateStateValueProp($state, [
-                          "disconnectCompany2",
-                          "isOpen"
-                        ])}
-                        onOpenChange={async (...eventArgs: any) => {
-                          generateStateOnChangeProp($state, [
-                            "disconnectCompany2",
-                            "isOpen"
-                          ]).apply(null, eventArgs);
-
-                          if (
-                            eventArgs.length > 1 &&
-                            eventArgs[1] &&
-                            eventArgs[1]._plasmic_state_init_
-                          ) {
-                            return;
-                          }
-                        }}
-                        trigger={
-                          <LoginButton
-                            className={classNames(
-                              "__wab_instance",
-                              sty.loginButton__mH05C
-                            )}
-                            color={"link"}
-                            size={"minimal"}
-                          >
-                            <ReportSvgrepoComSvgIcon
-                              className={classNames(
-                                projectcss.all,
-                                sty.svg__dr713
-                              )}
-                              role={"img"}
-                            />
-                          </LoginButton>
-                        }
-                      />
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"communities27"}
-                    data-plasmic-override={overrides.communities27}
-                    className={classNames(projectcss.all, sty.communities27)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__fgxOd)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__lySwJ)}
-                        displayHeight={"30px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"30px"}
-                        loading={"lazy"}
-                      />
-
-                      <PlasmicLink__
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.a,
-                          projectcss.__wab_text,
-                          sty.link__nh2Ei
-                        )}
-                        component={Link}
-                        href={`/a-rating-companies`}
-                        platform={"nextjs"}
-                      >
-                        {"Company"}
-                      </PlasmicLink__>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__jMmgf)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___01Kl
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__isRqW
-                          )}
-                        >
-                          {"Company"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__vUrbN
-                          )}
-                        >
-                          {"INC"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__d3Fwt
-                          )}
-                        >
-                          <AntdRate
-                            data-plasmic-name={"rate31"}
-                            data-plasmic-override={overrides.rate31}
-                            allowHalf={true}
-                            className={classNames("__wab_instance", sty.rate31)}
-                            defaultValue={5}
-                            disabled={true}
-                            multiCharacter={false}
-                            onChange={async (...eventArgs: any) => {
-                              generateStateOnChangeProp($state, [
-                                "rate31",
-                                "value"
-                              ]).apply(null, eventArgs);
-                            }}
-                            symbols={
-                              <React.Fragment>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__cvBgZ
-                                  )}
-                                >
-                                  {"1"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__cF3DJ
-                                  )}
-                                >
-                                  {"2"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__vxjBw
-                                  )}
-                                >
-                                  {"3"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__gnVB
-                                  )}
-                                >
-                                  {"4"}
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__j73As
-                                  )}
-                                >
-                                  {"5"}
-                                </div>
-                              </React.Fragment>
-                            }
-                            value={generateStateValueProp($state, [
-                              "rate31",
-                              "value"
-                            ])}
-                          />
-
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__pQyb1
-                            )}
-                          >
-                            {"(50)"}
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__yCws2
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__xrMy
-                          )}
-                        >
-                          {"Niche"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__w61We
-                          )}
-                        >
-                          {"Subniche"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___0GlKp
-                        )}
-                      >
-                        {"New York"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__rtFQ)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___5PH6G
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__yWkmZ
-                          )}
-                        >
-                          {"80"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__xVpY4
-                          )}
-                        >
-                          {"Goals achieved"}
-                        </div>
-                      </div>
-                      <Modal
-                        data-plasmic-name={"disconnectCompany3"}
-                        data-plasmic-override={overrides.disconnectCompany3}
-                        className={classNames(
-                          "__wab_instance",
-                          sty.disconnectCompany3
-                        )}
-                        content={
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox___8UOqo
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__tMeu8
-                              )}
-                            >
-                              {"Why do you want to leave this company?"}
-                            </div>
-                            <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton__pEbTz
-                              )}
-                              color={"softRed"}
-                              shape={"rounded"}
-                              size={"minimal"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__halLg
-                                )}
-                              >
-                                <React.Fragment>
-                                  <span
-                                    className={
-                                      "plasmic_default__all plasmic_default__span"
-                                    }
-                                    style={{ color: "#000000" }}
-                                  >
-                                    {"Waste of customer"}
-                                  </span>
-                                </React.Fragment>
-                              </div>
-                            </LoginButton>
-                            <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton__gRiaC
-                              )}
-                              color={"softRed"}
-                              shape={"rounded"}
-                              size={"minimal"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__a7I1T
-                                )}
-                              >
-                                <React.Fragment>
-                                  <span
-                                    className={
-                                      "plasmic_default__all plasmic_default__span"
-                                    }
-                                    style={{ color: "#000000" }}
-                                  >
-                                    {"Lack of professionalism"}
-                                  </span>
-                                </React.Fragment>
-                              </div>
-                            </LoginButton>
-                            <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton___9Jsf
-                              )}
-                              color={"softRed"}
-                              shape={"rounded"}
-                              size={"minimal"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__jFbLn
-                                )}
-                              >
-                                <React.Fragment>
-                                  <span
-                                    className={
-                                      "plasmic_default__all plasmic_default__span"
-                                    }
-                                    style={{ color: "#000000" }}
-                                  >
-                                    {"Unsatisfactory commission"}
-                                  </span>
-                                </React.Fragment>
-                              </div>
-                            </LoginButton>
-                            <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton__uoAq
-                              )}
-                              color={"softRed"}
-                              shape={"rounded"}
-                              size={"minimal"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__dgSjt
-                                )}
-                              >
-                                <React.Fragment>
-                                  <span
-                                    className={
-                                      "plasmic_default__all plasmic_default__span"
-                                    }
-                                    style={{ color: "#000000" }}
-                                  >
-                                    {
-                                      "Failure to meet proposal and market requirements"
-                                    }
-                                  </span>
-                                </React.Fragment>
-                              </div>
-                            </LoginButton>
-                            <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton___2Wen4
-                              )}
-                              color={"softRed"}
-                              shape={"rounded"}
-                              size={"minimal"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__i7VMx
-                                )}
-                              >
-                                <React.Fragment>
-                                  <span
-                                    className={
-                                      "plasmic_default__all plasmic_default__span"
-                                    }
-                                    style={{ color: "#000000" }}
-                                  >
-                                    {"No growth/business plan"}
-                                  </span>
-                                </React.Fragment>
-                              </div>
-                            </LoginButton>
-                          </div>
-                        }
-                        footer={
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__icErI
-                            )}
-                          >
-                            <Button2
-                              color={"muted"}
-                              label={
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__rydL1
-                                  )}
-                                >
-                                  {"Confirm"}
-                                </div>
-                              }
-                              onClick={async event => {
-                                const $steps = {};
-
-                                $steps["updateDisconnectCompanyIsOpen"] = true
-                                  ? (() => {
-                                      const actionArgs = {
-                                        variable: {
-                                          objRoot: $state,
-                                          variablePath: [
-                                            "disconnectCompany3",
-                                            "isOpen"
-                                          ]
-                                        },
-                                        operation: 0,
-                                        value: false
-                                      };
-                                      return (({
-                                        variable,
-                                        value,
-                                        startIndex,
-                                        deleteCount
-                                      }) => {
-                                        if (!variable) {
-                                          return;
-                                        }
-                                        const { objRoot, variablePath } =
-                                          variable;
-
-                                        $stateSet(objRoot, variablePath, value);
-                                        return value;
-                                      })?.apply(null, [actionArgs]);
-                                    })()
-                                  : undefined;
-                                if (
-                                  $steps["updateDisconnectCompanyIsOpen"] !=
-                                    null &&
-                                  typeof $steps[
-                                    "updateDisconnectCompanyIsOpen"
-                                  ] === "object" &&
-                                  typeof $steps["updateDisconnectCompanyIsOpen"]
-                                    .then === "function"
-                                ) {
-                                  $steps["updateDisconnectCompanyIsOpen"] =
-                                    await $steps[
-                                      "updateDisconnectCompanyIsOpen"
-                                    ];
-                                }
-                              }}
-                              size={"extraSmall"}
-                              type={"soft"}
-                            />
-
-                            <Button2
-                              color={"muted"}
-                              label={
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__lfbaW
-                                  )}
-                                >
-                                  {"Cancel"}
-                                </div>
-                              }
-                              onClick={async event => {
-                                const $steps = {};
-
-                                $steps["updateDisconnectCompanyIsOpen"] = true
-                                  ? (() => {
-                                      const actionArgs = {
-                                        variable: {
-                                          objRoot: $state,
-                                          variablePath: [
-                                            "disconnectCompany3",
-                                            "isOpen"
-                                          ]
-                                        },
-                                        operation: 0,
-                                        value: false
-                                      };
-                                      return (({
-                                        variable,
-                                        value,
-                                        startIndex,
-                                        deleteCount
-                                      }) => {
-                                        if (!variable) {
-                                          return;
-                                        }
-                                        const { objRoot, variablePath } =
-                                          variable;
-
-                                        $stateSet(objRoot, variablePath, value);
-                                        return value;
-                                      })?.apply(null, [actionArgs]);
-                                    })()
-                                  : undefined;
-                                if (
-                                  $steps["updateDisconnectCompanyIsOpen"] !=
-                                    null &&
-                                  typeof $steps[
-                                    "updateDisconnectCompanyIsOpen"
-                                  ] === "object" &&
-                                  typeof $steps["updateDisconnectCompanyIsOpen"]
-                                    .then === "function"
-                                ) {
-                                  $steps["updateDisconnectCompanyIsOpen"] =
-                                    await $steps[
-                                      "updateDisconnectCompanyIsOpen"
-                                    ];
-                                }
-                              }}
-                              size={"extraSmall"}
-                              type={"soft"}
-                            />
-                          </div>
-                        }
-                        heading={
-                          <h3
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.h3,
-                              projectcss.__wab_text,
-                              sty.h3__jJ1E9
-                            )}
-                          >
-                            {"disconnect"}
-                          </h3>
-                        }
-                        isOpen={generateStateValueProp($state, [
-                          "disconnectCompany3",
-                          "isOpen"
-                        ])}
-                        onOpenChange={async (...eventArgs: any) => {
-                          generateStateOnChangeProp($state, [
-                            "disconnectCompany3",
-                            "isOpen"
-                          ]).apply(null, eventArgs);
-
-                          if (
-                            eventArgs.length > 1 &&
-                            eventArgs[1] &&
-                            eventArgs[1]._plasmic_state_init_
-                          ) {
-                            return;
-                          }
-                        }}
-                        trigger={
-                          <LoginButton
-                            className={classNames(
-                              "__wab_instance",
-                              sty.loginButton__vtCc3
-                            )}
-                            color={"link"}
-                            size={"minimal"}
-                          >
-                            <ReportSvgrepoComSvgIcon
-                              className={classNames(
-                                projectcss.all,
-                                sty.svg__eHnjf
-                              )}
-                              role={"img"}
-                            />
-                          </LoginButton>
-                        }
-                      />
-                    </div>
-                  </div>
                   <h3
                     className={classNames(
                       projectcss.all,
@@ -5291,16 +2475,21 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     {"Connection requests"}
                   </h3>
                   <div
-                    data-plasmic-name={"communities29"}
-                    data-plasmic-override={overrides.communities29}
-                    className={classNames(projectcss.all, sty.communities29)}
+                    data-plasmic-name={"requestCompany"}
+                    data-plasmic-override={overrides.requestCompany}
+                    className={classNames(projectcss.all, sty.requestCompany)}
                   >
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__oqaNt)}
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___0St3M
+                      )}
                     >
                       <PlasmicImg__
+                        data-plasmic-name={"companyLogo2"}
+                        data-plasmic-override={overrides.companyLogo2}
                         alt={""}
-                        className={classNames(sty.img__nabDs)}
+                        className={classNames(sty.companyLogo2)}
                         displayHeight={"30px"}
                         displayMaxHeight={"none"}
                         displayMaxWidth={"100%"}
@@ -5311,39 +2500,51 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       />
 
                       <PlasmicLink__
+                        data-plasmic-name={"companyName3"}
+                        data-plasmic-override={overrides.companyName3}
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
                           projectcss.__wab_text,
-                          sty.link__afCcj
+                          sty.companyName3
                         )}
                         component={Link}
-                        href={`/a-company-profile`}
+                        href={`/a-rating-companies`}
                         platform={"nextjs"}
                       >
                         {"Company"}
                       </PlasmicLink__>
                     </div>
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__ljOqq)}
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___7H8Wm
+                      )}
                     >
                       <div
-                        className={classNames(projectcss.all, sty.freeBox__yL9)}
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__kPvT8
+                        )}
                       >
                         <div
+                          data-plasmic-name={"companyName4"}
+                          data-plasmic-override={overrides.companyName4}
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__hDxvr
+                            sty.companyName4
                           )}
                         >
                           {"Company"}
                         </div>
                         <div
+                          data-plasmic-name={"companyType2"}
+                          data-plasmic-override={overrides.companyType2}
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text___94OEo
+                            sty.companyType2
                           )}
                         >
                           {"INC"}
@@ -5351,20 +2552,23 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         <div
                           className={classNames(
                             projectcss.all,
-                            sty.freeBox__oLSP
+                            sty.freeBox__ssmeT
                           )}
                         >
                           <AntdRate
-                            data-plasmic-name={"rate33"}
-                            data-plasmic-override={overrides.rate33}
+                            data-plasmic-name={"averageRate2"}
+                            data-plasmic-override={overrides.averageRate2}
                             allowHalf={true}
-                            className={classNames("__wab_instance", sty.rate33)}
+                            className={classNames(
+                              "__wab_instance",
+                              sty.averageRate2
+                            )}
                             defaultValue={5}
                             disabled={true}
                             multiCharacter={false}
                             onChange={async (...eventArgs: any) => {
                               generateStateOnChangeProp($state, [
-                                "rate33",
+                                "averageRate2",
                                 "value"
                               ]).apply(null, eventArgs);
                             }}
@@ -5374,7 +2578,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                   className={classNames(
                                     projectcss.all,
                                     projectcss.__wab_text,
-                                    sty.text___4UBqo
+                                    sty.text__biOpW
                                   )}
                                 >
                                   {"1"}
@@ -5383,7 +2587,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                   className={classNames(
                                     projectcss.all,
                                     projectcss.__wab_text,
-                                    sty.text__enw9D
+                                    sty.text__eadXa
                                   )}
                                 >
                                   {"2"}
@@ -5392,7 +2596,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                   className={classNames(
                                     projectcss.all,
                                     projectcss.__wab_text,
-                                    sty.text___2LVn
+                                    sty.text__zyUh8
                                   )}
                                 >
                                   {"3"}
@@ -5401,7 +2605,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                   className={classNames(
                                     projectcss.all,
                                     projectcss.__wab_text,
-                                    sty.text__zAoFk
+                                    sty.text__btp81
                                   )}
                                 >
                                   {"4"}
@@ -5410,7 +2614,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                   className={classNames(
                                     projectcss.all,
                                     projectcss.__wab_text,
-                                    sty.text__bfvgv
+                                    sty.text__vrd74
                                   )}
                                 >
                                   {"5"}
@@ -5418,16 +2622,18 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                               </React.Fragment>
                             }
                             value={generateStateValueProp($state, [
-                              "rate33",
+                              "averageRate2",
                               "value"
                             ])}
                           />
 
                           <div
+                            data-plasmic-name={"rateSum3"}
+                            data-plasmic-override={overrides.rateSum3}
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text___9Gbtt
+                              sty.rateSum3
                             )}
                           >
                             {"(50)"}
@@ -5437,52 +2643,58 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       <div
                         className={classNames(
                           projectcss.all,
-                          sty.freeBox__y9YeT
+                          sty.freeBox__uc9A4
                         )}
                       >
                         <div
+                          data-plasmic-name={"area2"}
+                          data-plasmic-override={overrides.area2}
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__jQspU
+                            sty.area2
                           )}
                         >
                           {"Niche"}
                         </div>
                         <div
+                          data-plasmic-name={"subArea2"}
+                          data-plasmic-override={overrides.subArea2}
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__oi24G
+                            sty.subArea2
                           )}
                         >
                           {"Subniche"}
                         </div>
                       </div>
                       <div
+                        data-plasmic-name={"location2"}
+                        data-plasmic-override={overrides.location2}
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__lg33Z
+                          sty.location2
                         )}
                       >
                         {"New York"}
                       </div>
                     </div>
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__gQbCx)}
+                      className={classNames(projectcss.all, sty.freeBox__amPml)}
                     >
                       <div
                         className={classNames(
                           projectcss.all,
-                          sty.freeBox__w8XWb
+                          sty.freeBox__nmNKi
                         )}
                       >
                         <div
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__cQhAg
+                            sty.text__wU0IR
                           )}
                         >
                           {"80"}
@@ -5491,7 +2703,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__dEj6N
+                            sty.text___1POxv
                           )}
                         >
                           {"Goals achieved"}
@@ -5530,8 +2742,10 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                 )}
                               >
                                 <PlasmicImg__
+                                  data-plasmic-name={"companyLogo3"}
+                                  data-plasmic-override={overrides.companyLogo3}
                                   alt={""}
-                                  className={classNames(sty.img__vqHkz)}
+                                  className={classNames(sty.companyLogo3)}
                                   displayHeight={"30px"}
                                   displayMaxHeight={"none"}
                                   displayMaxWidth={"100%"}
@@ -5542,11 +2756,13 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                 />
 
                                 <PlasmicLink__
+                                  data-plasmic-name={"companyName5"}
+                                  data-plasmic-override={overrides.companyName5}
                                   className={classNames(
                                     projectcss.all,
                                     projectcss.a,
                                     projectcss.__wab_text,
-                                    sty.link__w33Y
+                                    sty.companyName5
                                   )}
                                   component={Link}
                                   platform={"nextjs"}
@@ -5564,18 +2780,18 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                 </div>
                               </div>
                               <AntdRate
-                                data-plasmic-name={"rate12"}
-                                data-plasmic-override={overrides.rate12}
+                                data-plasmic-name={"averageRate3"}
+                                data-plasmic-override={overrides.averageRate3}
                                 allowHalf={true}
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.rate12
+                                  sty.averageRate3
                                 )}
                                 defaultValue={3.5}
                                 disabled={true}
                                 onChange={async (...eventArgs: any) => {
                                   generateStateOnChangeProp($state, [
-                                    "rate12",
+                                    "averageRate3",
                                     "value"
                                   ]).apply(null, eventArgs);
                                 }}
@@ -5629,16 +2845,18 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                   </React.Fragment>
                                 }
                                 value={generateStateValueProp($state, [
-                                  "rate12",
+                                  "averageRate3",
                                   "value"
                                 ])}
                               />
 
                               <div
+                                data-plasmic-name={"shortMessage"}
+                                data-plasmic-override={overrides.shortMessage}
                                 className={classNames(
                                   projectcss.all,
                                   projectcss.__wab_text,
-                                  sty.text__kJYa
+                                  sty.shortMessage
                                 )}
                               >
                                 {
@@ -5656,6 +2874,10 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                             )}
                           >
                             <Button2
+                              data-plasmic-name={"confirmConnection"}
+                              data-plasmic-override={
+                                overrides.confirmConnection
+                              }
                               color={"muted"}
                               label={
                                 <div
@@ -5714,6 +2936,8 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                             />
 
                             <Button2
+                              data-plasmic-name={"cancelConnection"}
+                              data-plasmic-override={overrides.cancelConnection}
                               color={"muted"}
                               label={
                                 <div
@@ -5944,16 +3168,18 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
               content={
                 <React.Fragment>
                   <div
-                    data-plasmic-name={"communities28"}
-                    data-plasmic-override={overrides.communities28}
-                    className={classNames(projectcss.all, sty.communities28)}
+                    data-plasmic-name={"connectedMembers"}
+                    data-plasmic-override={overrides.connectedMembers}
+                    className={classNames(projectcss.all, sty.connectedMembers)}
                   >
                     <div
                       className={classNames(projectcss.all, sty.freeBox__snNhj)}
                     >
                       <PlasmicImg__
+                        data-plasmic-name={"profilePic2"}
+                        data-plasmic-override={overrides.profilePic2}
                         alt={""}
-                        className={classNames(sty.img__cL6Ps)}
+                        className={classNames(sty.profilePic2)}
                         displayHeight={"30px"}
                         displayMaxHeight={"none"}
                         displayMaxWidth={"100%"}
@@ -5964,11 +3190,13 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       />
 
                       <PlasmicLink__
+                        data-plasmic-name={"firstName"}
+                        data-plasmic-override={overrides.firstName}
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
                           projectcss.__wab_text,
-                          sty.link__n0YiK
+                          sty.firstName
                         )}
                         component={Link}
                         href={`/a-rating-members`}
@@ -5987,19 +3215,23 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         )}
                       >
                         <div
+                          data-plasmic-name={"firstName2"}
+                          data-plasmic-override={overrides.firstName2}
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__oKx
+                            sty.firstName2
                           )}
                         >
                           {"Name"}
                         </div>
                         <div
+                          data-plasmic-name={"lastName"}
+                          data-plasmic-override={overrides.lastName}
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__htmLf
+                            sty.lastName
                           )}
                         >
                           {"Last Name"}
@@ -6012,10 +3244,12 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         )}
                       >
                         <div
+                          data-plasmic-name={"age"}
+                          data-plasmic-override={overrides.age}
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__x3HBn
+                            sty.age
                           )}
                         >
                           {"28"}
@@ -6031,20 +3265,24 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         </div>
                       </div>
                       <div
+                        data-plasmic-name={"location3"}
+                        data-plasmic-override={overrides.location3}
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text___3HGo
+                          sty.location3
                         )}
                       >
                         {"New York"}
                       </div>
                     </div>
                     <div
+                      data-plasmic-name={"office2"}
+                      data-plasmic-override={overrides.office2}
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text__jTxeZ
+                        sty.office2
                       )}
                     >
                       {"Charge"}
@@ -6282,6 +3520,10 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                           )}
                         >
                           <Button2
+                            data-plasmic-name={"confirmDisconnection"}
+                            data-plasmic-override={
+                              overrides.confirmDisconnection
+                            }
                             color={"muted"}
                             label={
                               <div
@@ -6479,1367 +3721,6 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       >
                         {"Gold"}
                       </div>
-                      <AntdRate
-                        data-plasmic-name={"rate32"}
-                        data-plasmic-override={overrides.rate32}
-                        allowHalf={true}
-                        className={classNames("__wab_instance", sty.rate32)}
-                        defaultValue={5}
-                        disabled={true}
-                        multiCharacter={false}
-                        onChange={async (...eventArgs: any) => {
-                          generateStateOnChangeProp($state, [
-                            "rate32",
-                            "value"
-                          ]).apply(null, eventArgs);
-                        }}
-                        symbols={
-                          <React.Fragment>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__sN4S
-                              )}
-                            >
-                              {"1"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__m1Kn9
-                              )}
-                            >
-                              {"2"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__bcWla
-                              )}
-                            >
-                              {"3"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__ph8Ve
-                              )}
-                            >
-                              {"4"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__opAys
-                              )}
-                            >
-                              {"5"}
-                            </div>
-                          </React.Fragment>
-                        }
-                        value={generateStateValueProp($state, [
-                          "rate32",
-                          "value"
-                        ])}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__smTNb
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__lfFx3
-                          )}
-                        >
-                          {"50"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___1Mhb4
-                          )}
-                        >
-                          {" reviews"}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"communities31"}
-                    data-plasmic-override={overrides.communities31}
-                    className={classNames(projectcss.all, sty.communities31)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__ngGE)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img___2BmFl)}
-                        displayHeight={"30px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"30px"}
-                        loading={"lazy"}
-                      />
-
-                      <PlasmicLink__
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.a,
-                          projectcss.__wab_text,
-                          sty.link__sS00R
-                        )}
-                        component={Link}
-                        href={`/a-rating-members`}
-                        platform={"nextjs"}
-                      >
-                        {"Member"}
-                      </PlasmicLink__>
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___5Vo0D
-                      )}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__a67O
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__oM42V
-                          )}
-                        >
-                          {"Name"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__hTe4U
-                          )}
-                        >
-                          {"Last Name"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__kK8B
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__zze8A
-                          )}
-                        >
-                          {"28"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___21Hva
-                          )}
-                        >
-                          {"years"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__rtDrQ
-                        )}
-                      >
-                        {"New York"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__fsv18
-                      )}
-                    >
-                      {"Charge"}
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__smBfh)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__krVSq
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__la7S9
-                          )}
-                        >
-                          {"Speciality"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__bKsxX
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__lzWva
-                          )}
-                        >
-                          {"Speciality"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___6TWq8
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___91V57
-                          )}
-                        >
-                          {"Speciality"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__rcZbQ
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__f4EH6
-                          )}
-                        >
-                          {"Speciality"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__iuOdm
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__jhWEb
-                          )}
-                        >
-                          {"Speciality"}
-                        </div>
-                      </div>
-                    </div>
-                    <Modal
-                      data-plasmic-name={"disconnectCompany5"}
-                      data-plasmic-override={overrides.disconnectCompany5}
-                      className={classNames(
-                        "__wab_instance",
-                        sty.disconnectCompany5
-                      )}
-                      content={
-                        <React.Fragment>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__yb0Zb
-                            )}
-                          >
-                            {"Why do you want to disconnect this member?"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__osJo
-                            )}
-                          >
-                            <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton__sAfi
-                              )}
-                              color={"softRed"}
-                              shape={"rounded"}
-                              size={"minimal"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__qgx8
-                                )}
-                              >
-                                <React.Fragment>
-                                  <span
-                                    className={
-                                      "plasmic_default__all plasmic_default__span"
-                                    }
-                                    style={{ color: "#000000" }}
-                                  >
-                                    {"Unmet performance expectations"}
-                                  </span>
-                                </React.Fragment>
-                              </div>
-                            </LoginButton>
-                            <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton__c0Lua
-                              )}
-                              color={"softRed"}
-                              shape={"rounded"}
-                              size={"minimal"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text___2UI1O
-                                )}
-                              >
-                                <React.Fragment>
-                                  <span
-                                    className={
-                                      "plasmic_default__all plasmic_default__span"
-                                    }
-                                    style={{ color: "#000000" }}
-                                  >
-                                    {"Lack of collaboration or teamwork"}
-                                  </span>
-                                </React.Fragment>
-                              </div>
-                            </LoginButton>
-                            <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton__jVv1N
-                              )}
-                              color={"softRed"}
-                              shape={"rounded"}
-                              size={"minimal"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__skGX
-                                )}
-                              >
-                                <React.Fragment>
-                                  <span
-                                    className={
-                                      "plasmic_default__all plasmic_default__span"
-                                    }
-                                    style={{ color: "#000000" }}
-                                  >
-                                    {
-                                      "Failure to meet deadlines or community goals"
-                                    }
-                                  </span>
-                                </React.Fragment>
-                              </div>
-                            </LoginButton>
-                            <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton__lq0Xp
-                              )}
-                              color={"softRed"}
-                              shape={"rounded"}
-                              size={"minimal"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text___1E0Bx
-                                )}
-                              >
-                                <React.Fragment>
-                                  <span
-                                    className={
-                                      "plasmic_default__all plasmic_default__span"
-                                    }
-                                    style={{ color: "#000000" }}
-                                  >
-                                    {"Loss of trust or ethical misalignment"}
-                                  </span>
-                                </React.Fragment>
-                              </div>
-                            </LoginButton>
-                          </div>
-                        </React.Fragment>
-                      }
-                      footer={
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__oQe46
-                          )}
-                        >
-                          <Button2
-                            color={"muted"}
-                            label={
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text___1Nnsd
-                                )}
-                              >
-                                {"Confirm"}
-                              </div>
-                            }
-                            onClick={async event => {
-                              const $steps = {};
-
-                              $steps["updateDisconnectCompanyIsOpen"] = true
-                                ? (() => {
-                                    const actionArgs = {
-                                      variable: {
-                                        objRoot: $state,
-                                        variablePath: [
-                                          "disconnectCompany5",
-                                          "isOpen"
-                                        ]
-                                      },
-                                      operation: 0,
-                                      value: false
-                                    };
-                                    return (({
-                                      variable,
-                                      value,
-                                      startIndex,
-                                      deleteCount
-                                    }) => {
-                                      if (!variable) {
-                                        return;
-                                      }
-                                      const { objRoot, variablePath } =
-                                        variable;
-
-                                      $stateSet(objRoot, variablePath, value);
-                                      return value;
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
-                              if (
-                                $steps["updateDisconnectCompanyIsOpen"] !=
-                                  null &&
-                                typeof $steps[
-                                  "updateDisconnectCompanyIsOpen"
-                                ] === "object" &&
-                                typeof $steps["updateDisconnectCompanyIsOpen"]
-                                  .then === "function"
-                              ) {
-                                $steps["updateDisconnectCompanyIsOpen"] =
-                                  await $steps["updateDisconnectCompanyIsOpen"];
-                              }
-                            }}
-                            size={"extraSmall"}
-                            type={"soft"}
-                          />
-
-                          <Button2
-                            color={"muted"}
-                            label={
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__xBuAf
-                                )}
-                              >
-                                {"Cancel"}
-                              </div>
-                            }
-                            onClick={async event => {
-                              const $steps = {};
-
-                              $steps["updateDisconnectCompanyIsOpen"] = true
-                                ? (() => {
-                                    const actionArgs = {
-                                      variable: {
-                                        objRoot: $state,
-                                        variablePath: [
-                                          "disconnectCompany5",
-                                          "isOpen"
-                                        ]
-                                      },
-                                      operation: 0,
-                                      value: false
-                                    };
-                                    return (({
-                                      variable,
-                                      value,
-                                      startIndex,
-                                      deleteCount
-                                    }) => {
-                                      if (!variable) {
-                                        return;
-                                      }
-                                      const { objRoot, variablePath } =
-                                        variable;
-
-                                      $stateSet(objRoot, variablePath, value);
-                                      return value;
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
-                              if (
-                                $steps["updateDisconnectCompanyIsOpen"] !=
-                                  null &&
-                                typeof $steps[
-                                  "updateDisconnectCompanyIsOpen"
-                                ] === "object" &&
-                                typeof $steps["updateDisconnectCompanyIsOpen"]
-                                  .then === "function"
-                              ) {
-                                $steps["updateDisconnectCompanyIsOpen"] =
-                                  await $steps["updateDisconnectCompanyIsOpen"];
-                              }
-                            }}
-                            size={"extraSmall"}
-                            type={"soft"}
-                          />
-                        </div>
-                      }
-                      heading={
-                        <h3
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.h3,
-                            projectcss.__wab_text,
-                            sty.h3__r6GDz
-                          )}
-                        >
-                          {"disconnect"}
-                        </h3>
-                      }
-                      isOpen={generateStateValueProp($state, [
-                        "disconnectCompany5",
-                        "isOpen"
-                      ])}
-                      onOpenChange={async (...eventArgs: any) => {
-                        generateStateOnChangeProp($state, [
-                          "disconnectCompany5",
-                          "isOpen"
-                        ]).apply(null, eventArgs);
-
-                        if (
-                          eventArgs.length > 1 &&
-                          eventArgs[1] &&
-                          eventArgs[1]._plasmic_state_init_
-                        ) {
-                          return;
-                        }
-                      }}
-                      trigger={
-                        <LoginButton
-                          className={classNames(
-                            "__wab_instance",
-                            sty.loginButton__tiRX
-                          )}
-                          color={"link"}
-                          size={"minimal"}
-                        >
-                          <ReportSvgrepoComSvgIcon
-                            className={classNames(
-                              projectcss.all,
-                              sty.svg__amiKu
-                            )}
-                            role={"img"}
-                          />
-                        </LoginButton>
-                      }
-                    />
-
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__dAjJl)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__xLipa
-                        )}
-                      >
-                        {"Bacharel"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__chRnm
-                        )}
-                      >
-                        {"Gold"}
-                      </div>
-                      <AntdRate
-                        data-plasmic-name={"rate35"}
-                        data-plasmic-override={overrides.rate35}
-                        allowHalf={true}
-                        className={classNames("__wab_instance", sty.rate35)}
-                        defaultValue={5}
-                        disabled={true}
-                        multiCharacter={false}
-                        onChange={async (...eventArgs: any) => {
-                          generateStateOnChangeProp($state, [
-                            "rate35",
-                            "value"
-                          ]).apply(null, eventArgs);
-                        }}
-                        symbols={
-                          <React.Fragment>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__lkx4X
-                              )}
-                            >
-                              {"1"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___499Er
-                              )}
-                            >
-                              {"2"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__ejbv2
-                              )}
-                            >
-                              {"3"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__gsqXo
-                              )}
-                            >
-                              {"4"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__defCf
-                              )}
-                            >
-                              {"5"}
-                            </div>
-                          </React.Fragment>
-                        }
-                        value={generateStateValueProp($state, [
-                          "rate35",
-                          "value"
-                        ])}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__pWkG
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___9D3Bv
-                          )}
-                        >
-                          {"50"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__viVwF
-                          )}
-                        >
-                          {" reviews"}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    data-plasmic-name={"communities32"}
-                    data-plasmic-override={overrides.communities32}
-                    className={classNames(projectcss.all, sty.communities32)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__muhyH)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__d41Om)}
-                        displayHeight={"30px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"30px"}
-                        loading={"lazy"}
-                      />
-
-                      <PlasmicLink__
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.a,
-                          projectcss.__wab_text,
-                          sty.link___3QmwP
-                        )}
-                        component={Link}
-                        href={`/a-rating-members`}
-                        platform={"nextjs"}
-                      >
-                        {"Member"}
-                      </PlasmicLink__>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__piTxq)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___2FLh6
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__ptKt
-                          )}
-                        >
-                          {"Name"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___8Uyvw
-                          )}
-                        >
-                          {"Last Name"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__wxqwj
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__wUeC
-                          )}
-                        >
-                          {"28"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___78D9S
-                          )}
-                        >
-                          {"years"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ar0X
-                        )}
-                      >
-                        {"New York"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__hFimI
-                      )}
-                    >
-                      {"Charge"}
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__w2WmJ)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___1L5N
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__e3KJ
-                          )}
-                        >
-                          {"Speciality"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__i155S
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__yrGvo
-                          )}
-                        >
-                          {"Speciality"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__uoMBk
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__pn6Ap
-                          )}
-                        >
-                          {"Speciality"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___9Ph39
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__uyDbI
-                          )}
-                        >
-                          {"Speciality"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__cm6I8
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__hf2Ge
-                          )}
-                        >
-                          {"Speciality"}
-                        </div>
-                      </div>
-                    </div>
-                    <Modal
-                      data-plasmic-name={"disconnectCompany6"}
-                      data-plasmic-override={overrides.disconnectCompany6}
-                      className={classNames(
-                        "__wab_instance",
-                        sty.disconnectCompany6
-                      )}
-                      content={
-                        <React.Fragment>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__wip7
-                            )}
-                          >
-                            {"Why do you want to disconnect this member?"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox___7ARWs
-                            )}
-                          >
-                            <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton__whz3L
-                              )}
-                              color={"softRed"}
-                              shape={"rounded"}
-                              size={"minimal"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__s7Ht5
-                                )}
-                              >
-                                <React.Fragment>
-                                  <span
-                                    className={
-                                      "plasmic_default__all plasmic_default__span"
-                                    }
-                                    style={{ color: "#000000" }}
-                                  >
-                                    {"Unmet performance expectations"}
-                                  </span>
-                                </React.Fragment>
-                              </div>
-                            </LoginButton>
-                            <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton__iEx1N
-                              )}
-                              color={"softRed"}
-                              shape={"rounded"}
-                              size={"minimal"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__px5QZ
-                                )}
-                              >
-                                <React.Fragment>
-                                  <span
-                                    className={
-                                      "plasmic_default__all plasmic_default__span"
-                                    }
-                                    style={{ color: "#000000" }}
-                                  >
-                                    {"Lack of collaboration or teamwork"}
-                                  </span>
-                                </React.Fragment>
-                              </div>
-                            </LoginButton>
-                            <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton__gnmym
-                              )}
-                              color={"softRed"}
-                              shape={"rounded"}
-                              size={"minimal"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__xdBi
-                                )}
-                              >
-                                <React.Fragment>
-                                  <span
-                                    className={
-                                      "plasmic_default__all plasmic_default__span"
-                                    }
-                                    style={{ color: "#000000" }}
-                                  >
-                                    {
-                                      "Failure to meet deadlines or community goals"
-                                    }
-                                  </span>
-                                </React.Fragment>
-                              </div>
-                            </LoginButton>
-                            <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton__yXYb
-                              )}
-                              color={"softRed"}
-                              shape={"rounded"}
-                              size={"minimal"}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__v2Doy
-                                )}
-                              >
-                                <React.Fragment>
-                                  <span
-                                    className={
-                                      "plasmic_default__all plasmic_default__span"
-                                    }
-                                    style={{ color: "#000000" }}
-                                  >
-                                    {"Loss of trust or ethical misalignment"}
-                                  </span>
-                                </React.Fragment>
-                              </div>
-                            </LoginButton>
-                          </div>
-                        </React.Fragment>
-                      }
-                      footer={
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox___9AV47
-                          )}
-                        >
-                          <Button2
-                            color={"muted"}
-                            label={
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__jzZrX
-                                )}
-                              >
-                                {"Confirm"}
-                              </div>
-                            }
-                            onClick={async event => {
-                              const $steps = {};
-
-                              $steps["updateDisconnectCompanyIsOpen"] = true
-                                ? (() => {
-                                    const actionArgs = {
-                                      variable: {
-                                        objRoot: $state,
-                                        variablePath: [
-                                          "disconnectCompany6",
-                                          "isOpen"
-                                        ]
-                                      },
-                                      operation: 0,
-                                      value: false
-                                    };
-                                    return (({
-                                      variable,
-                                      value,
-                                      startIndex,
-                                      deleteCount
-                                    }) => {
-                                      if (!variable) {
-                                        return;
-                                      }
-                                      const { objRoot, variablePath } =
-                                        variable;
-
-                                      $stateSet(objRoot, variablePath, value);
-                                      return value;
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
-                              if (
-                                $steps["updateDisconnectCompanyIsOpen"] !=
-                                  null &&
-                                typeof $steps[
-                                  "updateDisconnectCompanyIsOpen"
-                                ] === "object" &&
-                                typeof $steps["updateDisconnectCompanyIsOpen"]
-                                  .then === "function"
-                              ) {
-                                $steps["updateDisconnectCompanyIsOpen"] =
-                                  await $steps["updateDisconnectCompanyIsOpen"];
-                              }
-                            }}
-                            size={"extraSmall"}
-                            type={"soft"}
-                          />
-
-                          <Button2
-                            color={"muted"}
-                            label={
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__zdkL9
-                                )}
-                              >
-                                {"Cancel"}
-                              </div>
-                            }
-                            onClick={async event => {
-                              const $steps = {};
-
-                              $steps["updateDisconnectCompanyIsOpen"] = true
-                                ? (() => {
-                                    const actionArgs = {
-                                      variable: {
-                                        objRoot: $state,
-                                        variablePath: [
-                                          "disconnectCompany6",
-                                          "isOpen"
-                                        ]
-                                      },
-                                      operation: 0,
-                                      value: false
-                                    };
-                                    return (({
-                                      variable,
-                                      value,
-                                      startIndex,
-                                      deleteCount
-                                    }) => {
-                                      if (!variable) {
-                                        return;
-                                      }
-                                      const { objRoot, variablePath } =
-                                        variable;
-
-                                      $stateSet(objRoot, variablePath, value);
-                                      return value;
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
-                              if (
-                                $steps["updateDisconnectCompanyIsOpen"] !=
-                                  null &&
-                                typeof $steps[
-                                  "updateDisconnectCompanyIsOpen"
-                                ] === "object" &&
-                                typeof $steps["updateDisconnectCompanyIsOpen"]
-                                  .then === "function"
-                              ) {
-                                $steps["updateDisconnectCompanyIsOpen"] =
-                                  await $steps["updateDisconnectCompanyIsOpen"];
-                              }
-                            }}
-                            size={"extraSmall"}
-                            type={"soft"}
-                          />
-                        </div>
-                      }
-                      heading={
-                        <h3
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.h3,
-                            projectcss.__wab_text,
-                            sty.h3___19XQo
-                          )}
-                        >
-                          {"disconnect"}
-                        </h3>
-                      }
-                      isOpen={generateStateValueProp($state, [
-                        "disconnectCompany6",
-                        "isOpen"
-                      ])}
-                      onOpenChange={async (...eventArgs: any) => {
-                        generateStateOnChangeProp($state, [
-                          "disconnectCompany6",
-                          "isOpen"
-                        ]).apply(null, eventArgs);
-
-                        if (
-                          eventArgs.length > 1 &&
-                          eventArgs[1] &&
-                          eventArgs[1]._plasmic_state_init_
-                        ) {
-                          return;
-                        }
-                      }}
-                      trigger={
-                        <LoginButton
-                          className={classNames(
-                            "__wab_instance",
-                            sty.loginButton___87XZ
-                          )}
-                          color={"link"}
-                          size={"minimal"}
-                        >
-                          <ReportSvgrepoComSvgIcon
-                            className={classNames(
-                              projectcss.all,
-                              sty.svg__gBYe6
-                            )}
-                            role={"img"}
-                          />
-                        </LoginButton>
-                      }
-                    />
-
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__h4Odp)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___6MKdZ
-                        )}
-                      >
-                        {"Bacharel"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___2Qyoe
-                        )}
-                      >
-                        {"Gold"}
-                      </div>
-                      <AntdRate
-                        data-plasmic-name={"rate36"}
-                        data-plasmic-override={overrides.rate36}
-                        allowHalf={true}
-                        className={classNames("__wab_instance", sty.rate36)}
-                        defaultValue={5}
-                        disabled={true}
-                        multiCharacter={false}
-                        onChange={async (...eventArgs: any) => {
-                          generateStateOnChangeProp($state, [
-                            "rate36",
-                            "value"
-                          ]).apply(null, eventArgs);
-                        }}
-                        symbols={
-                          <React.Fragment>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__gmvTd
-                              )}
-                            >
-                              {"1"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___9CiZt
-                              )}
-                            >
-                              {"2"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__qHzL
-                              )}
-                            >
-                              {"3"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___3JJzq
-                              )}
-                            >
-                              {"4"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__mIFk1
-                              )}
-                            >
-                              {"5"}
-                            </div>
-                          </React.Fragment>
-                        }
-                        value={generateStateValueProp($state, [
-                          "rate36",
-                          "value"
-                        ])}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__f8ID
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__qWaFa
-                          )}
-                        >
-                          {"50"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___3WFp1
-                          )}
-                        >
-                          {" reviews"}
-                        </div>
-                      </div>
                     </div>
                   </div>
                   <h3
@@ -7853,16 +3734,18 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     {"Connection requests"}
                   </h3>
                   <div
-                    data-plasmic-name={"communities30"}
-                    data-plasmic-override={overrides.communities30}
-                    className={classNames(projectcss.all, sty.communities30)}
+                    data-plasmic-name={"requestMember"}
+                    data-plasmic-override={overrides.requestMember}
+                    className={classNames(projectcss.all, sty.requestMember)}
                   >
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__qa9X)}
+                      className={classNames(projectcss.all, sty.freeBox__kPCoh)}
                     >
                       <PlasmicImg__
+                        data-plasmic-name={"profilePic3"}
+                        data-plasmic-override={overrides.profilePic3}
                         alt={""}
-                        className={classNames(sty.img__oWxZb)}
+                        className={classNames(sty.profilePic3)}
                         displayHeight={"30px"}
                         displayMaxHeight={"none"}
                         displayMaxWidth={"100%"}
@@ -7873,42 +3756,48 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       />
 
                       <PlasmicLink__
+                        data-plasmic-name={"firstName3"}
+                        data-plasmic-override={overrides.firstName3}
                         className={classNames(
                           projectcss.all,
                           projectcss.a,
                           projectcss.__wab_text,
-                          sty.link__eI2I4
+                          sty.firstName3
                         )}
                         component={Link}
-                        href={`/profile`}
+                        href={`/a-rating-members`}
                         platform={"nextjs"}
                       >
                         {"Member"}
                       </PlasmicLink__>
                     </div>
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__bHkHb)}
+                      className={classNames(projectcss.all, sty.freeBox__z3QWg)}
                     >
                       <div
                         className={classNames(
                           projectcss.all,
-                          sty.freeBox__ngVfn
+                          sty.freeBox__pdRyL
                         )}
                       >
                         <div
+                          data-plasmic-name={"firstName4"}
+                          data-plasmic-override={overrides.firstName4}
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__cMpeo
+                            sty.firstName4
                           )}
                         >
                           {"Name"}
                         </div>
                         <div
+                          data-plasmic-name={"lastName2"}
+                          data-plasmic-override={overrides.lastName2}
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__ijmcP
+                            sty.lastName2
                           )}
                         >
                           {"Last Name"}
@@ -7917,14 +3806,16 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       <div
                         className={classNames(
                           projectcss.all,
-                          sty.freeBox__dVlg
+                          sty.freeBox___7OHCv
                         )}
                       >
                         <div
+                          data-plasmic-name={"age2"}
+                          data-plasmic-override={overrides.age2}
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__apLsj
+                            sty.age2
                           )}
                         >
                           {"28"}
@@ -7933,45 +3824,49 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__aKlk
+                            sty.text__gGtml
                           )}
                         >
                           {"years"}
                         </div>
                       </div>
                       <div
+                        data-plasmic-name={"location4"}
+                        data-plasmic-override={overrides.location4}
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__h9H9B
+                          sty.location4
                         )}
                       >
                         {"New York"}
                       </div>
                     </div>
                     <div
+                      data-plasmic-name={"office3"}
+                      data-plasmic-override={overrides.office3}
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text__bbuPk
+                        sty.office3
                       )}
                     >
                       {"Charge"}
                     </div>
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__bMlKe)}
+                      className={classNames(projectcss.all, sty.freeBox__iGc8Z)}
                     >
                       <div
                         className={classNames(
                           projectcss.all,
-                          sty.freeBox__iLsbf
+                          sty.freeBox__nuX36
                         )}
                       >
                         <div
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__tmhdY
+                            sty.text__s3CE4
                           )}
                         >
                           {"Speciality"}
@@ -7980,14 +3875,14 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       <div
                         className={classNames(
                           projectcss.all,
-                          sty.freeBox__sqwaM
+                          sty.freeBox___5Ksl1
                         )}
                       >
                         <div
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__fbx5S
+                            sty.text___5Wph5
                           )}
                         >
                           {"Speciality"}
@@ -7996,14 +3891,14 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       <div
                         className={classNames(
                           projectcss.all,
-                          sty.freeBox___4FtQ
+                          sty.freeBox__iKbMl
                         )}
                       >
                         <div
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text___722Bg
+                            sty.text__eqG
                           )}
                         >
                           {"Speciality"}
@@ -8012,14 +3907,14 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       <div
                         className={classNames(
                           projectcss.all,
-                          sty.freeBox__yniyN
+                          sty.freeBox__iZMe
                         )}
                       >
                         <div
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__x1Zsc
+                            sty.text__hqoZ
                           )}
                         >
                           {"Speciality"}
@@ -8028,14 +3923,14 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       <div
                         className={classNames(
                           projectcss.all,
-                          sty.freeBox__qKxr0
+                          sty.freeBox__uRa8H
                         )}
                       >
                         <div
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__cmLd
+                            sty.text__itwht
                           )}
                         >
                           {"Speciality"}
@@ -8075,8 +3970,10 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                               )}
                             >
                               <PlasmicImg__
+                                data-plasmic-name={"profilePic4"}
+                                data-plasmic-override={overrides.profilePic4}
                                 alt={""}
-                                className={classNames(sty.img__fmPck)}
+                                className={classNames(sty.profilePic4)}
                                 displayHeight={"30px"}
                                 displayMaxHeight={"none"}
                                 displayMaxWidth={"100%"}
@@ -8087,11 +3984,13 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                               />
 
                               <PlasmicLink__
+                                data-plasmic-name={"firstName5"}
+                                data-plasmic-override={overrides.firstName5}
                                 className={classNames(
                                   projectcss.all,
                                   projectcss.a,
                                   projectcss.__wab_text,
-                                  sty.link__aaWwd
+                                  sty.firstName5
                                 )}
                                 component={Link}
                                 platform={"nextjs"}
@@ -8108,82 +4007,13 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                                 {"request connection"}
                               </div>
                             </div>
-                            <AntdRate
-                              data-plasmic-name={"rate13"}
-                              data-plasmic-override={overrides.rate13}
-                              allowHalf={true}
-                              className={classNames(
-                                "__wab_instance",
-                                sty.rate13
-                              )}
-                              defaultValue={3.5}
-                              disabled={true}
-                              onChange={async (...eventArgs: any) => {
-                                generateStateOnChangeProp($state, [
-                                  "rate13",
-                                  "value"
-                                ]).apply(null, eventArgs);
-                              }}
-                              symbols={
-                                <React.Fragment>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__usjYz
-                                    )}
-                                  >
-                                    {"1"}
-                                  </div>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__luLcN
-                                    )}
-                                  >
-                                    {"2"}
-                                  </div>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__tbCJ
-                                    )}
-                                  >
-                                    {"3"}
-                                  </div>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__lT02
-                                    )}
-                                  >
-                                    {"4"}
-                                  </div>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__meHIm
-                                    )}
-                                  >
-                                    {"5"}
-                                  </div>
-                                </React.Fragment>
-                              }
-                              value={generateStateValueProp($state, [
-                                "rate13",
-                                "value"
-                              ])}
-                            />
-
                             <div
+                              data-plasmic-name={"shortMessage2"}
+                              data-plasmic-override={overrides.shortMessage2}
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text__ddkOt
+                                sty.shortMessage2
                               )}
                             >
                               {
@@ -8201,6 +4031,8 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                           )}
                         >
                           <Button2
+                            data-plasmic-name={"confirmConnection2"}
+                            data-plasmic-override={overrides.confirmConnection2}
                             color={"muted"}
                             label={
                               <div
@@ -8368,13 +4200,13 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     />
 
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__cXTvG)}
+                      className={classNames(projectcss.all, sty.freeBox__ry23)}
                     >
                       <div
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__qs9Kf
+                          sty.text__rQ32D
                         )}
                       >
                         {"Bacharel"}
@@ -8383,104 +4215,10 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text___55YOa
+                          sty.text__xWlmK
                         )}
                       >
                         {"Gold"}
-                      </div>
-                      <AntdRate
-                        data-plasmic-name={"rate34"}
-                        data-plasmic-override={overrides.rate34}
-                        allowHalf={true}
-                        className={classNames("__wab_instance", sty.rate34)}
-                        defaultValue={5}
-                        disabled={true}
-                        multiCharacter={false}
-                        onChange={async (...eventArgs: any) => {
-                          generateStateOnChangeProp($state, [
-                            "rate34",
-                            "value"
-                          ]).apply(null, eventArgs);
-                        }}
-                        symbols={
-                          <React.Fragment>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__tZzgS
-                              )}
-                            >
-                              {"1"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__jd2Kv
-                              )}
-                            >
-                              {"2"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__fs9Py
-                              )}
-                            >
-                              {"3"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__jDIj
-                              )}
-                            >
-                              {"4"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__tKNwc
-                              )}
-                            >
-                              {"5"}
-                            </div>
-                          </React.Fragment>
-                        }
-                        value={generateStateValueProp($state, [
-                          "rate34",
-                          "value"
-                        ])}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__xIBn8
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__aaBYf
-                          )}
-                        >
-                          {"50"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___5HIbl
-                          )}
-                        >
-                          {" reviews"}
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -8644,7 +4382,11 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                 data-plasmic-override={overrides.sliderCarousel2}
                 {...child$Props}
               >
-                <div className={classNames(projectcss.all, sty.freeBox__sNsY)}>
+                <div
+                  data-plasmic-name={"company"}
+                  data-plasmic-override={overrides.company}
+                  className={classNames(projectcss.all, sty.company)}
+                >
                   <LoginButton
                     className={classNames(
                       "__wab_instance",
@@ -8655,8 +4397,10 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     showStartIcon={true}
                     startIcon={
                       <PlasmicImg__
+                        data-plasmic-name={"companyLogo4"}
+                        data-plasmic-override={overrides.companyLogo4}
                         alt={""}
-                        className={classNames(sty.img__o9HPv)}
+                        className={classNames(sty.companyLogo4)}
                         displayHeight={"30px"}
                         displayMaxHeight={"none"}
                         displayMaxWidth={"100%"}
@@ -8668,222 +4412,12 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     }
                   >
                     <div
+                      data-plasmic-name={"companyName6"}
+                      data-plasmic-override={overrides.companyName6}
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text__xnYm3
-                      )}
-                    >
-                      {"Company"}
-                    </div>
-                  </LoginButton>
-                </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___9SvV4)}
-                >
-                  <LoginButton
-                    className={classNames(
-                      "__wab_instance",
-                      sty.loginButton__djhDc
-                    )}
-                    color={"softSand"}
-                    shape={"sharp"}
-                    showStartIcon={true}
-                    startIcon={
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__xmzdl)}
-                        displayHeight={"30px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"30px"}
-                        loading={"lazy"}
-                      />
-                    }
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__kMJo
-                      )}
-                    >
-                      {"Company"}
-                    </div>
-                  </LoginButton>
-                </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___24Srn)}
-                >
-                  <LoginButton
-                    className={classNames(
-                      "__wab_instance",
-                      sty.loginButton__khOj7
-                    )}
-                    color={"softSand"}
-                    shape={"sharp"}
-                    showStartIcon={true}
-                    startIcon={
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img___4YpbQ)}
-                        displayHeight={"30px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"30px"}
-                        loading={"lazy"}
-                      />
-                    }
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__beQz1
-                      )}
-                    >
-                      {"Company"}
-                    </div>
-                  </LoginButton>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__xepD)}>
-                  <LoginButton
-                    className={classNames(
-                      "__wab_instance",
-                      sty.loginButton___3570W
-                    )}
-                    color={"softSand"}
-                    shape={"sharp"}
-                    showStartIcon={true}
-                    startIcon={
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__uQMby)}
-                        displayHeight={"30px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"30px"}
-                        loading={"lazy"}
-                      />
-                    }
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__iVi03
-                      )}
-                    >
-                      {"Company"}
-                    </div>
-                  </LoginButton>
-                </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___8TRgh)}
-                >
-                  <LoginButton
-                    className={classNames(
-                      "__wab_instance",
-                      sty.loginButton__eC9
-                    )}
-                    color={"softSand"}
-                    shape={"sharp"}
-                    showStartIcon={true}
-                    startIcon={
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__gngBv)}
-                        displayHeight={"30px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"30px"}
-                        loading={"lazy"}
-                      />
-                    }
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__q6F1J
-                      )}
-                    >
-                      {"Company"}
-                    </div>
-                  </LoginButton>
-                </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___9EZkV)}
-                >
-                  <LoginButton
-                    className={classNames(
-                      "__wab_instance",
-                      sty.loginButton___6ImmM
-                    )}
-                    color={"softSand"}
-                    shape={"sharp"}
-                    showStartIcon={true}
-                    startIcon={
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__bVipx)}
-                        displayHeight={"30px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"30px"}
-                        loading={"lazy"}
-                      />
-                    }
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__oQ6D
-                      )}
-                    >
-                      {"Company"}
-                    </div>
-                  </LoginButton>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__i6Byz)}>
-                  <LoginButton
-                    className={classNames(
-                      "__wab_instance",
-                      sty.loginButton__enb3U
-                    )}
-                    color={"softSand"}
-                    shape={"sharp"}
-                    showStartIcon={true}
-                    startIcon={
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__hxiot)}
-                        displayHeight={"30px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"30px"}
-                        loading={"lazy"}
-                      />
-                    }
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__dcJvI
+                        sty.companyName6
                       )}
                     >
                       {"Company"}
@@ -8910,385 +4444,19 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
               {"Community Reviews"}
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__jkFmF)}>
-              <div className={classNames(projectcss.all, sty.freeBox___3DEzv)}>
-                <div className={classNames(projectcss.all, sty.freeBox__szST)}>
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__hmoBd)}
-                    displayHeight={"30px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"30px"}
-                    loading={"lazy"}
-                  />
-
-                  <PlasmicLink__
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
-                      sty.link__bNrdc
-                    )}
-                    component={Link}
-                    platform={"nextjs"}
-                  >
-                    {"Company//Member"}
-                  </PlasmicLink__>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___1SjU0
-                    )}
-                  >
-                    {"commented about"}
-                  </div>
-                  <PlasmicLink__
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
-                      sty.link__yoiPw
-                    )}
-                    component={Link}
-                    href={"https://www.plasmic.app/"}
-                    platform={"nextjs"}
-                  >
-                    {"Community"}
-                  </PlasmicLink__>
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__aMnA4
-                  )}
-                >
-                  {
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                  }
-                </div>
-                <AntdRate
-                  data-plasmic-name={"rate25"}
-                  data-plasmic-override={overrides.rate25}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate25)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate25",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__f8B7B
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__voFgL
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__wcwa4
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__i4Spz
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__q6WAc
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate25", "value"])}
-                />
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__hxgNx)}>
-                <div className={classNames(projectcss.all, sty.freeBox__m1IU5)}>
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img___4B6Of)}
-                    displayHeight={"30px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"30px"}
-                    loading={"lazy"}
-                  />
-
-                  <PlasmicLink__
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
-                      sty.link__piYld
-                    )}
-                    component={Link}
-                    platform={"nextjs"}
-                  >
-                    {"Company//Member"}
-                  </PlasmicLink__>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__nTe4W
-                    )}
-                  >
-                    {"commented about"}
-                  </div>
-                  <PlasmicLink__
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
-                      sty.link__tFxTj
-                    )}
-                    component={Link}
-                    href={"https://www.plasmic.app/"}
-                    platform={"nextjs"}
-                  >
-                    {"Community"}
-                  </PlasmicLink__>
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__v1J
-                  )}
-                >
-                  {
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                  }
-                </div>
-                <AntdRate
-                  data-plasmic-name={"rate26"}
-                  data-plasmic-override={overrides.rate26}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate26)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate26",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__hWvZ
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__pPeNp
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___1IzcQ
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ix7Gr
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__rtKri
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate26", "value"])}
-                />
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__btw0P)}>
-                <div className={classNames(projectcss.all, sty.freeBox__yv5Bf)}>
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__cjYgH)}
-                    displayHeight={"30px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"30px"}
-                    loading={"lazy"}
-                  />
-
-                  <PlasmicLink__
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
-                      sty.link__f4MMo
-                    )}
-                    component={Link}
-                    platform={"nextjs"}
-                  >
-                    {"Company//Member"}
-                  </PlasmicLink__>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__cXry5
-                    )}
-                  >
-                    {"commented about"}
-                  </div>
-                  <PlasmicLink__
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
-                      sty.link__k2Bp3
-                    )}
-                    component={Link}
-                    href={"https://www.plasmic.app/"}
-                    platform={"nextjs"}
-                  >
-                    {"Community"}
-                  </PlasmicLink__>
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__c2Kve
-                  )}
-                >
-                  {
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                  }
-                </div>
-                <AntdRate
-                  data-plasmic-name={"rate27"}
-                  data-plasmic-override={overrides.rate27}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate27)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate27",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___68DXa
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___5Xvfl
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__y8BLi
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__nkmB
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___0ZCSt
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate27", "value"])}
-                />
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__hhXr)}>
+              <div
+                data-plasmic-name={"communityReviews"}
+                data-plasmic-override={overrides.communityReviews}
+                className={classNames(projectcss.all, sty.communityReviews)}
+              >
                 <div
                   className={classNames(projectcss.all, sty.freeBox___0Lu8N)}
                 >
                   <PlasmicImg__
+                    data-plasmic-name={"companyLogo5"}
+                    data-plasmic-override={overrides.companyLogo5}
                     alt={""}
-                    className={classNames(sty.img__zggsz)}
+                    className={classNames(sty.companyLogo5)}
                     displayHeight={"30px"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"100%"}
@@ -9299,11 +4467,13 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                   />
 
                   <PlasmicLink__
+                    data-plasmic-name={"companyName7"}
+                    data-plasmic-override={overrides.companyName7}
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
                       projectcss.__wab_text,
-                      sty.link__ukpDm
+                      sty.companyName7
                     )}
                     component={Link}
                     platform={"nextjs"}
@@ -9320,11 +4490,13 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     {"commented about"}
                   </div>
                   <PlasmicLink__
+                    data-plasmic-name={"communityName2"}
+                    data-plasmic-override={overrides.communityName2}
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
                       projectcss.__wab_text,
-                      sty.link__ei04Z
+                      sty.communityName2
                     )}
                     component={Link}
                     href={"https://www.plasmic.app/"}
@@ -9334,10 +4506,12 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                   </PlasmicLink__>
                 </div>
                 <div
+                  data-plasmic-name={"comment"}
+                  data-plasmic-override={overrides.comment}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__yVSw9
+                    sty.comment
                   )}
                 >
                   {
@@ -9345,14 +4519,14 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                   }
                 </div>
                 <AntdRate
-                  data-plasmic-name={"rate28"}
-                  data-plasmic-override={overrides.rate28}
+                  data-plasmic-name={"rating"}
+                  data-plasmic-override={overrides.rating}
                   allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate28)}
+                  className={classNames("__wab_instance", sty.rating)}
                   disabled={true}
                   onChange={async (...eventArgs: any) => {
                     generateStateOnChangeProp($state, [
-                      "rate28",
+                      "rating",
                       "value"
                     ]).apply(null, eventArgs);
                   }}
@@ -9405,7 +4579,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       </div>
                     </React.Fragment>
                   }
-                  value={generateStateValueProp($state, ["rate28", "value"])}
+                  value={generateStateValueProp($state, ["rating", "value"])}
                 />
               </div>
             </div>
@@ -9425,11 +4599,17 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
               {"Community Replies"}
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__zKe9V)}>
-              <div className={classNames(projectcss.all, sty.freeBox__h2C5J)}>
+              <div
+                data-plasmic-name={"communityReplies"}
+                data-plasmic-override={overrides.communityReplies}
+                className={classNames(projectcss.all, sty.communityReplies)}
+              >
                 <div className={classNames(projectcss.all, sty.freeBox__xUYew)}>
                   <PlasmicImg__
+                    data-plasmic-name={"communityLogo2"}
+                    data-plasmic-override={overrides.communityLogo2}
                     alt={""}
-                    className={classNames(sty.img__sVuop)}
+                    className={classNames(sty.communityLogo2)}
                     displayHeight={"30px"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"100%"}
@@ -9440,11 +4620,13 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                   />
 
                   <PlasmicLink__
+                    data-plasmic-name={"communityName3"}
+                    data-plasmic-override={overrides.communityName3}
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
                       projectcss.__wab_text,
-                      sty.link__sW3Xg
+                      sty.communityName3
                     )}
                     component={Link}
                     href={"https://www.plasmic.app/"}
@@ -9462,11 +4644,13 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     {"commented about"}
                   </div>
                   <PlasmicLink__
+                    data-plasmic-name={"companyName8"}
+                    data-plasmic-override={overrides.companyName8}
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
                       projectcss.__wab_text,
-                      sty.link__vbi4
+                      sty.companyName8
                     )}
                     component={Link}
                     href={"https://www.plasmic.app/"}
@@ -9476,10 +4660,12 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                   </PlasmicLink__>
                 </div>
                 <div
+                  data-plasmic-name={"comment2"}
+                  data-plasmic-override={overrides.comment2}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__nbKfQ
+                    sty.comment2
                   )}
                 >
                   {
@@ -9487,14 +4673,14 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                   }
                 </div>
                 <AntdRate
-                  data-plasmic-name={"rate41"}
-                  data-plasmic-override={overrides.rate41}
+                  data-plasmic-name={"rating2"}
+                  data-plasmic-override={overrides.rating2}
                   allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate41)}
+                  className={classNames("__wab_instance", sty.rating2)}
                   disabled={true}
                   onChange={async (...eventArgs: any) => {
                     generateStateOnChangeProp($state, [
-                      "rate41",
+                      "rating2",
                       "value"
                     ]).apply(null, eventArgs);
                   }}
@@ -9547,257 +4733,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       </div>
                     </React.Fragment>
                   }
-                  value={generateStateValueProp($state, ["rate41", "value"])}
-                />
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__g87V0)}>
-                <div className={classNames(projectcss.all, sty.freeBox__yvqu7)}>
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__sqyMx)}
-                    displayHeight={"30px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"30px"}
-                    loading={"lazy"}
-                  />
-
-                  <PlasmicLink__
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
-                      sty.link__idMvQ
-                    )}
-                    component={Link}
-                    href={"https://www.plasmic.app/"}
-                    platform={"nextjs"}
-                  >
-                    {"Community"}
-                  </PlasmicLink__>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__unHm2
-                    )}
-                  >
-                    {"commented about"}
-                  </div>
-                  <PlasmicLink__
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
-                      sty.link__iAuBs
-                    )}
-                    component={Link}
-                    href={"https://www.plasmic.app/"}
-                    platform={"nextjs"}
-                  >
-                    {"Company//Member"}
-                  </PlasmicLink__>
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__jaZSs
-                  )}
-                >
-                  {
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                  }
-                </div>
-                <AntdRate
-                  data-plasmic-name={"rate42"}
-                  data-plasmic-override={overrides.rate42}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate42)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate42",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__imjv7
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___7GOpe
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__gbt3A
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ejdpt
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___5R7Sa
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate42", "value"])}
-                />
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox___7Lord)}>
-                <div className={classNames(projectcss.all, sty.freeBox__oLoLf)}>
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__h838V)}
-                    displayHeight={"30px"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"30px"}
-                    loading={"lazy"}
-                  />
-
-                  <PlasmicLink__
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
-                      sty.link___6CQVr
-                    )}
-                    component={Link}
-                    href={"https://www.plasmic.app/"}
-                    platform={"nextjs"}
-                  >
-                    {"Community"}
-                  </PlasmicLink__>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___7BwDh
-                    )}
-                  >
-                    {"commented about"}
-                  </div>
-                  <PlasmicLink__
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
-                      sty.link__f0Moo
-                    )}
-                    component={Link}
-                    href={"https://www.plasmic.app/"}
-                    platform={"nextjs"}
-                  >
-                    {"Company//Member"}
-                  </PlasmicLink__>
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__uMrS
-                  )}
-                >
-                  {
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-                  }
-                </div>
-                <AntdRate
-                  data-plasmic-name={"rate43"}
-                  data-plasmic-override={overrides.rate43}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate43)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate43",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__lbMlv
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__uHeP7
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__w99Xs
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ncpzv
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__wXsAr
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate43", "value"])}
+                  value={generateStateValueProp($state, ["rating2", "value"])}
                 />
               </div>
             </div>
@@ -9864,7 +4800,11 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                 data-plasmic-override={overrides.sliderCarousel3}
                 {...child$Props}
               >
-                <div className={classNames(projectcss.all, sty.freeBox__bi4Ac)}>
+                <div
+                  data-plasmic-name={"memberTraining"}
+                  data-plasmic-override={overrides.memberTraining}
+                  className={classNames(projectcss.all, sty.memberTraining)}
+                >
                   <div
                     className={classNames(projectcss.all, sty.freeBox__lrFXs)}
                   >
@@ -9872,8 +4812,10 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       className={classNames(projectcss.all, sty.freeBox__zFzL)}
                     >
                       <PlasmicImg__
+                        data-plasmic-name={"profilePic5"}
+                        data-plasmic-override={overrides.profilePic5}
                         alt={""}
-                        className={classNames(sty.img__ss4Ch)}
+                        className={classNames(sty.profilePic5)}
                         displayHeight={"30px"}
                         displayMaxHeight={"none"}
                         displayMaxWidth={"100%"}
@@ -9884,10 +4826,12 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       />
 
                       <div
+                        data-plasmic-name={"firstName6"}
+                        data-plasmic-override={overrides.firstName6}
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__hOfEz
+                          sty.firstName6
                         )}
                       >
                         {"User"}
@@ -9903,10 +4847,12 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       {"Doing graduation until"}
                     </div>
                     <div
+                      data-plasmic-name={"graduationYear"}
+                      data-plasmic-override={overrides.graduationYear}
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text___73EX1
+                        sty.graduationYear
                       )}
                     >
                       {"00/2000"}
@@ -9921,213 +4867,12 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       {"in"}
                     </div>
                     <div
+                      data-plasmic-name={"university"}
+                      data-plasmic-override={overrides.university}
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text__otKhZ
-                      )}
-                    >
-                      {"University"}
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___7Y0Tl)}
-                >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__ktvIq)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__yGh0C)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__cy2C0)}
-                        displayHeight={"30px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"30px"}
-                        loading={"lazy"}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__nfAfM
-                        )}
-                      >
-                        {"User"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__ulytf
-                      )}
-                    >
-                      {"Doing graduation until"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__eaEbH
-                      )}
-                    >
-                      {"00/2000"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__v2Hav
-                      )}
-                    >
-                      {"in"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__vVvhl
-                      )}
-                    >
-                      {"University"}
-                    </div>
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__taccp)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___7PVsk)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__vPwmv)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__mIs02)}
-                        displayHeight={"30px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"30px"}
-                        loading={"lazy"}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__nEvzh
-                        )}
-                      >
-                        {"User"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__uAcVl
-                      )}
-                    >
-                      {"Doing graduation until"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__kGFn5
-                      )}
-                    >
-                      {"00/2000"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__j4Rf3
-                      )}
-                    >
-                      {"in"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__cuwYk
-                      )}
-                    >
-                      {"University"}
-                    </div>
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__gMtEi)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__bGdqe)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__m9UN9)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__oxydz)}
-                        displayHeight={"30px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"30px"}
-                        loading={"lazy"}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__gmKoK
-                        )}
-                      >
-                        {"User"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__iqhMk
-                      )}
-                    >
-                      {"Doing graduation until"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__hlULn
-                      )}
-                    >
-                      {"00/2000"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__mU3Ed
-                      )}
-                    >
-                      {"in"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___4QwA5
+                        sty.university
                       )}
                     >
                       {"University"}
@@ -13372,9 +8117,9 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
           className={classNames(projectcss.all, sty.container8)}
         >
           <YouTube
-            data-plasmic-name={"youTube"}
-            data-plasmic-override={overrides.youTube}
-            className={classNames("__wab_instance", sty.youTube)}
+            data-plasmic-name={"youtubeVideo"}
+            data-plasmic-override={overrides.youtubeVideo}
+            className={classNames("__wab_instance", sty.youtubeVideo)}
             videoId={"R6MeLqRQzYw"}
           />
 
@@ -13389,10 +8134,12 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
               {"How we work"}
             </div>
             <div
+              data-plasmic-name={"about"}
+              data-plasmic-override={overrides.about}
               className={classNames(
                 projectcss.all,
                 projectcss.__wab_text,
-                sty.text___3J6Uy
+                sty.about
               )}
             >
               {
@@ -13400,11 +8147,13 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
               }
             </div>
             <PlasmicLink__
+              data-plasmic-name={"website"}
+              data-plasmic-override={overrides.website}
               className={classNames(
                 projectcss.all,
                 projectcss.a,
                 projectcss.__wab_text,
-                sty.link__ybMRv
+                sty.website
               )}
               component={Link}
               href={"https://www.plasmic.app/"}
@@ -13428,53 +8177,106 @@ const PlasmicDescendants = {
     "button",
     "container1",
     "htmlVideo",
-    "modal",
+    "goalsSum",
+    "youtubeChannel",
+    "x",
+    "tiktok",
+    "instagram",
+    "quitCommunity",
+    "confirmQuitCommunity",
+    "communityLogo",
+    "type",
+    "communityName",
     "modal2",
-    "rate4",
+    "communityRate",
     "textArea2",
+    "confirmCommunityRate",
+    "rateSum",
     "container3",
     "membersCarousel",
+    "member",
+    "profilePic",
+    "office",
     "container10",
     "linkedCompanies",
-    "communities25",
-    "rate29",
+    "connectedCompany",
+    "companyLogo",
+    "companyName",
+    "companyName2",
+    "companyType",
+    "averageRate",
+    "rateSum2",
+    "area",
+    "subArea",
+    "location",
     "disconnectCompany",
-    "communities26",
-    "rate30",
-    "disconnectCompany2",
-    "communities27",
-    "rate31",
-    "disconnectCompany3",
-    "communities29",
-    "rate33",
+    "confirmDisconnect",
+    "requestCompany",
+    "companyLogo2",
+    "companyName3",
+    "companyName4",
+    "companyType2",
+    "averageRate2",
+    "rateSum3",
+    "area2",
+    "subArea2",
+    "location2",
     "requestInf",
-    "rate12",
+    "companyLogo3",
+    "companyName5",
+    "averageRate3",
+    "shortMessage",
+    "confirmConnection",
+    "cancelConnection",
     "linkedMembers",
-    "communities28",
+    "connectedMembers",
+    "profilePic2",
+    "firstName",
+    "firstName2",
+    "lastName",
+    "age",
+    "location3",
+    "office2",
     "disconnectCompany4",
-    "rate32",
-    "communities31",
-    "disconnectCompany5",
-    "rate35",
-    "communities32",
-    "disconnectCompany6",
-    "rate36",
-    "communities30",
+    "confirmDisconnection",
+    "requestMember",
+    "profilePic3",
+    "firstName3",
+    "firstName4",
+    "lastName2",
+    "age2",
+    "location4",
+    "office3",
     "requestInf2",
-    "rate13",
-    "rate34",
+    "profilePic4",
+    "firstName5",
+    "shortMessage2",
+    "confirmConnection2",
     "sliderCarousel2",
+    "company",
+    "companyLogo4",
+    "companyName6",
     "countainer3",
-    "rate25",
-    "rate26",
-    "rate27",
-    "rate28",
+    "communityReviews",
+    "companyLogo5",
+    "companyName7",
+    "communityName2",
+    "comment",
+    "rating",
     "countainer4",
-    "rate41",
-    "rate42",
-    "rate43",
+    "communityReplies",
+    "communityLogo2",
+    "communityName3",
+    "companyName8",
+    "comment2",
+    "rating2",
     "container6",
     "sliderCarousel3",
+    "memberTraining",
+    "profilePic5",
+    "firstName6",
+    "graduationYear",
+    "university",
     "container7",
     "popover",
     "popover3",
@@ -13497,122 +8299,376 @@ const PlasmicDescendants = {
     "popover19",
     "popover20",
     "container8",
-    "youTube"
+    "youtubeVideo",
+    "about",
+    "website"
   ],
   topBar: ["topBar", "navigationBar", "account", "button"],
   navigationBar: ["navigationBar"],
   account: ["account", "button"],
   button: ["button"],
-  container1: ["container1", "htmlVideo", "modal"],
+  container1: [
+    "container1",
+    "htmlVideo",
+    "goalsSum",
+    "youtubeChannel",
+    "x",
+    "tiktok",
+    "instagram",
+    "quitCommunity",
+    "confirmQuitCommunity",
+    "communityLogo",
+    "type"
+  ],
   htmlVideo: ["htmlVideo"],
-  modal: ["modal"],
-  modal2: ["modal2", "rate4", "textArea2"],
-  rate4: ["rate4"],
+  goalsSum: ["goalsSum"],
+  youtubeChannel: ["youtubeChannel"],
+  x: ["x"],
+  tiktok: ["tiktok"],
+  instagram: ["instagram"],
+  quitCommunity: ["quitCommunity", "confirmQuitCommunity"],
+  confirmQuitCommunity: ["confirmQuitCommunity"],
+  communityLogo: ["communityLogo"],
+  type: ["type"],
+  communityName: ["communityName"],
+  modal2: ["modal2", "communityRate", "textArea2", "confirmCommunityRate"],
+  communityRate: ["communityRate"],
   textArea2: ["textArea2"],
-  container3: ["container3", "membersCarousel"],
-  membersCarousel: ["membersCarousel"],
+  confirmCommunityRate: ["confirmCommunityRate"],
+  rateSum: ["rateSum"],
+  container3: [
+    "container3",
+    "membersCarousel",
+    "member",
+    "profilePic",
+    "office"
+  ],
+  membersCarousel: ["membersCarousel", "member", "profilePic", "office"],
+  member: ["member", "profilePic", "office"],
+  profilePic: ["profilePic"],
+  office: ["office"],
   container10: [
     "container10",
     "linkedCompanies",
-    "communities25",
-    "rate29",
+    "connectedCompany",
+    "companyLogo",
+    "companyName",
+    "companyName2",
+    "companyType",
+    "averageRate",
+    "rateSum2",
+    "area",
+    "subArea",
+    "location",
     "disconnectCompany",
-    "communities26",
-    "rate30",
-    "disconnectCompany2",
-    "communities27",
-    "rate31",
-    "disconnectCompany3",
-    "communities29",
-    "rate33",
+    "confirmDisconnect",
+    "requestCompany",
+    "companyLogo2",
+    "companyName3",
+    "companyName4",
+    "companyType2",
+    "averageRate2",
+    "rateSum3",
+    "area2",
+    "subArea2",
+    "location2",
     "requestInf",
-    "rate12",
+    "companyLogo3",
+    "companyName5",
+    "averageRate3",
+    "shortMessage",
+    "confirmConnection",
+    "cancelConnection",
     "linkedMembers",
-    "communities28",
+    "connectedMembers",
+    "profilePic2",
+    "firstName",
+    "firstName2",
+    "lastName",
+    "age",
+    "location3",
+    "office2",
     "disconnectCompany4",
-    "rate32",
-    "communities31",
-    "disconnectCompany5",
-    "rate35",
-    "communities32",
-    "disconnectCompany6",
-    "rate36",
-    "communities30",
+    "confirmDisconnection",
+    "requestMember",
+    "profilePic3",
+    "firstName3",
+    "firstName4",
+    "lastName2",
+    "age2",
+    "location4",
+    "office3",
     "requestInf2",
-    "rate13",
-    "rate34",
-    "sliderCarousel2"
+    "profilePic4",
+    "firstName5",
+    "shortMessage2",
+    "confirmConnection2",
+    "sliderCarousel2",
+    "company",
+    "companyLogo4",
+    "companyName6"
   ],
   linkedCompanies: [
     "linkedCompanies",
-    "communities25",
-    "rate29",
+    "connectedCompany",
+    "companyLogo",
+    "companyName",
+    "companyName2",
+    "companyType",
+    "averageRate",
+    "rateSum2",
+    "area",
+    "subArea",
+    "location",
     "disconnectCompany",
-    "communities26",
-    "rate30",
-    "disconnectCompany2",
-    "communities27",
-    "rate31",
-    "disconnectCompany3",
-    "communities29",
-    "rate33",
+    "confirmDisconnect",
+    "requestCompany",
+    "companyLogo2",
+    "companyName3",
+    "companyName4",
+    "companyType2",
+    "averageRate2",
+    "rateSum3",
+    "area2",
+    "subArea2",
+    "location2",
     "requestInf",
-    "rate12"
+    "companyLogo3",
+    "companyName5",
+    "averageRate3",
+    "shortMessage",
+    "confirmConnection",
+    "cancelConnection"
   ],
-  communities25: ["communities25", "rate29", "disconnectCompany"],
-  rate29: ["rate29"],
-  disconnectCompany: ["disconnectCompany"],
-  communities26: ["communities26", "rate30", "disconnectCompany2"],
-  rate30: ["rate30"],
-  disconnectCompany2: ["disconnectCompany2"],
-  communities27: ["communities27", "rate31", "disconnectCompany3"],
-  rate31: ["rate31"],
-  disconnectCompany3: ["disconnectCompany3"],
-  communities29: ["communities29", "rate33", "requestInf", "rate12"],
-  rate33: ["rate33"],
-  requestInf: ["requestInf", "rate12"],
-  rate12: ["rate12"],
+  connectedCompany: [
+    "connectedCompany",
+    "companyLogo",
+    "companyName",
+    "companyName2",
+    "companyType",
+    "averageRate",
+    "rateSum2",
+    "area",
+    "subArea",
+    "location",
+    "disconnectCompany",
+    "confirmDisconnect"
+  ],
+  companyLogo: ["companyLogo"],
+  companyName: ["companyName"],
+  companyName2: ["companyName2"],
+  companyType: ["companyType"],
+  averageRate: ["averageRate"],
+  rateSum2: ["rateSum2"],
+  area: ["area"],
+  subArea: ["subArea"],
+  location: ["location"],
+  disconnectCompany: ["disconnectCompany", "confirmDisconnect"],
+  confirmDisconnect: ["confirmDisconnect"],
+  requestCompany: [
+    "requestCompany",
+    "companyLogo2",
+    "companyName3",
+    "companyName4",
+    "companyType2",
+    "averageRate2",
+    "rateSum3",
+    "area2",
+    "subArea2",
+    "location2",
+    "requestInf",
+    "companyLogo3",
+    "companyName5",
+    "averageRate3",
+    "shortMessage",
+    "confirmConnection",
+    "cancelConnection"
+  ],
+  companyLogo2: ["companyLogo2"],
+  companyName3: ["companyName3"],
+  companyName4: ["companyName4"],
+  companyType2: ["companyType2"],
+  averageRate2: ["averageRate2"],
+  rateSum3: ["rateSum3"],
+  area2: ["area2"],
+  subArea2: ["subArea2"],
+  location2: ["location2"],
+  requestInf: [
+    "requestInf",
+    "companyLogo3",
+    "companyName5",
+    "averageRate3",
+    "shortMessage",
+    "confirmConnection",
+    "cancelConnection"
+  ],
+  companyLogo3: ["companyLogo3"],
+  companyName5: ["companyName5"],
+  averageRate3: ["averageRate3"],
+  shortMessage: ["shortMessage"],
+  confirmConnection: ["confirmConnection"],
+  cancelConnection: ["cancelConnection"],
   linkedMembers: [
     "linkedMembers",
-    "communities28",
+    "connectedMembers",
+    "profilePic2",
+    "firstName",
+    "firstName2",
+    "lastName",
+    "age",
+    "location3",
+    "office2",
     "disconnectCompany4",
-    "rate32",
-    "communities31",
-    "disconnectCompany5",
-    "rate35",
-    "communities32",
-    "disconnectCompany6",
-    "rate36",
-    "communities30",
+    "confirmDisconnection",
+    "requestMember",
+    "profilePic3",
+    "firstName3",
+    "firstName4",
+    "lastName2",
+    "age2",
+    "location4",
+    "office3",
     "requestInf2",
-    "rate13",
-    "rate34"
+    "profilePic4",
+    "firstName5",
+    "shortMessage2",
+    "confirmConnection2"
   ],
-  communities28: ["communities28", "disconnectCompany4", "rate32"],
-  disconnectCompany4: ["disconnectCompany4"],
-  rate32: ["rate32"],
-  communities31: ["communities31", "disconnectCompany5", "rate35"],
-  disconnectCompany5: ["disconnectCompany5"],
-  rate35: ["rate35"],
-  communities32: ["communities32", "disconnectCompany6", "rate36"],
-  disconnectCompany6: ["disconnectCompany6"],
-  rate36: ["rate36"],
-  communities30: ["communities30", "requestInf2", "rate13", "rate34"],
-  requestInf2: ["requestInf2", "rate13"],
-  rate13: ["rate13"],
-  rate34: ["rate34"],
-  sliderCarousel2: ["sliderCarousel2"],
-  countainer3: ["countainer3", "rate25", "rate26", "rate27", "rate28"],
-  rate25: ["rate25"],
-  rate26: ["rate26"],
-  rate27: ["rate27"],
-  rate28: ["rate28"],
-  countainer4: ["countainer4", "rate41", "rate42", "rate43"],
-  rate41: ["rate41"],
-  rate42: ["rate42"],
-  rate43: ["rate43"],
-  container6: ["container6", "sliderCarousel3"],
-  sliderCarousel3: ["sliderCarousel3"],
+  connectedMembers: [
+    "connectedMembers",
+    "profilePic2",
+    "firstName",
+    "firstName2",
+    "lastName",
+    "age",
+    "location3",
+    "office2",
+    "disconnectCompany4",
+    "confirmDisconnection"
+  ],
+  profilePic2: ["profilePic2"],
+  firstName: ["firstName"],
+  firstName2: ["firstName2"],
+  lastName: ["lastName"],
+  age: ["age"],
+  location3: ["location3"],
+  office2: ["office2"],
+  disconnectCompany4: ["disconnectCompany4", "confirmDisconnection"],
+  confirmDisconnection: ["confirmDisconnection"],
+  requestMember: [
+    "requestMember",
+    "profilePic3",
+    "firstName3",
+    "firstName4",
+    "lastName2",
+    "age2",
+    "location4",
+    "office3",
+    "requestInf2",
+    "profilePic4",
+    "firstName5",
+    "shortMessage2",
+    "confirmConnection2"
+  ],
+  profilePic3: ["profilePic3"],
+  firstName3: ["firstName3"],
+  firstName4: ["firstName4"],
+  lastName2: ["lastName2"],
+  age2: ["age2"],
+  location4: ["location4"],
+  office3: ["office3"],
+  requestInf2: [
+    "requestInf2",
+    "profilePic4",
+    "firstName5",
+    "shortMessage2",
+    "confirmConnection2"
+  ],
+  profilePic4: ["profilePic4"],
+  firstName5: ["firstName5"],
+  shortMessage2: ["shortMessage2"],
+  confirmConnection2: ["confirmConnection2"],
+  sliderCarousel2: [
+    "sliderCarousel2",
+    "company",
+    "companyLogo4",
+    "companyName6"
+  ],
+  company: ["company", "companyLogo4", "companyName6"],
+  companyLogo4: ["companyLogo4"],
+  companyName6: ["companyName6"],
+  countainer3: [
+    "countainer3",
+    "communityReviews",
+    "companyLogo5",
+    "companyName7",
+    "communityName2",
+    "comment",
+    "rating"
+  ],
+  communityReviews: [
+    "communityReviews",
+    "companyLogo5",
+    "companyName7",
+    "communityName2",
+    "comment",
+    "rating"
+  ],
+  companyLogo5: ["companyLogo5"],
+  companyName7: ["companyName7"],
+  communityName2: ["communityName2"],
+  comment: ["comment"],
+  rating: ["rating"],
+  countainer4: [
+    "countainer4",
+    "communityReplies",
+    "communityLogo2",
+    "communityName3",
+    "companyName8",
+    "comment2",
+    "rating2"
+  ],
+  communityReplies: [
+    "communityReplies",
+    "communityLogo2",
+    "communityName3",
+    "companyName8",
+    "comment2",
+    "rating2"
+  ],
+  communityLogo2: ["communityLogo2"],
+  communityName3: ["communityName3"],
+  companyName8: ["companyName8"],
+  comment2: ["comment2"],
+  rating2: ["rating2"],
+  container6: [
+    "container6",
+    "sliderCarousel3",
+    "memberTraining",
+    "profilePic5",
+    "firstName6",
+    "graduationYear",
+    "university"
+  ],
+  sliderCarousel3: [
+    "sliderCarousel3",
+    "memberTraining",
+    "profilePic5",
+    "firstName6",
+    "graduationYear",
+    "university"
+  ],
+  memberTraining: [
+    "memberTraining",
+    "profilePic5",
+    "firstName6",
+    "graduationYear",
+    "university"
+  ],
+  profilePic5: ["profilePic5"],
+  firstName6: ["firstName6"],
+  graduationYear: ["graduationYear"],
+  university: ["university"],
   container7: [
     "container7",
     "popover",
@@ -13656,8 +8712,10 @@ const PlasmicDescendants = {
   popover18: ["popover18"],
   popover19: ["popover19"],
   popover20: ["popover20"],
-  container8: ["container8", "youTube"],
-  youTube: ["youTube"]
+  container8: ["container8", "youtubeVideo", "about", "website"],
+  youtubeVideo: ["youtubeVideo"],
+  about: ["about"],
+  website: ["website"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -13670,53 +8728,106 @@ type NodeDefaultElementType = {
   button: typeof AntdButton;
   container1: "div";
   htmlVideo: typeof Video;
-  modal: typeof Modal;
+  goalsSum: "div";
+  youtubeChannel: "a";
+  x: "a";
+  tiktok: "a";
+  instagram: "a";
+  quitCommunity: typeof Modal;
+  confirmQuitCommunity: typeof Button2;
+  communityLogo: typeof PlasmicImg__;
+  type: "svg";
+  communityName: "div";
   modal2: typeof Modal;
-  rate4: typeof AntdRate;
+  communityRate: typeof AntdRate;
   textArea2: typeof AntdTextArea;
+  confirmCommunityRate: typeof Button2;
+  rateSum: "div";
   container3: "div";
   membersCarousel: typeof SliderWrapper;
+  member: "div";
+  profilePic: typeof PlasmicImg__;
+  office: "div";
   container10: "div";
   linkedCompanies: typeof Modal;
-  communities25: "div";
-  rate29: typeof AntdRate;
+  connectedCompany: "div";
+  companyLogo: typeof PlasmicImg__;
+  companyName: "a";
+  companyName2: "div";
+  companyType: "div";
+  averageRate: typeof AntdRate;
+  rateSum2: "div";
+  area: "div";
+  subArea: "div";
+  location: "div";
   disconnectCompany: typeof Modal;
-  communities26: "div";
-  rate30: typeof AntdRate;
-  disconnectCompany2: typeof Modal;
-  communities27: "div";
-  rate31: typeof AntdRate;
-  disconnectCompany3: typeof Modal;
-  communities29: "div";
-  rate33: typeof AntdRate;
+  confirmDisconnect: typeof Button2;
+  requestCompany: "div";
+  companyLogo2: typeof PlasmicImg__;
+  companyName3: "a";
+  companyName4: "div";
+  companyType2: "div";
+  averageRate2: typeof AntdRate;
+  rateSum3: "div";
+  area2: "div";
+  subArea2: "div";
+  location2: "div";
   requestInf: typeof Modal;
-  rate12: typeof AntdRate;
+  companyLogo3: typeof PlasmicImg__;
+  companyName5: "a";
+  averageRate3: typeof AntdRate;
+  shortMessage: "div";
+  confirmConnection: typeof Button2;
+  cancelConnection: typeof Button2;
   linkedMembers: typeof Modal;
-  communities28: "div";
+  connectedMembers: "div";
+  profilePic2: typeof PlasmicImg__;
+  firstName: "a";
+  firstName2: "div";
+  lastName: "div";
+  age: "div";
+  location3: "div";
+  office2: "div";
   disconnectCompany4: typeof Modal;
-  rate32: typeof AntdRate;
-  communities31: "div";
-  disconnectCompany5: typeof Modal;
-  rate35: typeof AntdRate;
-  communities32: "div";
-  disconnectCompany6: typeof Modal;
-  rate36: typeof AntdRate;
-  communities30: "div";
+  confirmDisconnection: typeof Button2;
+  requestMember: "div";
+  profilePic3: typeof PlasmicImg__;
+  firstName3: "a";
+  firstName4: "div";
+  lastName2: "div";
+  age2: "div";
+  location4: "div";
+  office3: "div";
   requestInf2: typeof Modal;
-  rate13: typeof AntdRate;
-  rate34: typeof AntdRate;
+  profilePic4: typeof PlasmicImg__;
+  firstName5: "a";
+  shortMessage2: "div";
+  confirmConnection2: typeof Button2;
   sliderCarousel2: typeof SliderWrapper;
+  company: "div";
+  companyLogo4: typeof PlasmicImg__;
+  companyName6: "div";
   countainer3: "div";
-  rate25: typeof AntdRate;
-  rate26: typeof AntdRate;
-  rate27: typeof AntdRate;
-  rate28: typeof AntdRate;
+  communityReviews: "div";
+  companyLogo5: typeof PlasmicImg__;
+  companyName7: "a";
+  communityName2: "a";
+  comment: "div";
+  rating: typeof AntdRate;
   countainer4: "div";
-  rate41: typeof AntdRate;
-  rate42: typeof AntdRate;
-  rate43: typeof AntdRate;
+  communityReplies: "div";
+  communityLogo2: typeof PlasmicImg__;
+  communityName3: "a";
+  companyName8: "a";
+  comment2: "div";
+  rating2: typeof AntdRate;
   container6: "div";
   sliderCarousel3: typeof SliderWrapper;
+  memberTraining: "div";
+  profilePic5: typeof PlasmicImg__;
+  firstName6: "div";
+  graduationYear: "div";
+  university: "div";
   container7: "div";
   popover: typeof AntdPopover;
   popover3: typeof AntdPopover;
@@ -13739,7 +8850,9 @@ type NodeDefaultElementType = {
   popover19: typeof AntdPopover;
   popover20: typeof AntdPopover;
   container8: "div";
-  youTube: typeof YouTube;
+  youtubeVideo: typeof YouTube;
+  about: "div";
+  website: "a";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -13810,53 +8923,106 @@ export const PlasmicACommunityDashboard = Object.assign(
     button: makeNodeComponent("button"),
     container1: makeNodeComponent("container1"),
     htmlVideo: makeNodeComponent("htmlVideo"),
-    modal: makeNodeComponent("modal"),
+    goalsSum: makeNodeComponent("goalsSum"),
+    youtubeChannel: makeNodeComponent("youtubeChannel"),
+    x: makeNodeComponent("x"),
+    tiktok: makeNodeComponent("tiktok"),
+    instagram: makeNodeComponent("instagram"),
+    quitCommunity: makeNodeComponent("quitCommunity"),
+    confirmQuitCommunity: makeNodeComponent("confirmQuitCommunity"),
+    communityLogo: makeNodeComponent("communityLogo"),
+    type: makeNodeComponent("type"),
+    communityName: makeNodeComponent("communityName"),
     modal2: makeNodeComponent("modal2"),
-    rate4: makeNodeComponent("rate4"),
+    communityRate: makeNodeComponent("communityRate"),
     textArea2: makeNodeComponent("textArea2"),
+    confirmCommunityRate: makeNodeComponent("confirmCommunityRate"),
+    rateSum: makeNodeComponent("rateSum"),
     container3: makeNodeComponent("container3"),
     membersCarousel: makeNodeComponent("membersCarousel"),
+    member: makeNodeComponent("member"),
+    profilePic: makeNodeComponent("profilePic"),
+    office: makeNodeComponent("office"),
     container10: makeNodeComponent("container10"),
     linkedCompanies: makeNodeComponent("linkedCompanies"),
-    communities25: makeNodeComponent("communities25"),
-    rate29: makeNodeComponent("rate29"),
+    connectedCompany: makeNodeComponent("connectedCompany"),
+    companyLogo: makeNodeComponent("companyLogo"),
+    companyName: makeNodeComponent("companyName"),
+    companyName2: makeNodeComponent("companyName2"),
+    companyType: makeNodeComponent("companyType"),
+    averageRate: makeNodeComponent("averageRate"),
+    rateSum2: makeNodeComponent("rateSum2"),
+    area: makeNodeComponent("area"),
+    subArea: makeNodeComponent("subArea"),
+    location: makeNodeComponent("location"),
     disconnectCompany: makeNodeComponent("disconnectCompany"),
-    communities26: makeNodeComponent("communities26"),
-    rate30: makeNodeComponent("rate30"),
-    disconnectCompany2: makeNodeComponent("disconnectCompany2"),
-    communities27: makeNodeComponent("communities27"),
-    rate31: makeNodeComponent("rate31"),
-    disconnectCompany3: makeNodeComponent("disconnectCompany3"),
-    communities29: makeNodeComponent("communities29"),
-    rate33: makeNodeComponent("rate33"),
+    confirmDisconnect: makeNodeComponent("confirmDisconnect"),
+    requestCompany: makeNodeComponent("requestCompany"),
+    companyLogo2: makeNodeComponent("companyLogo2"),
+    companyName3: makeNodeComponent("companyName3"),
+    companyName4: makeNodeComponent("companyName4"),
+    companyType2: makeNodeComponent("companyType2"),
+    averageRate2: makeNodeComponent("averageRate2"),
+    rateSum3: makeNodeComponent("rateSum3"),
+    area2: makeNodeComponent("area2"),
+    subArea2: makeNodeComponent("subArea2"),
+    location2: makeNodeComponent("location2"),
     requestInf: makeNodeComponent("requestInf"),
-    rate12: makeNodeComponent("rate12"),
+    companyLogo3: makeNodeComponent("companyLogo3"),
+    companyName5: makeNodeComponent("companyName5"),
+    averageRate3: makeNodeComponent("averageRate3"),
+    shortMessage: makeNodeComponent("shortMessage"),
+    confirmConnection: makeNodeComponent("confirmConnection"),
+    cancelConnection: makeNodeComponent("cancelConnection"),
     linkedMembers: makeNodeComponent("linkedMembers"),
-    communities28: makeNodeComponent("communities28"),
+    connectedMembers: makeNodeComponent("connectedMembers"),
+    profilePic2: makeNodeComponent("profilePic2"),
+    firstName: makeNodeComponent("firstName"),
+    firstName2: makeNodeComponent("firstName2"),
+    lastName: makeNodeComponent("lastName"),
+    age: makeNodeComponent("age"),
+    location3: makeNodeComponent("location3"),
+    office2: makeNodeComponent("office2"),
     disconnectCompany4: makeNodeComponent("disconnectCompany4"),
-    rate32: makeNodeComponent("rate32"),
-    communities31: makeNodeComponent("communities31"),
-    disconnectCompany5: makeNodeComponent("disconnectCompany5"),
-    rate35: makeNodeComponent("rate35"),
-    communities32: makeNodeComponent("communities32"),
-    disconnectCompany6: makeNodeComponent("disconnectCompany6"),
-    rate36: makeNodeComponent("rate36"),
-    communities30: makeNodeComponent("communities30"),
+    confirmDisconnection: makeNodeComponent("confirmDisconnection"),
+    requestMember: makeNodeComponent("requestMember"),
+    profilePic3: makeNodeComponent("profilePic3"),
+    firstName3: makeNodeComponent("firstName3"),
+    firstName4: makeNodeComponent("firstName4"),
+    lastName2: makeNodeComponent("lastName2"),
+    age2: makeNodeComponent("age2"),
+    location4: makeNodeComponent("location4"),
+    office3: makeNodeComponent("office3"),
     requestInf2: makeNodeComponent("requestInf2"),
-    rate13: makeNodeComponent("rate13"),
-    rate34: makeNodeComponent("rate34"),
+    profilePic4: makeNodeComponent("profilePic4"),
+    firstName5: makeNodeComponent("firstName5"),
+    shortMessage2: makeNodeComponent("shortMessage2"),
+    confirmConnection2: makeNodeComponent("confirmConnection2"),
     sliderCarousel2: makeNodeComponent("sliderCarousel2"),
+    company: makeNodeComponent("company"),
+    companyLogo4: makeNodeComponent("companyLogo4"),
+    companyName6: makeNodeComponent("companyName6"),
     countainer3: makeNodeComponent("countainer3"),
-    rate25: makeNodeComponent("rate25"),
-    rate26: makeNodeComponent("rate26"),
-    rate27: makeNodeComponent("rate27"),
-    rate28: makeNodeComponent("rate28"),
+    communityReviews: makeNodeComponent("communityReviews"),
+    companyLogo5: makeNodeComponent("companyLogo5"),
+    companyName7: makeNodeComponent("companyName7"),
+    communityName2: makeNodeComponent("communityName2"),
+    comment: makeNodeComponent("comment"),
+    rating: makeNodeComponent("rating"),
     countainer4: makeNodeComponent("countainer4"),
-    rate41: makeNodeComponent("rate41"),
-    rate42: makeNodeComponent("rate42"),
-    rate43: makeNodeComponent("rate43"),
+    communityReplies: makeNodeComponent("communityReplies"),
+    communityLogo2: makeNodeComponent("communityLogo2"),
+    communityName3: makeNodeComponent("communityName3"),
+    companyName8: makeNodeComponent("companyName8"),
+    comment2: makeNodeComponent("comment2"),
+    rating2: makeNodeComponent("rating2"),
     container6: makeNodeComponent("container6"),
     sliderCarousel3: makeNodeComponent("sliderCarousel3"),
+    memberTraining: makeNodeComponent("memberTraining"),
+    profilePic5: makeNodeComponent("profilePic5"),
+    firstName6: makeNodeComponent("firstName6"),
+    graduationYear: makeNodeComponent("graduationYear"),
+    university: makeNodeComponent("university"),
     container7: makeNodeComponent("container7"),
     popover: makeNodeComponent("popover"),
     popover3: makeNodeComponent("popover3"),
@@ -13879,7 +9045,9 @@ export const PlasmicACommunityDashboard = Object.assign(
     popover19: makeNodeComponent("popover19"),
     popover20: makeNodeComponent("popover20"),
     container8: makeNodeComponent("container8"),
-    youTube: makeNodeComponent("youTube"),
+    youtubeVideo: makeNodeComponent("youtubeVideo"),
+    about: makeNodeComponent("about"),
+    website: makeNodeComponent("website"),
 
     // Metadata about props expected for PlasmicACommunityDashboard
     internalVariantProps: PlasmicACommunityDashboard__VariantProps,

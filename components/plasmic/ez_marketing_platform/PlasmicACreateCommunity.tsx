@@ -120,20 +120,21 @@ export type PlasmicACreateCommunity__OverridesType = {
   stepsStack?: Flex__<"div">;
   steps?: Flex__<typeof AntdSteps>;
   basicInfo?: Flex__<"div">;
-  upload?: Flex__<typeof UploadWrapper>;
-  select3?: Flex__<typeof AntdSelect>;
-  input2?: Flex__<typeof AntdInput>;
-  input3?: Flex__<typeof AntdInput>;
+  communityLogo?: Flex__<typeof UploadWrapper>;
+  type?: Flex__<typeof AntdSelect>;
+  communityName?: Flex__<typeof AntdInput>;
+  location?: Flex__<typeof AntdInput>;
   links?: Flex__<"div">;
-  input5?: Flex__<typeof AntdInput>;
-  input6?: Flex__<typeof AntdInput>;
-  input8?: Flex__<typeof AntdInput>;
-  input7?: Flex__<typeof AntdInput>;
+  youtubeChannel?: Flex__<typeof AntdInput>;
+  instagram?: Flex__<typeof AntdInput>;
+  tiktok?: Flex__<typeof AntdInput>;
+  x?: Flex__<typeof AntdInput>;
   skills?: Flex__<"div">;
-  upload2?: Flex__<typeof UploadWrapper>;
-  input9?: Flex__<typeof AntdInput>;
-  input10?: Flex__<typeof AntdInput>;
-  textArea?: Flex__<typeof AntdTextArea>;
+  agencyPic?: Flex__<typeof UploadWrapper>;
+  youtubeVideo?: Flex__<typeof AntdInput>;
+  website?: Flex__<typeof AntdInput>;
+  about?: Flex__<typeof AntdTextArea>;
+  done?: Flex__<typeof LoginButton>;
 };
 
 export interface DefaultACreateCommunityProps {}
@@ -201,13 +202,13 @@ function PlasmicACreateCommunity__RenderFunc(props: {
           })()
       },
       {
-        path: "upload.files",
+        path: "communityLogo.files",
         type: "private",
         variableType: "array",
         initFunc: ({ $props, $state, $queries, $ctx }) => []
       },
       {
-        path: "input2.value",
+        path: "communityName.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -215,7 +216,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input3.value",
+        path: "location.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -223,7 +224,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input5.value",
+        path: "youtubeChannel.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -231,7 +232,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input6.value",
+        path: "instagram.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -239,7 +240,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input7.value",
+        path: "x.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -247,7 +248,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "textArea.value",
+        path: "about.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -261,13 +262,13 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
       },
       {
-        path: "select3.value",
+        path: "type.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "input8.value",
+        path: "tiktok.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -275,13 +276,13 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "upload2.files",
+        path: "agencyPic.files",
         type: "private",
         variableType: "array",
         initFunc: ({ $props, $state, $queries, $ctx }) => []
       },
       {
-        path: "input9.value",
+        path: "youtubeVideo.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -289,7 +290,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input10.value",
+        path: "website.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -322,7 +323,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         />
         <meta
           key="twitter:title"
-          name="twitter:title"
+          property="twitter:title"
           content={PlasmicACreateCommunity.pageMetadata.title}
         />
       </Head>
@@ -434,7 +435,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                         sty.link__hqfDn
                       )}
                       component={Link}
-                      href={`/community-dashboard`}
+                      href={`/a-community-dashboard`}
                       platform={"nextjs"}
                     >
                       {"Community Dashboard"}
@@ -447,7 +448,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                         sty.link__zx6O2
                       )}
                       component={Link}
-                      href={`/service-dashboard`}
+                      href={`/a-service-dashboard`}
                       platform={"nextjs"}
                     >
                       {"Service\nDashboard"}
@@ -568,7 +569,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
 
                       $steps["goToAProfile"] = true
                         ? (() => {
-                            const actionArgs = { destination: `/profile` };
+                            const actionArgs = { destination: `/a-profile` };
                             return (({ destination }) => {
                               if (
                                 typeof destination === "string" &&
@@ -890,16 +891,19 @@ function PlasmicACreateCommunity__RenderFunc(props: {
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__oFDvN)}>
                 <UploadWrapper
-                  data-plasmic-name={"upload"}
-                  data-plasmic-override={overrides.upload}
+                  data-plasmic-name={"communityLogo"}
+                  data-plasmic-override={overrides.communityLogo}
                   accept={"image/*"}
-                  className={classNames("__wab_instance", sty.upload)}
-                  files={generateStateValueProp($state, ["upload", "files"])}
+                  className={classNames("__wab_instance", sty.communityLogo)}
+                  files={generateStateValueProp($state, [
+                    "communityLogo",
+                    "files"
+                  ])}
                   listType={"picture-circle"}
                   maxCount={1}
                   onFilesChange={async (...eventArgs: any) => {
                     generateStateOnChangeProp($state, [
-                      "upload",
+                      "communityLogo",
                       "files"
                     ]).apply(null, eventArgs);
                   }}
@@ -936,12 +940,12 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                 />
 
                 <AntdSelect
-                  data-plasmic-name={"select3"}
-                  data-plasmic-override={overrides.select3}
+                  data-plasmic-name={"type"}
+                  data-plasmic-override={overrides.type}
                   allowClear={true}
                   autoFocus={false}
                   bordered={true}
-                  className={classNames("__wab_instance", sty.select3)}
+                  className={classNames("__wab_instance", sty.type)}
                   defaultOpen={false}
                   defaultStylesClassName={classNames(
                     projectcss.root_reset,
@@ -952,10 +956,10 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                   dropdownMatchSelectWidth={false}
                   mode={"single"}
                   onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "select3",
-                      "value"
-                    ]).apply(null, eventArgs);
+                    generateStateOnChangeProp($state, ["type", "value"]).apply(
+                      null,
+                      eventArgs
+                    );
                   }}
                   options={(() => {
                     const __composite = [
@@ -982,11 +986,11 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                       {"What will your relationship with companies be like?"}
                     </div>
                   }
-                  popupScopeClassName={sty["select3__popup"]}
+                  popupScopeClassName={sty["type__popup"]}
                   showSearch={false}
                   size={"middle"}
                   useChildren={true}
-                  value={generateStateValueProp($state, ["select3", "value"])}
+                  value={generateStateValueProp($state, ["type", "value"])}
                 >
                   <AntdOption
                     className={classNames("__wab_instance", sty.option__cnJVz)}
@@ -1028,12 +1032,12 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                   const child$Props = {
                     autoFocus: false,
                     bordered: true,
-                    className: classNames("__wab_instance", sty.input2),
+                    className: classNames("__wab_instance", sty.communityName),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["input2", "value"],
+                        ["communityName", "value"],
                         AntdInput_Helpers
                       ).apply(null, eventArgs);
                     },
@@ -1041,14 +1045,17 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     readOnly: false,
                     size: "middle",
                     type: "text",
-                    value: generateStateValueProp($state, ["input2", "value"])
+                    value: generateStateValueProp($state, [
+                      "communityName",
+                      "value"
+                    ])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "input2.value"
+                        plasmicStateName: "communityName.value"
                       }
                     ],
                     [],
@@ -1058,8 +1065,8 @@ function PlasmicACreateCommunity__RenderFunc(props: {
 
                   return (
                     <AntdInput
-                      data-plasmic-name={"input2"}
-                      data-plasmic-override={overrides.input2}
+                      data-plasmic-name={"communityName"}
+                      data-plasmic-override={overrides.communityName}
                       {...child$Props}
                     />
                   );
@@ -1075,12 +1082,12 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                   const child$Props = {
                     autoFocus: false,
                     bordered: true,
-                    className: classNames("__wab_instance", sty.input3),
+                    className: classNames("__wab_instance", sty.location),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["input3", "value"],
+                        ["location", "value"],
                         AntdInput_Helpers
                       ).apply(null, eventArgs);
                     },
@@ -1088,14 +1095,14 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     readOnly: false,
                     size: "middle",
                     type: "text",
-                    value: generateStateValueProp($state, ["input3", "value"])
+                    value: generateStateValueProp($state, ["location", "value"])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "input3.value"
+                        plasmicStateName: "location.value"
                       }
                     ],
                     [],
@@ -1105,8 +1112,8 @@ function PlasmicACreateCommunity__RenderFunc(props: {
 
                   return (
                     <AntdInput
-                      data-plasmic-name={"input3"}
-                      data-plasmic-override={overrides.input3}
+                      data-plasmic-name={"location"}
+                      data-plasmic-override={overrides.location}
                       {...child$Props}
                     />
                   );
@@ -1202,12 +1209,12 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                   const child$Props = {
                     autoFocus: false,
                     bordered: true,
-                    className: classNames("__wab_instance", sty.input5),
+                    className: classNames("__wab_instance", sty.youtubeChannel),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["input5", "value"],
+                        ["youtubeChannel", "value"],
                         AntdInput_Helpers
                       ).apply(null, eventArgs);
                     },
@@ -1215,14 +1222,17 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     readOnly: false,
                     size: "middle",
                     type: "text",
-                    value: generateStateValueProp($state, ["input5", "value"])
+                    value: generateStateValueProp($state, [
+                      "youtubeChannel",
+                      "value"
+                    ])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "input5.value"
+                        plasmicStateName: "youtubeChannel.value"
                       }
                     ],
                     [],
@@ -1232,8 +1242,8 @@ function PlasmicACreateCommunity__RenderFunc(props: {
 
                   return (
                     <AntdInput
-                      data-plasmic-name={"input5"}
-                      data-plasmic-override={overrides.input5}
+                      data-plasmic-name={"youtubeChannel"}
+                      data-plasmic-override={overrides.youtubeChannel}
                       {...child$Props}
                     />
                   );
@@ -1249,12 +1259,12 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                   const child$Props = {
                     autoFocus: false,
                     bordered: true,
-                    className: classNames("__wab_instance", sty.input6),
+                    className: classNames("__wab_instance", sty.instagram),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["input6", "value"],
+                        ["instagram", "value"],
                         AntdInput_Helpers
                       ).apply(null, eventArgs);
                     },
@@ -1262,14 +1272,17 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     readOnly: false,
                     size: "middle",
                     type: "text",
-                    value: generateStateValueProp($state, ["input6", "value"])
+                    value: generateStateValueProp($state, [
+                      "instagram",
+                      "value"
+                    ])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "input6.value"
+                        plasmicStateName: "instagram.value"
                       }
                     ],
                     [],
@@ -1279,8 +1292,8 @@ function PlasmicACreateCommunity__RenderFunc(props: {
 
                   return (
                     <AntdInput
-                      data-plasmic-name={"input6"}
-                      data-plasmic-override={overrides.input6}
+                      data-plasmic-name={"instagram"}
+                      data-plasmic-override={overrides.instagram}
                       {...child$Props}
                     />
                   );
@@ -1296,12 +1309,12 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                   const child$Props = {
                     autoFocus: false,
                     bordered: true,
-                    className: classNames("__wab_instance", sty.input8),
+                    className: classNames("__wab_instance", sty.tiktok),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["input8", "value"],
+                        ["tiktok", "value"],
                         AntdInput_Helpers
                       ).apply(null, eventArgs);
                     },
@@ -1309,14 +1322,14 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     readOnly: false,
                     size: "middle",
                     type: "text",
-                    value: generateStateValueProp($state, ["input8", "value"])
+                    value: generateStateValueProp($state, ["tiktok", "value"])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "input8.value"
+                        plasmicStateName: "tiktok.value"
                       }
                     ],
                     [],
@@ -1326,8 +1339,8 @@ function PlasmicACreateCommunity__RenderFunc(props: {
 
                   return (
                     <AntdInput
-                      data-plasmic-name={"input8"}
-                      data-plasmic-override={overrides.input8}
+                      data-plasmic-name={"tiktok"}
+                      data-plasmic-override={overrides.tiktok}
                       {...child$Props}
                     />
                   );
@@ -1343,12 +1356,12 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                   const child$Props = {
                     autoFocus: false,
                     bordered: true,
-                    className: classNames("__wab_instance", sty.input7),
+                    className: classNames("__wab_instance", sty.x),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["input7", "value"],
+                        ["x", "value"],
                         AntdInput_Helpers
                       ).apply(null, eventArgs);
                     },
@@ -1356,14 +1369,14 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     readOnly: false,
                     size: "middle",
                     type: "text",
-                    value: generateStateValueProp($state, ["input7", "value"])
+                    value: generateStateValueProp($state, ["x", "value"])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "input7.value"
+                        plasmicStateName: "x.value"
                       }
                     ],
                     [],
@@ -1373,8 +1386,8 @@ function PlasmicACreateCommunity__RenderFunc(props: {
 
                   return (
                     <AntdInput
-                      data-plasmic-name={"input7"}
-                      data-plasmic-override={overrides.input7}
+                      data-plasmic-name={"x"}
+                      data-plasmic-override={overrides.x}
                       {...child$Props}
                     />
                   );
@@ -1507,15 +1520,15 @@ function PlasmicACreateCommunity__RenderFunc(props: {
               </div>
               <div className={classNames(projectcss.all, sty.freeBox___0Teb8)}>
                 <UploadWrapper
-                  data-plasmic-name={"upload2"}
-                  data-plasmic-override={overrides.upload2}
+                  data-plasmic-name={"agencyPic"}
+                  data-plasmic-override={overrides.agencyPic}
                   accept={"image/*"}
-                  className={classNames("__wab_instance", sty.upload2)}
-                  files={generateStateValueProp($state, ["upload2", "files"])}
+                  className={classNames("__wab_instance", sty.agencyPic)}
+                  files={generateStateValueProp($state, ["agencyPic", "files"])}
                   listType={"text"}
                   onFilesChange={async (...eventArgs: any) => {
                     generateStateOnChangeProp($state, [
-                      "upload2",
+                      "agencyPic",
                       "files"
                     ]).apply(null, eventArgs);
                   }}
@@ -1557,12 +1570,12 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                   const child$Props = {
                     autoFocus: false,
                     bordered: true,
-                    className: classNames("__wab_instance", sty.input9),
+                    className: classNames("__wab_instance", sty.youtubeVideo),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["input9", "value"],
+                        ["youtubeVideo", "value"],
                         AntdInput_Helpers
                       ).apply(null, eventArgs);
                     },
@@ -1571,14 +1584,17 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     readOnly: false,
                     size: "middle",
                     type: "text",
-                    value: generateStateValueProp($state, ["input9", "value"])
+                    value: generateStateValueProp($state, [
+                      "youtubeVideo",
+                      "value"
+                    ])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "input9.value"
+                        plasmicStateName: "youtubeVideo.value"
                       }
                     ],
                     [],
@@ -1588,8 +1604,8 @@ function PlasmicACreateCommunity__RenderFunc(props: {
 
                   return (
                     <AntdInput
-                      data-plasmic-name={"input9"}
-                      data-plasmic-override={overrides.input9}
+                      data-plasmic-name={"youtubeVideo"}
+                      data-plasmic-override={overrides.youtubeVideo}
                       {...child$Props}
                     />
                   );
@@ -1605,12 +1621,12 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                   const child$Props = {
                     autoFocus: false,
                     bordered: true,
-                    className: classNames("__wab_instance", sty.input10),
+                    className: classNames("__wab_instance", sty.website),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["input10", "value"],
+                        ["website", "value"],
                         AntdInput_Helpers
                       ).apply(null, eventArgs);
                     },
@@ -1618,14 +1634,14 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                     readOnly: false,
                     size: "middle",
                     type: "text",
-                    value: generateStateValueProp($state, ["input10", "value"])
+                    value: generateStateValueProp($state, ["website", "value"])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "input10.value"
+                        plasmicStateName: "website.value"
                       }
                     ],
                     [],
@@ -1635,8 +1651,8 @@ function PlasmicACreateCommunity__RenderFunc(props: {
 
                   return (
                     <AntdInput
-                      data-plasmic-name={"input10"}
-                      data-plasmic-override={overrides.input10}
+                      data-plasmic-name={"website"}
+                      data-plasmic-override={overrides.website}
                       {...child$Props}
                     />
                   );
@@ -1650,24 +1666,24 @@ function PlasmicACreateCommunity__RenderFunc(props: {
 
                 {(() => {
                   const child$Props = {
-                    className: classNames("__wab_instance", sty.textArea),
+                    className: classNames("__wab_instance", sty.about),
                     onChange: async (...eventArgs: any) => {
                       generateStateOnChangePropForCodeComponents(
                         $state,
                         "value",
-                        ["textArea", "value"],
+                        ["about", "value"],
                         AntdTextArea_Helpers
                       ).apply(null, eventArgs);
                     },
                     placeholder: "Tell about your agency",
-                    value: generateStateValueProp($state, ["textArea", "value"])
+                    value: generateStateValueProp($state, ["about", "value"])
                   };
                   initializeCodeComponentStates(
                     $state,
                     [
                       {
                         name: "value",
-                        plasmicStateName: "textArea.value"
+                        plasmicStateName: "about.value"
                       }
                     ],
                     [],
@@ -1677,8 +1693,8 @@ function PlasmicACreateCommunity__RenderFunc(props: {
 
                   return (
                     <AntdTextArea
-                      data-plasmic-name={"textArea"}
-                      data-plasmic-override={overrides.textArea}
+                      data-plasmic-name={"about"}
+                      data-plasmic-override={overrides.about}
                       {...child$Props}
                     />
                   );
@@ -1726,17 +1742,16 @@ function PlasmicACreateCommunity__RenderFunc(props: {
                   </div>
                 </LoginButton>
                 <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton__bpTo3
-                  )}
+                  data-plasmic-name={"done"}
+                  data-plasmic-override={overrides.done}
+                  className={classNames("__wab_instance", sty.done)}
                   onClick={async event => {
                     const $steps = {};
 
                     $steps["goToACommunityDashboard"] = true
                       ? (() => {
                           const actionArgs = {
-                            destination: `/community-dashboard`
+                            destination: `/a-community-dashboard`
                           };
                           return (({ destination }) => {
                             if (
@@ -1792,20 +1807,21 @@ const PlasmicDescendants = {
     "stepsStack",
     "steps",
     "basicInfo",
-    "upload",
-    "select3",
-    "input2",
-    "input3",
+    "communityLogo",
+    "type",
+    "communityName",
+    "location",
     "links",
-    "input5",
-    "input6",
-    "input8",
-    "input7",
+    "youtubeChannel",
+    "instagram",
+    "tiktok",
+    "x",
     "skills",
-    "upload2",
-    "input9",
-    "input10",
-    "textArea"
+    "agencyPic",
+    "youtubeVideo",
+    "website",
+    "about",
+    "done"
   ],
   topBar: ["topBar", "navigationBar", "account"],
   navigationBar: ["navigationBar"],
@@ -1815,38 +1831,46 @@ const PlasmicDescendants = {
     "stepsStack",
     "steps",
     "basicInfo",
-    "upload",
-    "select3",
-    "input2",
-    "input3",
+    "communityLogo",
+    "type",
+    "communityName",
+    "location",
     "links",
-    "input5",
-    "input6",
-    "input8",
-    "input7",
+    "youtubeChannel",
+    "instagram",
+    "tiktok",
+    "x",
     "skills",
-    "upload2",
-    "input9",
-    "input10",
-    "textArea"
+    "agencyPic",
+    "youtubeVideo",
+    "website",
+    "about",
+    "done"
   ],
   stepsStack: ["stepsStack", "steps"],
   steps: ["steps"],
-  basicInfo: ["basicInfo", "upload", "select3", "input2", "input3"],
-  upload: ["upload"],
-  select3: ["select3"],
-  input2: ["input2"],
-  input3: ["input3"],
-  links: ["links", "input5", "input6", "input8", "input7"],
-  input5: ["input5"],
-  input6: ["input6"],
-  input8: ["input8"],
-  input7: ["input7"],
-  skills: ["skills", "upload2", "input9", "input10", "textArea"],
-  upload2: ["upload2"],
-  input9: ["input9"],
-  input10: ["input10"],
-  textArea: ["textArea"]
+  basicInfo: [
+    "basicInfo",
+    "communityLogo",
+    "type",
+    "communityName",
+    "location"
+  ],
+  communityLogo: ["communityLogo"],
+  type: ["type"],
+  communityName: ["communityName"],
+  location: ["location"],
+  links: ["links", "youtubeChannel", "instagram", "tiktok", "x"],
+  youtubeChannel: ["youtubeChannel"],
+  instagram: ["instagram"],
+  tiktok: ["tiktok"],
+  x: ["x"],
+  skills: ["skills", "agencyPic", "youtubeVideo", "website", "about", "done"],
+  agencyPic: ["agencyPic"],
+  youtubeVideo: ["youtubeVideo"],
+  website: ["website"],
+  about: ["about"],
+  done: ["done"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1860,20 +1884,21 @@ type NodeDefaultElementType = {
   stepsStack: "div";
   steps: typeof AntdSteps;
   basicInfo: "div";
-  upload: typeof UploadWrapper;
-  select3: typeof AntdSelect;
-  input2: typeof AntdInput;
-  input3: typeof AntdInput;
+  communityLogo: typeof UploadWrapper;
+  type: typeof AntdSelect;
+  communityName: typeof AntdInput;
+  location: typeof AntdInput;
   links: "div";
-  input5: typeof AntdInput;
-  input6: typeof AntdInput;
-  input8: typeof AntdInput;
-  input7: typeof AntdInput;
+  youtubeChannel: typeof AntdInput;
+  instagram: typeof AntdInput;
+  tiktok: typeof AntdInput;
+  x: typeof AntdInput;
   skills: "div";
-  upload2: typeof UploadWrapper;
-  input9: typeof AntdInput;
-  input10: typeof AntdInput;
-  textArea: typeof AntdTextArea;
+  agencyPic: typeof UploadWrapper;
+  youtubeVideo: typeof AntdInput;
+  website: typeof AntdInput;
+  about: typeof AntdTextArea;
+  done: typeof LoginButton;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1945,20 +1970,21 @@ export const PlasmicACreateCommunity = Object.assign(
     stepsStack: makeNodeComponent("stepsStack"),
     steps: makeNodeComponent("steps"),
     basicInfo: makeNodeComponent("basicInfo"),
-    upload: makeNodeComponent("upload"),
-    select3: makeNodeComponent("select3"),
-    input2: makeNodeComponent("input2"),
-    input3: makeNodeComponent("input3"),
+    communityLogo: makeNodeComponent("communityLogo"),
+    type: makeNodeComponent("type"),
+    communityName: makeNodeComponent("communityName"),
+    location: makeNodeComponent("location"),
     links: makeNodeComponent("links"),
-    input5: makeNodeComponent("input5"),
-    input6: makeNodeComponent("input6"),
-    input8: makeNodeComponent("input8"),
-    input7: makeNodeComponent("input7"),
+    youtubeChannel: makeNodeComponent("youtubeChannel"),
+    instagram: makeNodeComponent("instagram"),
+    tiktok: makeNodeComponent("tiktok"),
+    x: makeNodeComponent("x"),
     skills: makeNodeComponent("skills"),
-    upload2: makeNodeComponent("upload2"),
-    input9: makeNodeComponent("input9"),
-    input10: makeNodeComponent("input10"),
-    textArea: makeNodeComponent("textArea"),
+    agencyPic: makeNodeComponent("agencyPic"),
+    youtubeVideo: makeNodeComponent("youtubeVideo"),
+    website: makeNodeComponent("website"),
+    about: makeNodeComponent("about"),
+    done: makeNodeComponent("done"),
 
     // Metadata about props expected for PlasmicACreateCommunity
     internalVariantProps: PlasmicACreateCommunity__VariantProps,

@@ -1394,7 +1394,7 @@ function PlasmicAMarketTrends__RenderFunc(props: {
         />
         <meta
           key="twitter:title"
-          name="twitter:title"
+          property="twitter:title"
           content={PlasmicAMarketTrends.pageMetadata.title}
         />
       </Head>
@@ -1508,7 +1508,7 @@ function PlasmicAMarketTrends__RenderFunc(props: {
                           sty.link__wbeJk
                         )}
                         component={Link}
-                        href={`/community-dashboard`}
+                        href={`/a-community-dashboard`}
                         platform={"nextjs"}
                       >
                         {"Community Dashboard"}
@@ -1521,7 +1521,7 @@ function PlasmicAMarketTrends__RenderFunc(props: {
                           sty.link__w8CE8
                         )}
                         component={Link}
-                        href={`/service-dashboard`}
+                        href={`/a-service-dashboard`}
                         platform={"nextjs"}
                       >
                         {"Service\nDashboard"}
@@ -1547,7 +1547,7 @@ function PlasmicAMarketTrends__RenderFunc(props: {
                           sty.link__wp1GI
                         )}
                         component={Link}
-                        href={`/find-a-business`}
+                        href={`/a-find-a-business`}
                         platform={"nextjs"}
                       >
                         {"Find a \nbusiness"}
@@ -1651,7 +1651,7 @@ function PlasmicAMarketTrends__RenderFunc(props: {
 
                         $steps["goToAProfile"] = true
                           ? (() => {
-                              const actionArgs = { destination: `/profile` };
+                              const actionArgs = { destination: `/a-profile` };
                               return (({ destination }) => {
                                 if (
                                   typeof destination === "string" &&

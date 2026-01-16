@@ -315,7 +315,7 @@
   min-width: 0;
   padding: 8px;
 }
-.upload:global(.__wab_instance) {
+.profilePic:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   text-align: left;
@@ -381,7 +381,7 @@
     top: auto;
   }
 }
-.input:global(.__wab_instance) {
+.firstName:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   font-family: "Montserrat", sans-serif;
@@ -425,7 +425,7 @@
     top: auto;
   }
 }
-.input2:global(.__wab_instance) {
+.lastName:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   font-family: "Montserrat", sans-serif;
@@ -469,7 +469,7 @@
     top: auto;
   }
 }
-.input3:global(.__wab_instance) {
+.location:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   font-family: "Montserrat", sans-serif;
@@ -513,7 +513,7 @@
     top: auto;
   }
 }
-.input4:global(.__wab_instance) {
+.birthday:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   font-family: "Montserrat", sans-serif;
@@ -667,7 +667,7 @@
     top: auto;
   }
 }
-.input5:global(.__wab_instance) {
+.linkedIn:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   font-family: "Montserrat", sans-serif;
@@ -711,7 +711,7 @@
     top: auto;
   }
 }
-.input6:global(.__wab_instance) {
+.instagram:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   font-family: "Montserrat", sans-serif;
@@ -755,7 +755,7 @@
     top: auto;
   }
 }
-.input7:global(.__wab_instance) {
+.x:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   font-family: "Montserrat", sans-serif;
@@ -996,7 +996,7 @@
     top: auto;
   }
 }
-.input11:global(.__wab_instance) {
+.university:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   font-family: "Montserrat", sans-serif;
@@ -1021,7 +1021,7 @@
     top: auto;
   }
 }
-.svg__y8Bnj {
+.svg__lgWkj {
   object-fit: cover;
   max-width: 100%;
   color: #000000;
@@ -1034,13 +1034,13 @@
   flex-shrink: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
-  .svg__y8Bnj {
+  .svg__lgWkj {
     position: relative;
     left: auto;
     top: auto;
   }
 }
-.input12:global(.__wab_instance) {
+.major:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   font-family: "Montserrat", sans-serif;
@@ -1065,7 +1065,7 @@
     top: auto;
   }
 }
-.svg__lgWkj {
+.svg__y8Bnj {
   object-fit: cover;
   max-width: 100%;
   color: #000000;
@@ -1078,13 +1078,13 @@
   flex-shrink: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
-  .svg__lgWkj {
+  .svg__y8Bnj {
     position: relative;
     left: auto;
     top: auto;
   }
 }
-.input13:global(.__wab_instance) {
+.graduationYear:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   font-family: "Montserrat", sans-serif;
@@ -1130,7 +1130,7 @@
     top: auto;
   }
 }
-.select3:global(.__wab_instance) {
+.educationLevel:global(.__wab_instance) {
   animation: none;
   max-width: 100%;
   object-fit: cover;
@@ -1406,7 +1406,7 @@
   min-width: 0;
   padding: 8px;
 }
-.upload2:global(.__wab_instance) {
+.degree:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   text-align: left;
@@ -1713,7 +1713,7 @@
     top: auto;
   }
 }
-.input14:global(.__wab_instance) {
+.charge:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   font-family: "Montserrat", sans-serif;
@@ -1757,7 +1757,7 @@
     top: auto;
   }
 }
-.input15:global(.__wab_instance) {
+.company:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   font-family: "Montserrat", sans-serif;
@@ -1801,7 +1801,7 @@
     top: auto;
   }
 }
-.input16:global(.__wab_instance) {
+.howLongInOffice:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   font-family: "Montserrat", sans-serif;
@@ -2008,7 +2008,7 @@
     padding-left: 19px;
   }
 }
-.select2:global(.__wab_instance) {
+.office:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   width: 460px;
@@ -2386,7 +2386,7 @@
     top: auto;
   }
 }
-.textArea:global(.__wab_instance) {
+.impressive:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
 }

@@ -253,7 +253,7 @@ function PlasmicCAdminCommunitie__RenderFunc(props: {
         />
         <meta
           key="twitter:title"
-          name="twitter:title"
+          property="twitter:title"
           content={PlasmicCAdminCommunitie.pageMetadata.title}
         />
       </Head>

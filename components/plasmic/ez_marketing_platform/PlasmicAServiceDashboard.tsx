@@ -115,6 +115,9 @@ export type PlasmicAServiceDashboard__OverridesType = {
   account?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
   container2?: Flex__<"div">;
+  _7Days?: Flex__<typeof LoginButton>;
+  _30Days?: Flex__<typeof LoginButton>;
+  _60Days?: Flex__<typeof LoginButton>;
   withdraw?: Flex__<typeof Modal>;
   period?: Flex__<"div">;
   accountInf?: Flex__<"div">;
@@ -133,14 +136,25 @@ export type PlasmicAServiceDashboard__OverridesType = {
   cashIn4?: Flex__<"div">;
   cashIn5?: Flex__<"div">;
   configureGoal?: Flex__<typeof Modal>;
-  input9?: Flex__<typeof AntdInput>;
-  input13?: Flex__<typeof AntdInput>;
-  input10?: Flex__<typeof AntdInput>;
-  input11?: Flex__<typeof AntdInput>;
-  input12?: Flex__<typeof AntdInput>;
+  advertisingBudget?: Flex__<typeof AntdInput>;
+  staffSalary?: Flex__<typeof AntdInput>;
+  fixedCosts?: Flex__<typeof AntdInput>;
+  softwareTools?: Flex__<typeof AntdInput>;
+  taxesFees?: Flex__<typeof AntdInput>;
+  billing?: Flex__<"div">;
   container3?: Flex__<"div">;
   select?: Flex__<typeof AntdSelect>;
-  select4?: Flex__<typeof AntdSelect>;
+  companyName2?: Flex__<"div">;
+  company?: Flex__<typeof AntdOption>;
+  companyLogo2?: Flex__<typeof PlasmicImg__>;
+  companyName?: Flex__<"div">;
+  solutions?: Flex__<typeof AntdSelect>;
+  title2?: Flex__<"div">;
+  solution?: Flex__<typeof AntdOption>;
+  companyLogo?: Flex__<typeof PlasmicImg__>;
+  title?: Flex__<"div">;
+  totalSales?: Flex__<"div">;
+  comissionPaid?: Flex__<"div">;
   tableAtCustomerLocation2?: Flex__<"div">;
   tableAtCompanyLocation3?: Flex__<"div">;
   analysisAtCustomerLocation?: Flex__<"div">;
@@ -305,7 +319,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "select4.value",
+        path: "solutions.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
@@ -317,7 +331,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "input9.value",
+        path: "advertisingBudget.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -325,7 +339,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input10.value",
+        path: "fixedCosts.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -333,7 +347,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input11.value",
+        path: "softwareTools.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -341,7 +355,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input12.value",
+        path: "taxesFees.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -349,7 +363,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "input13.value",
+        path: "staffSalary.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -382,7 +396,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
         />
         <meta
           key="twitter:title"
-          name="twitter:title"
+          property="twitter:title"
           content={PlasmicAServiceDashboard.pageMetadata.title}
         />
       </Head>
@@ -494,7 +508,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                         sty.link__aWtLk
                       )}
                       component={Link}
-                      href={`/community-dashboard`}
+                      href={`/a-community-dashboard`}
                       platform={"nextjs"}
                     >
                       {"Community Dashboard"}
@@ -507,7 +521,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                         sty.link__gxkky
                       )}
                       component={Link}
-                      href={`/service-dashboard`}
+                      href={`/a-service-dashboard`}
                       platform={"nextjs"}
                     >
                       {"Service\nDashboard"}
@@ -532,7 +546,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                         sty.link__bjHy8
                       )}
                       component={Link}
-                      href={`/find-a-business`}
+                      href={`/a-find-a-business`}
                       platform={"nextjs"}
                     >
                       {"Find a \nbusiness"}
@@ -629,7 +643,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
 
                       $steps["goToAProfile"] = true
                         ? (() => {
-                            const actionArgs = { destination: `/profile` };
+                            const actionArgs = { destination: `/a-profile` };
                             return (({ destination }) => {
                               if (
                                 typeof destination === "string" &&
@@ -845,7 +859,9 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
               </div>
             </LoginButton>
             <LoginButton
-              className={classNames("__wab_instance", sty.loginButton__qgMBp)}
+              data-plasmic-name={"_7Days"}
+              data-plasmic-override={overrides._7Days}
+              className={classNames("__wab_instance", sty._7Days)}
               color={"softSand"}
               size={"minimal"}
             >
@@ -860,7 +876,9 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
               </div>
             </LoginButton>
             <LoginButton
-              className={classNames("__wab_instance", sty.loginButton__ddJk0)}
+              data-plasmic-name={"_30Days"}
+              data-plasmic-override={overrides._30Days}
+              className={classNames("__wab_instance", sty._30Days)}
               color={"softSand"}
               size={"minimal"}
             >
@@ -875,7 +893,9 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
               </div>
             </LoginButton>
             <LoginButton
-              className={classNames("__wab_instance", sty.loginButton__uZoUk)}
+              data-plasmic-name={"_60Days"}
+              data-plasmic-override={overrides._60Days}
+              className={classNames("__wab_instance", sty._60Days)}
               color={"softSand"}
               size={"minimal"}
             >
@@ -957,7 +977,27 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                       sty.text__dAyAj
                     )}
                   >
-                    {"3,193"}
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return (
+                            Number($state.advertisingBudget.value) +
+                            Number($state.staffSalary.value) +
+                            Number($state.fixedCosts.value) +
+                            Number($state.softwareTools.value) +
+                            Number($state.taxesFees.value)
+                          );
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "3,193";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
                   </div>
                 </div>
               </div>
@@ -2628,12 +2668,15 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                         const child$Props = {
                           autoFocus: false,
                           bordered: true,
-                          className: classNames("__wab_instance", sty.input9),
+                          className: classNames(
+                            "__wab_instance",
+                            sty.advertisingBudget
+                          ),
                           onChange: async (...eventArgs: any) => {
                             generateStateOnChangePropForCodeComponents(
                               $state,
                               "value",
-                              ["input9", "value"],
+                              ["advertisingBudget", "value"],
                               AntdInput_Helpers
                             ).apply(null, eventArgs);
                           },
@@ -2642,7 +2685,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                           size: "large",
                           type: "number",
                           value: generateStateValueProp($state, [
-                            "input9",
+                            "advertisingBudget",
                             "value"
                           ])
                         };
@@ -2651,7 +2694,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                           [
                             {
                               name: "value",
-                              plasmicStateName: "input9.value"
+                              plasmicStateName: "advertisingBudget.value"
                             }
                           ],
                           [],
@@ -2661,8 +2704,8 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
 
                         return (
                           <AntdInput
-                            data-plasmic-name={"input9"}
-                            data-plasmic-override={overrides.input9}
+                            data-plasmic-name={"advertisingBudget"}
+                            data-plasmic-override={overrides.advertisingBudget}
                             {...child$Props}
                           />
                         );
@@ -2671,12 +2714,15 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                         const child$Props = {
                           autoFocus: false,
                           bordered: true,
-                          className: classNames("__wab_instance", sty.input13),
+                          className: classNames(
+                            "__wab_instance",
+                            sty.staffSalary
+                          ),
                           onChange: async (...eventArgs: any) => {
                             generateStateOnChangePropForCodeComponents(
                               $state,
                               "value",
-                              ["input13", "value"],
+                              ["staffSalary", "value"],
                               AntdInput_Helpers
                             ).apply(null, eventArgs);
                           },
@@ -2685,7 +2731,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                           size: "middle",
                           type: "number",
                           value: generateStateValueProp($state, [
-                            "input13",
+                            "staffSalary",
                             "value"
                           ])
                         };
@@ -2694,7 +2740,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                           [
                             {
                               name: "value",
-                              plasmicStateName: "input13.value"
+                              plasmicStateName: "staffSalary.value"
                             }
                           ],
                           [],
@@ -2704,8 +2750,8 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
 
                         return (
                           <AntdInput
-                            data-plasmic-name={"input13"}
-                            data-plasmic-override={overrides.input13}
+                            data-plasmic-name={"staffSalary"}
+                            data-plasmic-override={overrides.staffSalary}
                             {...child$Props}
                           />
                         );
@@ -2714,12 +2760,15 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                         const child$Props = {
                           autoFocus: false,
                           bordered: true,
-                          className: classNames("__wab_instance", sty.input10),
+                          className: classNames(
+                            "__wab_instance",
+                            sty.fixedCosts
+                          ),
                           onChange: async (...eventArgs: any) => {
                             generateStateOnChangePropForCodeComponents(
                               $state,
                               "value",
-                              ["input10", "value"],
+                              ["fixedCosts", "value"],
                               AntdInput_Helpers
                             ).apply(null, eventArgs);
                           },
@@ -2729,7 +2778,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                           size: "middle",
                           type: "number",
                           value: generateStateValueProp($state, [
-                            "input10",
+                            "fixedCosts",
                             "value"
                           ])
                         };
@@ -2738,7 +2787,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                           [
                             {
                               name: "value",
-                              plasmicStateName: "input10.value"
+                              plasmicStateName: "fixedCosts.value"
                             }
                           ],
                           [],
@@ -2748,8 +2797,8 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
 
                         return (
                           <AntdInput
-                            data-plasmic-name={"input10"}
-                            data-plasmic-override={overrides.input10}
+                            data-plasmic-name={"fixedCosts"}
+                            data-plasmic-override={overrides.fixedCosts}
                             {...child$Props}
                           />
                         );
@@ -2758,12 +2807,15 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                         const child$Props = {
                           autoFocus: false,
                           bordered: true,
-                          className: classNames("__wab_instance", sty.input11),
+                          className: classNames(
+                            "__wab_instance",
+                            sty.softwareTools
+                          ),
                           onChange: async (...eventArgs: any) => {
                             generateStateOnChangePropForCodeComponents(
                               $state,
                               "value",
-                              ["input11", "value"],
+                              ["softwareTools", "value"],
                               AntdInput_Helpers
                             ).apply(null, eventArgs);
                           },
@@ -2772,7 +2824,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                           size: "middle",
                           type: "number",
                           value: generateStateValueProp($state, [
-                            "input11",
+                            "softwareTools",
                             "value"
                           ])
                         };
@@ -2781,7 +2833,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                           [
                             {
                               name: "value",
-                              plasmicStateName: "input11.value"
+                              plasmicStateName: "softwareTools.value"
                             }
                           ],
                           [],
@@ -2791,8 +2843,8 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
 
                         return (
                           <AntdInput
-                            data-plasmic-name={"input11"}
-                            data-plasmic-override={overrides.input11}
+                            data-plasmic-name={"softwareTools"}
+                            data-plasmic-override={overrides.softwareTools}
                             {...child$Props}
                           />
                         );
@@ -2801,12 +2853,15 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                         const child$Props = {
                           autoFocus: false,
                           bordered: true,
-                          className: classNames("__wab_instance", sty.input12),
+                          className: classNames(
+                            "__wab_instance",
+                            sty.taxesFees
+                          ),
                           onChange: async (...eventArgs: any) => {
                             generateStateOnChangePropForCodeComponents(
                               $state,
                               "value",
-                              ["input12", "value"],
+                              ["taxesFees", "value"],
                               AntdInput_Helpers
                             ).apply(null, eventArgs);
                           },
@@ -2815,7 +2870,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                           size: "middle",
                           type: "number",
                           value: generateStateValueProp($state, [
-                            "input12",
+                            "taxesFees",
                             "value"
                           ])
                         };
@@ -2824,7 +2879,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                           [
                             {
                               name: "value",
-                              plasmicStateName: "input12.value"
+                              plasmicStateName: "taxesFees.value"
                             }
                           ],
                           [],
@@ -2834,8 +2889,8 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
 
                         return (
                           <AntdInput
-                            data-plasmic-name={"input12"}
-                            data-plasmic-override={overrides.input12}
+                            data-plasmic-name={"taxesFees"}
+                            data-plasmic-override={overrides.taxesFees}
                             {...child$Props}
                           />
                         );
@@ -2863,21 +2918,23 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                         {"U$ "}
                       </div>
                       <div
+                        data-plasmic-name={"billing"}
+                        data-plasmic-override={overrides.billing}
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__cppCv
+                          sty.billing
                         )}
                       >
                         <React.Fragment>
                           {(() => {
                             try {
                               return (
-                                Number($state.input9.value) +
-                                Number($state.input13.value) +
-                                Number($state.input10.value) +
-                                Number($state.input11.value) +
-                                Number($state.input12.value)
+                                Number($state.advertisingBudget.value) +
+                                Number($state.staffSalary.value) +
+                                Number($state.fixedCosts.value) +
+                                Number($state.softwareTools.value) +
+                                Number($state.taxesFees.value)
                               );
                             } catch (e) {
                               if (
@@ -3000,10 +3057,12 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                 ]}
                 placeholder={
                   <div
+                    data-plasmic-name={"companyName2"}
+                    data-plasmic-override={overrides.companyName2}
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__p9Dqp
+                      sty.companyName2
                     )}
                   >
                     {"Company"}
@@ -3027,7 +3086,9 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                   label={null}
                 >
                   <AntdOption
-                    className={classNames("__wab_instance", sty.option__s7RfA)}
+                    data-plasmic-name={"company"}
+                    data-plasmic-override={overrides.company}
+                    className={classNames("__wab_instance", sty.company)}
                     value={"option1"}
                   >
                     <div
@@ -3037,8 +3098,10 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                       )}
                     >
                       <PlasmicImg__
+                        data-plasmic-name={"companyLogo2"}
+                        data-plasmic-override={overrides.companyLogo2}
                         alt={""}
-                        className={classNames(sty.img___23Rdi)}
+                        className={classNames(sty.companyLogo2)}
                         displayHeight={"25px"}
                         displayMaxHeight={"none"}
                         displayMaxWidth={"100%"}
@@ -3049,40 +3112,12 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                       />
 
                       <div
+                        data-plasmic-name={"companyName"}
+                        data-plasmic-override={overrides.companyName}
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__xkiHb
-                        )}
-                      >
-                        {"Company"}
-                      </div>
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option___5PwBp)}
-                    value={"option2"}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__loAi)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__gIipt)}
-                        displayHeight={"25px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"25px"}
-                        loading={"lazy"}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___7Db2A
+                          sty.companyName
                         )}
                       >
                         {"Company"}
@@ -3094,10 +3129,10 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__ptigi)}>
               <AntdSelect
-                data-plasmic-name={"select4"}
-                data-plasmic-override={overrides.select4}
+                data-plasmic-name={"solutions"}
+                data-plasmic-override={overrides.solutions}
                 allowClear={true}
-                className={classNames("__wab_instance", sty.select4)}
+                className={classNames("__wab_instance", sty.solutions)}
                 defaultOpen={false}
                 defaultStylesClassName={classNames(
                   projectcss.root_reset,
@@ -3106,10 +3141,10 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                   styleTokensClassNames
                 )}
                 onChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, ["select4", "value"]).apply(
-                    null,
-                    eventArgs
-                  );
+                  generateStateOnChangeProp($state, [
+                    "solutions",
+                    "value"
+                  ]).apply(null, eventArgs);
                 }}
                 options={[
                   { value: "option1", label: "Option 1", type: "option" },
@@ -3117,16 +3152,18 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                 ]}
                 placeholder={
                   <div
+                    data-plasmic-name={"title2"}
+                    data-plasmic-override={overrides.title2}
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__lgOhp
+                      sty.title2
                     )}
                   >
                     {"Solution"}
                   </div>
                 }
-                popupScopeClassName={sty["select4__popup"]}
+                popupScopeClassName={sty["solutions__popup"]}
                 suffixIcon={
                   <ChevronDownSvgIcon
                     className={classNames(projectcss.all, sty.svg___74Dcj)}
@@ -3134,7 +3171,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                   />
                 }
                 useChildren={true}
-                value={generateStateValueProp($state, ["select4", "value"])}
+                value={generateStateValueProp($state, ["solutions", "value"])}
               >
                 <AntdOptionGroup
                   className={classNames(
@@ -3144,15 +3181,19 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                   label={null}
                 >
                   <AntdOption
-                    className={classNames("__wab_instance", sty.option__vwYpH)}
+                    data-plasmic-name={"solution"}
+                    data-plasmic-override={overrides.solution}
+                    className={classNames("__wab_instance", sty.solution)}
                     value={"option1"}
                   >
                     <div
                       className={classNames(projectcss.all, sty.freeBox__rPpZ)}
                     >
                       <PlasmicImg__
+                        data-plasmic-name={"companyLogo"}
+                        data-plasmic-override={overrides.companyLogo}
                         alt={""}
-                        className={classNames(sty.img__mpMrF)}
+                        className={classNames(sty.companyLogo)}
                         displayHeight={"25px"}
                         displayMaxHeight={"none"}
                         displayMaxWidth={"100%"}
@@ -3163,40 +3204,12 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                       />
 
                       <div
+                        data-plasmic-name={"title"}
+                        data-plasmic-override={overrides.title}
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__w2P7G
-                        )}
-                      >
-                        {"Option 1"}
-                      </div>
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__cPOxm)}
-                    value={"option1"}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__mQno9)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__sftoe)}
-                        displayHeight={"25px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"25px"}
-                        loading={"lazy"}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__nuAl
+                          sty.title
                         )}
                       >
                         {"Option 1"}
@@ -3214,10 +3227,12 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
 
               <div className={classNames(projectcss.all, sty.freeBox__aDgFa)}>
                 <div
+                  data-plasmic-name={"totalSales"}
+                  data-plasmic-override={overrides.totalSales}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__toFqg
+                    sty.totalSales
                   )}
                 >
                   {"50"}
@@ -3268,10 +3283,12 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                       {"U$"}
                     </div>
                     <div
+                      data-plasmic-name={"comissionPaid"}
+                      data-plasmic-override={overrides.comissionPaid}
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text__jIxog
+                        sty.comissionPaid
                       )}
                     >
                       {"3,193"}
@@ -5144,6 +5161,9 @@ const PlasmicDescendants = {
     "account",
     "button",
     "container2",
+    "_7Days",
+    "_30Days",
+    "_60Days",
     "withdraw",
     "period",
     "accountInf",
@@ -5162,14 +5182,25 @@ const PlasmicDescendants = {
     "cashIn4",
     "cashIn5",
     "configureGoal",
-    "input9",
-    "input13",
-    "input10",
-    "input11",
-    "input12",
+    "advertisingBudget",
+    "staffSalary",
+    "fixedCosts",
+    "softwareTools",
+    "taxesFees",
+    "billing",
     "container3",
     "select",
-    "select4",
+    "companyName2",
+    "company",
+    "companyLogo2",
+    "companyName",
+    "solutions",
+    "title2",
+    "solution",
+    "companyLogo",
+    "title",
+    "totalSales",
+    "comissionPaid",
     "tableAtCustomerLocation2",
     "tableAtCompanyLocation3",
     "analysisAtCustomerLocation",
@@ -5188,6 +5219,9 @@ const PlasmicDescendants = {
   button: ["button"],
   container2: [
     "container2",
+    "_7Days",
+    "_30Days",
+    "_60Days",
     "withdraw",
     "period",
     "accountInf",
@@ -5206,12 +5240,16 @@ const PlasmicDescendants = {
     "cashIn4",
     "cashIn5",
     "configureGoal",
-    "input9",
-    "input13",
-    "input10",
-    "input11",
-    "input12"
+    "advertisingBudget",
+    "staffSalary",
+    "fixedCosts",
+    "softwareTools",
+    "taxesFees",
+    "billing"
   ],
+  _7Days: ["_7Days"],
+  _30Days: ["_30Days"],
+  _60Days: ["_60Days"],
   withdraw: [
     "withdraw",
     "period",
@@ -5249,28 +5287,50 @@ const PlasmicDescendants = {
   cashIn5: ["cashIn5"],
   configureGoal: [
     "configureGoal",
-    "input9",
-    "input13",
-    "input10",
-    "input11",
-    "input12"
+    "advertisingBudget",
+    "staffSalary",
+    "fixedCosts",
+    "softwareTools",
+    "taxesFees",
+    "billing"
   ],
-  input9: ["input9"],
-  input13: ["input13"],
-  input10: ["input10"],
-  input11: ["input11"],
-  input12: ["input12"],
+  advertisingBudget: ["advertisingBudget"],
+  staffSalary: ["staffSalary"],
+  fixedCosts: ["fixedCosts"],
+  softwareTools: ["softwareTools"],
+  taxesFees: ["taxesFees"],
+  billing: ["billing"],
   container3: [
     "container3",
     "select",
-    "select4",
+    "companyName2",
+    "company",
+    "companyLogo2",
+    "companyName",
+    "solutions",
+    "title2",
+    "solution",
+    "companyLogo",
+    "title",
+    "totalSales",
+    "comissionPaid",
     "tableAtCustomerLocation2",
     "tableAtCompanyLocation3",
     "analysisAtCustomerLocation",
     "analysisAtCompanyLocation2"
   ],
-  select: ["select"],
-  select4: ["select4"],
+  select: ["select", "companyName2", "company", "companyLogo2", "companyName"],
+  companyName2: ["companyName2"],
+  company: ["company", "companyLogo2", "companyName"],
+  companyLogo2: ["companyLogo2"],
+  companyName: ["companyName"],
+  solutions: ["solutions", "title2", "solution", "companyLogo", "title"],
+  title2: ["title2"],
+  solution: ["solution", "companyLogo", "title"],
+  companyLogo: ["companyLogo"],
+  title: ["title"],
+  totalSales: ["totalSales"],
+  comissionPaid: ["comissionPaid"],
   tableAtCustomerLocation2: ["tableAtCustomerLocation2"],
   tableAtCompanyLocation3: ["tableAtCompanyLocation3"],
   analysisAtCustomerLocation: ["analysisAtCustomerLocation"],
@@ -5300,6 +5360,9 @@ type NodeDefaultElementType = {
   account: typeof AntdDropdown;
   button: typeof AntdButton;
   container2: "div";
+  _7Days: typeof LoginButton;
+  _30Days: typeof LoginButton;
+  _60Days: typeof LoginButton;
   withdraw: typeof Modal;
   period: "div";
   accountInf: "div";
@@ -5318,14 +5381,25 @@ type NodeDefaultElementType = {
   cashIn4: "div";
   cashIn5: "div";
   configureGoal: typeof Modal;
-  input9: typeof AntdInput;
-  input13: typeof AntdInput;
-  input10: typeof AntdInput;
-  input11: typeof AntdInput;
-  input12: typeof AntdInput;
+  advertisingBudget: typeof AntdInput;
+  staffSalary: typeof AntdInput;
+  fixedCosts: typeof AntdInput;
+  softwareTools: typeof AntdInput;
+  taxesFees: typeof AntdInput;
+  billing: "div";
   container3: "div";
   select: typeof AntdSelect;
-  select4: typeof AntdSelect;
+  companyName2: "div";
+  company: typeof AntdOption;
+  companyLogo2: typeof PlasmicImg__;
+  companyName: "div";
+  solutions: typeof AntdSelect;
+  title2: "div";
+  solution: typeof AntdOption;
+  companyLogo: typeof PlasmicImg__;
+  title: "div";
+  totalSales: "div";
+  comissionPaid: "div";
   tableAtCustomerLocation2: "div";
   tableAtCompanyLocation3: "div";
   analysisAtCustomerLocation: "div";
@@ -5406,6 +5480,9 @@ export const PlasmicAServiceDashboard = Object.assign(
     account: makeNodeComponent("account"),
     button: makeNodeComponent("button"),
     container2: makeNodeComponent("container2"),
+    _7Days: makeNodeComponent("_7Days"),
+    _30Days: makeNodeComponent("_30Days"),
+    _60Days: makeNodeComponent("_60Days"),
     withdraw: makeNodeComponent("withdraw"),
     period: makeNodeComponent("period"),
     accountInf: makeNodeComponent("accountInf"),
@@ -5424,14 +5501,25 @@ export const PlasmicAServiceDashboard = Object.assign(
     cashIn4: makeNodeComponent("cashIn4"),
     cashIn5: makeNodeComponent("cashIn5"),
     configureGoal: makeNodeComponent("configureGoal"),
-    input9: makeNodeComponent("input9"),
-    input13: makeNodeComponent("input13"),
-    input10: makeNodeComponent("input10"),
-    input11: makeNodeComponent("input11"),
-    input12: makeNodeComponent("input12"),
+    advertisingBudget: makeNodeComponent("advertisingBudget"),
+    staffSalary: makeNodeComponent("staffSalary"),
+    fixedCosts: makeNodeComponent("fixedCosts"),
+    softwareTools: makeNodeComponent("softwareTools"),
+    taxesFees: makeNodeComponent("taxesFees"),
+    billing: makeNodeComponent("billing"),
     container3: makeNodeComponent("container3"),
     select: makeNodeComponent("select"),
-    select4: makeNodeComponent("select4"),
+    companyName2: makeNodeComponent("companyName2"),
+    company: makeNodeComponent("company"),
+    companyLogo2: makeNodeComponent("companyLogo2"),
+    companyName: makeNodeComponent("companyName"),
+    solutions: makeNodeComponent("solutions"),
+    title2: makeNodeComponent("title2"),
+    solution: makeNodeComponent("solution"),
+    companyLogo: makeNodeComponent("companyLogo"),
+    title: makeNodeComponent("title"),
+    totalSales: makeNodeComponent("totalSales"),
+    comissionPaid: makeNodeComponent("comissionPaid"),
     tableAtCustomerLocation2: makeNodeComponent("tableAtCustomerLocation2"),
     tableAtCompanyLocation3: makeNodeComponent("tableAtCompanyLocation3"),
     analysisAtCustomerLocation: makeNodeComponent("analysisAtCustomerLocation"),

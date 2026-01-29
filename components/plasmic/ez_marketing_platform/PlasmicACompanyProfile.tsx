@@ -71,7 +71,11 @@ import { AntdDropdown } from "@plasmicpkgs/antd5/skinny/registerDropdown";
 import { AntdMenuItem } from "@plasmicpkgs/antd5/skinny/registerMenu";
 import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
 import { AntdRate } from "@plasmicpkgs/antd5/skinny/registerRate";
+import Modal from "../../Modal"; // plasmic-import: Hu0RbpkquL8l/component
 import LoginButton from "../../LoginButton"; // plasmic-import: EirQVSsAP1l8/component
+import { AntdTextArea } from "@plasmicpkgs/antd5/skinny/registerInput";
+import { inputHelpers as AntdTextArea_Helpers } from "@plasmicpkgs/antd5/skinny/registerInput";
+import Button2 from "../../Button2"; // plasmic-import: xUW1L309f0s-/component
 import { SliderWrapper } from "@plasmicpkgs/react-slick";
 import { sliderHelpers as SliderWrapper_Helpers } from "@plasmicpkgs/react-slick";
 import { AntdTooltip } from "@plasmicpkgs/antd5/skinny/registerTooltip";
@@ -85,6 +89,8 @@ import sty from "./PlasmicACompanyProfile.module.css"; // plasmic-import: dvtGc-
 
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: 24lxsqUjkbYM/icon
 import Icon38Icon from "./icons/PlasmicIcon__Icon38"; // plasmic-import: GHhSOYXBnYhK/icon
+import CircleIcon from "./icons/PlasmicIcon__Circle"; // plasmic-import: 4JgiKKNVUuUK/icon
+import ChevronDownIcon from "./icons/PlasmicIcon__ChevronDown"; // plasmic-import: qQ9FpkDVW9kl/icon
 import Icon4Icon from "./icons/PlasmicIcon__Icon4"; // plasmic-import: vwcVzgnQnKqu/icon
 import Icon6Icon from "./icons/PlasmicIcon__Icon6"; // plasmic-import: Bvh42noj5uIh/icon
 import IlustrgatuSvgIcon from "./icons/PlasmicIcon__IlustrgatuSvg"; // plasmic-import: sz_dn1E8VLZT/icon
@@ -114,7 +120,12 @@ export type PlasmicACompanyProfile__OverridesType = {
   companyType?: Flex__<"div">;
   averageRate?: Flex__<typeof AntdRate>;
   rateSum?: Flex__<"div">;
-  apply?: Flex__<typeof LoginButton>;
+  apply?: Flex__<typeof Modal>;
+  loginButton?: Flex__<typeof LoginButton>;
+  h3?: Flex__<"h3">;
+  shortMessage?: Flex__<typeof AntdTextArea>;
+  confirm?: Flex__<typeof Button2>;
+  button2?: Flex__<typeof Button2>;
   area?: Flex__<"div">;
   subArea?: Flex__<"div">;
   location?: Flex__<"div">;
@@ -134,14 +145,14 @@ export type PlasmicACompanyProfile__OverridesType = {
   description?: Flex__<"div">;
   price?: Flex__<"div">;
   countainer9?: Flex__<"div">;
-  communityReplies?: Flex__<"div">;
+  companyReviews?: Flex__<"div">;
   communityLogo?: Flex__<typeof PlasmicImg__>;
   communityName?: Flex__<"a"> & Partial<LinkProps>;
   companyName2?: Flex__<"a"> & Partial<LinkProps>;
   comment?: Flex__<"div">;
   rating?: Flex__<typeof AntdRate>;
   countainer10?: Flex__<"div">;
-  communityReviews?: Flex__<"div">;
+  companyReplies?: Flex__<"div">;
   companyLogo2?: Flex__<typeof PlasmicImg__>;
   companyName3?: Flex__<"a"> & Partial<LinkProps>;
   communityName2?: Flex__<"a"> & Partial<LinkProps>;
@@ -234,6 +245,20 @@ function PlasmicACompanyProfile__RenderFunc(props: {
 
         refName: "sliderCarousel6",
         onMutate: generateOnMutateForSpec("currentSlide", SliderWrapper_Helpers)
+      },
+      {
+        path: "apply.isOpen",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "shortMessage.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       }
     ],
     [$props, $ctx, $refs]
@@ -819,21 +844,238 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                     {"(50)"}
                   </div>
                 </div>
-                <LoginButton
+                <Modal
                   data-plasmic-name={"apply"}
                   data-plasmic-override={overrides.apply}
                   className={classNames("__wab_instance", sty.apply)}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___6JHr3
-                    )}
-                  >
-                    {"Apply"}
-                  </div>
-                </LoginButton>
+                  content={
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__hjT6)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__ay0Si
+                        )}
+                      >
+                        {
+                          "Introduce yourself to this company and request a partnership."
+                        }
+                      </div>
+                      {(() => {
+                        const child$Props = {
+                          className: classNames(
+                            "__wab_instance",
+                            sty.shortMessage
+                          ),
+                          onChange: async (...eventArgs: any) => {
+                            generateStateOnChangePropForCodeComponents(
+                              $state,
+                              "value",
+                              ["shortMessage", "value"],
+                              AntdTextArea_Helpers
+                            ).apply(null, eventArgs);
+                          },
+                          value: generateStateValueProp($state, [
+                            "shortMessage",
+                            "value"
+                          ])
+                        };
+                        initializeCodeComponentStates(
+                          $state,
+                          [
+                            {
+                              name: "value",
+                              plasmicStateName: "shortMessage.value"
+                            }
+                          ],
+                          [],
+                          AntdTextArea_Helpers ?? {},
+                          child$Props
+                        );
+
+                        return (
+                          <AntdTextArea
+                            data-plasmic-name={"shortMessage"}
+                            data-plasmic-override={overrides.shortMessage}
+                            {...child$Props}
+                          />
+                        );
+                      })()}
+                    </div>
+                  }
+                  footer={
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___956Fz
+                      )}
+                    >
+                      <Button2
+                        data-plasmic-name={"confirm"}
+                        data-plasmic-override={overrides.confirm}
+                        color={"muted"}
+                        label={
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__xEz8N
+                            )}
+                          >
+                            {"Confirm"}
+                          </div>
+                        }
+                        onClick={async event => {
+                          const $steps = {};
+
+                          $steps["updateApplyIsOpen"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["apply", "isOpen"]
+                                  },
+                                  operation: 0,
+                                  value: false
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateApplyIsOpen"] != null &&
+                            typeof $steps["updateApplyIsOpen"] === "object" &&
+                            typeof $steps["updateApplyIsOpen"].then ===
+                              "function"
+                          ) {
+                            $steps["updateApplyIsOpen"] =
+                              await $steps["updateApplyIsOpen"];
+                          }
+                        }}
+                        size={"extraSmall"}
+                        type={"soft"}
+                      />
+
+                      <Button2
+                        data-plasmic-name={"button2"}
+                        data-plasmic-override={overrides.button2}
+                        color={"muted"}
+                        label={
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__cyk7S
+                            )}
+                          >
+                            {"Cancel"}
+                          </div>
+                        }
+                        onClick={async event => {
+                          const $steps = {};
+
+                          $steps["updateApplyIsOpen"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["apply", "isOpen"]
+                                  },
+                                  operation: 0,
+                                  value: false
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateApplyIsOpen"] != null &&
+                            typeof $steps["updateApplyIsOpen"] === "object" &&
+                            typeof $steps["updateApplyIsOpen"].then ===
+                              "function"
+                          ) {
+                            $steps["updateApplyIsOpen"] =
+                              await $steps["updateApplyIsOpen"];
+                          }
+                        }}
+                        size={"extraSmall"}
+                        type={"soft"}
+                      />
+                    </div>
+                  }
+                  heading={
+                    <h3
+                      data-plasmic-name={"h3"}
+                      data-plasmic-override={overrides.h3}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.h3,
+                        projectcss.__wab_text,
+                        sty.h3
+                      )}
+                    >
+                      {"Apply for partnership"}
+                    </h3>
+                  }
+                  isOpen={generateStateValueProp($state, ["apply", "isOpen"])}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "apply",
+                      "isOpen"
+                    ]).apply(null, eventArgs);
+
+                    if (
+                      eventArgs.length > 1 &&
+                      eventArgs[1] &&
+                      eventArgs[1]._plasmic_state_init_
+                    ) {
+                      return;
+                    }
+                  }}
+                  trigger={
+                    <LoginButton
+                      data-plasmic-name={"loginButton"}
+                      data-plasmic-override={overrides.loginButton}
+                      className={classNames("__wab_instance", sty.loginButton)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___6JHr3
+                        )}
+                      >
+                        {"Apply"}
+                      </div>
+                    </LoginButton>
+                  }
+                />
               </div>
               <div className={classNames(projectcss.all, sty.freeBox___38WB4)}>
                 <div
@@ -1212,9 +1454,9 @@ function PlasmicACompanyProfile__RenderFunc(props: {
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__tB8GX)}>
               <div
-                data-plasmic-name={"communityReplies"}
-                data-plasmic-override={overrides.communityReplies}
-                className={classNames(projectcss.all, sty.communityReplies)}
+                data-plasmic-name={"companyReviews"}
+                data-plasmic-override={overrides.companyReviews}
+                className={classNames(projectcss.all, sty.companyReviews)}
               >
                 <div className={classNames(projectcss.all, sty.freeBox__x5JaO)}>
                   <PlasmicImg__
@@ -1365,9 +1607,9 @@ function PlasmicACompanyProfile__RenderFunc(props: {
             </div>
             <div className={classNames(projectcss.all, sty.freeBox___96J6N)}>
               <div
-                data-plasmic-name={"communityReviews"}
-                data-plasmic-override={overrides.communityReviews}
-                className={classNames(projectcss.all, sty.communityReviews)}
+                data-plasmic-name={"companyReplies"}
+                data-plasmic-override={overrides.companyReplies}
+                className={classNames(projectcss.all, sty.companyReplies)}
               >
                 <div className={classNames(projectcss.all, sty.freeBox__ya3EW)}>
                   <PlasmicImg__
@@ -2296,6 +2538,11 @@ const PlasmicDescendants = {
     "averageRate",
     "rateSum",
     "apply",
+    "loginButton",
+    "h3",
+    "shortMessage",
+    "confirm",
+    "button2",
     "area",
     "subArea",
     "location",
@@ -2315,14 +2562,14 @@ const PlasmicDescendants = {
     "description",
     "price",
     "countainer9",
-    "communityReplies",
+    "companyReviews",
     "communityLogo",
     "communityName",
     "companyName2",
     "comment",
     "rating",
     "countainer10",
-    "communityReviews",
+    "companyReplies",
     "companyLogo2",
     "companyName3",
     "communityName2",
@@ -2348,6 +2595,11 @@ const PlasmicDescendants = {
     "averageRate",
     "rateSum",
     "apply",
+    "loginButton",
+    "h3",
+    "shortMessage",
+    "confirm",
+    "button2",
     "area",
     "subArea",
     "location",
@@ -2364,7 +2616,12 @@ const PlasmicDescendants = {
   companyType: ["companyType"],
   averageRate: ["averageRate"],
   rateSum: ["rateSum"],
-  apply: ["apply"],
+  apply: ["apply", "loginButton", "h3", "shortMessage", "confirm", "button2"],
+  loginButton: ["loginButton"],
+  h3: ["h3"],
+  shortMessage: ["shortMessage"],
+  confirm: ["confirm"],
+  button2: ["button2"],
   area: ["area"],
   subArea: ["subArea"],
   location: ["location"],
@@ -2402,15 +2659,15 @@ const PlasmicDescendants = {
   price: ["price"],
   countainer9: [
     "countainer9",
-    "communityReplies",
+    "companyReviews",
     "communityLogo",
     "communityName",
     "companyName2",
     "comment",
     "rating"
   ],
-  communityReplies: [
-    "communityReplies",
+  companyReviews: [
+    "companyReviews",
     "communityLogo",
     "communityName",
     "companyName2",
@@ -2424,15 +2681,15 @@ const PlasmicDescendants = {
   rating: ["rating"],
   countainer10: [
     "countainer10",
-    "communityReviews",
+    "companyReplies",
     "companyLogo2",
     "companyName3",
     "communityName2",
     "comment2",
     "rating2"
   ],
-  communityReviews: [
-    "communityReviews",
+  companyReplies: [
+    "companyReplies",
     "companyLogo2",
     "companyName3",
     "communityName2",
@@ -2473,7 +2730,12 @@ type NodeDefaultElementType = {
   companyType: "div";
   averageRate: typeof AntdRate;
   rateSum: "div";
-  apply: typeof LoginButton;
+  apply: typeof Modal;
+  loginButton: typeof LoginButton;
+  h3: "h3";
+  shortMessage: typeof AntdTextArea;
+  confirm: typeof Button2;
+  button2: typeof Button2;
   area: "div";
   subArea: "div";
   location: "div";
@@ -2493,14 +2755,14 @@ type NodeDefaultElementType = {
   description: "div";
   price: "div";
   countainer9: "div";
-  communityReplies: "div";
+  companyReviews: "div";
   communityLogo: typeof PlasmicImg__;
   communityName: "a";
   companyName2: "a";
   comment: "div";
   rating: typeof AntdRate;
   countainer10: "div";
-  communityReviews: "div";
+  companyReplies: "div";
   companyLogo2: typeof PlasmicImg__;
   companyName3: "a";
   communityName2: "a";
@@ -2588,6 +2850,11 @@ export const PlasmicACompanyProfile = Object.assign(
     averageRate: makeNodeComponent("averageRate"),
     rateSum: makeNodeComponent("rateSum"),
     apply: makeNodeComponent("apply"),
+    loginButton: makeNodeComponent("loginButton"),
+    h3: makeNodeComponent("h3"),
+    shortMessage: makeNodeComponent("shortMessage"),
+    confirm: makeNodeComponent("confirm"),
+    button2: makeNodeComponent("button2"),
     area: makeNodeComponent("area"),
     subArea: makeNodeComponent("subArea"),
     location: makeNodeComponent("location"),
@@ -2607,14 +2874,14 @@ export const PlasmicACompanyProfile = Object.assign(
     description: makeNodeComponent("description"),
     price: makeNodeComponent("price"),
     countainer9: makeNodeComponent("countainer9"),
-    communityReplies: makeNodeComponent("communityReplies"),
+    companyReviews: makeNodeComponent("companyReviews"),
     communityLogo: makeNodeComponent("communityLogo"),
     communityName: makeNodeComponent("communityName"),
     companyName2: makeNodeComponent("companyName2"),
     comment: makeNodeComponent("comment"),
     rating: makeNodeComponent("rating"),
     countainer10: makeNodeComponent("countainer10"),
-    communityReviews: makeNodeComponent("communityReviews"),
+    companyReplies: makeNodeComponent("companyReplies"),
     companyLogo2: makeNodeComponent("companyLogo2"),
     companyName3: makeNodeComponent("companyName3"),
     communityName2: makeNodeComponent("communityName2"),

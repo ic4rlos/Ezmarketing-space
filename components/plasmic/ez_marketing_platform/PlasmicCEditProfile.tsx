@@ -147,6 +147,7 @@ export type PlasmicCEditProfile__OverridesType = {
   customerProblem?: Flex__<typeof AntdTextArea>;
   solutionDescription?: Flex__<typeof AntdTextArea>;
   whyShouldTheyChoose?: Flex__<typeof AntdTextArea>;
+  done?: Flex__<typeof LoginButton>;
 };
 
 export interface DefaultCEditProfileProps {}
@@ -3270,11 +3271,9 @@ function PlasmicCEditProfile__RenderFunc(props: {
                         ) : null}
                       </div>
                       <div
-                        data-plasmic-name={"solutionsSteps"}
-                        data-plasmic-override={overrides.solutionsSteps}
                         className={classNames(
                           projectcss.all,
-                          sty.solutionsSteps
+                          sty.freeBox__g3Ao
                         )}
                       >
                         {(_par =>
@@ -3297,9 +3296,11 @@ function PlasmicCEditProfile__RenderFunc(props: {
                           const currentIndex = __plasmic_idx_1;
                           return (
                             <div
+                              data-plasmic-name={"solutionsSteps"}
+                              data-plasmic-override={overrides.solutionsSteps}
                               className={classNames(
                                 projectcss.all,
-                                sty.freeBox__m6PaD
+                                sty.solutionsSteps
                               )}
                               key={currentIndex}
                             >
@@ -3958,10 +3959,9 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   </div>
                 </LoginButton>
                 <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton__jcf7X
-                  )}
+                  data-plasmic-name={"done"}
+                  data-plasmic-override={overrides.done}
+                  className={classNames("__wab_instance", sty.done)}
                   onClick={async event => {
                     const $steps = {};
 
@@ -4050,7 +4050,8 @@ const PlasmicDescendants = {
     "companyImage",
     "customerProblem",
     "solutionDescription",
-    "whyShouldTheyChoose"
+    "whyShouldTheyChoose",
+    "done"
   ],
   img: ["img"],
   rectangle: [
@@ -4087,7 +4088,8 @@ const PlasmicDescendants = {
     "companyImage",
     "customerProblem",
     "solutionDescription",
-    "whyShouldTheyChoose"
+    "whyShouldTheyChoose",
+    "done"
   ],
   stepsStack: ["stepsStack", "steps"],
   steps: ["steps"],
@@ -4153,12 +4155,14 @@ const PlasmicDescendants = {
     "companyImage",
     "customerProblem",
     "solutionDescription",
-    "whyShouldTheyChoose"
+    "whyShouldTheyChoose",
+    "done"
   ],
   companyImage: ["companyImage"],
   customerProblem: ["customerProblem"],
   solutionDescription: ["solutionDescription"],
-  whyShouldTheyChoose: ["whyShouldTheyChoose"]
+  whyShouldTheyChoose: ["whyShouldTheyChoose"],
+  done: ["done"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -4200,6 +4204,7 @@ type NodeDefaultElementType = {
   customerProblem: typeof AntdTextArea;
   solutionDescription: typeof AntdTextArea;
   whyShouldTheyChoose: typeof AntdTextArea;
+  done: typeof LoginButton;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -4299,6 +4304,7 @@ export const PlasmicCEditProfile = Object.assign(
     customerProblem: makeNodeComponent("customerProblem"),
     solutionDescription: makeNodeComponent("solutionDescription"),
     whyShouldTheyChoose: makeNodeComponent("whyShouldTheyChoose"),
+    done: makeNodeComponent("done"),
 
     // Metadata about props expected for PlasmicCEditProfile
     internalVariantProps: PlasmicCEditProfile__VariantProps,

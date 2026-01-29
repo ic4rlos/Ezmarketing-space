@@ -691,7 +691,7 @@
   width: auto;
   height: 1em;
 }
-.container7 {
+.container11 {
   animation: none;
   display: flex;
   flex-direction: column;
@@ -6410,7 +6410,7 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
 }
-.container12 {
+.container8 {
   animation: none;
   display: flex;
   flex-direction: row;
@@ -6429,7 +6429,7 @@
   margin: 31px 0px 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
-  .container12 {
+  .container8 {
     animation: none;
     height: 200px;
     left: auto;
@@ -6518,7 +6518,7 @@
   text-overflow: clip;
   min-width: 0;
 }
-.container13 {
+.container9 {
   animation: none;
   display: flex;
   flex-direction: row;

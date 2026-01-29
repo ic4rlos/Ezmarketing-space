@@ -515,9 +515,10 @@
   min-width: 0;
   padding: 8px;
 }
-.loginButton:global(.__wab_instance) {
+.invite:global(.__wab_instance) {
   max-width: 100%;
   width: 150px;
+  display: none;
 }
 .svg__eIKqc {
   position: relative;

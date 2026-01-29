@@ -107,40 +107,27 @@ export type PlasmicARatingMembers__OverridesType = {
   communityLogo?: Flex__<typeof PlasmicImg__>;
   firstName?: Flex__<"div">;
   lastName?: Flex__<"div">;
-  birthday?: Flex__<"div">;
+  age?: Flex__<"div">;
   location?: Flex__<"div">;
-  charge2?: Flex__<"div">;
+  charge?: Flex__<"div">;
   linkedIn?: Flex__<"a"> & Partial<LinkProps>;
   instagram?: Flex__<"a"> & Partial<LinkProps>;
   x?: Flex__<"a"> & Partial<LinkProps>;
   rateThisMember?: Flex__<"div">;
-  modal?: Flex__<typeof Modal>;
-  rateEthics?: Flex__<typeof AntdRate>;
+  rate?: Flex__<typeof Modal>;
+  rating?: Flex__<typeof AntdRate>;
   comment?: Flex__<typeof AntdTextArea>;
   confirmRate?: Flex__<typeof Button2>;
-  modal2?: Flex__<typeof Modal>;
+  rate2?: Flex__<typeof Modal>;
   rateTechnical?: Flex__<typeof AntdRate>;
   comment2?: Flex__<typeof AntdTextArea>;
   confirmRate2?: Flex__<typeof Button2>;
-  rating?: Flex__<typeof AntdRate>;
-  rate7?: Flex__<typeof AntdRate>;
-  rate8?: Flex__<typeof AntdRate>;
-  rate9?: Flex__<typeof AntdRate>;
-  rate10?: Flex__<typeof AntdRate>;
-  rate11?: Flex__<typeof AntdRate>;
-  rate12?: Flex__<typeof AntdRate>;
-  rate13?: Flex__<typeof AntdRate>;
-  rate14?: Flex__<typeof AntdRate>;
-  rate15?: Flex__<typeof AntdRate>;
-  rate16?: Flex__<typeof AntdRate>;
-  rate17?: Flex__<typeof AntdRate>;
-  rate18?: Flex__<typeof AntdRate>;
-  rate19?: Flex__<typeof AntdRate>;
-  rate20?: Flex__<typeof AntdRate>;
-  rate21?: Flex__<typeof AntdRate>;
-  rate22?: Flex__<typeof AntdRate>;
-  rate23?: Flex__<typeof AntdRate>;
-  rate24?: Flex__<typeof AntdRate>;
+  memberRated?: Flex__<typeof AntdRate>;
+  reportRate?: Flex__<"div">;
+  reportDate?: Flex__<"div">;
+  ethics?: Flex__<typeof AntdRate>;
+  technicalPerformance?: Flex__<typeof AntdRate>;
+  memberRated2?: Flex__<typeof AntdRate>;
 };
 
 export interface DefaultARatingMembersProps {}
@@ -187,121 +174,31 @@ function PlasmicARatingMembers__RenderFunc(props: {
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
-        path: "rate7.value",
+        path: "ethics.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "rate8.value",
+        path: "technicalPerformance.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "rate9.value",
+        path: "memberRated2.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "rate10.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "rate11.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "rate12.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "rate13.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "rate14.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "rate15.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "rate16.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "rate17.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "rate18.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "rate19.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "rate20.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "rate21.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "rate22.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "rate23.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "rate24.value",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "modal.isOpen",
+        path: "rate.isOpen",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
-        path: "rateEthics.value",
+        path: "rating.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
@@ -315,13 +212,13 @@ function PlasmicARatingMembers__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
       {
-        path: "rating.value",
+        path: "memberRated.value",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "modal2.isOpen",
+        path: "rate2.isOpen",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
@@ -698,12 +595,12 @@ function PlasmicARatingMembers__RenderFunc(props: {
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__kzTaj)}>
                   <div
-                    data-plasmic-name={"birthday"}
-                    data-plasmic-override={overrides.birthday}
+                    data-plasmic-name={"age"}
+                    data-plasmic-override={overrides.age}
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.birthday
+                      sty.age
                     )}
                   >
                     {"28"}
@@ -809,12 +706,12 @@ function PlasmicARatingMembers__RenderFunc(props: {
                   </div>
                 </div>
                 <div
-                  data-plasmic-name={"charge2"}
-                  data-plasmic-override={overrides.charge2}
+                  data-plasmic-name={"charge"}
+                  data-plasmic-override={overrides.charge}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.charge2
+                    sty.charge
                   )}
                 >
                   {"Charge"}
@@ -941,9 +838,9 @@ function PlasmicARatingMembers__RenderFunc(props: {
                   }
                 </div>
                 <Modal
-                  data-plasmic-name={"modal"}
-                  data-plasmic-override={overrides.modal}
-                  className={classNames("__wab_instance", sty.modal)}
+                  data-plasmic-name={"rate"}
+                  data-plasmic-override={overrides.rate}
+                  className={classNames("__wab_instance", sty.rate)}
                   content={
                     <div
                       className={classNames(projectcss.all, sty.freeBox__vewch)}
@@ -1025,7 +922,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                                 const actionArgs = {
                                   variable: {
                                     objRoot: $state,
-                                    variablePath: ["modal", "isOpen"]
+                                    variablePath: ["rate", "isOpen"]
                                   },
                                   operation: 0,
                                   value: false
@@ -1081,7 +978,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                                 const actionArgs = {
                                   variable: {
                                     objRoot: $state,
-                                    variablePath: ["modal", "isOpen"]
+                                    variablePath: ["rate", "isOpen"]
                                   },
                                   operation: 0,
                                   value: false
@@ -1129,12 +1026,12 @@ function PlasmicARatingMembers__RenderFunc(props: {
                       {"Rating"}
                     </h3>
                   }
-                  isOpen={generateStateValueProp($state, ["modal", "isOpen"])}
+                  isOpen={generateStateValueProp($state, ["rate", "isOpen"])}
                   onOpenChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "modal",
-                      "isOpen"
-                    ]).apply(null, eventArgs);
+                    generateStateOnChangeProp($state, ["rate", "isOpen"]).apply(
+                      null,
+                      eventArgs
+                    );
 
                     if (
                       eventArgs.length > 1 &&
@@ -1146,13 +1043,13 @@ function PlasmicARatingMembers__RenderFunc(props: {
                   }}
                   trigger={
                     <AntdRate
-                      data-plasmic-name={"rateEthics"}
-                      data-plasmic-override={overrides.rateEthics}
+                      data-plasmic-name={"rating"}
+                      data-plasmic-override={overrides.rating}
                       allowHalf={true}
-                      className={classNames("__wab_instance", sty.rateEthics)}
+                      className={classNames("__wab_instance", sty.rating)}
                       onChange={async (...eventArgs: any) => {
                         generateStateOnChangeProp($state, [
-                          "rateEthics",
+                          "rating",
                           "value"
                         ]).apply(null, eventArgs);
                       }}
@@ -1206,7 +1103,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                         </React.Fragment>
                       }
                       value={generateStateValueProp($state, [
-                        "rateEthics",
+                        "rating",
                         "value"
                       ])}
                     />
@@ -1240,9 +1137,9 @@ function PlasmicARatingMembers__RenderFunc(props: {
                   }
                 </div>
                 <Modal
-                  data-plasmic-name={"modal2"}
-                  data-plasmic-override={overrides.modal2}
-                  className={classNames("__wab_instance", sty.modal2)}
+                  data-plasmic-name={"rate2"}
+                  data-plasmic-override={overrides.rate2}
+                  className={classNames("__wab_instance", sty.rate2)}
                   content={
                     <div
                       className={classNames(projectcss.all, sty.freeBox__rbjsv)}
@@ -1327,7 +1224,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                                 const actionArgs = {
                                   variable: {
                                     objRoot: $state,
-                                    variablePath: ["modal2", "isOpen"]
+                                    variablePath: ["rate2", "isOpen"]
                                   },
                                   operation: 0,
                                   value: false
@@ -1383,7 +1280,7 @@ function PlasmicARatingMembers__RenderFunc(props: {
                                 const actionArgs = {
                                   variable: {
                                     objRoot: $state,
-                                    variablePath: ["modal2", "isOpen"]
+                                    variablePath: ["rate2", "isOpen"]
                                   },
                                   operation: 0,
                                   value: false
@@ -1431,10 +1328,10 @@ function PlasmicARatingMembers__RenderFunc(props: {
                       {"Rating"}
                     </h3>
                   }
-                  isOpen={generateStateValueProp($state, ["modal2", "isOpen"])}
+                  isOpen={generateStateValueProp($state, ["rate2", "isOpen"])}
                   onOpenChange={async (...eventArgs: any) => {
                     generateStateOnChangeProp($state, [
-                      "modal2",
+                      "rate2",
                       "isOpen"
                     ]).apply(null, eventArgs);
 
@@ -1545,14 +1442,14 @@ function PlasmicARatingMembers__RenderFunc(props: {
                   }
                 </div>
                 <AntdRate
-                  data-plasmic-name={"rating"}
-                  data-plasmic-override={overrides.rating}
+                  data-plasmic-name={"memberRated"}
+                  data-plasmic-override={overrides.memberRated}
                   allowHalf={true}
-                  className={classNames("__wab_instance", sty.rating)}
+                  className={classNames("__wab_instance", sty.memberRated)}
                   disabled={true}
                   onChange={async (...eventArgs: any) => {
                     generateStateOnChangeProp($state, [
-                      "rating",
+                      "memberRated",
                       "value"
                     ]).apply(null, eventArgs);
                   }}
@@ -1605,7 +1502,10 @@ function PlasmicARatingMembers__RenderFunc(props: {
                       </div>
                     </React.Fragment>
                   }
-                  value={generateStateValueProp($state, ["rating", "value"])}
+                  value={generateStateValueProp($state, [
+                    "memberRated",
+                    "value"
+                  ])}
                 />
               </div>
             </div>
@@ -1651,28 +1551,34 @@ function PlasmicARatingMembers__RenderFunc(props: {
                 </div>
               </div>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__wRafv)}>
+            <div
+              data-plasmic-name={"reportRate"}
+              data-plasmic-override={overrides.reportRate}
+              className={classNames(projectcss.all, sty.reportRate)}
+            >
               <div
+                data-plasmic-name={"reportDate"}
+                data-plasmic-override={overrides.reportDate}
                 className={classNames(
                   projectcss.all,
                   projectcss.__wab_text,
-                  sty.text__nOhgc
+                  sty.reportDate
                 )}
               >
                 {"07/2025 - 10/2025"}
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__pW0TU)}>
                 <AntdRate
-                  data-plasmic-name={"rate7"}
-                  data-plasmic-override={overrides.rate7}
+                  data-plasmic-name={"ethics"}
+                  data-plasmic-override={overrides.ethics}
                   allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate7)}
+                  className={classNames("__wab_instance", sty.ethics)}
                   disabled={true}
                   onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, ["rate7", "value"]).apply(
-                      null,
-                      eventArgs
-                    );
+                    generateStateOnChangeProp($state, [
+                      "ethics",
+                      "value"
+                    ]).apply(null, eventArgs);
                   }}
                   symbols={
                     <React.Fragment>
@@ -1723,20 +1629,23 @@ function PlasmicARatingMembers__RenderFunc(props: {
                       </div>
                     </React.Fragment>
                   }
-                  value={generateStateValueProp($state, ["rate7", "value"])}
+                  value={generateStateValueProp($state, ["ethics", "value"])}
                 />
 
                 <AntdRate
-                  data-plasmic-name={"rate8"}
-                  data-plasmic-override={overrides.rate8}
+                  data-plasmic-name={"technicalPerformance"}
+                  data-plasmic-override={overrides.technicalPerformance}
                   allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate8)}
+                  className={classNames(
+                    "__wab_instance",
+                    sty.technicalPerformance
+                  )}
                   disabled={true}
                   onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, ["rate8", "value"]).apply(
-                      null,
-                      eventArgs
-                    );
+                    generateStateOnChangeProp($state, [
+                      "technicalPerformance",
+                      "value"
+                    ]).apply(null, eventArgs);
                   }}
                   symbols={
                     <React.Fragment>
@@ -1787,20 +1696,23 @@ function PlasmicARatingMembers__RenderFunc(props: {
                       </div>
                     </React.Fragment>
                   }
-                  value={generateStateValueProp($state, ["rate8", "value"])}
+                  value={generateStateValueProp($state, [
+                    "technicalPerformance",
+                    "value"
+                  ])}
                 />
 
                 <AntdRate
-                  data-plasmic-name={"rate9"}
-                  data-plasmic-override={overrides.rate9}
+                  data-plasmic-name={"memberRated2"}
+                  data-plasmic-override={overrides.memberRated2}
                   allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate9)}
+                  className={classNames("__wab_instance", sty.memberRated2)}
                   disabled={true}
                   onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, ["rate9", "value"]).apply(
-                      null,
-                      eventArgs
-                    );
+                    generateStateOnChangeProp($state, [
+                      "memberRated2",
+                      "value"
+                    ]).apply(null, eventArgs);
                   }}
                   symbols={
                     <React.Fragment>
@@ -1851,1027 +1763,10 @@ function PlasmicARatingMembers__RenderFunc(props: {
                       </div>
                     </React.Fragment>
                   }
-                  value={generateStateValueProp($state, ["rate9", "value"])}
-                />
-              </div>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__jhTw)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___8Kh0
-                )}
-              >
-                {"07/2025 - 10/2025"}
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__fxrUs)}>
-                <AntdRate
-                  data-plasmic-name={"rate10"}
-                  data-plasmic-override={overrides.rate10}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate10)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate10",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__yezCs
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__rpG6
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___4YHRq
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ngFo5
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__smb5D
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate10", "value"])}
-                />
-
-                <AntdRate
-                  data-plasmic-name={"rate11"}
-                  data-plasmic-override={overrides.rate11}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate11)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate11",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__u8El
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__uJD5
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__u9U3W
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__tP9Jy
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__qO5Rt
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate11", "value"])}
-                />
-
-                <AntdRate
-                  data-plasmic-name={"rate12"}
-                  data-plasmic-override={overrides.rate12}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate12)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate12",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___48NwR
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__noHiP
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___2Pkpc
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__guoSe
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ukG8G
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate12", "value"])}
-                />
-              </div>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__bmUFx)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___3XhwX
-                )}
-              >
-                {"07/2025 - 10/2025"}
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox___3Lhiv)}>
-                <AntdRate
-                  data-plasmic-name={"rate13"}
-                  data-plasmic-override={overrides.rate13}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate13)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate13",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___26WBj
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__jt79A
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__lPb5L
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__cseYl
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__hlaye
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate13", "value"])}
-                />
-
-                <AntdRate
-                  data-plasmic-name={"rate14"}
-                  data-plasmic-override={overrides.rate14}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate14)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate14",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ytgy2
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__jV25
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__tOmap
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__bfBl0
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__wTwc9
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate14", "value"])}
-                />
-
-                <AntdRate
-                  data-plasmic-name={"rate15"}
-                  data-plasmic-override={overrides.rate15}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate15)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate15",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__eUcvV
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__fhiH
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__pUprk
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___7GuMe
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___0Q2CJ
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate15", "value"])}
-                />
-              </div>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__hHuUa)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__tTDp9
-                )}
-              >
-                {"07/2025 - 10/2025"}
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__ypmuh)}>
-                <AntdRate
-                  data-plasmic-name={"rate16"}
-                  data-plasmic-override={overrides.rate16}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate16)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate16",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__jUw36
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__gH85C
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__lKaz
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__iYKj7
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ezUgL
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate16", "value"])}
-                />
-
-                <AntdRate
-                  data-plasmic-name={"rate17"}
-                  data-plasmic-override={overrides.rate17}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate17)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate17",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___0Nbiv
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__unMah
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__w8BvU
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__j73Hn
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__q16E4
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate17", "value"])}
-                />
-
-                <AntdRate
-                  data-plasmic-name={"rate18"}
-                  data-plasmic-override={overrides.rate18}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate18)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate18",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__xuxNd
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__zRcao
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___7IxFk
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__lWynB
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__w504M
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate18", "value"])}
-                />
-              </div>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__tSfbp)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___6J3TS
-                )}
-              >
-                {"07/2025 - 10/2025"}
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox___1EtIa)}>
-                <AntdRate
-                  data-plasmic-name={"rate19"}
-                  data-plasmic-override={overrides.rate19}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate19)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate19",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___71BIw
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__brGi
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__hCxhv
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__f9E0V
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__vBvTd
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate19", "value"])}
-                />
-
-                <AntdRate
-                  data-plasmic-name={"rate20"}
-                  data-plasmic-override={overrides.rate20}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate20)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate20",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__c249G
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__rPdv4
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ba3Bj
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ub31T
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__y3GkA
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate20", "value"])}
-                />
-
-                <AntdRate
-                  data-plasmic-name={"rate21"}
-                  data-plasmic-override={overrides.rate21}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate21)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate21",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__n2NSh
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___4CnDu
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__pi7J6
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__t3Zx1
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__zp1Sk
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate21", "value"])}
-                />
-              </div>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__ur6Ry)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__q20Ez
-                )}
-              >
-                {"07/2025 - 10/2025"}
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox___07D1O)}>
-                <AntdRate
-                  data-plasmic-name={"rate22"}
-                  data-plasmic-override={overrides.rate22}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate22)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate22",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__vf0In
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__igez1
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___9Tg0A
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___66IGo
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ia6Bu
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate22", "value"])}
-                />
-
-                <AntdRate
-                  data-plasmic-name={"rate23"}
-                  data-plasmic-override={overrides.rate23}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate23)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate23",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___0VnvU
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__lGbq
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__oAvzF
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__r8UCz
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__peXt5
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate23", "value"])}
-                />
-
-                <AntdRate
-                  data-plasmic-name={"rate24"}
-                  data-plasmic-override={overrides.rate24}
-                  allowHalf={true}
-                  className={classNames("__wab_instance", sty.rate24)}
-                  disabled={true}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "rate24",
-                      "value"
-                    ]).apply(null, eventArgs);
-                  }}
-                  symbols={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__utM81
-                        )}
-                      >
-                        {"1"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__b0Ek
-                        )}
-                      >
-                        {"2"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__xw
-                        )}
-                      >
-                        {"3"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__exZTc
-                        )}
-                      >
-                        {"4"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__zn9Xn
-                        )}
-                      >
-                        {"5"}
-                      </div>
-                    </React.Fragment>
-                  }
-                  value={generateStateValueProp($state, ["rate24", "value"])}
+                  value={generateStateValueProp($state, [
+                    "memberRated2",
+                    "value"
+                  ])}
                 />
               </div>
             </div>
@@ -2894,40 +1789,27 @@ const PlasmicDescendants = {
     "communityLogo",
     "firstName",
     "lastName",
-    "birthday",
+    "age",
     "location",
-    "charge2",
+    "charge",
     "linkedIn",
     "instagram",
     "x",
     "rateThisMember",
-    "modal",
-    "rateEthics",
+    "rate",
+    "rating",
     "comment",
     "confirmRate",
-    "modal2",
+    "rate2",
     "rateTechnical",
     "comment2",
     "confirmRate2",
-    "rating",
-    "rate7",
-    "rate8",
-    "rate9",
-    "rate10",
-    "rate11",
-    "rate12",
-    "rate13",
-    "rate14",
-    "rate15",
-    "rate16",
-    "rate17",
-    "rate18",
-    "rate19",
-    "rate20",
-    "rate21",
-    "rate22",
-    "rate23",
-    "rate24"
+    "memberRated",
+    "reportRate",
+    "reportDate",
+    "ethics",
+    "technicalPerformance",
+    "memberRated2"
   ],
   topBar: ["topBar", "navigationBar", "account", "button"],
   navigationBar: ["navigationBar"],
@@ -2939,9 +1821,9 @@ const PlasmicDescendants = {
     "communityLogo",
     "firstName",
     "lastName",
-    "birthday",
+    "age",
     "location",
-    "charge2",
+    "charge",
     "linkedIn",
     "instagram",
     "x"
@@ -2950,51 +1832,44 @@ const PlasmicDescendants = {
   communityLogo: ["communityLogo"],
   firstName: ["firstName"],
   lastName: ["lastName"],
-  birthday: ["birthday"],
+  age: ["age"],
   location: ["location"],
-  charge2: ["charge2"],
+  charge: ["charge"],
   linkedIn: ["linkedIn"],
   instagram: ["instagram"],
   x: ["x"],
   rateThisMember: [
     "rateThisMember",
-    "modal",
-    "rateEthics",
+    "rate",
+    "rating",
     "comment",
     "confirmRate",
-    "modal2",
+    "rate2",
     "rateTechnical",
     "comment2",
     "confirmRate2",
-    "rating"
+    "memberRated"
   ],
-  modal: ["modal", "rateEthics", "comment", "confirmRate"],
-  rateEthics: ["rateEthics"],
+  rate: ["rate", "rating", "comment", "confirmRate"],
+  rating: ["rating"],
   comment: ["comment"],
   confirmRate: ["confirmRate"],
-  modal2: ["modal2", "rateTechnical", "comment2", "confirmRate2"],
+  rate2: ["rate2", "rateTechnical", "comment2", "confirmRate2"],
   rateTechnical: ["rateTechnical"],
   comment2: ["comment2"],
   confirmRate2: ["confirmRate2"],
-  rating: ["rating"],
-  rate7: ["rate7"],
-  rate8: ["rate8"],
-  rate9: ["rate9"],
-  rate10: ["rate10"],
-  rate11: ["rate11"],
-  rate12: ["rate12"],
-  rate13: ["rate13"],
-  rate14: ["rate14"],
-  rate15: ["rate15"],
-  rate16: ["rate16"],
-  rate17: ["rate17"],
-  rate18: ["rate18"],
-  rate19: ["rate19"],
-  rate20: ["rate20"],
-  rate21: ["rate21"],
-  rate22: ["rate22"],
-  rate23: ["rate23"],
-  rate24: ["rate24"]
+  memberRated: ["memberRated"],
+  reportRate: [
+    "reportRate",
+    "reportDate",
+    "ethics",
+    "technicalPerformance",
+    "memberRated2"
+  ],
+  reportDate: ["reportDate"],
+  ethics: ["ethics"],
+  technicalPerformance: ["technicalPerformance"],
+  memberRated2: ["memberRated2"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -3010,40 +1885,27 @@ type NodeDefaultElementType = {
   communityLogo: typeof PlasmicImg__;
   firstName: "div";
   lastName: "div";
-  birthday: "div";
+  age: "div";
   location: "div";
-  charge2: "div";
+  charge: "div";
   linkedIn: "a";
   instagram: "a";
   x: "a";
   rateThisMember: "div";
-  modal: typeof Modal;
-  rateEthics: typeof AntdRate;
+  rate: typeof Modal;
+  rating: typeof AntdRate;
   comment: typeof AntdTextArea;
   confirmRate: typeof Button2;
-  modal2: typeof Modal;
+  rate2: typeof Modal;
   rateTechnical: typeof AntdRate;
   comment2: typeof AntdTextArea;
   confirmRate2: typeof Button2;
-  rating: typeof AntdRate;
-  rate7: typeof AntdRate;
-  rate8: typeof AntdRate;
-  rate9: typeof AntdRate;
-  rate10: typeof AntdRate;
-  rate11: typeof AntdRate;
-  rate12: typeof AntdRate;
-  rate13: typeof AntdRate;
-  rate14: typeof AntdRate;
-  rate15: typeof AntdRate;
-  rate16: typeof AntdRate;
-  rate17: typeof AntdRate;
-  rate18: typeof AntdRate;
-  rate19: typeof AntdRate;
-  rate20: typeof AntdRate;
-  rate21: typeof AntdRate;
-  rate22: typeof AntdRate;
-  rate23: typeof AntdRate;
-  rate24: typeof AntdRate;
+  memberRated: typeof AntdRate;
+  reportRate: "div";
+  reportDate: "div";
+  ethics: typeof AntdRate;
+  technicalPerformance: typeof AntdRate;
+  memberRated2: typeof AntdRate;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -3117,40 +1979,27 @@ export const PlasmicARatingMembers = Object.assign(
     communityLogo: makeNodeComponent("communityLogo"),
     firstName: makeNodeComponent("firstName"),
     lastName: makeNodeComponent("lastName"),
-    birthday: makeNodeComponent("birthday"),
+    age: makeNodeComponent("age"),
     location: makeNodeComponent("location"),
-    charge2: makeNodeComponent("charge2"),
+    charge: makeNodeComponent("charge"),
     linkedIn: makeNodeComponent("linkedIn"),
     instagram: makeNodeComponent("instagram"),
     x: makeNodeComponent("x"),
     rateThisMember: makeNodeComponent("rateThisMember"),
-    modal: makeNodeComponent("modal"),
-    rateEthics: makeNodeComponent("rateEthics"),
+    rate: makeNodeComponent("rate"),
+    rating: makeNodeComponent("rating"),
     comment: makeNodeComponent("comment"),
     confirmRate: makeNodeComponent("confirmRate"),
-    modal2: makeNodeComponent("modal2"),
+    rate2: makeNodeComponent("rate2"),
     rateTechnical: makeNodeComponent("rateTechnical"),
     comment2: makeNodeComponent("comment2"),
     confirmRate2: makeNodeComponent("confirmRate2"),
-    rating: makeNodeComponent("rating"),
-    rate7: makeNodeComponent("rate7"),
-    rate8: makeNodeComponent("rate8"),
-    rate9: makeNodeComponent("rate9"),
-    rate10: makeNodeComponent("rate10"),
-    rate11: makeNodeComponent("rate11"),
-    rate12: makeNodeComponent("rate12"),
-    rate13: makeNodeComponent("rate13"),
-    rate14: makeNodeComponent("rate14"),
-    rate15: makeNodeComponent("rate15"),
-    rate16: makeNodeComponent("rate16"),
-    rate17: makeNodeComponent("rate17"),
-    rate18: makeNodeComponent("rate18"),
-    rate19: makeNodeComponent("rate19"),
-    rate20: makeNodeComponent("rate20"),
-    rate21: makeNodeComponent("rate21"),
-    rate22: makeNodeComponent("rate22"),
-    rate23: makeNodeComponent("rate23"),
-    rate24: makeNodeComponent("rate24"),
+    memberRated: makeNodeComponent("memberRated"),
+    reportRate: makeNodeComponent("reportRate"),
+    reportDate: makeNodeComponent("reportDate"),
+    ethics: makeNodeComponent("ethics"),
+    technicalPerformance: makeNodeComponent("technicalPerformance"),
+    memberRated2: makeNodeComponent("memberRated2"),
 
     // Metadata about props expected for PlasmicARatingMembers
     internalVariantProps: PlasmicARatingMembers__VariantProps,

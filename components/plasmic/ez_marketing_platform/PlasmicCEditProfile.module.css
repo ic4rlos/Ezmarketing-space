@@ -2351,7 +2351,7 @@
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
 }
-.solutionsSteps {
+.freeBox__g3Ao {
   display: flex;
   position: relative;
   width: auto;
@@ -2364,7 +2364,7 @@
   overflow: auto;
   padding: 0px;
 }
-.freeBox__m6PaD {
+.solutionsSteps {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -2857,7 +2857,7 @@
   width: auto;
   height: 1em;
 }
-.loginButton__jcf7X:global(.__wab_instance) {
+.done:global(.__wab_instance) {
   max-width: 100%;
   width: 150px;
   height: 37px;

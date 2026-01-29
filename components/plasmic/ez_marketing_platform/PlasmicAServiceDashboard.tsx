@@ -118,6 +118,7 @@ export type PlasmicAServiceDashboard__OverridesType = {
   _7Days?: Flex__<typeof LoginButton>;
   _30Days?: Flex__<typeof LoginButton>;
   _60Days?: Flex__<typeof LoginButton>;
+  communityProfit?: Flex__<"div">;
   withdraw?: Flex__<typeof Modal>;
   period?: Flex__<"div">;
   accountInf?: Flex__<"div">;
@@ -141,21 +142,46 @@ export type PlasmicAServiceDashboard__OverridesType = {
   fixedCosts?: Flex__<typeof AntdInput>;
   softwareTools?: Flex__<typeof AntdInput>;
   taxesFees?: Flex__<typeof AntdInput>;
+  desiredProfit?: Flex__<typeof AntdInput>;
   billing?: Flex__<"div">;
+  save?: Flex__<typeof Button2>;
   container3?: Flex__<"div">;
-  select?: Flex__<typeof AntdSelect>;
+  companies?: Flex__<typeof AntdSelect>;
   companyName2?: Flex__<"div">;
   company?: Flex__<typeof AntdOption>;
-  companyLogo2?: Flex__<typeof PlasmicImg__>;
+  companyLogo?: Flex__<typeof PlasmicImg__>;
   companyName?: Flex__<"div">;
   solutions?: Flex__<typeof AntdSelect>;
   title2?: Flex__<"div">;
   solution?: Flex__<typeof AntdOption>;
-  companyLogo?: Flex__<typeof PlasmicImg__>;
   title?: Flex__<"div">;
   totalSales?: Flex__<"div">;
+  solutionGoal?: Flex__<"div">;
+  communityComissionPaid?: Flex__<"div">;
   comissionPaid?: Flex__<"div">;
-  tableAtCustomerLocation2?: Flex__<"div">;
+  serviceComissionPaid?: Flex__<"div">;
+  comissionPerSale?: Flex__<"div">;
+  dashboard?: Flex__<"div">;
+  carlos?: Flex__<typeof Statistic>;
+  proposalSent?: Flex__<"div">;
+  carlos2?: Flex__<typeof Statistic>;
+  proposalRefused?: Flex__<"div">;
+  carlos3?: Flex__<typeof Statistic>;
+  waitingCompany?: Flex__<"div">;
+  carlos4?: Flex__<typeof Statistic>;
+  customerCanceled?: Flex__<"div">;
+  carlos5?: Flex__<typeof Statistic>;
+  onWay?: Flex__<"div">;
+  carlos6?: Flex__<typeof Statistic>;
+  customerTaxed?: Flex__<"div">;
+  carlos7?: Flex__<typeof Statistic>;
+  problemsWithAddress?: Flex__<"div">;
+  carlos8?: Flex__<typeof Statistic>;
+  waitingCustomer?: Flex__<"div">;
+  carlos9?: Flex__<typeof Statistic>;
+  customerCanceled2?: Flex__<"div">;
+  carlos10?: Flex__<typeof Statistic>;
+  success?: Flex__<"div">;
   tableAtCompanyLocation3?: Flex__<"div">;
   analysisAtCustomerLocation?: Flex__<"div">;
   analysisAtCompanyLocation2?: Flex__<"div">;
@@ -212,7 +238,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
-        path: "select.value",
+        path: "companies.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
@@ -369,6 +395,32 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
+      },
+      {
+        path: "desiredProfit.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
+      },
+      {
+        path: "totalSales2",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "solutionGoal2",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "variable2",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -942,10 +994,12 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                     {"U$"}
                   </div>
                   <div
+                    data-plasmic-name={"communityProfit"}
+                    data-plasmic-override={overrides.communityProfit}
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__d8UBz
+                      sty.communityProfit
                     )}
                   >
                     {"3,193"}
@@ -985,7 +1039,8 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                             Number($state.staffSalary.value) +
                             Number($state.fixedCosts.value) +
                             Number($state.softwareTools.value) +
-                            Number($state.taxesFees.value)
+                            Number($state.taxesFees.value) +
+                            Number($state.desiredProfit.value)
                           );
                         } catch (e) {
                           if (
@@ -2895,6 +2950,52 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                           />
                         );
                       })()}
+                      {(() => {
+                        const child$Props = {
+                          autoFocus: false,
+                          bordered: true,
+                          className: classNames(
+                            "__wab_instance",
+                            sty.desiredProfit
+                          ),
+                          onChange: async (...eventArgs: any) => {
+                            generateStateOnChangePropForCodeComponents(
+                              $state,
+                              "value",
+                              ["desiredProfit", "value"],
+                              AntdInput_Helpers
+                            ).apply(null, eventArgs);
+                          },
+                          placeholder: "Desired profit",
+                          readOnly: false,
+                          size: "middle",
+                          type: "number",
+                          value: generateStateValueProp($state, [
+                            "desiredProfit",
+                            "value"
+                          ])
+                        };
+                        initializeCodeComponentStates(
+                          $state,
+                          [
+                            {
+                              name: "value",
+                              plasmicStateName: "desiredProfit.value"
+                            }
+                          ],
+                          [],
+                          AntdInput_Helpers ?? {},
+                          child$Props
+                        );
+
+                        return (
+                          <AntdInput
+                            data-plasmic-name={"desiredProfit"}
+                            data-plasmic-override={overrides.desiredProfit}
+                            {...child$Props}
+                          />
+                        );
+                      })()}
                     </div>
                     <div
                       className={classNames(projectcss.all, sty.freeBox__jtd2E)}
@@ -2959,6 +3060,69 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                       </div>
                     </div>
                   </React.Fragment>
+                }
+                footer={
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__pkfKr)}
+                  >
+                    <Button2
+                      data-plasmic-name={"save"}
+                      data-plasmic-override={overrides.save}
+                      color={"muted"}
+                      label={
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__nb0Kz
+                          )}
+                        >
+                          {"Close"}
+                        </div>
+                      }
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["updateAriaDialogTriggerIsOpen"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["ariaDialogTrigger", "isOpen"]
+                                },
+                                operation: 0,
+                                value: false
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateAriaDialogTriggerIsOpen"] != null &&
+                          typeof $steps["updateAriaDialogTriggerIsOpen"] ===
+                            "object" &&
+                          typeof $steps["updateAriaDialogTriggerIsOpen"]
+                            .then === "function"
+                        ) {
+                          $steps["updateAriaDialogTriggerIsOpen"] =
+                            await $steps["updateAriaDialogTriggerIsOpen"];
+                        }
+                      }}
+                      type={"soft"}
+                    />
+                  </div>
                 }
                 heading={
                   <h3
@@ -3032,10 +3196,10 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
           <div className={classNames(projectcss.all, sty.freeBox__cB1F)}>
             <div className={classNames(projectcss.all, sty.freeBox__rDf4)}>
               <AntdSelect
-                data-plasmic-name={"select"}
-                data-plasmic-override={overrides.select}
+                data-plasmic-name={"companies"}
+                data-plasmic-override={overrides.companies}
                 allowClear={true}
-                className={classNames("__wab_instance", sty.select)}
+                className={classNames("__wab_instance", sty.companies)}
                 defaultOpen={false}
                 defaultStylesClassName={classNames(
                   projectcss.root_reset,
@@ -3046,10 +3210,10 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                 disabled={false}
                 mode={"single"}
                 onChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, ["select", "value"]).apply(
-                    null,
-                    eventArgs
-                  );
+                  generateStateOnChangeProp($state, [
+                    "companies",
+                    "value"
+                  ]).apply(null, eventArgs);
                 }}
                 options={[
                   { value: "option1", label: "Option 1", type: "option" },
@@ -3068,7 +3232,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                     {"Company"}
                   </div>
                 }
-                popupScopeClassName={sty["select__popup"]}
+                popupScopeClassName={sty["companies__popup"]}
                 suffixIcon={
                   <ChevronDownSvgIcon
                     className={classNames(projectcss.all, sty.svg__b7Yl7)}
@@ -3076,7 +3240,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                   />
                 }
                 useChildren={true}
-                value={generateStateValueProp($state, ["select", "value"])}
+                value={generateStateValueProp($state, ["companies", "value"])}
               >
                 <AntdOptionGroup
                   className={classNames(
@@ -3098,10 +3262,10 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                       )}
                     >
                       <PlasmicImg__
-                        data-plasmic-name={"companyLogo2"}
-                        data-plasmic-override={overrides.companyLogo2}
+                        data-plasmic-name={"companyLogo"}
+                        data-plasmic-override={overrides.companyLogo}
                         alt={""}
-                        className={classNames(sty.companyLogo2)}
+                        className={classNames(sty.companyLogo)}
                         displayHeight={"25px"}
                         displayMaxHeight={"none"}
                         displayMaxWidth={"100%"}
@@ -3189,20 +3353,6 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                     <div
                       className={classNames(projectcss.all, sty.freeBox__rPpZ)}
                     >
-                      <PlasmicImg__
-                        data-plasmic-name={"companyLogo"}
-                        data-plasmic-override={overrides.companyLogo}
-                        alt={""}
-                        className={classNames(sty.companyLogo)}
-                        displayHeight={"25px"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"25px"}
-                        loading={"lazy"}
-                      />
-
                       <div
                         data-plasmic-name={"title"}
                         data-plasmic-override={overrides.title}
@@ -3247,10 +3397,12 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                   {"/"}
                 </div>
                 <div
+                  data-plasmic-name={"solutionGoal"}
+                  data-plasmic-override={overrides.solutionGoal}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__tDmi6
+                    sty.solutionGoal
                   )}
                 >
                   {"50"}
@@ -3283,6 +3435,47 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                       {"U$"}
                     </div>
                     <div
+                      data-plasmic-name={"communityComissionPaid"}
+                      data-plasmic-override={overrides.communityComissionPaid}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.communityComissionPaid
+                      )}
+                    >
+                      {"3,193"}
+                    </div>
+                  </div>
+                }
+                unit={
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__sr9Yu
+                    )}
+                  >
+                    {"Commission for your community for successful sales"}
+                  </div>
+                }
+              />
+
+              <Statistic
+                className={classNames("__wab_instance", sty.statistic__zrIxc)}
+                number={
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__fadh)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___5QLum
+                      )}
+                    >
+                      {"U$"}
+                    </div>
+                    <div
                       data-plasmic-name={"comissionPaid"}
                       data-plasmic-override={overrides.comissionPaid}
                       className={classNames(
@@ -3300,7 +3493,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__sr9Yu
+                      sty.text__z81Em
                     )}
                   >
                     {"Commission from successful company sales"}
@@ -3324,10 +3517,12 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                       {"U$"}
                     </div>
                     <div
+                      data-plasmic-name={"serviceComissionPaid"}
+                      data-plasmic-override={overrides.serviceComissionPaid}
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text__dv2K0
+                        sty.serviceComissionPaid
                       )}
                     >
                       {"3,193"}
@@ -3363,10 +3558,12 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                       {"U$"}
                     </div>
                     <div
+                      data-plasmic-name={"comissionPerSale"}
+                      data-plasmic-override={overrides.comissionPerSale}
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text__d97Ey
+                        sty.comissionPerSale
                       )}
                     >
                       {"3,193"}
@@ -3387,236 +3584,311 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
               />
             </div>
           </div>
-          {(() => {
-            try {
-              return $state.companyNature === "Table- At Customer Location";
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return true;
+          <div
+            data-plasmic-name={"dashboard"}
+            data-plasmic-override={overrides.dashboard}
+            className={classNames(projectcss.all, sty.dashboard)}
+          >
+            <Statistic
+              data-plasmic-name={"carlos"}
+              data-plasmic-override={overrides.carlos}
+              className={classNames("__wab_instance", sty.carlos)}
+              number={
+                <div
+                  data-plasmic-name={"proposalSent"}
+                  data-plasmic-override={overrides.proposalSent}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.proposalSent
+                  )}
+                >
+                  {"7"}
+                </div>
               }
-              throw e;
-            }
-          })() ? (
-            <div
-              data-plasmic-name={"tableAtCustomerLocation2"}
-              data-plasmic-override={overrides.tableAtCustomerLocation2}
-              className={classNames(
-                projectcss.all,
-                sty.tableAtCustomerLocation2
-              )}
-            >
-              <Statistic
-                className={classNames("__wab_instance", sty.statistic__mKptG)}
-                number={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__tusAb
-                    )}
-                  >
-                    {"7"}
-                  </div>
-                }
-                unit={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___1TU94
-                    )}
-                  >
-                    {"Awating\nconfirmation"}
-                  </div>
-                }
-              />
+              unit={
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___3XdpH
+                  )}
+                >
+                  {"Proposal sent"}
+                </div>
+              }
+            />
 
-              <Statistic
-                className={classNames("__wab_instance", sty.statistic__hzj9)}
-                number={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__vtmc7
-                    )}
-                  >
-                    {"10"}
-                  </div>
-                }
-                unit={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__wMwXn
-                    )}
-                  >
-                    {"Canceled"}
-                  </div>
-                }
-              />
+            <Statistic
+              data-plasmic-name={"carlos2"}
+              data-plasmic-override={overrides.carlos2}
+              className={classNames("__wab_instance", sty.carlos2)}
+              number={
+                <div
+                  data-plasmic-name={"proposalRefused"}
+                  data-plasmic-override={overrides.proposalRefused}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.proposalRefused
+                  )}
+                >
+                  {"10"}
+                </div>
+              }
+              unit={
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__vUTw
+                  )}
+                >
+                  {"Proposal refused"}
+                </div>
+              }
+            />
 
-              <Statistic
-                className={classNames("__wab_instance", sty.statistic__auLvy)}
-                number={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__jleeF
-                    )}
-                  >
-                    {"10"}
-                  </div>
-                }
-                unit={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__cCbQw
-                    )}
-                  >
-                    {"On way"}
-                  </div>
-                }
-              />
+            <Statistic
+              data-plasmic-name={"carlos3"}
+              data-plasmic-override={overrides.carlos3}
+              className={classNames("__wab_instance", sty.carlos3)}
+              number={
+                <div
+                  data-plasmic-name={"waitingCompany"}
+                  data-plasmic-override={overrides.waitingCompany}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.waitingCompany
+                  )}
+                >
+                  {"7"}
+                </div>
+              }
+              unit={
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___1TU94
+                  )}
+                >
+                  {"Waiting company"}
+                </div>
+              }
+            />
 
-              <Statistic
-                className={classNames("__wab_instance", sty.statistic__h2KdY)}
-                number={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__ah0B
-                    )}
-                  >
-                    {"5"}
-                  </div>
-                }
-                unit={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__e60Sl
-                    )}
-                  >
-                    {"Canceled, with fee"}
-                  </div>
-                }
-              />
+            <Statistic
+              data-plasmic-name={"carlos4"}
+              data-plasmic-override={overrides.carlos4}
+              className={classNames("__wab_instance", sty.carlos4)}
+              number={
+                <div
+                  data-plasmic-name={"customerCanceled"}
+                  data-plasmic-override={overrides.customerCanceled}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.customerCanceled
+                  )}
+                >
+                  {"10"}
+                </div>
+              }
+              unit={
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__wMwXn
+                  )}
+                >
+                  {"Canceled"}
+                </div>
+              }
+            />
 
-              <Statistic
-                className={classNames("__wab_instance", sty.statistic__gswT)}
-                number={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__p5GiM
-                    )}
-                  >
-                    {"3"}
-                  </div>
-                }
-                unit={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__bqRmi
-                    )}
-                  >
-                    {"Problems with address"}
-                  </div>
-                }
-              />
+            <Statistic
+              data-plasmic-name={"carlos5"}
+              data-plasmic-override={overrides.carlos5}
+              className={classNames("__wab_instance", sty.carlos5)}
+              number={
+                <div
+                  data-plasmic-name={"onWay"}
+                  data-plasmic-override={overrides.onWay}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.onWay
+                  )}
+                >
+                  {"10"}
+                </div>
+              }
+              unit={
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__cCbQw
+                  )}
+                >
+                  {"On way"}
+                </div>
+              }
+            />
 
-              <Statistic
-                className={classNames("__wab_instance", sty.statistic__gAqXj)}
-                number={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__g549T
-                    )}
-                  >
-                    {"20"}
-                  </div>
-                }
-                unit={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__zuJma
-                    )}
-                  >
-                    {"Waiting\nconfirmation"}
-                  </div>
-                }
-              />
+            <Statistic
+              data-plasmic-name={"carlos6"}
+              data-plasmic-override={overrides.carlos6}
+              className={classNames("__wab_instance", sty.carlos6)}
+              number={
+                <div
+                  data-plasmic-name={"customerTaxed"}
+                  data-plasmic-override={overrides.customerTaxed}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.customerTaxed
+                  )}
+                >
+                  {"5"}
+                </div>
+              }
+              unit={
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__e60Sl
+                  )}
+                >
+                  {"Canceled, with fee"}
+                </div>
+              }
+            />
 
-              <Statistic
-                className={classNames("__wab_instance", sty.statistic__jWdx)}
-                number={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__e4Ooj
-                    )}
-                  >
-                    {"7"}
-                  </div>
-                }
-                unit={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___4Aql6
-                    )}
-                  >
-                    {"Customer\ncanceled"}
-                  </div>
-                }
-              />
+            <Statistic
+              data-plasmic-name={"carlos7"}
+              data-plasmic-override={overrides.carlos7}
+              className={classNames("__wab_instance", sty.carlos7)}
+              number={
+                <div
+                  data-plasmic-name={"problemsWithAddress"}
+                  data-plasmic-override={overrides.problemsWithAddress}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.problemsWithAddress
+                  )}
+                >
+                  {"3"}
+                </div>
+              }
+              unit={
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__bqRmi
+                  )}
+                >
+                  {"Problems with address"}
+                </div>
+              }
+            />
 
-              <Statistic
-                className={classNames("__wab_instance", sty.statistic___9MqJw)}
-                number={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__nzob
-                    )}
-                  >
-                    {"7"}
-                  </div>
-                }
-                unit={
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__tj1Qd
-                    )}
-                  >
-                    {"Success"}
-                  </div>
-                }
-              />
-            </div>
-          ) : null}
+            <Statistic
+              data-plasmic-name={"carlos8"}
+              data-plasmic-override={overrides.carlos8}
+              className={classNames("__wab_instance", sty.carlos8)}
+              number={
+                <div
+                  data-plasmic-name={"waitingCustomer"}
+                  data-plasmic-override={overrides.waitingCustomer}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.waitingCustomer
+                  )}
+                >
+                  {"20"}
+                </div>
+              }
+              unit={
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__zuJma
+                  )}
+                >
+                  {"Waiting\nconfirmation"}
+                </div>
+              }
+            />
+
+            <Statistic
+              data-plasmic-name={"carlos9"}
+              data-plasmic-override={overrides.carlos9}
+              className={classNames("__wab_instance", sty.carlos9)}
+              number={
+                <div
+                  data-plasmic-name={"customerCanceled2"}
+                  data-plasmic-override={overrides.customerCanceled2}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.customerCanceled2
+                  )}
+                >
+                  {"7"}
+                </div>
+              }
+              unit={
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___4Aql6
+                  )}
+                >
+                  {"Customer\ncanceled"}
+                </div>
+              }
+            />
+
+            <Statistic
+              data-plasmic-name={"carlos10"}
+              data-plasmic-override={overrides.carlos10}
+              className={classNames("__wab_instance", sty.carlos10)}
+              number={
+                <div
+                  data-plasmic-name={"success"}
+                  data-plasmic-override={overrides.success}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.success
+                  )}
+                >
+                  {"7"}
+                </div>
+              }
+              unit={
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__tj1Qd
+                  )}
+                >
+                  {"Success"}
+                </div>
+              }
+            />
+          </div>
           {(() => {
             try {
               return $state.companyNature === "Table- At Company Location";
@@ -5164,6 +5436,7 @@ const PlasmicDescendants = {
     "_7Days",
     "_30Days",
     "_60Days",
+    "communityProfit",
     "withdraw",
     "period",
     "accountInf",
@@ -5187,21 +5460,46 @@ const PlasmicDescendants = {
     "fixedCosts",
     "softwareTools",
     "taxesFees",
+    "desiredProfit",
     "billing",
+    "save",
     "container3",
-    "select",
+    "companies",
     "companyName2",
     "company",
-    "companyLogo2",
+    "companyLogo",
     "companyName",
     "solutions",
     "title2",
     "solution",
-    "companyLogo",
     "title",
     "totalSales",
+    "solutionGoal",
+    "communityComissionPaid",
     "comissionPaid",
-    "tableAtCustomerLocation2",
+    "serviceComissionPaid",
+    "comissionPerSale",
+    "dashboard",
+    "carlos",
+    "proposalSent",
+    "carlos2",
+    "proposalRefused",
+    "carlos3",
+    "waitingCompany",
+    "carlos4",
+    "customerCanceled",
+    "carlos5",
+    "onWay",
+    "carlos6",
+    "customerTaxed",
+    "carlos7",
+    "problemsWithAddress",
+    "carlos8",
+    "waitingCustomer",
+    "carlos9",
+    "customerCanceled2",
+    "carlos10",
+    "success",
     "tableAtCompanyLocation3",
     "analysisAtCustomerLocation",
     "analysisAtCompanyLocation2",
@@ -5222,6 +5520,7 @@ const PlasmicDescendants = {
     "_7Days",
     "_30Days",
     "_60Days",
+    "communityProfit",
     "withdraw",
     "period",
     "accountInf",
@@ -5245,11 +5544,14 @@ const PlasmicDescendants = {
     "fixedCosts",
     "softwareTools",
     "taxesFees",
-    "billing"
+    "desiredProfit",
+    "billing",
+    "save"
   ],
   _7Days: ["_7Days"],
   _30Days: ["_30Days"],
   _60Days: ["_60Days"],
+  communityProfit: ["communityProfit"],
   withdraw: [
     "withdraw",
     "period",
@@ -5292,46 +5594,124 @@ const PlasmicDescendants = {
     "fixedCosts",
     "softwareTools",
     "taxesFees",
-    "billing"
+    "desiredProfit",
+    "billing",
+    "save"
   ],
   advertisingBudget: ["advertisingBudget"],
   staffSalary: ["staffSalary"],
   fixedCosts: ["fixedCosts"],
   softwareTools: ["softwareTools"],
   taxesFees: ["taxesFees"],
+  desiredProfit: ["desiredProfit"],
   billing: ["billing"],
+  save: ["save"],
   container3: [
     "container3",
-    "select",
+    "companies",
     "companyName2",
     "company",
-    "companyLogo2",
+    "companyLogo",
     "companyName",
     "solutions",
     "title2",
     "solution",
-    "companyLogo",
     "title",
     "totalSales",
+    "solutionGoal",
+    "communityComissionPaid",
     "comissionPaid",
-    "tableAtCustomerLocation2",
+    "serviceComissionPaid",
+    "comissionPerSale",
+    "dashboard",
+    "carlos",
+    "proposalSent",
+    "carlos2",
+    "proposalRefused",
+    "carlos3",
+    "waitingCompany",
+    "carlos4",
+    "customerCanceled",
+    "carlos5",
+    "onWay",
+    "carlos6",
+    "customerTaxed",
+    "carlos7",
+    "problemsWithAddress",
+    "carlos8",
+    "waitingCustomer",
+    "carlos9",
+    "customerCanceled2",
+    "carlos10",
+    "success",
     "tableAtCompanyLocation3",
     "analysisAtCustomerLocation",
     "analysisAtCompanyLocation2"
   ],
-  select: ["select", "companyName2", "company", "companyLogo2", "companyName"],
+  companies: [
+    "companies",
+    "companyName2",
+    "company",
+    "companyLogo",
+    "companyName"
+  ],
   companyName2: ["companyName2"],
-  company: ["company", "companyLogo2", "companyName"],
-  companyLogo2: ["companyLogo2"],
-  companyName: ["companyName"],
-  solutions: ["solutions", "title2", "solution", "companyLogo", "title"],
-  title2: ["title2"],
-  solution: ["solution", "companyLogo", "title"],
+  company: ["company", "companyLogo", "companyName"],
   companyLogo: ["companyLogo"],
+  companyName: ["companyName"],
+  solutions: ["solutions", "title2", "solution", "title"],
+  title2: ["title2"],
+  solution: ["solution", "title"],
   title: ["title"],
   totalSales: ["totalSales"],
+  solutionGoal: ["solutionGoal"],
+  communityComissionPaid: ["communityComissionPaid"],
   comissionPaid: ["comissionPaid"],
-  tableAtCustomerLocation2: ["tableAtCustomerLocation2"],
+  serviceComissionPaid: ["serviceComissionPaid"],
+  comissionPerSale: ["comissionPerSale"],
+  dashboard: [
+    "dashboard",
+    "carlos",
+    "proposalSent",
+    "carlos2",
+    "proposalRefused",
+    "carlos3",
+    "waitingCompany",
+    "carlos4",
+    "customerCanceled",
+    "carlos5",
+    "onWay",
+    "carlos6",
+    "customerTaxed",
+    "carlos7",
+    "problemsWithAddress",
+    "carlos8",
+    "waitingCustomer",
+    "carlos9",
+    "customerCanceled2",
+    "carlos10",
+    "success"
+  ],
+  carlos: ["carlos", "proposalSent"],
+  proposalSent: ["proposalSent"],
+  carlos2: ["carlos2", "proposalRefused"],
+  proposalRefused: ["proposalRefused"],
+  carlos3: ["carlos3", "waitingCompany"],
+  waitingCompany: ["waitingCompany"],
+  carlos4: ["carlos4", "customerCanceled"],
+  customerCanceled: ["customerCanceled"],
+  carlos5: ["carlos5", "onWay"],
+  onWay: ["onWay"],
+  carlos6: ["carlos6", "customerTaxed"],
+  customerTaxed: ["customerTaxed"],
+  carlos7: ["carlos7", "problemsWithAddress"],
+  problemsWithAddress: ["problemsWithAddress"],
+  carlos8: ["carlos8", "waitingCustomer"],
+  waitingCustomer: ["waitingCustomer"],
+  carlos9: ["carlos9", "customerCanceled2"],
+  customerCanceled2: ["customerCanceled2"],
+  carlos10: ["carlos10", "success"],
+  success: ["success"],
   tableAtCompanyLocation3: ["tableAtCompanyLocation3"],
   analysisAtCustomerLocation: ["analysisAtCustomerLocation"],
   analysisAtCompanyLocation2: ["analysisAtCompanyLocation2"],
@@ -5363,6 +5743,7 @@ type NodeDefaultElementType = {
   _7Days: typeof LoginButton;
   _30Days: typeof LoginButton;
   _60Days: typeof LoginButton;
+  communityProfit: "div";
   withdraw: typeof Modal;
   period: "div";
   accountInf: "div";
@@ -5386,21 +5767,46 @@ type NodeDefaultElementType = {
   fixedCosts: typeof AntdInput;
   softwareTools: typeof AntdInput;
   taxesFees: typeof AntdInput;
+  desiredProfit: typeof AntdInput;
   billing: "div";
+  save: typeof Button2;
   container3: "div";
-  select: typeof AntdSelect;
+  companies: typeof AntdSelect;
   companyName2: "div";
   company: typeof AntdOption;
-  companyLogo2: typeof PlasmicImg__;
+  companyLogo: typeof PlasmicImg__;
   companyName: "div";
   solutions: typeof AntdSelect;
   title2: "div";
   solution: typeof AntdOption;
-  companyLogo: typeof PlasmicImg__;
   title: "div";
   totalSales: "div";
+  solutionGoal: "div";
+  communityComissionPaid: "div";
   comissionPaid: "div";
-  tableAtCustomerLocation2: "div";
+  serviceComissionPaid: "div";
+  comissionPerSale: "div";
+  dashboard: "div";
+  carlos: typeof Statistic;
+  proposalSent: "div";
+  carlos2: typeof Statistic;
+  proposalRefused: "div";
+  carlos3: typeof Statistic;
+  waitingCompany: "div";
+  carlos4: typeof Statistic;
+  customerCanceled: "div";
+  carlos5: typeof Statistic;
+  onWay: "div";
+  carlos6: typeof Statistic;
+  customerTaxed: "div";
+  carlos7: typeof Statistic;
+  problemsWithAddress: "div";
+  carlos8: typeof Statistic;
+  waitingCustomer: "div";
+  carlos9: typeof Statistic;
+  customerCanceled2: "div";
+  carlos10: typeof Statistic;
+  success: "div";
   tableAtCompanyLocation3: "div";
   analysisAtCustomerLocation: "div";
   analysisAtCompanyLocation2: "div";
@@ -5483,6 +5889,7 @@ export const PlasmicAServiceDashboard = Object.assign(
     _7Days: makeNodeComponent("_7Days"),
     _30Days: makeNodeComponent("_30Days"),
     _60Days: makeNodeComponent("_60Days"),
+    communityProfit: makeNodeComponent("communityProfit"),
     withdraw: makeNodeComponent("withdraw"),
     period: makeNodeComponent("period"),
     accountInf: makeNodeComponent("accountInf"),
@@ -5506,21 +5913,46 @@ export const PlasmicAServiceDashboard = Object.assign(
     fixedCosts: makeNodeComponent("fixedCosts"),
     softwareTools: makeNodeComponent("softwareTools"),
     taxesFees: makeNodeComponent("taxesFees"),
+    desiredProfit: makeNodeComponent("desiredProfit"),
     billing: makeNodeComponent("billing"),
+    save: makeNodeComponent("save"),
     container3: makeNodeComponent("container3"),
-    select: makeNodeComponent("select"),
+    companies: makeNodeComponent("companies"),
     companyName2: makeNodeComponent("companyName2"),
     company: makeNodeComponent("company"),
-    companyLogo2: makeNodeComponent("companyLogo2"),
+    companyLogo: makeNodeComponent("companyLogo"),
     companyName: makeNodeComponent("companyName"),
     solutions: makeNodeComponent("solutions"),
     title2: makeNodeComponent("title2"),
     solution: makeNodeComponent("solution"),
-    companyLogo: makeNodeComponent("companyLogo"),
     title: makeNodeComponent("title"),
     totalSales: makeNodeComponent("totalSales"),
+    solutionGoal: makeNodeComponent("solutionGoal"),
+    communityComissionPaid: makeNodeComponent("communityComissionPaid"),
     comissionPaid: makeNodeComponent("comissionPaid"),
-    tableAtCustomerLocation2: makeNodeComponent("tableAtCustomerLocation2"),
+    serviceComissionPaid: makeNodeComponent("serviceComissionPaid"),
+    comissionPerSale: makeNodeComponent("comissionPerSale"),
+    dashboard: makeNodeComponent("dashboard"),
+    carlos: makeNodeComponent("carlos"),
+    proposalSent: makeNodeComponent("proposalSent"),
+    carlos2: makeNodeComponent("carlos2"),
+    proposalRefused: makeNodeComponent("proposalRefused"),
+    carlos3: makeNodeComponent("carlos3"),
+    waitingCompany: makeNodeComponent("waitingCompany"),
+    carlos4: makeNodeComponent("carlos4"),
+    customerCanceled: makeNodeComponent("customerCanceled"),
+    carlos5: makeNodeComponent("carlos5"),
+    onWay: makeNodeComponent("onWay"),
+    carlos6: makeNodeComponent("carlos6"),
+    customerTaxed: makeNodeComponent("customerTaxed"),
+    carlos7: makeNodeComponent("carlos7"),
+    problemsWithAddress: makeNodeComponent("problemsWithAddress"),
+    carlos8: makeNodeComponent("carlos8"),
+    waitingCustomer: makeNodeComponent("waitingCustomer"),
+    carlos9: makeNodeComponent("carlos9"),
+    customerCanceled2: makeNodeComponent("customerCanceled2"),
+    carlos10: makeNodeComponent("carlos10"),
+    success: makeNodeComponent("success"),
     tableAtCompanyLocation3: makeNodeComponent("tableAtCompanyLocation3"),
     analysisAtCustomerLocation: makeNodeComponent("analysisAtCustomerLocation"),
     analysisAtCompanyLocation2: makeNodeComponent("analysisAtCompanyLocation2"),

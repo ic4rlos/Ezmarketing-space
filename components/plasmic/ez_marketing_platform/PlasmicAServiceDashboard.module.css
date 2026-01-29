@@ -569,7 +569,7 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.text__d8UBz {
+.communityProfit {
   width: auto;
   height: auto;
   max-width: 100%;
@@ -2986,6 +2986,13 @@
   font-size: 14px;
   margin: 4px;
 }
+.desiredProfit:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  margin: 4px;
+}
 .freeBox__jtd2E {
   display: flex;
   flex-direction: row;
@@ -3089,7 +3096,7 @@
   padding: 0px;
   margin: 8px;
 }
-.select:global(.__wab_instance) {
+.companies:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
   width: 200px;
@@ -3136,7 +3143,7 @@
   min-height: 0;
   padding: 0px;
 }
-.companyLogo2 {
+.companyLogo {
   object-fit: cover;
   max-width: 100%;
   width: 25px;
@@ -3145,7 +3152,7 @@
   flex-shrink: 0;
   border-radius: 5px;
 }
-.companyLogo2 > picture > img {
+.companyLogo > picture > img {
   object-fit: cover;
 }
 .companyName {
@@ -3229,17 +3236,6 @@
   min-height: 0;
   padding: 0px;
 }
-.companyLogo {
-  object-fit: cover;
-  max-width: 100%;
-  width: 25px;
-  height: 25px;
-  margin-top: 3px;
-  flex-shrink: 0;
-}
-.companyLogo > picture > img {
-  object-fit: cover;
-}
 .title {
   width: 100%;
   height: auto;
@@ -3310,7 +3306,7 @@
   font-size: 12px;
   font-weight: 400;
 }
-.text__tDmi6 {
+.solutionGoal {
   width: auto;
   height: auto;
   max-width: 100%;
@@ -3375,7 +3371,7 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.comissionPaid {
+.communityComissionPaid {
   width: auto;
   height: auto;
   max-width: 100%;
@@ -3394,6 +3390,82 @@
   text-overflow: clip;
 }
 .text__sr9Yu {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 12px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #535353;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none !important;
+  text-overflow: clip !important;
+  transition-property: all;
+  transition-duration: 1s;
+  min-width: 0;
+  -webkit-transition-property: all;
+  -webkit-transition-duration: 1s;
+  margin: 3px;
+}
+.statistic__zrIxc:global(.__wab_instance) {
+  max-width: 100%;
+}
+.freeBox__fadh {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px;
+}
+.text___5QLum {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  font-size: 16px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #535353;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
+}
+.comissionPaid {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  font-size: 16px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #535353;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
+}
+.text__z81Em {
   position: relative;
   width: 100%;
   height: auto;
@@ -3451,7 +3523,7 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.text__dv2K0 {
+.serviceComissionPaid {
   width: auto;
   height: auto;
   max-width: 100%;
@@ -3527,7 +3599,7 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.text__d97Ey {
+.comissionPerSale {
   width: auto;
   height: auto;
   max-width: 100%;
@@ -3570,7 +3642,7 @@
   -webkit-transition-duration: 1s;
   margin: 3px;
 }
-.tableAtCustomerLocation2 {
+.dashboard {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -3582,13 +3654,70 @@
   min-width: 0;
   padding: 8px;
 }
-.statistic__mKptG:global(.__wab_instance) {
+.carlos:global(.__wab_instance) {
   max-width: 100%;
   width: 115px;
   height: 78px;
   flex-shrink: 0;
 }
-.text__tusAb {
+.proposalSent {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 18px;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  min-width: 0;
+}
+.text___3XdpH {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 2px;
+  font-size: 14px;
+  text-align: center;
+  min-width: 0;
+}
+.carlos2:global(.__wab_instance) {
+  max-width: 100%;
+  width: 115px;
+  height: 78px;
+  flex-shrink: 0;
+}
+.proposalRefused {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 18px;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 3px;
+  color: var(--token-lr218BAAY08X);
+  min-width: 0;
+}
+.text__vUTw {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 2px;
+  font-size: 14px;
+  text-align: center;
+  color: var(--token-lr218BAAY08X);
+  min-width: 0;
+}
+.carlos3:global(.__wab_instance) {
+  max-width: 100%;
+  width: 115px;
+  height: 78px;
+  flex-shrink: 0;
+}
+.waitingCompany {
   position: relative;
   width: 100%;
   height: auto;
@@ -3609,13 +3738,13 @@
   text-align: center;
   min-width: 0;
 }
-.statistic__hzj9:global(.__wab_instance) {
+.carlos4:global(.__wab_instance) {
   max-width: 100%;
   width: 115px;
   height: 78px;
   flex-shrink: 0;
 }
-.text__vtmc7 {
+.customerCanceled {
   position: relative;
   width: 100%;
   height: auto;
@@ -3639,13 +3768,13 @@
   color: var(--token-lr218BAAY08X);
   min-width: 0;
 }
-.statistic__auLvy:global(.__wab_instance) {
+.carlos5:global(.__wab_instance) {
   max-width: 100%;
   width: 115px;
   height: 78px;
   flex-shrink: 0;
 }
-.text__jleeF {
+.onWay {
   position: relative;
   width: 100%;
   height: auto;
@@ -3667,13 +3796,13 @@
   text-align: center;
   min-width: 0;
 }
-.statistic__h2KdY:global(.__wab_instance) {
+.carlos6:global(.__wab_instance) {
   max-width: 100%;
   width: 115px;
   height: 78px;
   flex-shrink: 0;
 }
-.text__ah0B {
+.customerTaxed {
   position: relative;
   width: 100%;
   height: auto;
@@ -3697,13 +3826,13 @@
   color: var(--token-lr218BAAY08X);
   min-width: 0;
 }
-.statistic__gswT:global(.__wab_instance) {
+.carlos7:global(.__wab_instance) {
   max-width: 100%;
   width: 120px;
   height: 78px;
   flex-shrink: 0;
 }
-.text__p5GiM {
+.problemsWithAddress {
   position: relative;
   width: 100%;
   height: auto;
@@ -3731,13 +3860,13 @@
   text-decoration-line: none !important;
   min-width: 0;
 }
-.statistic__gAqXj:global(.__wab_instance) {
+.carlos8:global(.__wab_instance) {
   max-width: 100%;
   width: 115px;
   height: 78px;
   flex-shrink: 0;
 }
-.text__g549T {
+.waitingCustomer {
   position: relative;
   width: 100%;
   height: auto;
@@ -3759,13 +3888,13 @@
   text-align: center;
   min-width: 0;
 }
-.statistic__jWdx:global(.__wab_instance) {
+.carlos9:global(.__wab_instance) {
   max-width: 100%;
   width: 115px;
   height: 78px;
   flex-shrink: 0;
 }
-.text__e4Ooj {
+.customerCanceled2 {
   position: relative;
   width: 100%;
   height: auto;
@@ -3789,13 +3918,13 @@
   color: var(--token-lr218BAAY08X);
   min-width: 0;
 }
-.statistic___9MqJw:global(.__wab_instance) {
+.carlos10:global(.__wab_instance) {
   max-width: 100%;
   width: 115px;
   height: 78px;
   flex-shrink: 0;
 }
-.text__nzob {
+.success {
   position: relative;
   width: 100%;
   height: auto;

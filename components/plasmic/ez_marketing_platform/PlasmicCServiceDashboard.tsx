@@ -133,6 +133,7 @@ export type PlasmicCServiceDashboard__OverridesType = {
   serviceName?: Flex__<"div">;
   ofTheDemand?: Flex__<typeof AntdInput>;
   numbers?: Flex__<"div">;
+  goal?: Flex__<"div">;
   withdraw?: Flex__<typeof Modal>;
   period?: Flex__<"div">;
   accountInf?: Flex__<"div">;
@@ -157,6 +158,7 @@ export type PlasmicCServiceDashboard__OverridesType = {
   companyLogo?: Flex__<typeof PlasmicImg__>;
   title?: Flex__<"div">;
   totalSales?: Flex__<"div">;
+  solutionGoal?: Flex__<"div">;
   companyProfit?: Flex__<"div">;
   comissionPaid?: Flex__<"div">;
   price?: Flex__<"div">;
@@ -164,24 +166,24 @@ export type PlasmicCServiceDashboard__OverridesType = {
   chart?: Flex__<typeof SimpleChart>;
   tableAtCustomerLocation?: Flex__<"div">;
   colunsName?: Flex__<"div">;
-  waitingConfirmation?: Flex__<"div">;
+  awatingConfirmation?: Flex__<"div">;
   emailInput4?: Flex__<typeof EmailInput>;
   customerCanceled?: Flex__<"div">;
   waitingLocomotion?: Flex__<"div">;
   customerTaxed?: Flex__<"div">;
   troubleWithAddress?: Flex__<"div">;
-  troubleWithAddress2?: Flex__<"div">;
+  problemsWithAddress?: Flex__<"div">;
   waitingCustomer?: Flex__<"div">;
   troubleWithCustomer?: Flex__<"div">;
-  customerCanceled2?: Flex__<"div">;
+  serviceCanceled?: Flex__<"div">;
   rateCanceledModal?: Flex__<typeof Modal>;
   rate11?: Flex__<typeof AntdRate>;
   radioGroup4?: Flex__<typeof AntdRadioGroup>;
   radioGroup5?: Flex__<typeof AntdRadioGroup>;
   radioGroup6?: Flex__<typeof AntdRadioGroup>;
   rate12?: Flex__<typeof AntdRate>;
-  troubleWithCustomer5?: Flex__<"div">;
-  success2?: Flex__<"div">;
+  legalDispute?: Flex__<"div">;
+  success?: Flex__<"div">;
   rateSuccessModal?: Flex__<typeof Modal>;
   rate9?: Flex__<typeof AntdRate>;
   radioGroup?: Flex__<typeof AntdRadioGroup>;
@@ -190,21 +192,21 @@ export type PlasmicCServiceDashboard__OverridesType = {
   rate10?: Flex__<typeof AntdRate>;
   tableAtCompanyLocation?: Flex__<"div">;
   colunsName2?: Flex__<"div">;
-  waitingConfirmation3?: Flex__<"div">;
+  awatingConfirmation2?: Flex__<"div">;
   waitingConfirmationOnWay?: Flex__<"div">;
-  canceled?: Flex__<"div">;
-  waitingCostumer?: Flex__<"div">;
-  waitingCostumer4?: Flex__<"div">;
+  customerCanceled2?: Flex__<"div">;
+  waitingCustomer4?: Flex__<"div">;
+  customerOnWay?: Flex__<"div">;
   troubleWithCustomer2?: Flex__<"div">;
-  canceled2?: Flex__<"div">;
+  serviceCanceled2?: Flex__<"div">;
   rateCanceledModal2?: Flex__<typeof Modal>;
   rate13?: Flex__<typeof AntdRate>;
   radioGroup7?: Flex__<typeof AntdRadioGroup>;
   radioGroup8?: Flex__<typeof AntdRadioGroup>;
   radioGroup9?: Flex__<typeof AntdRadioGroup>;
   rate14?: Flex__<typeof AntdRate>;
-  troubleWithCustomer7?: Flex__<"div">;
-  success?: Flex__<"div">;
+  legalDispute2?: Flex__<"div">;
+  success2?: Flex__<"div">;
   rateSuccessModal2?: Flex__<typeof Modal>;
   rate19?: Flex__<typeof AntdRate>;
   radioGroup16?: Flex__<typeof AntdRadioGroup>;
@@ -213,27 +215,28 @@ export type PlasmicCServiceDashboard__OverridesType = {
   rate20?: Flex__<typeof AntdRate>;
   analysisAtCustomerLocation?: Flex__<"div">;
   colunsName3?: Flex__<"div">;
-  waitingConfirmation2?: Flex__<"div">;
+  awatingConfirmation3?: Flex__<"div">;
   emailInput3?: Flex__<typeof EmailInput>;
-  customerCancelled?: Flex__<"div">;
+  customerCanceled3?: Flex__<"div">;
   waitingLocomotion2?: Flex__<"div">;
+  troubleWithAddress2?: Flex__<"div">;
   customerTaxed2?: Flex__<"div">;
   troubleWithAdress2?: Flex__<"div">;
-  waitingLocomotion3?: Flex__<"div">;
+  proposal?: Flex__<"div">;
   emailInput?: Flex__<typeof EmailInput>;
-  waitingCustomer2?: Flex__<"div">;
+  proposalSent?: Flex__<"div">;
   proposalRefused?: Flex__<"div">;
   waitingLocomotion4?: Flex__<"div">;
   waitingCustomer3?: Flex__<"div">;
   troubleWithCustomer3?: Flex__<"div">;
-  customerCancelled5?: Flex__<"div">;
+  serviceCanceled3?: Flex__<"div">;
   rateCanceledModal3?: Flex__<typeof Modal>;
   rate15?: Flex__<typeof AntdRate>;
   radioGroup10?: Flex__<typeof AntdRadioGroup>;
   radioGroup11?: Flex__<typeof AntdRadioGroup>;
   radioGroup12?: Flex__<typeof AntdRadioGroup>;
   rate16?: Flex__<typeof AntdRate>;
-  troubleWithCustomer6?: Flex__<"div">;
+  legalDispute3?: Flex__<"div">;
   success3?: Flex__<"div">;
   rateSuccessModal3?: Flex__<typeof Modal>;
   rate21?: Flex__<typeof AntdRate>;
@@ -243,27 +246,27 @@ export type PlasmicCServiceDashboard__OverridesType = {
   rate22?: Flex__<typeof AntdRate>;
   analysisAtCompanyLocation?: Flex__<"div">;
   colunsName4?: Flex__<"div">;
-  waitingConfirmation4?: Flex__<"div">;
+  awatingConfirmation4?: Flex__<"div">;
   waitingConfirmation6?: Flex__<"div">;
-  customerCancelled2?: Flex__<"div">;
-  waitingLocomotion5?: Flex__<"div">;
+  customerCanceled4?: Flex__<"div">;
+  proposal2?: Flex__<"div">;
   emailInput2?: Flex__<typeof EmailInput>;
-  waitingCostumer2?: Flex__<"div">;
+  proposalSent2?: Flex__<"div">;
   proposalRefused2?: Flex__<"div">;
   waitingConfirmation5?: Flex__<"div">;
   waitingConfirmation7?: Flex__<"div">;
   waitingCostumer3?: Flex__<"div">;
   waitingCostumer5?: Flex__<"div">;
   troubleWithCustomer4?: Flex__<"div">;
-  customerCancelled6?: Flex__<"div">;
+  serviceCanceled4?: Flex__<"div">;
   rateCanceledModal4?: Flex__<typeof Modal>;
   rate17?: Flex__<typeof AntdRate>;
   radioGroup13?: Flex__<typeof AntdRadioGroup>;
   radioGroup14?: Flex__<typeof AntdRadioGroup>;
   radioGroup15?: Flex__<typeof AntdRadioGroup>;
   rate18?: Flex__<typeof AntdRate>;
-  customerCancelled3?: Flex__<"div">;
-  customerCancelled4?: Flex__<"div">;
+  legalDispute4?: Flex__<"div">;
+  success4?: Flex__<"div">;
   rateSuccessModal4?: Flex__<typeof Modal>;
   rate23?: Flex__<typeof AntdRate>;
   radioGroup22?: Flex__<typeof AntdRadioGroup>;
@@ -1599,7 +1602,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                                 }
                               }).apply(null, eventArgs);
                             },
-                            placeholder: "Expenses",
+                            placeholder: "Monthly expenses",
                             readOnly: false,
                             size: "middle",
                             type: "number",
@@ -1687,7 +1690,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                                 }
                               }).apply(null, eventArgs);
                             },
-                            placeholder: "Desired profit",
+                            placeholder: "Desired monthly profit",
                             readOnly: false,
                             size: "middle",
                             type: "number",
@@ -2082,10 +2085,12 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                               {"For selected commission "}
                             </div>
                             <div
+                              data-plasmic-name={"goal"}
+                              data-plasmic-override={overrides.goal}
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text__zhWi6
+                                sty.goal
                               )}
                             >
                               <React.Fragment>
@@ -4192,10 +4197,12 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                   {"/"}
                 </div>
                 <div
+                  data-plasmic-name={"solutionGoal"}
+                  data-plasmic-override={overrides.solutionGoal}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text___1IlzY
+                    sty.solutionGoal
                   )}
                 >
                   <React.Fragment>
@@ -4589,9 +4596,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"waitingConfirmation"}
-            data-plasmic-override={overrides.waitingConfirmation}
-            className={classNames(projectcss.all, sty.waitingConfirmation)}
+            data-plasmic-name={"awatingConfirmation"}
+            data-plasmic-override={overrides.awatingConfirmation}
+            className={classNames(projectcss.all, sty.awatingConfirmation)}
           >
             <section className={classNames(projectcss.all, sty.section__cyZ6I)}>
               <div
@@ -5127,9 +5134,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"troubleWithAddress2"}
-            data-plasmic-override={overrides.troubleWithAddress2}
-            className={classNames(projectcss.all, sty.troubleWithAddress2)}
+            data-plasmic-name={"problemsWithAddress"}
+            data-plasmic-override={overrides.problemsWithAddress}
+            className={classNames(projectcss.all, sty.problemsWithAddress)}
           >
             <section
               className={classNames(projectcss.all, sty.section___4DbqK)}
@@ -5439,9 +5446,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"customerCanceled2"}
-            data-plasmic-override={overrides.customerCanceled2}
-            className={classNames(projectcss.all, sty.customerCanceled2)}
+            data-plasmic-name={"serviceCanceled"}
+            data-plasmic-override={overrides.serviceCanceled}
+            className={classNames(projectcss.all, sty.serviceCanceled)}
           >
             <section className={classNames(projectcss.all, sty.section__fvpvm)}>
               <div
@@ -6222,9 +6229,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"troubleWithCustomer5"}
-            data-plasmic-override={overrides.troubleWithCustomer5}
-            className={classNames(projectcss.all, sty.troubleWithCustomer5)}
+            data-plasmic-name={"legalDispute"}
+            data-plasmic-override={overrides.legalDispute}
+            className={classNames(projectcss.all, sty.legalDispute)}
           >
             <section className={classNames(projectcss.all, sty.section__m2GcW)}>
               <div
@@ -6318,9 +6325,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"success2"}
-            data-plasmic-override={overrides.success2}
-            className={classNames(projectcss.all, sty.success2)}
+            data-plasmic-name={"success"}
+            data-plasmic-override={overrides.success}
+            className={classNames(projectcss.all, sty.success)}
           >
             <section className={classNames(projectcss.all, sty.section__k6WcY)}>
               <div
@@ -7187,9 +7194,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"waitingConfirmation3"}
-            data-plasmic-override={overrides.waitingConfirmation3}
-            className={classNames(projectcss.all, sty.waitingConfirmation3)}
+            data-plasmic-name={"awatingConfirmation2"}
+            data-plasmic-override={overrides.awatingConfirmation2}
+            className={classNames(projectcss.all, sty.awatingConfirmation2)}
           >
             <section className={classNames(projectcss.all, sty.section__rmapN)}>
               <div
@@ -7389,9 +7396,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"canceled"}
-            data-plasmic-override={overrides.canceled}
-            className={classNames(projectcss.all, sty.canceled)}
+            data-plasmic-name={"customerCanceled2"}
+            data-plasmic-override={overrides.customerCanceled2}
+            className={classNames(projectcss.all, sty.customerCanceled2)}
           >
             <section className={classNames(projectcss.all, sty.section__svjhK)}>
               <div
@@ -7474,9 +7481,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"waitingCostumer"}
-            data-plasmic-override={overrides.waitingCostumer}
-            className={classNames(projectcss.all, sty.waitingCostumer)}
+            data-plasmic-name={"waitingCustomer4"}
+            data-plasmic-override={overrides.waitingCustomer4}
+            className={classNames(projectcss.all, sty.waitingCustomer4)}
           >
             <section
               className={classNames(projectcss.all, sty.section___28O3W)}
@@ -7559,9 +7566,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"waitingCostumer4"}
-            data-plasmic-override={overrides.waitingCostumer4}
-            className={classNames(projectcss.all, sty.waitingCostumer4)}
+            data-plasmic-name={"customerOnWay"}
+            data-plasmic-override={overrides.customerOnWay}
+            className={classNames(projectcss.all, sty.customerOnWay)}
           >
             <section className={classNames(projectcss.all, sty.section__t5Fo)}>
               <div
@@ -7755,9 +7762,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"canceled2"}
-            data-plasmic-override={overrides.canceled2}
-            className={classNames(projectcss.all, sty.canceled2)}
+            data-plasmic-name={"serviceCanceled2"}
+            data-plasmic-override={overrides.serviceCanceled2}
+            className={classNames(projectcss.all, sty.serviceCanceled2)}
           >
             <section className={classNames(projectcss.all, sty.section__rEizL)}>
               <div
@@ -8531,9 +8538,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"troubleWithCustomer7"}
-            data-plasmic-override={overrides.troubleWithCustomer7}
-            className={classNames(projectcss.all, sty.troubleWithCustomer7)}
+            data-plasmic-name={"legalDispute2"}
+            data-plasmic-override={overrides.legalDispute2}
+            className={classNames(projectcss.all, sty.legalDispute2)}
           >
             <section className={classNames(projectcss.all, sty.section__pH7Ii)}>
               <div
@@ -8612,9 +8619,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"success"}
-            data-plasmic-override={overrides.success}
-            className={classNames(projectcss.all, sty.success)}
+            data-plasmic-name={"success2"}
+            data-plasmic-override={overrides.success2}
+            className={classNames(projectcss.all, sty.success2)}
           >
             <section className={classNames(projectcss.all, sty.section__fu2Mb)}>
               <div
@@ -9475,9 +9482,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"waitingConfirmation2"}
-            data-plasmic-override={overrides.waitingConfirmation2}
-            className={classNames(projectcss.all, sty.waitingConfirmation2)}
+            data-plasmic-name={"awatingConfirmation3"}
+            data-plasmic-override={overrides.awatingConfirmation3}
+            className={classNames(projectcss.all, sty.awatingConfirmation3)}
           >
             <section className={classNames(projectcss.all, sty.section___430R)}>
               <div
@@ -9623,9 +9630,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"customerCancelled"}
-            data-plasmic-override={overrides.customerCancelled}
-            className={classNames(projectcss.all, sty.customerCancelled)}
+            data-plasmic-name={"customerCanceled3"}
+            data-plasmic-override={overrides.customerCanceled3}
+            className={classNames(projectcss.all, sty.customerCanceled3)}
           >
             <section className={classNames(projectcss.all, sty.section__jTjhB)}>
               <div
@@ -9814,6 +9821,106 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                   )}
                 >
                   {"On way"}
+                </div>
+              </LoginButton>
+            </section>
+          </div>
+          <div
+            data-plasmic-name={"troubleWithAddress2"}
+            data-plasmic-override={overrides.troubleWithAddress2}
+            className={classNames(projectcss.all, sty.troubleWithAddress2)}
+          >
+            <section className={classNames(projectcss.all, sty.section__uciDh)}>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__udoYy
+                )}
+              >
+                {"Solution"}
+              </div>
+            </section>
+            <section className={classNames(projectcss.all, sty.section__m5M3L)}>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__rws3Z
+                )}
+              >
+                {"Community"}
+              </div>
+            </section>
+            <section
+              className={classNames(projectcss.all, sty.section___8JidW)}
+            >
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__jtNhS
+                )}
+              >
+                {"#000000000"}
+              </div>
+            </section>
+            <section className={classNames(projectcss.all, sty.section__c6Jch)}>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text___3Od2U
+                )}
+              >
+                {"Community"}
+              </div>
+            </section>
+            <section className={classNames(projectcss.all, sty.section__kjRFq)}>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__fvrtS
+                )}
+              >
+                {"10:20"}
+              </div>
+            </section>
+            <section className={classNames(projectcss.all, sty.section__ivgPy)}>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text___2Nec
+                )}
+              >
+                {"U$"}
+              </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__tp62H
+                )}
+              >
+                {"--"}
+              </div>
+            </section>
+            <section className={classNames(projectcss.all, sty.section__beiOb)}>
+              <LoginButton
+                className={classNames("__wab_instance", sty.loginButton__hPyol)}
+                color={"red"}
+                size={"minimal"}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__owfqH
+                  )}
+                >
+                  {"Trouble with Address?"}
                 </div>
               </LoginButton>
             </section>
@@ -10009,9 +10116,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"waitingLocomotion3"}
-            data-plasmic-override={overrides.waitingLocomotion3}
-            className={classNames(projectcss.all, sty.waitingLocomotion3)}
+            data-plasmic-name={"proposal"}
+            data-plasmic-override={overrides.proposal}
+            className={classNames(projectcss.all, sty.proposal)}
           >
             <section className={classNames(projectcss.all, sty.section__qfkG)}>
               <div
@@ -10124,9 +10231,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"waitingCustomer2"}
-            data-plasmic-override={overrides.waitingCustomer2}
-            className={classNames(projectcss.all, sty.waitingCustomer2)}
+            data-plasmic-name={"proposalSent"}
+            data-plasmic-override={overrides.proposalSent}
+            className={classNames(projectcss.all, sty.proposalSent)}
           >
             <section className={classNames(projectcss.all, sty.section__y7U3R)}>
               <div
@@ -10211,7 +10318,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                   sty.text__rKt4Y
                 )}
               >
-                {"Proposal send"}
+                {"Proposal sent"}
               </div>
             </section>
           </div>
@@ -10630,9 +10737,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"customerCancelled5"}
-            data-plasmic-override={overrides.customerCancelled5}
-            className={classNames(projectcss.all, sty.customerCancelled5)}
+            data-plasmic-name={"serviceCanceled3"}
+            data-plasmic-override={overrides.serviceCanceled3}
+            className={classNames(projectcss.all, sty.serviceCanceled3)}
           >
             <section className={classNames(projectcss.all, sty.section__vsB3O)}>
               <div
@@ -11419,9 +11526,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"troubleWithCustomer6"}
-            data-plasmic-override={overrides.troubleWithCustomer6}
-            className={classNames(projectcss.all, sty.troubleWithCustomer6)}
+            data-plasmic-name={"legalDispute3"}
+            data-plasmic-override={overrides.legalDispute3}
+            className={classNames(projectcss.all, sty.legalDispute3)}
           >
             <section className={classNames(projectcss.all, sty.section__qoqq2)}>
               <div
@@ -12378,9 +12485,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"waitingConfirmation4"}
-            data-plasmic-override={overrides.waitingConfirmation4}
-            className={classNames(projectcss.all, sty.waitingConfirmation4)}
+            data-plasmic-name={"awatingConfirmation4"}
+            data-plasmic-override={overrides.awatingConfirmation4}
+            className={classNames(projectcss.all, sty.awatingConfirmation4)}
           >
             <section className={classNames(projectcss.all, sty.section__o5X3H)}>
               <div
@@ -12582,9 +12689,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"customerCancelled2"}
-            data-plasmic-override={overrides.customerCancelled2}
-            className={classNames(projectcss.all, sty.customerCancelled2)}
+            data-plasmic-name={"customerCanceled4"}
+            data-plasmic-override={overrides.customerCanceled4}
+            className={classNames(projectcss.all, sty.customerCanceled4)}
           >
             <section className={classNames(projectcss.all, sty.section__oooRj)}>
               <div
@@ -12665,9 +12772,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"waitingLocomotion5"}
-            data-plasmic-override={overrides.waitingLocomotion5}
-            className={classNames(projectcss.all, sty.waitingLocomotion5)}
+            data-plasmic-name={"proposal2"}
+            data-plasmic-override={overrides.proposal2}
+            className={classNames(projectcss.all, sty.proposal2)}
           >
             <section
               className={classNames(projectcss.all, sty.section___6F6Cj)}
@@ -12769,9 +12876,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"waitingCostumer2"}
-            data-plasmic-override={overrides.waitingCostumer2}
-            className={classNames(projectcss.all, sty.waitingCostumer2)}
+            data-plasmic-name={"proposalSent2"}
+            data-plasmic-override={overrides.proposalSent2}
+            className={classNames(projectcss.all, sty.proposalSent2)}
           >
             <section className={classNames(projectcss.all, sty.section__v67Wm)}>
               <div
@@ -12847,7 +12954,7 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
                   sty.text___3PjcX
                 )}
               >
-                {"Proposal send"}
+                {"Proposal sent"}
               </div>
             </section>
           </div>
@@ -13388,9 +13495,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"customerCancelled6"}
-            data-plasmic-override={overrides.customerCancelled6}
-            className={classNames(projectcss.all, sty.customerCancelled6)}
+            data-plasmic-name={"serviceCanceled4"}
+            data-plasmic-override={overrides.serviceCanceled4}
+            className={classNames(projectcss.all, sty.serviceCanceled4)}
           >
             <section className={classNames(projectcss.all, sty.section__oLc5H)}>
               <div
@@ -14166,9 +14273,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"customerCancelled3"}
-            data-plasmic-override={overrides.customerCancelled3}
-            className={classNames(projectcss.all, sty.customerCancelled3)}
+            data-plasmic-name={"legalDispute4"}
+            data-plasmic-override={overrides.legalDispute4}
+            className={classNames(projectcss.all, sty.legalDispute4)}
           >
             <section className={classNames(projectcss.all, sty.section__cexpo)}>
               <div
@@ -14249,9 +14356,9 @@ function PlasmicCServiceDashboard__RenderFunc(props: {
             </section>
           </div>
           <div
-            data-plasmic-name={"customerCancelled4"}
-            data-plasmic-override={overrides.customerCancelled4}
-            className={classNames(projectcss.all, sty.customerCancelled4)}
+            data-plasmic-name={"success4"}
+            data-plasmic-override={overrides.success4}
+            className={classNames(projectcss.all, sty.success4)}
           >
             <section className={classNames(projectcss.all, sty.section__oMq9G)}>
               <div
@@ -15046,6 +15153,7 @@ const PlasmicDescendants = {
     "serviceName",
     "ofTheDemand",
     "numbers",
+    "goal",
     "withdraw",
     "period",
     "accountInf",
@@ -15070,6 +15178,7 @@ const PlasmicDescendants = {
     "companyLogo",
     "title",
     "totalSales",
+    "solutionGoal",
     "companyProfit",
     "comissionPaid",
     "price",
@@ -15077,24 +15186,24 @@ const PlasmicDescendants = {
     "chart",
     "tableAtCustomerLocation",
     "colunsName",
-    "waitingConfirmation",
+    "awatingConfirmation",
     "emailInput4",
     "customerCanceled",
     "waitingLocomotion",
     "customerTaxed",
     "troubleWithAddress",
-    "troubleWithAddress2",
+    "problemsWithAddress",
     "waitingCustomer",
     "troubleWithCustomer",
-    "customerCanceled2",
+    "serviceCanceled",
     "rateCanceledModal",
     "rate11",
     "radioGroup4",
     "radioGroup5",
     "radioGroup6",
     "rate12",
-    "troubleWithCustomer5",
-    "success2",
+    "legalDispute",
+    "success",
     "rateSuccessModal",
     "rate9",
     "radioGroup",
@@ -15103,21 +15212,21 @@ const PlasmicDescendants = {
     "rate10",
     "tableAtCompanyLocation",
     "colunsName2",
-    "waitingConfirmation3",
+    "awatingConfirmation2",
     "waitingConfirmationOnWay",
-    "canceled",
-    "waitingCostumer",
-    "waitingCostumer4",
+    "customerCanceled2",
+    "waitingCustomer4",
+    "customerOnWay",
     "troubleWithCustomer2",
-    "canceled2",
+    "serviceCanceled2",
     "rateCanceledModal2",
     "rate13",
     "radioGroup7",
     "radioGroup8",
     "radioGroup9",
     "rate14",
-    "troubleWithCustomer7",
-    "success",
+    "legalDispute2",
+    "success2",
     "rateSuccessModal2",
     "rate19",
     "radioGroup16",
@@ -15126,27 +15235,28 @@ const PlasmicDescendants = {
     "rate20",
     "analysisAtCustomerLocation",
     "colunsName3",
-    "waitingConfirmation2",
+    "awatingConfirmation3",
     "emailInput3",
-    "customerCancelled",
+    "customerCanceled3",
     "waitingLocomotion2",
+    "troubleWithAddress2",
     "customerTaxed2",
     "troubleWithAdress2",
-    "waitingLocomotion3",
+    "proposal",
     "emailInput",
-    "waitingCustomer2",
+    "proposalSent",
     "proposalRefused",
     "waitingLocomotion4",
     "waitingCustomer3",
     "troubleWithCustomer3",
-    "customerCancelled5",
+    "serviceCanceled3",
     "rateCanceledModal3",
     "rate15",
     "radioGroup10",
     "radioGroup11",
     "radioGroup12",
     "rate16",
-    "troubleWithCustomer6",
+    "legalDispute3",
     "success3",
     "rateSuccessModal3",
     "rate21",
@@ -15156,27 +15266,27 @@ const PlasmicDescendants = {
     "rate22",
     "analysisAtCompanyLocation",
     "colunsName4",
-    "waitingConfirmation4",
+    "awatingConfirmation4",
     "waitingConfirmation6",
-    "customerCancelled2",
-    "waitingLocomotion5",
+    "customerCanceled4",
+    "proposal2",
     "emailInput2",
-    "waitingCostumer2",
+    "proposalSent2",
     "proposalRefused2",
     "waitingConfirmation5",
     "waitingConfirmation7",
     "waitingCostumer3",
     "waitingCostumer5",
     "troubleWithCustomer4",
-    "customerCancelled6",
+    "serviceCanceled4",
     "rateCanceledModal4",
     "rate17",
     "radioGroup13",
     "radioGroup14",
     "radioGroup15",
     "rate18",
-    "customerCancelled3",
-    "customerCancelled4",
+    "legalDispute4",
+    "success4",
     "rateSuccessModal4",
     "rate23",
     "radioGroup22",
@@ -15202,6 +15312,7 @@ const PlasmicDescendants = {
     "serviceName",
     "ofTheDemand",
     "numbers",
+    "goal",
     "withdraw",
     "period",
     "accountInf",
@@ -15226,6 +15337,7 @@ const PlasmicDescendants = {
     "companyLogo",
     "title",
     "totalSales",
+    "solutionGoal",
     "companyProfit",
     "comissionPaid",
     "price",
@@ -15244,16 +15356,24 @@ const PlasmicDescendants = {
     "servicosRepeat",
     "serviceName",
     "ofTheDemand",
-    "numbers"
+    "numbers",
+    "goal"
   ],
   basicData: ["basicData", "companyExpenses", "desiredProfit"],
   companyExpenses: ["companyExpenses"],
   desiredProfit: ["desiredProfit"],
   comissionPercent: ["comissionPercent"],
-  servicosRepeat: ["servicosRepeat", "serviceName", "ofTheDemand", "numbers"],
+  servicosRepeat: [
+    "servicosRepeat",
+    "serviceName",
+    "ofTheDemand",
+    "numbers",
+    "goal"
+  ],
   serviceName: ["serviceName", "ofTheDemand"],
   ofTheDemand: ["ofTheDemand"],
-  numbers: ["numbers"],
+  numbers: ["numbers", "goal"],
+  goal: ["goal"],
   withdraw: [
     "withdraw",
     "period",
@@ -15303,6 +15423,7 @@ const PlasmicDescendants = {
   companyLogo: ["companyLogo"],
   title: ["title"],
   totalSales: ["totalSales"],
+  solutionGoal: ["solutionGoal"],
   companyProfit: ["companyProfit"],
   comissionPaid: ["comissionPaid"],
   price: ["price"],
@@ -15311,24 +15432,24 @@ const PlasmicDescendants = {
   tableAtCustomerLocation: [
     "tableAtCustomerLocation",
     "colunsName",
-    "waitingConfirmation",
+    "awatingConfirmation",
     "emailInput4",
     "customerCanceled",
     "waitingLocomotion",
     "customerTaxed",
     "troubleWithAddress",
-    "troubleWithAddress2",
+    "problemsWithAddress",
     "waitingCustomer",
     "troubleWithCustomer",
-    "customerCanceled2",
+    "serviceCanceled",
     "rateCanceledModal",
     "rate11",
     "radioGroup4",
     "radioGroup5",
     "radioGroup6",
     "rate12",
-    "troubleWithCustomer5",
-    "success2",
+    "legalDispute",
+    "success",
     "rateSuccessModal",
     "rate9",
     "radioGroup",
@@ -15337,17 +15458,17 @@ const PlasmicDescendants = {
     "rate10"
   ],
   colunsName: ["colunsName"],
-  waitingConfirmation: ["waitingConfirmation", "emailInput4"],
+  awatingConfirmation: ["awatingConfirmation", "emailInput4"],
   emailInput4: ["emailInput4"],
   customerCanceled: ["customerCanceled"],
   waitingLocomotion: ["waitingLocomotion"],
   customerTaxed: ["customerTaxed"],
   troubleWithAddress: ["troubleWithAddress"],
-  troubleWithAddress2: ["troubleWithAddress2"],
+  problemsWithAddress: ["problemsWithAddress"],
   waitingCustomer: ["waitingCustomer"],
   troubleWithCustomer: ["troubleWithCustomer"],
-  customerCanceled2: [
-    "customerCanceled2",
+  serviceCanceled: [
+    "serviceCanceled",
     "rateCanceledModal",
     "rate11",
     "radioGroup4",
@@ -15368,9 +15489,9 @@ const PlasmicDescendants = {
   radioGroup5: ["radioGroup5"],
   radioGroup6: ["radioGroup6"],
   rate12: ["rate12"],
-  troubleWithCustomer5: ["troubleWithCustomer5"],
-  success2: [
-    "success2",
+  legalDispute: ["legalDispute"],
+  success: [
+    "success",
     "rateSuccessModal",
     "rate9",
     "radioGroup",
@@ -15394,21 +15515,21 @@ const PlasmicDescendants = {
   tableAtCompanyLocation: [
     "tableAtCompanyLocation",
     "colunsName2",
-    "waitingConfirmation3",
+    "awatingConfirmation2",
     "waitingConfirmationOnWay",
-    "canceled",
-    "waitingCostumer",
-    "waitingCostumer4",
+    "customerCanceled2",
+    "waitingCustomer4",
+    "customerOnWay",
     "troubleWithCustomer2",
-    "canceled2",
+    "serviceCanceled2",
     "rateCanceledModal2",
     "rate13",
     "radioGroup7",
     "radioGroup8",
     "radioGroup9",
     "rate14",
-    "troubleWithCustomer7",
-    "success",
+    "legalDispute2",
+    "success2",
     "rateSuccessModal2",
     "rate19",
     "radioGroup16",
@@ -15417,14 +15538,14 @@ const PlasmicDescendants = {
     "rate20"
   ],
   colunsName2: ["colunsName2"],
-  waitingConfirmation3: ["waitingConfirmation3"],
+  awatingConfirmation2: ["awatingConfirmation2"],
   waitingConfirmationOnWay: ["waitingConfirmationOnWay"],
-  canceled: ["canceled"],
-  waitingCostumer: ["waitingCostumer"],
-  waitingCostumer4: ["waitingCostumer4"],
+  customerCanceled2: ["customerCanceled2"],
+  waitingCustomer4: ["waitingCustomer4"],
+  customerOnWay: ["customerOnWay"],
   troubleWithCustomer2: ["troubleWithCustomer2"],
-  canceled2: [
-    "canceled2",
+  serviceCanceled2: [
+    "serviceCanceled2",
     "rateCanceledModal2",
     "rate13",
     "radioGroup7",
@@ -15445,9 +15566,9 @@ const PlasmicDescendants = {
   radioGroup8: ["radioGroup8"],
   radioGroup9: ["radioGroup9"],
   rate14: ["rate14"],
-  troubleWithCustomer7: ["troubleWithCustomer7"],
-  success: [
-    "success",
+  legalDispute2: ["legalDispute2"],
+  success2: [
+    "success2",
     "rateSuccessModal2",
     "rate19",
     "radioGroup16",
@@ -15471,27 +15592,28 @@ const PlasmicDescendants = {
   analysisAtCustomerLocation: [
     "analysisAtCustomerLocation",
     "colunsName3",
-    "waitingConfirmation2",
+    "awatingConfirmation3",
     "emailInput3",
-    "customerCancelled",
+    "customerCanceled3",
     "waitingLocomotion2",
+    "troubleWithAddress2",
     "customerTaxed2",
     "troubleWithAdress2",
-    "waitingLocomotion3",
+    "proposal",
     "emailInput",
-    "waitingCustomer2",
+    "proposalSent",
     "proposalRefused",
     "waitingLocomotion4",
     "waitingCustomer3",
     "troubleWithCustomer3",
-    "customerCancelled5",
+    "serviceCanceled3",
     "rateCanceledModal3",
     "rate15",
     "radioGroup10",
     "radioGroup11",
     "radioGroup12",
     "rate16",
-    "troubleWithCustomer6",
+    "legalDispute3",
     "success3",
     "rateSuccessModal3",
     "rate21",
@@ -15501,21 +15623,22 @@ const PlasmicDescendants = {
     "rate22"
   ],
   colunsName3: ["colunsName3"],
-  waitingConfirmation2: ["waitingConfirmation2", "emailInput3"],
+  awatingConfirmation3: ["awatingConfirmation3", "emailInput3"],
   emailInput3: ["emailInput3"],
-  customerCancelled: ["customerCancelled"],
+  customerCanceled3: ["customerCanceled3"],
   waitingLocomotion2: ["waitingLocomotion2"],
+  troubleWithAddress2: ["troubleWithAddress2"],
   customerTaxed2: ["customerTaxed2"],
   troubleWithAdress2: ["troubleWithAdress2"],
-  waitingLocomotion3: ["waitingLocomotion3", "emailInput"],
+  proposal: ["proposal", "emailInput"],
   emailInput: ["emailInput"],
-  waitingCustomer2: ["waitingCustomer2"],
+  proposalSent: ["proposalSent"],
   proposalRefused: ["proposalRefused"],
   waitingLocomotion4: ["waitingLocomotion4"],
   waitingCustomer3: ["waitingCustomer3"],
   troubleWithCustomer3: ["troubleWithCustomer3"],
-  customerCancelled5: [
-    "customerCancelled5",
+  serviceCanceled3: [
+    "serviceCanceled3",
     "rateCanceledModal3",
     "rate15",
     "radioGroup10",
@@ -15536,7 +15659,7 @@ const PlasmicDescendants = {
   radioGroup11: ["radioGroup11"],
   radioGroup12: ["radioGroup12"],
   rate16: ["rate16"],
-  troubleWithCustomer6: ["troubleWithCustomer6"],
+  legalDispute3: ["legalDispute3"],
   success3: [
     "success3",
     "rateSuccessModal3",
@@ -15562,27 +15685,27 @@ const PlasmicDescendants = {
   analysisAtCompanyLocation: [
     "analysisAtCompanyLocation",
     "colunsName4",
-    "waitingConfirmation4",
+    "awatingConfirmation4",
     "waitingConfirmation6",
-    "customerCancelled2",
-    "waitingLocomotion5",
+    "customerCanceled4",
+    "proposal2",
     "emailInput2",
-    "waitingCostumer2",
+    "proposalSent2",
     "proposalRefused2",
     "waitingConfirmation5",
     "waitingConfirmation7",
     "waitingCostumer3",
     "waitingCostumer5",
     "troubleWithCustomer4",
-    "customerCancelled6",
+    "serviceCanceled4",
     "rateCanceledModal4",
     "rate17",
     "radioGroup13",
     "radioGroup14",
     "radioGroup15",
     "rate18",
-    "customerCancelled3",
-    "customerCancelled4",
+    "legalDispute4",
+    "success4",
     "rateSuccessModal4",
     "rate23",
     "radioGroup22",
@@ -15591,20 +15714,20 @@ const PlasmicDescendants = {
     "rate24"
   ],
   colunsName4: ["colunsName4"],
-  waitingConfirmation4: ["waitingConfirmation4"],
+  awatingConfirmation4: ["awatingConfirmation4"],
   waitingConfirmation6: ["waitingConfirmation6"],
-  customerCancelled2: ["customerCancelled2"],
-  waitingLocomotion5: ["waitingLocomotion5", "emailInput2"],
+  customerCanceled4: ["customerCanceled4"],
+  proposal2: ["proposal2", "emailInput2"],
   emailInput2: ["emailInput2"],
-  waitingCostumer2: ["waitingCostumer2"],
+  proposalSent2: ["proposalSent2"],
   proposalRefused2: ["proposalRefused2"],
   waitingConfirmation5: ["waitingConfirmation5"],
   waitingConfirmation7: ["waitingConfirmation7"],
   waitingCostumer3: ["waitingCostumer3"],
   waitingCostumer5: ["waitingCostumer5"],
   troubleWithCustomer4: ["troubleWithCustomer4"],
-  customerCancelled6: [
-    "customerCancelled6",
+  serviceCanceled4: [
+    "serviceCanceled4",
     "rateCanceledModal4",
     "rate17",
     "radioGroup13",
@@ -15625,9 +15748,9 @@ const PlasmicDescendants = {
   radioGroup14: ["radioGroup14"],
   radioGroup15: ["radioGroup15"],
   rate18: ["rate18"],
-  customerCancelled3: ["customerCancelled3"],
-  customerCancelled4: [
-    "customerCancelled4",
+  legalDispute4: ["legalDispute4"],
+  success4: [
+    "success4",
     "rateSuccessModal4",
     "rate23",
     "radioGroup22",
@@ -15671,6 +15794,7 @@ type NodeDefaultElementType = {
   serviceName: "div";
   ofTheDemand: typeof AntdInput;
   numbers: "div";
+  goal: "div";
   withdraw: typeof Modal;
   period: "div";
   accountInf: "div";
@@ -15695,6 +15819,7 @@ type NodeDefaultElementType = {
   companyLogo: typeof PlasmicImg__;
   title: "div";
   totalSales: "div";
+  solutionGoal: "div";
   companyProfit: "div";
   comissionPaid: "div";
   price: "div";
@@ -15702,24 +15827,24 @@ type NodeDefaultElementType = {
   chart: typeof SimpleChart;
   tableAtCustomerLocation: "div";
   colunsName: "div";
-  waitingConfirmation: "div";
+  awatingConfirmation: "div";
   emailInput4: typeof EmailInput;
   customerCanceled: "div";
   waitingLocomotion: "div";
   customerTaxed: "div";
   troubleWithAddress: "div";
-  troubleWithAddress2: "div";
+  problemsWithAddress: "div";
   waitingCustomer: "div";
   troubleWithCustomer: "div";
-  customerCanceled2: "div";
+  serviceCanceled: "div";
   rateCanceledModal: typeof Modal;
   rate11: typeof AntdRate;
   radioGroup4: typeof AntdRadioGroup;
   radioGroup5: typeof AntdRadioGroup;
   radioGroup6: typeof AntdRadioGroup;
   rate12: typeof AntdRate;
-  troubleWithCustomer5: "div";
-  success2: "div";
+  legalDispute: "div";
+  success: "div";
   rateSuccessModal: typeof Modal;
   rate9: typeof AntdRate;
   radioGroup: typeof AntdRadioGroup;
@@ -15728,21 +15853,21 @@ type NodeDefaultElementType = {
   rate10: typeof AntdRate;
   tableAtCompanyLocation: "div";
   colunsName2: "div";
-  waitingConfirmation3: "div";
+  awatingConfirmation2: "div";
   waitingConfirmationOnWay: "div";
-  canceled: "div";
-  waitingCostumer: "div";
-  waitingCostumer4: "div";
+  customerCanceled2: "div";
+  waitingCustomer4: "div";
+  customerOnWay: "div";
   troubleWithCustomer2: "div";
-  canceled2: "div";
+  serviceCanceled2: "div";
   rateCanceledModal2: typeof Modal;
   rate13: typeof AntdRate;
   radioGroup7: typeof AntdRadioGroup;
   radioGroup8: typeof AntdRadioGroup;
   radioGroup9: typeof AntdRadioGroup;
   rate14: typeof AntdRate;
-  troubleWithCustomer7: "div";
-  success: "div";
+  legalDispute2: "div";
+  success2: "div";
   rateSuccessModal2: typeof Modal;
   rate19: typeof AntdRate;
   radioGroup16: typeof AntdRadioGroup;
@@ -15751,27 +15876,28 @@ type NodeDefaultElementType = {
   rate20: typeof AntdRate;
   analysisAtCustomerLocation: "div";
   colunsName3: "div";
-  waitingConfirmation2: "div";
+  awatingConfirmation3: "div";
   emailInput3: typeof EmailInput;
-  customerCancelled: "div";
+  customerCanceled3: "div";
   waitingLocomotion2: "div";
+  troubleWithAddress2: "div";
   customerTaxed2: "div";
   troubleWithAdress2: "div";
-  waitingLocomotion3: "div";
+  proposal: "div";
   emailInput: typeof EmailInput;
-  waitingCustomer2: "div";
+  proposalSent: "div";
   proposalRefused: "div";
   waitingLocomotion4: "div";
   waitingCustomer3: "div";
   troubleWithCustomer3: "div";
-  customerCancelled5: "div";
+  serviceCanceled3: "div";
   rateCanceledModal3: typeof Modal;
   rate15: typeof AntdRate;
   radioGroup10: typeof AntdRadioGroup;
   radioGroup11: typeof AntdRadioGroup;
   radioGroup12: typeof AntdRadioGroup;
   rate16: typeof AntdRate;
-  troubleWithCustomer6: "div";
+  legalDispute3: "div";
   success3: "div";
   rateSuccessModal3: typeof Modal;
   rate21: typeof AntdRate;
@@ -15781,27 +15907,27 @@ type NodeDefaultElementType = {
   rate22: typeof AntdRate;
   analysisAtCompanyLocation: "div";
   colunsName4: "div";
-  waitingConfirmation4: "div";
+  awatingConfirmation4: "div";
   waitingConfirmation6: "div";
-  customerCancelled2: "div";
-  waitingLocomotion5: "div";
+  customerCanceled4: "div";
+  proposal2: "div";
   emailInput2: typeof EmailInput;
-  waitingCostumer2: "div";
+  proposalSent2: "div";
   proposalRefused2: "div";
   waitingConfirmation5: "div";
   waitingConfirmation7: "div";
   waitingCostumer3: "div";
   waitingCostumer5: "div";
   troubleWithCustomer4: "div";
-  customerCancelled6: "div";
+  serviceCanceled4: "div";
   rateCanceledModal4: typeof Modal;
   rate17: typeof AntdRate;
   radioGroup13: typeof AntdRadioGroup;
   radioGroup14: typeof AntdRadioGroup;
   radioGroup15: typeof AntdRadioGroup;
   rate18: typeof AntdRate;
-  customerCancelled3: "div";
-  customerCancelled4: "div";
+  legalDispute4: "div";
+  success4: "div";
   rateSuccessModal4: typeof Modal;
   rate23: typeof AntdRate;
   radioGroup22: typeof AntdRadioGroup;
@@ -15889,6 +16015,7 @@ export const PlasmicCServiceDashboard = Object.assign(
     serviceName: makeNodeComponent("serviceName"),
     ofTheDemand: makeNodeComponent("ofTheDemand"),
     numbers: makeNodeComponent("numbers"),
+    goal: makeNodeComponent("goal"),
     withdraw: makeNodeComponent("withdraw"),
     period: makeNodeComponent("period"),
     accountInf: makeNodeComponent("accountInf"),
@@ -15913,6 +16040,7 @@ export const PlasmicCServiceDashboard = Object.assign(
     companyLogo: makeNodeComponent("companyLogo"),
     title: makeNodeComponent("title"),
     totalSales: makeNodeComponent("totalSales"),
+    solutionGoal: makeNodeComponent("solutionGoal"),
     companyProfit: makeNodeComponent("companyProfit"),
     comissionPaid: makeNodeComponent("comissionPaid"),
     price: makeNodeComponent("price"),
@@ -15920,24 +16048,24 @@ export const PlasmicCServiceDashboard = Object.assign(
     chart: makeNodeComponent("chart"),
     tableAtCustomerLocation: makeNodeComponent("tableAtCustomerLocation"),
     colunsName: makeNodeComponent("colunsName"),
-    waitingConfirmation: makeNodeComponent("waitingConfirmation"),
+    awatingConfirmation: makeNodeComponent("awatingConfirmation"),
     emailInput4: makeNodeComponent("emailInput4"),
     customerCanceled: makeNodeComponent("customerCanceled"),
     waitingLocomotion: makeNodeComponent("waitingLocomotion"),
     customerTaxed: makeNodeComponent("customerTaxed"),
     troubleWithAddress: makeNodeComponent("troubleWithAddress"),
-    troubleWithAddress2: makeNodeComponent("troubleWithAddress2"),
+    problemsWithAddress: makeNodeComponent("problemsWithAddress"),
     waitingCustomer: makeNodeComponent("waitingCustomer"),
     troubleWithCustomer: makeNodeComponent("troubleWithCustomer"),
-    customerCanceled2: makeNodeComponent("customerCanceled2"),
+    serviceCanceled: makeNodeComponent("serviceCanceled"),
     rateCanceledModal: makeNodeComponent("rateCanceledModal"),
     rate11: makeNodeComponent("rate11"),
     radioGroup4: makeNodeComponent("radioGroup4"),
     radioGroup5: makeNodeComponent("radioGroup5"),
     radioGroup6: makeNodeComponent("radioGroup6"),
     rate12: makeNodeComponent("rate12"),
-    troubleWithCustomer5: makeNodeComponent("troubleWithCustomer5"),
-    success2: makeNodeComponent("success2"),
+    legalDispute: makeNodeComponent("legalDispute"),
+    success: makeNodeComponent("success"),
     rateSuccessModal: makeNodeComponent("rateSuccessModal"),
     rate9: makeNodeComponent("rate9"),
     radioGroup: makeNodeComponent("radioGroup"),
@@ -15946,21 +16074,21 @@ export const PlasmicCServiceDashboard = Object.assign(
     rate10: makeNodeComponent("rate10"),
     tableAtCompanyLocation: makeNodeComponent("tableAtCompanyLocation"),
     colunsName2: makeNodeComponent("colunsName2"),
-    waitingConfirmation3: makeNodeComponent("waitingConfirmation3"),
+    awatingConfirmation2: makeNodeComponent("awatingConfirmation2"),
     waitingConfirmationOnWay: makeNodeComponent("waitingConfirmationOnWay"),
-    canceled: makeNodeComponent("canceled"),
-    waitingCostumer: makeNodeComponent("waitingCostumer"),
-    waitingCostumer4: makeNodeComponent("waitingCostumer4"),
+    customerCanceled2: makeNodeComponent("customerCanceled2"),
+    waitingCustomer4: makeNodeComponent("waitingCustomer4"),
+    customerOnWay: makeNodeComponent("customerOnWay"),
     troubleWithCustomer2: makeNodeComponent("troubleWithCustomer2"),
-    canceled2: makeNodeComponent("canceled2"),
+    serviceCanceled2: makeNodeComponent("serviceCanceled2"),
     rateCanceledModal2: makeNodeComponent("rateCanceledModal2"),
     rate13: makeNodeComponent("rate13"),
     radioGroup7: makeNodeComponent("radioGroup7"),
     radioGroup8: makeNodeComponent("radioGroup8"),
     radioGroup9: makeNodeComponent("radioGroup9"),
     rate14: makeNodeComponent("rate14"),
-    troubleWithCustomer7: makeNodeComponent("troubleWithCustomer7"),
-    success: makeNodeComponent("success"),
+    legalDispute2: makeNodeComponent("legalDispute2"),
+    success2: makeNodeComponent("success2"),
     rateSuccessModal2: makeNodeComponent("rateSuccessModal2"),
     rate19: makeNodeComponent("rate19"),
     radioGroup16: makeNodeComponent("radioGroup16"),
@@ -15969,27 +16097,28 @@ export const PlasmicCServiceDashboard = Object.assign(
     rate20: makeNodeComponent("rate20"),
     analysisAtCustomerLocation: makeNodeComponent("analysisAtCustomerLocation"),
     colunsName3: makeNodeComponent("colunsName3"),
-    waitingConfirmation2: makeNodeComponent("waitingConfirmation2"),
+    awatingConfirmation3: makeNodeComponent("awatingConfirmation3"),
     emailInput3: makeNodeComponent("emailInput3"),
-    customerCancelled: makeNodeComponent("customerCancelled"),
+    customerCanceled3: makeNodeComponent("customerCanceled3"),
     waitingLocomotion2: makeNodeComponent("waitingLocomotion2"),
+    troubleWithAddress2: makeNodeComponent("troubleWithAddress2"),
     customerTaxed2: makeNodeComponent("customerTaxed2"),
     troubleWithAdress2: makeNodeComponent("troubleWithAdress2"),
-    waitingLocomotion3: makeNodeComponent("waitingLocomotion3"),
+    proposal: makeNodeComponent("proposal"),
     emailInput: makeNodeComponent("emailInput"),
-    waitingCustomer2: makeNodeComponent("waitingCustomer2"),
+    proposalSent: makeNodeComponent("proposalSent"),
     proposalRefused: makeNodeComponent("proposalRefused"),
     waitingLocomotion4: makeNodeComponent("waitingLocomotion4"),
     waitingCustomer3: makeNodeComponent("waitingCustomer3"),
     troubleWithCustomer3: makeNodeComponent("troubleWithCustomer3"),
-    customerCancelled5: makeNodeComponent("customerCancelled5"),
+    serviceCanceled3: makeNodeComponent("serviceCanceled3"),
     rateCanceledModal3: makeNodeComponent("rateCanceledModal3"),
     rate15: makeNodeComponent("rate15"),
     radioGroup10: makeNodeComponent("radioGroup10"),
     radioGroup11: makeNodeComponent("radioGroup11"),
     radioGroup12: makeNodeComponent("radioGroup12"),
     rate16: makeNodeComponent("rate16"),
-    troubleWithCustomer6: makeNodeComponent("troubleWithCustomer6"),
+    legalDispute3: makeNodeComponent("legalDispute3"),
     success3: makeNodeComponent("success3"),
     rateSuccessModal3: makeNodeComponent("rateSuccessModal3"),
     rate21: makeNodeComponent("rate21"),
@@ -15999,27 +16128,27 @@ export const PlasmicCServiceDashboard = Object.assign(
     rate22: makeNodeComponent("rate22"),
     analysisAtCompanyLocation: makeNodeComponent("analysisAtCompanyLocation"),
     colunsName4: makeNodeComponent("colunsName4"),
-    waitingConfirmation4: makeNodeComponent("waitingConfirmation4"),
+    awatingConfirmation4: makeNodeComponent("awatingConfirmation4"),
     waitingConfirmation6: makeNodeComponent("waitingConfirmation6"),
-    customerCancelled2: makeNodeComponent("customerCancelled2"),
-    waitingLocomotion5: makeNodeComponent("waitingLocomotion5"),
+    customerCanceled4: makeNodeComponent("customerCanceled4"),
+    proposal2: makeNodeComponent("proposal2"),
     emailInput2: makeNodeComponent("emailInput2"),
-    waitingCostumer2: makeNodeComponent("waitingCostumer2"),
+    proposalSent2: makeNodeComponent("proposalSent2"),
     proposalRefused2: makeNodeComponent("proposalRefused2"),
     waitingConfirmation5: makeNodeComponent("waitingConfirmation5"),
     waitingConfirmation7: makeNodeComponent("waitingConfirmation7"),
     waitingCostumer3: makeNodeComponent("waitingCostumer3"),
     waitingCostumer5: makeNodeComponent("waitingCostumer5"),
     troubleWithCustomer4: makeNodeComponent("troubleWithCustomer4"),
-    customerCancelled6: makeNodeComponent("customerCancelled6"),
+    serviceCanceled4: makeNodeComponent("serviceCanceled4"),
     rateCanceledModal4: makeNodeComponent("rateCanceledModal4"),
     rate17: makeNodeComponent("rate17"),
     radioGroup13: makeNodeComponent("radioGroup13"),
     radioGroup14: makeNodeComponent("radioGroup14"),
     radioGroup15: makeNodeComponent("radioGroup15"),
     rate18: makeNodeComponent("rate18"),
-    customerCancelled3: makeNodeComponent("customerCancelled3"),
-    customerCancelled4: makeNodeComponent("customerCancelled4"),
+    legalDispute4: makeNodeComponent("legalDispute4"),
+    success4: makeNodeComponent("success4"),
     rateSuccessModal4: makeNodeComponent("rateSuccessModal4"),
     rate23: makeNodeComponent("rate23"),
     radioGroup22: makeNodeComponent("radioGroup22"),

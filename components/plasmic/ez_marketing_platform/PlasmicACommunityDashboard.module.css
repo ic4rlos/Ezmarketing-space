@@ -334,7 +334,7 @@
   min-width: 0;
   padding: 0px;
 }
-.htmlVideo:global(.__wab_instance) {
+.agencyPic:global(.__wab_instance) {
   width: 100%;
   height: 160px;
   max-width: 100%;
@@ -640,7 +640,7 @@
   flex-direction: row;
   position: relative;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-around;
   width: 100%;
   height: auto;
   max-width: 100%;
@@ -648,7 +648,7 @@
   min-width: 0;
   padding: 0px;
 }
-.loginButton__oLuVd:global(.__wab_instance) {
+.editCommunity:global(.__wab_instance) {
   max-width: 100%;
 }
 .svg__s1FM0 {
@@ -855,7 +855,7 @@
   min-width: 0;
   margin: 60px 0px 0px;
 }
-.modal2:global(.__wab_instance):global(.__wab_instance) {
+.averageRate4:global(.__wab_instance):global(.__wab_instance) {
   animation: none;
   max-width: 100%;
   z-index: 9999;
@@ -995,7 +995,7 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.textArea2:global(.__wab_instance) {
+.comment3:global(.__wab_instance) {
   animation: none;
   max-width: 100%;
   object-fit: cover;
@@ -1630,7 +1630,7 @@
   min-height: 0;
   padding: 8px 0px 0px;
 }
-.text__tcVt {
+.goalsSum2 {
   animation: none;
   width: auto;
   height: auto;
@@ -1736,7 +1736,7 @@
   text-decoration-line: none;
   text-overflow: clip;
 }
-.loginButton___737:global(.__wab_instance) {
+.why1:global(.__wab_instance) {
   max-width: 100%;
 }
 .svg__xjIm {
@@ -1766,7 +1766,7 @@
   width: auto;
   height: 1em;
 }
-.loginButton__d6Fly:global(.__wab_instance) {
+.why2:global(.__wab_instance) {
   max-width: 100%;
 }
 .svg__px7I0 {
@@ -1796,7 +1796,7 @@
   width: auto;
   height: 1em;
 }
-.loginButton__eeJav:global(.__wab_instance) {
+.why3:global(.__wab_instance) {
   max-width: 100%;
 }
 .svg__jsVnP {
@@ -1826,7 +1826,7 @@
   width: auto;
   height: 1em;
 }
-.loginButton___2Tn9U:global(.__wab_instance) {
+.why4:global(.__wab_instance) {
   max-width: 100%;
 }
 .svg__nLasI {
@@ -1856,7 +1856,7 @@
   width: auto;
   height: 1em;
 }
-.loginButton__xWtls:global(.__wab_instance) {
+.why5:global(.__wab_instance) {
   max-width: 100%;
 }
 .svg__vYVzV {
@@ -2314,7 +2314,7 @@
   min-height: 0;
   padding: 8px 0px 0px;
 }
-.text__wU0IR {
+.goalsSum3 {
   animation: none;
   width: auto;
   height: auto;
@@ -3218,7 +3218,7 @@
   justify-content: flex-start;
   row-gap: var(--token-K0I_pluDx2AD);
 }
-.loginButton___6G6If:global(.__wab_instance) {
+.why6:global(.__wab_instance) {
   max-width: 100%;
 }
 .svg___4TFos {
@@ -3248,7 +3248,7 @@
   width: auto;
   height: 1em;
 }
-.loginButton__hyCtT:global(.__wab_instance) {
+.why7:global(.__wab_instance) {
   max-width: 100%;
 }
 .svg__pc8HN {
@@ -3278,7 +3278,7 @@
   width: auto;
   height: 1em;
 }
-.loginButton___7N38V:global(.__wab_instance) {
+.why8:global(.__wab_instance) {
   max-width: 100%;
 }
 .svg___3Joxe {
@@ -3308,7 +3308,7 @@
   width: auto;
   height: 1em;
 }
-.loginButton__pn0N5:global(.__wab_instance) {
+.why9:global(.__wab_instance) {
   max-width: 100%;
 }
 .svg__ueC3N {
@@ -4202,7 +4202,7 @@
   object-fit: cover;
   min-width: 0;
 }
-.company {
+.connectedCompany2 {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -4214,7 +4214,7 @@
   min-width: 0;
   padding: 8px;
 }
-.loginButton__n5PfZ:global(.__wab_instance) {
+.company:global(.__wab_instance) {
   max-width: 100%;
   width: 150px;
   height: 56px;

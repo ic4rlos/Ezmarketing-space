@@ -117,7 +117,7 @@ export type PlasmicAProfile__OverridesType = {
   lastName?: Flex__<"div">;
   age?: Flex__<"div">;
   location?: Flex__<"div">;
-  loginButton?: Flex__<typeof LoginButton>;
+  invite?: Flex__<typeof LoginButton>;
   linkedIn?: Flex__<"a"> & Partial<LinkProps>;
   instagram?: Flex__<"a"> & Partial<LinkProps>;
   x?: Flex__<"a"> & Partial<LinkProps>;
@@ -1331,9 +1331,9 @@ function PlasmicAProfile__RenderFunc(props: {
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__bktVn)}>
               <LoginButton
-                data-plasmic-name={"loginButton"}
-                data-plasmic-override={overrides.loginButton}
-                className={classNames("__wab_instance", sty.loginButton)}
+                data-plasmic-name={"invite"}
+                data-plasmic-override={overrides.invite}
+                className={classNames("__wab_instance", sty.invite)}
                 shape={"rounded"}
                 size={"compact"}
               >
@@ -1344,7 +1344,7 @@ function PlasmicAProfile__RenderFunc(props: {
                     sty.text__iJckh
                   )}
                 >
-                  {"Button"}
+                  {"Invite"}
                 </div>
               </LoginButton>
             </div>
@@ -9506,7 +9506,7 @@ const PlasmicDescendants = {
     "lastName",
     "age",
     "location",
-    "loginButton",
+    "invite",
     "linkedIn",
     "instagram",
     "x",
@@ -9711,7 +9711,7 @@ const PlasmicDescendants = {
     "lastName",
     "age",
     "location",
-    "loginButton",
+    "invite",
     "linkedIn",
     "instagram",
     "x"
@@ -9722,7 +9722,7 @@ const PlasmicDescendants = {
   lastName: ["lastName"],
   age: ["age"],
   location: ["location"],
-  loginButton: ["loginButton"],
+  invite: ["invite"],
   linkedIn: ["linkedIn"],
   instagram: ["instagram"],
   x: ["x"],
@@ -10983,7 +10983,7 @@ type NodeDefaultElementType = {
   lastName: "div";
   age: "div";
   location: "div";
-  loginButton: typeof LoginButton;
+  invite: typeof LoginButton;
   linkedIn: "a";
   instagram: "a";
   x: "a";
@@ -11250,7 +11250,7 @@ export const PlasmicAProfile = Object.assign(
     lastName: makeNodeComponent("lastName"),
     age: makeNodeComponent("age"),
     location: makeNodeComponent("location"),
-    loginButton: makeNodeComponent("loginButton"),
+    invite: makeNodeComponent("invite"),
     linkedIn: makeNodeComponent("linkedIn"),
     instagram: makeNodeComponent("instagram"),
     x: makeNodeComponent("x"),

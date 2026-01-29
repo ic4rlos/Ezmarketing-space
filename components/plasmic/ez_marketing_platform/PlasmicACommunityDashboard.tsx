@@ -120,20 +120,21 @@ export type PlasmicACommunityDashboard__OverridesType = {
   account?: Flex__<typeof AntdDropdown>;
   button?: Flex__<typeof AntdButton>;
   container1?: Flex__<"div">;
-  htmlVideo?: Flex__<typeof Video>;
+  agencyPic?: Flex__<typeof Video>;
   goalsSum?: Flex__<"div">;
   youtubeChannel?: Flex__<"a"> & Partial<LinkProps>;
   x?: Flex__<"a"> & Partial<LinkProps>;
   tiktok?: Flex__<"a"> & Partial<LinkProps>;
   instagram?: Flex__<"a"> & Partial<LinkProps>;
+  editCommunity?: Flex__<typeof LoginButton>;
   quitCommunity?: Flex__<typeof Modal>;
   confirmQuitCommunity?: Flex__<typeof Button2>;
   communityLogo?: Flex__<typeof PlasmicImg__>;
   type?: Flex__<"svg">;
   communityName?: Flex__<"div">;
-  modal2?: Flex__<typeof Modal>;
+  averageRate4?: Flex__<typeof Modal>;
   communityRate?: Flex__<typeof AntdRate>;
-  textArea2?: Flex__<typeof AntdTextArea>;
+  comment3?: Flex__<typeof AntdTextArea>;
   confirmCommunityRate?: Flex__<typeof Button2>;
   rateSum?: Flex__<"div">;
   container3?: Flex__<"div">;
@@ -153,7 +154,13 @@ export type PlasmicACommunityDashboard__OverridesType = {
   area?: Flex__<"div">;
   subArea?: Flex__<"div">;
   location?: Flex__<"div">;
+  goalsSum2?: Flex__<"div">;
   disconnectCompany?: Flex__<typeof Modal>;
+  why1?: Flex__<typeof LoginButton>;
+  why2?: Flex__<typeof LoginButton>;
+  why3?: Flex__<typeof LoginButton>;
+  why4?: Flex__<typeof LoginButton>;
+  why5?: Flex__<typeof LoginButton>;
   confirmDisconnect?: Flex__<typeof Button2>;
   requestCompany?: Flex__<"div">;
   companyLogo2?: Flex__<typeof PlasmicImg__>;
@@ -165,6 +172,7 @@ export type PlasmicACommunityDashboard__OverridesType = {
   area2?: Flex__<"div">;
   subArea2?: Flex__<"div">;
   location2?: Flex__<"div">;
+  goalsSum3?: Flex__<"div">;
   requestInf?: Flex__<typeof Modal>;
   companyLogo3?: Flex__<typeof PlasmicImg__>;
   companyName5?: Flex__<"a"> & Partial<LinkProps>;
@@ -182,6 +190,10 @@ export type PlasmicACommunityDashboard__OverridesType = {
   location3?: Flex__<"div">;
   office2?: Flex__<"div">;
   disconnectCompany4?: Flex__<typeof Modal>;
+  why6?: Flex__<typeof LoginButton>;
+  why7?: Flex__<typeof LoginButton>;
+  why8?: Flex__<typeof LoginButton>;
+  why9?: Flex__<typeof LoginButton>;
   confirmDisconnection?: Flex__<typeof Button2>;
   requestMember?: Flex__<"div">;
   profilePic3?: Flex__<typeof PlasmicImg__>;
@@ -196,8 +208,10 @@ export type PlasmicACommunityDashboard__OverridesType = {
   firstName5?: Flex__<"a"> & Partial<LinkProps>;
   shortMessage2?: Flex__<"div">;
   confirmConnection2?: Flex__<typeof Button2>;
+  cancelConnection2?: Flex__<typeof Button2>;
   sliderCarousel2?: Flex__<typeof SliderWrapper>;
-  company?: Flex__<"div">;
+  connectedCompany2?: Flex__<"div">;
+  company?: Flex__<typeof LoginButton>;
   companyLogo4?: Flex__<typeof PlasmicImg__>;
   companyName6?: Flex__<"div">;
   countainer3?: Flex__<"div">;
@@ -403,7 +417,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "modal2.isOpen",
+        path: "averageRate4.isOpen",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
@@ -415,7 +429,7 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => 4
       },
       {
-        path: "textArea2.value",
+        path: "comment3.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
@@ -1016,13 +1030,16 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
         >
           <div className={classNames(projectcss.all, sty.freeBox___5Wzx)}>
             <Video
-              data-plasmic-name={"htmlVideo"}
-              data-plasmic-override={overrides.htmlVideo}
+              data-plasmic-name={"agencyPic"}
+              data-plasmic-override={overrides.agencyPic}
               autoPlay={true}
-              className={classNames("__wab_instance", sty.htmlVideo)}
+              className={classNames("__wab_instance", sty.agencyPic)}
               controls={false}
               loop={true}
               muted={true}
+              ref={ref => {
+                $refs["agencyPic"] = ref;
+              }}
               src={
                 "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
               }
@@ -1242,10 +1259,9 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__yaDp2)}>
                   <LoginButton
-                    className={classNames(
-                      "__wab_instance",
-                      sty.loginButton__oLuVd
-                    )}
+                    data-plasmic-name={"editCommunity"}
+                    data-plasmic-override={overrides.editCommunity}
+                    className={classNames("__wab_instance", sty.editCommunity)}
                     color={"softSand"}
                     link={`/a-create-community`}
                     shape={"sharp"}
@@ -1530,9 +1546,9 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
           {"Community"}
         </div>
         <Modal
-          data-plasmic-name={"modal2"}
-          data-plasmic-override={overrides.modal2}
-          className={classNames("__wab_instance", sty.modal2)}
+          data-plasmic-name={"averageRate4"}
+          data-plasmic-override={overrides.averageRate4}
+          className={classNames("__wab_instance", sty.averageRate4)}
           content={
             <div className={classNames(projectcss.all, sty.freeBox__dN29X)}>
               <div
@@ -1548,23 +1564,23 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
               </div>
               {(() => {
                 const child$Props = {
-                  className: classNames("__wab_instance", sty.textArea2),
+                  className: classNames("__wab_instance", sty.comment3),
                   onChange: async (...eventArgs: any) => {
                     generateStateOnChangePropForCodeComponents(
                       $state,
                       "value",
-                      ["textArea2", "value"],
+                      ["comment3", "value"],
                       AntdTextArea_Helpers
                     ).apply(null, eventArgs);
                   },
-                  value: generateStateValueProp($state, ["textArea2", "value"])
+                  value: generateStateValueProp($state, ["comment3", "value"])
                 };
                 initializeCodeComponentStates(
                   $state,
                   [
                     {
                       name: "value",
-                      plasmicStateName: "textArea2.value"
+                      plasmicStateName: "comment3.value"
                     }
                   ],
                   [],
@@ -1574,8 +1590,8 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
 
                 return (
                   <AntdTextArea
-                    data-plasmic-name={"textArea2"}
-                    data-plasmic-override={overrides.textArea2}
+                    data-plasmic-name={"comment3"}
+                    data-plasmic-override={overrides.comment3}
                     {...child$Props}
                   />
                 );
@@ -1599,6 +1615,44 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     {"Confirm"}
                   </div>
                 }
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["updateModal2IsOpen"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["averageRate4", "isOpen"]
+                          },
+                          operation: 0,
+                          value: false
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateModal2IsOpen"] != null &&
+                    typeof $steps["updateModal2IsOpen"] === "object" &&
+                    typeof $steps["updateModal2IsOpen"].then === "function"
+                  ) {
+                    $steps["updateModal2IsOpen"] =
+                      await $steps["updateModal2IsOpen"];
+                  }
+                }}
                 size={"extraSmall"}
                 type={"soft"}
               />
@@ -1616,6 +1670,44 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                     {"Cancel"}
                   </div>
                 }
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["updateModal2IsOpen"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["averageRate4", "isOpen"]
+                          },
+                          operation: 0,
+                          value: false
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateModal2IsOpen"] != null &&
+                    typeof $steps["updateModal2IsOpen"] === "object" &&
+                    typeof $steps["updateModal2IsOpen"].then === "function"
+                  ) {
+                    $steps["updateModal2IsOpen"] =
+                      await $steps["updateModal2IsOpen"];
+                  }
+                }}
                 size={"extraSmall"}
                 type={"soft"}
               />
@@ -1633,9 +1725,9 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
               {"Rating"}
             </h3>
           }
-          isOpen={generateStateValueProp($state, ["modal2", "isOpen"])}
+          isOpen={generateStateValueProp($state, ["averageRate4", "isOpen"])}
           onOpenChange={async (...eventArgs: any) => {
-            generateStateOnChangeProp($state, ["modal2", "isOpen"]).apply(
+            generateStateOnChangeProp($state, ["averageRate4", "isOpen"]).apply(
               null,
               eventArgs
             );
@@ -1811,34 +1903,6 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                       displayMinHeight={"0"}
                       displayMinWidth={"0"}
                       displayWidth={"200px"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToAProfile"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/a-profile` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToAProfile"] != null &&
-                          typeof $steps["goToAProfile"] === "object" &&
-                          typeof $steps["goToAProfile"].then === "function"
-                        ) {
-                          $steps["goToAProfile"] = await $steps["goToAProfile"];
-                        }
-                      }}
                       src={{
                         src: "/plasmic/ez_marketing_platform/images/vecteezyUserAccountIconForYourDesignOnly21079672Png.png",
                         fullWidth: 2551,
@@ -1907,7 +1971,6 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                           sty.companyName
                         )}
                         component={Link}
-                        href={`/a-rating-companies`}
                         platform={"nextjs"}
                       >
                         {"Company"}
@@ -2086,10 +2149,12 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         )}
                       >
                         <div
+                          data-plasmic-name={"goalsSum2"}
+                          data-plasmic-override={overrides.goalsSum2}
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__tcVt
+                            sty.goalsSum2
                           )}
                         >
                           {"80"}
@@ -2128,10 +2193,9 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                               {"Why do you want to leave this company?"}
                             </div>
                             <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton___737
-                              )}
+                              data-plasmic-name={"why1"}
+                              data-plasmic-override={overrides.why1}
+                              className={classNames("__wab_instance", sty.why1)}
                               color={"softRed"}
                               shape={"rounded"}
                               size={"minimal"}
@@ -2156,10 +2220,9 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                               </div>
                             </LoginButton>
                             <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton__d6Fly
-                              )}
+                              data-plasmic-name={"why2"}
+                              data-plasmic-override={overrides.why2}
+                              className={classNames("__wab_instance", sty.why2)}
                               color={"softRed"}
                               shape={"rounded"}
                               size={"minimal"}
@@ -2184,10 +2247,9 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                               </div>
                             </LoginButton>
                             <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton__eeJav
-                              )}
+                              data-plasmic-name={"why3"}
+                              data-plasmic-override={overrides.why3}
+                              className={classNames("__wab_instance", sty.why3)}
                               color={"softRed"}
                               shape={"rounded"}
                               size={"minimal"}
@@ -2212,10 +2274,9 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                               </div>
                             </LoginButton>
                             <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton___2Tn9U
-                              )}
+                              data-plasmic-name={"why4"}
+                              data-plasmic-override={overrides.why4}
+                              className={classNames("__wab_instance", sty.why4)}
                               color={"softRed"}
                               shape={"rounded"}
                               size={"minimal"}
@@ -2242,10 +2303,9 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                               </div>
                             </LoginButton>
                             <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton__xWtls
-                              )}
+                              data-plasmic-name={"why5"}
+                              data-plasmic-override={overrides.why5}
+                              className={classNames("__wab_instance", sty.why5)}
                               color={"softRed"}
                               shape={"rounded"}
                               size={"minimal"}
@@ -2509,7 +2569,6 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                           sty.companyName3
                         )}
                         component={Link}
-                        href={`/a-rating-companies`}
                         platform={"nextjs"}
                       >
                         {"Company"}
@@ -2691,10 +2750,12 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                         )}
                       >
                         <div
+                          data-plasmic-name={"goalsSum3"}
+                          data-plasmic-override={overrides.goalsSum3}
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__wU0IR
+                            sty.goalsSum3
                           )}
                         >
                           {"80"}
@@ -3396,10 +3457,9 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                             )}
                           >
                             <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton___6G6If
-                              )}
+                              data-plasmic-name={"why6"}
+                              data-plasmic-override={overrides.why6}
+                              className={classNames("__wab_instance", sty.why6)}
                               color={"softRed"}
                               shape={"rounded"}
                               size={"minimal"}
@@ -3424,10 +3484,9 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                               </div>
                             </LoginButton>
                             <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton__hyCtT
-                              )}
+                              data-plasmic-name={"why7"}
+                              data-plasmic-override={overrides.why7}
+                              className={classNames("__wab_instance", sty.why7)}
                               color={"softRed"}
                               shape={"rounded"}
                               size={"minimal"}
@@ -3452,10 +3511,9 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                               </div>
                             </LoginButton>
                             <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton___7N38V
-                              )}
+                              data-plasmic-name={"why8"}
+                              data-plasmic-override={overrides.why8}
+                              className={classNames("__wab_instance", sty.why8)}
                               color={"softRed"}
                               shape={"rounded"}
                               size={"minimal"}
@@ -3482,10 +3540,9 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                               </div>
                             </LoginButton>
                             <LoginButton
-                              className={classNames(
-                                "__wab_instance",
-                                sty.loginButton__pn0N5
-                              )}
+                              data-plasmic-name={"why9"}
+                              data-plasmic-override={overrides.why9}
+                              className={classNames("__wab_instance", sty.why9)}
                               color={"softRed"}
                               shape={"rounded"}
                               size={"minimal"}
@@ -4091,6 +4148,8 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                           />
 
                           <Button2
+                            data-plasmic-name={"cancelConnection2"}
+                            data-plasmic-override={overrides.cancelConnection2}
                             color={"muted"}
                             label={
                               <div
@@ -4383,15 +4442,14 @@ function PlasmicACommunityDashboard__RenderFunc(props: {
                 {...child$Props}
               >
                 <div
-                  data-plasmic-name={"company"}
-                  data-plasmic-override={overrides.company}
-                  className={classNames(projectcss.all, sty.company)}
+                  data-plasmic-name={"connectedCompany2"}
+                  data-plasmic-override={overrides.connectedCompany2}
+                  className={classNames(projectcss.all, sty.connectedCompany2)}
                 >
                   <LoginButton
-                    className={classNames(
-                      "__wab_instance",
-                      sty.loginButton__n5PfZ
-                    )}
+                    data-plasmic-name={"company"}
+                    data-plasmic-override={overrides.company}
+                    className={classNames("__wab_instance", sty.company)}
                     color={"softSand"}
                     shape={"sharp"}
                     showStartIcon={true}
@@ -8176,20 +8234,21 @@ const PlasmicDescendants = {
     "account",
     "button",
     "container1",
-    "htmlVideo",
+    "agencyPic",
     "goalsSum",
     "youtubeChannel",
     "x",
     "tiktok",
     "instagram",
+    "editCommunity",
     "quitCommunity",
     "confirmQuitCommunity",
     "communityLogo",
     "type",
     "communityName",
-    "modal2",
+    "averageRate4",
     "communityRate",
-    "textArea2",
+    "comment3",
     "confirmCommunityRate",
     "rateSum",
     "container3",
@@ -8209,7 +8268,13 @@ const PlasmicDescendants = {
     "area",
     "subArea",
     "location",
+    "goalsSum2",
     "disconnectCompany",
+    "why1",
+    "why2",
+    "why3",
+    "why4",
+    "why5",
     "confirmDisconnect",
     "requestCompany",
     "companyLogo2",
@@ -8221,6 +8286,7 @@ const PlasmicDescendants = {
     "area2",
     "subArea2",
     "location2",
+    "goalsSum3",
     "requestInf",
     "companyLogo3",
     "companyName5",
@@ -8238,6 +8304,10 @@ const PlasmicDescendants = {
     "location3",
     "office2",
     "disconnectCompany4",
+    "why6",
+    "why7",
+    "why8",
+    "why9",
     "confirmDisconnection",
     "requestMember",
     "profilePic3",
@@ -8252,7 +8322,9 @@ const PlasmicDescendants = {
     "firstName5",
     "shortMessage2",
     "confirmConnection2",
+    "cancelConnection2",
     "sliderCarousel2",
+    "connectedCompany2",
     "company",
     "companyLogo4",
     "companyName6",
@@ -8309,31 +8381,38 @@ const PlasmicDescendants = {
   button: ["button"],
   container1: [
     "container1",
-    "htmlVideo",
+    "agencyPic",
     "goalsSum",
     "youtubeChannel",
     "x",
     "tiktok",
     "instagram",
+    "editCommunity",
     "quitCommunity",
     "confirmQuitCommunity",
     "communityLogo",
     "type"
   ],
-  htmlVideo: ["htmlVideo"],
+  agencyPic: ["agencyPic"],
   goalsSum: ["goalsSum"],
   youtubeChannel: ["youtubeChannel"],
   x: ["x"],
   tiktok: ["tiktok"],
   instagram: ["instagram"],
+  editCommunity: ["editCommunity"],
   quitCommunity: ["quitCommunity", "confirmQuitCommunity"],
   confirmQuitCommunity: ["confirmQuitCommunity"],
   communityLogo: ["communityLogo"],
   type: ["type"],
   communityName: ["communityName"],
-  modal2: ["modal2", "communityRate", "textArea2", "confirmCommunityRate"],
+  averageRate4: [
+    "averageRate4",
+    "communityRate",
+    "comment3",
+    "confirmCommunityRate"
+  ],
   communityRate: ["communityRate"],
-  textArea2: ["textArea2"],
+  comment3: ["comment3"],
   confirmCommunityRate: ["confirmCommunityRate"],
   rateSum: ["rateSum"],
   container3: [
@@ -8360,7 +8439,13 @@ const PlasmicDescendants = {
     "area",
     "subArea",
     "location",
+    "goalsSum2",
     "disconnectCompany",
+    "why1",
+    "why2",
+    "why3",
+    "why4",
+    "why5",
     "confirmDisconnect",
     "requestCompany",
     "companyLogo2",
@@ -8372,6 +8457,7 @@ const PlasmicDescendants = {
     "area2",
     "subArea2",
     "location2",
+    "goalsSum3",
     "requestInf",
     "companyLogo3",
     "companyName5",
@@ -8389,6 +8475,10 @@ const PlasmicDescendants = {
     "location3",
     "office2",
     "disconnectCompany4",
+    "why6",
+    "why7",
+    "why8",
+    "why9",
     "confirmDisconnection",
     "requestMember",
     "profilePic3",
@@ -8403,7 +8493,9 @@ const PlasmicDescendants = {
     "firstName5",
     "shortMessage2",
     "confirmConnection2",
+    "cancelConnection2",
     "sliderCarousel2",
+    "connectedCompany2",
     "company",
     "companyLogo4",
     "companyName6"
@@ -8420,7 +8512,13 @@ const PlasmicDescendants = {
     "area",
     "subArea",
     "location",
+    "goalsSum2",
     "disconnectCompany",
+    "why1",
+    "why2",
+    "why3",
+    "why4",
+    "why5",
     "confirmDisconnect",
     "requestCompany",
     "companyLogo2",
@@ -8432,6 +8530,7 @@ const PlasmicDescendants = {
     "area2",
     "subArea2",
     "location2",
+    "goalsSum3",
     "requestInf",
     "companyLogo3",
     "companyName5",
@@ -8451,7 +8550,13 @@ const PlasmicDescendants = {
     "area",
     "subArea",
     "location",
+    "goalsSum2",
     "disconnectCompany",
+    "why1",
+    "why2",
+    "why3",
+    "why4",
+    "why5",
     "confirmDisconnect"
   ],
   companyLogo: ["companyLogo"],
@@ -8463,7 +8568,21 @@ const PlasmicDescendants = {
   area: ["area"],
   subArea: ["subArea"],
   location: ["location"],
-  disconnectCompany: ["disconnectCompany", "confirmDisconnect"],
+  goalsSum2: ["goalsSum2"],
+  disconnectCompany: [
+    "disconnectCompany",
+    "why1",
+    "why2",
+    "why3",
+    "why4",
+    "why5",
+    "confirmDisconnect"
+  ],
+  why1: ["why1"],
+  why2: ["why2"],
+  why3: ["why3"],
+  why4: ["why4"],
+  why5: ["why5"],
   confirmDisconnect: ["confirmDisconnect"],
   requestCompany: [
     "requestCompany",
@@ -8476,6 +8595,7 @@ const PlasmicDescendants = {
     "area2",
     "subArea2",
     "location2",
+    "goalsSum3",
     "requestInf",
     "companyLogo3",
     "companyName5",
@@ -8493,6 +8613,7 @@ const PlasmicDescendants = {
   area2: ["area2"],
   subArea2: ["subArea2"],
   location2: ["location2"],
+  goalsSum3: ["goalsSum3"],
   requestInf: [
     "requestInf",
     "companyLogo3",
@@ -8519,6 +8640,10 @@ const PlasmicDescendants = {
     "location3",
     "office2",
     "disconnectCompany4",
+    "why6",
+    "why7",
+    "why8",
+    "why9",
     "confirmDisconnection",
     "requestMember",
     "profilePic3",
@@ -8532,7 +8657,8 @@ const PlasmicDescendants = {
     "profilePic4",
     "firstName5",
     "shortMessage2",
-    "confirmConnection2"
+    "confirmConnection2",
+    "cancelConnection2"
   ],
   connectedMembers: [
     "connectedMembers",
@@ -8544,6 +8670,10 @@ const PlasmicDescendants = {
     "location3",
     "office2",
     "disconnectCompany4",
+    "why6",
+    "why7",
+    "why8",
+    "why9",
     "confirmDisconnection"
   ],
   profilePic2: ["profilePic2"],
@@ -8553,7 +8683,18 @@ const PlasmicDescendants = {
   age: ["age"],
   location3: ["location3"],
   office2: ["office2"],
-  disconnectCompany4: ["disconnectCompany4", "confirmDisconnection"],
+  disconnectCompany4: [
+    "disconnectCompany4",
+    "why6",
+    "why7",
+    "why8",
+    "why9",
+    "confirmDisconnection"
+  ],
+  why6: ["why6"],
+  why7: ["why7"],
+  why8: ["why8"],
+  why9: ["why9"],
   confirmDisconnection: ["confirmDisconnection"],
   requestMember: [
     "requestMember",
@@ -8568,7 +8709,8 @@ const PlasmicDescendants = {
     "profilePic4",
     "firstName5",
     "shortMessage2",
-    "confirmConnection2"
+    "confirmConnection2",
+    "cancelConnection2"
   ],
   profilePic3: ["profilePic3"],
   firstName3: ["firstName3"],
@@ -8582,14 +8724,23 @@ const PlasmicDescendants = {
     "profilePic4",
     "firstName5",
     "shortMessage2",
-    "confirmConnection2"
+    "confirmConnection2",
+    "cancelConnection2"
   ],
   profilePic4: ["profilePic4"],
   firstName5: ["firstName5"],
   shortMessage2: ["shortMessage2"],
   confirmConnection2: ["confirmConnection2"],
+  cancelConnection2: ["cancelConnection2"],
   sliderCarousel2: [
     "sliderCarousel2",
+    "connectedCompany2",
+    "company",
+    "companyLogo4",
+    "companyName6"
+  ],
+  connectedCompany2: [
+    "connectedCompany2",
     "company",
     "companyLogo4",
     "companyName6"
@@ -8727,20 +8878,21 @@ type NodeDefaultElementType = {
   account: typeof AntdDropdown;
   button: typeof AntdButton;
   container1: "div";
-  htmlVideo: typeof Video;
+  agencyPic: typeof Video;
   goalsSum: "div";
   youtubeChannel: "a";
   x: "a";
   tiktok: "a";
   instagram: "a";
+  editCommunity: typeof LoginButton;
   quitCommunity: typeof Modal;
   confirmQuitCommunity: typeof Button2;
   communityLogo: typeof PlasmicImg__;
   type: "svg";
   communityName: "div";
-  modal2: typeof Modal;
+  averageRate4: typeof Modal;
   communityRate: typeof AntdRate;
-  textArea2: typeof AntdTextArea;
+  comment3: typeof AntdTextArea;
   confirmCommunityRate: typeof Button2;
   rateSum: "div";
   container3: "div";
@@ -8760,7 +8912,13 @@ type NodeDefaultElementType = {
   area: "div";
   subArea: "div";
   location: "div";
+  goalsSum2: "div";
   disconnectCompany: typeof Modal;
+  why1: typeof LoginButton;
+  why2: typeof LoginButton;
+  why3: typeof LoginButton;
+  why4: typeof LoginButton;
+  why5: typeof LoginButton;
   confirmDisconnect: typeof Button2;
   requestCompany: "div";
   companyLogo2: typeof PlasmicImg__;
@@ -8772,6 +8930,7 @@ type NodeDefaultElementType = {
   area2: "div";
   subArea2: "div";
   location2: "div";
+  goalsSum3: "div";
   requestInf: typeof Modal;
   companyLogo3: typeof PlasmicImg__;
   companyName5: "a";
@@ -8789,6 +8948,10 @@ type NodeDefaultElementType = {
   location3: "div";
   office2: "div";
   disconnectCompany4: typeof Modal;
+  why6: typeof LoginButton;
+  why7: typeof LoginButton;
+  why8: typeof LoginButton;
+  why9: typeof LoginButton;
   confirmDisconnection: typeof Button2;
   requestMember: "div";
   profilePic3: typeof PlasmicImg__;
@@ -8803,8 +8966,10 @@ type NodeDefaultElementType = {
   firstName5: "a";
   shortMessage2: "div";
   confirmConnection2: typeof Button2;
+  cancelConnection2: typeof Button2;
   sliderCarousel2: typeof SliderWrapper;
-  company: "div";
+  connectedCompany2: "div";
+  company: typeof LoginButton;
   companyLogo4: typeof PlasmicImg__;
   companyName6: "div";
   countainer3: "div";
@@ -8922,20 +9087,21 @@ export const PlasmicACommunityDashboard = Object.assign(
     account: makeNodeComponent("account"),
     button: makeNodeComponent("button"),
     container1: makeNodeComponent("container1"),
-    htmlVideo: makeNodeComponent("htmlVideo"),
+    agencyPic: makeNodeComponent("agencyPic"),
     goalsSum: makeNodeComponent("goalsSum"),
     youtubeChannel: makeNodeComponent("youtubeChannel"),
     x: makeNodeComponent("x"),
     tiktok: makeNodeComponent("tiktok"),
     instagram: makeNodeComponent("instagram"),
+    editCommunity: makeNodeComponent("editCommunity"),
     quitCommunity: makeNodeComponent("quitCommunity"),
     confirmQuitCommunity: makeNodeComponent("confirmQuitCommunity"),
     communityLogo: makeNodeComponent("communityLogo"),
     type: makeNodeComponent("type"),
     communityName: makeNodeComponent("communityName"),
-    modal2: makeNodeComponent("modal2"),
+    averageRate4: makeNodeComponent("averageRate4"),
     communityRate: makeNodeComponent("communityRate"),
-    textArea2: makeNodeComponent("textArea2"),
+    comment3: makeNodeComponent("comment3"),
     confirmCommunityRate: makeNodeComponent("confirmCommunityRate"),
     rateSum: makeNodeComponent("rateSum"),
     container3: makeNodeComponent("container3"),
@@ -8955,7 +9121,13 @@ export const PlasmicACommunityDashboard = Object.assign(
     area: makeNodeComponent("area"),
     subArea: makeNodeComponent("subArea"),
     location: makeNodeComponent("location"),
+    goalsSum2: makeNodeComponent("goalsSum2"),
     disconnectCompany: makeNodeComponent("disconnectCompany"),
+    why1: makeNodeComponent("why1"),
+    why2: makeNodeComponent("why2"),
+    why3: makeNodeComponent("why3"),
+    why4: makeNodeComponent("why4"),
+    why5: makeNodeComponent("why5"),
     confirmDisconnect: makeNodeComponent("confirmDisconnect"),
     requestCompany: makeNodeComponent("requestCompany"),
     companyLogo2: makeNodeComponent("companyLogo2"),
@@ -8967,6 +9139,7 @@ export const PlasmicACommunityDashboard = Object.assign(
     area2: makeNodeComponent("area2"),
     subArea2: makeNodeComponent("subArea2"),
     location2: makeNodeComponent("location2"),
+    goalsSum3: makeNodeComponent("goalsSum3"),
     requestInf: makeNodeComponent("requestInf"),
     companyLogo3: makeNodeComponent("companyLogo3"),
     companyName5: makeNodeComponent("companyName5"),
@@ -8984,6 +9157,10 @@ export const PlasmicACommunityDashboard = Object.assign(
     location3: makeNodeComponent("location3"),
     office2: makeNodeComponent("office2"),
     disconnectCompany4: makeNodeComponent("disconnectCompany4"),
+    why6: makeNodeComponent("why6"),
+    why7: makeNodeComponent("why7"),
+    why8: makeNodeComponent("why8"),
+    why9: makeNodeComponent("why9"),
     confirmDisconnection: makeNodeComponent("confirmDisconnection"),
     requestMember: makeNodeComponent("requestMember"),
     profilePic3: makeNodeComponent("profilePic3"),
@@ -8998,7 +9175,9 @@ export const PlasmicACommunityDashboard = Object.assign(
     firstName5: makeNodeComponent("firstName5"),
     shortMessage2: makeNodeComponent("shortMessage2"),
     confirmConnection2: makeNodeComponent("confirmConnection2"),
+    cancelConnection2: makeNodeComponent("cancelConnection2"),
     sliderCarousel2: makeNodeComponent("sliderCarousel2"),
+    connectedCompany2: makeNodeComponent("connectedCompany2"),
     company: makeNodeComponent("company"),
     companyLogo4: makeNodeComponent("companyLogo4"),
     companyName6: makeNodeComponent("companyName6"),

@@ -116,7 +116,7 @@ export type PlasmicCApplyACommunitie__OverridesType = {
   company?: Flex__<typeof LoginButton>;
   companyLogo?: Flex__<typeof PlasmicImg__>;
   companyName?: Flex__<"div">;
-  container7?: Flex__<"div">;
+  container11?: Flex__<"div">;
   popover?: Flex__<typeof AntdPopover>;
   popover3?: Flex__<typeof AntdPopover>;
   popover4?: Flex__<typeof AntdPopover>;
@@ -137,11 +137,11 @@ export type PlasmicCApplyACommunitie__OverridesType = {
   popover18?: Flex__<typeof AntdPopover>;
   popover19?: Flex__<typeof AntdPopover>;
   popover20?: Flex__<typeof AntdPopover>;
-  container12?: Flex__<"div">;
+  container8?: Flex__<"div">;
   youtubeVideo?: Flex__<typeof YouTube>;
   about?: Flex__<"div">;
   website?: Flex__<"a"> & Partial<LinkProps>;
-  container13?: Flex__<"div">;
+  container9?: Flex__<"div">;
   communityRate?: Flex__<typeof AntdRate>;
   rateSum?: Flex__<"div">;
   goalsSum?: Flex__<"div">;
@@ -918,9 +918,9 @@ function PlasmicCApplyACommunitie__RenderFunc(props: {
           })()}
         </div>
         <div
-          data-plasmic-name={"container7"}
-          data-plasmic-override={overrides.container7}
-          className={classNames(projectcss.all, sty.container7)}
+          data-plasmic-name={"container11"}
+          data-plasmic-override={overrides.container11}
+          className={classNames(projectcss.all, sty.container11)}
         >
           <div
             className={classNames(
@@ -4262,9 +4262,9 @@ function PlasmicCApplyACommunitie__RenderFunc(props: {
           </div>
         </div>
         <div
-          data-plasmic-name={"container12"}
-          data-plasmic-override={overrides.container12}
-          className={classNames(projectcss.all, sty.container12)}
+          data-plasmic-name={"container8"}
+          data-plasmic-override={overrides.container8}
+          className={classNames(projectcss.all, sty.container8)}
         >
           <YouTube
             data-plasmic-name={"youtubeVideo"}
@@ -4314,9 +4314,9 @@ function PlasmicCApplyACommunitie__RenderFunc(props: {
           </div>
         </div>
         <div
-          data-plasmic-name={"container13"}
-          data-plasmic-override={overrides.container13}
-          className={classNames(projectcss.all, sty.container13)}
+          data-plasmic-name={"container9"}
+          data-plasmic-override={overrides.container9}
+          className={classNames(projectcss.all, sty.container9)}
         >
           <div className={classNames(projectcss.all, sty.freeBox__wvubS)}>
             <AntdRate
@@ -4460,7 +4460,7 @@ const PlasmicDescendants = {
     "company",
     "companyLogo",
     "companyName",
-    "container7",
+    "container11",
     "popover",
     "popover3",
     "popover4",
@@ -4481,11 +4481,11 @@ const PlasmicDescendants = {
     "popover18",
     "popover19",
     "popover20",
-    "container12",
+    "container8",
     "youtubeVideo",
     "about",
     "website",
-    "container13",
+    "container9",
     "communityRate",
     "rateSum",
     "goalsSum"
@@ -4538,8 +4538,8 @@ const PlasmicDescendants = {
   company: ["company", "companyLogo", "companyName"],
   companyLogo: ["companyLogo"],
   companyName: ["companyName"],
-  container7: [
-    "container7",
+  container11: [
+    "container11",
     "popover",
     "popover3",
     "popover4",
@@ -4581,11 +4581,11 @@ const PlasmicDescendants = {
   popover18: ["popover18"],
   popover19: ["popover19"],
   popover20: ["popover20"],
-  container12: ["container12", "youtubeVideo", "about", "website"],
+  container8: ["container8", "youtubeVideo", "about", "website"],
   youtubeVideo: ["youtubeVideo"],
   about: ["about"],
   website: ["website"],
-  container13: ["container13", "communityRate", "rateSum", "goalsSum"],
+  container9: ["container9", "communityRate", "rateSum", "goalsSum"],
   communityRate: ["communityRate"],
   rateSum: ["rateSum"],
   goalsSum: ["goalsSum"]
@@ -4616,7 +4616,7 @@ type NodeDefaultElementType = {
   company: typeof LoginButton;
   companyLogo: typeof PlasmicImg__;
   companyName: "div";
-  container7: "div";
+  container11: "div";
   popover: typeof AntdPopover;
   popover3: typeof AntdPopover;
   popover4: typeof AntdPopover;
@@ -4637,11 +4637,11 @@ type NodeDefaultElementType = {
   popover18: typeof AntdPopover;
   popover19: typeof AntdPopover;
   popover20: typeof AntdPopover;
-  container12: "div";
+  container8: "div";
   youtubeVideo: typeof YouTube;
   about: "div";
   website: "a";
-  container13: "div";
+  container9: "div";
   communityRate: typeof AntdRate;
   rateSum: "div";
   goalsSum: "div";
@@ -4730,7 +4730,7 @@ export const PlasmicCApplyACommunitie = Object.assign(
     company: makeNodeComponent("company"),
     companyLogo: makeNodeComponent("companyLogo"),
     companyName: makeNodeComponent("companyName"),
-    container7: makeNodeComponent("container7"),
+    container11: makeNodeComponent("container11"),
     popover: makeNodeComponent("popover"),
     popover3: makeNodeComponent("popover3"),
     popover4: makeNodeComponent("popover4"),
@@ -4751,11 +4751,11 @@ export const PlasmicCApplyACommunitie = Object.assign(
     popover18: makeNodeComponent("popover18"),
     popover19: makeNodeComponent("popover19"),
     popover20: makeNodeComponent("popover20"),
-    container12: makeNodeComponent("container12"),
+    container8: makeNodeComponent("container8"),
     youtubeVideo: makeNodeComponent("youtubeVideo"),
     about: makeNodeComponent("about"),
     website: makeNodeComponent("website"),
-    container13: makeNodeComponent("container13"),
+    container9: makeNodeComponent("container9"),
     communityRate: makeNodeComponent("communityRate"),
     rateSum: makeNodeComponent("rateSum"),
     goalsSum: makeNodeComponent("goalsSum"),

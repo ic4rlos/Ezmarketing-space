@@ -259,7 +259,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         path: "currentStep",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $ctx }) => 2
       },
       {
         path: "type.value",

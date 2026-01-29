@@ -752,7 +752,7 @@
   white-space: pre;
   font-weight: 300;
 }
-.text__zhWi6 {
+.goal {
   width: auto;
   height: auto;
   max-width: 100%;
@@ -2419,7 +2419,7 @@
   text-align: center;
   font-size: 16px;
 }
-.text___1IlzY {
+.solutionGoal {
   width: auto;
   height: auto;
   max-width: 100%;
@@ -3045,7 +3045,7 @@
   font-weight: 600;
   min-width: 0;
 }
-.waitingConfirmation {
+.awatingConfirmation {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -4251,7 +4251,7 @@
   width: auto;
   height: 1em;
 }
-.troubleWithAddress2 {
+.problemsWithAddress {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -4968,7 +4968,7 @@
   width: auto;
   height: 1em;
 }
-.customerCanceled2 {
+.serviceCanceled {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -5760,7 +5760,7 @@
   position: relative;
   height: 1em;
 }
-.troubleWithCustomer5 {
+.legalDispute {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -5986,7 +5986,7 @@
   color: #ff0000;
   min-width: 0;
 }
-.success2 {
+.success {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -6997,7 +6997,7 @@
   font-weight: 600;
   min-width: 0;
 }
-.waitingConfirmation3 {
+.awatingConfirmation2 {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -7451,7 +7451,7 @@
   width: auto;
   height: 1em;
 }
-.canceled {
+.customerCanceled2 {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -7648,7 +7648,7 @@
   color: #ff0000;
   min-width: 0;
 }
-.waitingCostumer {
+.waitingCustomer4 {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -7844,7 +7844,7 @@
   text-align: center;
   min-width: 0;
 }
-.waitingCostumer4 {
+.customerOnWay {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -8277,7 +8277,7 @@
   width: auto;
   height: 1em;
 }
-.canceled2 {
+.serviceCanceled2 {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -9040,7 +9040,7 @@
   position: relative;
   height: 1em;
 }
-.troubleWithCustomer7 {
+.legalDispute2 {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -9237,7 +9237,7 @@
   color: #ff0000;
   min-width: 0;
 }
-.success {
+.success2 {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -10250,7 +10250,7 @@
   font-weight: 600;
   min-width: 0;
 }
-.waitingConfirmation2 {
+.awatingConfirmation3 {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -10532,7 +10532,7 @@
   width: auto;
   height: 1em;
 }
-.customerCancelled {
+.customerCanceled3 {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -10993,6 +10993,243 @@
   width: auto;
   height: 1em;
 }
+.troubleWithAddress2 {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px;
+}
+.section__uciDh {
+  display: grid;
+  position: relative;
+  align-content: flex-start;
+  justify-items: center;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  min-width: 0;
+  grid-template-columns:
+    var(--plsmc-viewport-gap) 1fr minmax(0, var(--plsmc-wide-chunk))
+    min(
+      var(--plsmc-standard-width),
+      calc(100% - var(--plsmc-viewport-gap) - var(--plsmc-viewport-gap))
+    )
+    minmax(0, var(--plsmc-wide-chunk)) 1fr var(--plsmc-viewport-gap);
+}
+.section__uciDh > * {
+  grid-column: 4;
+}
+.text__udoYy {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 12px;
+  text-align: center;
+  min-width: 0;
+}
+.section__m5M3L {
+  display: grid;
+  position: relative;
+  align-content: flex-start;
+  justify-items: center;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  min-width: 0;
+  grid-template-columns:
+    var(--plsmc-viewport-gap) 1fr minmax(0, var(--plsmc-wide-chunk))
+    min(
+      var(--plsmc-standard-width),
+      calc(100% - var(--plsmc-viewport-gap) - var(--plsmc-viewport-gap))
+    )
+    minmax(0, var(--plsmc-wide-chunk)) 1fr var(--plsmc-viewport-gap);
+}
+.section__m5M3L > * {
+  grid-column: 4;
+}
+.text__rws3Z {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 12px;
+  text-align: center;
+  min-width: 0;
+}
+.section___8JidW {
+  display: grid;
+  position: relative;
+  align-content: flex-start;
+  justify-items: center;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  min-width: 0;
+  grid-template-columns:
+    var(--plsmc-viewport-gap) 1fr minmax(0, var(--plsmc-wide-chunk))
+    min(
+      var(--plsmc-standard-width),
+      calc(100% - var(--plsmc-viewport-gap) - var(--plsmc-viewport-gap))
+    )
+    minmax(0, var(--plsmc-wide-chunk)) 1fr var(--plsmc-viewport-gap);
+}
+.section___8JidW > * {
+  grid-column: 4;
+}
+.text__jtNhS {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 12px;
+  text-align: center;
+  min-width: 0;
+}
+.section__c6Jch {
+  display: grid;
+  position: relative;
+  align-content: flex-start;
+  justify-items: center;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  min-width: 0;
+  grid-template-columns:
+    var(--plsmc-viewport-gap) 1fr minmax(0, var(--plsmc-wide-chunk))
+    min(
+      var(--plsmc-standard-width),
+      calc(100% - var(--plsmc-viewport-gap) - var(--plsmc-viewport-gap))
+    )
+    minmax(0, var(--plsmc-wide-chunk)) 1fr var(--plsmc-viewport-gap);
+}
+.section__c6Jch > * {
+  grid-column: 4;
+}
+.text___3Od2U {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 12px;
+  text-align: center;
+  min-width: 0;
+}
+.section__kjRFq {
+  display: grid;
+  position: relative;
+  align-content: flex-start;
+  justify-items: center;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  min-width: 0;
+  grid-template-columns:
+    var(--plsmc-viewport-gap) 1fr minmax(0, var(--plsmc-wide-chunk))
+    min(
+      var(--plsmc-standard-width),
+      calc(100% - var(--plsmc-viewport-gap) - var(--plsmc-viewport-gap))
+    )
+    minmax(0, var(--plsmc-wide-chunk)) 1fr var(--plsmc-viewport-gap);
+}
+.section__kjRFq > * {
+  grid-column: 4;
+}
+.text__fvrtS {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-self: flex-start;
+  font-size: 12px;
+  text-align: center;
+  min-width: 0;
+}
+.section__ivgPy {
+  display: grid;
+  position: relative;
+  align-content: flex-start;
+  justify-items: center;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  min-width: 0;
+  grid-template-columns:
+    var(--plsmc-viewport-gap) 1fr minmax(0, var(--plsmc-wide-chunk))
+    min(
+      var(--plsmc-standard-width),
+      calc(100% - var(--plsmc-viewport-gap) - var(--plsmc-viewport-gap))
+    )
+    minmax(0, var(--plsmc-wide-chunk)) 1fr var(--plsmc-viewport-gap);
+}
+.section__ivgPy > * {
+  grid-column: 4;
+}
+.text___2Nec {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 12px;
+  text-align: center;
+  min-width: 0;
+}
+.text__tp62H {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 12px;
+  text-align: center;
+  min-width: 0;
+}
+.section__beiOb {
+  display: grid;
+  position: relative;
+  align-content: flex-start;
+  justify-items: center;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  min-width: 0;
+  grid-template-columns:
+    var(--plsmc-viewport-gap) 1fr minmax(0, var(--plsmc-wide-chunk))
+    min(
+      var(--plsmc-standard-width),
+      calc(100% - var(--plsmc-viewport-gap) - var(--plsmc-viewport-gap))
+    )
+    minmax(0, var(--plsmc-wide-chunk)) 1fr var(--plsmc-viewport-gap);
+}
+.section__beiOb > * {
+  grid-column: 4;
+}
+.loginButton__hPyol:global(.__wab_instance) {
+  max-width: 100%;
+  width: 100px;
+}
+.svg__pKiRo {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.text__owfqH {
+  font-size: 12px;
+  white-space: pre-wrap;
+  text-align: center;
+}
+.svg__uh06H {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
 .customerTaxed2 {
   display: flex;
   flex-direction: row;
@@ -11445,7 +11682,7 @@
   color: #ff0000;
   min-width: 0;
 }
-.waitingLocomotion3 {
+.proposal {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -11686,7 +11923,7 @@
   width: auto;
   height: 1em;
 }
-.waitingCustomer2 {
+.proposalSent {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -12863,7 +13100,7 @@
   width: auto;
   height: 1em;
 }
-.customerCancelled5 {
+.serviceCanceled3 {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -13655,7 +13892,7 @@
   position: relative;
   height: 1em;
 }
-.troubleWithCustomer6 {
+.legalDispute3 {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -14892,7 +15129,7 @@
   font-weight: 600;
   min-width: 0;
 }
-.waitingConfirmation4 {
+.awatingConfirmation4 {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -15346,7 +15583,7 @@
   width: auto;
   height: 1em;
 }
-.customerCancelled2 {
+.customerCanceled4 {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -15543,7 +15780,7 @@
   color: #ff0000;
   min-width: 0;
 }
-.waitingLocomotion5 {
+.proposal2 {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -15754,7 +15991,7 @@
   width: auto;
   height: 1em;
 }
-.waitingCostumer2 {
+.proposalSent2 {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -17188,7 +17425,7 @@
   width: auto;
   height: 1em;
 }
-.customerCancelled6 {
+.serviceCanceled4 {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -17951,7 +18188,7 @@
   position: relative;
   height: 1em;
 }
-.customerCancelled3 {
+.legalDispute4 {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -18148,7 +18385,7 @@
   color: #ff0000;
   min-width: 0;
 }
-.customerCancelled4 {
+.success4 {
   display: flex;
   flex-direction: row;
   position: relative;

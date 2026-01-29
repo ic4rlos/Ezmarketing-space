@@ -122,21 +122,21 @@ export type PlasmicAEditProfile__OverridesType = {
   linkedIn?: Flex__<typeof AntdInput>;
   instagram?: Flex__<typeof AntdInput>;
   x?: Flex__<typeof AntdInput>;
-  education?: Flex__<"div">;
-  education2?: Flex__<"section">;
+  education?: Flex__<"section">;
   university?: Flex__<typeof AntdInput>;
   major?: Flex__<typeof AntdInput>;
   graduationYear?: Flex__<typeof AntdInput>;
   educationLevel?: Flex__<typeof AntdSelect>;
   degree?: Flex__<typeof UploadWrapper>;
   experience?: Flex__<"div">;
-  job2?: Flex__<"section">;
+  job?: Flex__<"section">;
   charge?: Flex__<typeof AntdInput>;
   company?: Flex__<typeof AntdInput>;
   howLongInOffice?: Flex__<typeof AntdInput>;
   skills?: Flex__<"div">;
   office?: Flex__<typeof AntdSelect>;
   impressive?: Flex__<typeof AntdTextArea>;
+  done?: Flex__<typeof LoginButton>;
 };
 
 export interface DefaultAEditProfileProps {}
@@ -1178,11 +1178,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
               throw e;
             }
           })() ? (
-            <div
-              data-plasmic-name={"education"}
-              data-plasmic-override={overrides.education}
-              className={classNames(projectcss.all, sty.education)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox___7WEtV)}>
               <div
                 className={classNames(
                   projectcss.all,
@@ -1227,9 +1223,9 @@ function PlasmicAEditProfile__RenderFunc(props: {
                   const currentIndex = __plasmic_idx_0;
                   return (
                     <section
-                      data-plasmic-name={"education2"}
-                      data-plasmic-override={overrides.education2}
-                      className={classNames(projectcss.all, sty.education2)}
+                      data-plasmic-name={"education"}
+                      data-plasmic-override={overrides.education}
+                      className={classNames(projectcss.all, sty.education)}
                       key={currentIndex}
                     >
                       <div
@@ -2011,9 +2007,9 @@ function PlasmicAEditProfile__RenderFunc(props: {
                   const currentIndex = __plasmic_idx_0;
                   return (
                     <section
-                      data-plasmic-name={"job2"}
-                      data-plasmic-override={overrides.job2}
-                      className={classNames(projectcss.all, sty.job2)}
+                      data-plasmic-name={"job"}
+                      data-plasmic-override={overrides.job}
+                      className={classNames(projectcss.all, sty.job)}
                       key={currentIndex}
                     >
                       <div
@@ -2921,10 +2917,9 @@ function PlasmicAEditProfile__RenderFunc(props: {
                   </div>
                 </LoginButton>
                 <LoginButton
-                  className={classNames(
-                    "__wab_instance",
-                    sty.loginButton__mxvMa
-                  )}
+                  data-plasmic-name={"done"}
+                  data-plasmic-override={overrides.done}
+                  className={classNames("__wab_instance", sty.done)}
                   onClick={async event => {
                     const $steps = {};
 
@@ -2994,20 +2989,20 @@ const PlasmicDescendants = {
     "instagram",
     "x",
     "education",
-    "education2",
     "university",
     "major",
     "graduationYear",
     "educationLevel",
     "degree",
     "experience",
-    "job2",
+    "job",
     "charge",
     "company",
     "howLongInOffice",
     "skills",
     "office",
-    "impressive"
+    "impressive",
+    "done"
   ],
   img: ["img"],
   rectangle: [
@@ -3025,20 +3020,20 @@ const PlasmicDescendants = {
     "instagram",
     "x",
     "education",
-    "education2",
     "university",
     "major",
     "graduationYear",
     "educationLevel",
     "degree",
     "experience",
-    "job2",
+    "job",
     "charge",
     "company",
     "howLongInOffice",
     "skills",
     "office",
-    "impressive"
+    "impressive",
+    "done"
   ],
   stepsStack: ["stepsStack", "steps"],
   steps: ["steps"],
@@ -3061,15 +3056,6 @@ const PlasmicDescendants = {
   x: ["x"],
   education: [
     "education",
-    "education2",
-    "university",
-    "major",
-    "graduationYear",
-    "educationLevel",
-    "degree"
-  ],
-  education2: [
-    "education2",
     "university",
     "major",
     "graduationYear",
@@ -3081,14 +3067,15 @@ const PlasmicDescendants = {
   graduationYear: ["graduationYear"],
   educationLevel: ["educationLevel"],
   degree: ["degree"],
-  experience: ["experience", "job2", "charge", "company", "howLongInOffice"],
-  job2: ["job2", "charge", "company", "howLongInOffice"],
+  experience: ["experience", "job", "charge", "company", "howLongInOffice"],
+  job: ["job", "charge", "company", "howLongInOffice"],
   charge: ["charge"],
   company: ["company"],
   howLongInOffice: ["howLongInOffice"],
-  skills: ["skills", "office", "impressive"],
+  skills: ["skills", "office", "impressive", "done"],
   office: ["office"],
-  impressive: ["impressive"]
+  impressive: ["impressive"],
+  done: ["done"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -3109,21 +3096,21 @@ type NodeDefaultElementType = {
   linkedIn: typeof AntdInput;
   instagram: typeof AntdInput;
   x: typeof AntdInput;
-  education: "div";
-  education2: "section";
+  education: "section";
   university: typeof AntdInput;
   major: typeof AntdInput;
   graduationYear: typeof AntdInput;
   educationLevel: typeof AntdSelect;
   degree: typeof UploadWrapper;
   experience: "div";
-  job2: "section";
+  job: "section";
   charge: typeof AntdInput;
   company: typeof AntdInput;
   howLongInOffice: typeof AntdInput;
   skills: "div";
   office: typeof AntdSelect;
   impressive: typeof AntdTextArea;
+  done: typeof LoginButton;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -3203,20 +3190,20 @@ export const PlasmicAEditProfile = Object.assign(
     instagram: makeNodeComponent("instagram"),
     x: makeNodeComponent("x"),
     education: makeNodeComponent("education"),
-    education2: makeNodeComponent("education2"),
     university: makeNodeComponent("university"),
     major: makeNodeComponent("major"),
     graduationYear: makeNodeComponent("graduationYear"),
     educationLevel: makeNodeComponent("educationLevel"),
     degree: makeNodeComponent("degree"),
     experience: makeNodeComponent("experience"),
-    job2: makeNodeComponent("job2"),
+    job: makeNodeComponent("job"),
     charge: makeNodeComponent("charge"),
     company: makeNodeComponent("company"),
     howLongInOffice: makeNodeComponent("howLongInOffice"),
     skills: makeNodeComponent("skills"),
     office: makeNodeComponent("office"),
     impressive: makeNodeComponent("impressive"),
+    done: makeNodeComponent("done"),
 
     // Metadata about props expected for PlasmicAEditProfile
     internalVariantProps: PlasmicAEditProfile__VariantProps,

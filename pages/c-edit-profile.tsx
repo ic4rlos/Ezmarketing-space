@@ -1,174 +1,181 @@
+// pages/c-edit-profile.tsx
+
 import * as React from "react";
-import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import {
-  PlasmicRootProvider,
-  PlasmicComponent,
-} from "@plasmicapp/react-web";
+
+import { PageParamsProvider as PageParamsProvider__ } from "@plasmicapp/react-web/lib/host";
+import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
+import { PlasmicCEditProfile } from "../components/plasmic/ez_marketing_platform/PlasmicCEditProfile";
 
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
-export default function CEditProfile() {
+function CEditProfile() {
   const router = useRouter();
   const supabase = getSupabaseC();
 
-  const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState<any>(null);
-  const [companyId, setCompanyId] = useState<string | null>(null);
+  /* ===========================
+     STATE — espelha colunas
+  ============================ */
 
-  /* ===============================
-     🔹 ESTADO = NÓS (COLUNAS)
-     =============================== */
+  const [company_name, setCompanyName] = React.useState("");
+  const [company_type, setCompanyType] = React.useState("");
+  const [location, setLocation] = React.useState("");
+  const [foundation_date, setFoundationDate] = React.useState("");
 
-  const [company_name, setCompanyName] = useState("");
-  const [company_type, setCompanyType] = useState("");
-  const [location, setLocation] = useState("");
-  const [foundation_date, setFoundationDate] = useState("");
-  const [company_tagline, setCompanyTagline] = useState("");
-  const [website, setWebsite] = useState("");
-  const [linkedin, setLinkedin] = useState("");
-  const [instagram, setInstagram] = useState("");
-  const [x, setX] = useState("");
+  const [linkedin, setLinkedin] = React.useState("");
+  const [instagram, setInstagram] = React.useState("");
+  const [website, setWebsite] = React.useState("");
+  const [x_link, setXLink] = React.useState("");
 
-  /* ===============================
-     🔐 AUTH + LOAD COMPANY
-     =============================== */
+  const [tagline, setTagline] = React.useState("");
+  const [area, setArea] = React.useState("");
+  const [sub_area, setSubArea] = React.useState("");
+  const [google_calendar, setGoogleCalendar] = React.useState("");
 
-  useEffect(() => {
-    async function bootstrap() {
-      const { data } = await supabase.auth.getUser();
+  const [solution, setSolution] = React.useState("");
+  const [description, setDescription] = React.useState("");
+  const [price, setPrice] = React.useState("");
+  const [step, setStep] = React.useState("");
 
-      if (!data.user) {
-        router.replace("/c-login");
-        return;
-      }
-
-      if (data.user.user_metadata?.type !== "company") {
-        router.replace("/not-authorized");
-        return;
-      }
-
-      setUser(data.user);
-
-      // buscar company do usuário
-      const { data: company } = await supabase
-        .from("companies")
-        .select("*")
-        .eq("owner_user_id", data.user.id)
-        .single();
-
-      if (company) {
-        setCompanyId(company.id);
-        setCompanyName(company.company_name || "");
-        setCompanyType(company.company_type || "");
-        setLocation(company.location || "");
-        setFoundationDate(company.foundation_date || "");
-        setCompanyTagline(company.company_tagline || "");
-        setWebsite(company.website || "");
-        setLinkedin(company.linkedin || "");
-        setInstagram(company.instagram || "");
-        setX(company.x || "");
-      }
-
-      setLoading(false);
-    }
-
-    bootstrap();
-  }, []);
-
-  /* ===============================
-     💾 SAVE (BOTÃO DONE)
-     =============================== */
+  /* ===========================
+     SAVE HANDLER
+  ============================ */
 
   async function handleSave() {
-    if (!user) return;
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
 
-    const payload = {
-      owner_user_id: user.id,
+    if (authError || !user) {
+      console.error("Usuário não autenticado");
+      return;
+    }
+
+    const { error } = await supabase.from("companies").upsert({
+      user_id: user.id,
       company_name,
       company_type,
       location,
       foundation_date,
-      company_tagline,
-      website,
       linkedin,
       instagram,
-      x,
-    };
-
-    const { error } = await supabase
-      .from("companies")
-      .upsert(payload, {
-        onConflict: "owner_user_id",
-      });
+      website,
+      x: x_link,
+      tagline,
+      area,
+      sub_area,
+      google_calendar,
+      solution,
+      description,
+      price,
+      step,
+      updated_at: new Date().toISOString(),
+    });
 
     if (error) {
       console.error("Erro ao salvar company:", error);
-      alert("Erro ao salvar dados");
       return;
     }
 
-    alert("Perfil salvo com sucesso 🚀");
+    router.push("/dashboard");
   }
 
-  if (loading) return null;
-
-  /* ===============================
-     🎨 PLASMIC (SÓ UI)
-     =============================== */
+  /* ===========================
+     RENDER
+  ============================ */
 
   return (
-    <PlasmicRootProvider
-      user={{
-        id: user.id,
-        email: user.email,
-        type: "company",
-      }}
-    >
-      <PlasmicComponent
-        component="C - Edit profile"
-        overrides={{
-          company_name: {
-            value: company_name,
-            onChange: (e: any) => setCompanyName(e.target.value),
-          },
-          company_type: {
-            value: company_type,
-            onChange: (e: any) => setCompanyType(e),
-          },
-          location: {
-            value: location,
-            onChange: (e: any) => setLocation(e.target.value),
-          },
-          foundation_date: {
-            value: foundation_date,
-            onChange: (e: any) => setFoundationDate(e.target.value),
-          },
-          company_tagline: {
-            value: company_tagline,
-            onChange: (e: any) => setCompanyTagline(e.target.value),
-          },
-          website: {
-            value: website,
-            onChange: (e: any) => setWebsite(e.target.value),
-          },
-          linkedin: {
-            value: linkedin,
-            onChange: (e: any) => setLinkedin(e.target.value),
-          },
-          instagram: {
-            value: instagram,
-            onChange: (e: any) => setInstagram(e.target.value),
-          },
-          x: {
-            value: x,
-            onChange: (e: any) => setX(e.target.value),
-          },
-          done_button: {
-            onClick: handleSave,
-          },
-        }}
-      />
-    </PlasmicRootProvider>
+    <GlobalContextsProvider>
+      <PageParamsProvider__
+        route={router.pathname}
+        params={router.query}
+        query={router.query}
+      >
+        <PlasmicCEditProfile
+          overrides={{
+            /* STEP 1 */
+            company_name: {
+              value: company_name,
+              onChange: (e: any) => setCompanyName(e.target.value),
+            },
+            company_type: {
+              value: company_type,
+              onChange: (value: string) => setCompanyType(value),
+            },
+            location: {
+              value: location,
+              onChange: (e: any) => setLocation(e.target.value),
+            },
+            foundation_date: {
+              value: foundation_date,
+              onChange: (e: any) => setFoundationDate(e.target.value),
+            },
+
+            /* STEP 2 */
+            linkedin: {
+              value: linkedin,
+              onChange: (e: any) => setLinkedin(e.target.value),
+            },
+            instagram: {
+              value: instagram,
+              onChange: (e: any) => setInstagram(e.target.value),
+            },
+            website: {
+              value: website,
+              onChange: (e: any) => setWebsite(e.target.value),
+            },
+            x: {
+              value: x_link,
+              onChange: (e: any) => setXLink(e.target.value),
+            },
+
+            /* STEP 3 */
+            tagline: {
+              value: tagline,
+              onChange: (e: any) => setTagline(e.target.value),
+            },
+            area: {
+              value: area,
+              onChange: (value: string) => setArea(value),
+            },
+            sub_area: {
+              value: sub_area,
+              onChange: (value: string) => setSubArea(value),
+            },
+            google_calendar: {
+              value: google_calendar,
+              onChange: (e: any) =>
+                setGoogleCalendar(e.target.value),
+            },
+
+            /* STEP 4 */
+            solution: {
+              value: solution,
+              onChange: (e: any) => setSolution(e.target.value),
+            },
+            description: {
+              value: description,
+              onChange: (e: any) => setDescription(e.target.value),
+            },
+            price: {
+              value: price,
+              onChange: (e: any) => setPrice(e.target.value),
+            },
+            step: {
+              value: step,
+              onChange: (e: any) => setStep(e.target.value),
+            },
+
+            /* DONE */
+            done_button: {
+              onClick: handleSave,
+            },
+          }}
+        />
+      </PageParamsProvider__>
+    </GlobalContextsProvider>
   );
 }
+
+export default CEditProfile;

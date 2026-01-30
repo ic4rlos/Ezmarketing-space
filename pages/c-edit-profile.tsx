@@ -21,20 +21,20 @@ export default function CEditProfilePage() {
     ) as HTMLInputElement[];
 
     if (inputs.length === 0) {
-      alert("❌ NENHUM INPUT ENCONTRADO — PLASMIC NÃO ENTREGOU NADA");
+      alert("❌ NENHUM INPUT ENCONTRADO — PLASMIC NÃO ENTREGOU DADOS");
       return;
     }
 
     const data: Record<string, any> = {};
-    inputs.forEach((el) => {
-      const key = el.name || el.id || el.placeholder || "sem_nome";
+    inputs.forEach((el, i) => {
+      const key =
+        el.name || el.id || el.placeholder || `input_${i}`;
       data[key] = el.value;
     });
 
     console.log("🧪 INPUTS LIDOS DO PLASMIC:", data);
     alert("✅ INPUTS LIDOS — veja o console");
 
-    // ===============================
     alert("🟡 2/3 — ENVIANDO AO SUPABASE");
 
     const supabase = getSupabaseC();
@@ -59,36 +59,36 @@ export default function CEditProfilePage() {
       return;
     }
 
-    alert("✅ 2/3 — SUPABASE CONFIRMOU INSERT");
+    alert("✅ 3/3 — SUPABASE CONFIRMOU INSERT");
+    alert("➡️ REDIRECIONANDO…");
 
-    // ===============================
-    alert("🟢 3/3 — REDIRECIONANDO");
     router.push("/find-affiliate");
   }
 
   return (
     <GlobalContextsProvider>
-      {/* 👇 PLASMIC VOLTOU A EXISTIR */}
-      <PlasmicCEditProfile />
+      {/* 🔥 UM ÚNICO FILHO */}
+      <div>
+        <PlasmicCEditProfile />
 
-      {/* 👇 SENTINELA SOBREPOSTO */}
-      <button
-        onClick={SENTINELA_SUBMIT}
-        style={{
-          position: "fixed",
-          bottom: 20,
-          right: 20,
-          zIndex: 99999,
-          background: "red",
-          color: "white",
-          padding: "14px 18px",
-          fontWeight: "bold",
-          borderRadius: 8,
-          fontSize: 14,
-        }}
-      >
-        🔥 SENTINELA TESTE BACKEND
-      </button>
+        <button
+          onClick={SENTINELA_SUBMIT}
+          style={{
+            position: "fixed",
+            bottom: 20,
+            right: 20,
+            zIndex: 99999,
+            background: "red",
+            color: "white",
+            padding: "14px 18px",
+            fontWeight: "bold",
+            borderRadius: 8,
+            fontSize: 14,
+          }}
+        >
+          🔥 SENTINELA TESTE BACKEND
+        </button>
+      </div>
     </GlobalContextsProvider>
   );
 }

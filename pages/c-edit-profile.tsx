@@ -5,19 +5,18 @@ import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/
 import { PlasmicCEditProfile } from "../components/plasmic/ez_marketing_platform/PlasmicCEditProfile";
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
-export default function CEditProfileSentinelaV4() {
+export default function CEditProfileSentinelaV41() {
   const router = useRouter();
   const supabase = getSupabaseC();
 
   useEffect(() => {
-    console.log("🔥 SENTINELA v4.0 CARREGADA");
+    console.log("🔥 SENTINELA v4.1 CARREGADA");
   }, []);
 
   async function handleDone() {
-    alert("🔥 BOTÃO DONE DISPAROU (sentinela v4)");
-    console.log("👉 Iniciando leitura dos inputs do Plasmic");
+    alert("🔥 BOTÃO DONE DISPAROU (sentinela v4.1)");
 
-    // 🧲 Coleta BRUTA dos inputs visíveis
+    // 1️⃣ LER INPUTS DO DOM (PLASMIC)
     const inputs = Array.from(
       document.querySelectorAll("input, textarea, select")
     );
@@ -31,36 +30,35 @@ export default function CEditProfileSentinelaV4() {
         el.getAttribute("aria-label") ||
         el.id;
 
-      if (key && el.value) {
+      if (key) {
         values[key] = el.value;
       }
     });
 
     console.log("✅ INPUTS LIDOS DO PLASMIC:", values);
-    alert("✅ Inputs lidos do Plasmic (veja o console)");
+    alert("✅ Inputs do Plasmic lidos (veja o console)");
 
-    // 🔐 Confirma auth
+    // 2️⃣ AUTH
     const { data: authData } = await supabase.auth.getUser();
 
     if (!authData?.user) {
       alert("❌ USUÁRIO NÃO LOGADO");
-      console.error("Usuário não autenticado");
+      console.error("Auth falhou");
       return;
     }
 
-    console.log("🔐 USUÁRIO LOGADO:", authData.user.email);
     alert("🔐 Auth OK: " + authData.user.email);
 
-    // 🧪 Payload MINIMO — só colunas que existem
+    // 3️⃣ PAYLOAD MÍNIMO (SEM debug_payload)
     const payload = {
       user_id: authData.user.id,
-      about: JSON.stringify(values), // joga tudo no about TEMPORARIAMENTE
+      about: JSON.stringify(values),
       created_at: new Date().toISOString(),
     };
 
-    console.log("📦 PAYLOAD ENVIADO AO SUPABASE:", payload);
+    console.log("📦 PAYLOAD SUPABASE:", payload);
 
-    // 🚀 INSERT REAL
+    // 4️⃣ INSERT
     const { error } = await supabase.from("companies").insert(payload);
 
     if (error) {
@@ -69,44 +67,43 @@ export default function CEditProfileSentinelaV4() {
       return;
     }
 
-    // 🎉 SUCESSO TOTAL
-    console.log("🎉 SUPABASE CONFIRMOU INSERT");
-    alert("🎉 DADOS SALVOS COM SUCESSO!");
-
-    // 🔁 REDIRECIONAMENTO CONTROLADO
+    // 5️⃣ SUCESSO + REDIRECT
+    alert("🎉 DADOS SALVOS COM SUCESSO");
     alert("➡️ Redirecionando para /find-a-affiliate");
     router.push("/find-a-affiliate");
   }
 
   return (
     <GlobalContextsProvider>
-      <PlasmicCEditProfile
-        overrides={{
-          // 🔴 AQUI ESTÁ O CONTROLE
-          doneButton: {
-            props: {
-              onClick: handleDone,
+      {/* ⚠️ OBRIGATÓRIO: UM ÚNICO FILHO */}
+      <div>
+        <PlasmicCEditProfile
+          overrides={{
+            doneButton: {
+              props: {
+                onClick: handleDone,
+              },
             },
-          },
-        }}
-      />
+          }}
+        />
 
-      {/* 🔥 BOTÃO EXTRA DE DEBUG (fora do Plasmic) */}
-      <button
-        onClick={handleDone}
-        style={{
-          position: "fixed",
-          bottom: 20,
-          right: 20,
-          background: "red",
-          color: "white",
-          padding: "14px 18px",
-          fontWeight: "bold",
-          zIndex: 9999,
-        }}
-      >
-        🔥 SENTINELA v4 TESTE BACKEND
-      </button>
+        {/* 🔥 BOTÃO SENTINELA FORA DO PLASMIC */}
+        <button
+          onClick={handleDone}
+          style={{
+            position: "fixed",
+            bottom: 20,
+            right: 20,
+            background: "red",
+            color: "white",
+            padding: "14px 18px",
+            fontWeight: "bold",
+            zIndex: 9999,
+          }}
+        >
+          🔥 SENTINELA v4.1 TESTE
+        </button>
+      </div>
     </GlobalContextsProvider>
   );
 }

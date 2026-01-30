@@ -5,16 +5,16 @@ import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/
 import { PlasmicCEditProfile } from "../components/plasmic/ez_marketing_platform/PlasmicCEditProfile";
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
-export default function CEditProfileSentinelaV41() {
+export default function CEditProfileSentinelaV42() {
   const router = useRouter();
   const supabase = getSupabaseC();
 
   useEffect(() => {
-    console.log("🔥 SENTINELA v4.1 CARREGADA");
+    console.log("🔥 SENTINELA v4.2 CARREGADA");
   }, []);
 
   async function handleDone() {
-    alert("🔥 BOTÃO DONE DISPAROU (sentinela v4.1)");
+    alert("🔥 BOTÃO DONE DISPAROU (sentinela v4.2)");
 
     // 1️⃣ LER INPUTS DO DOM (PLASMIC)
     const inputs = Array.from(
@@ -30,33 +30,30 @@ export default function CEditProfileSentinelaV41() {
         el.getAttribute("aria-label") ||
         el.id;
 
-      if (key) {
-        values[key] = el.value;
-      }
+      if (key) values[key] = el.value;
     });
 
     console.log("✅ INPUTS LIDOS DO PLASMIC:", values);
-    alert("✅ Inputs do Plasmic lidos (veja o console)");
+    alert("✅ Inputs lidos (console)");
 
     // 2️⃣ AUTH
     const { data: authData } = await supabase.auth.getUser();
 
     if (!authData?.user) {
       alert("❌ USUÁRIO NÃO LOGADO");
-      console.error("Auth falhou");
       return;
     }
 
-    alert("🔐 Auth OK: " + authData.user.email);
+    alert("🔐 Auth OK");
 
-    // 3️⃣ PAYLOAD MÍNIMO (SEM debug_payload)
+    // 3️⃣ PAYLOAD SIMPLES (SEM debug_payload)
     const payload = {
       user_id: authData.user.id,
       about: JSON.stringify(values),
       created_at: new Date().toISOString(),
     };
 
-    console.log("📦 PAYLOAD SUPABASE:", payload);
+    console.log("📦 PAYLOAD:", payload);
 
     // 4️⃣ INSERT
     const { error } = await supabase.from("companies").insert(payload);
@@ -67,27 +64,28 @@ export default function CEditProfileSentinelaV41() {
       return;
     }
 
-    // 5️⃣ SUCESSO + REDIRECT
-    alert("🎉 DADOS SALVOS COM SUCESSO");
-    alert("➡️ Redirecionando para /find-a-affiliate");
+    // 5️⃣ OK + REDIRECT
+    alert("🎉 SALVO COM SUCESSO");
     router.push("/find-a-affiliate");
   }
 
   return (
     <GlobalContextsProvider>
-      {/* ⚠️ OBRIGATÓRIO: UM ÚNICO FILHO */}
+      {/* ⚠️ UM ÚNICO FILHO */}
       <div>
         <PlasmicCEditProfile
-          overrides={{
-            doneButton: {
-              props: {
-                onClick: handleDone,
+          overrides={
+            {
+              doneButton: {
+                props: {
+                  onClick: handleDone,
+                },
               },
-            },
-          }}
+            } as any
+          }
         />
 
-        {/* 🔥 BOTÃO SENTINELA FORA DO PLASMIC */}
+        {/* 🔥 BOTÃO SENTINELA EXTERNO */}
         <button
           onClick={handleDone}
           style={{
@@ -101,7 +99,7 @@ export default function CEditProfileSentinelaV41() {
             zIndex: 9999,
           }}
         >
-          🔥 SENTINELA v4.1 TESTE
+          🔥 SENTINELA v4.2
         </button>
       </div>
     </GlobalContextsProvider>

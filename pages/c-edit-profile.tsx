@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { getSupabaseC } from "../lib/c-supabaseClient";
-import { GlobalContextsProvider } from "../components/plasmic/ez_marketing_platform/GlobalContextsProvider";
 import { PlasmicCEditProfile } from "../components/plasmic/ez_marketing_platform/PlasmicCEditProfile";
 
 export default function CEditProfileSentinel() {
@@ -12,7 +11,6 @@ export default function CEditProfileSentinel() {
 
     const supabase = getSupabaseC();
 
-    // 🔍 força localizar o botão Done do Plasmic
     const interval = setInterval(() => {
       const buttons = Array.from(document.querySelectorAll("button"));
       const doneButton = buttons.find(
@@ -30,40 +28,43 @@ export default function CEditProfileSentinel() {
 
         alert("🧪 SENTINELA: clique interceptado");
 
-        // 🧲 leitura crua dos inputs do DOM
         const textareas = Array.from(
           document.querySelectorAll("textarea")
         ).map((t) => t.value);
 
+        console.log("📥 INPUTS LIDOS DO PLASMIC:", textareas);
+
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+
         const payload = {
-          user_id: (await supabase.auth.getUser()).data.user?.id,
+          user_id: user?.id,
           customer_problem: textareas[0] || null,
           solution_description: textareas[1] || null,
           why_choose: textareas[2] || null,
         };
 
-        console.log("📦 PAYLOAD ENVIADO:", payload);
+        console.log("📦 PAYLOAD:", payload);
         alert("📦 Payload montado, enviando ao Supabase");
 
-        const { error } = await supabase.from("companies").insert(payload);
+        const { error } = await supabase
+          .from("companies")
+          .insert(payload);
 
         if (error) {
           console.error("❌ ERRO SUPABASE:", error);
-          alert("❌ Supabase recusou o payload (ver console)");
+          alert("❌ Supabase recusou o payload — veja o console");
           return;
         }
 
-        alert("✅ SUPABASE CONFIRMOU INSERT\nRedirecionando...");
+        alert("✅ INSERT CONFIRMADO — redirecionando");
         router.push("/find-a-affiliate/");
       });
-    }, 500);
+    }, 400);
 
     return () => clearInterval(interval);
   }, [router]);
 
-  return (
-    <GlobalContextsProvider>
-      <PlasmicCEditProfile />
-    </GlobalContextsProvider>
-  );
+  return <PlasmicCEditProfile />;
 }

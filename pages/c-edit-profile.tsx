@@ -1,107 +1,69 @@
-import * as React from "react";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
-import { PlasmicCEditProfile } from "../components/plasmic/ez_marketing_platform/PlasmicCEditProfile";
 import { getSupabaseC } from "../lib/c-supabaseClient";
+import { GlobalContextsProvider } from "../components/plasmic/ez_marketing_platform/GlobalContextsProvider";
+import { PlasmicCEditProfile } from "../components/plasmic/ez_marketing_platform/PlasmicCEditProfile";
 
-export default function CEditProfileSentinelaV42() {
+export default function CEditProfileSentinel() {
   const router = useRouter();
-  const supabase = getSupabaseC();
 
   useEffect(() => {
-    console.log("🔥 SENTINELA v4.2 CARREGADA");
-  }, []);
+    console.log("🔥 SENTINELA v4.3 ATIVA");
 
-  async function handleDone() {
-    alert("🔥 BOTÃO DONE DISPAROU (sentinela v4.2)");
+    const supabase = getSupabaseC();
 
-    // 1️⃣ LER INPUTS DO DOM (PLASMIC)
-    const inputs = Array.from(
-      document.querySelectorAll("input, textarea, select")
-    );
+    // 🔍 força localizar o botão Done do Plasmic
+    const interval = setInterval(() => {
+      const buttons = Array.from(document.querySelectorAll("button"));
+      const doneButton = buttons.find(
+        (btn) => btn.textContent?.trim().toLowerCase() === "done"
+      );
 
-    const values: Record<string, any> = {};
+      if (!doneButton) return;
 
-    inputs.forEach((el: any) => {
-      const key =
-        el.placeholder ||
-        el.name ||
-        el.getAttribute("aria-label") ||
-        el.id;
+      clearInterval(interval);
+      console.log("🧨 BOTÃO DONE DO PLASMIC INTERCEPTADO");
 
-      if (key) values[key] = el.value;
-    });
+      doneButton.addEventListener("click", async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
 
-    console.log("✅ INPUTS LIDOS DO PLASMIC:", values);
-    alert("✅ Inputs lidos (console)");
+        alert("🧪 SENTINELA: clique interceptado");
 
-    // 2️⃣ AUTH
-    const { data: authData } = await supabase.auth.getUser();
+        // 🧲 leitura crua dos inputs do DOM
+        const textareas = Array.from(
+          document.querySelectorAll("textarea")
+        ).map((t) => t.value);
 
-    if (!authData?.user) {
-      alert("❌ USUÁRIO NÃO LOGADO");
-      return;
-    }
+        const payload = {
+          user_id: (await supabase.auth.getUser()).data.user?.id,
+          customer_problem: textareas[0] || null,
+          solution_description: textareas[1] || null,
+          why_choose: textareas[2] || null,
+        };
 
-    alert("🔐 Auth OK");
+        console.log("📦 PAYLOAD ENVIADO:", payload);
+        alert("📦 Payload montado, enviando ao Supabase");
 
-    // 3️⃣ PAYLOAD SIMPLES (SEM debug_payload)
-    const payload = {
-      user_id: authData.user.id,
-      about: JSON.stringify(values),
-      created_at: new Date().toISOString(),
-    };
+        const { error } = await supabase.from("companies").insert(payload);
 
-    console.log("📦 PAYLOAD:", payload);
+        if (error) {
+          console.error("❌ ERRO SUPABASE:", error);
+          alert("❌ Supabase recusou o payload (ver console)");
+          return;
+        }
 
-    // 4️⃣ INSERT
-    const { error } = await supabase.from("companies").insert(payload);
+        alert("✅ SUPABASE CONFIRMOU INSERT\nRedirecionando...");
+        router.push("/find-a-affiliate/");
+      });
+    }, 500);
 
-    if (error) {
-      console.error("❌ ERRO SUPABASE:", error);
-      alert("❌ ERRO SUPABASE:\n" + error.message);
-      return;
-    }
-
-    // 5️⃣ OK + REDIRECT
-    alert("🎉 SALVO COM SUCESSO");
-    router.push("/find-a-affiliate");
-  }
+    return () => clearInterval(interval);
+  }, [router]);
 
   return (
     <GlobalContextsProvider>
-      {/* ⚠️ UM ÚNICO FILHO */}
-      <div>
-        <PlasmicCEditProfile
-          overrides={
-            {
-              doneButton: {
-                props: {
-                  onClick: handleDone,
-                },
-              },
-            } as any
-          }
-        />
-
-        {/* 🔥 BOTÃO SENTINELA EXTERNO */}
-        <button
-          onClick={handleDone}
-          style={{
-            position: "fixed",
-            bottom: 20,
-            right: 20,
-            background: "red",
-            color: "white",
-            padding: "14px 18px",
-            fontWeight: "bold",
-            zIndex: 9999,
-          }}
-        >
-          🔥 SENTINELA v4.2
-        </button>
-      </div>
+      <PlasmicCEditProfile />
     </GlobalContextsProvider>
   );
 }

@@ -2920,37 +2920,6 @@ function PlasmicAEditProfile__RenderFunc(props: {
                   data-plasmic-name={"done"}
                   data-plasmic-override={overrides.done}
                   className={classNames("__wab_instance", sty.done)}
-                  onClick={async event => {
-                    const $steps = {};
-
-                    $steps["goToAFindCommunity"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            destination: `/a-find-community`
-                          };
-                          return (({ destination }) => {
-                            if (
-                              typeof destination === "string" &&
-                              destination.startsWith("#")
-                            ) {
-                              document
-                                .getElementById(destination.substr(1))
-                                .scrollIntoView({ behavior: "smooth" });
-                            } else {
-                              __nextRouter?.push(destination);
-                            }
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["goToAFindCommunity"] != null &&
-                      typeof $steps["goToAFindCommunity"] === "object" &&
-                      typeof $steps["goToAFindCommunity"].then === "function"
-                    ) {
-                      $steps["goToAFindCommunity"] =
-                        await $steps["goToAFindCommunity"];
-                    }
-                  }}
                 >
                   <div
                     className={classNames(

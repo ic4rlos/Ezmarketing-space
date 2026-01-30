@@ -669,45 +669,6 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       "companyLogo",
                       "files"
                     ]).apply(null, eventArgs);
-
-                    (async files => {
-                      const $steps = {};
-
-                      $steps["updateAvatarImage"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["avatarImage"]
-                              },
-                              operation: 0,
-                              value: event.file.url
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["updateAvatarImage"] != null &&
-                        typeof $steps["updateAvatarImage"] === "object" &&
-                        typeof $steps["updateAvatarImage"].then === "function"
-                      ) {
-                        $steps["updateAvatarImage"] =
-                          await $steps["updateAvatarImage"];
-                      }
-                    }).apply(null, eventArgs);
                   }}
                   showUploadList={false}
                 >
@@ -3706,45 +3667,6 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       "companyImage",
                       "files"
                     ]).apply(null, eventArgs);
-
-                    (async files => {
-                      const $steps = {};
-
-                      $steps["updateAvatarImage"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["avatarImage"]
-                              },
-                              operation: 0,
-                              value: event.file.url
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["updateAvatarImage"] != null &&
-                        typeof $steps["updateAvatarImage"] === "object" &&
-                        typeof $steps["updateAvatarImage"].then === "function"
-                      ) {
-                        $steps["updateAvatarImage"] =
-                          await $steps["updateAvatarImage"];
-                      }
-                    }).apply(null, eventArgs);
                   }}
                   showUploadList={false}
                 >
@@ -3962,37 +3884,6 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   data-plasmic-name={"done"}
                   data-plasmic-override={overrides.done}
                   className={classNames("__wab_instance", sty.done)}
-                  onClick={async event => {
-                    const $steps = {};
-
-                    $steps["goToCFindAffiliate"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            destination: `/find-a-affiliate`
-                          };
-                          return (({ destination }) => {
-                            if (
-                              typeof destination === "string" &&
-                              destination.startsWith("#")
-                            ) {
-                              document
-                                .getElementById(destination.substr(1))
-                                .scrollIntoView({ behavior: "smooth" });
-                            } else {
-                              __nextRouter?.push(destination);
-                            }
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["goToCFindAffiliate"] != null &&
-                      typeof $steps["goToCFindAffiliate"] === "object" &&
-                      typeof $steps["goToCFindAffiliate"].then === "function"
-                    ) {
-                      $steps["goToCFindAffiliate"] =
-                        await $steps["goToCFindAffiliate"];
-                    }
-                  }}
                 >
                   <div
                     className={classNames(

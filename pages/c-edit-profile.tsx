@@ -1,94 +1,112 @@
+import * as React from "react";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { getSupabaseC } from "../lib/c-supabaseClient";
-
 import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
 import { PlasmicCEditProfile } from "../components/plasmic/ez_marketing_platform/PlasmicCEditProfile";
+import { getSupabaseC } from "../lib/c-supabaseClient";
 
-export default function CEditProfilePage() {
+export default function CEditProfileSentinelaV4() {
   const router = useRouter();
+  const supabase = getSupabaseC();
 
   useEffect(() => {
-    console.log("🔥 TSX c-edit-profile EXECUTOU");
-    alert("🔥 TSX EXECUTOU — SENTINELA ATIVA");
+    console.log("🔥 SENTINELA v4.0 CARREGADA");
   }, []);
 
-  async function SENTINELA_SUBMIT() {
-    alert("🟡 1/3 — LENDO INPUTS DO PLASMIC");
+  async function handleDone() {
+    alert("🔥 BOTÃO DONE DISPAROU (sentinela v4)");
+    console.log("👉 Iniciando leitura dos inputs do Plasmic");
 
+    // 🧲 Coleta BRUTA dos inputs visíveis
     const inputs = Array.from(
       document.querySelectorAll("input, textarea, select")
-    ) as HTMLInputElement[];
+    );
 
-    if (inputs.length === 0) {
-      alert("❌ NENHUM INPUT ENCONTRADO — PLASMIC NÃO ENTREGOU DADOS");
-      return;
-    }
+    const values: Record<string, any> = {};
 
-    const data: Record<string, any> = {};
-    inputs.forEach((el, i) => {
+    inputs.forEach((el: any) => {
       const key =
-        el.name || el.id || el.placeholder || `input_${i}`;
-      data[key] = el.value;
+        el.placeholder ||
+        el.name ||
+        el.getAttribute("aria-label") ||
+        el.id;
+
+      if (key && el.value) {
+        values[key] = el.value;
+      }
     });
 
-    console.log("🧪 INPUTS LIDOS DO PLASMIC:", data);
-    alert("✅ INPUTS LIDOS — veja o console");
+    console.log("✅ INPUTS LIDOS DO PLASMIC:", values);
+    alert("✅ Inputs lidos do Plasmic (veja o console)");
 
-    alert("🟡 2/3 — ENVIANDO AO SUPABASE");
+    // 🔐 Confirma auth
+    const { data: authData } = await supabase.auth.getUser();
 
-    const supabase = getSupabaseC();
-    const { data: auth } = await supabase.auth.getUser();
-
-    if (!auth?.user) {
+    if (!authData?.user) {
       alert("❌ USUÁRIO NÃO LOGADO");
+      console.error("Usuário não autenticado");
       return;
     }
 
+    console.log("🔐 USUÁRIO LOGADO:", authData.user.email);
+    alert("🔐 Auth OK: " + authData.user.email);
+
+    // 🧪 Payload MINIMO — só colunas que existem
     const payload = {
-      user_id: auth.user.id,
-      debug_payload: data,
+      user_id: authData.user.id,
+      about: JSON.stringify(values), // joga tudo no about TEMPORARIAMENTE
       created_at: new Date().toISOString(),
     };
 
+    console.log("📦 PAYLOAD ENVIADO AO SUPABASE:", payload);
+
+    // 🚀 INSERT REAL
     const { error } = await supabase.from("companies").insert(payload);
 
     if (error) {
       console.error("❌ ERRO SUPABASE:", error);
-      alert("❌ SUPABASE BLOQUEOU INSERT (veja console)");
+      alert("❌ ERRO SUPABASE:\n" + error.message);
       return;
     }
 
-    alert("✅ 3/3 — SUPABASE CONFIRMOU INSERT");
-    alert("➡️ REDIRECIONANDO…");
+    // 🎉 SUCESSO TOTAL
+    console.log("🎉 SUPABASE CONFIRMOU INSERT");
+    alert("🎉 DADOS SALVOS COM SUCESSO!");
 
-    router.push("/find-affiliate");
+    // 🔁 REDIRECIONAMENTO CONTROLADO
+    alert("➡️ Redirecionando para /find-a-affiliate");
+    router.push("/find-a-affiliate");
   }
 
   return (
     <GlobalContextsProvider>
-      {/* 🔥 UM ÚNICO FILHO */}
-      <div>
-        <PlasmicCEditProfile />
+      <PlasmicCEditProfile
+        overrides={{
+          // 🔴 AQUI ESTÁ O CONTROLE
+          doneButton: {
+            props: {
+              onClick: handleDone,
+            },
+          },
+        }}
+      />
 
-        <button
-          onClick={SENTINELA_SUBMIT}
-          style={{
-            position: "fixed",
-            bottom: 20,
-            right: 20,
-            zIndex: 99999,
-            background: "red",
-            color: "white",
-            padding: "14px 18px",
-            fontWeight: "bold",
-            borderRadius: 8,
-            fontSize: 14,
-          }}
-        >
-          🔥 SENTINELA TESTE BACKEND
-        </button>
-      </div>
+      {/* 🔥 BOTÃO EXTRA DE DEBUG (fora do Plasmic) */}
+      <button
+        onClick={handleDone}
+        style={{
+          position: "fixed",
+          bottom: 20,
+          right: 20,
+          background: "red",
+          color: "white",
+          padding: "14px 18px",
+          fontWeight: "bold",
+          zIndex: 9999,
+        }}
+      >
+        🔥 SENTINELA v4 TESTE BACKEND
+      </button>
     </GlobalContextsProvider>
   );
 }

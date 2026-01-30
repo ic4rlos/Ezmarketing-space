@@ -2,7 +2,10 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { getSupabaseC } from "../lib/c-supabaseClient";
 
-export default function CEditProfileSentinel() {
+import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
+import { PlasmicCEditProfile } from "../components/plasmic/ez_marketing_platform/PlasmicCEditProfile";
+
+export default function CEditProfilePage() {
   const router = useRouter();
 
   useEffect(() => {
@@ -18,32 +21,27 @@ export default function CEditProfileSentinel() {
     ) as HTMLInputElement[];
 
     if (inputs.length === 0) {
-      alert("❌ NENHUM INPUT ENCONTRADO — PLASMIC BLOQUEANDO");
+      alert("❌ NENHUM INPUT ENCONTRADO — PLASMIC NÃO ENTREGOU NADA");
       return;
     }
 
     const data: Record<string, any> = {};
     inputs.forEach((el) => {
-      const key =
-        el.name || el.id || el.placeholder || `input_${Math.random()}`;
+      const key = el.name || el.id || el.placeholder || "sem_nome";
       data[key] = el.value;
     });
 
     console.log("🧪 INPUTS LIDOS DO PLASMIC:", data);
-    alert("✅ INPUTS LIDOS — veja console");
+    alert("✅ INPUTS LIDOS — veja o console");
 
     // ===============================
     alert("🟡 2/3 — ENVIANDO AO SUPABASE");
 
     const supabase = getSupabaseC();
+    const { data: auth } = await supabase.auth.getUser();
 
-    const {
-      data: auth,
-      error: authError,
-    } = await supabase.auth.getUser();
-
-    if (authError || !auth?.user) {
-      alert("❌ NÃO LOGADO — auth falhou");
+    if (!auth?.user) {
+      alert("❌ USUÁRIO NÃO LOGADO");
       return;
     }
 
@@ -53,15 +51,11 @@ export default function CEditProfileSentinel() {
       created_at: new Date().toISOString(),
     };
 
-    console.log("🚀 PAYLOAD SUPABASE:", payload);
+    const { error } = await supabase.from("companies").insert(payload);
 
-    const { error: insertError } = await supabase
-      .from("companies")
-      .insert(payload);
-
-    if (insertError) {
-      console.error("❌ SUPABASE ERRO:", insertError);
-      alert("❌ SUPABASE REJEITOU O INSERT\nVeja console");
+    if (error) {
+      console.error("❌ ERRO SUPABASE:", error);
+      alert("❌ SUPABASE BLOQUEOU INSERT (veja console)");
       return;
     }
 
@@ -73,9 +67,11 @@ export default function CEditProfileSentinel() {
   }
 
   return (
-    <>
-      {/* PLASMIC PAGE RENDERIZA NORMALMENTE */}
-      {/* BOTÃO SENTINELA FIXO */}
+    <GlobalContextsProvider>
+      {/* 👇 PLASMIC VOLTOU A EXISTIR */}
+      <PlasmicCEditProfile />
+
+      {/* 👇 SENTINELA SOBREPOSTO */}
       <button
         onClick={SENTINELA_SUBMIT}
         style={{
@@ -93,6 +89,6 @@ export default function CEditProfileSentinel() {
       >
         🔥 SENTINELA TESTE BACKEND
       </button>
-    </>
+    </GlobalContextsProvider>
   );
 }

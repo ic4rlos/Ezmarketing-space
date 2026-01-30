@@ -14,82 +14,83 @@ export default function CEditProfile() {
   const supabase = getSupabaseC();
 
   const [user, setUser] = useState<any>(null);
-  const [status, setStatus] = useState("🟡 Página carregando...");
-  const [lastAction, setLastAction] = useState("Nenhuma");
+  const [status, setStatus] = useState("🟡 iniciando...");
+  const [logs, setLogs] = useState<string[]>([]);
+
+  function log(msg: string) {
+    console.log(msg);
+    setLogs((l) => [...l, msg]);
+  }
 
   // ============================
-  // 🔍 SENTINELA 1 — Página executou
+  // 🔥 SENTINELA 1 — TSX executou
   // ============================
   useEffect(() => {
-    console.log("🔥 C-EDIT-PROFILE TSX EXECUTOU");
-    alert("🔥 TSX DA PÁGINA c-edit-profile.tsx EXECUTOU");
-    setStatus("🟢 TSX executado");
+    log("🔥 TSX c-edit-profile EXECUTOU");
+    alert("🔥 TSX EXECUTOU (sem upload)");
+    setStatus("🟢 TSX rodando");
   }, []);
 
   // ============================
-  // 🔐 SENTINELA 2 — Auth Supabase
+  // 🔐 SENTINELA 2 — Auth
   // ============================
   useEffect(() => {
     async function checkAuth() {
-      alert("🔐 Verificando auth no Supabase (c-)");
+      log("🔐 Verificando auth Supabase (c-)");
 
       const {
         data: { user },
         error,
       } = await supabase.auth.getUser();
 
-      console.log("🔐 AUTH USER:", user);
-      console.log("🔐 AUTH ERROR:", error);
+      if (error) {
+        log("❌ ERRO AUTH: " + error.message);
+        setStatus("❌ erro auth");
+        return;
+      }
 
       if (!user) {
-        alert("❌ NÃO LOGADO — redirecionando");
-        setStatus("❌ Não logado");
+        log("❌ NÃO LOGADO");
+        alert("❌ NÃO LOGADO — redirect");
         router.replace("/c-login");
         return;
       }
 
-      alert(`✅ LOGADO COMO: ${user.email}`);
+      log("✅ LOGADO: " + user.email);
       setUser(user);
-      setStatus("✅ Auth OK");
+      setStatus("✅ auth ok");
     }
 
     checkAuth();
   }, []);
 
   // ============================
-  // 💾 SENTINELA 3 — Salvamento fake
+  // 💾 SENTINELA 3 — Insert fake
   // ============================
-  async function handleSaveTest() {
-    alert("💾 BOTÃO DONE FOI CLICADO");
-    setLastAction("Clique no DONE");
+  async function handleTestSave() {
+    log("💾 BOTÃO TESTE CLICADO");
 
     if (!user) {
-      alert("❌ Sem usuário — não vai salvar");
+      alert("❌ sem user");
       return;
     }
 
-    alert("📡 Tentando falar com o Supabase...");
-    console.log("📡 Tentando salvar teste no Supabase");
+    log("📡 Enviando teste para Supabase...");
 
-    const { data, error } = await supabase
-      .from("companies")
-      .upsert({
-        user_id: user.id,
-        company_name: "TESTE SENTINELA",
-      })
-      .select();
-
-    console.log("💾 DATA:", data);
-    console.log("💾 ERROR:", error);
+    const { error } = await supabase.from("companies").upsert({
+      user_id: user.id,
+      company_name: "TESTE SEM UPLOAD",
+    });
 
     if (error) {
-      alert("❌ ERRO AO SALVAR (ver console)");
-      setStatus("❌ Erro Supabase");
+      log("❌ ERRO SUPABASE: " + error.message);
+      alert("❌ ERRO SUPABASE");
       return;
     }
 
-    alert("✅ SALVOU NO SUPABASE (companies)");
-    setStatus("✅ Salvamento OK");
+    log("✅ SALVO COM SUCESSO");
+    alert("✅ SALVOU NO SUPABASE");
+    setStatus("✅ salvamento ok");
   }
 
   // ============================
@@ -103,42 +104,50 @@ export default function CEditProfile() {
         query={router.query}
       >
         {/* ============================
-            🚨 PAINEL SENTINELA VISUAL
+            🚨 PAINEL SENTINELA
            ============================ */}
         <div
           style={{
             position: "fixed",
-            bottom: 20,
-            right: 20,
+            top: 20,
+            left: 20,
             zIndex: 9999,
-            background: "black",
-            color: "lime",
-            padding: 12,
+            background: "#111",
+            color: "#0f0",
+            padding: 16,
             borderRadius: 8,
-            fontSize: 12,
             fontFamily: "monospace",
+            maxWidth: 400,
           }}
         >
           <div><b>STATUS:</b> {status}</div>
-          <div><b>LAST ACTION:</b> {lastAction}</div>
           <div><b>USER:</b> {user ? user.email : "null"}</div>
+
           <button
             style={{
-              marginTop: 8,
+              marginTop: 10,
               padding: "6px 10px",
               background: "red",
               color: "white",
               border: "none",
               cursor: "pointer",
             }}
-            onClick={handleSaveTest}
+            onClick={handleTestSave}
           >
-            TESTE DONE (BACKEND)
+            TESTAR BACKEND (SEM UPLOAD)
           </button>
+
+          <hr style={{ margin: "10px 0", borderColor: "#333" }} />
+
+          <div style={{ maxHeight: 200, overflow: "auto" }}>
+            {logs.map((l, i) => (
+              <div key={i}>{l}</div>
+            ))}
+          </div>
         </div>
 
         {/* ============================
-            🎨 PLASMIC (UI BURRA)
+            🎨 PLASMIC (UI PASSIVA)
            ============================ */}
         <PlasmicCEditProfile />
       </PageParamsProvider__>

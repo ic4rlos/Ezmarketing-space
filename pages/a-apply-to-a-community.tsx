@@ -4,26 +4,26 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 
-// ✅ ÍCONES E ASSETS (Mantendo os nomes dos nós originais)
+// ✅ ÍCONES E ASSETS
 import SearchSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__SearchSvg";
 import ChevronDownSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__ChevronDownSvg";
 import SemTitulo1SvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__SemTitulo1Svg";
 
-// ✅ CORREÇÃO DAS IMPORTAÇÕES DINÂMICAS
-const Slider = dynamic(() => import("react-slick"), { ssr: false });
-const AntdButton = dynamic(() => import("antd").then(m => m.Button), { ssr: false });
-const AntdDropdown = dynamic(() => import("antd").then(m => m.Dropdown), { ssr: false });
-// Importando o TextArea diretamente para evitar o erro de propriedade inexistente
-const AntdTextArea = dynamic(() => import("antd").then(m => m.Input.TextArea), { ssr: false });
-const YouTube = dynamic(() => import("react-youtube"), { ssr: false });
+// ✅ CORREÇÃO DE TYPESCRIPT PARA DEPLOY (Dynamic with Any)
+const Slider = dynamic(() => import("react-slick").then(m => m.default as any), { ssr: false });
+const AntdButton = dynamic(() => import("antd").then(m => m.Button as any), { ssr: false });
+const AntdDropdown = dynamic(() => import("antd").then(m => m.Dropdown as any), { ssr: false });
+const AntdTextArea = dynamic(() => import("antd").then(m => m.Input.TextArea as any), { ssr: false });
+const YouTube = dynamic(() => import("react-youtube").then(m => m.default as any), { ssr: false });
 
 export default function AApplyToACommunity() {
   const router = useRouter();
 
-  // ✅ ESTADOS PARA CONTROLE DO SUPABASE (Liberdade total)
+  // ✅ ESTADOS PARA CONTROLE DO SUPABASE
   const [shortMessage, setShortMessage] = React.useState("");
   const [isInviting, setIsInviting] = React.useState(false);
 
+  // Configurações do Slider que o erro apontou
   const memberSliderSettings = {
     dots: false,
     infinite: true,
@@ -39,7 +39,7 @@ export default function AApplyToACommunity() {
         <title>Apply to a Community | EZ Marketing</title>
       </Head>
 
-      {/* 🟢 NÓ: topBar - Com o padding de 229px extraído do CSS */}
+      {/* 🟢 HEADER COM PADDING DE 229PX (EXTRAÍDO DO CSS) */}
       <header id="topBar" style={s.topBar}>
         <img src="/plasmic/ez_marketing_platform/images/logo2Svg.svg" style={s.logo} alt="EZ Logo" />
         
@@ -59,7 +59,7 @@ export default function AApplyToACommunity() {
       <main style={s.mainContainer}>
         <section style={s.heroSection}>
           
-          {/* NÓ: container3 (Comunidade) */}
+          {/* NÓ: container3 (Dados da Comunidade) */}
           <div id="container3" style={s.communityCard}>
             <div style={s.communityHeader}>
               <div id="communityLogo" style={s.largeAvatar}>
@@ -82,10 +82,10 @@ export default function AApplyToACommunity() {
               </div>
             </div>
 
-            {/* NÓ: sliderCarousel (Membros) */}
+            {/* NÓ: sliderCarousel (Slider de Membros) */}
             <div id="sliderCarousel" style={{ marginTop: 20 }}>
               <Slider {...memberSliderSettings}>
-                {[1, 2, 3, 4, 5].map(i => (
+                {[1, 2, 3, 4, 5].map((i: number) => (
                   <div key={i} style={s.memberSlide}>
                     <div style={s.memberAvatar} />
                     <div style={s.memberRole}>Market Manager</div>
@@ -95,15 +95,14 @@ export default function AApplyToACommunity() {
             </div>
           </div>
 
-          {/* 🔴 NÓ: container2 (O Formulário que o Plasmic bloqueava) */}
+          {/* 🔴 NÓ: container2 (Formulário de Invite) */}
           <div id="container2" style={s.formCard}>
             <p style={s.formText}>If you are excited about working with this community, please enter a short message here and click "Invite"</p>
             
-            {/* CORREÇÃO AQUI: Usando o componente importado corretamente */}
             <AntdTextArea 
               id="shortMessage"
               value={shortMessage}
-              onChange={(e) => setShortMessage(e.target.value)}
+              onChange={(e: any) => setShortMessage(e.target.value)}
               placeholder="Your message..."
               style={s.textArea}
               rows={6}
@@ -122,7 +121,7 @@ export default function AApplyToACommunity() {
           </div>
         </section>
 
-        {/* 🔴 NÓ: container11 (A Seção de Especialistas que faltou) */}
+        {/* 🔴 NÓ: container11 (Especialistas) */}
         <section id="container11" style={s.expertsSection}>
           <h2 style={s.sectionTitle}>Experts & Capabilities</h2>
           <div style={s.expertGrid}>
@@ -134,6 +133,7 @@ export default function AApplyToACommunity() {
           </div>
         </section>
 
+        {/* NÓ: youtubeVideo */}
         <section id="youtubeVideo" style={s.videoContainer}>
            <YouTube videoId="dQw4w9WgXcQ" opts={{ width: '100%', height: '500px' }} />
         </section>
@@ -144,11 +144,7 @@ export default function AApplyToACommunity() {
 
 // ✅ COMPONENTES DE APOIO
 function ExpertTag({ id, title }: { id: string, title: string }) {
-  return (
-    <div id={id} style={s.expertTag}>
-      {title}
-    </div>
-  );
+  return <div id={id} style={s.expertTag}>{title}</div>;
 }
 
 function NavLink({ id, href, children, active = false }: any) {
@@ -161,7 +157,7 @@ function NavLink({ id, href, children, active = false }: any) {
   );
 }
 
-// ✅ ESTILIZAÇÃO BRUTAL (Fiel ao seu CSS/Docx)
+// ✅ ESTILIZAÇÃO BRUTAL (Centralização de 229px e Gradientes)
 const s: Record<string, React.CSSProperties> = {
   root: { background: "#e7e6e2", minHeight: "100vh", fontFamily: "Inter, sans-serif" },
   topBar: { 
@@ -193,8 +189,8 @@ const s: Record<string, React.CSSProperties> = {
   memberRole: { fontSize: 10, color: "#888" },
   formCard: { background: "#FFF", borderRadius: 24, padding: 30, display: "flex", flexDirection: "column" },
   formText: { fontSize: 14, color: "#535353", marginBottom: 20 },
-  textArea: { borderRadius: 12, marginBottom: 20 },
-  inviteBtn: { height: 50, borderRadius: 12, background: "#74b924", border: "none", fontSize: 16, fontWeight: 700, color: "#fff" },
+  textArea: { borderRadius: 12, marginBottom: 20, padding: 10, border: "1px solid #d9d9d9" },
+  inviteBtn: { height: 50, borderRadius: 12, background: "#74b924", border: "none", fontSize: 16, fontWeight: 700, color: "#fff", cursor: "pointer" },
   createLink: { textAlign: "center", marginTop: 15, fontSize: 12, color: "#888", textDecoration: "none" },
   expertsSection: { marginTop: 40 },
   sectionTitle: { fontSize: 22, marginBottom: 25 },

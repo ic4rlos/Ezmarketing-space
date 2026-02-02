@@ -4,26 +4,31 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 
-// ✅ ÍCONES (Mantendo a compatibilidade com o projeto)
+// ✅ ÍCONES ORIGINAIS (Mantidos conforme o seu projeto)
 import SearchSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__SearchSvg";
 import ChevronDownSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__ChevronDownSvg";
 import SemTitulo1SvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__SemTitulo1Svg";
 
-// ✅ ESTRATÉGIA DE IMPORTAÇÃO "ULTRA-SAFE" PARA DEPLOY VERCEL
+// ✅ A FORMA CORRETA E SEGURA (SEM GAMBIARRA)
+// Importamos o componente pai e extraímos o filho no .then()
 const Slider = dynamic<any>(() => import("react-slick").then(m => m.default), { ssr: false });
 const AntdButton = dynamic<any>(() => import("antd").then(m => m.Button), { ssr: false });
-const AntdDropdown = dynamic<any>(() => import("antd").then(m => m.Dropdown), { ssr: false });
-const AntdTextArea = dynamic<any>(() => import("antd").then(m => m.Input.then(i => i.TextArea)), { ssr: false });
+
+// Aqui está o segredo: carregamos o Input e retornamos especificamente o TextArea
+const AntdTextArea = dynamic<any>(() => 
+  import("antd").then(m => {
+    const { Input } = m;
+    return Input.TextArea;
+  }), { ssr: false }
+);
+
 const YouTube = dynamic<any>(() => import("react-youtube").then(m => m.default), { ssr: false });
 
 export default function AApplyToACommunity() {
   const router = useRouter();
-
-  // ✅ ESTADOS PARA CONEXÃO SUPABASE
   const [shortMessage, setShortMessage] = React.useState("");
   const [isInviting, setIsInviting] = React.useState(false);
 
-  // Configurações do Slider (Membros)
   const memberSliderSettings = {
     dots: false,
     infinite: true,
@@ -39,16 +44,13 @@ export default function AApplyToACommunity() {
         <title>Apply to a Community | EZ Marketing</title>
       </Head>
 
-      {/* 🟢 HEADER (Fidelidade visual: Padding 229px) */}
       <header id="topBar" style={s.topBar}>
         <img src="/plasmic/ez_marketing_platform/images/logo2Svg.svg" style={s.logo} alt="EZ Logo" />
-        
         <div style={s.navLinks}>
           <NavLink id="popover7" href="/service-dashboard">Service Dashboard</NavLink>
           <NavLink id="popover8" href="/community-dashboard">Community Dashboard</NavLink>
           <NavLink id="popover9" href="/market-trends">Market Trends</NavLink>
           <NavLink id="popover10" href="/find-a-business" active>Find a business</NavLink>
-          
           <div id="popover26" style={s.profileTrigger}>
             <div style={s.avatarPlaceholder} />
             <ChevronDownSvgIcon style={{ width: 12 }} />
@@ -58,8 +60,6 @@ export default function AApplyToACommunity() {
 
       <main style={s.mainContainer}>
         <section style={s.heroSection}>
-          
-          {/* NÓ: container3 (Informações da Comunidade) */}
           <div id="container3" style={s.communityCard}>
             <div style={s.communityHeader}>
               <div id="communityLogo" style={s.largeAvatar}>
@@ -82,10 +82,9 @@ export default function AApplyToACommunity() {
               </div>
             </div>
 
-            {/* NÓ: sliderCarousel (Slider de Membros) */}
             <div id="sliderCarousel" style={{ marginTop: 20 }}>
               <Slider {...memberSliderSettings}>
-                {[1, 2, 3, 4, 5].map((i: number) => (
+                {[1, 2, 3, 4, 5].map((i: any) => (
                   <div key={i} style={s.memberSlide}>
                     <div style={s.memberAvatar} />
                     <div style={s.memberRole}>Market Manager</div>
@@ -95,7 +94,6 @@ export default function AApplyToACommunity() {
             </div>
           </div>
 
-          {/* 🔴 NÓ: container2 (Formulário de Convite - Supabase Ready) */}
           <div id="container2" style={s.formCard}>
             <p style={s.formText}>If you are excited about working with this community, please enter a short message here and click "Invite"</p>
             
@@ -121,7 +119,6 @@ export default function AApplyToACommunity() {
           </div>
         </section>
 
-        {/* 🔴 NÓ: container11 (Especialistas/Popovers extraídos) */}
         <section id="container11" style={s.expertsSection}>
           <h2 style={s.sectionTitle}>Experts & Capabilities</h2>
           <div style={s.expertGrid}>
@@ -133,7 +130,6 @@ export default function AApplyToACommunity() {
           </div>
         </section>
 
-        {/* Vídeo e Layout Final */}
         <section id="youtubeVideo" style={s.videoContainer}>
            <YouTube videoId="dQw4w9WgXcQ" opts={{ width: '100%', height: '500px' }} />
         </section>
@@ -142,8 +138,8 @@ export default function AApplyToACommunity() {
   );
 }
 
-// ✅ COMPONENTES DE APOIO INTERNOS
-function ExpertTag({ id, title }: { id: string, title: string }) {
+// ✅ AUXILIARES COM TYPING FLEXÍVEL
+function ExpertTag({ id, title }: any) {
   return <div id={id} style={s.expertTag}>{title}</div>;
 }
 
@@ -157,7 +153,7 @@ function NavLink({ id, href, children, active = false }: any) {
   );
 }
 
-// ✅ ESTILIZAÇÃO EXTRAÍDA DO PROJETO ORIGINAL
+// ✅ ESTILOS CSS RECONSTRUÍDOS
 const s: Record<string, React.CSSProperties> = {
   root: { background: "#e7e6e2", minHeight: "100vh", fontFamily: "Inter, sans-serif" },
   topBar: { 
@@ -189,7 +185,7 @@ const s: Record<string, React.CSSProperties> = {
   memberRole: { fontSize: 10, color: "#888" },
   formCard: { background: "#FFF", borderRadius: 24, padding: 30, display: "flex", flexDirection: "column" },
   formText: { fontSize: 14, color: "#535353", marginBottom: 20 },
-  textArea: { borderRadius: 12, marginBottom: 20, padding: 10, border: "1px solid #d9d9d9", minHeight: 120 },
+  textArea: { borderRadius: 12, marginBottom: 20, padding: 12, border: "1px solid #d9d9d9", minHeight: 120 },
   inviteBtn: { height: 50, borderRadius: 12, background: "#74b924", border: "none", fontSize: 16, fontWeight: 700, color: "#fff", cursor: "pointer" },
   createLink: { textAlign: "center", marginTop: 15, fontSize: 12, color: "#888", textDecoration: "none" },
   expertsSection: { marginTop: 40 },

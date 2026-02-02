@@ -4,196 +4,180 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 
-// --- ÍCONES E ASSETS (Caminhos validados pelo PlasmicAApplyToACommunity.tsx) ---
+// --- IMPORTAÇÃO DE ÍCONES (Validados pelo seu arquivo Plasmic) ---
 import SemTitulo1SvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__SemTitulo1Svg";
 import CheckSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__CheckSvg";
 import Icon38Icon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__Icon38";
 import ChevronDownSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__ChevronDownSvg";
 import SearchSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__SearchSvg";
+import Icon36Icon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__Icon36";
+import Icon13Icon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__Icon13";
 
-// --- COMPONENTES DINÂMICOS (Evita erros de Hydration e Build no Vercel) ---
+// --- COMPONENTES DINÂMICOS (Configuração Robusta para Vercel) ---
 const Slider = dynamic<any>(() => import("react-slick").then(m => m.default), { ssr: false });
 const YouTube = dynamic<any>(() => import("react-youtube").then(m => m.default), { ssr: false });
 const AntdButton = dynamic<any>(() => import("antd").then(m => m.Button), { ssr: false });
+const AntdTextArea = dynamic<any>(() => import("antd").then(m => m.Input).then(i => i.TextArea), { ssr: false });
 const AntdRate = dynamic<any>(() => import("antd").then(m => m.Rate), { ssr: false });
-const AntdPopover = dynamic<any>(() => import("antd").then(m => m.Popover), { ssr: false });
-
-// --- TYPES ---
-interface ExpertTagProps {
-  id: string;
-  title: string;
-  active?: boolean;
-}
+const AntdDropdown = dynamic<any>(() => import("antd").then(m => m.Dropdown), { ssr: false });
+const AntdMenu = dynamic<any>(() => import("antd").then(m => m.Menu), { ssr: false });
 
 /**
  * PÁGINA: AApplyToACommunity
- * Esta página foi reconstruída para ser resiliente a erros de deploy,
- * mantendo a densidade de código e funcionalidades solicitadas.
+ * Uma reconstrução completa baseada no código trunfo do Plasmic.
  */
 export default function AApplyToACommunity() {
   const router = useRouter();
 
-  // --- ESTADOS DE UI ---
+  // --- ESTADOS (BUSINESS LOGIC) ---
   const [shortMessage, setShortMessage] = React.useState("");
   const [isInviting, setIsInviting] = React.useState(false);
   const [activeTab, setActiveTab] = React.useState("about");
-  const [communityRating, setCommunityRating] = React.useState(4.5);
+  const [notifications, setNotifications] = React.useState(3);
 
-  // --- CONFIGURAÇÕES DOS CARROSÉIS ---
-  const memberSliderSettings = {
-    dots: true,
+  // --- CONFIGS DE CARROSÉIS (SLICK) ---
+  const memberSettings = {
+    dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    responsive: [
-      { breakpoint: 1200, settings: { slidesToShow: 3 } },
-      { breakpoint: 800, settings: { slidesToShow: 1 } }
-    ]
+    arrows: false
   };
 
-  const partnerSliderSettings = {
-    arrows: false,
+  const partnerSettings = {
+    infinite: true,
+    slidesToShow: 6,
+    slidesToScroll: 1,
     autoplay: true,
+    speed: 3000,
     autoplaySpeed: 0,
     cssEase: "linear",
-    speed: 10000,
-    slidesToShow: 5,
-    infinite: true,
-    pauseOnHover: false
+    pauseOnHover: false,
+    arrows: false
   };
 
   // --- HANDLERS ---
-  const handleInviteSubmit = async () => {
-    if (!shortMessage.trim()) return alert("Please enter a message.");
-    setIsInviting(true);
-    try {
-      // Simulação de Integração Supabase/API
-      await new Promise(res => setTimeout(res, 2000));
-      alert("Invitation sent successfully!");
-      setShortMessage("");
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setIsInviting(false);
+  const onInviteClick = async () => {
+    if (shortMessage.length < 10) {
+      alert("Please enter a more detailed message.");
+      return;
     }
+    setIsInviting(true);
+    // Simulando envio para o Supabase ou backend
+    setTimeout(() => {
+      setIsInviting(false);
+      alert("Application sent! Wait for the manager's response.");
+      setShortMessage("");
+    }, 2000);
   };
 
   return (
-    <div style={s.root}>
+    <div style={styles.root}>
       <Head>
         <title>Apply to a Community | EZ Marketing</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* 🟢 TOPBAR (Padding 229px - Identidade Visual Plasmic) */}
-      <header id="topBar" style={s.topBar}>
-        <div style={s.topBarContent}>
-          <div id="logoContainer" onClick={() => router.push("/")} style={s.logoWrapper}>
+      {/* 🟢 HEADER (topBar) - Padding 229px */}
+      <header id="topBar" style={styles.topBar}>
+        <div style={styles.topBarContent}>
+          <div id="logoContainer" style={styles.logoContainer} onClick={() => router.push("/")}>
             <img 
-              src="/plasmic/ez_marketing_platform/images/logoPng2.png" 
-              style={s.logo} 
-              alt="EZ Marketing" 
+              src="/plasmic/ez_marketing_platform/images/logo2Svg.svg" 
+              style={styles.logoImg} 
+              alt="Logo" 
             />
           </div>
 
-          <nav style={s.navLinks}>
-            <NavLink href="/a-service-dashboard">Service Dashboard</NavLink>
-            <NavLink href="/a-community-dashboard">Community Dashboard</NavLink>
-            <NavLink href="/market-trends">Market Trends</NavLink>
-            <NavLink href="/a-find-a-business" active>Find a business</NavLink>
-            
-            <AntdPopover content={<div>User Profile Settings</div>} trigger="hover">
-              <div id="popover26" style={s.profileTrigger}>
-                <div style={s.avatarWrapper}>
-                  <div style={s.avatarPlaceholder} />
-                  <div style={s.onlineBadge} />
-                </div>
-                <ChevronDownSvgIcon style={s.chevronIcon} />
-              </div>
-            </AntdPopover>
+          <nav style={styles.navMain}>
+            <NavLink href="/a-service-dashboard" label="Service Dashboard" />
+            <NavLink href="/a-community-dashboard" label="Community Dashboard" />
+            <NavLink href="/market-trends" label="Market Trends" />
+            <NavLink href="/a-find-a-business" label="Find a business" active />
+
+            <div id="popover26" style={styles.profileArea}>
+              <div style={styles.notificationBadge}>{notifications}</div>
+              <div style={styles.avatarCircle} />
+              <ChevronDownSvgIcon style={{ width: 12, color: "#535353" }} />
+            </div>
           </nav>
         </div>
       </header>
 
-      {/* 🔵 MAIN CONTENT */}
-      <main style={s.mainWrapper}>
+      {/* 🔵 CONTEÚDO PRINCIPAL (Main Container) */}
+      <main style={styles.mainContainer}>
         
-        {/* SECTION HERO: Grid 2 Colunas (Info + Invite) */}
-        <section id="heroSection" style={s.heroGrid}>
+        {/* SECTION HERO (container3 + container2) */}
+        <section style={styles.heroSection}>
           
-          {/* NÓ: container3 (Comunidade e Membros) */}
-          <div id="container3" style={s.glassCard}>
-            <div style={s.communityHeader}>
-              <div id="communityLogo" style={s.mainAvatarFrame}>
-                <SemTitulo1SvgIcon style={{ width: "60%", height: "60%", color: "#74b924" }} />
+          {/* LADO ESQUERDO: Card da Comunidade */}
+          <div id="container3" style={styles.communityCard}>
+            <div style={styles.cardHeader}>
+              <div id="communityLogo" style={styles.logoBox}>
+                <SemTitulo1SvgIcon style={{ width: "100%", height: "100%" }} />
               </div>
-              <div style={s.communityInfo}>
-                <h1 style={s.titleText}>Innovation Hub Community</h1>
-                <div style={s.badgeRow}>
-                  <span style={s.tagGold}>GOLD MEMBER</span>
-                  <span style={s.tagVerified}>
-                    <CheckSvgIcon style={{ width: 12, marginRight: 5 }} /> Verified
-                  </span>
+              <div style={styles.titleArea}>
+                <h1 style={styles.communityTitle}>Community Name</h1>
+                <div style={styles.badgeRow}>
+                  <div style={styles.tagGold}>GOLD</div>
+                  <div style={styles.tagVerified}>
+                    <CheckSvgIcon style={{ width: 10, marginRight: 4 }} />
+                    Verified
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Dash de Métricas Rápidas */}
-            <div style={s.metricsRow}>
-              <div id="communityRate" style={s.metricBox}>
-                <span style={s.metricLabel}>Community Performance</span>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
-                  <div id="rateSum" style={s.metricValue}>U$ 45,900.00</div>
-                  <span style={s.trendUp}>+15.2%</span>
-                </div>
-                <AntdRate disabled defaultValue={4.5} style={s.rateStars} />
+            {/* MÉTIDAS (communityRate + goalsSum) */}
+            <div style={styles.metricsGrid}>
+              <div id="communityRate" style={styles.metricBox}>
+                <span style={styles.metricLabel}>Community Rate</span>
+                <div id="rateSum" style={styles.metricValue}>U$ 0.00</div>
+                <AntdRate disabled defaultValue={5} style={{ fontSize: 12 }} />
               </div>
 
-              <div id="goalsSum" style={s.metricBoxSpecial}>
-                <span style={s.metricLabel}>Active Projects</span>
-                <div style={s.metricValueLarge}>14 / 20</div>
-                <div style={s.progressContainer}>
-                  <div style={{ ...s.progressFill, width: '70%' }} />
+              <div id="goalsSum" style={styles.metricBoxGlass}>
+                <span style={styles.metricLabel}>Goals Reached</span>
+                <div style={styles.metricValueLarge}>0/0</div>
+                <div style={styles.progressTrack}>
+                  <div style={{ ...styles.progressFill, width: "10%" }} />
                 </div>
               </div>
             </div>
 
-            {/* NÓ: sliderCarousel (Membros) */}
-            <div id="sliderCarousel" style={s.carouselSection}>
-              <h3 style={s.subTitle}>Featured Members</h3>
-              <Slider {...memberSliderSettings}>
-                {[1, 2, 3, 4, 5, 6].map(i => (
-                  <div key={i} style={s.slideItem}>
-                    <div style={s.memberCard}>
-                      <div style={s.memberAvatar} />
-                      <div style={s.memberName}>Expert Pro {i}</div>
-                      <div style={s.memberRole}>Senior Strategist</div>
-                    </div>
+            {/* SLIDER DE MEMBROS */}
+            <div id="sliderCarousel" style={styles.memberSliderArea}>
+              <h4 style={styles.smallTitle}>Recent Active Members</h4>
+              <Slider {...memberSettings}>
+                {[1, 2, 3, 4, 5].map(i => (
+                  <div key={i} style={styles.slideItem}>
+                    <div style={styles.memberAvatar} />
+                    <div style={styles.memberName}>Member Name</div>
+                    <div style={styles.memberRole}>Manager</div>
                   </div>
                 ))}
               </Slider>
             </div>
           </div>
 
-          {/* NÓ: container2 (Card de Convite/Formulário) */}
-          <div id="container2" style={s.formCard}>
-            <div style={s.formHeader}>
-              <h2 style={s.formTitle}>Join this Hub</h2>
-              <p style={s.formDesc}>
-                Tell the community managers why you are a great fit for their upcoming projects.
-              </p>
-            </div>
+          {/* LADO DIREITO: Card de Convite (container2) */}
+          <div id="container2" style={styles.inviteCard}>
+            <h2 style={styles.inviteTitle}>Join Community</h2>
+            <p style={styles.inviteText}>
+              If you are excited about working with this community, please enter a short message here and click "Invite"
+            </p>
 
-            <div style={s.inputGroup}>
-              <label style={s.label}>Your Proposal</label>
-              <textarea 
+            <div style={styles.formGroup}>
+              <label style={styles.fieldLabel}>Your Message</label>
+              <AntdTextArea 
                 id="shortMessage"
                 value={shortMessage}
-                onChange={(e) => setShortMessage(e.target.value)}
-                placeholder="If you are excited about working with this community, please enter a short message here and click 'Invite'"
-                style={s.textArea}
+                onChange={(e: any) => setShortMessage(e.target.value)}
+                placeholder="Ex: I would love to contribute with my marketing skills..."
+                rows={6}
+                style={styles.textArea}
               />
             </div>
 
@@ -201,83 +185,89 @@ export default function AApplyToACommunity() {
               id="inviteButon"
               type="primary"
               loading={isInviting}
-              onClick={handleInviteSubmit}
-              style={s.inviteBtn}
+              onClick={onInviteClick}
+              style={styles.primaryButton}
             >
-              INVITE TO COLLABORATE
+              INVITE
             </AntdButton>
 
-            <div style={s.formFooter}>
-              <span>Looking to build your own?</span>
-              <Link href="/a-create-community" style={s.greenLink}>Create a Community</Link>
-            </div>
+            <Link href="/a-create-community" style={styles.footerLink}>
+              Create a Community
+            </Link>
           </div>
         </section>
 
-        {/* SECTION: Partners Slider (container10 / sliderCarousel2) */}
-        <section id="container10" style={s.partnersSection}>
-          <h4 style={s.partnerTitle}>CONNECTED COMPANIES & PARTNERS</h4>
-          <div id="sliderCarousel2" style={s.partnerSliderWrapper}>
-            <Slider {...partnerSliderSettings}>
+        {/* SECTION PARCEIROS (container10) */}
+        <section id="container10" style={styles.partnersSection}>
+          <div style={styles.partnerDivider}>
+            <div style={styles.line} />
+            <span style={styles.lineText}>TRUSTED PARTNERS</span>
+            <div style={styles.line} />
+          </div>
+          <div id="sliderCarousel2" style={styles.partnerSlider}>
+            <Slider {...partnerSettings}>
               {[1, 2, 3, 4, 5, 6, 7, 8].map(i => (
-                <div key={i} style={s.partnerLogoItem}>
-                  <div style={s.partnerLogoBox}>
-                    <Icon38Icon style={{ width: 24, marginRight: 10 }} />
-                    <span>Partner_{i}</span>
-                  </div>
+                <div key={i} style={styles.partnerLogo}>
+                  <Icon38Icon style={{ width: 30, opacity: 0.5 }} />
                 </div>
               ))}
             </Slider>
           </div>
         </section>
 
-        {/* SECTION: Experts & Capabilities (container11) */}
-        <section id="container11" style={s.expertsSection}>
-          <div style={s.expertsHeader}>
-            <h2 style={s.sectionTitle}>Main Capabilities</h2>
-            <div style={s.searchBar}>
-              <SearchSvgIcon style={{ width: 16, color: "#999" }} />
-              <input type="text" placeholder="Search skills..." style={s.searchInternal} />
+        {/* SECTION EXPERTS (container11) */}
+        <section id="container11" style={styles.expertsSection}>
+          <div style={styles.sectionHeader}>
+            <h2 style={styles.sectionTitle}>Experts & Capabilities</h2>
+            <div style={styles.searchBox}>
+              <SearchSvgIcon style={{ width: 14, marginRight: 8 }} />
+              <input type="text" placeholder="Filter skills..." style={styles.searchInput} />
             </div>
           </div>
 
-          <div style={s.tagCloud}>
-            <ExpertTag id="popover21" title="Visual Content Creation" active />
-            <ExpertTag id="popover22" title="Performance Marketing" />
-            <ExpertTag id="popover23" title="Web3 Development" active />
-            <ExpertTag id="popover24" title="Strategic Planning" />
-            <ExpertTag id="popover25" title="Community Management" active />
-            <ExpertTag id="popover26" title="SEO / SEM" />
-            <ExpertTag id="popover27" title="UX/UI Design" />
-            <ExpertTag id="popover28" title="Data Analysis" active />
+          <div style={styles.tagsContainer}>
+            <ExpertTag id="popover21" label="Service Scheduling" active />
+            <ExpertTag id="popover22" label="Influencer Marketing" />
+            <ExpertTag id="popover23" label="Commercial Production" active />
+            <ExpertTag id="popover24" label="Performance Campaign" />
+            <ExpertTag id="popover25" label="Digital Experiences" />
+            <ExpertTag id="popover26" label="Branding Strategy" active />
+            <ExpertTag id="popover27" label="Video Editing" />
           </div>
         </section>
 
-        {/* SECTION: Tabs Details */}
-        <section style={s.tabsSection}>
-          <div style={s.tabBar}>
-            <button onClick={() => setActiveTab("about")} style={activeTab === "about" ? s.activeTab : s.inactiveTab}>About</button>
-            <button onClick={() => setActiveTab("website")} style={activeTab === "website" ? s.activeTab : s.inactiveTab}>Website</button>
+        {/* SECTION TABS (About / Website) */}
+        <section style={styles.detailsSection}>
+          <div style={styles.tabHeader}>
+            <button 
+              style={activeTab === "about" ? styles.tabBtnActive : styles.tabBtn} 
+              onClick={() => setActiveTab("about")}
+            >About</button>
+            <button 
+              style={activeTab === "website" ? styles.tabBtnActive : styles.tabBtn} 
+              onClick={() => setActiveTab("website")}
+            >Website</button>
           </div>
-          
-          <div style={s.tabContent}>
-            {activeTab === "about" ? (
-              <div id="about" style={s.tabPane}>
-                <p>We are a powerhouse of creative and technical experts. Our focus is to provide end-to-end digital solutions for scaling businesses. By joining us, you gain access to high-ticket clients and a network of professionals that value quality above all else.</p>
+
+          <div style={styles.tabBody}>
+            {activeTab === "about" && (
+              <div id="about" style={styles.tabContent}>
+                <p>This community is focused on high-level marketing execution. Our members are vetted professionals who collaborate on large-scale digital projects.</p>
               </div>
-            ) : (
-              <div id="website" style={s.tabPane}>
-                <a href="https://ezmarketing.space" target="_blank" rel="noopener noreferrer" style={s.extLink}>
-                  https://www.innovation-hub-ez.space
+            )}
+            {activeTab === "website" && (
+              <div id="website" style={styles.tabContent}>
+                <a href="https://ezmarketing.space" target="_blank" style={styles.link}>
+                  www.ezmarketing.space
                 </a>
               </div>
             )}
           </div>
         </section>
 
-        {/* SECTION: Video (youtubeVideo) */}
-        <section id="youtubeVideo" style={s.videoSection}>
-          <div style={s.videoContainer}>
+        {/* SECTION VIDEO (youtubeVideo) */}
+        <section id="youtubeVideo" style={styles.videoSection}>
+          <div style={styles.videoFrame}>
             <YouTube 
               videoId="dQw4w9WgXcQ" 
               opts={{ width: "100%", height: "500px", playerVars: { autoplay: 0 } }} 
@@ -287,12 +277,13 @@ export default function AApplyToACommunity() {
 
       </main>
 
-      <footer style={s.footer}>
-        <div style={s.footerContent}>
-          <p>© 2024 EZ Marketing Platform - All rights reserved.</p>
-          <div style={s.footerLinks}>
-            <span>Privacy Policy</span>
-            <span>Terms of Service</span>
+      {/* 🔴 FOOTER */}
+      <footer style={styles.footer}>
+        <div style={styles.footerContent}>
+          <p>© 2024 EZ Marketing. All rights reserved.</p>
+          <div style={styles.socialIcons}>
+            <Icon13Icon style={{ width: 20 }} />
+            <Icon36Icon style={{ width: 20 }} />
           </div>
         </div>
       </footer>
@@ -300,123 +291,134 @@ export default function AApplyToACommunity() {
   );
 }
 
-// --- SUB-COMPONENTES ---
+// --- COMPONENTES INTERNOS (HELPERS) ---
 
-function ExpertTag({ id, title, active }: ExpertTagProps) {
-  return (
-    <div 
-      id={id} 
-      style={{
-        ...s.tagBase,
-        background: active ? "#74b924" : "#ffffff",
-        color: active ? "#fff" : "#666",
-        border: active ? "1px solid #74b924" : "1px solid #ddd"
-      }}
-    >
-      {active && <CheckSvgIcon style={{ width: 12, marginRight: 8 }} />}
-      {title}
-    </div>
-  );
-}
-
-function NavLink({ href, children, active = false }: any) {
+function NavLink({ href, label, active = false }: { href: string, label: string, active?: boolean }) {
   return (
     <Link href={href} style={{
-      ...s.navItem,
-      color: active ? "#000" : "#666",
-      fontWeight: active ? 700 : 500,
-      borderBottom: active ? "3px solid #74b924" : "3px solid transparent"
+      ...styles.navItem,
+      color: active ? "#000000" : "#535353",
+      fontWeight: active ? 700 : 400,
+      borderBottom: active ? "2px solid #74b924" : "2px solid transparent"
     }}>
-      {children}
+      {label}
     </Link>
   );
 }
 
-// --- ESTILOS (CSS-IN-JS) ---
-const s: Record<string, React.CSSProperties> = {
-  root: { background: "#f8f7f5", minHeight: "100vh", fontFamily: "'Inter', sans-serif" },
-  topBar: { width: "100%", height: "90px", background: "#fff", borderBottom: "1px solid #eaeaea", position: "sticky", top: 0, zIndex: 100, display: "flex", justifyContent: "center" },
-  topBarContent: { width: "100%", maxWidth: "1440px", padding: "0 229px", display: "flex", alignItems: "center", justifyContent: "space-between" },
-  logoWrapper: { cursor: "pointer" },
-  logo: { height: "40px" },
-  navLinks: { display: "flex", gap: "30px", alignItems: "center" },
-  navItem: { textDecoration: "none", fontSize: "14px", padding: "34px 0", transition: "0.2s" },
-  profileTrigger: { display: "flex", alignItems: "center", gap: "10px", background: "#f0f0f0", padding: "5px 12px", borderRadius: "30px" },
-  avatarWrapper: { position: "relative" },
-  avatarPlaceholder: { width: "32px", height: "32px", borderRadius: "50%", background: "#ccc" },
-  onlineBadge: { width: "10px", height: "10px", background: "#4ade80", borderRadius: "50%", position: "absolute", bottom: 0, right: 0, border: "2px solid #fff" },
-  chevronIcon: { width: "12px", color: "#888" },
+function ExpertTag({ id, label, active = false }: { id: string, label: string, active?: boolean }) {
+  return (
+    <div id={id} style={{
+      ...styles.tagBase,
+      background: active ? "#74b924" : "#4a4a4a",
+      boxShadow: active ? "0 4px 10px rgba(116, 185, 36, 0.4)" : "none"
+    }}>
+      {active && <CheckSvgIcon style={{ width: 12, marginRight: 8, color: "#fff" }} />}
+      {label}
+    </div>
+  );
+}
 
-  mainWrapper: { maxWidth: "1440px", margin: "0 auto", padding: "40px 229px" },
-  heroGrid: { display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: "30px", marginBottom: "40px" },
-  glassCard: { background: "#fff", borderRadius: "24px", padding: "40px", boxShadow: "0 4px 20px rgba(0,0,0,0.03)" },
-  communityHeader: { display: "flex", gap: "20px", alignItems: "center", marginBottom: "35px" },
-  mainAvatarFrame: { width: "100px", height: "100px", background: "#f9f9f9", borderRadius: "20px", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid #eee" },
-  communityInfo: { display: "flex", flexDirection: "column", gap: "5px" },
-  titleText: { fontSize: "26px", fontWeight: 800, margin: 0 },
-  badgeRow: { display: "flex", gap: "10px" },
-  tagGold: { background: "linear-gradient(135deg, #d4af37, #f9e29c)", color: "#5c4300", padding: "3px 10px", borderRadius: "5px", fontSize: "10px", fontWeight: 700 },
-  tagVerified: { background: "#e8f5e9", color: "#2e7d32", padding: "3px 10px", borderRadius: "5px", fontSize: "10px", display: "flex", alignItems: "center" },
-
-  metricsRow: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px", marginBottom: "40px" },
-  metricBox: { background: "#fafafa", padding: "20px", borderRadius: "16px", border: "1px solid #f0f0f0" },
-  metricBoxSpecial: { 
-    background: "radial-gradient(ellipse 40% 60% at 20% 20%, #ce9fff00 0%, #ffffff 100%)", 
-    padding: "20px", borderRadius: "16px", border: "3px solid #0000000a" 
+// --- OBJETO DE ESTILOS (MAPEADO DO CSS ORIGINAL) ---
+const styles: Record<string, React.CSSProperties> = {
+  root: {
+    background: "#e7e6e2",
+    minHeight: "100vh",
+    display: "flex",
+    flexDirection: "column",
+    fontFamily: "'Inter', sans-serif"
   },
-  metricLabel: { fontSize: "12px", color: "#999", display: "block", marginBottom: "5px" },
-  metricValue: { fontSize: "22px", fontWeight: 700 },
-  metricValueLarge: { fontSize: "28px", fontWeight: 800 },
-  trendUp: { color: "#4caf50", fontSize: "12px", fontWeight: 600 },
-  rateStars: { fontSize: "14px" },
-  progressContainer: { width: "100%", height: "6px", background: "#eee", borderRadius: "10px", marginTop: "10px" },
-  progressFill: { height: "100%", background: "#000", borderRadius: "10px" },
+  topBar: {
+    height: "90px",
+    background: "#ffffff",
+    display: "flex",
+    justifyContent: "center",
+    borderBottom: "1px solid #d1d1d1",
+    position: "sticky",
+    top: 0,
+    zIndex: 1000
+  },
+  topBarContent: {
+    width: "100%",
+    maxWidth: "1440px",
+    padding: "0 229px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between"
+  },
+  logoContainer: { cursor: "pointer" },
+  logoImg: { height: "45px" },
+  navMain: { display: "flex", alignItems: "center", gap: "25px" },
+  navItem: { textDecoration: "none", fontSize: "14px", padding: "10px 0", transition: "0.3s" },
+  profileArea: { display: "flex", alignItems: "center", gap: "10px", cursor: "pointer", position: "relative" },
+  notificationBadge: { position: "absolute", top: -5, left: 15, background: "#ff4d4f", color: "#fff", fontSize: "10px", padding: "2px 6px", borderRadius: "10px" },
+  avatarCircle: { width: "35px", height: "35px", borderRadius: "50%", background: "#d9d9d9", border: "1px solid #ddd" },
 
-  carouselSection: { marginTop: "30px" },
-  subTitle: { fontSize: "16px", fontWeight: 700, marginBottom: "20px" },
-  slideItem: { padding: "0 10px" },
-  memberCard: { textAlign: "center", background: "#fcfcfc", padding: "20px", borderRadius: "16px", border: "1px solid #f5f5f5" },
-  memberAvatar: { width: "60px", height: "60px", background: "#ddd", borderRadius: "50%", margin: "0 auto 10px" },
-  memberName: { fontSize: "13px", fontWeight: 600 },
-  memberRole: { fontSize: "11px", color: "#999" },
+  mainContainer: { width: "100%", maxWidth: "1440px", margin: "0 auto", padding: "40px 229px" },
+  heroSection: { display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: "30px", marginBottom: "50px" },
+  
+  communityCard: { background: "#ffffff", borderRadius: "30px", padding: "35px", boxShadow: "0 10px 30px rgba(0,0,0,0.05)" },
+  cardHeader: { display: "flex", gap: "20px", alignItems: "center", marginBottom: "30px" },
+  logoBox: { width: "80px", height: "80px", background: "#f0f0f0", borderRadius: "20px", display: "flex", alignItems: "center", justifyContent: "center" },
+  communityTitle: { fontSize: "24px", fontWeight: 800, margin: 0 },
+  badgeRow: { display: "flex", gap: "8px", marginTop: "5px" },
+  tagGold: { background: "linear-gradient(90deg, #d4af37, #f9e29c)", padding: "4px 10px", borderRadius: "6px", fontSize: "10px", fontWeight: 700, color: "#5c4300" },
+  tagVerified: { background: "#e6f7ff", color: "#1890ff", padding: "4px 10px", borderRadius: "6px", fontSize: "10px", display: "flex", alignItems: "center" },
 
-  formCard: { background: "#fff", borderRadius: "24px", padding: "40px", height: "fit-content", boxShadow: "0 10px 30px rgba(0,0,0,0.04)" },
-  formHeader: { marginBottom: "30px" },
-  formTitle: { fontSize: "22px", fontWeight: 700, margin: "0 0 10px" },
-  formDesc: { fontSize: "14px", color: "#777", lineHeight: "1.5" },
-  inputGroup: { marginBottom: "25px" },
-  label: { fontSize: "13px", fontWeight: 600, display: "block", marginBottom: "8px" },
-  textArea: { width: "100%", height: "150px", borderRadius: "12px", border: "1px solid #ddd", padding: "15px", fontSize: "14px", resize: "none", outline: "none", background: "#fdfdfd" },
-  inviteBtn: { width: "100%", height: "55px", borderRadius: "12px", background: "#74b924", border: "none", fontWeight: 700, fontSize: "15px" },
-  formFooter: { marginTop: "20px", textAlign: "center", fontSize: "13px", color: "#999" },
-  greenLink: { color: "#74b924", fontWeight: 600, marginLeft: "5px", textDecoration: "none" },
+  metricsGrid: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px", marginBottom: "30px" },
+  metricBox: { background: "#f9f9f9", padding: "20px", borderRadius: "20px", border: "1px solid #f0f0f0" },
+  metricBoxGlass: { 
+    background: "radial-gradient(ellipse 40% 60% at 20% 20%, #ce9fff00 0%, #ffffff 100%)",
+    padding: "20px", borderRadius: "20px", border: "4px solid #00000017", textAlign: "center" 
+  },
+  metricLabel: { fontSize: "12px", color: "#888", display: "block", marginBottom: "5px" },
+  metricValue: { fontSize: "22px", fontWeight: 800, color: "#000" },
+  metricValueLarge: { fontSize: "28px", fontWeight: 900, color: "#000" },
+  progressTrack: { width: "100%", height: "6px", background: "#eee", borderRadius: "10px", marginTop: "10px", overflow: "hidden" },
+  progressFill: { height: "100%", background: "#74b924" },
 
-  partnersSection: { marginBottom: "50px", background: "#fff", padding: "30px", borderRadius: "24px" },
-  partnerTitle: { fontSize: "12px", color: "#bbb", letterSpacing: "1px", textAlign: "center", marginBottom: "25px" },
-  partnerSliderWrapper: { width: "100%" },
-  partnerLogoItem: { padding: "0 20px" },
-  partnerLogoBox: { display: "flex", alignItems: "center", justifyContent: "center", padding: "10px", opacity: 0.6 },
+  memberSliderArea: { marginTop: "20px" },
+  smallTitle: { fontSize: "14px", color: "#535353", marginBottom: "15px" },
+  slideItem: { textAlign: "center", padding: "10px" },
+  memberAvatar: { width: "55px", height: "55px", borderRadius: "50%", background: "#eee", margin: "0 auto 8px" },
+  memberName: { fontSize: "12px", fontWeight: 600 },
+  memberRole: { fontSize: "10px", color: "#999" },
+
+  inviteCard: { background: "#ffffff", borderRadius: "30px", padding: "35px", display: "flex", flexDirection: "column" },
+  inviteTitle: { fontSize: "22px", fontWeight: 700, marginBottom: "10px" },
+  inviteText: { fontSize: "14px", color: "#535353", lineHeight: "1.6", marginBottom: "25px" },
+  formGroup: { marginBottom: "20px" },
+  fieldLabel: { fontSize: "12px", fontWeight: 600, display: "block", marginBottom: "8px" },
+  textArea: { borderRadius: "15px", padding: "15px", border: "1px solid #d9d9d9", background: "#fcfcfc" },
+  primaryButton: { height: "55px", borderRadius: "15px", background: "#74b924", border: "none", fontSize: "16px", fontWeight: 700, color: "#fff" },
+  footerLink: { textAlign: "center", marginTop: "15px", fontSize: "12px", color: "#74b924", textDecoration: "none", fontWeight: 600 },
+
+  partnersSection: { marginBottom: "50px" },
+  partnerDivider: { display: "flex", alignItems: "center", gap: "15px", marginBottom: "25px" },
+  line: { flex: 1, height: "1px", background: "#d1d1d1" },
+  lineText: { fontSize: "11px", color: "#aaa", letterSpacing: "2px" },
+  partnerSlider: { padding: "0 20px" },
+  partnerLogo: { display: "flex", justifyContent: "center" },
 
   expertsSection: { marginBottom: "50px" },
-  expertsHeader: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "25px" },
-  sectionTitle: { fontSize: "20px", fontWeight: 800, margin: 0 },
-  searchBar: { display: "flex", alignItems: "center", gap: "10px", background: "#fff", padding: "8px 15px", borderRadius: "10px", border: "1px solid #eee" },
-  searchInternal: { border: "none", outline: "none", fontSize: "13px", width: "150px" },
-  tagCloud: { display: "flex", flexWrap: "wrap", gap: "10px" },
-  tagBase: { padding: "10px 20px", borderRadius: "30px", fontSize: "13px", fontWeight: 500, display: "flex", alignItems: "center", cursor: "default", transition: "0.2s" },
+  sectionHeader: { display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "25px" },
+  sectionTitle: { fontSize: "20px", fontWeight: 800 },
+  searchBox: { display: "flex", alignItems: "center", background: "#fff", padding: "8px 15px", borderRadius: "10px", border: "1px solid #ddd" },
+  searchInput: { border: "none", outline: "none", fontSize: "13px", width: "150px" },
+  tagsContainer: { display: "flex", flexWrap: "wrap", gap: "10px" },
+  tagBase: { padding: "10px 20px", borderRadius: "30px", color: "#fff", fontSize: "13px", fontWeight: 500, display: "flex", alignItems: "center", transition: "0.2s" },
 
-  tabsSection: { marginBottom: "50px" },
-  tabBar: { display: "flex", gap: "30px", borderBottom: "1px solid #ddd" },
-  activeTab: { background: "none", border: "none", padding: "15px 0", fontSize: "15px", fontWeight: 700, color: "#000", borderBottom: "2px solid #000", cursor: "pointer" },
-  inactiveTab: { background: "none", border: "none", padding: "15px 0", fontSize: "15px", color: "#999", cursor: "pointer" },
-  tabContent: { padding: "25px 0" },
-  tabPane: { fontSize: "15px", lineHeight: "1.8", color: "#555" },
-  extLink: { color: "#74b924", textDecoration: "underline" },
+  detailsSection: { marginBottom: "50px" },
+  tabHeader: { display: "flex", gap: "30px", borderBottom: "1px solid #d1d1d1", marginBottom: "20px" },
+  tabBtn: { background: "none", border: "none", padding: "10px 0", fontSize: "15px", color: "#888", cursor: "pointer" },
+  tabBtnActive: { background: "none", border: "none", padding: "10px 0", fontSize: "15px", color: "#000", fontWeight: 700, borderBottom: "3px solid #74b924", cursor: "pointer" },
+  tabContent: { fontSize: "15px", color: "#535353", lineHeight: "1.8" },
+  link: { color: "#74b924", textDecoration: "underline" },
 
-  videoSection: { width: "100%", borderRadius: "24px", overflow: "hidden", boxShadow: "0 20px 40px rgba(0,0,0,0.1)" },
-  videoContainer: { background: "#000" },
+  videoSection: { marginBottom: "60px", borderRadius: "30px", overflow: "hidden", boxShadow: "0 15px 40px rgba(0,0,0,0.1)" },
+  videoFrame: { background: "#000" },
 
-  footer: { borderTop: "1px solid #ddd", padding: "40px 0", marginTop: "60px" },
-  footerContent: { maxWidth: "1440px", margin: "0 auto", padding: "0 229px", display: "flex", justifyContent: "space-between", color: "#aaa", fontSize: "12px" },
-  footerLinks: { display: "flex", gap: "20px" }
+  footer: { background: "#fff", padding: "40px 0", borderTop: "1px solid #eee" },
+  footerContent: { maxWidth: "1440px", margin: "0 auto", padding: "0 229px", display: "flex", justifyContent: "space-between", alignItems: "center" },
+  socialIcons: { display: "flex", gap: "20px", color: "#888" }
 };

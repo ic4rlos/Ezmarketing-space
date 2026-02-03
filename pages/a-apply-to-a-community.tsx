@@ -1,74 +1,33 @@
 /*
   =============================================================================
   PROJETO: EZ MARKETING PLATFORM 
-  PÁGINA: APPLY TO A COMMUNITY (INDIVIDUAL AGÊNCIA)
-  STATUS: DEPLOY READY (VERCEL FIXED)
+  FOCO: DESIGN PURO (DESPLASMICADO)
+  LARGURA: 1064px (CENTRALIZADO)
   =============================================================================
 */
 
 import * as React from "react";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
-import { getSupabaseA } from "../lib/a-supabaseClient";
 
-// 1. IMPORTS DINÂMICOS (Evita erro de Hydration e corrige o erro do TextArea no Build)
+// IMPORTS DINÂMICOS (Apenas para garantir que o AntDesign carregue no cliente sem erro de deploy)
 const AntdButton = dynamic(() => import("antd").then((mod) => mod.Button), { ssr: false });
 const AntdRate = dynamic(() => import("antd").then((mod) => mod.Rate), { ssr: false });
 const AntdTextArea = dynamic(() => import("antd").then((mod) => mod.Input.TextArea), { ssr: false });
 
-// 2. DESIGN SYSTEM (Extraído do seu CSS)
+// CORES E ESTILOS EXTRAÍDOS DO SEU CSS
 const THEME = {
   pageBg: "#e7e6e2",
   text: "#535353",
   white: "#ffffff",
   accent: "#228b22",
   border: "#00000017",
-  maxWidth: "1064px", // O limite exato solicitado
+  maxWidth: "1064px", 
   font: '"Inter", sans-serif',
   cardGradient: "radial-gradient(ellipse 40% 60% at 20% 20%, #ce9fff00 0%, #ffffff 100%)"
 };
 
 export default function ApplyCommunityPage() {
-  const router = useRouter();
-  const supabase = getSupabaseA();
-  
-  // States para os Nós do Backend
-  const [message, setMessage] = React.useState("");
-  const [loading, setLoading] = React.useState(false);
-
-  // Ação: Sign Out (Nó: Top bar - Account)
-  async function handleLogout() {
-    await supabase.auth.signOut();
-    router.push("/a-login");
-  }
-
-  // Ação: Invite (Nó: invite button)
-  async function handleInvite() {
-    if (!message) return alert("Por favor, preencha a mensagem de solicitação.");
-    setLoading(true);
-    
-    const { data: { user } } = await supabase.auth.getUser();
-    
-    const { error } = await supabase
-      .from("Community_members")
-      .insert({
-        short_message: message,
-        user_id: user?.id,
-        role: "member",
-        status: "request",
-        // ID fixo ou dinâmico da agência {Ez marketing agencies 2}
-      });
-
-    setLoading(false);
-    if (!error) {
-      alert("Solicitação enviada!");
-      setMessage("");
-    } else {
-      alert("Erro ao enviar. Verifique sua conexão.");
-    }
-  }
-
   return (
     <div style={{ 
       backgroundColor: THEME.pageBg, 
@@ -83,7 +42,7 @@ export default function ApplyCommunityPage() {
         <title>Apply to Community | Ez Marketing</title>
       </Head>
 
-      {/* TOP BAR (Centralizada) */}
+      {/* TOP BAR - Largura total, mas conteúdo preso em 1064px */}
       <nav style={{ 
         width: "100%", 
         background: THEME.white, 
@@ -95,22 +54,22 @@ export default function ApplyCommunityPage() {
         <div style={{ width: THEME.maxWidth, display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0 20px" }}>
           <img 
             src="/plasmic/ez_marketing_platform/images/logo2Svg.svg" 
-            style={{ height: 35, cursor: "pointer" }} 
-            onClick={() => router.push("/")}
+            style={{ height: 35 }} 
+            alt="Logo"
           />
-          <span onClick={handleLogout} style={{ fontSize: 13, fontWeight: 600, cursor: "pointer" }}>
+          <span style={{ fontSize: 13, fontWeight: 600, cursor: "pointer" }}>
             Sign out
           </span>
         </div>
       </nav>
 
-      {/* MAIN CONTENT (Limitado a 1064px e Centralizado) */}
+      {/* CONTEÚDO PRINCIPAL - CENTRALIZADO EM 1064px */}
       <main style={{ 
         width: THEME.maxWidth, 
         margin: "40px 0", 
         padding: "0 20px",
         display: "grid",
-        gridTemplateColumns: "1fr 340px", // Layout Sidebar fixa
+        gridTemplateColumns: "1fr 340px", 
         gap: "30px",
         boxSizing: "border-box"
       }}>
@@ -118,10 +77,10 @@ export default function ApplyCommunityPage() {
         {/* COLUNA ESQUERDA: INFOS DA AGÊNCIA */}
         <section style={{ display: "flex", flexDirection: "column", gap: "25px" }}>
           
-          {/* Header (Nó: community_logo, type, community_name) */}
+          {/* Header da Comunidade */}
           <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
             <div style={{ width: 100, height: 100, borderRadius: 20, background: "#fff", overflow: "hidden", border: `1px solid ${THEME.border}` }}>
-              <img src="URL_DA_LOGO_DO_SUPABASE" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              <div style={{ width: "100%", height: "100%", background: "#ccc" }} /> {/* Placeholder para Logo */}
             </div>
             <div>
               <span style={{ fontSize: 11, fontWeight: 800, color: THEME.accent, textTransform: "uppercase" }}>Professional Agency</span>
@@ -129,30 +88,38 @@ export default function ApplyCommunityPage() {
             </div>
           </div>
 
-          {/* Vídeo e Descrição (Nó: Container 8 e 11) */}
+          {/* Vídeo e Descrição */}
           <div style={{ background: THEME.white, padding: "35px", borderRadius: "28px", border: `1px solid ${THEME.border}` }}>
             <h3 style={{ fontSize: 15, fontWeight: 700, marginBottom: 20 }}>Introduction</h3>
             
-            {/* Aspect Ratio 16:9 Centralizado */}
-            <div style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden", borderRadius: "15px", background: "#000" }}>
+            {/* VÍDEO COM PROPORÇÃO CORRETA (16:9) */}
+            <div style={{ 
+              position: "relative", 
+              paddingBottom: "56.25%", 
+              height: 0, 
+              overflow: "hidden", 
+              borderRadius: "15px", 
+              background: "#000" 
+            }}>
               <iframe 
                 style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ" // ID dinâmico via nó youtube_video
-                frameBorder="0" allowFullScreen 
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                frameBorder="0" 
+                allowFullScreen 
               />
             </div>
 
             <div style={{ marginTop: 25 }}>
               <p style={{ fontSize: 14, lineHeight: "1.7", color: "#666" }}>
-                Esta é a descrição oficial da comunidade vinda do nó "about". Ela será alimentada dinamicamente pela sua tabela no Supabase.
+                Aqui ficará o texto de descrição da comunidade. Este design segue exatamente os espaçamentos do seu projeto original, mas sem o código pesado do Plasmic.
               </p>
               <a href="#" style={{ color: THEME.accent, fontWeight: 700, textDecoration: "underline" }}>Visit Website</a>
             </div>
           </div>
 
-          {/* Membros (Nó: Slider Carousel) */}
+          {/* Slider de Membros (Visual Simulado) */}
           <div style={{ display: "flex", gap: "15px", overflowX: "auto", paddingBottom: "10px" }}>
-            {[1, 2, 3, 4].map((i) => (
+            {[1, 2, 3, 4, 5].map((i) => (
               <div key={i} style={{ 
                 minWidth: 140, padding: "12px", borderRadius: "70px", background: THEME.white, border: `4px solid ${THEME.border}`,
                 display: "flex", flexDirection: "column", alignItems: "center"
@@ -164,10 +131,10 @@ export default function ApplyCommunityPage() {
           </div>
         </section>
 
-        {/* COLUNA DIREITA: SIDEBAR DE AÇÃO */}
+        {/* COLUNA DIREITA: SIDEBAR */}
         <aside style={{ display: "flex", flexDirection: "column", gap: "25px" }}>
           
-          {/* Card de Aplicação (Nó: Container 2) */}
+          {/* Card de Aplicação */}
           <div style={{ 
             background: THEME.white, padding: "30px", borderRadius: "28px", border: `1px solid ${THEME.border}`,
             boxShadow: "0 10px 40px rgba(0,0,0,0.02)"
@@ -175,29 +142,25 @@ export default function ApplyCommunityPage() {
             <h4 style={{ fontSize: 17, fontWeight: 800, marginBottom: 15 }}>Apply to join</h4>
             <AntdTextArea 
               rows={6} 
-              placeholder="Why do you want to join this community?" 
+              placeholder="Write your message here..." 
               style={{ borderRadius: "12px", padding: "15px", border: "1px solid #eee" }}
-              value={message}
-              onChange={(e: any) => setMessage(e.target.value)}
             />
             <AntdButton 
               type="primary" 
               block 
-              onClick={handleInvite}
-              loading={loading}
               style={{ background: THEME.accent, borderColor: THEME.accent, height: 50, borderRadius: "12px", fontWeight: 700, marginTop: 20 }}
             >
               SEND INVITE
             </AntdButton>
           </div>
 
-          {/* Ratings (Nó: community rate) */}
+          {/* Ratings */}
           <div style={{ background: THEME.white, padding: "20px", borderRadius: "25px", border: `1px solid ${THEME.border}`, textAlign: "center" }}>
-             <AntdRate disabled defaultValue={4.5} style={{ color: THEME.accent }} />
-             <div style={{ marginTop: 8, fontSize: 12, fontWeight: 600 }}>128 avaliações feitas</div>
+             <AntdRate disabled defaultValue={4} style={{ color: THEME.accent }} />
+             <div style={{ marginTop: 8, fontSize: 12, fontWeight: 600 }}>128 avaliações</div>
           </div>
 
-          {/* Metas (Nó: Goals sum) */}
+          {/* Goals Card (Com o gradiente do seu CSS) */}
           <div style={{ 
             background: THEME.cardGradient, 
             padding: "25px", 

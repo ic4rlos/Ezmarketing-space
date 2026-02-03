@@ -1,23 +1,31 @@
+/*
+  =============================================================================
+  PROJETO: EZ MARKETING PLATFORM 
+  PÁGINA: APPLY TO A COMMUNITY (INDIVIDUAL AGÊNCIA)
+  STATUS: DEPLOY READY (VERCEL FIXED)
+  =============================================================================
+*/
+
 import * as React from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import { getSupabaseA } from "../lib/a-supabaseClient";
 
-// --- UI COMPONENTS ---
+// 1. IMPORTS DINÂMICOS (Evita erro de Hydration e corrige o erro do TextArea no Build)
 const AntdButton = dynamic(() => import("antd").then((mod) => mod.Button), { ssr: false });
-const AntdInput = dynamic(() => import("antd").then((mod) => mod.Input), { ssr: false });
 const AntdRate = dynamic(() => import("antd").then((mod) => mod.Rate), { ssr: false });
-const { TextArea } = AntdInput;
+const AntdTextArea = dynamic(() => import("antd").then((mod) => mod.Input.TextArea), { ssr: false });
 
-// --- CORES EXTRAÍDAS DO SEU CSS ---
-const STYLES = {
+// 2. DESIGN SYSTEM (Extraído do seu CSS)
+const THEME = {
   pageBg: "#e7e6e2",
   text: "#535353",
   white: "#ffffff",
+  accent: "#228b22",
   border: "#00000017",
-  fontFamily: '"Inter", sans-serif',
-  accent: "#228b22", // Verde da agência
+  maxWidth: "1064px", // O limite exato solicitado
+  font: '"Inter", sans-serif',
   cardGradient: "radial-gradient(ellipse 40% 60% at 20% 20%, #ce9fff00 0%, #ffffff 100%)"
 };
 
@@ -25,13 +33,21 @@ export default function ApplyCommunityPage() {
   const router = useRouter();
   const supabase = getSupabaseA();
   
-  // States baseados nos nós do Backend
+  // States para os Nós do Backend
   const [message, setMessage] = React.useState("");
   const [loading, setLoading] = React.useState(false);
 
-  // Função de Invite (Nó: invite button)
+  // Ação: Sign Out (Nó: Top bar - Account)
+  async function handleLogout() {
+    await supabase.auth.signOut();
+    router.push("/a-login");
+  }
+
+  // Ação: Invite (Nó: invite button)
   async function handleInvite() {
+    if (!message) return alert("Por favor, preencha a mensagem de solicitação.");
     setLoading(true);
+    
     const { data: { user } } = await supabase.auth.getUser();
     
     const { error } = await supabase
@@ -41,128 +57,164 @@ export default function ApplyCommunityPage() {
         user_id: user?.id,
         role: "member",
         status: "request",
-        community_id: "ID_DA_AGENCIA_AQUI" // Ez marketing agencies 2
+        // ID fixo ou dinâmico da agência {Ez marketing agencies 2}
       });
 
     setLoading(false);
-    if (!error) alert("Solicitação enviada!");
+    if (!error) {
+      alert("Solicitação enviada!");
+      setMessage("");
+    } else {
+      alert("Erro ao enviar. Verifique sua conexão.");
+    }
   }
 
   return (
     <div style={{ 
-      backgroundColor: STYLES.pageBg, 
+      backgroundColor: THEME.pageBg, 
       minHeight: "100vh", 
-      fontFamily: STYLES.fontFamily,
-      color: STYLES.text 
+      fontFamily: THEME.font, 
+      color: THEME.text,
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center"
     }}>
-      <Head><title>Apply to Community</title></Head>
+      <Head>
+        <title>Apply to Community | Ez Marketing</title>
+      </Head>
 
-      {/* TOP BAR CENTRALIZADA */}
-      <nav style={{ background: STYLES.white, borderBottom: `1px solid ${STYLES.border}`, display: 'flex', justifyContent: 'center', padding: '12px 0' }}>
-        <div style={{ width: '100%', maxWidth: '1100px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 20px' }}>
-          <img src="/plasmic/ez_marketing_platform/images/logo2Svg.svg" style={{ height: 35 }} />
-          <div style={{ fontSize: 14, fontWeight: 500, cursor: 'pointer' }}>Sign out</div>
+      {/* TOP BAR (Centralizada) */}
+      <nav style={{ 
+        width: "100%", 
+        background: THEME.white, 
+        borderBottom: `1px solid ${THEME.border}`,
+        display: "flex",
+        justifyContent: "center",
+        padding: "15px 0"
+      }}>
+        <div style={{ width: THEME.maxWidth, display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0 20px" }}>
+          <img 
+            src="/plasmic/ez_marketing_platform/images/logo2Svg.svg" 
+            style={{ height: 35, cursor: "pointer" }} 
+            onClick={() => router.push("/")}
+          />
+          <span onClick={handleLogout} style={{ fontSize: 13, fontWeight: 600, cursor: "pointer" }}>
+            Sign out
+          </span>
         </div>
       </nav>
 
-      {/* CONTEÚDO PRINCIPAL CENTRALIZADO */}
+      {/* MAIN CONTENT (Limitado a 1064px e Centralizado) */}
       <main style={{ 
-        maxWidth: "1100px", 
-        margin: "40px auto", 
+        width: THEME.maxWidth, 
+        margin: "40px 0", 
         padding: "0 20px",
         display: "grid",
-        gridTemplateColumns: "1fr 350px", // Coluna principal e lateral
-        gap: "40px"
+        gridTemplateColumns: "1fr 340px", // Layout Sidebar fixa
+        gap: "30px",
+        boxSizing: "border-box"
       }}>
         
-        {/* LADO ESQUERDO: INFOS DA COMUNIDADE */}
-        <section style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+        {/* COLUNA ESQUERDA: INFOS DA AGÊNCIA */}
+        <section style={{ display: "flex", flexDirection: "column", gap: "25px" }}>
           
-          {/* Header da Comunidade */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-            <div style={{ width: 100, height: 100, borderRadius: 15, background: '#ccc', overflow: 'hidden' }}>
-              <img src="URL_DA_LOGO_DO_SUPABASE" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          {/* Header (Nó: community_logo, type, community_name) */}
+          <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+            <div style={{ width: 100, height: 100, borderRadius: 20, background: "#fff", overflow: "hidden", border: `1px solid ${THEME.border}` }}>
+              <img src="URL_DA_LOGO_DO_SUPABASE" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
             </div>
             <div>
-              <span style={{ fontSize: 12, fontWeight: 700, color: STYLES.accent }}>PROFESSIONAL AGENCY</span>
-              <h1 style={{ fontSize: 32, fontWeight: 800, margin: 0 }}>Ez Marketing Agencies 2</h1>
+              <span style={{ fontSize: 11, fontWeight: 800, color: THEME.accent, textTransform: "uppercase" }}>Professional Agency</span>
+              <h1 style={{ fontSize: 32, fontWeight: 900, margin: 0, letterSpacing: "-1px" }}>Ez Marketing Agencies 2</h1>
             </div>
           </div>
 
-          {/* VÍDEO E ABOUT (Container 8 e 11) */}
-          <div style={{ background: STYLES.white, padding: '30px', borderRadius: '25px', border: `1px solid ${STYLES.border}` }}>
-            <h3 style={{ fontSize: 16, marginBottom: 20 }}>Introduction</h3>
+          {/* Vídeo e Descrição (Nó: Container 8 e 11) */}
+          <div style={{ background: THEME.white, padding: "35px", borderRadius: "28px", border: `1px solid ${THEME.border}` }}>
+            <h3 style={{ fontSize: 15, fontWeight: 700, marginBottom: 20 }}>Introduction</h3>
             
-            {/* VÍDEO CENTRALIZADO E PROPORCIONAL */}
-            <div style={{ 
-              position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', borderRadius: '15px', background: '#000' 
-            }}>
+            {/* Aspect Ratio 16:9 Centralizado */}
+            <div style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden", borderRadius: "15px", background: "#000" }}>
               <iframe 
-                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ" // Dinâmico via youtube_video ID
+                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ" // ID dinâmico via nó youtube_video
                 frameBorder="0" allowFullScreen 
               />
             </div>
 
             <div style={{ marginTop: 25 }}>
-              <p style={{ fontSize: 15, lineHeight: '1.6' }}>
-                {/* Nó -about */}
-                Esta é a descrição oficial vinda do nó "about". Ela explica o propósito da comunidade de forma clara.
+              <p style={{ fontSize: 14, lineHeight: "1.7", color: "#666" }}>
+                Esta é a descrição oficial da comunidade vinda do nó "about". Ela será alimentada dinamicamente pela sua tabela no Supabase.
               </p>
-              <a href="#" style={{ color: STYLES.accent, fontWeight: 600 }}>Visit Website</a>
+              <a href="#" style={{ color: THEME.accent, fontWeight: 700, textDecoration: "underline" }}>Visit Website</a>
             </div>
+          </div>
+
+          {/* Membros (Nó: Slider Carousel) */}
+          <div style={{ display: "flex", gap: "15px", overflowX: "auto", paddingBottom: "10px" }}>
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} style={{ 
+                minWidth: 140, padding: "12px", borderRadius: "70px", background: THEME.white, border: `4px solid ${THEME.border}`,
+                display: "flex", flexDirection: "column", alignItems: "center"
+              }}>
+                <div style={{ width: 55, height: 55, borderRadius: "50%", background: "#eee", marginBottom: 8 }} />
+                <span style={{ fontSize: 10, fontWeight: 700 }}>OFFICE</span>
+              </div>
+            ))}
           </div>
         </section>
 
-        {/* LADO DIREITO: SIDEBAR DE AÇÃO (Container 2) */}
-        <aside style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
+        {/* COLUNA DIREITA: SIDEBAR DE AÇÃO */}
+        <aside style={{ display: "flex", flexDirection: "column", gap: "25px" }}>
           
-          {/* CARD DE APLICAÇÃO */}
+          {/* Card de Aplicação (Nó: Container 2) */}
           <div style={{ 
-            background: STYLES.white, padding: '30px', borderRadius: '25px', border: `1px solid ${STYLES.border}`,
-            boxShadow: '0 4px 20px rgba(0,0,0,0.03)'
+            background: THEME.white, padding: "30px", borderRadius: "28px", border: `1px solid ${THEME.border}`,
+            boxShadow: "0 10px 40px rgba(0,0,0,0.02)"
           }}>
-            <h4 style={{ fontSize: 18, fontWeight: 700, marginBottom: 15 }}>Apply to join</h4>
-            <TextArea 
-              rows={5} 
+            <h4 style={{ fontSize: 17, fontWeight: 800, marginBottom: 15 }}>Apply to join</h4>
+            <AntdTextArea 
+              rows={6} 
               placeholder="Why do you want to join this community?" 
-              style={{ borderRadius: '12px', padding: '12px', marginBottom: '20px' }}
+              style={{ borderRadius: "12px", padding: "15px", border: "1px solid #eee" }}
               value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              onChange={(e: any) => setMessage(e.target.value)}
             />
             <AntdButton 
               type="primary" 
               block 
               onClick={handleInvite}
               loading={loading}
-              style={{ background: STYLES.accent, borderColor: STYLES.accent, height: 50, borderRadius: '12px', fontWeight: 600 }}
+              style={{ background: THEME.accent, borderColor: THEME.accent, height: 50, borderRadius: "12px", fontWeight: 700, marginTop: 20 }}
             >
               SEND INVITE
             </AntdButton>
           </div>
 
-          {/* RATINGS (Container 9) */}
-          <div style={{ background: STYLES.white, padding: '20px', borderRadius: '25px', textAlign: 'center', border: `1px solid ${STYLES.border}` }}>
-             <AntdRate disabled defaultValue={4.5} style={{ color: STYLES.accent }} />
-             <div style={{ marginTop: 8, fontSize: 12 }}>
-               <strong>128</strong> avaliações de empresas
-             </div>
+          {/* Ratings (Nó: community rate) */}
+          <div style={{ background: THEME.white, padding: "20px", borderRadius: "25px", border: `1px solid ${THEME.border}`, textAlign: "center" }}>
+             <AntdRate disabled defaultValue={4.5} style={{ color: THEME.accent }} />
+             <div style={{ marginTop: 8, fontSize: 12, fontWeight: 600 }}>128 avaliações feitas</div>
           </div>
 
-          {/* METAS (Nó Goals Sum) */}
+          {/* Metas (Nó: Goals sum) */}
           <div style={{ 
-            background: STYLES.cardGradient, 
-            padding: '25px', 
-            borderRadius: '70px', 
-            border: `4px solid ${STYLES.border}`,
-            textAlign: 'center'
+            background: THEME.cardGradient, 
+            padding: "25px", 
+            borderRadius: "70px", 
+            border: `4px solid ${THEME.border}`,
+            textAlign: "center"
           }}>
-            <div style={{ fontSize: 24, fontWeight: 800, color: STYLES.accent }}>850+</div>
-            <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase' }}>Objetivos Alcançados</div>
+            <div style={{ fontSize: 26, fontWeight: 900, color: THEME.accent }}>850+</div>
+            <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase" }}>Objetivos Alcançados</div>
           </div>
         </aside>
 
       </main>
+
+      <footer style={{ padding: "40px 0", fontSize: 12, color: "#999" }}>
+        &copy; 2024 Ez Marketing Space.
+      </footer>
     </div>
   );
 }

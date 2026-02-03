@@ -1,11 +1,12 @@
-import * as React from "react";
-import Head from "next/head";
+import React from "react";
 import dynamic from "next/dynamic";
+import type { NextPage } from "next";
+import Head from "next/head";
 
-// ================= UI COMPONENTS =================
+// ================= ANT DESIGN (DYNAMIC IMPORTS) =================
 
-const AntdButton = dynamic(
-  () => import("antd").then((mod) => mod.Button),
+const AntdForm = dynamic(
+  () => import("antd").then((mod) => mod.Form),
   { ssr: false }
 );
 
@@ -14,367 +15,154 @@ const AntdInput = dynamic(
   { ssr: false }
 );
 
-const AntdRate = dynamic(
-  () => import("antd").then((mod) => mod.Rate),
+const AntdTextArea = dynamic(
+  () => import("antd").then((mod) => mod.Input.TextArea),
   { ssr: false }
 );
 
-const { TextArea } = AntdInput;
-
-// ================= STYLES =================
-
-const STYLES = {
-  pageBg: "#e7e6e2",
-  text: "#535353",
-  white: "#ffffff",
-  border: "#00000017",
-  fontFamily: '"Inter", sans-serif',
-  accent: "#228b22",
-  cardGradient:
-    "radial-gradient(ellipse 40% 60% at 20% 20%, #ce9fff00 0%, #ffffff 100%)",
-};
+const AntdButton = dynamic(
+  () => import("antd").then((mod) => mod.Button),
+  { ssr: false }
+);
 
 // ================= PAGE =================
 
-export default function ApplyCommunityPage() {
+const ApplyToACommunity: NextPage = () => {
   return (
-    <div
-      style={{
-        backgroundColor: STYLES.pageBg,
-        minHeight: "100vh",
-        fontFamily: STYLES.fontFamily,
-        color: STYLES.text,
-      }}
-    >
+    <>
       <Head>
-        <title>Apply to Community</title>
+        <title>Apply to a Community</title>
       </Head>
 
-      {/* ================= TOP BAR ================= */}
-      {/* -account [dropdown] */}
-      <nav
-        style={{
-          background: STYLES.white,
-          borderBottom: `1px solid ${STYLES.border}`,
-          display: "flex",
-          justifyContent: "center",
-          padding: "12px 0",
-        }}
-      >
-        <div
-          style={{
-            width: "100%",
-            maxWidth: "1064px", // DESIGN FIX
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: "0 20px",
-          }}
-        >
-          <img
-            src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
-            style={{ height: 35 }}
-          />
-
-          {/* -sign_out [action] */}
-          <div
-            style={{
-              fontSize: 14,
-              fontWeight: 500,
-              cursor: "pointer",
-            }}
-          >
-            Sign out
-          </div>
-        </div>
-      </nav>
-
-      {/* ================= MAIN GRID ================= */}
       <main
         style={{
-          maxWidth: "1064px", // DESIGN FIX
-          margin: "40px auto",
-          padding: "0 20px",
-          display: "grid",
-          gridTemplateColumns: "1fr 340px", // subtle balance fix
-          gap: "40px",
+          width: "100%",
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          padding: "48px 16px",
+          boxSizing: "border-box",
         }}
       >
-        {/* ================= LEFT COLUMN ================= */}
-        <section
+        {/* PAGE_CONTAINER */}
+        <div
+          id="page_container"
           style={{
+            width: "100%",
+            maxWidth: 1064,
             display: "flex",
-            flexDirection: "column",
-            gap: "30px",
+            justifyContent: "center",
           }}
         >
-          {/* -------- Container 3 : Community Header -------- */}
+          {/* FORM_CARD */}
           <div
+            id="form_card"
             style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "20px",
+              width: "100%",
+              background: "#ffffff",
+              borderRadius: 12,
+              padding: 40,
+              boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
             }}
           >
-            {/* -community_logo [img] */}
+            {/* HEADER_NODE */}
             <div
+              id="header_node"
               style={{
-                width: 100,
-                height: 100,
-                borderRadius: 15,
-                background: "#ccc",
-                overflow: "hidden",
+                marginBottom: 32,
               }}
             >
-              <img
-                src="https://picsum.photos/seed/community/200/200"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                }}
-              />
-            </div>
-
-            <div>
-              {/* -type [text] */}
-              <span
-                style={{
-                  fontSize: 12,
-                  fontWeight: 700,
-                  color: STYLES.accent,
-                }}
-              >
-                Professional
-              </span>
-
-              {/* -community_name [text] */}
               <h1
+                id="title_node"
                 style={{
-                  fontSize: 32,
-                  fontWeight: 800,
-                  margin: 0,
-                }}
-              >
-                Global Entrepreneurship Network
-              </h1>
-            </div>
-          </div>
-
-          {/* -------- Members Section -------- */}
-          <div>
-            {/* -members_title [text] */}
-            <h3>Our Members</h3>
-
-            {/* -members_slider [slider_carousel] */}
-            <div
-              style={{
-                display: "flex",
-                gap: "16px",
-              }}
-            >
-              {/* ¨¨member [horizontal_stack] */}
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
-                }}
-              >
-                {/* -profile_pic [img] */}
-                <img
-                  src="https://picsum.photos/seed/member/40/40"
-                  style={{ borderRadius: "50%" }}
-                />
-
-                {/* -office [text] */}
-                <span>Founder</span>
-              </div>
-            </div>
-          </div>
-
-          {/* -------- Container 8 : Introduction -------- */}
-          <div
-            style={{
-              background: STYLES.white,
-              padding: "30px",
-              borderRadius: "25px",
-              border: `1px solid ${STYLES.border}`,
-            }}
-          >
-            <h3 style={{ fontSize: 16, marginBottom: 20 }}>
-              Introduction
-            </h3>
-
-            {/* -youtube_video [youtube] */}
-            <div
-              style={{
-                position: "relative",
-                paddingBottom: "52%", // slightly smaller video
-                height: 0,
-                overflow: "hidden",
-                borderRadius: "15px",
-                background: "#000",
-              }}
-            >
-              <iframe
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  width: "100%",
-                  height: "100%",
-                  border: 0,
-                }}
-              />
-            </div>
-
-            <div style={{ marginTop: 25 }}>
-              {/* -about [text] */}
-              <p
-                style={{
-                  fontSize: 15,
-                  lineHeight: "1.6",
-                }}
-              >
-                Official community description provided by the
-                organization.
-              </p>
-
-              {/* -website [link] */}
-              <a
-                href="#"
-                style={{
-                  color: STYLES.accent,
+                  fontSize: 28,
                   fontWeight: 600,
+                  marginBottom: 8,
                 }}
               >
-                Visit website
-              </a>
-            </div>
-          </div>
-        </section>
+                Apply to a Community
+              </h1>
 
-        {/* ================= RIGHT COLUMN ================= */}
-        <aside
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "25px",
-          }}
-        >
-          {/* -------- Container 2 : Application -------- */}
-          <div
-            style={{
-              background: STYLES.white,
-              padding: "30px",
-              borderRadius: "25px",
-              border: `1px solid ${STYLES.border}`,
-            }}
-          >
-            <h4
-              style={{
-                fontSize: 18,
-                fontWeight: 700,
-                marginBottom: 15,
-              }}
-            >
-              Send application
-            </h4>
-
-            {/* -short_message [textarea] */}
-            <TextArea
-              rows={5}
-              placeholder="Why do you want to join this community?"
-              style={{
-                borderRadius: "12px",
-                padding: "12px",
-                marginBottom: "20px",
-              }}
-            />
-
-            {/* -invite_button [login_button] */}
-            <AntdButton
-              type="primary"
-              block
-              style={{
-                background: STYLES.accent,
-                borderColor: STYLES.accent,
-                height: 50,
-                borderRadius: "12px",
-                fontWeight: 600,
-              }}
-            >
-              Send application
-            </AntdButton>
-          </div>
-
-          {/* -------- Container 9 : Rating -------- */}
-          <div
-            style={{
-              background: STYLES.white,
-              padding: "20px",
-              borderRadius: "25px",
-              textAlign: "center",
-              border: `1px solid ${STYLES.border}`,
-            }}
-          >
-            {/* -community_rate [rate] */}
-            <AntdRate disabled defaultValue={4.8} />
-
-            {/* -rate_sum [text] */}
-            <div style={{ marginTop: 8, fontSize: 12 }}>
-              4.8 (120 reviews)
-            </div>
-
-            {/* -goals_sum [text] */}
-            <div
-              style={{
-                marginTop: 16,
-                fontSize: 22,
-                fontWeight: 800,
-                color: STYLES.accent,
-              }}
-            >
-              850+
-            </div>
-          </div>
-
-          {/* -------- Container 10 : Connected Companies -------- */}
-          <div>
-            {/* -connected_companies_title [text] */}
-            <h4>Connected Companies</h4>
-
-            {/* -connected_companies_slider [slider_carousel] */}
-            <div
-              style={{
-                display: "flex",
-                gap: "12px",
-              }}
-            >
-              {/* ¨¨connected_company [button] */}
-              <button
+              <p
+                id="subtitle_node"
                 style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
+                  fontSize: 16,
+                  color: "#666",
                 }}
               >
-                {/* -company_logo [img] */}
-                <img
-                  src="https://picsum.photos/seed/company/40/40"
-                />
-
-                {/* -company_name [text] */}
-                Company Name
-              </button>
+                Tell us why you want to join this community.
+              </p>
             </div>
-          </div>
 
-          {/* -------- Container 11 -------- */}
-          {/* structural container / spacer */}
-        </aside>
+            {/* FORM_NODE */}
+            <AntdForm
+              id="apply_form"
+              layout="vertical"
+            >
+              {/* NAME_FIELD_NODE */}
+              <AntdForm.Item
+                id="name_field_node"
+                label="Full Name"
+                name="full_name"
+                rules={[{ required: true }]}
+              >
+                <AntdInput
+                  id="full_name_input"
+                  placeholder="Your full name"
+                />
+              </AntdForm.Item>
+
+              {/* EMAIL_FIELD_NODE */}
+              <AntdForm.Item
+                id="email_field_node"
+                label="Email"
+                name="email"
+                rules={[{ required: true, type: "email" }]}
+              >
+                <AntdInput
+                  id="email_input"
+                  placeholder="your@email.com"
+                />
+              </AntdForm.Item>
+
+              {/* MESSAGE_FIELD_NODE */}
+              <AntdForm.Item
+                id="message_field_node"
+                label="Why do you want to join?"
+                name="message"
+                rules={[{ required: true }]}
+              >
+                <AntdTextArea
+                  id="message_textarea"
+                  rows={5}
+                  placeholder="Explain your motivation"
+                />
+              </AntdForm.Item>
+
+              {/* ACTIONS_NODE */}
+              <div
+                id="actions_node"
+                style={{
+                  marginTop: 32,
+                  display: "flex",
+                  justifyContent: "flex-end",
+                }}
+              >
+                <AntdButton
+                  id="submit_button"
+                  type="primary"
+                  htmlType="submit"
+                  size="large"
+                >
+                  Submit Application
+                </AntdButton>
+              </div>
+            </AntdForm>
+          </div>
+        </div>
       </main>
-    </div>
+    </>
   );
-}
+};
+
+export default ApplyToACommunity;

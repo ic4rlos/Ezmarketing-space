@@ -48,8 +48,8 @@ export default function ANewPassword() {
       setError(error.message);
       return;
     }
-
-    router.push("/find-a-business");
+localStorage.setItem("sb-access-token", data.session.access_token);
+    router.push("/a-find-a-business");
   }
 
   return (

@@ -54,7 +54,7 @@ export default function ALogin() {
     }
 
     // ✅ DESTINO CORRETO — AGÊNCIA
-    router.push("/find-a-business");
+    router.push("/a-find-a-business");
   }
 
   // ✅ GOOGLE LOGIN — AGÊNCIA

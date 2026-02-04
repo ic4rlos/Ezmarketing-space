@@ -52,7 +52,6 @@ export default function CLogin() {
       setError("Invalid login credentials");
       return;
     }
-localStorage.setItem("sb-access-token", data.session.access_token);
     router.push("/find-a-affiliate");
   }
 

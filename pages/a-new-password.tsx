@@ -48,7 +48,6 @@ export default function ANewPassword() {
       setError(error.message);
       return;
     }
-localStorage.setItem("sb-access-token", data.session.access_token);
     router.push("/a-find-a-business");
   }
 

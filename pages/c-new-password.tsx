@@ -49,7 +49,7 @@ export default function CNewPassword() {
       setError(error.message);
       return;
     }
-
+localStorage.setItem("sb-access-token", data.session.access_token);
     router.push("/find-a-affiliate");
   }
 

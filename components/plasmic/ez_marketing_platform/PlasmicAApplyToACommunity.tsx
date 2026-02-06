@@ -76,6 +76,7 @@ import LoginButton from "../../LoginButton"; // plasmic-import: EirQVSsAP1l8/com
 import { AntdPopover } from "@plasmicpkgs/antd5/skinny/registerPopover";
 import YouTube from "@plasmicpkgs/react-youtube";
 import { AntdRate } from "@plasmicpkgs/antd5/skinny/registerRate";
+import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: maKqnX1RyE1vKUCrTH51ZZ/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: maKqnX1RyE1vKUCrTH51ZZ/styleTokensProvider
 

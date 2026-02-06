@@ -59,6 +59,13 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
+import {
+  executePlasmicDataOp,
+  usePlasmicDataOp,
+  usePlasmicInvalidate
+} from "@plasmicapp/react-web/lib/data-sources";
+
 import { AntdSteps } from "@plasmicpkgs/antd5/skinny/registerSteps";
 import { UploadWrapper } from "@plasmicpkgs/antd5/skinny/registerUpload";
 import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
@@ -71,6 +78,7 @@ import { AntdRadioGroup } from "@plasmicpkgs/antd5/skinny/registerRadio";
 import { AntdRadio } from "@plasmicpkgs/antd5/skinny/registerRadio";
 import { AntdTextArea } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { inputHelpers as AntdTextArea_Helpers } from "@plasmicpkgs/antd5/skinny/registerInput";
+import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: maKqnX1RyE1vKUCrTH51ZZ/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: maKqnX1RyE1vKUCrTH51ZZ/styleTokensProvider
 
@@ -195,6 +203,9 @@ function PlasmicCEditProfile__RenderFunc(props: {
 
   const $globalActions = useGlobalActions?.();
 
+  let [$queries, setDollarQueries] = React.useState<
+    Record<string, ReturnType<typeof usePlasmicDataOp>>
+  >({});
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
@@ -277,13 +288,10 @@ function PlasmicCEditProfile__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "formExperience",
+        path: "formStep",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [
-          [{ charge: null, company: null, time: null }],
-          {}
-        ]
+        initFunc: ({ $props, $state, $queries, $ctx }) => [[{ step: null }], {}]
       },
       {
         path: "title[].value",
@@ -300,11 +308,11 @@ function PlasmicCEditProfile__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "formEducation",
+        path: "formSolution",
         type: "private",
         variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => [
-          [{ university: null, couurse: null, year: null }],
+          [{ solutions: null }],
           {}
         ]
       },
@@ -464,9 +472,33 @@ function PlasmicCEditProfile__RenderFunc(props: {
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
-    $queries: {},
+    $queries: $queries,
     $refs
   });
+  const dataSourcesCtx = usePlasmicDataSourceContext();
+  const plasmicInvalidate = usePlasmicInvalidate();
+
+  const new$Queries: Record<string, ReturnType<typeof usePlasmicDataOp>> = {
+    query: usePlasmicDataOp(() => {
+      return {
+        sourceId: "2NwTHMgACak4F1NLiJ15kA",
+        opId: "9f87e3e6-4447-4fc0-b109-ce143a6903b9",
+        userArgs: {
+          params: [$auth.user.id],
+
+          headers: [localStorage.sb - access - token]
+        },
+        cacheKey: `plasmic.$.9f87e3e6-4447-4fc0-b109-ce143a6903b9.$.`,
+        invalidatedKeys: null,
+        roleId: null
+      };
+    })
+  };
+  if (Object.keys(new$Queries).some(k => new$Queries[k] !== $queries[k])) {
+    setDollarQueries(new$Queries);
+
+    $queries = new$Queries;
+  }
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -2997,7 +3029,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                 {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                   (() => {
                     try {
-                      return $state.formEducation;
+                      return $state.formSolution;
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
@@ -3241,7 +3273,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                           !_par ? [] : Array.isArray(_par) ? _par : [_par])(
                           (() => {
                             try {
-                              return $state.formExperience;
+                              return $state.formStep;
                             } catch (e) {
                               if (
                                 e instanceof TypeError ||
@@ -3353,7 +3385,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                 ? (() => {
                                     const actionArgs = {
                                       customFunction: async () => {
-                                        return $state.formExperience.push({
+                                        return $state.formStep.push({
                                           value: ""
                                         });
                                       }
@@ -3405,7 +3437,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                 ? (() => {
                                     const actionArgs = {
                                       customFunction: async () => {
-                                        return $state.formExperience.pop();
+                                        return $state.formStep.pop();
                                       }
                                     };
                                     return (({ customFunction }) => {
@@ -3461,7 +3493,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                         ? (() => {
                             const actionArgs = {
                               customFunction: async () => {
-                                return $state.formEducation.push({ value: "" });
+                                return $state.formSolution.push({ value: "" });
                               }
                             };
                             return (({ customFunction }) => {
@@ -3500,7 +3532,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                         ? (() => {
                             const actionArgs = {
                               customFunction: async () => {
-                                return $state.formEducation.pop();
+                                return $state.formSolution.pop();
                               }
                             };
                             return (({ customFunction }) => {
@@ -3884,6 +3916,192 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   data-plasmic-name={"done"}
                   data-plasmic-override={overrides.done}
                   className={classNames("__wab_instance", sty.done)}
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["httpPostCompany"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            dataOp: {
+                              sourceId: "2NwTHMgACak4F1NLiJ15kA",
+                              opId: "ce79421a-1cd9-4327-a602-118121f06439",
+                              userArgs: {
+                                body: [
+                                  $state.companyName.value,
+
+                                  undefined,
+
+                                  $state.companyType.value,
+
+                                  $state.location.value,
+
+                                  $state.foundationDate.value,
+
+                                  $state.linkedIn.value,
+
+                                  $state.instagram.value,
+
+                                  $state.website.value,
+
+                                  $state.x.value,
+
+                                  $state.companyTagline.value,
+
+                                  $state.area.value,
+
+                                  $state.subArea.value,
+
+                                  $state.customerProblem.value,
+
+                                  $state.solutionDescription.value,
+
+                                  $state.whyShouldTheyChoose.value,
+
+                                  $state.googleCalendar.value,
+
+                                  $state.companyNature3
+                                ]
+                              },
+                              cacheKey: null,
+                              invalidatedKeys: ["plasmic_refresh_all"],
+                              roleId: null
+                            }
+                          };
+                          return (async ({ dataOp, continueOnError }) => {
+                            try {
+                              const response = await executePlasmicDataOp(
+                                dataOp,
+                                {
+                                  userAuthToken: dataSourcesCtx?.userAuthToken,
+                                  user: dataSourcesCtx?.user
+                                }
+                              );
+                              await plasmicInvalidate(dataOp.invalidatedKeys);
+                              return response;
+                            } catch (e) {
+                              if (!continueOnError) {
+                                throw e;
+                              }
+                              return e;
+                            }
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["httpPostCompany"] != null &&
+                      typeof $steps["httpPostCompany"] === "object" &&
+                      typeof $steps["httpPostCompany"].then === "function"
+                    ) {
+                      $steps["httpPostCompany"] =
+                        await $steps["httpPostCompany"];
+                    }
+
+                    $steps["httpPostSolutions"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            dataOp: {
+                              sourceId: "2NwTHMgACak4F1NLiJ15kA",
+                              opId: "5a34ddf7-e5bd-4ece-b23e-95adddd612cb",
+                              userArgs: {
+                                body: [
+                                  $state.formSolution.map(sol => ({
+                                    company_id: $steps.companies[0].id,
+                                    title: sol.title,
+                                    description: sol.description,
+                                    price: sol.price
+                                  }))
+                                ]
+                              },
+                              cacheKey: null,
+                              invalidatedKeys: ["plasmic_refresh_all"],
+                              roleId: null
+                            }
+                          };
+                          return (async ({ dataOp, continueOnError }) => {
+                            try {
+                              const response = await executePlasmicDataOp(
+                                dataOp,
+                                {
+                                  userAuthToken: dataSourcesCtx?.userAuthToken,
+                                  user: dataSourcesCtx?.user
+                                }
+                              );
+                              await plasmicInvalidate(dataOp.invalidatedKeys);
+                              return response;
+                            } catch (e) {
+                              if (!continueOnError) {
+                                throw e;
+                              }
+                              return e;
+                            }
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["httpPostSolutions"] != null &&
+                      typeof $steps["httpPostSolutions"] === "object" &&
+                      typeof $steps["httpPostSolutions"].then === "function"
+                    ) {
+                      $steps["httpPostSolutions"] =
+                        await $steps["httpPostSolutions"];
+                    }
+
+                    $steps["httpPostSolutionsSteps"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            dataOp: {
+                              sourceId: "2NwTHMgACak4F1NLiJ15kA",
+                              opId: "2c34288d-d4d1-44a7-b1a9-df6e4a40b267",
+                              userArgs: {
+                                body: [
+                                  (() => {
+                                    {
+                                      {
+                                        return $state.formStep.map(step => ({
+                                          solution_id: step.solution_id,
+                                          step_text: step.step_text
+                                        }));
+                                      }
+                                    }
+                                  })()
+                                ]
+                              },
+                              cacheKey: null,
+                              invalidatedKeys: ["plasmic_refresh_all"],
+                              roleId: null
+                            }
+                          };
+                          return (async ({ dataOp, continueOnError }) => {
+                            try {
+                              const response = await executePlasmicDataOp(
+                                dataOp,
+                                {
+                                  userAuthToken: dataSourcesCtx?.userAuthToken,
+                                  user: dataSourcesCtx?.user
+                                }
+                              );
+                              await plasmicInvalidate(dataOp.invalidatedKeys);
+                              return response;
+                            } catch (e) {
+                              if (!continueOnError) {
+                                throw e;
+                              }
+                              return e;
+                            }
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["httpPostSolutionsSteps"] != null &&
+                      typeof $steps["httpPostSolutionsSteps"] === "object" &&
+                      typeof $steps["httpPostSolutionsSteps"].then ===
+                        "function"
+                    ) {
+                      $steps["httpPostSolutionsSteps"] =
+                        await $steps["httpPostSolutionsSteps"];
+                    }
+                  }}
+                  submitsForm={false}
                 >
                   <div
                     className={classNames(

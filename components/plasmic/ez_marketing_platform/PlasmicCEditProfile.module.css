@@ -2362,7 +2362,7 @@
   flex-direction: column;
   justify-content: space-between;
   overflow: auto;
-  padding: 0px;
+  padding: 20px;
 }
 .solutionsSteps {
   display: flex;

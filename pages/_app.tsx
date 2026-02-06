@@ -11,22 +11,38 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   useEffect(() => {
-    // decide qual client usar pelo prefixo da rota
+    // Decide qual projeto Supabase usar pela rota
     const isAgency = router.pathname.startsWith("/a-");
-    const isClient = router.pathname.startsWith("/c-");
+    const isCompany = router.pathname.startsWith("/c-");
+
+    // Se não for rota protegida, não faz nada
+    if (!isAgency && !isCompany) return;
 
     const supabase = isAgency ? getSupabaseA() : getSupabaseC();
 
-    supabase.auth.onAuthStateChange((event, session) => {
-      if (event === "SIGNED_IN" || event === "TOKEN_REFRESHED") {
-        if (session?.access_token) {
-          localStorage.setItem("sb-access-token", session.access_token);
+    // Cada projeto grava seu próprio token
+    const storageKey = isAgency
+      ? "sb-agency-access-token"
+      : "sb-company-access-token";
+
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        if (
+          (event === "SIGNED_IN" || event === "TOKEN_REFRESHED") &&
+          session?.access_token
+        ) {
+          localStorage.setItem(storageKey, session.access_token);
+        }
+
+        if (event === "SIGNED_OUT") {
+          localStorage.removeItem(storageKey);
         }
       }
-      if (event === "SIGNED_OUT") {
-        localStorage.removeItem("sb-access-token");
-      }
-    });
+    );
+
+    return () => {
+      authListener.subscription.unsubscribe();
+    };
   }, [router.pathname]);
 
   return (

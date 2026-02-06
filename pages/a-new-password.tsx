@@ -8,7 +8,7 @@ import { getSupabaseA } from "../lib/a-supabaseClient";
 
 import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
 
-// ✅ MESMO PADRÃO DO ALPHA — NADA DE SSR
+// ✅ SEM SSR — PADRÃO JÁ FUNCIONAL
 const AntdPassword = dynamic(
   () => import("antd").then((mod) => mod.Input.Password),
   { ssr: false }
@@ -38,16 +38,30 @@ export default function ANewPassword() {
 
     setLoading(true);
 
-    const { error } = await supabase.auth.updateUser({
+    const { data, error } = await supabase.auth.updateUser({
       password,
     });
 
     setLoading(false);
 
-    if (error) {
-      setError(error.message);
+    if (error || !data.user) {
+      setError(error?.message || "Failed to update password");
       return;
     }
+
+    // ✅ PEGA A SESSÃO ATUAL (ELA EXISTE NESSE PONTO)
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    if (session?.access_token) {
+      localStorage.setItem(
+        "sb-agency-access-token",
+        session.access_token
+      );
+    }
+
+    // ✅ REDIRECT NORMAL
     router.push("/a-find-a-business");
   }
 
@@ -57,7 +71,6 @@ export default function ANewPassword() {
         <title>Create a new password</title>
       </Head>
 
-      {/* WRAPPER — IGUAL AO ALPHA */}
       <div
         style={{
           minHeight: "100vh",
@@ -68,7 +81,6 @@ export default function ANewPassword() {
           justifyContent: "center",
         }}
       >
-        {/* LOGO */}
         <img
           src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
           alt="ezmarketing"
@@ -80,7 +92,6 @@ export default function ANewPassword() {
           }}
         />
 
-        {/* CARD */}
         <div
           style={{
             width: 800,
@@ -95,7 +106,6 @@ export default function ANewPassword() {
             boxSizing: "border-box",
           }}
         >
-          {/* TITLE */}
           <div
             style={{
               fontFamily: "Inter, sans-serif",
@@ -106,7 +116,6 @@ export default function ANewPassword() {
             Create a new password
           </div>
 
-          {/* FORM */}
           <div
             style={{
               width: "100%",
@@ -116,7 +125,6 @@ export default function ANewPassword() {
               alignItems: "center",
             }}
           >
-            {/* PASSWORD */}
             <Field
               icon={<LockSvgIcon width={24} height={24} />}
               placeholder="New password"
@@ -124,7 +132,6 @@ export default function ANewPassword() {
               onChange={setPassword}
             />
 
-            {/* CONFIRM PASSWORD */}
             <Field
               icon={<LockSvgIcon width={24} height={24} />}
               placeholder="Confirm password"
@@ -133,7 +140,6 @@ export default function ANewPassword() {
             />
           </div>
 
-          {/* ERROR */}
           {error && (
             <div
               style={{
@@ -146,7 +152,6 @@ export default function ANewPassword() {
             </div>
           )}
 
-          {/* ACTION */}
           <LoginButton
             onClick={handleSaveNewPassword}
             isDisabled={loading}
@@ -160,7 +165,7 @@ export default function ANewPassword() {
   );
 }
 
-/* ===== FIELD — MESMO PADRÃO DO ALPHA ===== */
+/* ===== FIELD ===== */
 
 function Field({
   icon,

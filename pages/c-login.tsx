@@ -11,7 +11,7 @@ import { getSupabaseC } from "../lib/c-supabaseClient";
 import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
 import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
 
-// ✅ MESMO PADRÃO — SEM SSR
+// ✅ SEM SSR — PADRÃO QUE JÁ FUNCIONA
 const AntdInput = dynamic(
   () => import("../components/ui/AntdInput"),
   { ssr: false }
@@ -41,21 +41,28 @@ export default function CLogin() {
 
     setLoading(true);
 
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
     setLoading(false);
 
-    if (error) {
+    if (error || !data.session) {
       setError("Invalid login credentials");
       return;
     }
+
+    // ✅ ENTREGA O TOKEN PRO PLASMIC (COMPANY)
+    localStorage.setItem(
+      "sb-company-access-token",
+      data.session.access_token
+    );
+
     router.push("/find-a-affiliate");
   }
 
-  // ✅ GOOGLE LOGIN
+  // ✅ GOOGLE LOGIN — COMPANY
   async function handleGoogleLogin() {
     await supabase.auth.signInWithOAuth({
       provider: "google",
@@ -187,7 +194,6 @@ export default function CLogin() {
               {loading ? "Logging in..." : "Login"}
             </LoginButton>
 
-            {/* ✅ GOOGLE LOGIN — MESMO TAMANHO */}
             <SignInWithGoogle
               onClick={handleGoogleLogin}
               style={{ width: 248, height: 37 }}
@@ -261,20 +267,4 @@ function PasswordField({
       style={{
         width: 504,
         height: 32,
-        display: "flex",
-        alignItems: "center",
-        gap: 10,
-        paddingLeft: 25,
-        paddingRight: 25,
-        boxSizing: "border-box",
-      }}
-    >
-      {icon}
-      <AntdPassword
-        placeholder={placeholder}
-        value={value}
-        onChange={(e: any) => onChange(e.target.value)}
-      />
-    </div>
-  );
-}
+        display: "fl

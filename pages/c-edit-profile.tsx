@@ -25,11 +25,18 @@ function CEditProfile() {
         return;
       }
 
-      // ✅ COM LOGIN → GARANTE TOKEN PARA O PLASMIC
+      // ✅ COM LOGIN → GARANTE TOKEN VÁLIDO PARA O PLASMIC
       const token = session.access_token;
 
-      if (!localStorage.getItem("sb-company-access-token")) {
-        localStorage.setItem("sb-company-access-token", token);
+      // Verificação client-side e validação do JWT
+      if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
+        if (token && token.split('.').length === 3) {
+          localStorage.setItem("sb-company-access-token", token);
+        } else {
+          // Token inválido, redireciona para login
+          router.replace("/c-login");
+          return;
+        }
       }
 
       setReady(true);

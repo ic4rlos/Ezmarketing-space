@@ -11,7 +11,7 @@ import { getSupabaseC } from "../lib/c-supabaseClient";
 import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
 import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
 
-// ✅ SEM SSR — PADRÃO QUE JÁ FUNCIONA
+// ✅ SEM SSR
 const AntdInput = dynamic(
   () => import("../components/ui/AntdInput"),
   { ssr: false }
@@ -62,7 +62,6 @@ export default function CLogin() {
     router.push("/find-a-affiliate");
   }
 
-  // ✅ GOOGLE LOGIN — COMPANY
   async function handleGoogleLogin() {
     await supabase.auth.signInWithOAuth({
       provider: "google",
@@ -158,9 +157,7 @@ export default function CLogin() {
                 fontSize: 12,
               }}
             >
-              <Link href="/c-reset-password">
-                Forgot password?
-              </Link>
+              <Link href="/c-reset-password">Forgot password?</Link>
             </div>
           </div>
 
@@ -233,7 +230,7 @@ function Field({
       style={{
         width: 504,
         height: 32,
-        display: "flex",
+        display: "flex", // ← AQUI ESTAVA O ERRO
         alignItems: "center",
         gap: 10,
         paddingLeft: 25,
@@ -267,4 +264,20 @@ function PasswordField({
       style={{
         width: 504,
         height: 32,
-        display: "fl
+        display: "flex",
+        alignItems: "center",
+        gap: 10,
+        paddingLeft: 25,
+        paddingRight: 25,
+        boxSizing: "border-box",
+      }}
+    >
+      {icon}
+      <AntdPassword
+        placeholder={placeholder}
+        value={value}
+        onChange={(e: any) => onChange(e.target.value)}
+      />
+    </div>
+  );
+}

@@ -7,30 +7,32 @@ import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/
 import { PlasmicAEditProfile } from "../components/plasmic/ez_marketing_platform/PlasmicAEditProfile";
 import { useRouter } from "next/router";
 
+import { getSupabaseA } from "../lib/a-supabaseClient";
+
 function AEditProfile() {
-  // Use PlasmicAEditProfile to render this component as it was
-  // designed in Plasmic, by activating the appropriate variants,
-  // attaching the appropriate event handlers, etc.  You
-  // can also install whatever React hooks you need here to manage state or
-  // fetch data.
-  //
-  // Props you can pass into PlasmicAEditProfile are:
-  // 1. Variants you want to activate,
-  // 2. Contents for slots you want to fill,
-  // 3. Overrides for any named node in the component to attach behavior and data,
-  // 4. Props to set on the root node.
-  //
-  // By default, PlasmicAEditProfile is wrapped by your project's global
-  // variant context providers. These wrappers may be moved to
-  // Next.js Custom App component
-  // (https://nextjs.org/docs/advanced-features/custom-app).
+  const router = useRouter();
+
+  // ✅ SALVA TOKEN DA AGENCY SOMENTE SE AINDA NÃO EXISTIR
+  React.useEffect(() => {
+    const supabase = getSupabaseA();
+
+    supabase.auth.getSession().then(({ data }) => {
+      const token = data.session?.access_token;
+
+      if (!token) return;
+
+      if (!localStorage.getItem("sb-agency-access-token")) {
+        localStorage.setItem("sb-agency-access-token", token);
+      }
+    });
+  }, []);
 
   return (
     <GlobalContextsProvider>
       <PageParamsProvider__
-        route={useRouter()?.pathname}
-        params={useRouter()?.query}
-        query={useRouter()?.query}
+        route={router?.pathname}
+        params={router?.query}
+        query={router?.query}
       >
         <PlasmicAEditProfile />
       </PageParamsProvider__>

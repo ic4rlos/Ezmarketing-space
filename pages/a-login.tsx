@@ -11,7 +11,7 @@ import { getSupabaseA } from "../lib/a-supabaseClient";
 import UserSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__UserSvg";
 import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
 
-// ✅ MESMO PADRÃO — SEM SSR
+// ✅ SEM SSR (como já estava)
 const AntdInput = dynamic(
   () => import("../components/ui/AntdInput"),
   { ssr: false }
@@ -41,29 +41,33 @@ export default function ALogin() {
 
     setLoading(true);
 
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
     setLoading(false);
 
-    if (error) {
+    if (error || !data.session) {
       setError("Invalid login credentials");
       return;
     }
 
-    // ✅ DESTINO CORRETO — AGÊNCIA
+    // ✅ ENTREGA DO TOKEN — SIMPLES, DIRETO, FUNCIONAL
+    localStorage.setItem(
+      "sb-agency-access-token",
+      data.session.access_token
+    );
+
+    // ✅ REDIRECT NORMAL
     router.push("/a-find-a-business");
   }
 
-  // ✅ GOOGLE LOGIN — AGÊNCIA
   async function handleGoogleLogin() {
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo:
-          "https://www.ezmarketing.space/find-a-business",
+        redirectTo: "https://www.ezmarketing.space/find-a-business",
       },
     });
   }
@@ -84,7 +88,6 @@ export default function ALogin() {
           justifyContent: "center",
         }}
       >
-        {/* LOGO */}
         <img
           src="/plasmic/ez_marketing_platform/images/logo2Svg.svg"
           alt="ezmarketing"
@@ -96,7 +99,6 @@ export default function ALogin() {
           }}
         />
 
-        {/* CARD */}
         <div
           style={{
             width: 800,
@@ -111,7 +113,6 @@ export default function ALogin() {
             boxSizing: "border-box",
           }}
         >
-          {/* TITLE */}
           <div
             style={{
               fontFamily: "Inter, sans-serif",
@@ -122,7 +123,6 @@ export default function ALogin() {
             Login
           </div>
 
-          {/* FORM */}
           <div
             style={{
               width: "100%",
@@ -160,7 +160,6 @@ export default function ALogin() {
             </div>
           </div>
 
-          {/* ERROR */}
           {error && (
             <div
               style={{
@@ -173,7 +172,6 @@ export default function ALogin() {
             </div>
           )}
 
-          {/* ACTIONS */}
           <div
             style={{
               display: "flex",
@@ -198,7 +196,6 @@ export default function ALogin() {
             </SignInWithGoogle>
           </div>
 
-          {/* FOOTER */}
           <div style={{ fontSize: 14 }}>
             New to Ez Marketing?{" "}
             <Link href="/a-create-account">

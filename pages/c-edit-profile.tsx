@@ -11,28 +11,40 @@ import { getSupabaseC } from "../lib/c-supabaseClient";
 
 function CEditProfile() {
   const router = useRouter();
+  const [ready, setReady] = React.useState(false);
 
-  // ✅ SALVA TOKEN SOMENTE SE AINDA NÃO EXISTIR
   React.useEffect(() => {
     const supabase = getSupabaseC();
 
     supabase.auth.getSession().then(({ data }) => {
-      const token = data.session?.access_token;
+      const session = data.session;
 
-      if (!token) return;
+      // 🚫 SEM LOGIN → BLOQUEIA
+      if (!session) {
+        router.replace("/c-login");
+        return;
+      }
+
+      // ✅ COM LOGIN → GARANTE TOKEN PARA O PLASMIC
+      const token = session.access_token;
 
       if (!localStorage.getItem("sb-company-access-token")) {
         localStorage.setItem("sb-company-access-token", token);
       }
+
+      setReady(true);
     });
-  }, []);
+  }, [router]);
+
+  // ⏳ NÃO RENDERIZA NADA ANTES DA VALIDAÇÃO
+  if (!ready) return null;
 
   return (
     <GlobalContextsProvider>
       <PageParamsProvider__
-        route={router?.pathname}
-        params={router?.query}
-        query={router?.query}
+        route={router.pathname}
+        params={router.query}
+        query={router.query}
       >
         <PlasmicCEditProfile />
       </PageParamsProvider__>

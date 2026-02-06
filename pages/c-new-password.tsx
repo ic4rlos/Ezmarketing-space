@@ -8,10 +8,9 @@ import { getSupabaseC } from "../lib/c-supabaseClient";
 
 import LockSvgIcon from "../components/plasmic/ez_marketing_platform/icons/PlasmicIcon__LockSvg";
 
-// ✅ MESMO PADRÃO DO ALPHA — NADA DE SSR
+// ✅ SEM SSR — PADRÃO QUE JÁ FUNCIONA
 const AntdPassword = dynamic(
-  () =>
-    import("antd").then((mod) => mod.Input.Password),
+  () => import("antd").then((mod) => mod.Input.Password),
   { ssr: false }
 );
 
@@ -39,16 +38,23 @@ export default function CNewPassword() {
 
     setLoading(true);
 
-    const { error } = await supabase.auth.updateUser({
+    const { data, error } = await supabase.auth.updateUser({
       password,
     });
 
     setLoading(false);
 
-    if (error) {
-      setError(error.message);
+    if (error || !data.session) {
+      setError(error?.message || "Invalid session");
       return;
     }
+
+    // ✅ ENTREGA O TOKEN PRO PLASMIC (COMPANY)
+    localStorage.setItem(
+      "sb-company-access-token",
+      data.session.access_token
+    );
+
     router.push("/find-a-affiliate");
   }
 
@@ -58,7 +64,6 @@ export default function CNewPassword() {
         <title>Create a new password</title>
       </Head>
 
-      {/* WRAPPER — IGUAL AO ALPHA */}
       <div
         style={{
           minHeight: "100vh",
@@ -117,7 +122,6 @@ export default function CNewPassword() {
               alignItems: "center",
             }}
           >
-            {/* PASSWORD */}
             <Field
               icon={<LockSvgIcon width={24} height={24} />}
               placeholder="New password"
@@ -125,7 +129,6 @@ export default function CNewPassword() {
               onChange={setPassword}
             />
 
-            {/* CONFIRM PASSWORD */}
             <Field
               icon={<LockSvgIcon width={24} height={24} />}
               placeholder="Confirm password"
@@ -161,7 +164,7 @@ export default function CNewPassword() {
   );
 }
 
-/* ===== FIELD — MESMO PADRÃO DO ALPHA ===== */
+/* ===== FIELD ===== */
 
 function Field({
   icon,

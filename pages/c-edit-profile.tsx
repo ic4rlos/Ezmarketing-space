@@ -8,31 +8,20 @@ export default function CEditProfile() {
   const router = useRouter();
   const { user, loading } = useCAuth();
 
-  // 🔒 Redirect APENAS após o auth estabilizar
-  React.useEffect(() => {
-    if (loading) return;
-
-    if (!user) {
-      router.replace("/c-login");
-    }
-  }, [loading, user, router]);
-
-  // ⏳ Enquanto valida auth
+  // ⏳ Enquanto o auth carrega, apenas espera
   if (loading) {
     return null;
   }
 
-  // 🚫 Sem usuário, nada renderiza (redirect já foi disparado)
-  if (!user) {
-    return null;
-  }
-
+  // ⚠️ NÃO redireciona
+  // ⚠️ NÃO bloqueia
+  // ⚠️ Apenas passa userId se existir
   return (
     <PageParamsProvider__
       route={router.pathname}
       params={{
         ...router.query,
-        userId: user.id,
+        userId: user?.id ?? null,
       }}
       query={router.query}
     >

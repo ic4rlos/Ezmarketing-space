@@ -564,15 +564,6 @@ function PlasmicCEditProfile__RenderFunc(props: {
         />
 
         <div
-          className={classNames(
-            projectcss.all,
-            projectcss.__wab_text,
-            sty.text__curEp
-          )}
-        >
-          {"Enter some text"}
-        </div>
-        <div
           data-plasmic-name={"rectangle"}
           data-plasmic-override={overrides.rectangle}
           className={classNames(projectcss.all, sty.rectangle)}
@@ -3970,7 +3961,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
 
                                   $state.companyNature3,
 
-                                  pageParams.userId
+                                  props.userId
                                 ]
                               },
                               cacheKey: null,

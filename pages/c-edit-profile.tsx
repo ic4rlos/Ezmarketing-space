@@ -12,6 +12,7 @@ import { getSupabaseC } from "../lib/c-supabaseClient";
 function CEditProfile() {
   const router = useRouter();
   const [ready, setReady] = React.useState(false);
+  const [userId, setUserId] = React.useState<string | null>(null);
 
   React.useEffect(() => {
     const supabase = getSupabaseC();
@@ -25,26 +26,32 @@ function CEditProfile() {
         return;
       }
 
-      // ✅ COM LOGIN → GARANTE TOKEN VÁLIDO PARA O PLASMIC
+      // ✅ USER ID (FONTE DA VERDADE)
+      const uid = session.user?.id;
+      if (!uid) {
+        router.replace("/c-login");
+        return;
+      }
+
+      // ✅ TOKEN
       const token = session.access_token;
 
-      // Verificação client-side e validação do JWT
-      if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
-        if (token && token.split('.').length === 3) {
+      if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
+        if (token && token.split(".").length === 3) {
           localStorage.setItem("sb-company-access-token", token);
         } else {
-          // Token inválido, redireciona para login
           router.replace("/c-login");
           return;
         }
       }
 
+      setUserId(uid);
       setReady(true);
     });
   }, [router]);
 
   // ⏳ NÃO RENDERIZA NADA ANTES DA VALIDAÇÃO
-  if (!ready) return null;
+  if (!ready || !userId) return null;
 
   return (
     <GlobalContextsProvider>
@@ -53,7 +60,8 @@ function CEditProfile() {
         params={router.query}
         query={router.query}
       >
-        <PlasmicCEditProfile />
+        {/* ✅ userId PASSADO PARA O PLASMIC */}
+        <PlasmicCEditProfile userId={userId} />
       </PageParamsProvider__>
     </GlobalContextsProvider>
   );

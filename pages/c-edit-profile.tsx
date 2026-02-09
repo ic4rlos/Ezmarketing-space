@@ -20,29 +20,22 @@ function CEditProfile() {
     supabase.auth.getSession().then(({ data }) => {
       const session = data.session;
 
-      // 🚫 SEM LOGIN → BLOQUEIA
+      // 🚫 SEM LOGIN
       if (!session) {
         router.replace("/c-login");
         return;
       }
 
-      // ✅ USER ID (FONTE DA VERDADE)
       const uid = session.user?.id;
       if (!uid) {
         router.replace("/c-login");
         return;
       }
 
-      // ✅ TOKEN
       const token = session.access_token;
 
-      if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
-        if (token && token.split(".").length === 3) {
-          localStorage.setItem("sb-company-access-token", token);
-        } else {
-          router.replace("/c-login");
-          return;
-        }
+      if (typeof window !== "undefined" && token) {
+        localStorage.setItem("sb-company-access-token", token);
       }
 
       setUserId(uid);
@@ -50,18 +43,19 @@ function CEditProfile() {
     });
   }, [router]);
 
-  // ⏳ NÃO RENDERIZA NADA ANTES DA VALIDAÇÃO
   if (!ready || !userId) return null;
 
   return (
     <GlobalContextsProvider>
       <PageParamsProvider__
         route={router.pathname}
-        params={router.query}
+        params={{
+          ...router.query,
+          userId, // ✅ AQUI É O LUGAR CORRETO
+        }}
         query={router.query}
       >
-        {/* ✅ userId PASSADO PARA O PLASMIC */}
-        <PlasmicCEditProfile userId={userId} />
+        <PlasmicCEditProfile />
       </PageParamsProvider__>
     </GlobalContextsProvider>
   );

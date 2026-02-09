@@ -3961,7 +3961,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
 
                                   $state.companyNature3,
 
-                                  auth.user.id
+                                  props.userId
                                 ]
                               },
                               cacheKey: null,

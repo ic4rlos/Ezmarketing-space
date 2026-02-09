@@ -9,13 +9,16 @@ export default function CEditProfile() {
   const router = useRouter();
   const { user, loading } = useCAuth();
 
-  // 🚫 sem login
-  if (!loading && !user) {
-    router.replace("/c-login");
-    return null;
-  }
+  React.useEffect(() => {
+    if (loading) return;
+
+    if (!user) {
+      router.replace("/c-login");
+    }
+  }, [loading, user, router]);
 
   if (loading) return null;
+  if (!user) return null;
 
   return (
     <GlobalContextsProvider>
@@ -23,7 +26,7 @@ export default function CEditProfile() {
         route={router.pathname}
         params={{
           ...router.query,
-          userId: user.id, // agora vem do CAuth
+          userId: user.id,
         }}
         query={router.query}
       >

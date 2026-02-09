@@ -5,7 +5,7 @@ import React, {
   useState,
 } from "react";
 
-import { supabaseCompany } from "../../lib/c-supabaseClient";
+import supabaseCompany from "../../lib/c-supabaseClient";
 
 type AuthContextType = {
   userId: string | null;

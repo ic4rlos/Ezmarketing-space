@@ -1,16 +1,16 @@
 import * as React from "react";
 import { useRouter } from "next/router";
-import { useAuth } from "../contexts/c-AuthContext";
+import { useCAuth } from "../contexts/c-AuthContext";
 import { PlasmicCEditProfile } from "../components/plasmic/ez_marketing_platform/PlasmicCEditProfile";
 import GlobalContextsProvider from "../components/plasmic/ez_marketing_platform/PlasmicGlobalContextsProvider";
 import { PageParamsProvider as PageParamsProvider__ } from "@plasmicapp/react-web/lib/host";
 
 export default function CEditProfile() {
   const router = useRouter();
-  const { userId, loading } = useAuth();
+  const { user, loading } = useCAuth();
 
-  // 🚫 SEM LOGIN
-  if (!loading && !userId) {
+  // 🚫 sem login
+  if (!loading && !user) {
     router.replace("/c-login");
     return null;
   }
@@ -23,7 +23,7 @@ export default function CEditProfile() {
         route={router.pathname}
         params={{
           ...router.query,
-          userId, // ✅ vem do AuthContext
+          userId: user.id, // agora vem do CAuth
         }}
         query={router.query}
       >

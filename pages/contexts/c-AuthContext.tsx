@@ -1,5 +1,11 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { supabase } from "../lib/supabaseClient";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+
+import { supabaseCompany } from "../lib/c-supabaseClient";
 
 type AuthContextType = {
   userId: string | null;
@@ -16,7 +22,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => {
+    supabaseCompany.auth.getUser().then(({ data }) => {
       setUserId(data.user?.id ?? null);
       setLoading(false);
     });

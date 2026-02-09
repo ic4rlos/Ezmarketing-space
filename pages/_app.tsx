@@ -1,13 +1,26 @@
 import type { AppProps } from "next/app";
 import { PlasmicRootProvider } from "@plasmicapp/react-web";
-import { CAuthProvider } from "../contexts/c-AuthContext";
+import { CAuthProvider, useCAuth } from "../contexts/c-AuthContext";
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+function AppInner({ Component, pageProps }: AppProps) {
+  const { loading } = useCAuth();
+
+  // ⛔ NÃO renderiza Plasmic enquanto auth não existe
+  if (loading) {
+    return null;
+  }
+
   return (
     <PlasmicRootProvider>
-      <CAuthProvider>
-        <Component {...pageProps} />
-      </CAuthProvider>
+      <Component {...pageProps} />
     </PlasmicRootProvider>
+  );
+}
+
+export default function MyApp(props: AppProps) {
+  return (
+    <CAuthProvider>
+      <AppInner {...props} />
+    </CAuthProvider>
   );
 }

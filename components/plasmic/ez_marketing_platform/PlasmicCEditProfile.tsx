@@ -2309,7 +2309,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     styleTokensClassNames
                   )}
                   dropdownMatchSelectWidth={false}
-                  mode={"multiple"}
+                  mode={"single"}
                   onChange={async (...eventArgs: any) => {
                     generateStateOnChangeProp($state, [
                       "subArea",

@@ -471,6 +471,13 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "userId",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          'globalThis.localStorage.getItem("userId")'
       }
     ],
     [$props, $ctx, $refs]
@@ -3930,7 +3937,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                           const actionArgs = {
                             dataOp: {
                               sourceId: "2NwTHMgACak4F1NLiJ15kA",
-                              opId: "3d9eac1c-d17a-465a-8642-d7dd73eec373",
+                              opId: "ce31a517-d392-4b46-bd60-bb4c48b45af6",
                               userArgs: {
                                 body: [
                                   $state.companyName.value,
@@ -3965,7 +3972,9 @@ function PlasmicCEditProfile__RenderFunc(props: {
 
                                   $state.googleCalendar.value,
 
-                                  $state.companyNature3
+                                  $state.companyNature3,
+
+                                  $state.userId
                                 ]
                               },
                               cacheKey: null,

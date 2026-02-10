@@ -471,28 +471,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          (() => {
-            try {
-              return typeof window !== "undefined"
-                ? (() => {
-                    const jwt = localStorage.getItem("sb-company-access-token");
-                    if (jwt && jwt.split(".").length === 3) {
-                      const payload = JSON.parse(atob(jwt.split(".")[1]));
-                      return payload.sub;
-                    }
-                    return null;
-                  })()
-                : null;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
-              }
-              throw e;
-            }
-          })()
+          "3fa3164b-7eec-4557-b806-f22d4843fa2b"
       },
       {
         path: "variable2",

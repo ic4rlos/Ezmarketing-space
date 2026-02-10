@@ -474,7 +474,14 @@ function PlasmicCEditProfile__RenderFunc(props: {
           (() => {
             try {
               return typeof window !== "undefined"
-                ? globalThis.localStorage.getItem("userId")
+                ? (() => {
+                    const jwt = localStorage.getItem("sb-company-access-token");
+                    if (jwt && jwt.split(".").length === 3) {
+                      const payload = JSON.parse(atob(jwt.split(".")[1]));
+                      return payload.sub;
+                    }
+                    return null;
+                  })()
                 : null;
             } catch (e) {
               if (

@@ -37,14 +37,21 @@ export function CAuthProvider({ children }: { children: ReactNode }) {
     try {
       const payload = JSON.parse(atob(token.split(".")[1]));
 
-      setUser({
+      const userData = {
         id: payload.sub,
         email: payload.email,
         companyId: payload.companyId,
-      });
+      };
+
+      setUser(userData);
+      
+      // Salva o userId no localStorage para usar no Plasmic
+      localStorage.setItem('userId', userData.id);
+      
     } catch (err) {
       console.error("Token inválido", err);
       setUser(null);
+      localStorage.removeItem('userId'); // Remove se token inválido
     } finally {
       setLoading(false);
     }

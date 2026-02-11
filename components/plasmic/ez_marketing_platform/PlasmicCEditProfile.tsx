@@ -500,13 +500,9 @@ function PlasmicCEditProfile__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return (() => {
-                if (GetCompany?.data?.length > 0) {
-                  return "update";
-                } else {
-                  return "create";
-                }
-              })();
+              return $queries.getCompanyForUpsert?.data?.length > 0
+                ? "update"
+                : "create";
             } catch (e) {
               if (
                 e instanceof TypeError ||

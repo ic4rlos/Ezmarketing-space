@@ -215,7 +215,9 @@ function PlasmicCEditProfile__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return $queries.valoresDeInput.data?.[0]?.["Company name"] || "";
+              return $queries?.valoresDeInput?.isLoading
+                ? ""
+                : ($queries?.valoresDeInput?.data?.[0]?.["Company name"] ?? "");
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -259,7 +261,9 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          $queries.valoresDeInput.data.location,
+          $queries?.valoresDeInput?.isLoading
+            ? ""
+            : ($queries?.valoresDeInput?.data?.[0]?.["Location"] ?? ""),
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -268,7 +272,9 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          $queries.valoresDeInput.data.foundationDate,
+          $queries?.valoresDeInput?.isLoading
+            ? ""
+            : ($queries?.valoresDeInput?.data?.[0]?.["Foundation date"] ?? ""),
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -283,7 +289,9 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          $queries.valoresDeInput.data.linkedin,
+          $queries?.valoresDeInput?.isLoading
+            ? ""
+            : ($queries?.valoresDeInput?.data?.[0]?.["LinkedIn"] ?? ""),
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -292,7 +300,9 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          $queries.valoresDeInput.data.instagram,
+          $queries?.valoresDeInput?.isLoading
+            ? ""
+            : ($queries?.valoresDeInput?.data?.[0]?.["Instagram"] ?? ""),
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -301,7 +311,9 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          $queries.valoresDeInput.data.X,
+          $queries?.valoresDeInput?.isLoading
+            ? ""
+            : ($queries?.valoresDeInput?.data?.[0]?.["X"] ?? ""),
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -339,7 +351,9 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          $queries.valoresDeInput.data["Customer problem"],
+          $queries?.valoresDeInput?.isLoading
+            ? ""
+            : ($queries?.valoresDeInput?.data?.[0]?.["Customer problem"] ?? ""),
 
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
@@ -354,21 +368,27 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          $queries.valoresDeInput.data["Company type"]
+          $queries?.valoresDeInput?.isLoading
+            ? ""
+            : ($queries?.valoresDeInput?.data?.[0]?.["Company type"] ?? "")
       },
       {
         path: "area.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          $queries.valoresDeInput.data.area
+          $queries?.valoresDeInput?.isLoading
+            ? ""
+            : ($queries?.valoresDeInput?.data?.[0]?.["Area"] ?? "")
       },
       {
         path: "companyTagline.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          $queries.valoresDeInput.data["Company tagline"],
+          $queries?.valoresDeInput?.isLoading
+            ? ""
+            : ($queries?.valoresDeInput?.data?.[0]?.["Company tagline"] ?? ""),
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -409,7 +429,10 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          $queries.valoresDeInput.data["Solution description"],
+          $queries?.valoresDeInput?.isLoading
+            ? ""
+            : ($queries?.valoresDeInput?.data?.[0]?.["Solution description"] ??
+              ""),
 
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
@@ -418,7 +441,11 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          $queries.valoresDeInput.data["Why should they choose"],
+          $queries?.valoresDeInput?.isLoading
+            ? ""
+            : ($queries?.valoresDeInput?.data?.[0]?.[
+                "Why should they choose"
+              ] ?? ""),
 
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
@@ -433,7 +460,9 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          $queries.valoresDeInput.data.website,
+          $queries?.valoresDeInput?.isLoading
+            ? ""
+            : ($queries?.valoresDeInput?.data?.[0]?.["Website"] ?? ""),
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -487,7 +516,9 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          $queries.valoresDeInput.data["Google calendar"],
+          $queries?.valoresDeInput?.isLoading
+            ? ""
+            : ($queries?.valoresDeInput?.data?.[0]?.["Google calendar"] ?? ""),
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -884,7 +915,13 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     projectcss.plasmic_mixins,
                     styleTokensClassNames
                   )}
-                  defaultValue={$queries.valoresDeInput.data["Company type"]}
+                  defaultValue={
+                    $queries?.valoresDeInput?.isLoading
+                      ? ""
+                      : ($queries?.valoresDeInput?.data?.[0]?.[
+                          "Company type"
+                        ] ?? "")
+                  }
                   dropdownMatchSelectWidth={false}
                   mode={"single"}
                   onChange={async (...eventArgs: any) => {
@@ -1628,7 +1665,11 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     projectcss.plasmic_mixins,
                     styleTokensClassNames
                   )}
-                  defaultValue={$queries.valoresDeInput.data.area}
+                  defaultValue={
+                    $queries?.valoresDeInput?.isLoading
+                      ? ""
+                      : ($queries?.valoresDeInput?.data?.[0]?.["Area"] ?? "")
+                  }
                   dropdownMatchSelectWidth={false}
                   mode={"single"}
                   onChange={async (...eventArgs: any) => {

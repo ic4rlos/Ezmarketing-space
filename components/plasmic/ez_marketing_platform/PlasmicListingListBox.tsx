@@ -153,6 +153,7 @@ function PlasmicListingListBox__RenderFunc(props: {
         sty.root
       )}
       component={Link}
+      legacyBehavior={false}
       platform={"nextjs"}
     >
       <div className={classNames(projectcss.all, sty.freeBox___0GKzX)}>

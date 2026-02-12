@@ -300,6 +300,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                     )}
                     component={Link}
                     href={`/corporative-page`}
+                    legacyBehavior={false}
                     platform={"nextjs"}
                   >
                     <PlasmicImg__
@@ -346,6 +347,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/company-profile`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Company\nprofile"}
@@ -359,6 +361,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/services-dashboard`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Service\nDashboard"}
@@ -371,6 +374,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                         sty.link__m9EIp
                       )}
                       component={Link}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Market\nTrends"}
@@ -384,6 +388,7 @@ function PlasmicCRateACommunitie__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/find-a-affiliate`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Find a \naffiliate"}

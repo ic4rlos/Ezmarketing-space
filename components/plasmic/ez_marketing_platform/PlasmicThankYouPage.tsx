@@ -221,6 +221,7 @@ function PlasmicThankYouPage__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.foundersbase.com/startup/239"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Learn more..."}

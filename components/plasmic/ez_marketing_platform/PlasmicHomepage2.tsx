@@ -191,6 +191,7 @@ function PlasmicHomepage2__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/affiliate-homepage`}
+                      legacyBehavior={false}
                       onClick={async event => {
                         const $steps = {};
 
@@ -261,6 +262,7 @@ function PlasmicHomepage2__RenderFunc(props: {
                         )}
                         component={Link}
                         href={"/"}
+                        legacyBehavior={false}
                         platform={"nextjs"}
                       >
                         {"Community Dashboard"}
@@ -274,6 +276,7 @@ function PlasmicHomepage2__RenderFunc(props: {
                         )}
                         component={Link}
                         href={"/"}
+                        legacyBehavior={false}
                         platform={"nextjs"}
                       >
                         {"Service\nDashboard"}
@@ -287,6 +290,7 @@ function PlasmicHomepage2__RenderFunc(props: {
                         )}
                         component={Link}
                         href={"/"}
+                        legacyBehavior={false}
                         platform={"nextjs"}
                       >
                         {"Market\nTrends"}
@@ -300,6 +304,7 @@ function PlasmicHomepage2__RenderFunc(props: {
                         )}
                         component={Link}
                         href={`/a-find-a-business`}
+                        legacyBehavior={false}
                         platform={"nextjs"}
                       >
                         {"Find a \nbusiness"}

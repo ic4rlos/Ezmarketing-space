@@ -600,6 +600,7 @@ function PlasmicLACreateAccount__RenderFunc(props: {
                               sty.link__erqaR
                             )}
                             component={Link}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"terms and conditions"}
@@ -654,6 +655,7 @@ function PlasmicLACreateAccount__RenderFunc(props: {
                 )}
                 component={Link}
                 href={`/a-login`}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Log in"}

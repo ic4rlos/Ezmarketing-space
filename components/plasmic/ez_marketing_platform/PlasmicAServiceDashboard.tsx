@@ -491,6 +491,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                       sty.link__wllMc
                     )}
                     component={Link}
+                    legacyBehavior={false}
                     onClick={async event => {
                       const $steps = {};
 
@@ -561,6 +562,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/a-community-dashboard`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Community Dashboard"}
@@ -574,6 +576,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/a-service-dashboard`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Service\nDashboard"}
@@ -586,6 +589,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                         sty.link__xgFBj
                       )}
                       component={Link}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Market\nTrends"}
@@ -599,6 +603,7 @@ function PlasmicAServiceDashboard__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/a-find-a-business`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Find a \nbusiness"}

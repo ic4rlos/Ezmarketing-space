@@ -297,6 +297,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                         sty.link__zlHZz
                       )}
                       component={Link}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       <PlasmicImg__
@@ -343,6 +344,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                         )}
                         component={Link}
                         href={`/a-community-dashboard`}
+                        legacyBehavior={false}
                         platform={"nextjs"}
                       >
                         {"Community Dashboard"}
@@ -356,6 +358,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                         )}
                         component={Link}
                         href={`/a-service-dashboard`}
+                        legacyBehavior={false}
                         platform={"nextjs"}
                       >
                         {"Service\nDashboard"}
@@ -368,6 +371,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                           sty.link__qMyK
                         )}
                         component={Link}
+                        legacyBehavior={false}
                         platform={"nextjs"}
                       >
                         {"Market\nTrends"}
@@ -381,6 +385,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                         )}
                         component={Link}
                         href={`/a-find-a-business`}
+                        legacyBehavior={false}
                         platform={"nextjs"}
                       >
                         {"Find a \nbusiness"}
@@ -779,6 +784,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                   )}
                   component={Link}
                   href={"https://www.plasmic.app/"}
+                  legacyBehavior={false}
                   platform={"nextjs"}
                 >
                   {"Linkedin"}
@@ -801,6 +807,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                   )}
                   component={Link}
                   href={"https://www.plasmic.app/"}
+                  legacyBehavior={false}
                   platform={"nextjs"}
                 >
                   {"Instagram"}
@@ -823,6 +830,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                   )}
                   component={Link}
                   href={"https://www.plasmic.app/"}
+                  legacyBehavior={false}
                   platform={"nextjs"}
                 >
                   {"X"}
@@ -845,6 +853,7 @@ function PlasmicARatingCompanies__RenderFunc(props: {
                   )}
                   component={Link}
                   href={"https://www.plasmic.app/"}
+                  legacyBehavior={false}
                   platform={"nextjs"}
                 >
                   {"Website"}

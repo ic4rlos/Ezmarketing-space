@@ -175,6 +175,7 @@ function PlasmicNavbar2__RenderFunc(props: {
             )}
             component={Link}
             href={"#"}
+            legacyBehavior={false}
             platform={"nextjs"}
           >
             {"How it Work"}
@@ -188,6 +189,7 @@ function PlasmicNavbar2__RenderFunc(props: {
             )}
             component={Link}
             href={"#"}
+            legacyBehavior={false}
             platform={"nextjs"}
           >
             {"Pricing"}
@@ -201,6 +203,7 @@ function PlasmicNavbar2__RenderFunc(props: {
             )}
             component={Link}
             href={"#"}
+            legacyBehavior={false}
             platform={"nextjs"}
           >
             {"FAQs"}
@@ -216,6 +219,7 @@ function PlasmicNavbar2__RenderFunc(props: {
             )}
             component={Link}
             href={"#"}
+            legacyBehavior={false}
             platform={"nextjs"}
           >
             {"Log in"}

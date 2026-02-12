@@ -1439,6 +1439,7 @@ function PlasmicAMarketTrends__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/affiliate-homepage`}
+                      legacyBehavior={false}
                       onClick={async event => {
                         const $steps = {};
 
@@ -1509,6 +1510,7 @@ function PlasmicAMarketTrends__RenderFunc(props: {
                         )}
                         component={Link}
                         href={`/a-community-dashboard`}
+                        legacyBehavior={false}
                         platform={"nextjs"}
                       >
                         {"Community Dashboard"}
@@ -1522,6 +1524,7 @@ function PlasmicAMarketTrends__RenderFunc(props: {
                         )}
                         component={Link}
                         href={`/a-service-dashboard`}
+                        legacyBehavior={false}
                         platform={"nextjs"}
                       >
                         {"Service\nDashboard"}
@@ -1535,6 +1538,7 @@ function PlasmicAMarketTrends__RenderFunc(props: {
                         )}
                         component={Link}
                         href={`/market-trends`}
+                        legacyBehavior={false}
                         platform={"nextjs"}
                       >
                         {"Market\nTrends"}
@@ -1548,6 +1552,7 @@ function PlasmicAMarketTrends__RenderFunc(props: {
                         )}
                         component={Link}
                         href={`/a-find-a-business`}
+                        legacyBehavior={false}
                         platform={"nextjs"}
                       >
                         {"Find a \nbusiness"}

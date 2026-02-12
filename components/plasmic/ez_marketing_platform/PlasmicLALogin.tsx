@@ -505,6 +505,7 @@ function PlasmicLALogin__RenderFunc(props: {
                     )}
                     component={Link}
                     href={`/a-reset-password`}
+                    legacyBehavior={false}
                     platform={"nextjs"}
                   >
                     {"Forgot password?"}
@@ -541,6 +542,7 @@ function PlasmicLALogin__RenderFunc(props: {
                 )}
                 component={Link}
                 href={`/a-create-account`}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Create account"}

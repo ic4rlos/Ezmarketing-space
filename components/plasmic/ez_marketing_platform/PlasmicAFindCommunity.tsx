@@ -1658,6 +1658,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                       sty.link__kmpSk
                     )}
                     component={Link}
+                    legacyBehavior={false}
                     onClick={async event => {
                       const $steps = {};
 
@@ -1728,6 +1729,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/a-community-dashboard`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Community Dashboard"}
@@ -1741,6 +1743,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/a-service-dashboard`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Service\nDashboard"}
@@ -1753,6 +1756,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                         sty.link__ko1SB
                       )}
                       component={Link}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Market\nTrends"}
@@ -1766,6 +1770,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/a-find-a-business`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Find a \nbusiness"}
@@ -2106,6 +2111,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -2400,6 +2406,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -2694,6 +2701,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -2988,6 +2996,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -3421,6 +3430,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -3715,6 +3725,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -4009,6 +4020,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -4303,6 +4315,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -4739,6 +4752,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -5033,6 +5047,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -5327,6 +5342,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -5621,6 +5637,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -6057,6 +6074,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -6351,6 +6369,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -6645,6 +6664,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -6939,6 +6959,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -7375,6 +7396,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -7669,6 +7691,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -7963,6 +7986,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -8257,6 +8281,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -8693,6 +8718,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -8987,6 +9013,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -9281,6 +9308,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -9575,6 +9603,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -10011,6 +10040,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -10305,6 +10335,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -10599,6 +10630,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -10893,6 +10925,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -11329,6 +11362,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -11623,6 +11657,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -11917,6 +11952,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -12211,6 +12247,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -12647,6 +12684,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -12941,6 +12979,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -13235,6 +13274,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -13529,6 +13569,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -13965,6 +14006,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -14259,6 +14301,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -14553,6 +14596,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -14847,6 +14891,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -15283,6 +15328,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -15577,6 +15623,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -15871,6 +15918,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -16165,6 +16213,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -16601,6 +16650,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -16895,6 +16945,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -17189,6 +17240,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -17483,6 +17535,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -17919,6 +17972,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -18213,6 +18267,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -18507,6 +18562,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -18801,6 +18857,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -19237,6 +19294,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -19531,6 +19589,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -19825,6 +19884,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -20116,6 +20176,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -20552,6 +20613,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -20846,6 +20908,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -21140,6 +21203,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -21434,6 +21498,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -21870,6 +21935,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -22164,6 +22230,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -22458,6 +22525,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -22752,6 +22820,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -23188,6 +23257,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -23482,6 +23552,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -23776,6 +23847,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -24070,6 +24142,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -24506,6 +24579,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -24800,6 +24874,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -25094,6 +25169,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -25388,6 +25464,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -25824,6 +25901,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -26118,6 +26196,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -26412,6 +26491,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -26706,6 +26786,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -27142,6 +27223,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -27436,6 +27518,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -27730,6 +27813,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}
@@ -28024,6 +28108,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
                             )}
                             component={Link}
                             href={`/a-apply-to-a-community`}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {"Community"}

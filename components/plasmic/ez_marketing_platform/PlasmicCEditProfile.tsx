@@ -549,27 +549,6 @@ function PlasmicCEditProfile__RenderFunc(props: {
               throw e;
             }
           })()
-      },
-      {
-        path: "checkCompany",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          (() => {
-            try {
-              return $queries.getCompanyForUpsert?.data?.length > 0
-                ? "update"
-                : "create";
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
-              }
-              throw e;
-            }
-          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -594,18 +573,6 @@ function PlasmicCEditProfile__RenderFunc(props: {
           headers: [localStorage.sb - access - token]
         },
         cacheKey: `plasmic.$.9f87e3e6-4447-4fc0-b109-ce143a6903b9.$.`,
-        invalidatedKeys: null,
-        roleId: null
-      };
-    }),
-    getCompanyForUpsert: usePlasmicDataOp(() => {
-      return {
-        sourceId: "2NwTHMgACak4F1NLiJ15kA",
-        opId: "9132879c-85de-4572-84dd-53cc33cff387",
-        userArgs: {
-          path: [userId]
-        },
-        cacheKey: `plasmic.$.9132879c-85de-4572-84dd-53cc33cff387.$.`,
         invalidatedKeys: null,
         roleId: null
       };
@@ -4057,268 +4024,76 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   onClick={async event => {
                     const $steps = {};
 
-                    $steps["httpPatchCompany"] =
-                      $state.checkCompany === "update"
-                        ? (() => {
-                            const actionArgs = {
-                              dataOp: {
-                                sourceId: "2NwTHMgACak4F1NLiJ15kA",
-                                opId: "6d54388a-a153-429c-bd1e-53fa8127f476",
-                                userArgs: {
-                                  path: [userId],
+                    $steps["httpPostCompany"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            dataOp: {
+                              sourceId: "2NwTHMgACak4F1NLiJ15kA",
+                              opId: "d0c47884-214c-4235-bc63-51cccf716ff4",
+                              userArgs: {
+                                body: [
+                                  $state.companyName.value,
 
-                                  body: [
-                                    $state.companyName.value,
+                                  undefined,
 
-                                    $state.companyType.value,
+                                  $state.companyType.value,
 
-                                    $state.location.value,
+                                  $state.location.value,
 
-                                    $state.foundationDate.value,
+                                  $state.foundationDate.value,
 
-                                    $state.linkedIn.value,
+                                  $state.linkedIn.value,
 
-                                    $state.instagram.value,
+                                  $state.instagram.value,
 
-                                    $state.website.value,
+                                  $state.website.value,
 
-                                    $state.x.value,
+                                  $state.x.value,
 
-                                    $state.companyTagline.value,
+                                  $state.companyTagline.value,
 
-                                    $state.area.value,
+                                  $state.area.value,
 
-                                    $state.subArea.value,
+                                  $state.subArea.value,
 
-                                    $state.customerProblem.value,
+                                  $state.customerProblem.value,
 
-                                    $state.solutionDescription.value,
+                                  $state.solutionDescription.value,
 
-                                    $state.whyShouldTheyChoose.value,
+                                  $state.whyShouldTheyChoose.value,
 
-                                    $state.googleCalendar.value,
+                                  $state.googleCalendar.value,
 
-                                    $state.companyNature3,
+                                  $state.companyNature3,
 
-                                    $state.userId
-                                  ]
-                                },
-                                cacheKey: null,
-                                invalidatedKeys: ["plasmic_refresh_all"],
-                                roleId: null
-                              }
-                            };
-                            return (async ({ dataOp, continueOnError }) => {
-                              try {
-                                const response = await executePlasmicDataOp(
-                                  dataOp,
-                                  {
-                                    userAuthToken:
-                                      dataSourcesCtx?.userAuthToken,
-                                    user: dataSourcesCtx?.user
-                                  }
-                                );
-                                await plasmicInvalidate(dataOp.invalidatedKeys);
-                                return response;
-                              } catch (e) {
-                                if (!continueOnError) {
-                                  throw e;
+                                  $state.userId
+                                ]
+                              },
+                              cacheKey: null,
+                              invalidatedKeys: ["plasmic_refresh_all"],
+                              roleId: null
+                            }
+                          };
+                          return (async ({ dataOp, continueOnError }) => {
+                            try {
+                              const response = await executePlasmicDataOp(
+                                dataOp,
+                                {
+                                  userAuthToken: dataSourcesCtx?.userAuthToken,
+                                  user: dataSourcesCtx?.user
                                 }
-                                return e;
+                              );
+                              await plasmicInvalidate(dataOp.invalidatedKeys);
+                              return response;
+                            } catch (e) {
+                              if (!continueOnError) {
+                                throw e;
                               }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                    if (
-                      $steps["httpPatchCompany"] != null &&
-                      typeof $steps["httpPatchCompany"] === "object" &&
-                      typeof $steps["httpPatchCompany"].then === "function"
-                    ) {
-                      $steps["httpPatchCompany"] =
-                        await $steps["httpPatchCompany"];
-                    }
-
-                    $steps["httpPatchSolutions"] =
-                      $state.checkCompany === "update"
-                        ? (() => {
-                            const actionArgs = {
-                              dataOp: {
-                                sourceId: "2NwTHMgACak4F1NLiJ15kA",
-                                opId: "061cec82-ae61-46a1-8d1d-8e4e12aca687",
-                                userArgs: {
-                                  body: [
-                                    $state.formSolution.map(sol => ({
-                                      company_id: $steps.companies[0].id,
-                                      title: sol.title,
-                                      description: sol.description,
-                                      price: sol.price
-                                    }))
-                                  ]
-                                },
-                                cacheKey: null,
-                                invalidatedKeys: ["plasmic_refresh_all"],
-                                roleId: null
-                              }
-                            };
-                            return (async ({ dataOp, continueOnError }) => {
-                              try {
-                                const response = await executePlasmicDataOp(
-                                  dataOp,
-                                  {
-                                    userAuthToken:
-                                      dataSourcesCtx?.userAuthToken,
-                                    user: dataSourcesCtx?.user
-                                  }
-                                );
-                                await plasmicInvalidate(dataOp.invalidatedKeys);
-                                return response;
-                              } catch (e) {
-                                if (!continueOnError) {
-                                  throw e;
-                                }
-                                return e;
-                              }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                    if (
-                      $steps["httpPatchSolutions"] != null &&
-                      typeof $steps["httpPatchSolutions"] === "object" &&
-                      typeof $steps["httpPatchSolutions"].then === "function"
-                    ) {
-                      $steps["httpPatchSolutions"] =
-                        await $steps["httpPatchSolutions"];
-                    }
-
-                    $steps["httpPatchSolutionsSteps"] =
-                      $state.checkCompany === "update"
-                        ? (() => {
-                            const actionArgs = {
-                              dataOp: {
-                                sourceId: "2NwTHMgACak4F1NLiJ15kA",
-                                opId: "cec39fcc-6b1d-4524-8789-b24b75989e9d",
-                                userArgs: {
-                                  body: [
-                                    (() => {
-                                      {
-                                        {
-                                          return $state.formStep.map(step => ({
-                                            solution_id: step.solution_id,
-                                            step_text: step.step_text
-                                          }));
-                                        }
-                                      }
-                                    })()
-                                  ]
-                                },
-                                cacheKey: null,
-                                invalidatedKeys: ["plasmic_refresh_all"],
-                                roleId: null
-                              }
-                            };
-                            return (async ({ dataOp, continueOnError }) => {
-                              try {
-                                const response = await executePlasmicDataOp(
-                                  dataOp,
-                                  {
-                                    userAuthToken:
-                                      dataSourcesCtx?.userAuthToken,
-                                    user: dataSourcesCtx?.user
-                                  }
-                                );
-                                await plasmicInvalidate(dataOp.invalidatedKeys);
-                                return response;
-                              } catch (e) {
-                                if (!continueOnError) {
-                                  throw e;
-                                }
-                                return e;
-                              }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                    if (
-                      $steps["httpPatchSolutionsSteps"] != null &&
-                      typeof $steps["httpPatchSolutionsSteps"] === "object" &&
-                      typeof $steps["httpPatchSolutionsSteps"].then ===
-                        "function"
-                    ) {
-                      $steps["httpPatchSolutionsSteps"] =
-                        await $steps["httpPatchSolutionsSteps"];
-                    }
-
-                    $steps["httpPostCompany"] =
-                      $state.CheckCompany === "create"
-                        ? (() => {
-                            const actionArgs = {
-                              dataOp: {
-                                sourceId: "2NwTHMgACak4F1NLiJ15kA",
-                                opId: "a5925b12-05fa-4d4a-ba90-443f735efe9a",
-                                userArgs: {
-                                  body: [
-                                    $state.companyName.value,
-
-                                    undefined,
-
-                                    $state.companyType.value,
-
-                                    $state.location.value,
-
-                                    $state.foundationDate.value,
-
-                                    $state.linkedIn.value,
-
-                                    $state.instagram.value,
-
-                                    $state.website.value,
-
-                                    $state.x.value,
-
-                                    $state.companyTagline.value,
-
-                                    $state.area.value,
-
-                                    $state.subArea.value,
-
-                                    $state.customerProblem.value,
-
-                                    $state.solutionDescription.value,
-
-                                    $state.whyShouldTheyChoose.value,
-
-                                    $state.googleCalendar.value,
-
-                                    $state.companyNature3,
-
-                                    $state.userId
-                                  ]
-                                },
-                                cacheKey: null,
-                                invalidatedKeys: ["plasmic_refresh_all"],
-                                roleId: null
-                              }
-                            };
-                            return (async ({ dataOp, continueOnError }) => {
-                              try {
-                                const response = await executePlasmicDataOp(
-                                  dataOp,
-                                  {
-                                    userAuthToken:
-                                      dataSourcesCtx?.userAuthToken,
-                                    user: dataSourcesCtx?.user
-                                  }
-                                );
-                                await plasmicInvalidate(dataOp.invalidatedKeys);
-                                return response;
-                              } catch (e) {
-                                if (!continueOnError) {
-                                  throw e;
-                                }
-                                return e;
-                              }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
+                              return e;
+                            }
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
                     if (
                       $steps["httpPostCompany"] != null &&
                       typeof $steps["httpPostCompany"] === "object" &&
@@ -4328,49 +4103,47 @@ function PlasmicCEditProfile__RenderFunc(props: {
                         await $steps["httpPostCompany"];
                     }
 
-                    $steps["httpPostSolutions"] =
-                      $state.CheckCompany === "create"
-                        ? (() => {
-                            const actionArgs = {
-                              dataOp: {
-                                sourceId: "2NwTHMgACak4F1NLiJ15kA",
-                                opId: "c3d34727-e4da-41db-8f03-e52010f59908",
-                                userArgs: {
-                                  body: [
-                                    $state.formSolution.map(sol => ({
-                                      company_id: $steps.companies[0].id,
-                                      title: sol.title,
-                                      description: sol.description,
-                                      price: sol.price
-                                    }))
-                                  ]
-                                },
-                                cacheKey: null,
-                                invalidatedKeys: ["plasmic_refresh_all"],
-                                roleId: null
-                              }
-                            };
-                            return (async ({ dataOp, continueOnError }) => {
-                              try {
-                                const response = await executePlasmicDataOp(
-                                  dataOp,
-                                  {
-                                    userAuthToken:
-                                      dataSourcesCtx?.userAuthToken,
-                                    user: dataSourcesCtx?.user
-                                  }
-                                );
-                                await plasmicInvalidate(dataOp.invalidatedKeys);
-                                return response;
-                              } catch (e) {
-                                if (!continueOnError) {
-                                  throw e;
+                    $steps["httpPostSolutions"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            dataOp: {
+                              sourceId: "2NwTHMgACak4F1NLiJ15kA",
+                              opId: "c3d34727-e4da-41db-8f03-e52010f59908",
+                              userArgs: {
+                                body: [
+                                  $state.formSolution.map(sol => ({
+                                    company_id: $steps.companies[0].id,
+                                    title: sol.title,
+                                    description: sol.description,
+                                    price: sol.price
+                                  }))
+                                ]
+                              },
+                              cacheKey: null,
+                              invalidatedKeys: ["plasmic_refresh_all"],
+                              roleId: null
+                            }
+                          };
+                          return (async ({ dataOp, continueOnError }) => {
+                            try {
+                              const response = await executePlasmicDataOp(
+                                dataOp,
+                                {
+                                  userAuthToken: dataSourcesCtx?.userAuthToken,
+                                  user: dataSourcesCtx?.user
                                 }
-                                return e;
+                              );
+                              await plasmicInvalidate(dataOp.invalidatedKeys);
+                              return response;
+                            } catch (e) {
+                              if (!continueOnError) {
+                                throw e;
                               }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
+                              return e;
+                            }
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
                     if (
                       $steps["httpPostSolutions"] != null &&
                       typeof $steps["httpPostSolutions"] === "object" &&
@@ -4380,53 +4153,51 @@ function PlasmicCEditProfile__RenderFunc(props: {
                         await $steps["httpPostSolutions"];
                     }
 
-                    $steps["httpPostSolutionsSteps"] =
-                      $state.CheckCompany === "create"
-                        ? (() => {
-                            const actionArgs = {
-                              dataOp: {
-                                sourceId: "2NwTHMgACak4F1NLiJ15kA",
-                                opId: "0de0674e-30d9-4dd2-ad06-4b31c45c45a9",
-                                userArgs: {
-                                  body: [
-                                    (() => {
+                    $steps["httpPostSolutionsSteps"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            dataOp: {
+                              sourceId: "2NwTHMgACak4F1NLiJ15kA",
+                              opId: "0de0674e-30d9-4dd2-ad06-4b31c45c45a9",
+                              userArgs: {
+                                body: [
+                                  (() => {
+                                    {
                                       {
-                                        {
-                                          return $state.formStep.map(step => ({
-                                            solution_id: step.solution_id,
-                                            step_text: step.step_text
-                                          }));
-                                        }
+                                        return $state.formStep.map(step => ({
+                                          solution_id: step.solution_id,
+                                          step_text: step.step_text
+                                        }));
                                       }
-                                    })()
-                                  ]
-                                },
-                                cacheKey: null,
-                                invalidatedKeys: ["plasmic_refresh_all"],
-                                roleId: null
-                              }
-                            };
-                            return (async ({ dataOp, continueOnError }) => {
-                              try {
-                                const response = await executePlasmicDataOp(
-                                  dataOp,
-                                  {
-                                    userAuthToken:
-                                      dataSourcesCtx?.userAuthToken,
-                                    user: dataSourcesCtx?.user
-                                  }
-                                );
-                                await plasmicInvalidate(dataOp.invalidatedKeys);
-                                return response;
-                              } catch (e) {
-                                if (!continueOnError) {
-                                  throw e;
+                                    }
+                                  })()
+                                ]
+                              },
+                              cacheKey: null,
+                              invalidatedKeys: ["plasmic_refresh_all"],
+                              roleId: null
+                            }
+                          };
+                          return (async ({ dataOp, continueOnError }) => {
+                            try {
+                              const response = await executePlasmicDataOp(
+                                dataOp,
+                                {
+                                  userAuthToken: dataSourcesCtx?.userAuthToken,
+                                  user: dataSourcesCtx?.user
                                 }
-                                return e;
+                              );
+                              await plasmicInvalidate(dataOp.invalidatedKeys);
+                              return response;
+                            } catch (e) {
+                              if (!continueOnError) {
+                                throw e;
                               }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
+                              return e;
+                            }
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
                     if (
                       $steps["httpPostSolutionsSteps"] != null &&
                       typeof $steps["httpPostSolutionsSteps"] === "object" &&

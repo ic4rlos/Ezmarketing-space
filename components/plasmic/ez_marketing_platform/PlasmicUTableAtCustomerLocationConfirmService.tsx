@@ -382,6 +382,7 @@ function PlasmicUTableAtCustomerLocationConfirmService__RenderFunc(props: {
                   )}
                   component={Link}
                   href={"https://www.plasmic.app/"}
+                  legacyBehavior={false}
                   platform={"nextjs"}
                 >
                   {"Company"}

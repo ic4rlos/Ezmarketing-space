@@ -297,6 +297,7 @@ function PlasmicCAdminCommunitie__RenderFunc(props: {
                     )}
                     component={Link}
                     href={`/corporative-page`}
+                    legacyBehavior={false}
                     platform={"nextjs"}
                   >
                     <PlasmicImg__
@@ -343,6 +344,7 @@ function PlasmicCAdminCommunitie__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/company-profile`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Company\nprofile"}
@@ -356,6 +358,7 @@ function PlasmicCAdminCommunitie__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/services-dashboard`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Service\nDashboard"}
@@ -368,6 +371,7 @@ function PlasmicCAdminCommunitie__RenderFunc(props: {
                         sty.link__s2MfF
                       )}
                       component={Link}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Market\nTrends"}
@@ -381,6 +385,7 @@ function PlasmicCAdminCommunitie__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/find-a-affiliate`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Find a \naffiliate"}
@@ -2353,6 +2358,7 @@ function PlasmicCAdminCommunitie__RenderFunc(props: {
               )}
               component={Link}
               href={"https://www.plasmic.app/"}
+              legacyBehavior={false}
               platform={"nextjs"}
             >
               {"Some link text"}

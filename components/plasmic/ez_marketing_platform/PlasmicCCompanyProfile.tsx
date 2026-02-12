@@ -375,6 +375,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                       sty.link___1QrXi
                     )}
                     component={Link}
+                    legacyBehavior={false}
                     onClick={async event => {
                       const $steps = {};
 
@@ -445,6 +446,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/company-profile`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Company\nprofile"}
@@ -458,6 +460,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/services-dashboard`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Service\nDashboard"}
@@ -470,6 +473,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                         sty.link__rrdvx
                       )}
                       component={Link}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Market\nTrends"}
@@ -483,6 +487,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/find-a-affiliate`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Find a \naffiliate"}
@@ -830,6 +835,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                   )}
                   component={Link}
                   href={`/c-edit-profile`}
+                  legacyBehavior={false}
                   platform={"nextjs"}
                 >
                   <WritingSvgrepoComSvgIcon
@@ -949,6 +955,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                               )}
                               component={Link}
                               href={`/c-rate-community`}
+                              legacyBehavior={false}
                               platform={"nextjs"}
                             >
                               {"Community"}
@@ -1666,6 +1673,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                               )}
                               component={Link}
                               href={`/c-rate-community`}
+                              legacyBehavior={false}
                               platform={"nextjs"}
                             >
                               {"Community"}
@@ -1886,6 +1894,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                                         sty.communityName5
                                       )}
                                       component={Link}
+                                      legacyBehavior={false}
                                       onClick={async event => {
                                         const $steps = {};
 
@@ -2557,6 +2566,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Linkedin"}
@@ -2579,6 +2589,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Instagram"}
@@ -2601,6 +2612,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"X"}
@@ -2623,6 +2635,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Website"}
@@ -2848,6 +2861,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                       sty.communityName
                     )}
                     component={Link}
+                    legacyBehavior={false}
                     platform={"nextjs"}
                   >
                     {"Customer/Community"}
@@ -2872,6 +2886,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                     )}
                     component={Link}
                     href={"https://www.plasmic.app/"}
+                    legacyBehavior={false}
                     platform={"nextjs"}
                   >
                     {"Company"}
@@ -3002,6 +3017,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                     )}
                     component={Link}
                     href={"https://www.plasmic.app/"}
+                    legacyBehavior={false}
                     platform={"nextjs"}
                   >
                     {"Company"}
@@ -3026,6 +3042,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
                     )}
                     component={Link}
                     href={"https://www.plasmic.app/"}
+                    legacyBehavior={false}
                     platform={"nextjs"}
                   >
                     {"Customer/Community"}

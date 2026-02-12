@@ -820,6 +820,7 @@ function PlasmicAProfile__RenderFunc(props: {
                     )}
                     component={Link}
                     href={`/affiliate-homepage`}
+                    legacyBehavior={false}
                     onClick={async event => {
                       const $steps = {};
 
@@ -890,6 +891,7 @@ function PlasmicAProfile__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/a-community-dashboard`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Community Dashboard"}
@@ -903,6 +905,7 @@ function PlasmicAProfile__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/a-service-dashboard`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Service\nDashboard"}
@@ -915,6 +918,7 @@ function PlasmicAProfile__RenderFunc(props: {
                         sty.link__ot5Cy
                       )}
                       component={Link}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Market\nTrends"}
@@ -928,6 +932,7 @@ function PlasmicAProfile__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/a-find-a-business`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Find a \nbusiness"}
@@ -1367,6 +1372,7 @@ function PlasmicAProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"LinkedIn"}
@@ -1389,6 +1395,7 @@ function PlasmicAProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Instagram"}
@@ -1411,6 +1418,7 @@ function PlasmicAProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"X corporation"}
@@ -1957,6 +1965,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                               )}
                                               component={Link}
                                               href={`/affiliate-homepage`}
+                                              legacyBehavior={false}
                                               platform={"nextjs"}
                                             >
                                               {"Cool  User"}
@@ -2201,6 +2210,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"User new"}
@@ -2223,6 +2233,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"Community user"}
@@ -2451,6 +2462,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                               )}
                                               component={Link}
                                               href={`/affiliate-homepage`}
+                                              legacyBehavior={false}
                                               platform={"nextjs"}
                                             >
                                               {"Cool  User"}
@@ -2697,6 +2709,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"User new"}
@@ -2719,6 +2732,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"Community user"}
@@ -2945,6 +2959,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                               )}
                                               component={Link}
                                               href={`/affiliate-homepage`}
+                                              legacyBehavior={false}
                                               platform={"nextjs"}
                                             >
                                               {"Cool  User"}
@@ -3191,6 +3206,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"User new"}
@@ -3213,6 +3229,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"Community user"}
@@ -3439,6 +3456,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                               )}
                                               component={Link}
                                               href={`/affiliate-homepage`}
+                                              legacyBehavior={false}
                                               platform={"nextjs"}
                                             >
                                               {"Cool  User"}
@@ -3685,6 +3703,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"User new"}
@@ -3707,6 +3726,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"Community user"}
@@ -3933,6 +3953,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                               )}
                                               component={Link}
                                               href={`/affiliate-homepage`}
+                                              legacyBehavior={false}
                                               platform={"nextjs"}
                                             >
                                               {"Cool  User"}
@@ -4179,6 +4200,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"User new"}
@@ -4201,6 +4223,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"Community user"}
@@ -4538,6 +4561,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                               )}
                                               component={Link}
                                               href={`/affiliate-homepage`}
+                                              legacyBehavior={false}
                                               platform={"nextjs"}
                                             >
                                               {"Cool  User"}
@@ -4784,6 +4808,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"User new"}
@@ -4806,6 +4831,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"Community user"}
@@ -5034,6 +5060,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                               )}
                                               component={Link}
                                               href={`/affiliate-homepage`}
+                                              legacyBehavior={false}
                                               platform={"nextjs"}
                                             >
                                               {"Cool  User"}
@@ -5280,6 +5307,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"User new"}
@@ -5302,6 +5330,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"Community user"}
@@ -5528,6 +5557,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                               )}
                                               component={Link}
                                               href={`/affiliate-homepage`}
+                                              legacyBehavior={false}
                                               platform={"nextjs"}
                                             >
                                               {"Cool  User"}
@@ -5774,6 +5804,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"User new"}
@@ -5796,6 +5827,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"Community user"}
@@ -6022,6 +6054,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                               )}
                                               component={Link}
                                               href={`/affiliate-homepage`}
+                                              legacyBehavior={false}
                                               platform={"nextjs"}
                                             >
                                               {"Cool  User"}
@@ -6268,6 +6301,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"User new"}
@@ -6290,6 +6324,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"Community user"}
@@ -6518,6 +6553,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                               )}
                                               component={Link}
                                               href={`/affiliate-homepage`}
+                                              legacyBehavior={false}
                                               platform={"nextjs"}
                                             >
                                               {"Cool  User"}
@@ -6764,6 +6800,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"User new"}
@@ -6786,6 +6823,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"Community user"}
@@ -7121,6 +7159,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                               )}
                                               component={Link}
                                               href={`/affiliate-homepage`}
+                                              legacyBehavior={false}
                                               platform={"nextjs"}
                                             >
                                               {"Cool  User"}
@@ -7367,6 +7406,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"User new"}
@@ -7389,6 +7429,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"Community user"}
@@ -7617,6 +7658,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                               )}
                                               component={Link}
                                               href={`/affiliate-homepage`}
+                                              legacyBehavior={false}
                                               platform={"nextjs"}
                                             >
                                               {"Cool  User"}
@@ -7863,6 +7905,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"User new"}
@@ -7885,6 +7928,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"Community user"}
@@ -8111,6 +8155,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                               )}
                                               component={Link}
                                               href={`/affiliate-homepage`}
+                                              legacyBehavior={false}
                                               platform={"nextjs"}
                                             >
                                               {"Cool  User"}
@@ -8357,6 +8402,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"User new"}
@@ -8379,6 +8425,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"Community user"}
@@ -8605,6 +8652,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                               )}
                                               component={Link}
                                               href={`/affiliate-homepage`}
+                                              legacyBehavior={false}
                                               platform={"nextjs"}
                                             >
                                               {"Cool  User"}
@@ -8851,6 +8899,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"User new"}
@@ -8873,6 +8922,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"Community user"}
@@ -9101,6 +9151,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                               )}
                                               component={Link}
                                               href={`/affiliate-homepage`}
+                                              legacyBehavior={false}
                                               platform={"nextjs"}
                                             >
                                               {"Cool  User"}
@@ -9347,6 +9398,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"User new"}
@@ -9369,6 +9421,7 @@ function PlasmicAProfile__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={`/affiliate-homepage`}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"Community user"}

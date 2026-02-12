@@ -459,6 +459,7 @@ function PlasmicLAResetPassword__RenderFunc(props: {
               )}
               component={Link}
               href={`/a-login`}
+              legacyBehavior={false}
               platform={"nextjs"}
             >
               {"Back to login"}

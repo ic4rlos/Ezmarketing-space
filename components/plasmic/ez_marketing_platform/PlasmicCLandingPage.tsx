@@ -256,6 +256,7 @@ function PlasmicCLandingPage__RenderFunc(props: {
                       sty.link__z0TzH
                     )}
                     component={Link}
+                    legacyBehavior={false}
                     platform={"nextjs"}
                   >
                     <Icon13Icon
@@ -934,6 +935,7 @@ function PlasmicCLandingPage__RenderFunc(props: {
                       sty.link__zwiun
                     )}
                     component={Link}
+                    legacyBehavior={false}
                     platform={"nextjs"}
                   >
                     {false ? (
@@ -1041,6 +1043,7 @@ function PlasmicCLandingPage__RenderFunc(props: {
                   )}
                   component={Link}
                   href={"https://www.foundersbase.com/startup/239"}
+                  legacyBehavior={false}
                   platform={"nextjs"}
                 >
                   {"Learn more..."}

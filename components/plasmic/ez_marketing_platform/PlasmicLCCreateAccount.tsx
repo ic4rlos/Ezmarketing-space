@@ -591,6 +591,7 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
                             sty.link__kwYd
                           )}
                           component={Link}
+                          legacyBehavior={false}
                           platform={"nextjs"}
                         >
                           {"terms and conditions"}
@@ -644,6 +645,7 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
                 )}
                 component={Link}
                 href={`/c-login`}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Log in"}

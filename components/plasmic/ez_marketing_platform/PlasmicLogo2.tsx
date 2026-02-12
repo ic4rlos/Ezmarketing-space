@@ -180,6 +180,7 @@ function PlasmicLogo2__RenderFunc(props: {
         { [sty.root_50Opaque]: hasVariant($state, "_50Opaque", "_50Opaque") }
       )}
       component={Link}
+      legacyBehavior={false}
       platform={"nextjs"}
     >
       <PlasmicImg__

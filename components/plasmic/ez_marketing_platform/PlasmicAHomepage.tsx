@@ -279,6 +279,7 @@ function PlasmicAHomepage__RenderFunc(props: {
                     )}
                     component={Link}
                     href={`/affiliate-homepage`}
+                    legacyBehavior={false}
                     onClick={async event => {
                       const $steps = {};
 
@@ -349,6 +350,7 @@ function PlasmicAHomepage__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/a-community-dashboard`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Community Dashboard"}
@@ -362,6 +364,7 @@ function PlasmicAHomepage__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/a-service-dashboard`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Service\nDashboard"}
@@ -375,6 +378,7 @@ function PlasmicAHomepage__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/new-page`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Market\nTrends"}
@@ -388,6 +392,7 @@ function PlasmicAHomepage__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/a-find-a-business`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Find a \nbusiness"}
@@ -766,6 +771,7 @@ function PlasmicAHomepage__RenderFunc(props: {
               sty.link__wQsUf
             )}
             component={Link}
+            legacyBehavior={false}
             onClick={async event => {
               const $steps = {};
 
@@ -1164,6 +1170,7 @@ function PlasmicAHomepage__RenderFunc(props: {
                     )}
                     component={Link}
                     href={`/a-profile`}
+                    legacyBehavior={false}
                     platform={"nextjs"}
                   >
                     {"Cool User"}
@@ -1313,6 +1320,7 @@ function PlasmicAHomepage__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"User new"}
@@ -1335,6 +1343,7 @@ function PlasmicAHomepage__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Comunity User"}

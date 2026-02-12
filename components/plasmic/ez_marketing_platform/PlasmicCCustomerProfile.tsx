@@ -276,6 +276,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                     )}
                     component={Link}
                     href={`/corporative-page`}
+                    legacyBehavior={false}
                     onClick={async event => {
                       const $steps = {};
 
@@ -346,6 +347,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/company-profile`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Company\nprofile"}
@@ -359,6 +361,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/services-dashboard`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Service\nDashboard"}
@@ -371,6 +374,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                         sty.link__b709L
                       )}
                       component={Link}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Market\nTrends"}
@@ -384,6 +388,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/find-a-affiliate`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Find a \naffiliate"}
@@ -790,6 +795,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Customer"}
@@ -812,6 +818,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Company"}
@@ -915,6 +922,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Company"}
@@ -937,6 +945,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Customer/Community"}
@@ -1042,6 +1051,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Customer"}
@@ -1064,6 +1074,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Company"}
@@ -1167,6 +1178,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Company"}
@@ -1189,6 +1201,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Customer/Community"}
@@ -1294,6 +1307,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Customer"}
@@ -1316,6 +1330,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Company"}
@@ -1419,6 +1434,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Company"}
@@ -1441,6 +1457,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Customer/Community"}
@@ -1546,6 +1563,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Customer"}
@@ -1568,6 +1586,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Company"}
@@ -1671,6 +1690,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Company"}
@@ -1693,6 +1713,7 @@ function PlasmicCCustomerProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Customer/Community"}

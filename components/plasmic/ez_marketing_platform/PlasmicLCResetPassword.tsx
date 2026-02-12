@@ -459,6 +459,7 @@ function PlasmicLCResetPassword__RenderFunc(props: {
               )}
               component={Link}
               href={`/c-login`}
+              legacyBehavior={false}
               platform={"nextjs"}
             >
               {"Back to login"}

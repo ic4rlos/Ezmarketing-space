@@ -329,6 +329,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                       sty.link__fzcl4
                     )}
                     component={Link}
+                    legacyBehavior={false}
                     onClick={async event => {
                       const $steps = {};
 
@@ -399,6 +400,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/a-community-dashboard`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Community Dashboard"}
@@ -412,6 +414,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/a-service-dashboard`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Service\nDashboard"}
@@ -424,6 +427,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                         sty.link__qmkJi
                       )}
                       component={Link}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Market\nTrends"}
@@ -437,6 +441,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                       )}
                       component={Link}
                       href={`/a-find-a-business`}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     >
                       {"Find a \nbusiness"}
@@ -1191,6 +1196,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Linkedin"}
@@ -1213,6 +1219,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Instagram"}
@@ -1235,6 +1242,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"X"}
@@ -1257,6 +1265,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                 )}
                 component={Link}
                 href={"https://www.plasmic.app/"}
+                legacyBehavior={false}
                 platform={"nextjs"}
               >
                 {"Website"}
@@ -1483,6 +1492,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                       sty.communityName
                     )}
                     component={Link}
+                    legacyBehavior={false}
                     platform={"nextjs"}
                   >
                     {"Customer/Community"}
@@ -1507,6 +1517,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                     )}
                     component={Link}
                     href={"https://www.plasmic.app/"}
+                    legacyBehavior={false}
                     platform={"nextjs"}
                   >
                     {"Company"}
@@ -1637,6 +1648,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                     )}
                     component={Link}
                     href={"https://www.plasmic.app/"}
+                    legacyBehavior={false}
                     platform={"nextjs"}
                   >
                     {"Company"}
@@ -1661,6 +1673,7 @@ function PlasmicACompanyProfile__RenderFunc(props: {
                     )}
                     component={Link}
                     href={"https://www.plasmic.app/"}
+                    legacyBehavior={false}
                     platform={"nextjs"}
                   >
                     {"Customer/Community"}

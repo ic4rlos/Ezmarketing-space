@@ -568,7 +568,20 @@ function PlasmicCEditProfile__RenderFunc(props: {
         sourceId: "2NwTHMgACak4F1NLiJ15kA",
         opId: "c2510729-1b6f-40f5-96ce-16b2ba257cb8",
         userArgs: {
-          headers: [localStorage["sb-company-access-token"]]
+          headers: [
+            (() => {
+              if (
+                typeof window !== "undefined" &&
+                typeof localStorage !== "undefined"
+              ) {
+                const jwt = localStorage.getItem("sb-company-access-token");
+                if (jwt) {
+                  return jwt;
+                }
+              }
+              return "null";
+            })()
+          ]
         },
         cacheKey: `plasmic.$.c2510729-1b6f-40f5-96ce-16b2ba257cb8.$.`,
         invalidatedKeys: null,

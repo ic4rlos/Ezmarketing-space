@@ -580,9 +580,11 @@ function PlasmicCEditProfile__RenderFunc(props: {
     valoresDeInput: usePlasmicDataOp(() => {
       return {
         sourceId: "2NwTHMgACak4F1NLiJ15kA",
-        opId: "863cab5f-1341-4721-befb-3384d333c5a1",
-        userArgs: {},
-        cacheKey: `plasmic.$.863cab5f-1341-4721-befb-3384d333c5a1.$.`,
+        opId: "d72287dc-344c-45ac-975b-14e5f5891695",
+        userArgs: {
+          path: [$state.userId]
+        },
+        cacheKey: `plasmic.$.d72287dc-344c-45ac-975b-14e5f5891695.$.`,
         invalidatedKeys: null,
         roleId: null
       };

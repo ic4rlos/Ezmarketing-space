@@ -83,6 +83,35 @@ import Icon38Icon from "./icons/PlasmicIcon__Icon38"; // plasmic-import: GHhSOYX
 import CircleIcon from "./icons/PlasmicIcon__Circle"; // plasmic-import: 4JgiKKNVUuUK/icon
 import ChevronDownIcon from "./icons/PlasmicIcon__ChevronDown"; // plasmic-import: qQ9FpkDVW9kl/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "Confirm order",
+
+    openGraph: {
+      title: "Confirm order"
+    },
+    twitter: {
+      card: "summary",
+      title: "Confirm order"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicUAnalysisAtCompanyLocation__VariantMembers = {};
@@ -160,7 +189,7 @@ function PlasmicUAnalysisAtCompanyLocation__RenderFunc(props: {
         path: "textArea.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
@@ -168,25 +197,25 @@ function PlasmicUAnalysisAtCompanyLocation__RenderFunc(props: {
         path: "reviewRequest.isOpen",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "reviewRequest2.isOpen",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "schedule.isOpen",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "timePicker.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdDatePicker_Helpers)
       }
@@ -197,8 +226,14 @@ function PlasmicUAnalysisAtCompanyLocation__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -206,18 +241,12 @@ function PlasmicUAnalysisAtCompanyLocation__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">
-          {PlasmicUAnalysisAtCompanyLocation.pageMetadata.title}
-        </title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicUAnalysisAtCompanyLocation.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
           property="twitter:title"
-          content={PlasmicUAnalysisAtCompanyLocation.pageMetadata.title}
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -1216,13 +1245,11 @@ export const PlasmicUAnalysisAtCompanyLocation = Object.assign(
     internalVariantProps: PlasmicUAnalysisAtCompanyLocation__VariantProps,
     internalArgProps: PlasmicUAnalysisAtCompanyLocation__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "Confirm order",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/u-analysis-at-company-location",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

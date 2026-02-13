@@ -78,6 +78,35 @@ import Icon12Icon from "./icons/PlasmicIcon__Icon12"; // plasmic-import: 1zOQ_1O
 import CircleIcon from "./icons/PlasmicIcon__Circle"; // plasmic-import: 4JgiKKNVUuUK/icon
 import ChevronDownIcon from "./icons/PlasmicIcon__ChevronDown"; // plasmic-import: qQ9FpkDVW9kl/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "Rating company",
+
+    openGraph: {
+      title: "Rating company"
+    },
+    twitter: {
+      card: "summary",
+      title: "Rating company"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicURatingCompany__VariantMembers = {};
@@ -152,31 +181,31 @@ function PlasmicURatingCompany__RenderFunc(props: {
         path: "rateSuccessModal.isOpen",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "radioGroup.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "op1"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "op1"
       },
       {
         path: "radioGroup2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "radioGroup3.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "rate10.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return (() => {
@@ -213,7 +242,7 @@ function PlasmicURatingCompany__RenderFunc(props: {
         path: "rate11.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return (() => {
@@ -252,8 +281,14 @@ function PlasmicURatingCompany__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -261,16 +296,12 @@ function PlasmicURatingCompany__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicURatingCompany.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicURatingCompany.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
           property="twitter:title"
-          content={PlasmicURatingCompany.pageMetadata.title}
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -1212,13 +1243,11 @@ export const PlasmicURatingCompany = Object.assign(
     internalVariantProps: PlasmicURatingCompany__VariantProps,
     internalArgProps: PlasmicURatingCompany__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "Rating company",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/u-rating-company",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

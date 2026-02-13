@@ -81,6 +81,35 @@ import CircleIcon from "./icons/PlasmicIcon__Circle"; // plasmic-import: 4JgiKKN
 import ChevronDownIcon from "./icons/PlasmicIcon__ChevronDown"; // plasmic-import: qQ9FpkDVW9kl/icon
 import UserSvgIcon from "./icons/PlasmicIcon__UserSvg"; // plasmic-import: -m2qayguHrPf/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "Confirm order",
+
+    openGraph: {
+      title: "Confirm order"
+    },
+    twitter: {
+      card: "summary",
+      title: "Confirm order"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicUAnalysisAtCustomerLocation__VariantMembers = {};
@@ -158,7 +187,7 @@ function PlasmicUAnalysisAtCustomerLocation__RenderFunc(props: {
         path: "textArea.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
@@ -166,13 +195,13 @@ function PlasmicUAnalysisAtCustomerLocation__RenderFunc(props: {
         path: "modal.isOpen",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "reviewRequest.isOpen",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -181,8 +210,14 @@ function PlasmicUAnalysisAtCustomerLocation__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -190,18 +225,12 @@ function PlasmicUAnalysisAtCustomerLocation__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">
-          {PlasmicUAnalysisAtCustomerLocation.pageMetadata.title}
-        </title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicUAnalysisAtCustomerLocation.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
           property="twitter:title"
-          content={PlasmicUAnalysisAtCustomerLocation.pageMetadata.title}
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -957,13 +986,11 @@ export const PlasmicUAnalysisAtCustomerLocation = Object.assign(
     internalVariantProps: PlasmicUAnalysisAtCustomerLocation__VariantProps,
     internalArgProps: PlasmicUAnalysisAtCustomerLocation__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "Confirm order",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/u-analysis-at-customer-location",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

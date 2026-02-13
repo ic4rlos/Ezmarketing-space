@@ -67,6 +67,35 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic.module.css"; // plasmic-import: maKqnX1RyE1vKUCrTH51ZZ/projectcss
 import sty from "./PlasmicLACodeVerificationNewPassword.module.css"; // plasmic-import: 3tbVmhe8wj6N/css
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "Reset password",
+
+    openGraph: {
+      title: "Reset password"
+    },
+    twitter: {
+      card: "summary",
+      title: "Reset password"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicLACodeVerificationNewPassword__VariantMembers = {};
@@ -131,24 +160,23 @@ function PlasmicLACodeVerificationNewPassword__RenderFunc(props: {
 
   const globalVariants = _useGlobalVariants();
 
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
+
   const styleTokensClassNames = _useStyleTokens();
 
   return (
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">
-          {PlasmicLACodeVerificationNewPassword.pageMetadata.title}
-        </title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicLACodeVerificationNewPassword.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
           property="twitter:title"
-          content={PlasmicLACodeVerificationNewPassword.pageMetadata.title}
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -355,13 +383,11 @@ export const PlasmicLACodeVerificationNewPassword = Object.assign(
     internalVariantProps: PlasmicLACodeVerificationNewPassword__VariantProps,
     internalArgProps: PlasmicLACodeVerificationNewPassword__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "Reset password",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/a-code-verification",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

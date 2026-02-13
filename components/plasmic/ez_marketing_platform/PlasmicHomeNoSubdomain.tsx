@@ -75,6 +75,35 @@ import sty from "./PlasmicHomeNoSubdomain.module.css"; // plasmic-import: 7N_Ivu
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: 24lxsqUjkbYM/icon
 import ChevronRightIcon from "./icons/PlasmicIcon__ChevronRight"; // plasmic-import: V9oIfloHjTjp/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "Home",
+
+    openGraph: {
+      title: "Home"
+    },
+    twitter: {
+      card: "summary",
+      title: "Home"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicHomeNoSubdomain__VariantMembers = {};
@@ -139,22 +168,23 @@ function PlasmicHomeNoSubdomain__RenderFunc(props: {
 
   const globalVariants = _useGlobalVariants();
 
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
+
   const styleTokensClassNames = _useStyleTokens();
 
   return (
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicHomeNoSubdomain.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicHomeNoSubdomain.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
           property="twitter:title"
-          content={PlasmicHomeNoSubdomain.pageMetadata.title}
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -434,13 +464,11 @@ export const PlasmicHomeNoSubdomain = Object.assign(
     internalVariantProps: PlasmicHomeNoSubdomain__VariantProps,
     internalArgProps: PlasmicHomeNoSubdomain__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "Home",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

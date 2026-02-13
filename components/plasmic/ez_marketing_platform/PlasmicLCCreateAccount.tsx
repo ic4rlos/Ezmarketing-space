@@ -80,6 +80,35 @@ import LockSvgIcon from "./icons/PlasmicIcon__LockSvg"; // plasmic-import: qjaD0
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: 24lxsqUjkbYM/icon
 import Icon38Icon from "./icons/PlasmicIcon__Icon38"; // plasmic-import: GHhSOYXBnYhK/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "Create Account",
+
+    openGraph: {
+      title: "Create Account"
+    },
+    twitter: {
+      card: "summary",
+      title: "Create Account"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicLCCreateAccount__VariantMembers = {};
@@ -158,7 +187,7 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
         path: "form2.value",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "form2",
         onMutate: generateOnMutateForSpec("value", FormWrapper_Helpers)
@@ -167,7 +196,7 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
         path: "form2.isSubmitting",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false,
 
         refName: "form2",
         onMutate: generateOnMutateForSpec("isSubmitting", FormWrapper_Helpers)
@@ -176,7 +205,7 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
         path: "email.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -184,7 +213,7 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
         path: "password.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -192,7 +221,7 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
         path: "confirmPassword.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -200,7 +229,7 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
         path: "checkbox2.isSelected",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -209,8 +238,14 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -218,16 +253,12 @@ function PlasmicLCCreateAccount__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicLCCreateAccount.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicLCCreateAccount.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
           property="twitter:title"
-          content={PlasmicLCCreateAccount.pageMetadata.title}
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -811,13 +842,11 @@ export const PlasmicLCCreateAccount = Object.assign(
     internalVariantProps: PlasmicLCCreateAccount__VariantProps,
     internalArgProps: PlasmicLCCreateAccount__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "Create Account",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/c-create-account",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

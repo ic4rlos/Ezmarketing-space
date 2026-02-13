@@ -95,6 +95,35 @@ import BusinessBagSvgrepoComSvgIcon from "./icons/PlasmicIcon__BusinessBagSvgrep
 import TimeSvgrepoComSvgIcon from "./icons/PlasmicIcon__TimeSvgrepoComSvg"; // plasmic-import: s8dSyvTZ2BNZ/icon
 import TrophySportsAndCompetitionSvgrepoComSvgIcon from "./icons/PlasmicIcon__TrophySportsAndCompetitionSvgrepoComSvg"; // plasmic-import: 4090DaEoSO38/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "Edit profile",
+
+    openGraph: {
+      title: "Edit profile"
+    },
+    twitter: {
+      card: "summary",
+      title: "Edit profile"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicAEditProfile__VariantMembers = {};
@@ -190,13 +219,13 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "educationComponent",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => []
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => []
       },
       {
         path: "firstName.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -204,7 +233,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "steps.current",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.currentStep;
@@ -223,13 +252,13 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "currentStep",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "lastName.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -237,7 +266,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "location.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -245,7 +274,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "birthday.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -253,13 +282,13 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "profilePic.files",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => []
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => []
       },
       {
         path: "linkedIn.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -267,7 +296,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "instagram.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -275,7 +304,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "x.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -304,7 +333,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "formExperience",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => [
           [{ charge: null, company: null, time: null }],
           {}
         ]
@@ -334,7 +363,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "formEducation",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => [
           [{ university: null, couurse: null, year: null }],
           {}
         ]
@@ -348,13 +377,13 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "office.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "impressive.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
@@ -362,7 +391,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "avatarImage",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "educationLevel[].value",
@@ -376,8 +405,14 @@ function PlasmicAEditProfile__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -385,16 +420,12 @@ function PlasmicAEditProfile__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicAEditProfile.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicAEditProfile.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
           property="twitter:title"
-          content={PlasmicAEditProfile.pageMetadata.title}
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -1282,7 +1313,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             [
                               {
                                 name: "university[].value",
-                                initFunc: ({ $props, $state, $queries }) =>
+                                initFunc: ({ $props, $state, $queries, $q }) =>
                                   undefined
                               }
                             ],
@@ -1348,7 +1379,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             [
                               {
                                 name: "major[].value",
-                                initFunc: ({ $props, $state, $queries }) =>
+                                initFunc: ({ $props, $state, $queries, $q }) =>
                                   undefined
                               }
                             ],
@@ -1417,7 +1448,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             [
                               {
                                 name: "graduationYear[].value",
-                                initFunc: ({ $props, $state, $queries }) =>
+                                initFunc: ({ $props, $state, $queries, $q }) =>
                                   undefined
                               }
                             ],
@@ -1521,7 +1552,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             [
                               {
                                 name: "educationLevel[].value",
-                                initFunc: ({ $props, $state, $queries }) =>
+                                initFunc: ({ $props, $state, $queries, $q }) =>
                                   undefined
                               }
                             ],
@@ -1736,7 +1767,12 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             [
                               {
                                 name: "degree[].files",
-                                initFunc: ({ $props, $state, $queries }) => []
+                                initFunc: ({
+                                  $props,
+                                  $state,
+                                  $queries,
+                                  $q
+                                }) => []
                               }
                             ],
                             [__plasmic_idx_0]
@@ -2063,7 +2099,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             [
                               {
                                 name: "charge[].value",
-                                initFunc: ({ $props, $state, $queries }) =>
+                                initFunc: ({ $props, $state, $queries, $q }) =>
                                   undefined
                               }
                             ],
@@ -2132,7 +2168,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             [
                               {
                                 name: "company[].value",
-                                initFunc: ({ $props, $state, $queries }) =>
+                                initFunc: ({ $props, $state, $queries, $q }) =>
                                   undefined
                               }
                             ],
@@ -2201,7 +2237,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             [
                               {
                                 name: "howLongInOffice[].value",
-                                initFunc: ({ $props, $state, $queries }) =>
+                                initFunc: ({ $props, $state, $queries, $q }) =>
                                   undefined
                               }
                             ],
@@ -3178,13 +3214,11 @@ export const PlasmicAEditProfile = Object.assign(
     internalVariantProps: PlasmicAEditProfile__VariantProps,
     internalArgProps: PlasmicAEditProfile__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "Edit profile",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/a-edit-profile",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

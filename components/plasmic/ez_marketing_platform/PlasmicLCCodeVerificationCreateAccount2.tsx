@@ -67,6 +67,35 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic.module.css"; // plasmic-import: maKqnX1RyE1vKUCrTH51ZZ/projectcss
 import sty from "./PlasmicLCCodeVerificationCreateAccount2.module.css"; // plasmic-import: g1alWIZ05fe6/css
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "Create account",
+
+    openGraph: {
+      title: "Create account"
+    },
+    twitter: {
+      card: "summary",
+      title: "Create account"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicLCCodeVerificationCreateAccount2__VariantMembers = {};
@@ -132,24 +161,23 @@ function PlasmicLCCodeVerificationCreateAccount2__RenderFunc(props: {
 
   const globalVariants = _useGlobalVariants();
 
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
+
   const styleTokensClassNames = _useStyleTokens();
 
   return (
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">
-          {PlasmicLCCodeVerificationCreateAccount2.pageMetadata.title}
-        </title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicLCCodeVerificationCreateAccount2.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
           property="twitter:title"
-          content={PlasmicLCCodeVerificationCreateAccount2.pageMetadata.title}
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -357,13 +385,11 @@ export const PlasmicLCCodeVerificationCreateAccount2 = Object.assign(
     internalVariantProps: PlasmicLCCodeVerificationCreateAccount2__VariantProps,
     internalArgProps: PlasmicLCCodeVerificationCreateAccount2__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "Create account",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/c-code-verification-create-account",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

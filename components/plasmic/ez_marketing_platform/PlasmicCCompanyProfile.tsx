@@ -98,6 +98,35 @@ import Icon6Icon from "./icons/PlasmicIcon__Icon6"; // plasmic-import: Bvh42noj5
 import IlustrgatuSvgIcon from "./icons/PlasmicIcon__IlustrgatuSvg"; // plasmic-import: sz_dn1E8VLZT/icon
 import GlobalSvgrepoComSvgIcon from "./icons/PlasmicIcon__GlobalSvgrepoComSvg"; // plasmic-import: wUzxNH0QFRzf/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "Company Profile",
+
+    openGraph: {
+      title: "Company Profile"
+    },
+    twitter: {
+      card: "summary",
+      title: "Company Profile"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicCCompanyProfile__VariantMembers = {};
@@ -238,7 +267,7 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
         path: "sliderCarousel4.currentSlide",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0,
 
         refName: "sliderCarousel4",
         onMutate: generateOnMutateForSpec("currentSlide", SliderWrapper_Helpers)
@@ -247,61 +276,61 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
         path: "averageRate2.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "averageRate.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "disconnect.isOpen",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "linkedAgencies.isOpen",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "requestInf.isOpen",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "averageRate3.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "averageRate4.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 3.5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 3.5
       },
       {
         path: "rating.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "rating2.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "sliderCarousel.currentSlide",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0,
 
         refName: "sliderCarousel",
         onMutate: generateOnMutateForSpec("currentSlide", SliderWrapper_Helpers)
@@ -313,10 +342,16 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
   const dataSourcesCtx = usePlasmicDataSourceContext();
   const plasmicInvalidate = usePlasmicInvalidate();
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -324,16 +359,12 @@ function PlasmicCCompanyProfile__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicCCompanyProfile.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicCCompanyProfile.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
           property="twitter:title"
-          content={PlasmicCCompanyProfile.pageMetadata.title}
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -4482,13 +4513,11 @@ export const PlasmicCCompanyProfile = Object.assign(
     internalVariantProps: PlasmicCCompanyProfile__VariantProps,
     internalArgProps: PlasmicCCompanyProfile__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "Company Profile",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/company-profile",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

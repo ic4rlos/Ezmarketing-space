@@ -85,6 +85,35 @@ import ReportSvgrepoComSvgIcon from "./icons/PlasmicIcon__ReportSvgrepoComSvg"; 
 import Icon15Icon from "./icons/PlasmicIcon__Icon15"; // plasmic-import: 8xCKR-37aRCC/icon
 import CircleIcon from "./icons/PlasmicIcon__Circle"; // plasmic-import: 4JgiKKNVUuUK/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "Corporation landing page",
+
+    openGraph: {
+      title: "Corporation landing page"
+    },
+    twitter: {
+      card: "summary",
+      title: "Corporation landing page"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicCLandingPage__VariantMembers = {};
@@ -158,22 +187,23 @@ function PlasmicCLandingPage__RenderFunc(props: {
 
   const globalVariants = _useGlobalVariants();
 
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
+
   const styleTokensClassNames = _useStyleTokens();
 
   return (
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicCLandingPage.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicCLandingPage.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
           property="twitter:title"
-          content={PlasmicCLandingPage.pageMetadata.title}
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -1216,13 +1246,11 @@ export const PlasmicCLandingPage = Object.assign(
     internalVariantProps: PlasmicCLandingPage__VariantProps,
     internalArgProps: PlasmicCLandingPage__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "Corporation landing page",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/c-landing-page",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

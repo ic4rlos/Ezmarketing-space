@@ -86,6 +86,35 @@ import sty from "./PlasmicAFindCommunity.module.css"; // plasmic-import: mCPd6b3
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: 24lxsqUjkbYM/icon
 import Icon38Icon from "./icons/PlasmicIcon__Icon38"; // plasmic-import: GHhSOYXBnYhK/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "Find community",
+
+    openGraph: {
+      title: "Find community"
+    },
+    twitter: {
+      card: "summary",
+      title: "Find community"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicAFindCommunity__VariantMembers = {};
@@ -353,37 +382,37 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "dialog.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "rate.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate2.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate3.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate4.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "pagination.currentPage",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 1,
 
         onMutate: generateOnMutateForSpec("currentPage", AntdPagination_Helpers)
       },
@@ -391,7 +420,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination.pageSize",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 10,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 10,
 
         onMutate: generateOnMutateForSpec("pageSize", AntdPagination_Helpers)
       },
@@ -399,7 +428,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination.startIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("startIndex", AntdPagination_Helpers)
       },
@@ -407,7 +436,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination.endIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("endIndex", AntdPagination_Helpers)
       },
@@ -415,37 +444,37 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "dialog2.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "rate5.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate6.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate7.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate8.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "pagination2.currentPage",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 1,
 
         onMutate: generateOnMutateForSpec("currentPage", AntdPagination_Helpers)
       },
@@ -453,7 +482,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination2.pageSize",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 10,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 10,
 
         onMutate: generateOnMutateForSpec("pageSize", AntdPagination_Helpers)
       },
@@ -461,7 +490,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination2.startIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("startIndex", AntdPagination_Helpers)
       },
@@ -469,7 +498,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination2.endIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("endIndex", AntdPagination_Helpers)
       },
@@ -477,37 +506,37 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "dialog3.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "rate9.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate10.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate11.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate12.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "pagination3.currentPage",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 1,
 
         onMutate: generateOnMutateForSpec("currentPage", AntdPagination_Helpers)
       },
@@ -515,7 +544,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination3.pageSize",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 10,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 10,
 
         onMutate: generateOnMutateForSpec("pageSize", AntdPagination_Helpers)
       },
@@ -523,7 +552,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination3.startIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("startIndex", AntdPagination_Helpers)
       },
@@ -531,7 +560,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination3.endIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("endIndex", AntdPagination_Helpers)
       },
@@ -539,37 +568,37 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "dialog4.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "rate13.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate14.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate15.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate16.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "pagination4.currentPage",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 1,
 
         onMutate: generateOnMutateForSpec("currentPage", AntdPagination_Helpers)
       },
@@ -577,7 +606,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination4.pageSize",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 10,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 10,
 
         onMutate: generateOnMutateForSpec("pageSize", AntdPagination_Helpers)
       },
@@ -585,7 +614,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination4.startIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("startIndex", AntdPagination_Helpers)
       },
@@ -593,7 +622,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination4.endIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("endIndex", AntdPagination_Helpers)
       },
@@ -601,37 +630,37 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "dialog5.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "rate17.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate18.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate19.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate20.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "pagination5.currentPage",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 1,
 
         onMutate: generateOnMutateForSpec("currentPage", AntdPagination_Helpers)
       },
@@ -639,7 +668,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination5.pageSize",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 10,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 10,
 
         onMutate: generateOnMutateForSpec("pageSize", AntdPagination_Helpers)
       },
@@ -647,7 +676,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination5.startIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("startIndex", AntdPagination_Helpers)
       },
@@ -655,7 +684,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination5.endIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("endIndex", AntdPagination_Helpers)
       },
@@ -663,37 +692,37 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "dialog6.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "rate21.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate22.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate23.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate24.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "pagination6.currentPage",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 1,
 
         onMutate: generateOnMutateForSpec("currentPage", AntdPagination_Helpers)
       },
@@ -701,7 +730,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination6.pageSize",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 10,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 10,
 
         onMutate: generateOnMutateForSpec("pageSize", AntdPagination_Helpers)
       },
@@ -709,7 +738,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination6.startIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("startIndex", AntdPagination_Helpers)
       },
@@ -717,7 +746,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination6.endIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("endIndex", AntdPagination_Helpers)
       },
@@ -725,37 +754,37 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "dialog7.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "rate25.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate26.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate27.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate28.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "pagination7.currentPage",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 1,
 
         onMutate: generateOnMutateForSpec("currentPage", AntdPagination_Helpers)
       },
@@ -763,7 +792,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination7.pageSize",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 10,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 10,
 
         onMutate: generateOnMutateForSpec("pageSize", AntdPagination_Helpers)
       },
@@ -771,7 +800,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination7.startIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("startIndex", AntdPagination_Helpers)
       },
@@ -779,7 +808,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination7.endIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("endIndex", AntdPagination_Helpers)
       },
@@ -787,37 +816,37 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "dialog8.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "rate29.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate30.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate31.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate32.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "pagination8.currentPage",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 1,
 
         onMutate: generateOnMutateForSpec("currentPage", AntdPagination_Helpers)
       },
@@ -825,7 +854,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination8.pageSize",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 10,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 10,
 
         onMutate: generateOnMutateForSpec("pageSize", AntdPagination_Helpers)
       },
@@ -833,7 +862,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination8.startIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("startIndex", AntdPagination_Helpers)
       },
@@ -841,7 +870,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination8.endIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("endIndex", AntdPagination_Helpers)
       },
@@ -849,37 +878,37 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "dialog9.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "rate33.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate34.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate35.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate36.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "pagination9.currentPage",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 1,
 
         onMutate: generateOnMutateForSpec("currentPage", AntdPagination_Helpers)
       },
@@ -887,7 +916,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination9.pageSize",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 10,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 10,
 
         onMutate: generateOnMutateForSpec("pageSize", AntdPagination_Helpers)
       },
@@ -895,7 +924,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination9.startIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("startIndex", AntdPagination_Helpers)
       },
@@ -903,7 +932,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination9.endIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("endIndex", AntdPagination_Helpers)
       },
@@ -911,37 +940,37 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "dialog10.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "rate37.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate38.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate39.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate40.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "pagination10.currentPage",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 1,
 
         onMutate: generateOnMutateForSpec("currentPage", AntdPagination_Helpers)
       },
@@ -949,7 +978,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination10.pageSize",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 10,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 10,
 
         onMutate: generateOnMutateForSpec("pageSize", AntdPagination_Helpers)
       },
@@ -957,7 +986,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination10.startIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("startIndex", AntdPagination_Helpers)
       },
@@ -965,7 +994,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination10.endIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("endIndex", AntdPagination_Helpers)
       },
@@ -973,37 +1002,37 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "dialog11.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "rate41.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate42.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate43.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate44.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "pagination11.currentPage",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 1,
 
         onMutate: generateOnMutateForSpec("currentPage", AntdPagination_Helpers)
       },
@@ -1011,7 +1040,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination11.pageSize",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 10,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 10,
 
         onMutate: generateOnMutateForSpec("pageSize", AntdPagination_Helpers)
       },
@@ -1019,7 +1048,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination11.startIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("startIndex", AntdPagination_Helpers)
       },
@@ -1027,7 +1056,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination11.endIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("endIndex", AntdPagination_Helpers)
       },
@@ -1035,37 +1064,37 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "dialog12.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "rate45.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate46.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate47.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate48.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "pagination12.currentPage",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 1,
 
         onMutate: generateOnMutateForSpec("currentPage", AntdPagination_Helpers)
       },
@@ -1073,7 +1102,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination12.pageSize",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 10,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 10,
 
         onMutate: generateOnMutateForSpec("pageSize", AntdPagination_Helpers)
       },
@@ -1081,7 +1110,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination12.startIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("startIndex", AntdPagination_Helpers)
       },
@@ -1089,7 +1118,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination12.endIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("endIndex", AntdPagination_Helpers)
       },
@@ -1097,37 +1126,37 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "dialog13.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "rate49.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate50.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate51.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate52.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "pagination13.currentPage",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 1,
 
         onMutate: generateOnMutateForSpec("currentPage", AntdPagination_Helpers)
       },
@@ -1135,7 +1164,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination13.pageSize",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 10,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 10,
 
         onMutate: generateOnMutateForSpec("pageSize", AntdPagination_Helpers)
       },
@@ -1143,7 +1172,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination13.startIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("startIndex", AntdPagination_Helpers)
       },
@@ -1151,7 +1180,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination13.endIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("endIndex", AntdPagination_Helpers)
       },
@@ -1159,37 +1188,37 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "dialog14.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "rate53.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate54.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate55.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate56.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "pagination14.currentPage",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 1,
 
         onMutate: generateOnMutateForSpec("currentPage", AntdPagination_Helpers)
       },
@@ -1197,7 +1226,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination14.pageSize",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 10,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 10,
 
         onMutate: generateOnMutateForSpec("pageSize", AntdPagination_Helpers)
       },
@@ -1205,7 +1234,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination14.startIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("startIndex", AntdPagination_Helpers)
       },
@@ -1213,7 +1242,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination14.endIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("endIndex", AntdPagination_Helpers)
       },
@@ -1221,37 +1250,37 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "dialog15.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "rate57.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate58.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate59.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate60.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "pagination15.currentPage",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 1,
 
         onMutate: generateOnMutateForSpec("currentPage", AntdPagination_Helpers)
       },
@@ -1259,7 +1288,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination15.pageSize",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 10,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 10,
 
         onMutate: generateOnMutateForSpec("pageSize", AntdPagination_Helpers)
       },
@@ -1267,7 +1296,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination15.startIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("startIndex", AntdPagination_Helpers)
       },
@@ -1275,7 +1304,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination15.endIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("endIndex", AntdPagination_Helpers)
       },
@@ -1283,37 +1312,37 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "dialog16.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "rate61.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate62.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate63.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate64.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "pagination16.currentPage",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 1,
 
         onMutate: generateOnMutateForSpec("currentPage", AntdPagination_Helpers)
       },
@@ -1321,7 +1350,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination16.pageSize",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 10,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 10,
 
         onMutate: generateOnMutateForSpec("pageSize", AntdPagination_Helpers)
       },
@@ -1329,7 +1358,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination16.startIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("startIndex", AntdPagination_Helpers)
       },
@@ -1337,7 +1366,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination16.endIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("endIndex", AntdPagination_Helpers)
       },
@@ -1345,37 +1374,37 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "dialog17.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "rate65.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate66.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate67.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate68.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "pagination17.currentPage",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 1,
 
         onMutate: generateOnMutateForSpec("currentPage", AntdPagination_Helpers)
       },
@@ -1383,7 +1412,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination17.pageSize",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 10,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 10,
 
         onMutate: generateOnMutateForSpec("pageSize", AntdPagination_Helpers)
       },
@@ -1391,7 +1420,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination17.startIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("startIndex", AntdPagination_Helpers)
       },
@@ -1399,7 +1428,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination17.endIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("endIndex", AntdPagination_Helpers)
       },
@@ -1407,37 +1436,37 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "dialog18.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "rate69.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate70.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate71.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate72.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "pagination18.currentPage",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 1,
 
         onMutate: generateOnMutateForSpec("currentPage", AntdPagination_Helpers)
       },
@@ -1445,7 +1474,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination18.pageSize",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 10,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 10,
 
         onMutate: generateOnMutateForSpec("pageSize", AntdPagination_Helpers)
       },
@@ -1453,7 +1482,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination18.startIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("startIndex", AntdPagination_Helpers)
       },
@@ -1461,7 +1490,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination18.endIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("endIndex", AntdPagination_Helpers)
       },
@@ -1469,37 +1498,37 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "dialog19.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "rate73.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate74.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate75.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate76.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "pagination19.currentPage",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 1,
 
         onMutate: generateOnMutateForSpec("currentPage", AntdPagination_Helpers)
       },
@@ -1507,7 +1536,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination19.pageSize",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 10,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 10,
 
         onMutate: generateOnMutateForSpec("pageSize", AntdPagination_Helpers)
       },
@@ -1515,7 +1544,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination19.startIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("startIndex", AntdPagination_Helpers)
       },
@@ -1523,7 +1552,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination19.endIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("endIndex", AntdPagination_Helpers)
       },
@@ -1531,37 +1560,37 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "dialog20.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "rate77.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate78.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate79.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "rate80.value",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 5
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 5
       },
       {
         path: "pagination20.currentPage",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 1,
 
         onMutate: generateOnMutateForSpec("currentPage", AntdPagination_Helpers)
       },
@@ -1569,7 +1598,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination20.pageSize",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 10,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 10,
 
         onMutate: generateOnMutateForSpec("pageSize", AntdPagination_Helpers)
       },
@@ -1577,7 +1606,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination20.startIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("startIndex", AntdPagination_Helpers)
       },
@@ -1585,7 +1614,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
         path: "pagination20.endIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("endIndex", AntdPagination_Helpers)
       }
@@ -1596,10 +1625,16 @@ function PlasmicAFindCommunity__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
   const dataSourcesCtx = usePlasmicDataSourceContext();
   const plasmicInvalidate = usePlasmicInvalidate();
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -1607,16 +1642,12 @@ function PlasmicAFindCommunity__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicAFindCommunity.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicAFindCommunity.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
           property="twitter:title"
-          content={PlasmicAFindCommunity.pageMetadata.title}
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -29829,13 +29860,11 @@ export const PlasmicAFindCommunity = Object.assign(
     internalVariantProps: PlasmicAFindCommunity__VariantProps,
     internalArgProps: PlasmicAFindCommunity__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "Find community",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/a-find-community",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

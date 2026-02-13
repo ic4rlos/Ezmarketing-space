@@ -150,7 +150,7 @@ function PlasmicMenuPopover__RenderFunc(props: {
         path: "ariaListBox.selectedValue",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           $props["initialSelectedKey"],
 
         onMutate: generateOnMutateForSpec("selectedValue", BaseListBox_Helpers)
@@ -162,6 +162,7 @@ function PlasmicMenuPopover__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 

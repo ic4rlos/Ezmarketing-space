@@ -162,7 +162,7 @@ function PlasmicCheckbox__RenderFunc(props: {
         path: "ariaCheckbox.isSelected",
         type: "readonly",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           $props["defaultSelected"],
 
         onChangeProp: "onChange"
@@ -174,6 +174,7 @@ function PlasmicCheckbox__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 

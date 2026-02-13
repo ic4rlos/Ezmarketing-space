@@ -99,6 +99,35 @@ import IlustrgatuSvgIcon from "./icons/PlasmicIcon__IlustrgatuSvg"; // plasmic-i
 import GlobeSvgIcon from "./icons/PlasmicIcon__GlobeSvg"; // plasmic-import: 7r83p-4N-D3c/icon
 import TrophySportsAndCompetitionSvgrepoComSvgIcon from "./icons/PlasmicIcon__TrophySportsAndCompetitionSvgrepoComSvg"; // plasmic-import: 4090DaEoSO38/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "Create Community",
+
+    openGraph: {
+      title: "Create Community"
+    },
+    twitter: {
+      card: "summary",
+      title: "Create Community"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicACreateCommunity__VariantMembers = {};
@@ -186,7 +215,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         path: "steps.current",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.currentStep;
@@ -205,13 +234,13 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         path: "communityLogo.files",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => []
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => []
       },
       {
         path: "communityName.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -219,7 +248,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         path: "location.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -227,7 +256,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         path: "youtubeChannel.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -235,7 +264,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         path: "instagram.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -243,7 +272,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         path: "x.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -251,7 +280,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         path: "about.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
@@ -259,19 +288,19 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         path: "currentStep",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 2
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 2
       },
       {
         path: "type.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "tiktok.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -279,13 +308,13 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         path: "agencyPic.files",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => []
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => []
       },
       {
         path: "youtubeVideo.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -293,7 +322,7 @@ function PlasmicACreateCommunity__RenderFunc(props: {
         path: "website.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       }
@@ -304,10 +333,16 @@ function PlasmicACreateCommunity__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
   const dataSourcesCtx = usePlasmicDataSourceContext();
   const plasmicInvalidate = usePlasmicInvalidate();
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -315,16 +350,12 @@ function PlasmicACreateCommunity__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicACreateCommunity.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicACreateCommunity.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
           property="twitter:title"
-          content={PlasmicACreateCommunity.pageMetadata.title}
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -1995,13 +2026,11 @@ export const PlasmicACreateCommunity = Object.assign(
     internalVariantProps: PlasmicACreateCommunity__VariantProps,
     internalArgProps: PlasmicACreateCommunity__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "Create Community",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/a-create-community",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

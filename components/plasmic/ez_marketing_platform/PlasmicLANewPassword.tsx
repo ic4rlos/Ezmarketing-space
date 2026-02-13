@@ -77,6 +77,35 @@ import LockSvgIcon from "./icons/PlasmicIcon__LockSvg"; // plasmic-import: qjaD0
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: 24lxsqUjkbYM/icon
 import Icon38Icon from "./icons/PlasmicIcon__Icon38"; // plasmic-import: GHhSOYXBnYhK/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "Enter a new password",
+
+    openGraph: {
+      title: "Enter a new password"
+    },
+    twitter: {
+      card: "summary",
+      title: "Enter a new password"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicLANewPassword__VariantMembers = {};
@@ -149,7 +178,7 @@ function PlasmicLANewPassword__RenderFunc(props: {
         path: "form.value",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "form",
         onMutate: generateOnMutateForSpec("value", FormWrapper_Helpers)
@@ -158,7 +187,7 @@ function PlasmicLANewPassword__RenderFunc(props: {
         path: "form.isSubmitting",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false,
 
         refName: "form",
         onMutate: generateOnMutateForSpec("isSubmitting", FormWrapper_Helpers)
@@ -167,7 +196,7 @@ function PlasmicLANewPassword__RenderFunc(props: {
         path: "password.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdPassword_Helpers)
       },
@@ -175,7 +204,7 @@ function PlasmicLANewPassword__RenderFunc(props: {
         path: "confirmPassword.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", AntdPassword_Helpers)
       }
@@ -186,8 +215,14 @@ function PlasmicLANewPassword__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -195,16 +230,12 @@ function PlasmicLANewPassword__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicLANewPassword.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicLANewPassword.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
           property="twitter:title"
-          content={PlasmicLANewPassword.pageMetadata.title}
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -626,13 +657,11 @@ export const PlasmicLANewPassword = Object.assign(
     internalVariantProps: PlasmicLANewPassword__VariantProps,
     internalArgProps: PlasmicLANewPassword__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "Enter a new password",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/a-new-password",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

@@ -160,19 +160,19 @@ function PlasmicAlert__RenderFunc(props: {
         path: "noIcon",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.noIcon
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.noIcon
       },
       {
         path: "noHeader",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.noHeader
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.noHeader
       },
       {
         path: "noBody",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.noBody
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.noBody
       }
     ],
     [$props, $ctx, $refs]
@@ -181,6 +181,7 @@ function PlasmicAlert__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 

@@ -143,13 +143,13 @@ function PlasmicLogo__RenderFunc(props: {
         path: "_50Opaque",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props._50Opaque
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props._50Opaque
       },
       {
         path: "largeLogo",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.largeLogo
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.largeLogo
       }
     ],
     [$props, $ctx, $refs]
@@ -158,6 +158,7 @@ function PlasmicLogo__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 

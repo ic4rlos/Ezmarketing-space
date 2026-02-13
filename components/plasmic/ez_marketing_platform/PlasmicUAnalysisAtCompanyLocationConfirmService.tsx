@@ -73,6 +73,35 @@ import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: 24l
 import Icon38Icon from "./icons/PlasmicIcon__Icon38"; // plasmic-import: GHhSOYXBnYhK/icon
 import _14655891761535698998SvgIcon from "./icons/PlasmicIcon___14655891761535698998Svg"; // plasmic-import: SO0iXB8RSj3u/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "Order tracking",
+
+    openGraph: {
+      title: "Order tracking"
+    },
+    twitter: {
+      card: "summary",
+      title: "Order tracking"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicUAnalysisAtCompanyLocationConfirmService__VariantMembers =
@@ -141,28 +170,23 @@ function PlasmicUAnalysisAtCompanyLocationConfirmService__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
+
   const styleTokensClassNames = _useStyleTokens();
 
   return (
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">
-          {PlasmicUAnalysisAtCompanyLocationConfirmService.pageMetadata.title}
-        </title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={
-            PlasmicUAnalysisAtCompanyLocationConfirmService.pageMetadata.title
-          }
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
           property="twitter:title"
-          content={
-            PlasmicUAnalysisAtCompanyLocationConfirmService.pageMetadata.title
-          }
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -486,13 +510,11 @@ export const PlasmicUAnalysisAtCompanyLocationConfirmService = Object.assign(
       PlasmicUAnalysisAtCompanyLocationConfirmService__VariantProps,
     internalArgProps: PlasmicUAnalysisAtCompanyLocationConfirmService__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "Order tracking",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/u-analysis-at-company-location-confirm",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

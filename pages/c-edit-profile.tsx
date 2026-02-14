@@ -11,6 +11,7 @@ export default function CEditProfile() {
   const { user, loading } = useCAuth();
   const [company, setCompany] = useState<any>(null);
 
+  // 🔎 Carregar dados da empresa
   useEffect(() => {
     async function loadCompany() {
       if (!user) return;
@@ -31,6 +32,27 @@ export default function CEditProfile() {
     loadCompany();
   }, [user]);
 
+  // 💾 Salvar (substitui HTTP Integration)
+  async function handleSave(values: any) {
+    if (!user) return;
+
+    const supabase = getSupabaseC();
+
+    const { error } = await supabase
+      .from("companies")
+      .upsert(
+        {
+          user_id: user.id,
+          ...values,
+        },
+        { onConflict: "user_id" }
+      );
+
+    if (!error) {
+      setCompany({ ...company, ...values });
+    }
+  }
+
   if (loading) {
     return null;
   }
@@ -46,7 +68,10 @@ export default function CEditProfile() {
       }}
       query={router.query}
     >
-      <PlasmicComponent company={company} />
+      <PlasmicComponent
+        company={company}
+        onSave={handleSave}
+      />
     </PageParamsProvider__>
   );
 }

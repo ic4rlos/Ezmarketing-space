@@ -1,22 +1,22 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { useCAuth } from "../contexts/c-AuthContext";
-import getSupabaseC from "../lib/c-supabaseClient";
+import { getSupabaseClient } from "../lib/supabaseClient";
 import { PlasmicCEditProfile } from "../components/plasmic/ez_marketing_platform/PlasmicCEditProfile";
 import { PageParamsProvider as PageParamsProvider__ } from "@plasmicapp/react-web/lib/host";
 
 export default function CEditProfile() {
   const router = useRouter();
   const { user, loading } = useCAuth();
-  const supabase = getSupabaseC();
-
   const [company, setCompany] = useState<any>(null);
 
   useEffect(() => {
-    if (!user) return;
+    async function loadCompany() {
+      if (!user) return;
 
-    async function load() {
+      const supabase = getSupabaseClient();
+
       const { data, error } = await supabase
         .from("companies")
         .select("*")
@@ -28,10 +28,12 @@ export default function CEditProfile() {
       }
     }
 
-    load();
+    loadCompany();
   }, [user]);
 
-  if (loading) return null;
+  if (loading) {
+    return null;
+  }
 
   return (
     <PageParamsProvider__

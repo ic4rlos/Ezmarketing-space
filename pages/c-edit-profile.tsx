@@ -1,21 +1,38 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useCAuth } from "../contexts/c-AuthContext";
+import getSupabaseC from "../lib/c-supabaseClient";
 import { PlasmicCEditProfile } from "../components/plasmic/ez_marketing_platform/PlasmicCEditProfile";
 import { PageParamsProvider as PageParamsProvider__ } from "@plasmicapp/react-web/lib/host";
 
 export default function CEditProfile() {
   const router = useRouter();
   const { user, loading } = useCAuth();
+  const supabase = getSupabaseC();
 
-  // ⏳ Enquanto o auth carrega, apenas espera
-  if (loading) {
-    return null;
-  }
+  const [company, setCompany] = useState<any>(null);
 
-  // ⚠️ NÃO redireciona
-  // ⚠️ NÃO bloqueia
-  // ⚠️ Apenas passa userId se existir
+  useEffect(() => {
+    if (!user) return;
+
+    async function load() {
+      const { data, error } = await supabase
+        .from("companies")
+        .select("*")
+        .eq("user_id", user.id)
+        .single();
+
+      if (!error) {
+        setCompany(data);
+      }
+    }
+
+    load();
+  }, [user]);
+
+  if (loading) return null;
+
   return (
     <PageParamsProvider__
       route={router.pathname}
@@ -25,7 +42,7 @@ export default function CEditProfile() {
       }}
       query={router.query}
     >
-      <PlasmicCEditProfile />
+      <PlasmicCEditProfile company={company} />
     </PageParamsProvider__>
   );
 }

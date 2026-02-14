@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useCAuth } from "../contexts/c-AuthContext";
 import { getSupabaseC } from "../lib/c-supabaseClient";
 import { PlasmicCEditProfile } from "../components/plasmic/ez_marketing_platform/PlasmicCEditProfile";
@@ -11,20 +11,20 @@ export default function CEditProfile() {
   const { user, loading } = useCAuth();
   const [company, setCompany] = useState<any>(null);
 
-  // 🔎 Carregar dados da empresa
+  // 🔎 LOAD
   useEffect(() => {
     async function loadCompany() {
       if (!user) return;
 
       const supabase = getSupabaseC();
 
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from("companies")
         .select("*")
         .eq("user_id", user.id)
         .single();
 
-      if (!error) {
+      if (data) {
         setCompany(data);
       }
     }
@@ -32,13 +32,13 @@ export default function CEditProfile() {
     loadCompany();
   }, [user]);
 
-  // 💾 Salvar (substitui HTTP Integration)
-  async function handleSave(values: any) {
+  // 💾 SAVE
+  const handleSave = useCallback(async (values: any) => {
     if (!user) return;
 
     const supabase = getSupabaseC();
 
-    const { error } = await supabase
+    const { data, error } = await supabase
       .from("companies")
       .upsert(
         {
@@ -46,16 +46,21 @@ export default function CEditProfile() {
           ...values,
         },
         { onConflict: "user_id" }
-      );
+      )
+      .select()
+      .single();
 
-    if (!error) {
-      setCompany({ ...company, ...values });
+    if (!error && data) {
+      setCompany(data);
     }
-  }
+  }, [user]);
 
-  if (loading) {
-    return null;
-  }
+  // 🔓 Expor para Run code
+  useEffect(() => {
+    (window as any).handleSaveCompany = handleSave;
+  }, [handleSave]);
+
+  if (loading) return null;
 
   const PlasmicComponent = PlasmicCEditProfile as any;
 
@@ -68,10 +73,7 @@ export default function CEditProfile() {
       }}
       query={router.query}
     >
-      <PlasmicComponent
-        company={company}
-        onSave={handleSave}
-      />
+      <PlasmicComponent company={company} />
     </PageParamsProvider__>
   );
 }

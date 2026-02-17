@@ -1,6 +1,6 @@
 import type { AppProps } from "next/app";
 import { PlasmicRootProvider } from "@plasmicapp/react-web";
-import { CAuthProvider, useCAuth } from "../contexts/c-AuthContext";
+import { useCAuth } from "../contexts/c-AuthContext";
 
 function AppInner({ Component, pageProps }: AppProps) {
   const { loading } = useCAuth();
@@ -18,9 +18,5 @@ function AppInner({ Component, pageProps }: AppProps) {
 }
 
 export default function MyApp(props: AppProps) {
-  return (
-    <CAuthProvider>
-      <AppInner {...props} />
-    </CAuthProvider>
-  );
+  return <AppInner {...props} />;
 }

@@ -1,54 +1,55 @@
-import * as React from "react";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { getSupabaseC } from "../lib/c-supabaseClient";
+import supabase from "../lib/c-supabaseClient";
 import { PlasmicCEditProfile } from "../components/plasmic/ez_marketing_platform/PlasmicCEditProfile";
-import { PageParamsProvider as PageParamsProvider__ } from "@plasmicapp/react-web/lib/host";
 
 export default function CEditProfile() {
-  const router = useRouter();
+  const [user, setUser] = useState<any>(null);
   const [company, setCompany] = useState<any>(null);
 
-  // 🔎 Carregar dados da empresa
+  // 🔎 Carregar usuário logado
   useEffect(() => {
-    async function loadCompany() {
-      const supabase = getSupabaseC();
-      const { data, error } = await supabase
-        .from("companies")
-        .select("*")
-        .single();
-
-      if (!error) {
-        setCompany(data);
-      }
-    }
-
-    loadCompany();
+    supabase.auth.getUser().then(({ data }) => {
+      setUser(data.user);
+    });
   }, []);
 
-  // 💾 Salvar (substitui HTTP Integration)
-  async function handleSave(values: any) {
-    const supabase = getSupabaseC();
-    const { error } = await supabase
+  // 🔎 Carregar dados da empresa vinculada ao usuário
+  useEffect(() => {
+    if (!user) return;
+
+    supabase
       .from("companies")
-      .upsert(values);
+      .select("*")
+      .eq("user_id", user.id)
+      .single()
+      .then(({ data, error }) => {
+        if (!error) {
+          setCompany(data);
+        }
+      });
+  }, [user]);
+
+  // 💾 Salvar dados da empresa
+  async function handleSave(values: any) {
+    if (!user) return;
+
+    const { error } = await supabase.from("companies").upsert(
+      {
+        user_id: user.id,
+        ...values,
+      },
+      { onConflict: "user_id" }
+    );
 
     if (!error) {
       setCompany({ ...company, ...values });
     }
   }
 
-  const PlasmicComponent = PlasmicCEditProfile as any;
-
   return (
-    <PageParamsProvider__
-      route={router.pathname}
-      params={{
-        ...router.query,
-      }}
-      query={router.query}
-    >
-      <PlasmicComponent company={company} onSave={handleSave} />
-    </PageParamsProvider__>
+    <PlasmicCEditProfile
+      company={company}
+      onSave={handleSave}
+    />
   );
 }

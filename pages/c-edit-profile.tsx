@@ -6,14 +6,12 @@ export default function CEditProfile() {
   const [user, setUser] = useState<any>(null);
   const [company, setCompany] = useState<any>(null);
 
-  // 🔎 Carregar usuário logado
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
       setUser(data.user);
     });
   }, []);
 
-  // 🔎 Carregar dados da empresa vinculada ao usuário
   useEffect(() => {
     if (!user) return;
 
@@ -29,7 +27,6 @@ export default function CEditProfile() {
       });
   }, [user]);
 
-  // 💾 Salvar dados da empresa
   async function handleSave(values: any) {
     if (!user) return;
 
@@ -46,10 +43,20 @@ export default function CEditProfile() {
     }
   }
 
+  // Wrapper: você decide como passar os dados para dentro do Plasmic
   return (
     <PlasmicCEditProfile
-      company={company}
-      onSave={handleSave}
+      // props que o Plasmic realmente espera (ex.: slots, overrides)
+      root={{
+        children: (
+          <div>
+            <pre>{JSON.stringify(company, null, 2)}</pre>
+            <button onClick={() => handleSave({ name: "Nova empresa" })}>
+              Salvar
+            </button>
+          </div>
+        ),
+      }}
     />
   );
 }

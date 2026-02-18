@@ -16,8 +16,8 @@ type PageProps = {
 const PLASMIC = initPlasmicLoader({
   projects: [
     {
-      id: process.env.PLASMIC_PROJECT_ID!, // defina no Vercel
-      token: process.env.PLASMIC_PROJECT_API_TOKEN!, // defina no Vercel
+      id: process.env.PLASMIC_PROJECT_ID!, // configure no Vercel
+      token: process.env.PLASMIC_PROJECT_API_TOKEN!, // configure no Vercel
     },
   ],
 });

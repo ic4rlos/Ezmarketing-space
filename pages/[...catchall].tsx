@@ -33,8 +33,9 @@ export default function CatchAllPage(props: PageProps) {
   } = props;
 
   return (
-    <PlasmicRootProvider loader={PLASMIC} prefetchedData={plasmicData}>
+    <PlasmicRootProvider prefetchedData={plasmicData}>
       <PlasmicComponent
+        loader={PLASMIC}
         component={component}
         componentProps={{
           userCompany,

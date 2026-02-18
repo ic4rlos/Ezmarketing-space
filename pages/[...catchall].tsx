@@ -50,7 +50,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   // ===============================
   // 1️⃣ Resolver rota do Plasmic
   // ===============================
-  const plasmicPath = context.params?.catchall ?? [];
+  const catchall = context.params?.catchall;
+  const plasmicPath = Array.isArray(catchall) ? catchall.join("/") : catchall ?? "";
   const plasmicData = await PLASMIC.fetchComponentData(plasmicPath);
 
   if (!plasmicData || !plasmicData.entryCompMetas.length) {

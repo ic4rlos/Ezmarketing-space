@@ -1,8 +1,6 @@
 import { GetServerSideProps } from "next";
-import {
-  PlasmicRootProvider,
-  PlasmicComponent,
-} from "@plasmicapp/loader-nextjs";
+import { PlasmicRootProvider } from "@plasmicapp/react-web";
+import { PlasmicComponent } from "@plasmicapp/loader-nextjs";
 import { PLASMIC } from "../plasmic-init";
 import { createClient } from "@supabase/supabase-js";
 
@@ -56,11 +54,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   // ===============================
   // 2️⃣ Extrair tokens corretos
   // ===============================
-  const companyToken =
-    context.req.cookies["sb-company-auth-token"] ?? null;
-
-  const agencyToken =
-    context.req.cookies["sb-agency-auth-token"] ?? null;
+  const companyToken = context.req.cookies["sb-company-auth-token"] ?? null;
+  const agencyToken = context.req.cookies["sb-agency-auth-token"] ?? null;
 
   // ===============================
   // 3️⃣ Criar clients separados
@@ -70,9 +65,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     process.env.NEXT_PUBLIC_SUPABASE_COMPANY_ANON_KEY!,
     {
       global: {
-        headers: companyToken
-          ? { Authorization: `Bearer ${companyToken}` }
-          : {},
+        headers: companyToken ? { Authorization: `Bearer ${companyToken}` } : {},
       },
     }
   );
@@ -82,9 +75,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     process.env.NEXT_PUBLIC_SUPABASE_AGENCY_ANON_KEY!,
     {
       global: {
-        headers: agencyToken
-          ? { Authorization: `Bearer ${agencyToken}` }
-          : {},
+        headers: agencyToken ? { Authorization: `Bearer ${agencyToken}` } : {},
       },
     }
   );

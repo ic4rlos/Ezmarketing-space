@@ -1,6 +1,5 @@
 import { GetServerSideProps } from "next";
-import { PlasmicRootProvider } from "@plasmicapp/react-web";
-import { PlasmicComponent, initPlasmicLoader } from "@plasmicapp/loader-nextjs";
+import { PlasmicComponent, PlasmicRootProvider, initPlasmicLoader } from "@plasmicapp/loader-nextjs";
 import { createClient } from "@supabase/supabase-js";
 
 type PageProps = {
@@ -33,9 +32,8 @@ export default function CatchAllPage(props: PageProps) {
   } = props;
 
   return (
-    <PlasmicRootProvider prefetchedData={plasmicData}>
+    <PlasmicRootProvider loader={PLASMIC} prefetchedData={plasmicData}>
       <PlasmicComponent
-        loader={PLASMIC}
         component={component}
         componentProps={{
           userCompany,

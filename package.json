@@ -13,6 +13,7 @@
     "@ant-design/pro-components": "^2.6.4",
     "@plasmicapp/cli": "^0.1.359",
     "@plasmicapp/react-web": "^0.2.421",
+    "@plasmicapp/loader-nextjs": "^1.0.237",
     "@plasmicpkgs/antd5": "^0.0.310",
     "@plasmicpkgs/lottie-react": "^0.0.222",
     "@plasmicpkgs/plasmic-basic-components": "^0.0.259",

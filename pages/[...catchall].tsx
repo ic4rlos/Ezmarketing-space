@@ -1,7 +1,6 @@
 import { GetServerSideProps } from "next";
 import { PlasmicRootProvider } from "@plasmicapp/react-web";
-import { PlasmicComponent } from "@plasmicapp/loader-nextjs";
-import { PLASMIC } from "../plasmic-init";
+import { PlasmicComponent, initPlasmicLoader } from "@plasmicapp/loader-nextjs";
 import { createClient } from "@supabase/supabase-js";
 
 type PageProps = {
@@ -12,6 +11,16 @@ type PageProps = {
   companyData: any;
   agencyData: any;
 };
+
+// 🔧 Inicializa o loader direto aqui
+const PLASMIC = initPlasmicLoader({
+  projects: [
+    {
+      id: process.env.PLASMIC_PROJECT_ID!, // defina no Vercel
+      token: process.env.PLASMIC_PROJECT_API_TOKEN!, // defina no Vercel
+    },
+  ],
+});
 
 export default function CatchAllPage(props: PageProps) {
   const {

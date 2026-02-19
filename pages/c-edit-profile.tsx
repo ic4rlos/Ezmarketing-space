@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import supabase from "../lib/c-supabaseClient";
-import { PlasmicCEditProfile } from "../components/plasmic/ez_marketing_platform/PlasmicCEditProfile";
+import {
+  PlasmicRootProvider,
+  PlasmicComponent
+} from "@plasmicapp/loader-nextjs";
+import { PLASMIC } from "../plasmic-init";
 
 export default function CEditProfile() {
   const [user, setUser] = useState<any>(null);
   const [company, setCompany] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  // 1️⃣ Buscar usuário autenticado
+  // 1️⃣ Buscar usuário
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabase.auth.getUser();
@@ -16,7 +20,7 @@ export default function CEditProfile() {
     loadUser();
   }, []);
 
-  // 2️⃣ Buscar dados da company
+  // 2️⃣ Buscar company
   useEffect(() => {
     if (!user) {
       setLoading(false);
@@ -40,7 +44,7 @@ export default function CEditProfile() {
     loadCompany();
   }, [user]);
 
-  // 3️⃣ Função de salvar (DOMÍNIO)
+  // 3️⃣ Save
   async function handleSave(values: any) {
     if (!user) return;
 
@@ -62,11 +66,15 @@ export default function CEditProfile() {
 
   if (loading) return null;
 
-  // 4️⃣ Passa dados + ação para o Plasmic
   return (
-    <PlasmicCEditProfile
-      company={company}
-      onSave={handleSave}
-    />
+    <PlasmicRootProvider loader={PLASMIC}>
+      <PlasmicComponent
+        component="CEditProfile2" // 👈 nome exato da page no Plasmic
+        componentProps={{
+          companyData: company,
+          onSave: handleSave
+        }}
+      />
+    </PlasmicRootProvider>
   );
 }

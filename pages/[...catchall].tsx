@@ -1,57 +1,43 @@
 import { GetServerSideProps } from "next";
-import { PlasmicComponent, PlasmicRootProvider, initPlasmicLoader } from "@plasmicapp/loader-nextjs";
-import { createClient } from "@supabase/supabase-js";
+import {
+  PlasmicComponent,
+  PlasmicRootProvider,
+  initPlasmicLoader,
+} from "@plasmicapp/loader-nextjs";
 
 type PageProps = {
   plasmicData: any;
   component: string;
-  userCompany: any;
-  userAgency: any;
-  companyData: any;
-  agencyData: any;
 };
 
-// 🔧 Inicializa o loader direto aqui
+// 🔧 Inicializa o loader
 const PLASMIC = initPlasmicLoader({
   projects: [
     {
-      id: process.env.PLASMIC_PROJECT_ID!, // configure no Vercel
-      token: process.env.PLASMIC_PROJECT_API_TOKEN!, // configure no Vercel
+      id: process.env.PLASMIC_PROJECT_ID!,
+      token: process.env.PLASMIC_PROJECT_API_TOKEN!,
     },
   ],
 });
 
-export default function CatchAllPage(props: PageProps) {
-  const {
-    plasmicData,
-    component,
-    userCompany,
-    userAgency,
-    companyData,
-    agencyData,
-  } = props;
-
+export default function CatchAllPage({
+  plasmicData,
+  component,
+}: PageProps) {
   return (
     <PlasmicRootProvider loader={PLASMIC} prefetchedData={plasmicData}>
-      <PlasmicComponent
-        component={component}
-        componentProps={{
-          userCompany,
-          userAgency,
-          companyData,
-          agencyData,
-        }}
-      />
+      <PlasmicComponent component={component} />
     </PlasmicRootProvider>
   );
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  // ===============================
-  // 1️⃣ Resolver rota do Plasmic
-  // ===============================
   const catchall = context.params?.catchall;
-  const plasmicPath = Array.isArray(catchall) ? catchall.join("/") : catchall ?? "";
+
+  const plasmicPath = Array.isArray(catchall)
+    ? catchall.join("/")
+    : catchall ?? "";
+
   const plasmicData = await PLASMIC.fetchComponentData(plasmicPath);
 
   if (!plasmicData || !plasmicData.entryCompMetas.length) {
@@ -60,84 +46,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const component = plasmicData.entryCompMetas[0].displayName;
 
-  // ===============================
-  // 2️⃣ Extrair tokens corretos
-  // ===============================
-  const companyToken = context.req.cookies["sb-company-auth-token"] ?? null;
-  const agencyToken = context.req.cookies["sb-agency-auth-token"] ?? null;
-
-  // ===============================
-  // 3️⃣ Criar clients separados
-  // ===============================
-  const companyClient = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_COMPANY_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_COMPANY_ANON_KEY!,
-    {
-      global: {
-        headers: companyToken ? { Authorization: `Bearer ${companyToken}` } : {},
-      },
-    }
-  );
-
-  const agencyClient = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_AGENCY_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_AGENCY_ANON_KEY!,
-    {
-      global: {
-        headers: agencyToken ? { Authorization: `Bearer ${agencyToken}` } : {},
-      },
-    }
-  );
-
-  // ===============================
-  // 4️⃣ Buscar usuários
-  // ===============================
-  const {
-    data: { user: userCompany },
-  } = companyToken
-    ? await companyClient.auth.getUser()
-    : { data: { user: null } };
-
-  const {
-    data: { user: userAgency },
-  } = agencyToken
-    ? await agencyClient.auth.getUser()
-    : { data: { user: null } };
-
-  // ===============================
-  // 5️⃣ Buscar dados com RLS
-  // ===============================
-  let companyData = null;
-  let agencyData = null;
-
-  if (userCompany) {
-    const { data } = await companyClient
-      .from("companies")
-      .select("*")
-      .eq("user_id", userCompany.id)
-      .single();
-
-    companyData = data ?? null;
-  }
-
-  if (userAgency) {
-    const { data } = await agencyClient
-      .from("agencies")
-      .select("*")
-      .eq("user_id", userAgency.id)
-      .single();
-
-    agencyData = data ?? null;
-  }
-
   return {
     props: {
       plasmicData,
       component,
-      userCompany: userCompany ?? null,
-      userAgency: userAgency ?? null,
-      companyData,
-      agencyData,
     },
   };
 };

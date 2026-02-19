@@ -43,7 +43,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-embed-css"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "gmeH6XgPaBtkt51HunAo4g",
@@ -253,7 +254,8 @@
           "componentImportPath": "@plasmicpkgs/react-aria/skinny/registerDialog"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "enk3K4vZ6pmH6kVCoZJXGn",
@@ -277,7 +279,8 @@
           "componentImportPath": "@plasmicpkgs/react-youtube"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "kS7YGZfVr6mU43XDQjXELc",
@@ -301,7 +304,8 @@
           "componentImportPath": "@plasmicpkgs/react-chartjs-2"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "7nJ7UcFmq9UzB6eXfC5z4a",
@@ -325,7 +329,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-nav"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "szjgMQpPpxhmkjnaBvZQJG",
@@ -349,7 +354,8 @@
           "componentImportPath": "@plasmicpkgs/react-parallax-tilt"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "84wxoth5npGrp6RRXPL88z",
@@ -379,7 +385,8 @@
           "componentImportPath": "@plasmicpkgs/react-scroll-parallax"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "5dGW8Awro3qq8Hh5MveXLP",
@@ -409,7 +416,8 @@
           "componentImportPath": "@plasmicpkgs/lottie-react"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "itBdcjth19Wasd6ngAYxWR",
@@ -445,7 +453,8 @@
           "componentImportPath": "@plasmicpkgs/react-twitter-widgets"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "q8iq2J191QypeBqVSHzb6M",
@@ -553,7 +562,8 @@
           "componentImportPath": "@plasmicpkgs/tiptap/skinny/registerToolbarUnderline"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "hjKYmYi6HMwK6TRyk7ew5R",
@@ -613,7 +623,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-cms"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "gLnoj82AzKVVT7qXiqAbHD",
@@ -681,7 +692,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-tabs"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "sqPBLwEBBKHA2WDuGb17eV",
@@ -773,7 +785,8 @@
           "componentImportPath": "@plasmicpkgs/radix-ui"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "vqeFwpZFQ6buChy6T9PGwQ",
@@ -801,7 +814,8 @@
           }
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "xfguyo8p9zs8FxMdioQAoN",
@@ -837,7 +851,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-contentful"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "3m3vFk1dnCzZnwT8k489Jy",
@@ -861,7 +876,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-link-preview"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "r3ASNrnyvLLLAtDvzUioQ",
@@ -889,7 +905,8 @@
           }
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "jkU633o1Cz7HrJdwdxhVHk",
@@ -945,7 +962,8 @@
           }
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "caTPwKxj5ZrD9LQ7DMdK4Z",
@@ -1005,7 +1023,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-basic-components"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "ohDidvG9XsCeFumugENU3J",
@@ -2989,6 +3008,19 @@
             "modulePath": "Tooltip.tsx"
           },
           "cssFilePath": "plasmic/ez_marketing_platform/PlasmicTooltip.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "nne53bh0vmzC",
+          "name": "RoteadorDeProps",
+          "type": "managed",
+          "projectId": "maKqnX1RyE1vKUCrTH51ZZ",
+          "renderModuleFilePath": "plasmic/ez_marketing_platform/PlasmicRoteadorDeProps.tsx",
+          "importSpec": {
+            "modulePath": "RoteadorDeProps.tsx"
+          },
+          "cssFilePath": "plasmic/ez_marketing_platform/PlasmicRoteadorDeProps.module.css",
           "scheme": "blackbox",
           "componentType": "component"
         }

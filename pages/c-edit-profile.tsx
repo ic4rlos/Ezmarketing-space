@@ -62,16 +62,12 @@ export default function CEditProfile() {
 
   if (loading) return null;
 
-  // 4️⃣ Passa dados + ação para o Plasmic via overrides
+  // 4️⃣ Passa dados + ação para o Plasmic via args
   return (
     <PlasmicCEditProfile
-      overrides={{
-        root: {
-          props: {
-            company,
-            onSave: handleSave,
-          },
-        },
+      args={{
+        company,
+        onSave: handleSave,
       }}
     />
   );

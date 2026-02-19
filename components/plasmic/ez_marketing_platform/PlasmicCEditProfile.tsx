@@ -233,7 +233,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
-              return $props.companyData?.["Company name"] ?? "";
+              return $props.company?.["Company name"] ?? "";
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -277,7 +277,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyData?.Location ?? null,
+          $props.company?.Location ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -286,7 +286,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyData?.["Foundation date"] ?? null,
+          $props.company?.["Foundation date"] ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -301,7 +301,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyData?.LinkedIn ?? null,
+          $props.company?.LinkedIn ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -310,7 +310,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyData?.Instagram ?? null,
+          $props.company?.Instagram ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -319,7 +319,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyData?.X ?? null,
+          $props.company?.X ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -358,7 +358,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyData?.["Customer problem"] ?? null,
+          $props.company?.["Customer problem"] ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
@@ -373,21 +373,21 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyData?.["Company type"] ?? null
+          $props.company?.["Company type"] ?? null
       },
       {
         path: "area.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyData?.Area ?? null
+          $props.company?.Area ?? null
       },
       {
         path: "companyTagline.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyData?.["Company tagline"] ?? null,
+          $props.company?.["Company tagline"] ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -428,7 +428,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyData?.["Solution description"] ?? null,
+          $props.company?.["Solution description"] ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
@@ -437,7 +437,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyData?.["Why should they choose"] ?? null,
+          $props.company?.["Why should they choose"] ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
@@ -452,7 +452,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyData?.Website ?? null,
+          $props.company?.Website ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -848,7 +848,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     projectcss.plasmic_mixins,
                     styleTokensClassNames
                   )}
-                  defaultValue={$props.companyData?.["Company type"] ?? null}
+                  defaultValue={$props.company?.["Company type"] ?? null}
                   dropdownMatchSelectWidth={false}
                   mode={"single"}
                   onChange={async (...eventArgs: any) => {
@@ -1592,7 +1592,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     projectcss.plasmic_mixins,
                     styleTokensClassNames
                   )}
-                  defaultValue={$props.companyData?.Area ?? null}
+                  defaultValue={$props.company?.Area ?? null}
                   dropdownMatchSelectWidth={false}
                   mode={"single"}
                   onChange={async (...eventArgs: any) => {
@@ -3997,7 +3997,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       ? (() => {
                           const actionArgs = {
                             customFunction: async () => {
-                              return props.onSave({
+                              return $props.onSave({
                                 "Company name": $state.companyName.value ?? "",
                                 Location: $state.location?.value ?? "",
                                 "Company type": $state.companyType?.value ?? "",

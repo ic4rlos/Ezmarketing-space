@@ -5,58 +5,68 @@ import { PlasmicCEditProfile } from "../components/plasmic/ez_marketing_platform
 export default function CEditProfile() {
   const [user, setUser] = useState<any>(null);
   const [company, setCompany] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
+  // 1️⃣ Buscar usuário autenticado
   useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => {
-      setUser(data.user);
-    });
+    async function loadUser() {
+      const { data } = await supabase.auth.getUser();
+      setUser(data.user ?? null);
+    }
+    loadUser();
   }, []);
 
+  // 2️⃣ Buscar dados da company
   useEffect(() => {
-    if (!user) return;
+    if (!user) {
+      setLoading(false);
+      return;
+    }
 
-    supabase
-      .from("companies")
-      .select("*")
-      .eq("user_id", user.id)
-      .single()
-      .then(({ data, error }) => {
-        if (!error) {
-          setCompany(data);
-        }
-      });
+    async function loadCompany() {
+      const { data, error } = await supabase
+        .from("companies")
+        .select("*")
+        .eq("user_id", user.id)
+        .single();
+
+      if (!error) {
+        setCompany(data);
+      }
+
+      setLoading(false);
+    }
+
+    loadCompany();
   }, [user]);
 
+  // 3️⃣ Função de salvar (DOMÍNIO)
   async function handleSave(values: any) {
     if (!user) return;
 
-    const { error } = await supabase.from("companies").upsert(
-      {
-        user_id: user.id,
-        ...values,
-      },
-      { onConflict: "user_id" }
-    );
+    const payload = {
+      user_id: user.id,
+      ...values,
+    };
+
+    const { data, error } = await supabase
+      .from("companies")
+      .upsert(payload, { onConflict: "user_id" })
+      .select()
+      .single();
 
     if (!error) {
-      setCompany({ ...company, ...values });
+      setCompany(data);
     }
   }
 
-  // Wrapper: você decide como passar os dados para dentro do Plasmic
+  if (loading) return null;
+
+  // 4️⃣ Passa dados + ação para o Plasmic
   return (
     <PlasmicCEditProfile
-      // props que o Plasmic realmente espera (ex.: slots, overrides)
-      root={{
-        children: (
-          <div>
-            <pre>{JSON.stringify(company, null, 2)}</pre>
-            <button onClick={() => handleSave({ name: "Nova empresa" })}>
-              Salvar
-            </button>
-          </div>
-        ),
-      }}
+      company={company}
+      onSave={handleSave}
     />
   );
 }

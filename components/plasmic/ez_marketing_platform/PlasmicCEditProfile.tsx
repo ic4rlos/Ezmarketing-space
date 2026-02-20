@@ -4013,17 +4013,14 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                 "Sub area": $state.subArea?.value ?? "",
                                 "Google calendar":
                                   $state.googleCalendar?.value ?? "",
-                                "Company image":
-                                  $state.companyImage?.value ?? "",
                                 "Customer problem":
                                   $state.customerProblem?.value ?? "",
                                 "Solution description":
                                   $state.solutionDescription?.value ?? "",
                                 "Why should they choose...":
-                                  $state.whyChoose?.value ?? "",
-                                is_public: $state.isPublic?.value ?? false,
+                                  $state.whyShouldTheyChoose?.value ?? "",
                                 "Company nature":
-                                  $state.companyNature?.value ?? ""
+                                  $state.companyNature3?.value ?? ""
                               });
                             }
                           };

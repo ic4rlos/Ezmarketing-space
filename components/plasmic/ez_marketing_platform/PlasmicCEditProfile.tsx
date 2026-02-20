@@ -4017,7 +4017,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                   $state.customerProblem?.value ?? "",
                                 "Solution description":
                                   $state.solutionDescription?.value ?? "",
-                                "Why should they choose...":
+                                "Why should they choose":
                                   $state.whyShouldTheyChoose?.value ?? "",
                                 "Company nature":
                                   $state.companyNature3?.value ?? ""

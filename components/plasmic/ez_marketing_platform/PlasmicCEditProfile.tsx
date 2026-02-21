@@ -165,12 +165,6 @@ export type PlasmicCEditProfile__OverridesType = {
   googleCalendar?: Flex__<typeof AntdInput>;
   companyNature?: Flex__<"div">;
   services?: Flex__<"div">;
-  solutions?: Flex__<"section">;
-  title?: Flex__<typeof AntdInput>;
-  description?: Flex__<typeof AntdTextArea>;
-  price?: Flex__<typeof AntdInput>;
-  solutionsSteps?: Flex__<"div">;
-  stepText?: Flex__<typeof AntdInput>;
   about?: Flex__<"div">;
   companyImage?: Flex__<typeof UploadWrapper>;
   customerProblem?: Flex__<typeof AntdTextArea>;
@@ -324,36 +318,6 @@ function PlasmicCEditProfile__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "formStep",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => [
-          { id: null, step_text: "" }
-        ]
-      },
-      {
-        path: "title[].value",
-        type: "private",
-        variableType: "text",
-
-        onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
-      },
-      {
-        path: "price[].value",
-        type: "private",
-        variableType: "text",
-
-        onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
-      },
-      {
-        path: "formSolution",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => [
-          { id: null, title: "", description: "", price: "" }
-        ]
-      },
-      {
         path: "customerProblem.value",
         type: "private",
         variableType: "text",
@@ -408,20 +372,6 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "array",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => []
-      },
-      {
-        path: "description[].value",
-        type: "private",
-        variableType: "text",
-
-        onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
-      },
-      {
-        path: "stepText[][].value",
-        type: "private",
-        variableType: "text",
-
-        onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
         path: "solutionDescription.value",
@@ -3087,472 +3037,6 @@ function PlasmicCEditProfile__RenderFunc(props: {
                 </React.Fragment>
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__kQPu3)}>
-                {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
-                  (() => {
-                    try {
-                      return $state.formSolution;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return [];
-                      }
-                      throw e;
-                    }
-                  })()
-                ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                  const currentItem = __plasmic_item_0;
-                  const currentIndex = __plasmic_idx_0;
-                  return (
-                    <section
-                      data-plasmic-name={"solutions"}
-                      data-plasmic-override={overrides.solutions}
-                      className={classNames(projectcss.all, sty.solutions)}
-                      key={currentIndex}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___1J7M8
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox___335Z7
-                          )}
-                        >
-                          {(() => {
-                            const child$Props = {
-                              autoFocus: false,
-                              bordered: true,
-                              className: classNames(
-                                "__wab_instance",
-                                sty.title
-                              ),
-                              onChange: async (...eventArgs: any) => {
-                                generateStateOnChangePropForCodeComponents(
-                                  $state,
-                                  "value",
-                                  ["title", __plasmic_idx_0, "value"],
-                                  AntdInput_Helpers
-                                ).apply(null, eventArgs);
-                              },
-                              placeholder: "Solution",
-                              readOnly: false,
-                              size: "middle",
-                              type: "text",
-                              value: generateStateValueProp($state, [
-                                "title",
-                                __plasmic_idx_0,
-                                "value"
-                              ])
-                            };
-                            initializeCodeComponentStates(
-                              $state,
-                              [
-                                {
-                                  name: "value",
-                                  plasmicStateName: "title[].value"
-                                }
-                              ],
-                              [__plasmic_idx_0],
-                              AntdInput_Helpers ?? {},
-                              child$Props
-                            );
-                            initializePlasmicStates(
-                              $state,
-                              [
-                                {
-                                  name: "title[].value",
-                                  initFunc: ({
-                                    $props,
-                                    $state,
-                                    $queries,
-                                    $q
-                                  }) => undefined
-                                }
-                              ],
-                              [__plasmic_idx_0]
-                            );
-                            return (
-                              <AntdInput
-                                data-plasmic-name={"title"}
-                                data-plasmic-override={overrides.title}
-                                {...child$Props}
-                              />
-                            );
-                          })()}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__zsfts
-                          )}
-                        >
-                          {(() => {
-                            const child$Props = {
-                              className: classNames(
-                                "__wab_instance",
-                                sty.description
-                              ),
-                              onChange: async (...eventArgs: any) => {
-                                generateStateOnChangePropForCodeComponents(
-                                  $state,
-                                  "value",
-                                  ["description", __plasmic_idx_0, "value"],
-                                  AntdTextArea_Helpers
-                                ).apply(null, eventArgs);
-                              },
-                              placeholder: "Description",
-                              value: generateStateValueProp($state, [
-                                "description",
-                                __plasmic_idx_0,
-                                "value"
-                              ])
-                            };
-                            initializeCodeComponentStates(
-                              $state,
-                              [
-                                {
-                                  name: "value",
-                                  plasmicStateName: "description[].value"
-                                }
-                              ],
-                              [__plasmic_idx_0],
-                              AntdTextArea_Helpers ?? {},
-                              child$Props
-                            );
-                            initializePlasmicStates(
-                              $state,
-                              [
-                                {
-                                  name: "description[].value",
-                                  initFunc: ({
-                                    $props,
-                                    $state,
-                                    $queries,
-                                    $q
-                                  }) => undefined
-                                }
-                              ],
-                              [__plasmic_idx_0]
-                            );
-                            return (
-                              <AntdTextArea
-                                data-plasmic-name={"description"}
-                                data-plasmic-override={overrides.description}
-                                {...child$Props}
-                              />
-                            );
-                          })()}
-                        </div>
-                        {(() => {
-                          try {
-                            return (
-                              $state.companyNature3 ===
-                                "Table - At Customer Location" ||
-                              $state.companyNature3 ===
-                                "Table - At Company Location"
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return true;
-                            }
-                            throw e;
-                          }
-                        })() ? (
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__lHtXg
-                            )}
-                          >
-                            {(() => {
-                              const child$Props = {
-                                autoFocus: false,
-                                bordered: true,
-                                className: classNames(
-                                  "__wab_instance",
-                                  sty.price
-                                ),
-                                onChange: async (...eventArgs: any) => {
-                                  generateStateOnChangePropForCodeComponents(
-                                    $state,
-                                    "value",
-                                    ["price", __plasmic_idx_0, "value"],
-                                    AntdInput_Helpers
-                                  ).apply(null, eventArgs);
-                                },
-                                placeholder: "Price",
-                                readOnly: false,
-                                size: "middle",
-                                type: "number",
-                                value: generateStateValueProp($state, [
-                                  "price",
-                                  __plasmic_idx_0,
-                                  "value"
-                                ])
-                              };
-                              initializeCodeComponentStates(
-                                $state,
-                                [
-                                  {
-                                    name: "value",
-                                    plasmicStateName: "price[].value"
-                                  }
-                                ],
-                                [__plasmic_idx_0],
-                                AntdInput_Helpers ?? {},
-                                child$Props
-                              );
-                              initializePlasmicStates(
-                                $state,
-                                [
-                                  {
-                                    name: "price[].value",
-                                    initFunc: ({
-                                      $props,
-                                      $state,
-                                      $queries,
-                                      $q
-                                    }) => undefined
-                                  }
-                                ],
-                                [__plasmic_idx_0]
-                              );
-                              return (
-                                <AntdInput
-                                  data-plasmic-name={"price"}
-                                  data-plasmic-override={overrides.price}
-                                  {...child$Props}
-                                />
-                              );
-                            })()}
-                          </div>
-                        ) : null}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__g3Ao
-                        )}
-                      >
-                        {(_par =>
-                          !_par ? [] : Array.isArray(_par) ? _par : [_par])(
-                          (() => {
-                            try {
-                              return $state.formStep;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return [];
-                              }
-                              throw e;
-                            }
-                          })()
-                        ).map((__plasmic_item_1, __plasmic_idx_1) => {
-                          const currentItem = __plasmic_item_1;
-                          const currentIndex = __plasmic_idx_1;
-                          return (
-                            <div
-                              data-plasmic-name={"solutionsSteps"}
-                              data-plasmic-override={overrides.solutionsSteps}
-                              className={classNames(
-                                projectcss.all,
-                                sty.solutionsSteps
-                              )}
-                              key={currentIndex}
-                            >
-                              {(() => {
-                                const child$Props = {
-                                  autoFocus: false,
-                                  bordered: true,
-                                  className: classNames(
-                                    "__wab_instance",
-                                    sty.stepText
-                                  ),
-                                  onChange: async (...eventArgs: any) => {
-                                    generateStateOnChangePropForCodeComponents(
-                                      $state,
-                                      "value",
-                                      [
-                                        "stepText",
-                                        __plasmic_idx_0,
-                                        __plasmic_idx_1,
-                                        "value"
-                                      ],
-                                      AntdInput_Helpers
-                                    ).apply(null, eventArgs);
-                                  },
-                                  placeholder: "Step",
-                                  readOnly: false,
-                                  size: "middle",
-                                  type: "text",
-                                  value: generateStateValueProp($state, [
-                                    "stepText",
-                                    __plasmic_idx_0,
-                                    __plasmic_idx_1,
-                                    "value"
-                                  ])
-                                };
-                                initializeCodeComponentStates(
-                                  $state,
-                                  [
-                                    {
-                                      name: "value",
-                                      plasmicStateName: "stepText[][].value"
-                                    }
-                                  ],
-                                  [__plasmic_idx_0, __plasmic_idx_1],
-                                  AntdInput_Helpers ?? {},
-                                  child$Props
-                                );
-                                initializePlasmicStates(
-                                  $state,
-                                  [
-                                    {
-                                      name: "stepText[][].value",
-                                      initFunc: ({
-                                        $props,
-                                        $state,
-                                        $queries,
-                                        $q
-                                      }) => undefined
-                                    }
-                                  ],
-                                  [__plasmic_idx_0, __plasmic_idx_1]
-                                );
-                                return (
-                                  <AntdInput
-                                    data-plasmic-name={"stepText"}
-                                    data-plasmic-override={overrides.stepText}
-                                    {...child$Props}
-                                  />
-                                );
-                              })()}
-                            </div>
-                          );
-                        })}
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__qFpwx
-                          )}
-                        >
-                          <LoginButton
-                            className={classNames(
-                              "__wab_instance",
-                              sty.loginButton__e2M1Q
-                            )}
-                            color={"clear"}
-                            onClick={async event => {
-                              const $steps = {};
-
-                              $steps["runCode"] = true
-                                ? (() => {
-                                    const actionArgs = {
-                                      customFunction: async () => {
-                                        return $state.formStep.push({
-                                          value: ""
-                                        });
-                                      }
-                                    };
-                                    return (({ customFunction }) => {
-                                      return customFunction();
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
-                              if (
-                                $steps["runCode"] != null &&
-                                typeof $steps["runCode"] === "object" &&
-                                typeof $steps["runCode"].then === "function"
-                              ) {
-                                $steps["runCode"] = await $steps["runCode"];
-                              }
-                            }}
-                            showStartIcon={true}
-                            startIcon={
-                              <PlusSvgIcon
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.svg__l2AIg
-                                )}
-                                role={"img"}
-                              />
-                            }
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__g0Thy
-                              )}
-                            >
-                              {"Add"}
-                            </div>
-                          </LoginButton>
-                          <LoginButton
-                            className={classNames(
-                              "__wab_instance",
-                              sty.loginButton___61KK7
-                            )}
-                            color={"clear"}
-                            onClick={async event => {
-                              const $steps = {};
-
-                              $steps["runCode"] = true
-                                ? (() => {
-                                    const actionArgs = {
-                                      customFunction: async () => {
-                                        return $state.formStep.pop();
-                                      }
-                                    };
-                                    return (({ customFunction }) => {
-                                      return customFunction();
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
-                              if (
-                                $steps["runCode"] != null &&
-                                typeof $steps["runCode"] === "object" &&
-                                typeof $steps["runCode"].then === "function"
-                              ) {
-                                $steps["runCode"] = await $steps["runCode"];
-                              }
-                            }}
-                            showStartIcon={true}
-                            startIcon={
-                              <Icon7Icon
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.svg__vC5J
-                                )}
-                                role={"img"}
-                              />
-                            }
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__jCh96
-                              )}
-                            >
-                              {"Remove"}
-                            </div>
-                          </LoginButton>
-                        </div>
-                      </div>
-                    </section>
-                  );
-                })}
                 <div className={classNames(projectcss.all, sty.freeBox__jEgG)}>
                   <LoginButton
                     className={classNames(
@@ -3567,7 +3051,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                         ? (() => {
                             const actionArgs = {
                               customFunction: async () => {
-                                return $state.formSolution.push({ value: "" });
+                                return undefined;
                               }
                             };
                             return (({ customFunction }) => {
@@ -3606,7 +3090,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                         ? (() => {
                             const actionArgs = {
                               customFunction: async () => {
-                                return $state.formSolution.pop();
+                                return undefined;
                               }
                             };
                             return (({ customFunction }) => {
@@ -3997,31 +3481,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       ? (() => {
                           const actionArgs = {
                             customFunction: async () => {
-                              return $props.onSave({
-                                "Company name": $state.companyName.value ?? "",
-                                Location: $state.location?.value ?? "",
-                                "Company type": $state.companyType?.value ?? "",
-                                "Foundation date":
-                                  $state.foundationDate?.value ?? "",
-                                LinkedIn: $state.linkedIn?.value ?? "",
-                                Instagram: $state.instagram?.value ?? "",
-                                Website: $state.website?.value ?? "",
-                                X: $state.x?.value ?? "",
-                                "Company tagline":
-                                  $state.companyTagline?.value ?? "",
-                                Area: $state.area?.value ?? "",
-                                "Sub area": $state.subArea?.value ?? "",
-                                "Google calendar":
-                                  $state.googleCalendar?.value ?? "",
-                                "Customer problem":
-                                  $state.customerProblem?.value ?? "",
-                                "Solution description":
-                                  $state.solutionDescription?.value ?? "",
-                                "Why should they choose":
-                                  $state.whyShouldTheyChoose?.value ?? "",
-                                "Company nature":
-                                  $state.companyNature3?.value ?? ""
-                              });
+                              return undefined;
                             }
                           };
                           return (({ customFunction }) => {
@@ -4085,12 +3545,6 @@ const PlasmicDescendants = {
     "googleCalendar",
     "companyNature",
     "services",
-    "solutions",
-    "title",
-    "description",
-    "price",
-    "solutionsSteps",
-    "stepText",
     "about",
     "companyImage",
     "customerProblem",
@@ -4123,12 +3577,6 @@ const PlasmicDescendants = {
     "googleCalendar",
     "companyNature",
     "services",
-    "solutions",
-    "title",
-    "description",
-    "price",
-    "solutionsSteps",
-    "stepText",
     "about",
     "companyImage",
     "customerProblem",
@@ -4173,28 +3621,7 @@ const PlasmicDescendants = {
   radioGroup3: ["radioGroup3"],
   googleCalendar: ["googleCalendar"],
   companyNature: ["companyNature"],
-  services: [
-    "services",
-    "solutions",
-    "title",
-    "description",
-    "price",
-    "solutionsSteps",
-    "stepText"
-  ],
-  solutions: [
-    "solutions",
-    "title",
-    "description",
-    "price",
-    "solutionsSteps",
-    "stepText"
-  ],
-  title: ["title"],
-  description: ["description"],
-  price: ["price"],
-  solutionsSteps: ["solutionsSteps", "stepText"],
-  stepText: ["stepText"],
+  services: ["services"],
   about: [
     "about",
     "companyImage",
@@ -4238,12 +3665,6 @@ type NodeDefaultElementType = {
   googleCalendar: typeof AntdInput;
   companyNature: "div";
   services: "div";
-  solutions: "section";
-  title: typeof AntdInput;
-  description: typeof AntdTextArea;
-  price: typeof AntdInput;
-  solutionsSteps: "div";
-  stepText: typeof AntdInput;
   about: "div";
   companyImage: typeof UploadWrapper;
   customerProblem: typeof AntdTextArea;
@@ -4338,12 +3759,6 @@ export const PlasmicCEditProfile = Object.assign(
     googleCalendar: makeNodeComponent("googleCalendar"),
     companyNature: makeNodeComponent("companyNature"),
     services: makeNodeComponent("services"),
-    solutions: makeNodeComponent("solutions"),
-    title: makeNodeComponent("title"),
-    description: makeNodeComponent("description"),
-    price: makeNodeComponent("price"),
-    solutionsSteps: makeNodeComponent("solutionsSteps"),
-    stepText: makeNodeComponent("stepText"),
     about: makeNodeComponent("about"),
     companyImage: makeNodeComponent("companyImage"),
     customerProblem: makeNodeComponent("customerProblem"),

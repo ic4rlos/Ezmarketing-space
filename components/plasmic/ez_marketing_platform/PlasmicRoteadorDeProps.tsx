@@ -78,11 +78,13 @@ export const PlasmicRoteadorDeProps__VariantProps =
 export type PlasmicRoteadorDeProps__ArgsType = {
   company?: any;
   onSave?: () => void;
+  formData?: any;
 };
 type ArgPropType = keyof PlasmicRoteadorDeProps__ArgsType;
 export const PlasmicRoteadorDeProps__ArgProps = new Array<ArgPropType>(
   "company",
-  "onSave"
+  "onSave",
+  "formData"
 );
 
 export type PlasmicRoteadorDeProps__OverridesType = {
@@ -92,6 +94,7 @@ export type PlasmicRoteadorDeProps__OverridesType = {
 export interface DefaultRoteadorDePropsProps {
   company?: any;
   onSave?: () => void;
+  formData?: any;
   className?: string;
 }
 

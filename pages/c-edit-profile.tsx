@@ -148,7 +148,6 @@ export default function CEditProfile() {
     for (const sol of solutions) {
       const solutionId = solutionMap.get(sol.title);
 
-      // Buscar steps existentes
       const { data: existingSteps } = await supabase
         .from("solutions_steps")
         .select("id")
@@ -172,7 +171,6 @@ export default function CEditProfile() {
           .in("id", stepsToDelete);
       }
 
-      // Upsert steps
       const stepsPayload = sol.steps.map(
         (step: any, index: number) => ({
           id: step.id ?? undefined,
@@ -189,7 +187,6 @@ export default function CEditProfile() {
         });
     }
 
-    // Atualizar estado local
     setCompany(savedCompany);
   }
 
@@ -200,6 +197,7 @@ export default function CEditProfile() {
       args={{
         company,
         formData,
+        setFormData, // 👈 ESSA É A ÚNICA ADIÇÃO
         onSave: handleSave,
       }}
     />

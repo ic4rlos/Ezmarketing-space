@@ -3075,7 +3075,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                 {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                   (() => {
                     try {
-                      return 1;
+                      return $props.formData;
                     } catch (e) {
                       if (
                         e instanceof TypeError ||

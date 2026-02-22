@@ -169,6 +169,9 @@ export type PlasmicCEditProfile__OverridesType = {
   title?: Flex__<typeof AntdInput>;
   description?: Flex__<typeof AntdTextArea>;
   price?: Flex__<typeof AntdInput>;
+  solutionsSteps?: Flex__<"div">;
+  stepText?: Flex__<typeof AntdInput>;
+  hhhh?: Flex__<"div">;
   about?: Flex__<"div">;
   companyImage?: Flex__<typeof UploadWrapper>;
   customerProblem?: Flex__<typeof AntdTextArea>;
@@ -397,6 +400,13 @@ function PlasmicCEditProfile__RenderFunc(props: {
         variableType: "text",
 
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
+      },
+      {
+        path: "stepText[].value",
+        type: "private",
+        variableType: "text",
+
+        onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
         path: "solutionDescription.value",
@@ -3413,6 +3423,227 @@ function PlasmicCEditProfile__RenderFunc(props: {
                           </div>
                         ) : null}
                       </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__g3Ao
+                        )}
+                      >
+                        <div
+                          data-plasmic-name={"solutionsSteps"}
+                          data-plasmic-override={overrides.solutionsSteps}
+                          className={classNames(
+                            projectcss.all,
+                            sty.solutionsSteps
+                          )}
+                        >
+                          {(() => {
+                            const child$Props = {
+                              autoFocus: false,
+                              bordered: true,
+                              className: classNames(
+                                "__wab_instance",
+                                sty.stepText
+                              ),
+                              onChange: async (...eventArgs: any) => {
+                                generateStateOnChangePropForCodeComponents(
+                                  $state,
+                                  "value",
+                                  ["stepText", __plasmic_idx_0, "value"],
+                                  AntdInput_Helpers
+                                ).apply(null, eventArgs);
+
+                                (async event => {
+                                  const $steps = {};
+
+                                  $steps["runCode"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          customFunction: async () => {
+                                            return undefined;
+                                          }
+                                        };
+                                        return (({ customFunction }) => {
+                                          return customFunction();
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["runCode"] != null &&
+                                    typeof $steps["runCode"] === "object" &&
+                                    typeof $steps["runCode"].then === "function"
+                                  ) {
+                                    $steps["runCode"] = await $steps["runCode"];
+                                  }
+                                }).apply(null, eventArgs);
+                              },
+                              placeholder: "Step",
+                              readOnly: false,
+                              size: "middle",
+                              type: "text",
+                              value: generateStateValueProp($state, [
+                                "stepText",
+                                __plasmic_idx_0,
+                                "value"
+                              ])
+                            };
+                            initializeCodeComponentStates(
+                              $state,
+                              [
+                                {
+                                  name: "value",
+                                  plasmicStateName: "stepText[].value"
+                                }
+                              ],
+                              [__plasmic_idx_0],
+                              AntdInput_Helpers ?? {},
+                              child$Props
+                            );
+                            initializePlasmicStates(
+                              $state,
+                              [
+                                {
+                                  name: "stepText[].value",
+                                  initFunc: ({
+                                    $props,
+                                    $state,
+                                    $queries,
+                                    $q
+                                  }) =>
+                                    (() => {
+                                      try {
+                                        return $currentItem.title;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return undefined;
+                                        }
+                                        throw e;
+                                      }
+                                    })()
+                                }
+                              ],
+                              [__plasmic_idx_0]
+                            );
+                            return (
+                              <AntdInput
+                                data-plasmic-name={"stepText"}
+                                data-plasmic-override={overrides.stepText}
+                                {...child$Props}
+                              />
+                            );
+                          })()}
+                        </div>
+                        <div
+                          data-plasmic-name={"hhhh"}
+                          data-plasmic-override={overrides.hhhh}
+                          className={classNames(projectcss.all, sty.hhhh)}
+                        >
+                          <LoginButton
+                            className={classNames(
+                              "__wab_instance",
+                              sty.loginButton__e2M1Q
+                            )}
+                            color={"clear"}
+                            onClick={async event => {
+                              const $steps = {};
+
+                              $steps["runCode"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      customFunction: async () => {
+                                        return undefined;
+                                      }
+                                    };
+                                    return (({ customFunction }) => {
+                                      return customFunction();
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["runCode"] != null &&
+                                typeof $steps["runCode"] === "object" &&
+                                typeof $steps["runCode"].then === "function"
+                              ) {
+                                $steps["runCode"] = await $steps["runCode"];
+                              }
+                            }}
+                            showStartIcon={true}
+                            startIcon={
+                              <PlusSvgIcon
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.svg__l2AIg
+                                )}
+                                role={"img"}
+                              />
+                            }
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__g0Thy
+                              )}
+                            >
+                              {"Add"}
+                            </div>
+                          </LoginButton>
+                          <LoginButton
+                            className={classNames(
+                              "__wab_instance",
+                              sty.loginButton___61KK7
+                            )}
+                            color={"clear"}
+                            onClick={async event => {
+                              const $steps = {};
+
+                              $steps["runCode"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      customFunction: async () => {
+                                        return undefined;
+                                      }
+                                    };
+                                    return (({ customFunction }) => {
+                                      return customFunction();
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["runCode"] != null &&
+                                typeof $steps["runCode"] === "object" &&
+                                typeof $steps["runCode"].then === "function"
+                              ) {
+                                $steps["runCode"] = await $steps["runCode"];
+                              }
+                            }}
+                            showStartIcon={true}
+                            startIcon={
+                              <Icon7Icon
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.svg__vC5J
+                                )}
+                                role={"img"}
+                              />
+                            }
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__jCh96
+                              )}
+                            >
+                              {"Remove"}
+                            </div>
+                          </LoginButton>
+                        </div>
+                      </div>
                     </section>
                   );
                 })}
@@ -3928,6 +4159,9 @@ const PlasmicDescendants = {
     "title",
     "description",
     "price",
+    "solutionsSteps",
+    "stepText",
+    "hhhh",
     "about",
     "companyImage",
     "customerProblem",
@@ -3964,6 +4198,9 @@ const PlasmicDescendants = {
     "title",
     "description",
     "price",
+    "solutionsSteps",
+    "stepText",
+    "hhhh",
     "about",
     "companyImage",
     "customerProblem",
@@ -4008,11 +4245,31 @@ const PlasmicDescendants = {
   radioGroup3: ["radioGroup3"],
   googleCalendar: ["googleCalendar"],
   companyNature: ["companyNature"],
-  services: ["services", "solutions", "title", "description", "price"],
-  solutions: ["solutions", "title", "description", "price"],
+  services: [
+    "services",
+    "solutions",
+    "title",
+    "description",
+    "price",
+    "solutionsSteps",
+    "stepText",
+    "hhhh"
+  ],
+  solutions: [
+    "solutions",
+    "title",
+    "description",
+    "price",
+    "solutionsSteps",
+    "stepText",
+    "hhhh"
+  ],
   title: ["title"],
   description: ["description"],
   price: ["price"],
+  solutionsSteps: ["solutionsSteps", "stepText"],
+  stepText: ["stepText"],
+  hhhh: ["hhhh"],
   about: [
     "about",
     "companyImage",
@@ -4060,6 +4317,9 @@ type NodeDefaultElementType = {
   title: typeof AntdInput;
   description: typeof AntdTextArea;
   price: typeof AntdInput;
+  solutionsSteps: "div";
+  stepText: typeof AntdInput;
+  hhhh: "div";
   about: "div";
   companyImage: typeof UploadWrapper;
   customerProblem: typeof AntdTextArea;
@@ -4158,6 +4418,9 @@ export const PlasmicCEditProfile = Object.assign(
     title: makeNodeComponent("title"),
     description: makeNodeComponent("description"),
     price: makeNodeComponent("price"),
+    solutionsSteps: makeNodeComponent("solutionsSteps"),
+    stepText: makeNodeComponent("stepText"),
+    hhhh: makeNodeComponent("hhhh"),
     about: makeNodeComponent("about"),
     companyImage: makeNodeComponent("companyImage"),
     customerProblem: makeNodeComponent("customerProblem"),

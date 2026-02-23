@@ -3135,11 +3135,13 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                           customFunction: async () => {
                                             return (() => {
                                               const updated = [
-                                                ...$props.args.formData
+                                                ...($props.formData || [])
                                               ];
-                                              updated[$currentIndex].title =
-                                                $event.target.value;
-                                              return $props.args.setFormData(
+                                              updated[$currentIndex] = {
+                                                ...updated[$currentIndex],
+                                                title: $event.target.value
+                                              };
+                                              return $props.setFormData(
                                                 updated
                                               );
                                             })();
@@ -3234,13 +3236,13 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                           customFunction: async () => {
                                             return (() => {
                                               const updated = [
-                                                ...$props.args.formData
+                                                ...($props.formData || [])
                                               ];
-                                              updated[
-                                                $currentIndex
-                                              ].description =
-                                                $event.target.value;
-                                              return $props.args.setFormData(
+                                              updated[$currentIndex] = {
+                                                ...updated[$currentIndex],
+                                                description: $event.target.value
+                                              };
+                                              return $props.setFormData(
                                                 updated
                                               );
                                             })();
@@ -3366,11 +3368,13 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                             customFunction: async () => {
                                               return (() => {
                                                 const updated = [
-                                                  ...$props.args.formData
+                                                  ...($props.formData || [])
                                                 ];
-                                                updated[$currentIndex].price =
-                                                  $event.target.value;
-                                                return $props.args.setFormData(
+                                                updated[$currentIndex] = {
+                                                  ...updated[$currentIndex],
+                                                  price: $event.target.value
+                                                };
+                                                return $props.setFormData(
                                                   updated
                                                 );
                                               })();
@@ -3518,13 +3522,13 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                               customFunction: async () => {
                                                 return (() => {
                                                   const updated = [
-                                                    ...$props.args.formData
+                                                    ...($props.formData || [])
                                                   ];
-                                                  updated[
-                                                    $currentIndex
-                                                  ].step_text =
-                                                    $event.target.value;
-                                                  return $props.args.setFormData(
+                                                  updated[$currentIndex] = {
+                                                    ...updated[$currentIndex],
+                                                    step: $event.target.value
+                                                  };
+                                                  return $props.setFormData(
                                                     updated
                                                   );
                                                 })();

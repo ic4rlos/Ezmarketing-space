@@ -3621,7 +3621,21 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                 ? (() => {
                                     const actionArgs = {
                                       customFunction: async () => {
-                                        return undefined;
+                                        return (() => {
+                                          const updated = [...$props.formData];
+                                          updated[currentIndex].steps = [
+                                            ...updated[currentIndex].steps,
+                                            {
+                                              id: null,
+                                              step_text: "",
+                                              step_order:
+                                                updated[currentIndex].steps
+                                                  .length
+                                            }
+                                          ];
+
+                                          return $props.setFormData(updated);
+                                        })();
                                       }
                                     };
                                     return (({ customFunction }) => {
@@ -3671,7 +3685,13 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                 ? (() => {
                                     const actionArgs = {
                                       customFunction: async () => {
-                                        return undefined;
+                                        return (() => {
+                                          const updated = [...$props.formData];
+                                          updated[currentIndex].steps = updated[
+                                            currentIndex
+                                          ].steps.slice(0, -1);
+                                          return $props.setFormData(updated);
+                                        })();
                                       }
                                     };
                                     return (({ customFunction }) => {
@@ -3727,7 +3747,26 @@ function PlasmicCEditProfile__RenderFunc(props: {
                         ? (() => {
                             const actionArgs = {
                               customFunction: async () => {
-                                return undefined;
+                                return (() => {
+                                  const updated = [
+                                    ...$props.formData,
+                                    {
+                                      id: null,
+                                      title: "",
+                                      description: "",
+                                      price: "",
+                                      steps: [
+                                        {
+                                          id: null,
+                                          step_text: "",
+                                          step_order: 0
+                                        }
+                                      ]
+                                    }
+                                  ];
+
+                                  return $props.setFormData(updated);
+                                })();
                               }
                             };
                             return (({ customFunction }) => {
@@ -3766,7 +3805,10 @@ function PlasmicCEditProfile__RenderFunc(props: {
                         ? (() => {
                             const actionArgs = {
                               customFunction: async () => {
-                                return undefined;
+                                return (() => {
+                                  const updated = $props.formData.slice(0, -1);
+                                  return $props.setFormData(updated);
+                                })();
                               }
                             };
                             return (({ customFunction }) => {
@@ -4157,7 +4199,36 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       ? (() => {
                           const actionArgs = {
                             customFunction: async () => {
-                              return undefined;
+                              return $props.onSave({
+                                company: {
+                                  "Company name":
+                                    $state.companyName.value ?? "",
+                                  Location: $state.location?.value ?? "",
+                                  "Company type":
+                                    $state.companyType?.value ?? "",
+                                  "Foundation date":
+                                    $state.foundationDate?.value ?? "",
+                                  LinkedIn: $state.linkedIn?.value ?? "",
+                                  Instagram: $state.instagram?.value ?? "",
+                                  Website: $state.website?.value ?? "",
+                                  X: $state.x?.value ?? "",
+                                  "Company tagline":
+                                    $state.companyTagline?.value ?? "",
+                                  Area: $state.area?.value ?? "",
+                                  "Sub area": $state.subArea?.value ?? "",
+                                  "Google calendar":
+                                    $state.googleCalendar?.value ?? "",
+                                  "Customer problem":
+                                    $state.customerProblem?.value ?? "",
+                                  "Solution description":
+                                    $state.solutionDescription?.value ?? "",
+                                  "Why should they choose":
+                                    $state.whyShouldTheyChoose?.value ?? "",
+                                  "Company nature":
+                                    $state.companyNature3?.value ?? ""
+                                },
+                                solutions: $props.formData
+                              });
                             }
                           };
                           return (({ customFunction }) => {

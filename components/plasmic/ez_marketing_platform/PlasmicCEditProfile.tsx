@@ -3134,11 +3134,15 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                         const actionArgs = {
                                           customFunction: async () => {
                                             return (() => {
-                                              const updated = [
-                                                ...props.formData
-                                              ];
-                                              updated[currentIndex].title =
-                                                event.target.value;
+                                              const updated = Array.isArray(
+                                                props.formData
+                                              )
+                                                ? [...props.formData]
+                                                : [];
+                                              updated[currentIndex] = {
+                                                ...updated[currentIndex],
+                                                title: event.target.value
+                                              };
                                               return props.setFormData(updated);
                                             })();
                                           }
@@ -3231,13 +3235,15 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                         const actionArgs = {
                                           customFunction: async () => {
                                             return (() => {
-                                              const updated = [
-                                                ...props.formData
-                                              ];
-                                              updated[
-                                                currentIndex
-                                              ].description =
-                                                event.target.value;
+                                              const updated = Array.isArray(
+                                                props.formData
+                                              )
+                                                ? [...props.formData]
+                                                : [];
+                                              updated[currentIndex] = {
+                                                ...updated[currentIndex],
+                                                description: event.target.value
+                                              };
                                               return props.setFormData(updated);
                                             })();
                                           }
@@ -3361,11 +3367,15 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                           const actionArgs = {
                                             customFunction: async () => {
                                               return (() => {
-                                                const updated = [
-                                                  ...props.formData
-                                                ];
-                                                updated[currentIndex].price =
-                                                  event.target.value;
+                                                const updated = Array.isArray(
+                                                  props.formData
+                                                )
+                                                  ? [...props.formData]
+                                                  : [];
+                                                updated[currentIndex] = {
+                                                  ...updated[currentIndex],
+                                                  price: event.target.value
+                                                };
                                                 return props.setFormData(
                                                   updated
                                                 );
@@ -3513,12 +3523,27 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                             const actionArgs = {
                                               customFunction: async () => {
                                                 return (() => {
-                                                  const updated = [...formData];
+                                                  const updated = Array.isArray(
+                                                    props.formData
+                                                  )
+                                                    ? [...props.formData]
+                                                    : [];
+                                                  updated[currentIndex].steps =
+                                                    [
+                                                      ...updated[currentIndex]
+                                                        .steps
+                                                    ];
                                                   updated[currentIndex].steps[
                                                     stepIndex
-                                                  ].step_text =
-                                                    event.target.value;
-                                                  return setFormData(updated);
+                                                  ] = {
+                                                    ...updated[currentIndex]
+                                                      .steps[stepIndex],
+                                                    step_text:
+                                                      event.target.value
+                                                  };
+                                                  return props.setFormData(
+                                                    updated
+                                                  );
                                                 })();
                                               }
                                             };

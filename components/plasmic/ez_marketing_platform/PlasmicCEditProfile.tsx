@@ -402,7 +402,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
       {
-        path: "stepText[].value",
+        path: "stepText[][].value",
         type: "private",
         variableType: "text",
 
@@ -3191,7 +3191,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                     $state,
                                     $queries,
                                     $q
-                                  }) => $currentItem.title
+                                  }) => currentItem.title
                                 }
                               ],
                               [__plasmic_idx_0]
@@ -3292,7 +3292,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                   }) =>
                                     (() => {
                                       try {
-                                        return $currentItem.description;
+                                        return currentItem.description;
                                       } catch (e) {
                                         if (
                                           e instanceof TypeError ||
@@ -3427,7 +3427,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                     }) =>
                                       (() => {
                                         try {
-                                          return $currentItem.price;
+                                          return currentItem.price;
                                         } catch (e) {
                                           if (
                                             e instanceof TypeError ||
@@ -3460,120 +3460,151 @@ function PlasmicCEditProfile__RenderFunc(props: {
                           sty.freeBox__g3Ao
                         )}
                       >
-                        <div
-                          data-plasmic-name={"solutionsSteps"}
-                          data-plasmic-override={overrides.solutionsSteps}
-                          className={classNames(
-                            projectcss.all,
-                            sty.solutionsSteps
-                          )}
-                        >
-                          {(() => {
-                            const child$Props = {
-                              autoFocus: false,
-                              bordered: true,
-                              className: classNames(
-                                "__wab_instance",
-                                sty.stepText
-                              ),
-                              onChange: async (...eventArgs: any) => {
-                                generateStateOnChangePropForCodeComponents(
-                                  $state,
-                                  "value",
-                                  ["stepText", __plasmic_idx_0, "value"],
-                                  AntdInput_Helpers
-                                ).apply(null, eventArgs);
+                        {(_par =>
+                          !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                          (() => {
+                            try {
+                              return currentItem.steps;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return [];
+                              }
+                              throw e;
+                            }
+                          })()
+                        ).map((__plasmic_item_1, __plasmic_idx_1) => {
+                          const step = __plasmic_item_1;
+                          const stepIndex = __plasmic_idx_1;
+                          return (
+                            <div
+                              data-plasmic-name={"solutionsSteps"}
+                              data-plasmic-override={overrides.solutionsSteps}
+                              className={classNames(
+                                projectcss.all,
+                                sty.solutionsSteps
+                              )}
+                              key={stepIndex}
+                            >
+                              {(() => {
+                                const child$Props = {
+                                  autoFocus: false,
+                                  bordered: true,
+                                  className: classNames(
+                                    "__wab_instance",
+                                    sty.stepText
+                                  ),
+                                  onChange: async (...eventArgs: any) => {
+                                    generateStateOnChangePropForCodeComponents(
+                                      $state,
+                                      "value",
+                                      [
+                                        "stepText",
+                                        __plasmic_idx_0,
+                                        __plasmic_idx_1,
+                                        "value"
+                                      ],
+                                      AntdInput_Helpers
+                                    ).apply(null, eventArgs);
 
-                                (async event => {
-                                  const $steps = {};
+                                    (async event => {
+                                      const $steps = {};
 
-                                  $steps["runCode"] = true
-                                    ? (() => {
-                                        const actionArgs = {
-                                          customFunction: async () => {
-                                            return (() => {
-                                              const updated = [...formData];
-                                              updated[currentIndex].steps[
-                                                stepIndex
-                                              ].step_text = event.target.value;
-                                              return setFormData(updated);
-                                            })();
-                                          }
-                                        };
-                                        return (({ customFunction }) => {
-                                          return customFunction();
-                                        })?.apply(null, [actionArgs]);
-                                      })()
-                                    : undefined;
-                                  if (
-                                    $steps["runCode"] != null &&
-                                    typeof $steps["runCode"] === "object" &&
-                                    typeof $steps["runCode"].then === "function"
-                                  ) {
-                                    $steps["runCode"] = await $steps["runCode"];
-                                  }
-                                }).apply(null, eventArgs);
-                              },
-                              placeholder: "Step",
-                              readOnly: false,
-                              size: "middle",
-                              type: "text",
-                              value: generateStateValueProp($state, [
-                                "stepText",
-                                __plasmic_idx_0,
-                                "value"
-                              ])
-                            };
-                            initializeCodeComponentStates(
-                              $state,
-                              [
-                                {
-                                  name: "value",
-                                  plasmicStateName: "stepText[].value"
-                                }
-                              ],
-                              [__plasmic_idx_0],
-                              AntdInput_Helpers ?? {},
-                              child$Props
-                            );
-                            initializePlasmicStates(
-                              $state,
-                              [
-                                {
-                                  name: "stepText[].value",
-                                  initFunc: ({
-                                    $props,
-                                    $state,
-                                    $queries,
-                                    $q
-                                  }) =>
-                                    (() => {
-                                      try {
-                                        return $currentItem.title;
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
+                                      $steps["runCode"] = true
+                                        ? (() => {
+                                            const actionArgs = {
+                                              customFunction: async () => {
+                                                return (() => {
+                                                  const updated = [...formData];
+                                                  updated[currentIndex].steps[
+                                                    stepIndex
+                                                  ].step_text =
+                                                    event.target.value;
+                                                  return setFormData(updated);
+                                                })();
+                                              }
+                                            };
+                                            return (({ customFunction }) => {
+                                              return customFunction();
+                                            })?.apply(null, [actionArgs]);
+                                          })()
+                                        : undefined;
+                                      if (
+                                        $steps["runCode"] != null &&
+                                        typeof $steps["runCode"] === "object" &&
+                                        typeof $steps["runCode"].then ===
+                                          "function"
+                                      ) {
+                                        $steps["runCode"] =
+                                          await $steps["runCode"];
                                       }
-                                    })()
-                                }
-                              ],
-                              [__plasmic_idx_0]
-                            );
-                            return (
-                              <AntdInput
-                                data-plasmic-name={"stepText"}
-                                data-plasmic-override={overrides.stepText}
-                                {...child$Props}
-                              />
-                            );
-                          })()}
-                        </div>
+                                    }).apply(null, eventArgs);
+                                  },
+                                  placeholder: "Step",
+                                  readOnly: false,
+                                  size: "middle",
+                                  type: "text",
+                                  value: generateStateValueProp($state, [
+                                    "stepText",
+                                    __plasmic_idx_0,
+                                    __plasmic_idx_1,
+                                    "value"
+                                  ])
+                                };
+                                initializeCodeComponentStates(
+                                  $state,
+                                  [
+                                    {
+                                      name: "value",
+                                      plasmicStateName: "stepText[][].value"
+                                    }
+                                  ],
+                                  [__plasmic_idx_0, __plasmic_idx_1],
+                                  AntdInput_Helpers ?? {},
+                                  child$Props
+                                );
+                                initializePlasmicStates(
+                                  $state,
+                                  [
+                                    {
+                                      name: "stepText[][].value",
+                                      initFunc: ({
+                                        $props,
+                                        $state,
+                                        $queries,
+                                        $q
+                                      }) =>
+                                        (() => {
+                                          try {
+                                            return currentItem.title;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return undefined;
+                                            }
+                                            throw e;
+                                          }
+                                        })()
+                                    }
+                                  ],
+                                  [__plasmic_idx_0, __plasmic_idx_1]
+                                );
+                                return (
+                                  <AntdInput
+                                    data-plasmic-name={"stepText"}
+                                    data-plasmic-override={overrides.stepText}
+                                    {...child$Props}
+                                  />
+                                );
+                              })()}
+                            </div>
+                          );
+                        })}
                         <div
                           data-plasmic-name={"hhhh"}
                           data-plasmic-override={overrides.hhhh}

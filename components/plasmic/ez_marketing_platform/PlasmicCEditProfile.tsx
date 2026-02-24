@@ -3141,7 +3141,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                                 ...updated[currentIndex],
                                                 title: event.target.value
                                               };
-                                              return props.setFormData(updated);
+                                              props.setFormData(updated);
                                             })();
                                           }
                                         };
@@ -3232,16 +3232,17 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                     ? (() => {
                                         const actionArgs = {
                                           customFunction: async () => {
-                                            return (() => {
-                                              const updated = [
-                                                ...props.formData
-                                              ];
-                                              updated[currentIndex] = {
-                                                ...updated[currentIndex],
-                                                description: event.target.value
-                                              };
-                                              return props.setFormData(updated);
-                                            })();
+                                            return props.setFormData(
+                                              props.formData.map((item, i) =>
+                                                i === currentIndex
+                                                  ? {
+                                                      ...item,
+                                                      description:
+                                                        event.target.value
+                                                    }
+                                                  : item
+                                              )
+                                            );
                                           }
                                         };
                                         return (({ customFunction }) => {
@@ -3362,18 +3363,17 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                       ? (() => {
                                           const actionArgs = {
                                             customFunction: async () => {
-                                              return (() => {
-                                                const updated = [
-                                                  ...props.formData
-                                                ];
-                                                updated[currentIndex] = {
-                                                  ...updated[currentIndex],
-                                                  price: event.target.value
-                                                };
-                                                return props.setFormData(
-                                                  updated
-                                                );
-                                              })();
+                                              return props.setFormData(
+                                                props.formData.map((item, i) =>
+                                                  i === currentIndex
+                                                    ? {
+                                                        ...item,
+                                                        price:
+                                                          event.target.value
+                                                      }
+                                                    : item
+                                                )
+                                              );
                                             }
                                           };
                                           return (({ customFunction }) => {

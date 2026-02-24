@@ -3135,15 +3135,13 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                           customFunction: async () => {
                                             return (() => {
                                               const updated = [
-                                                ...($props.formData || [])
+                                                ...props.formData
                                               ];
-                                              updated[$currentIndex] = {
-                                                ...updated[$currentIndex],
-                                                title: $event.target.value
+                                              updated[currentIndex] = {
+                                                ...updated[currentIndex],
+                                                title: event.target.value
                                               };
-                                              return $props.setFormData(
-                                                updated
-                                              );
+                                              return props.setFormData(updated);
                                             })();
                                           }
                                         };
@@ -3236,15 +3234,13 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                           customFunction: async () => {
                                             return (() => {
                                               const updated = [
-                                                ...($props.formData || [])
+                                                ...props.formData
                                               ];
-                                              updated[$currentIndex] = {
-                                                ...updated[$currentIndex],
-                                                description: $event.target.value
+                                              updated[currentIndex] = {
+                                                ...updated[currentIndex],
+                                                description: event.target.value
                                               };
-                                              return $props.setFormData(
-                                                updated
-                                              );
+                                              return props.setFormData(updated);
                                             })();
                                           }
                                         };
@@ -3368,13 +3364,13 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                             customFunction: async () => {
                                               return (() => {
                                                 const updated = [
-                                                  ...($props.formData || [])
+                                                  ...props.formData
                                                 ];
-                                                updated[$currentIndex] = {
-                                                  ...updated[$currentIndex],
-                                                  price: $event.target.value
+                                                updated[currentIndex] = {
+                                                  ...updated[currentIndex],
+                                                  price: event.target.value
                                                 };
-                                                return $props.setFormData(
+                                                return props.setFormData(
                                                   updated
                                                 );
                                               })();
@@ -3520,18 +3516,11 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                         ? (() => {
                                             const actionArgs = {
                                               customFunction: async () => {
-                                                return (() => {
-                                                  const updated = [
-                                                    ...($props.formData || [])
-                                                  ];
-                                                  updated[$currentIndex] = {
-                                                    ...updated[$currentIndex],
-                                                    step: $event.target.value
-                                                  };
-                                                  return $props.setFormData(
-                                                    updated
-                                                  );
-                                                })();
+                                                return (updated[currentIndex] =
+                                                  {
+                                                    ...updated[currentIndex],
+                                                    step: event.target.value
+                                                  });
                                               }
                                             };
                                             return (({ customFunction }) => {

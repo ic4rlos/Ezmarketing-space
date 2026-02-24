@@ -2666,7 +2666,10 @@ function PlasmicCEditProfile__RenderFunc(props: {
                 <React.Fragment>
                   {(() => {
                     try {
-                      return $state.companyNature3;
+                      return (
+                        $props.company?.["Company nature"] ??
+                        $state.companyNature3
+                      );
                     } catch (e) {
                       if (
                         e instanceof TypeError ||

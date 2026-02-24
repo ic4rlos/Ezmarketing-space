@@ -12,9 +12,7 @@ export default function CEditProfile() {
   useEffect(() => {
     async function loadUser() {
       const { data, error } = await supabase.auth.getUser();
-      if (error) {
-        console.error("❌ Error loading user:", error);
-      }
+      if (error) console.error("❌ Error loading user:", error);
       setUser(data.user ?? null);
     }
     loadUser();
@@ -63,9 +61,8 @@ export default function CEditProfile() {
         .eq("Company_id", companyData.id)
         .order("id", { ascending: true });
 
-      if (solutionsError) {
+      if (solutionsError)
         console.error("❌ Error loading solutions:", solutionsError);
-      }
 
       const structured =
         solutions?.map((sol: any) => ({
@@ -90,7 +87,7 @@ export default function CEditProfile() {
     loadAll();
   }, [user]);
 
-  // 🔹 3. Sincronização completa (COM DEBUG REAL)
+  // 🔹 3. Sincronização completa
   async function handleSave(payload: any) {
     if (!user) return;
 
@@ -151,17 +148,18 @@ export default function CEditProfile() {
         console.error("❌ Delete solutions failed:", deleteSolError);
         return;
       }
-
-      console.log("🗑 Solutions deleted:", solutionsToDelete);
     }
 
-    // 4️⃣ Upsert Solutions
+    // 4️⃣ Upsert Solutions (CORREÇÃO DO PRICE AQUI)
     const solutionsPayload = solutions.map((sol: any) => ({
       id: sol.id ?? undefined,
       Company_id: companyId,
       Title: sol.title,
       Description: sol.description,
-      Price: sol.price,
+      Price:
+        sol.price === "" || sol.price === undefined || sol.price === null
+          ? null
+          : Number(sol.price),
     }));
 
     console.log("📦 Solutions payload:", solutionsPayload);
@@ -227,8 +225,6 @@ export default function CEditProfile() {
           console.error("❌ Delete steps failed:", deleteStepsError);
           return;
         }
-
-        console.log("🗑 Steps deleted:", stepsToDelete);
       }
 
       const stepsPayload = sol.steps.map(
@@ -239,8 +235,6 @@ export default function CEditProfile() {
           Step_order: index,
         })
       );
-
-      console.log("📦 Steps payload:", stepsPayload);
 
       const { error: stepsError } = await supabase
         .from("solutions_steps")

@@ -3134,60 +3134,18 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                         const actionArgs = {
                                           customFunction: async () => {
                                             return (() => {
-                                              try {
-                                                console.log(
-                                                  "=== DEBUG A: $props raw ==="
-                                                );
-                                                console.log(
-                                                  "$props keys:",
-                                                  Object.keys($props || {})
-                                                );
-                                                console.log(
-                                                  "$props (raw):",
-                                                  $props
-                                                );
-                                                console.log(
-                                                  "has $props.args ?",
-                                                  !!$props?.args
-                                                );
-                                                console.log(
-                                                  "$props.formData:",
-                                                  $props?.formData
-                                                );
-                                                console.log(
-                                                  "$props.args?.formData:",
-                                                  $props?.args?.formData
-                                                );
-                                                console.log(
-                                                  "typeof $props.setFormData:",
-                                                  typeof $props?.setFormData
-                                                );
-                                                console.log(
-                                                  "typeof $props.args?.setFormData:",
-                                                  typeof $props?.args
-                                                    ?.setFormData
-                                                );
-                                                console.log(
-                                                  "$currentItem exists?:",
-                                                  typeof $currentItem !==
-                                                    "undefined"
-                                                );
-                                                console.log(
-                                                  "$currentIndex exists?:",
-                                                  typeof $currentIndex !==
-                                                    "undefined"
-                                                );
-                                                console.log(
-                                                  "$stepIndex exists?:",
-                                                  typeof $stepIndex !==
-                                                    "undefined"
-                                                );
-                                              } catch (err) {
-                                                console.error(
-                                                  "DEBUG A error",
-                                                  err
-                                                );
-                                              }
+                                              const value = event.target.value;
+                                              return $props.setFormData(
+                                                $props.formData.map(item =>
+                                                  item.title ===
+                                                  currentItem.title
+                                                    ? {
+                                                        ...item,
+                                                        title: value
+                                                      }
+                                                    : item
+                                                )
+                                              );
                                             })();
                                           }
                                         };
@@ -3279,43 +3237,22 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                         const actionArgs = {
                                           customFunction: async () => {
                                             return (() => {
-                                              try {
-                                                const arr1 = $props?.formData;
-                                                const arr2 =
-                                                  $props?.args?.formData;
-                                                console.log(
-                                                  "=== DEBUG B: array probes ==="
-                                                );
-                                                console.log(
-                                                  "Array.isArray($props.formData):",
-                                                  Array.isArray(arr1)
-                                                );
-                                                console.log(
-                                                  "$props.formData (preview):",
-                                                  Array.isArray(arr1)
-                                                    ? arr1.slice(0, 5)
-                                                    : arr1
-                                                );
-                                                console.log(
-                                                  "Array.isArray($props.args?.formData):",
-                                                  Array.isArray(arr2)
-                                                );
-                                                console.log(
-                                                  "$props.args.formData (preview):",
-                                                  Array.isArray(arr2)
-                                                    ? arr2.slice(0, 5)
-                                                    : arr2
-                                                );
-                                                console.log("lengths:", {
-                                                  len_props: arr1?.length,
-                                                  len_args: arr2?.length
-                                                });
-                                              } catch (err) {
-                                                console.error(
-                                                  "DEBUG B error",
-                                                  err
-                                                );
-                                              }
+                                              console.log(
+                                                "typeof currentItem:",
+                                                typeof currentItem
+                                              );
+                                              console.log(
+                                                "typeof currentIndex:",
+                                                typeof currentIndex
+                                              );
+                                              console.log(
+                                                "typeof step:",
+                                                typeof step
+                                              );
+                                              return console.log(
+                                                "typeof stepIndex:",
+                                                typeof stepIndex
+                                              );
                                             })();
                                           }
                                         };

@@ -380,7 +380,8 @@ function PlasmicCEditProfile__RenderFunc(props: {
         path: "subArea.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.company?.subArea ?? null
       },
       {
         path: "selectedMainOption",
@@ -2312,6 +2313,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   allowClear={true}
                   autoFocus={false}
                   bordered={true}
+                  children={null}
                   className={classNames("__wab_instance", sty.subArea)}
                   defaultOpen={false}
                   defaultStylesClassName={classNames(
@@ -2320,6 +2322,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     projectcss.plasmic_mixins,
                     styleTokensClassNames
                   )}
+                  defaultValue={$props.company?.subArea ?? null}
                   dropdownMatchSelectWidth={false}
                   mode={"single"}
                   onChange={async (...eventArgs: any) => {
@@ -2330,9 +2333,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   }}
                   options={(() => {
                     try {
-                      return (
-                        $props.company?.["Sub area"] ?? $state.secondaryOptions
-                      );
+                      return $state.secondaryOptions;
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
@@ -2370,358 +2371,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   size={"middle"}
                   useChildren={false}
                   value={generateStateValueProp($state, ["subArea", "value"])}
-                >
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__zpNv7)}
-                    value={"23"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__x7Ah
-                      )}
-                    >
-                      {"Business Development Manager"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__eCyMp)}
-                    value={"22"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__kngvJ
-                      )}
-                    >
-                      {"Influencer Marketing Manager"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__xhs0J)}
-                    value={"21"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__sJf0
-                      )}
-                    >
-                      {"Marketing Automation Specialist"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__mX2Ec)}
-                    value={"20"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__iFa5H
-                      )}
-                    >
-                      {"Email Marketing Specialist"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option___8I1L)}
-                    value={"19"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__k1ZKp
-                      )}
-                    >
-                      {"Data Analyst"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__bQdvh)}
-                    value={"18"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__fp5IJ
-                      )}
-                    >
-                      {"Junior Marketing Associate"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__rF1A)}
-                    value={"18"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__l62Q
-                      )}
-                    >
-                      {"Marketing Coordinator"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option___7TcFq)}
-                    value={"17"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___6Mdrw
-                      )}
-                    >
-                      {"Videographer"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__f2BcA)}
-                    value={"16"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__lxh0D
-                      )}
-                    >
-                      {"Public Relations Specialist"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__lbf6I)}
-                    value={"15"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___7WzGd
-                      )}
-                    >
-                      {"Marketing Analyst"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__pfpdx)}
-                    value={"14"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__xMHmD
-                      )}
-                    >
-                      {"UX/UI Designer"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__dd1Aq)}
-                    value={"13"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___5Vuaz
-                      )}
-                    >
-                      {"Project Manager"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__eLaFf)}
-                    value={"12"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__gwdph
-                      )}
-                    >
-                      {"Brand Strategist"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__qtue1)}
-                    value={"11"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__gjXwU
-                      )}
-                    >
-                      {"Digital Marketing Manager"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__q3OK)}
-                    value={"10"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__dn5Hk
-                      )}
-                    >
-                      {"Media Planner"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__lcdNg)}
-                    value={"9"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__hqRwm
-                      )}
-                    >
-                      {"Client Services Director"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__iCmpm)}
-                    value={"8"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__pfWg9
-                      )}
-                    >
-                      {"Account Manager"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__zrF9I)}
-                    value={"7"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__tYFoL
-                      )}
-                    >
-                      {"PPC Especialist"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__cDfv9)}
-                    value={"6"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__d3AhN
-                      )}
-                    >
-                      {"SEO Especialist"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__a8WJ9)}
-                    value={"5"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__yfxTa
-                      )}
-                    >
-                      {"Social Media Manager"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__dyJjU)}
-                    value={"4"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___48Mf
-                      )}
-                    >
-                      {"Content Strategist"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__jmO21)}
-                    value={"4"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__uwlwd
-                      )}
-                    >
-                      {"Copywriter"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__yek0G)}
-                    value={"1"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__ioVu4
-                      )}
-                    >
-                      {"Creative Director"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__u4Jhm)}
-                    value={"2"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__ecjnm
-                      )}
-                    >
-                      {"Art Director"}
-                    </div>
-                  </AntdOption>
-                  <AntdOption
-                    className={classNames("__wab_instance", sty.option__wJgP2)}
-                    value={"3"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__zGyzw
-                      )}
-                    >
-                      {"Graphic Designer"}
-                    </div>
-                  </AntdOption>
-                </AntdSelect>
+                />
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__qhPJ)}>
                 <SearchSvgIcon
@@ -4261,8 +3911,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                     $state.solutionDescription?.value ?? "",
                                   "Why should they choose":
                                     $state.whyShouldTheyChoose?.value ?? "",
-                                  "Company nature":
-                                    $state.companyNature3?.value ?? ""
+                                  "Company nature": $state.companyNature3 ?? ""
                                 },
                                 solutions: $props.formData
                               });

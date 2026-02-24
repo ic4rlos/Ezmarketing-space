@@ -150,17 +150,24 @@ export default function CEditProfile() {
       }
     }
 
-    // 4️⃣ Upsert Solutions (CORREÇÃO DO PRICE AQUI)
-    const solutionsPayload = solutions.map((sol: any) => ({
-      id: sol.id ?? undefined,
-      Company_id: companyId,
-      Title: sol.title,
-      Description: sol.description,
-      Price:
-        sol.price === "" || sol.price === undefined || sol.price === null
-          ? null
-          : Number(sol.price),
-    }));
+    // 4️⃣ Upsert Solutions (CORRIGIDO: NÃO ENVIA id SE FOR NOVO)
+    const solutionsPayload = solutions.map((sol: any) => {
+      const base = {
+        Company_id: companyId,
+        Title: sol.title,
+        Description: sol.description,
+        Price:
+          sol.price === "" || sol.price === undefined || sol.price === null
+            ? null
+            : Number(sol.price),
+      };
+
+      if (sol.id !== undefined && sol.id !== null) {
+        return { ...base, id: sol.id };
+      }
+
+      return base;
+    });
 
     console.log("📦 Solutions payload:", solutionsPayload);
 
@@ -228,12 +235,19 @@ export default function CEditProfile() {
       }
 
       const stepsPayload = sol.steps.map(
-        (step: any, index: number) => ({
-          id: step.id ?? undefined,
-          solution_id: solutionId,
-          step_text: step.step_text,
-          Step_order: index,
-        })
+        (step: any, index: number) => {
+          const base = {
+            solution_id: solutionId,
+            step_text: step.step_text,
+            Step_order: index,
+          };
+
+          if (step.id !== undefined && step.id !== null) {
+            return { ...base, id: step.id };
+          }
+
+          return base;
+        }
       );
 
       const { error: stepsError } = await supabase

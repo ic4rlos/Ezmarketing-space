@@ -3527,10 +3527,38 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                         ? (() => {
                                             const actionArgs = {
                                               customFunction: async () => {
-                                                return console.log(
-                                                  "Is inside step repeat?",
-                                                  typeof stepIndex
-                                                );
+                                                return (() => {
+                                                  const value =
+                                                    event.target.value;
+                                                  return $props.setFormData(
+                                                    $props.formData.map(
+                                                      (item, sIndex) => {
+                                                        if (
+                                                          sIndex !==
+                                                          currentIndex
+                                                        )
+                                                          return item;
+                                                        return {
+                                                          ...item,
+                                                          steps: item.steps.map(
+                                                            (
+                                                              stepItem,
+                                                              stIndex
+                                                            ) =>
+                                                              stIndex ===
+                                                              stepIndex
+                                                                ? {
+                                                                    ...stepItem,
+                                                                    step_text:
+                                                                      value
+                                                                  }
+                                                                : stepItem
+                                                          )
+                                                        };
+                                                      }
+                                                    )
+                                                  );
+                                                })();
                                               }
                                             };
                                             return (({ customFunction }) => {
@@ -3585,7 +3613,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                       }) =>
                                         (() => {
                                           try {
-                                            return currentItem.title;
+                                            return step.step_text;
                                           } catch (e) {
                                             if (
                                               e instanceof TypeError ||

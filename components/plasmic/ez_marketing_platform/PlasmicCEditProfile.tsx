@@ -3136,14 +3136,14 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                             return (() => {
                                               const value = event.target.value;
                                               return $props.setFormData(
-                                                $props.formData.map(item =>
-                                                  item.title ===
-                                                  currentItem.title
-                                                    ? {
-                                                        ...item,
-                                                        title: value
-                                                      }
-                                                    : item
+                                                $props.formData.map(
+                                                  (item, index) =>
+                                                    index === currentIndex
+                                                      ? {
+                                                          ...item,
+                                                          title: value
+                                                        }
+                                                      : item
                                                 )
                                               );
                                             })();
@@ -3237,21 +3237,17 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                         const actionArgs = {
                                           customFunction: async () => {
                                             return (() => {
-                                              console.log(
-                                                "typeof currentItem:",
-                                                typeof currentItem
-                                              );
-                                              console.log(
-                                                "typeof currentIndex:",
-                                                typeof currentIndex
-                                              );
-                                              console.log(
-                                                "typeof step:",
-                                                typeof step
-                                              );
-                                              return console.log(
-                                                "typeof stepIndex:",
-                                                typeof stepIndex
+                                              const value = event.target.value;
+                                              return $props.setFormData(
+                                                $props.formData.map(
+                                                  (item, index) =>
+                                                    index === currentIndex
+                                                      ? {
+                                                          ...item,
+                                                          description: value
+                                                        }
+                                                      : item
+                                                )
                                               );
                                             })();
                                           }
@@ -3375,61 +3371,19 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                           const actionArgs = {
                                             customFunction: async () => {
                                               return (() => {
-                                                try {
-                                                  console.log(
-                                                    "=== DEBUG C: find currentItem in data array ==="
-                                                  );
-                                                  const candidate =
-                                                    $props?.formData ??
-                                                    $props?.args?.formData;
-                                                  console.log(
-                                                    "candidate source (first 5):",
-                                                    Array.isArray(candidate)
-                                                      ? candidate.slice(0, 5)
-                                                      : candidate
-                                                  );
-                                                  if (
-                                                    !Array.isArray(candidate)
-                                                  ) {
-                                                    console.log(
-                                                      "candidate is not an array, aborting find."
-                                                    );
-                                                    return;
-                                                  }
-                                                  const idx =
-                                                    candidate.findIndex(it => {
-                                                      try {
-                                                        if (it === $currentItem)
-                                                          return true;
-                                                        if (
-                                                          it &&
-                                                          $currentItem &&
-                                                          it.id &&
-                                                          $currentItem.id &&
-                                                          it.id ===
-                                                            $currentItem.id
-                                                        )
-                                                          return true;
-                                                        return false;
-                                                      } catch (e) {
-                                                        return false;
-                                                      }
-                                                    });
-                                                  console.log(
-                                                    "found index:",
-                                                    idx
-                                                  );
-                                                  if (idx >= 0)
-                                                    console.log(
-                                                      "found item preview:",
-                                                      candidate[idx]
-                                                    );
-                                                } catch (err) {
-                                                  console.error(
-                                                    "DEBUG C error",
-                                                    err
-                                                  );
-                                                }
+                                                const value =
+                                                  event.target.value;
+                                                return $props.setFormData(
+                                                  $props.formData.map(
+                                                    (item, index) =>
+                                                      index === currentIndex
+                                                        ? {
+                                                            ...item,
+                                                            price: value
+                                                          }
+                                                        : item
+                                                  )
+                                                );
                                               })();
                                             }
                                           };
@@ -3573,11 +3527,10 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                         ? (() => {
                                             const actionArgs = {
                                               customFunction: async () => {
-                                                return (updated[currentIndex] =
-                                                  {
-                                                    ...updated[currentIndex],
-                                                    step: event.target.value
-                                                  });
+                                                return console.log(
+                                                  "Is inside step repeat?",
+                                                  typeof stepIndex
+                                                );
                                               }
                                             };
                                             return (({ customFunction }) => {

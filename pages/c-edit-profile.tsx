@@ -11,7 +11,10 @@ export default function CEditProfile() {
   // 🔹 1. Buscar usuário
   useEffect(() => {
     async function loadUser() {
-      const { data } = await supabase.auth.getUser();
+      const { data, error } = await supabase.auth.getUser();
+      if (error) {
+        console.error("❌ Error loading user:", error);
+      }
       setUser(data.user ?? null);
     }
     loadUser();
@@ -25,12 +28,17 @@ export default function CEditProfile() {
     }
 
     async function loadAll() {
-      // Company
-      const { data: companyData } = await supabase
+      const { data: companyData, error: companyError } = await supabase
         .from("companies")
         .select("*")
         .eq("user_id", user.id)
         .single();
+
+      if (companyError) {
+        console.error("❌ Error loading company:", companyError);
+        setLoading(false);
+        return;
+      }
 
       if (!companyData) {
         setLoading(false);
@@ -39,8 +47,7 @@ export default function CEditProfile() {
 
       setCompany(companyData);
 
-      // Solutions + Steps
-      const { data: solutions } = await supabase
+      const { data: solutions, error: solutionsError } = await supabase
         .from("solutions")
         .select(`
           id,
@@ -55,6 +62,10 @@ export default function CEditProfile() {
         `)
         .eq("Company_id", companyData.id)
         .order("id", { ascending: true });
+
+      if (solutionsError) {
+        console.error("❌ Error loading solutions:", solutionsError);
+      }
 
       const structured =
         solutions?.map((sol: any) => ({
@@ -79,14 +90,17 @@ export default function CEditProfile() {
     loadAll();
   }, [user]);
 
-  // 🔹 3. Sincronização completa
+  // 🔹 3. Sincronização completa (COM DEBUG REAL)
   async function handleSave(payload: any) {
     if (!user) return;
+
+    console.log("========== SAVE START ==========");
+    console.log("Incoming payload:", payload);
 
     const { company: companyValues, solutions } = payload;
 
     // 1️⃣ Upsert Company
-    const { data: savedCompany } = await supabase
+    const { data: savedCompany, error: companyError } = await supabase
       .from("companies")
       .upsert(
         { user_id: user.id, ...companyValues },
@@ -95,13 +109,26 @@ export default function CEditProfile() {
       .select()
       .single();
 
+    if (companyError) {
+      console.error("❌ Company upsert failed:", companyError);
+      return;
+    }
+
+    console.log("✅ Company saved:", savedCompany);
+
     const companyId = savedCompany.id;
 
     // 2️⃣ Buscar solutions existentes
-    const { data: existingSolutions } = await supabase
-      .from("solutions")
-      .select("id")
-      .eq("Company_id", companyId);
+    const { data: existingSolutions, error: fetchSolError } =
+      await supabase
+        .from("solutions")
+        .select("id")
+        .eq("Company_id", companyId);
+
+    if (fetchSolError) {
+      console.error("❌ Fetch existing solutions failed:", fetchSolError);
+      return;
+    }
 
     const existingSolutionIds =
       existingSolutions?.map((s) => s.id) ?? [];
@@ -110,16 +137,22 @@ export default function CEditProfile() {
       .filter((s: any) => s.id)
       .map((s: any) => s.id);
 
-    // 3️⃣ Deletar solutions removidas
     const solutionsToDelete = existingSolutionIds.filter(
       (id) => !incomingSolutionIds.includes(id)
     );
 
     if (solutionsToDelete.length > 0) {
-      await supabase
+      const { error: deleteSolError } = await supabase
         .from("solutions")
         .delete()
         .in("id", solutionsToDelete);
+
+      if (deleteSolError) {
+        console.error("❌ Delete solutions failed:", deleteSolError);
+        return;
+      }
+
+      console.log("🗑 Solutions deleted:", solutionsToDelete);
     }
 
     // 4️⃣ Upsert Solutions
@@ -131,27 +164,47 @@ export default function CEditProfile() {
       Price: sol.price,
     }));
 
-    const { data: savedSolutions } = await supabase
-      .from("solutions")
-      .upsert(solutionsPayload, {
-        onConflict: "Company_id,Title",
-      })
-      .select();
+    console.log("📦 Solutions payload:", solutionsPayload);
 
-    // Map id definitivo
+    const { data: savedSolutions, error: solutionsError } =
+      await supabase
+        .from("solutions")
+        .upsert(solutionsPayload, {
+          onConflict: "Company_id,Title",
+        })
+        .select();
+
+    if (solutionsError) {
+      console.error("❌ Solutions upsert failed:", solutionsError);
+      return;
+    }
+
+    console.log("✅ Solutions saved:", savedSolutions);
+
     const solutionMap = new Map();
     savedSolutions?.forEach((s: any) => {
       solutionMap.set(s.Title, s.id);
     });
 
-    // 5️⃣ Sincronizar Steps por solution
+    // 5️⃣ Steps
     for (const sol of solutions) {
       const solutionId = solutionMap.get(sol.title);
 
-      const { data: existingSteps } = await supabase
-        .from("solutions_steps")
-        .select("id")
-        .eq("solution_id", solutionId);
+      if (!solutionId) {
+        console.error("❌ solutionId undefined for:", sol.title);
+        return;
+      }
+
+      const { data: existingSteps, error: fetchStepsError } =
+        await supabase
+          .from("solutions_steps")
+          .select("id")
+          .eq("solution_id", solutionId);
+
+      if (fetchStepsError) {
+        console.error("❌ Fetch steps failed:", fetchStepsError);
+        return;
+      }
 
       const existingStepIds =
         existingSteps?.map((s) => s.id) ?? [];
@@ -165,10 +218,17 @@ export default function CEditProfile() {
       );
 
       if (stepsToDelete.length > 0) {
-        await supabase
+        const { error: deleteStepsError } = await supabase
           .from("solutions_steps")
           .delete()
           .in("id", stepsToDelete);
+
+        if (deleteStepsError) {
+          console.error("❌ Delete steps failed:", deleteStepsError);
+          return;
+        }
+
+        console.log("🗑 Steps deleted:", stepsToDelete);
       }
 
       const stepsPayload = sol.steps.map(
@@ -180,13 +240,21 @@ export default function CEditProfile() {
         })
       );
 
-      await supabase
+      console.log("📦 Steps payload:", stepsPayload);
+
+      const { error: stepsError } = await supabase
         .from("solutions_steps")
         .upsert(stepsPayload, {
           onConflict: "solution_id,Step_order",
         });
+
+      if (stepsError) {
+        console.error("❌ Steps upsert failed:", stepsError);
+        return;
+      }
     }
 
+    console.log("========== SAVE SUCCESS ==========");
     setCompany(savedCompany);
   }
 
@@ -197,7 +265,7 @@ export default function CEditProfile() {
       args={{
         company,
         formData,
-        setFormData, // 👈 ESSA É A ÚNICA ADIÇÃO
+        setFormData,
         onSave: handleSave,
       }}
     />

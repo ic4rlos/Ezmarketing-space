@@ -10,13 +10,19 @@ export const PLASMIC = initPlasmicLoader({
 
 PLASMIC.registerComponent(CropUpload, {
   name: 'CropUpload',
+  importPath: './components/CropUpload',
+  isDefaultExport: true,
   props: {
-    children: 'slot',
-    accept: 'string',
-    onChange: 'eventHandler'
-  },
-  defaultStyles: {
-    width: '100%',
-    maxWidth: '180px'
+    children: {
+      type: "slot"
+    },
+    accept: {
+      type: "string",
+      defaultValue: "image/*"
+    },
+    onChange: {
+      type: "eventHandler",
+      argTypes: []
+    }
   }
 });

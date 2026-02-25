@@ -1,5 +1,12 @@
-import { registerComponent } from '@plasmicapp/loader-nextjs';
+import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
 import CropUpload from './components/CropUpload';
+
+export const PLASMIC = initPlasmicLoader({
+  projects: [
+    // seus projetos aqui
+  ],
+  preview: true,
+});
 
 PLASMIC.registerComponent(CropUpload, {
   name: 'CropUpload',

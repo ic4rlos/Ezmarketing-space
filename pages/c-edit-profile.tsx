@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import supabase from "../lib/c-supabaseClient";
 import { PlasmicCEditProfile } from "../components/plasmic/ez_marketing_platform/PlasmicCEditProfile";
 
 export default function CEditProfile() {
+  const router = useRouter();
+
   const [user, setUser] = useState<any>(null);
   const [company, setCompany] = useState<any>(null);
   const [formData, setFormData] = useState<any[]>([]);
@@ -91,9 +94,6 @@ export default function CEditProfile() {
   async function handleSave(payload: any) {
     if (!user) return;
 
-    console.log("========== SAVE START ==========");
-    console.log("Incoming payload:", payload);
-
     const { company: companyValues, solutions } = payload;
 
     // 1️⃣ Upsert Company
@@ -110,8 +110,6 @@ export default function CEditProfile() {
       console.error("❌ Company upsert failed:", companyError);
       return;
     }
-
-    console.log("✅ Company saved:", savedCompany);
 
     const companyId = savedCompany.id;
 
@@ -150,7 +148,7 @@ export default function CEditProfile() {
       }
     }
 
-    // 4️⃣ Upsert Solutions (CORRIGIDO: NÃO ENVIA id SE FOR NOVO)
+    // 3️⃣ Upsert Solutions
     const solutionsPayload = solutions.map((sol: any) => {
       const base = {
         Company_id: companyId,
@@ -169,8 +167,6 @@ export default function CEditProfile() {
       return base;
     });
 
-    console.log("📦 Solutions payload:", solutionsPayload);
-
     const { data: savedSolutions, error: solutionsError } =
       await supabase
         .from("solutions")
@@ -184,32 +180,20 @@ export default function CEditProfile() {
       return;
     }
 
-    console.log("✅ Solutions saved:", savedSolutions);
-
     const solutionMap = new Map();
     savedSolutions?.forEach((s: any) => {
       solutionMap.set(s.Title, s.id);
     });
 
-    // 5️⃣ Steps
+    // 4️⃣ Steps
     for (const sol of solutions) {
       const solutionId = solutionMap.get(sol.title);
+      if (!solutionId) return;
 
-      if (!solutionId) {
-        console.error("❌ solutionId undefined for:", sol.title);
-        return;
-      }
-
-      const { data: existingSteps, error: fetchStepsError } =
-        await supabase
-          .from("solutions_steps")
-          .select("id")
-          .eq("solution_id", solutionId);
-
-      if (fetchStepsError) {
-        console.error("❌ Fetch steps failed:", fetchStepsError);
-        return;
-      }
+      const { data: existingSteps } = await supabase
+        .from("solutions_steps")
+        .select("id")
+        .eq("solution_id", solutionId);
 
       const existingStepIds =
         existingSteps?.map((s) => s.id) ?? [];
@@ -223,15 +207,10 @@ export default function CEditProfile() {
       );
 
       if (stepsToDelete.length > 0) {
-        const { error: deleteStepsError } = await supabase
+        await supabase
           .from("solutions_steps")
           .delete()
           .in("id", stepsToDelete);
-
-        if (deleteStepsError) {
-          console.error("❌ Delete steps failed:", deleteStepsError);
-          return;
-        }
       }
 
       const stepsPayload = sol.steps.map(
@@ -250,20 +229,15 @@ export default function CEditProfile() {
         }
       );
 
-      const { error: stepsError } = await supabase
+      await supabase
         .from("solutions_steps")
         .upsert(stepsPayload, {
           onConflict: "solution_id,Step_order",
         });
-
-      if (stepsError) {
-        console.error("❌ Steps upsert failed:", stepsError);
-        return;
-      }
     }
 
-    console.log("========== SAVE SUCCESS ==========");
-    setCompany(savedCompany);
+    // ✅ FINAL SUCESSO → REDIRECIONA
+    router.replace("/company-profile");
   }
 
   if (loading) return null;

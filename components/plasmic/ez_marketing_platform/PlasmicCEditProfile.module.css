@@ -319,12 +319,13 @@
   object-fit: cover;
   text-align: left;
   padding-left: 58px;
-  width: auto;
   padding-right: 23px;
+  width: auto;
 }
 .button__aOGg:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
+  background: none;
 }
 .text__v7R2L {
   position: relative;
@@ -2316,11 +2317,11 @@
   position: relative;
   align-items: center;
   justify-content: flex-start;
-  width: 100%;
+  width: auto;
   height: auto;
-  max-width: 100%;
-  align-self: flex-end;
-  min-width: 0;
+  max-width: 300px;
+  align-self: flex-start;
+  flex-shrink: 0;
   padding: 8px;
 }
 .companyImage:global(.__wab_instance) {

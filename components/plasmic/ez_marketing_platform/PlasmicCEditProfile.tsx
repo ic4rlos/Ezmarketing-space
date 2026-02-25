@@ -295,7 +295,20 @@ function PlasmicCEditProfile__RenderFunc(props: {
         path: "companyLogo.files",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => []
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          (() => {
+            try {
+              return $props.avatarFiles ?? [];
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return [];
+              }
+              throw e;
+            }
+          })()
       },
       {
         path: "linkedIn.value",
@@ -381,7 +394,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.company?.subArea ?? null
+          $props.company?.["Sub area"] ?? null
       },
       {
         path: "selectedMainOption",
@@ -737,11 +750,33 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       "companyLogo",
                       "files"
                     ]).apply(null, eventArgs);
+
+                    (async files => {
+                      const $steps = {};
+
+                      $steps["runInteractionProp"] = true
+                        ? (() => {
+                            const actionArgs = {};
+                            return (({ eventRef, args }) => {
+                              return eventRef?.(...(args ?? []));
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["runInteractionProp"] != null &&
+                        typeof $steps["runInteractionProp"] === "object" &&
+                        typeof $steps["runInteractionProp"].then === "function"
+                      ) {
+                        $steps["runInteractionProp"] =
+                          await $steps["runInteractionProp"];
+                      }
+                    }).apply(null, eventArgs);
                   }}
-                  showUploadList={false}
+                  showUploadList={true}
                 >
                   <AntdButton
                     className={classNames("__wab_instance", sty.button__aOGg)}
+                    type={"text"}
                   >
                     <div
                       className={classNames(
@@ -2322,7 +2357,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     projectcss.plasmic_mixins,
                     styleTokensClassNames
                   )}
-                  defaultValue={$props.company?.subArea ?? null}
+                  defaultValue={$props.company?.["Sub area"] ?? null}
                   dropdownMatchSelectWidth={false}
                   mode={"single"}
                   onChange={async (...eventArgs: any) => {
@@ -3658,7 +3693,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     "companyImage",
                     "files"
                   ])}
-                  listType={"picture-circle"}
+                  listType={"text"}
                   maxCount={1}
                   onFilesChange={async (...eventArgs: any) => {
                     generateStateOnChangeProp($state, [
@@ -3666,10 +3701,11 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       "files"
                     ]).apply(null, eventArgs);
                   }}
-                  showUploadList={false}
+                  showUploadList={true}
                 >
                   <AntdButton
                     className={classNames("__wab_instance", sty.button__sbVvU)}
+                    type={"dashed"}
                   >
                     <div
                       className={classNames(

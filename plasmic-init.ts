@@ -1,5 +1,7 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
-import CropUpload from './components/CropUpload';
+import CropUpload from "./components/CropUpload";
+
+console.log("🚨🚨 INICIANDO PLASMIC LOADER 🚨🚨");
 
 export const PLASMIC = initPlasmicLoader({
   projects: [
@@ -8,21 +10,23 @@ export const PLASMIC = initPlasmicLoader({
   preview: true,
 });
 
-PLASMIC.registerComponent(CropUpload, {
-  name: 'CropUpload',
-  importPath: './components/CropUpload',
-  isDefaultExport: true,
-  props: {
-    children: {
-      type: "slot"
-    },
-    accept: {
-      type: "string",
-      defaultValue: "image/*"
-    },
-    onChange: {
-      type: "eventHandler",
-      argTypes: []
-    }
-  }
-});
+console.log("✅ PLASMIC LOADER CRIADO!");
+
+if (CropUpload) {
+  console.log("🔥🔥 CROPUPLOAD IMPORTADO COM SUCESSO!", CropUpload);
+} else {
+  console.error("❌❌ ERRO: CROPUPLOAD NÃO FOI IMPORTADO!");
+}
+
+try {
+  console.log("🚨🚨 TENTANDO REGISTRAR CROPUPLOAD 🚨🚨");
+  PLASMIC.registerComponent(CropUpload, {
+    name: "CropUpload",
+    importPath: "./components/CropUpload",
+    isDefaultExport: true,
+    props: {}
+  });
+  console.log("✅✅ CROPUPLOAD REGISTRADO COM SUCESSO!");
+} catch (err) {
+  console.error("❌❌ ERRO AO REGISTRAR CROPUPLOAD:", err);
+}

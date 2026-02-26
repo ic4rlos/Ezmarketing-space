@@ -195,7 +195,7 @@ export default function AEditProfile() {
     await supabase.from("Multicharge").upsert(officesPayload);
 
     // 🔥 FINAL
-    router.replace("/find-a-affiliate/");
+    router.replace("/a-find-a-business/");
   }
 
   if (loading) return null;

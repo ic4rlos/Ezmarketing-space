@@ -20,16 +20,14 @@ export default function AEditProfile() {
   // =========================
   useEffect(() => {
     async function loadUser() {
-      console.log("🔥 AUTH: tentando carregar usuário...");
       const { data } = await supabase.auth.getUser();
-      console.log("🔥 AUTH: usuário carregado:", data.user);
       setUser(data.user ?? null);
     }
     loadUser();
   }, []);
 
   // =========================
-  // LOAD PROFILE
+  // LOAD PROFILE + RELAÇÕES
   // =========================
   useEffect(() => {
     if (!user) {
@@ -38,15 +36,11 @@ export default function AEditProfile() {
     }
 
     async function loadAll() {
-      console.log("🔥 LOAD: carregando profile...");
-
       const { data: profileData } = await supabase
         .from("User profile")
         .select("*")
         .eq("user_id", user.id)
         .maybeSingle();
-
-      console.log("🔥 LOAD: profile encontrado:", profileData);
 
       if (!profileData) {
         setLoading(false);
@@ -55,22 +49,29 @@ export default function AEditProfile() {
 
       const profileId = profileData.id;
 
+      const { data: education } = await supabase
+        .from("Education")
+        .select("*")
+        .eq("User profile_id", profileId);
+
+      const { data: jobs } = await supabase
+        .from("Charge")
+        .select("*")
+        .eq("User profile_id", profileId);
+
       const { data: offices } = await supabase
         .from("Multicharge")
         .select("*")
         .eq("User profile_id", profileId);
 
-      console.log("🔥 LOAD: offices vindos do banco:", offices);
-
       setFormData({
         ...profileData,
+        education: education ?? [],
+        jobs: jobs ?? [],
         offices: offices ?? [],
       });
 
-      console.log("🔥 STATE: formData inicial:", {
-        ...profileData,
-        offices: offices ?? [],
-      });
+      console.log("🟣 MULTICHARGE LOAD:", offices);
 
       setLoading(false);
     }
@@ -82,17 +83,18 @@ export default function AEditProfile() {
   // SAVE
   // =========================
   async function handleSave(payload: any) {
-    console.log("🚨 BOTÃO DONE CLICADO");
-    console.log("🚨 PAYLOAD RECEBIDO:", payload);
-    console.log("🚨 OFFICES NO PAYLOAD:", payload.offices);
+    if (!user) return;
 
-    if (!user) {
-      console.log("❌ SAVE CANCELADO: user inexistente");
-      return;
-    }
+    const {
+      education = [],
+      jobs = [],
+      offices = [],
+      ...profileFields
+    } = payload;
 
-    const { offices = [], ...profileFields } = payload;
-
+    // =========================
+    // USER PROFILE
+    // =========================
     const { data: savedProfile, error: profileError } =
       await supabase
         .from("User profile")
@@ -103,55 +105,182 @@ export default function AEditProfile() {
         .select()
         .single();
 
-    console.log("🔥 PROFILE UPSERT:", savedProfile);
-    console.log("🔥 PROFILE ERROR:", profileError);
-
-    if (!savedProfile) {
-      console.log("❌ PROFILE NÃO SALVO, abortando offices");
+    if (profileError || !savedProfile) {
+      console.error("Profile error:", profileError);
       return;
     }
 
     const profileId = savedProfile.id;
 
-    console.log("🔥 PREPARANDO MULTICHARGE...");
-    console.log("🔥 OFFICES RECEBIDOS PARA SALVAR:", offices);
+    // =====================================================
+    // EDUCATION
+    // =====================================================
 
-    // Limpa tudo antes (sentinela bruto)
-    console.log("🔥 DELETANDO OFFICES ANTIGOS...");
-    const { error: deleteError } = await supabase
-      .from("Multicharge")
-      .delete()
+    const cleanEducation = education.filter(
+      (e: any) => e.Major && e.Major.trim() !== ""
+    );
+
+    const { data: existingEdu } = await supabase
+      .from("Education")
+      .select("id")
       .eq("User profile_id", profileId);
 
-    console.log("🔥 DELETE ERROR:", deleteError);
+    const existingEduIds = existingEdu?.map(e => e.id) ?? [];
+    const incomingEduIds = cleanEducation
+      .filter((e: any) => e.id)
+      .map((e: any) => e.id);
 
-    if (!offices || offices.length === 0) {
-      console.log("⚠️ NENHUM OFFICE PARA INSERIR");
-      router.replace("/a-find-a-business/");
-      return;
+    const eduToDelete = existingEduIds.filter(
+      id => !incomingEduIds.includes(id)
+    );
+
+    if (eduToDelete.length) {
+      await supabase
+        .from("Education")
+        .delete()
+        .in("id", eduToDelete);
     }
 
-    const officesPayload = offices.map((office: string) => ({
-      Office: office,
-      "User profile_id": profileId,
-    }));
+    const eduPayload = cleanEducation.map((e: any) => {
+      const base = {
+        University: e.University ?? null,
+        Major: e.Major,
+        "Graduation year": e["Graduation year"] ?? null,
+        "Education level": e["Education level"] ?? null,
+        Degree: e.Degree ?? null,
+        "User profile_id": profileId,
+      };
 
-    console.log("🔥 VAI INSERIR ISSO EM MULTICHARGE:", officesPayload);
+      if (e.id !== undefined && e.id !== null) {
+        return { ...base, id: e.id };
+      }
 
-    const { data: insertedData, error: insertError } =
+      return base;
+    });
+
+    if (eduPayload.length) {
       await supabase
+        .from("Education")
+        .upsert(eduPayload, {
+          onConflict: "User profile_id,Major",
+        });
+    }
+
+    // =====================================================
+    // JOBS (Charge)
+    // =====================================================
+
+    const cleanJobs = jobs.filter(
+      (j: any) => j.Company && j.Company.trim() !== ""
+    );
+
+    const { data: existingJobs } = await supabase
+      .from("Charge")
+      .select("id")
+      .eq("User profile_id", profileId);
+
+    const existingJobIds = existingJobs?.map(j => j.id) ?? [];
+    const incomingJobIds = cleanJobs
+      .filter((j: any) => j.id)
+      .map((j: any) => j.id);
+
+    const jobsToDelete = existingJobIds.filter(
+      id => !incomingJobIds.includes(id)
+    );
+
+    if (jobsToDelete.length) {
+      await supabase
+        .from("Charge")
+        .delete()
+        .in("id", jobsToDelete);
+    }
+
+    const jobsPayload = cleanJobs.map((j: any) => {
+      const base = {
+        Charge: j.Charge ?? null,
+        Company: j.Company,
+        "How long in office": j["How long in office"] ?? null,
+        "User profile_id": profileId,
+      };
+
+      if (j.id !== undefined && j.id !== null) {
+        return { ...base, id: j.id };
+      }
+
+      return base;
+    });
+
+    if (jobsPayload.length) {
+      await supabase
+        .from("Charge")
+        .upsert(jobsPayload, {
+          onConflict: "User profile_id,Company",
+        });
+    }
+
+    // =====================================================
+    // OFFICES (SENTINELA)
+    // =====================================================
+
+    console.log("🟣 MULTICHARGE PAYLOAD RECEBIDO:", offices);
+
+    const { data: existingOffices } = await supabase
+      .from("Multicharge")
+      .select("id")
+      .eq("User profile_id", profileId);
+
+    console.log("🟣 MULTICHARGE EXISTENTES:", existingOffices);
+
+    const existingOfficeIds =
+      existingOffices?.map(o => o.id) ?? [];
+
+    const incomingOfficeIds =
+      offices?.filter((o: any) => o?.id)?.map((o: any) => o.id) ?? [];
+
+    console.log("🟣 MULTICHARGE IDS EXISTENTES:", existingOfficeIds);
+    console.log("🟣 MULTICHARGE IDS RECEBIDOS:", incomingOfficeIds);
+
+    const officesToDelete = existingOfficeIds.filter(
+      id => !incomingOfficeIds.includes(id)
+    );
+
+    console.log("🟣 MULTICHARGE PARA DELETAR:", officesToDelete);
+
+    if (officesToDelete.length) {
+      const { error } = await supabase
         .from("Multicharge")
-        .insert(officesPayload)
-        .select();
+        .delete()
+        .in("id", officesToDelete);
 
-    console.log("🔥 INSERT RESULT:", insertedData);
-    console.log("🔥 INSERT ERROR:", insertError);
+      console.log("🟣 MULTICHARGE DELETE ERROR:", error);
+    }
 
-    if (!insertError) {
-      console.log(
-        "✅ MULTICHARGE SALVO COM SUCESSO. TOTAL:",
-        insertedData?.length
-      );
+    const officesPayload = offices?.map((o: any) => {
+      const base = {
+        Office: o?.Office ?? null,
+        "User profile_id": profileId,
+      };
+
+      if (o?.id !== undefined && o?.id !== null) {
+        return { ...base, id: o.id };
+      }
+
+      return base;
+    }) ?? [];
+
+    console.log("🟣 MULTICHARGE UPSERT PAYLOAD:", officesPayload);
+
+    if (officesPayload.length) {
+      const { data, error } =
+        await supabase
+          .from("Multicharge")
+          .upsert(officesPayload)
+          .select();
+
+      console.log("🟣 MULTICHARGE UPSERT RESULT:", data);
+      console.log("🟣 MULTICHARGE UPSERT ERROR:", error);
+    } else {
+      console.log("🟣 MULTICHARGE NENHUM PAYLOAD");
     }
 
     router.replace("/a-find-a-business/");

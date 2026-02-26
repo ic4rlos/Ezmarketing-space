@@ -2839,12 +2839,10 @@ function PlasmicAEditProfile__RenderFunc(props: {
                           const actionArgs = {
                             customFunction: async () => {
                               return (() => {
-                                const values = Array.from(
-                                  event.target.selectedOptions
-                                ).map(o => o.value);
+                                const value = event;
                                 return $props.setFormData({
                                   ...$props.formData,
-                                  offices: values
+                                  offices: value ?? []
                                 });
                               })();
                             }

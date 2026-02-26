@@ -386,7 +386,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.formData?.["Office"] ?? null
+          $props.formData.offices ?? null
       },
       {
         path: "impressive.value",
@@ -2822,7 +2822,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                   projectcss.plasmic_mixins,
                   styleTokensClassNames
                 )}
-                defaultValue={$props.formData?.["Office"] ?? null}
+                defaultValue={$props.formData.offices ?? null}
                 dropdownMatchSelectWidth={false}
                 mode={"multiple"}
                 onChange={async (...eventArgs: any) => {
@@ -2839,18 +2839,12 @@ function PlasmicAEditProfile__RenderFunc(props: {
                           const actionArgs = {
                             customFunction: async () => {
                               return (() => {
-                                const value = event.target.value;
+                                const values = Array.from(
+                                  event.target.selectedOptions
+                                ).map(o => o.value);
                                 return $props.setFormData({
                                   ...$props.formData,
-                                  offices: $props.formData.offices.map(
-                                    (item, index) =>
-                                      index === currentIndex
-                                        ? {
-                                            ...item,
-                                            Office: value
-                                          }
-                                        : item
-                                  )
+                                  offices: values
                                 });
                               })();
                             }

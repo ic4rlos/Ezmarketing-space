@@ -151,6 +151,7 @@ export type PlasmicAEditProfile__OverridesType = {
   linkedIn?: Flex__<typeof AntdInput>;
   instagram?: Flex__<typeof AntdInput>;
   x?: Flex__<typeof AntdInput>;
+  education2?: Flex__<"div">;
   education?: Flex__<"section">;
   university?: Flex__<typeof AntdInput>;
   major?: Flex__<typeof AntdInput>;
@@ -225,7 +226,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "firstName.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.formData?.["First name"] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -258,7 +260,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "lastName.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.formData?.["Last name"] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -266,7 +269,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "location.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.formData?.["Location"] ?? "",
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -274,7 +278,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "birthday.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.formData?.["Birthday"] ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -288,7 +293,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "linkedIn.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.formData?.["LinkedIn"] ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -296,7 +302,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "instagram.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.formData?.["Instagram"] ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -304,7 +311,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "x.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.formData?.["X"] ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -377,13 +385,15 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "office.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.formData?.["Office"] ?? null
       },
       {
         path: "impressive.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.formData?.["Impressive"] ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
@@ -1209,7 +1219,11 @@ function PlasmicAEditProfile__RenderFunc(props: {
               throw e;
             }
           })() ? (
-            <div className={classNames(projectcss.all, sty.freeBox___7WEtV)}>
+            <div
+              data-plasmic-name={"education2"}
+              data-plasmic-override={overrides.education2}
+              className={classNames(projectcss.all, sty.education2)}
+            >
               <div
                 className={classNames(
                   projectcss.all,
@@ -1238,7 +1252,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                   (() => {
                     try {
-                      return $state.formExperience;
+                      return $props.formData?.education || [1];
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
@@ -1285,6 +1299,45 @@ function PlasmicAEditProfile__RenderFunc(props: {
                                 ["university", __plasmic_idx_0, "value"],
                                 AntdInput_Helpers
                               ).apply(null, eventArgs);
+
+                              (async event => {
+                                const $steps = {};
+
+                                $steps["runCode"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        customFunction: async () => {
+                                          return (() => {
+                                            const value = event.target.value;
+                                            return $props.setFormData({
+                                              ...$props.formData,
+                                              education:
+                                                $props.formData.education.map(
+                                                  (item, index) =>
+                                                    index === currentIndex
+                                                      ? {
+                                                          ...item,
+                                                          University: value
+                                                        }
+                                                      : item
+                                                )
+                                            });
+                                          })();
+                                        }
+                                      };
+                                      return (({ customFunction }) => {
+                                        return customFunction();
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["runCode"] != null &&
+                                  typeof $steps["runCode"] === "object" &&
+                                  typeof $steps["runCode"].then === "function"
+                                ) {
+                                  $steps["runCode"] = await $steps["runCode"];
+                                }
+                              }).apply(null, eventArgs);
                             },
                             placeholder: "University",
                             readOnly: false,
@@ -1314,7 +1367,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                               {
                                 name: "university[].value",
                                 initFunc: ({ $props, $state, $queries, $q }) =>
-                                  undefined
+                                  currentItem.University
                               }
                             ],
                             [__plasmic_idx_0]
@@ -1351,6 +1404,45 @@ function PlasmicAEditProfile__RenderFunc(props: {
                                 ["major", __plasmic_idx_0, "value"],
                                 AntdInput_Helpers
                               ).apply(null, eventArgs);
+
+                              (async event => {
+                                const $steps = {};
+
+                                $steps["runCode"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        customFunction: async () => {
+                                          return (() => {
+                                            const value = event.target.value;
+                                            return $props.setFormData({
+                                              ...$props.formData,
+                                              education:
+                                                $props.formData.education.map(
+                                                  (item, index) =>
+                                                    index === currentIndex
+                                                      ? {
+                                                          ...item,
+                                                          Major: value
+                                                        }
+                                                      : item
+                                                )
+                                            });
+                                          })();
+                                        }
+                                      };
+                                      return (({ customFunction }) => {
+                                        return customFunction();
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["runCode"] != null &&
+                                  typeof $steps["runCode"] === "object" &&
+                                  typeof $steps["runCode"].then === "function"
+                                ) {
+                                  $steps["runCode"] = await $steps["runCode"];
+                                }
+                              }).apply(null, eventArgs);
                             },
                             placeholder: "Major",
                             readOnly: false,
@@ -1380,7 +1472,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                               {
                                 name: "major[].value",
                                 initFunc: ({ $props, $state, $queries, $q }) =>
-                                  undefined
+                                  currentItem.Major
                               }
                             ],
                             [__plasmic_idx_0]
@@ -1420,6 +1512,45 @@ function PlasmicAEditProfile__RenderFunc(props: {
                                 ["graduationYear", __plasmic_idx_0, "value"],
                                 AntdInput_Helpers
                               ).apply(null, eventArgs);
+
+                              (async event => {
+                                const $steps = {};
+
+                                $steps["runCode"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        customFunction: async () => {
+                                          return (() => {
+                                            const value = event.target.value;
+                                            return $props.setFormData({
+                                              ...$props.formData,
+                                              education:
+                                                $props.formData.education.map(
+                                                  (item, index) =>
+                                                    index === currentIndex
+                                                      ? {
+                                                          ...item,
+                                                          Graduationyear: value
+                                                        }
+                                                      : item
+                                                )
+                                            });
+                                          })();
+                                        }
+                                      };
+                                      return (({ customFunction }) => {
+                                        return customFunction();
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["runCode"] != null &&
+                                  typeof $steps["runCode"] === "object" &&
+                                  typeof $steps["runCode"].then === "function"
+                                ) {
+                                  $steps["runCode"] = await $steps["runCode"];
+                                }
+                              }).apply(null, eventArgs);
                             },
                             placeholder: "Graduation year (or expected)",
                             readOnly: false,
@@ -1449,7 +1580,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                               {
                                 name: "graduationYear[].value",
                                 initFunc: ({ $props, $state, $queries, $q }) =>
-                                  undefined
+                                  currentItem.Graduationyear
                               }
                             ],
                             [__plasmic_idx_0]
@@ -1490,6 +1621,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
                               projectcss.plasmic_mixins,
                               styleTokensClassNames
                             ),
+                            defaultValue: currentItem.Educationlevel,
+
                             dropdownMatchSelectWidth: false,
                             mode: "single",
                             onChange: async (...eventArgs: any) => {
@@ -1498,6 +1631,45 @@ function PlasmicAEditProfile__RenderFunc(props: {
                                 __plasmic_idx_0,
                                 "value"
                               ]).apply(null, eventArgs);
+
+                              (async (value, option) => {
+                                const $steps = {};
+
+                                $steps["runCode"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        customFunction: async () => {
+                                          return (() => {
+                                            const value = event.target.value;
+                                            return $props.setFormData({
+                                              ...$props.formData,
+                                              education:
+                                                $props.formData.education.map(
+                                                  (item, index) =>
+                                                    index === currentIndex
+                                                      ? {
+                                                          ...item,
+                                                          Educationlevel: value
+                                                        }
+                                                      : item
+                                                )
+                                            });
+                                          })();
+                                        }
+                                      };
+                                      return (({ customFunction }) => {
+                                        return customFunction();
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["runCode"] != null &&
+                                  typeof $steps["runCode"] === "object" &&
+                                  typeof $steps["runCode"].then === "function"
+                                ) {
+                                  $steps["runCode"] = await $steps["runCode"];
+                                }
+                              }).apply(null, eventArgs);
                             },
                             options: (() => {
                               const __composite = [
@@ -1553,7 +1725,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                               {
                                 name: "educationLevel[].value",
                                 initFunc: ({ $props, $state, $queries, $q }) =>
-                                  undefined
+                                  currentItem.Educationlevel
                               }
                             ],
                             [__plasmic_idx_0]
@@ -1829,9 +2001,23 @@ function PlasmicAEditProfile__RenderFunc(props: {
                         ? (() => {
                             const actionArgs = {
                               customFunction: async () => {
-                                return $state.formExperience.push({
-                                  value: ""
-                                });
+                                return (() => {
+                                  const updated = {
+                                    ...$props.formData,
+                                    education: [
+                                      ...($props.formData.education || []),
+                                      {
+                                        id: null,
+                                        University: "",
+                                        Major: "",
+                                        "Graduation year": "",
+                                        "Education level": "",
+                                        Degree: ""
+                                      }
+                                    ]
+                                  };
+                                  return $props.setFormData(updated);
+                                })();
                               }
                             };
                             return (({ customFunction }) => {
@@ -1870,7 +2056,15 @@ function PlasmicAEditProfile__RenderFunc(props: {
                         ? (() => {
                             const actionArgs = {
                               customFunction: async () => {
-                                return $state.formExperience.pop();
+                                return (() => {
+                                  const updated = {
+                                    ...$props.formData,
+                                    education: $props.formData.education.filter(
+                                      (_, index) => index !== currentIndex
+                                    )
+                                  };
+                                  return $props.setFormData(updated);
+                                })();
                               }
                             };
                             return (({ customFunction }) => {
@@ -2027,7 +2221,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                   (() => {
                     try {
-                      return $state.formEducation;
+                      return $props.formData?.jobs || [1];
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
@@ -2071,6 +2265,45 @@ function PlasmicAEditProfile__RenderFunc(props: {
                                 ["charge", __plasmic_idx_0, "value"],
                                 AntdInput_Helpers
                               ).apply(null, eventArgs);
+
+                              (async event => {
+                                const $steps = {};
+
+                                $steps["runCode"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        customFunction: async () => {
+                                          return (() => {
+                                            const value = event.target.value;
+                                            return $props.setFormData({
+                                              ...$props.formData,
+                                              education:
+                                                $props.formData.education.map(
+                                                  (item, index) =>
+                                                    index === currentIndex
+                                                      ? {
+                                                          ...item,
+                                                          Charge: value
+                                                        }
+                                                      : item
+                                                )
+                                            });
+                                          })();
+                                        }
+                                      };
+                                      return (({ customFunction }) => {
+                                        return customFunction();
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["runCode"] != null &&
+                                  typeof $steps["runCode"] === "object" &&
+                                  typeof $steps["runCode"].then === "function"
+                                ) {
+                                  $steps["runCode"] = await $steps["runCode"];
+                                }
+                              }).apply(null, eventArgs);
                             },
                             placeholder: "Charge",
                             readOnly: false,
@@ -2100,7 +2333,20 @@ function PlasmicAEditProfile__RenderFunc(props: {
                               {
                                 name: "charge[].value",
                                 initFunc: ({ $props, $state, $queries, $q }) =>
-                                  undefined
+                                  (() => {
+                                    try {
+                                      return currentItem.Charge;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })()
                               }
                             ],
                             [__plasmic_idx_0]
@@ -2140,6 +2386,45 @@ function PlasmicAEditProfile__RenderFunc(props: {
                                 ["company", __plasmic_idx_0, "value"],
                                 AntdInput_Helpers
                               ).apply(null, eventArgs);
+
+                              (async event => {
+                                const $steps = {};
+
+                                $steps["runCode"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        customFunction: async () => {
+                                          return (() => {
+                                            const value = event.target.value;
+                                            return $props.setFormData({
+                                              ...$props.formData,
+                                              education:
+                                                $props.formData.education.map(
+                                                  (item, index) =>
+                                                    index === currentIndex
+                                                      ? {
+                                                          ...item,
+                                                          Company: value
+                                                        }
+                                                      : item
+                                                )
+                                            });
+                                          })();
+                                        }
+                                      };
+                                      return (({ customFunction }) => {
+                                        return customFunction();
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["runCode"] != null &&
+                                  typeof $steps["runCode"] === "object" &&
+                                  typeof $steps["runCode"].then === "function"
+                                ) {
+                                  $steps["runCode"] = await $steps["runCode"];
+                                }
+                              }).apply(null, eventArgs);
                             },
                             placeholder: "Company",
                             readOnly: false,
@@ -2169,7 +2454,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                               {
                                 name: "company[].value",
                                 initFunc: ({ $props, $state, $queries, $q }) =>
-                                  undefined
+                                  currentItem.Company
                               }
                             ],
                             [__plasmic_idx_0]
@@ -2209,6 +2494,45 @@ function PlasmicAEditProfile__RenderFunc(props: {
                                 ["howLongInOffice", __plasmic_idx_0, "value"],
                                 AntdInput_Helpers
                               ).apply(null, eventArgs);
+
+                              (async event => {
+                                const $steps = {};
+
+                                $steps["runCode"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        customFunction: async () => {
+                                          return (() => {
+                                            const value = event.target.value;
+                                            return $props.setFormData({
+                                              ...$props.formData,
+                                              education:
+                                                $props.formData.education.map(
+                                                  (item, index) =>
+                                                    index === currentIndex
+                                                      ? {
+                                                          ...item,
+                                                          Howlonginoffice: value
+                                                        }
+                                                      : item
+                                                )
+                                            });
+                                          })();
+                                        }
+                                      };
+                                      return (({ customFunction }) => {
+                                        return customFunction();
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["runCode"] != null &&
+                                  typeof $steps["runCode"] === "object" &&
+                                  typeof $steps["runCode"].then === "function"
+                                ) {
+                                  $steps["runCode"] = await $steps["runCode"];
+                                }
+                              }).apply(null, eventArgs);
                             },
                             placeholder: "How long in office?",
                             readOnly: false,
@@ -2238,7 +2562,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                               {
                                 name: "howLongInOffice[].value",
                                 initFunc: ({ $props, $state, $queries, $q }) =>
-                                  undefined
+                                  currentItem.Howlonginoffice
                               }
                             ],
                             [__plasmic_idx_0]
@@ -2269,7 +2593,21 @@ function PlasmicAEditProfile__RenderFunc(props: {
                         ? (() => {
                             const actionArgs = {
                               customFunction: async () => {
-                                return $state.formEducation.push({ value: "" });
+                                return (() => {
+                                  const updated = {
+                                    ...$props.formData,
+                                    jobs: [
+                                      ...($props.formData.jobs || []),
+                                      {
+                                        id: null,
+                                        Charge: "",
+                                        Company: "",
+                                        "How long in office": ""
+                                      }
+                                    ]
+                                  };
+                                  return $props.setFormData(updated);
+                                })();
                               }
                             };
                             return (({ customFunction }) => {
@@ -2308,7 +2646,15 @@ function PlasmicAEditProfile__RenderFunc(props: {
                         ? (() => {
                             const actionArgs = {
                               customFunction: async () => {
-                                return $state.formEducation.pop();
+                                return (() => {
+                                  const updated = {
+                                    ...$props.formData,
+                                    education: $props.formData.jobs.filter(
+                                      (_, index) => index !== currentIndex
+                                    )
+                                  };
+                                  return $props.setFormData(updated);
+                                })();
                               }
                             };
                             return (({ customFunction }) => {
@@ -2475,8 +2821,9 @@ function PlasmicAEditProfile__RenderFunc(props: {
                   projectcss.plasmic_mixins,
                   styleTokensClassNames
                 )}
+                defaultValue={$props.formData?.["Office"] ?? null}
                 dropdownMatchSelectWidth={false}
-                mode={"multiple"}
+                mode={"single"}
                 onChange={async (...eventArgs: any) => {
                   generateStateOnChangeProp($state, ["office", "value"]).apply(
                     null,
@@ -2993,6 +3340,7 @@ const PlasmicDescendants = {
     "linkedIn",
     "instagram",
     "x",
+    "education2",
     "education",
     "university",
     "major",
@@ -3024,6 +3372,7 @@ const PlasmicDescendants = {
     "linkedIn",
     "instagram",
     "x",
+    "education2",
     "education",
     "university",
     "major",
@@ -3059,6 +3408,15 @@ const PlasmicDescendants = {
   linkedIn: ["linkedIn"],
   instagram: ["instagram"],
   x: ["x"],
+  education2: [
+    "education2",
+    "education",
+    "university",
+    "major",
+    "graduationYear",
+    "educationLevel",
+    "degree"
+  ],
   education: [
     "education",
     "university",
@@ -3101,6 +3459,7 @@ type NodeDefaultElementType = {
   linkedIn: typeof AntdInput;
   instagram: typeof AntdInput;
   x: typeof AntdInput;
+  education2: "div";
   education: "section";
   university: typeof AntdInput;
   major: typeof AntdInput;
@@ -3194,6 +3553,7 @@ export const PlasmicAEditProfile = Object.assign(
     linkedIn: makeNodeComponent("linkedIn"),
     instagram: makeNodeComponent("instagram"),
     x: makeNodeComponent("x"),
+    education2: makeNodeComponent("education2"),
     education: makeNodeComponent("education"),
     university: makeNodeComponent("university"),
     major: makeNodeComponent("major"),

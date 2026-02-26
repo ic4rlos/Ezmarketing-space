@@ -776,7 +776,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                 >
                   <AntdButton
                     className={classNames("__wab_instance", sty.button__aOGg)}
-                    type={"text"}
+                    type={"ghost"}
                   >
                     <div
                       className={classNames(
@@ -2765,7 +2765,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                 {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                   (() => {
                     try {
-                      return $props.formData || [];
+                      return $props.formData || [1];
                     } catch (e) {
                       if (
                         e instanceof TypeError ||

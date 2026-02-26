@@ -2060,7 +2060,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                                   const updated = {
                                     ...$props.formData,
                                     education: $props.formData.education.filter(
-                                      (_, index) => index !== currentIndex
+                                      (_, index) => index !== $index
                                     )
                                   };
                                   return $props.setFormData(updated);
@@ -2649,8 +2649,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
                                 return (() => {
                                   const updated = {
                                     ...$props.formData,
-                                    education: $props.formData.jobs.filter(
-                                      (_, index) => index !== currentIndex
+                                    jobs: $props.formData.jobs.filter(
+                                      (_, index) => index !== $index
                                     )
                                   };
                                   return $props.setFormData(updated);
@@ -3303,6 +3303,41 @@ function PlasmicAEditProfile__RenderFunc(props: {
                   data-plasmic-name={"done"}
                   data-plasmic-override={overrides.done}
                   className={classNames("__wab_instance", sty.done)}
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["runCode"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return $props.onSave({
+                                "First name": $state.firstName?.value ?? "",
+                                "Last name": $state.lastName?.value ?? "",
+                                Location: $state.location?.value ?? "",
+                                Birthday: $state.birthday?.value ?? "",
+                                LinkedIn: $state.linkedIn?.value ?? "",
+                                Instagram: $state.instagram?.value ?? "",
+                                X: $state.x?.value ?? "",
+                                Impressive: $state.impressive?.value ?? "",
+                                education: $props.formData.education ?? [],
+                                jobs: $props.formData.jobs ?? [],
+                                offices: $props.formData.offices ?? []
+                              });
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
+                    ) {
+                      $steps["runCode"] = await $steps["runCode"];
+                    }
+                  }}
                 >
                   <div
                     className={classNames(

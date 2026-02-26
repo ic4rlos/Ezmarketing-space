@@ -11,7 +11,7 @@ export default function AEditProfile() {
   const [formData, setFormData] = useState<any>({
     education: [],
     jobs: [],
-    offices: [], // agora é string[]
+    offices: [],
   });
   const [loading, setLoading] = useState(true);
 
@@ -20,14 +20,16 @@ export default function AEditProfile() {
   // =========================
   useEffect(() => {
     async function loadUser() {
+      console.log("🔥 AUTH: tentando carregar usuário...");
       const { data } = await supabase.auth.getUser();
+      console.log("🔥 AUTH: usuário carregado:", data.user);
       setUser(data.user ?? null);
     }
     loadUser();
   }, []);
 
   // =========================
-  // LOAD PROFILE + RELAÇÕES
+  // LOAD PROFILE
   // =========================
   useEffect(() => {
     if (!user) {
@@ -36,11 +38,15 @@ export default function AEditProfile() {
     }
 
     async function loadAll() {
+      console.log("🔥 LOAD: carregando profile...");
+
       const { data: profileData } = await supabase
         .from("User profile")
         .select("*")
         .eq("user_id", user.id)
         .maybeSingle();
+
+      console.log("🔥 LOAD: profile encontrado:", profileData);
 
       if (!profileData) {
         setLoading(false);
@@ -49,27 +55,21 @@ export default function AEditProfile() {
 
       const profileId = profileData.id;
 
-      const { data: education } = await supabase
-        .from("Education")
-        .select("*")
-        .eq("User profile_id", profileId);
-
-      const { data: jobs } = await supabase
-        .from("Charge")
-        .select("*")
-        .eq("User profile_id", profileId);
-
       const { data: offices } = await supabase
         .from("Multicharge")
         .select("*")
         .eq("User profile_id", profileId);
 
+      console.log("🔥 LOAD: offices vindos do banco:", offices);
+
       setFormData({
         ...profileData,
-        education: education ?? [],
-        jobs: jobs ?? [],
-        // 🔥 CONVERSÃO CRÍTICA
-        offices: offices?.map(o => o.Office) ?? [],
+        offices: offices ?? [],
+      });
+
+      console.log("🔥 STATE: formData inicial:", {
+        ...profileData,
+        offices: offices ?? [],
       });
 
       setLoading(false);
@@ -82,18 +82,17 @@ export default function AEditProfile() {
   // SAVE
   // =========================
   async function handleSave(payload: any) {
-    if (!user) return;
+    console.log("🚨 BOTÃO DONE CLICADO");
+    console.log("🚨 PAYLOAD RECEBIDO:", payload);
+    console.log("🚨 OFFICES NO PAYLOAD:", payload.offices);
 
-    const {
-      education = [],
-      jobs = [],
-      offices = [], // agora string[]
-      ...profileFields
-    } = payload;
+    if (!user) {
+      console.log("❌ SAVE CANCELADO: user inexistente");
+      return;
+    }
 
-    // =========================
-    // USER PROFILE
-    // =========================
+    const { offices = [], ...profileFields } = payload;
+
     const { data: savedProfile, error: profileError } =
       await supabase
         .from("User profile")
@@ -104,110 +103,57 @@ export default function AEditProfile() {
         .select()
         .single();
 
-    if (profileError || !savedProfile) {
-      console.error("Profile error:", profileError);
+    console.log("🔥 PROFILE UPSERT:", savedProfile);
+    console.log("🔥 PROFILE ERROR:", profileError);
+
+    if (!savedProfile) {
+      console.log("❌ PROFILE NÃO SALVO, abortando offices");
       return;
     }
 
     const profileId = savedProfile.id;
 
-    // =====================================================
-    // EDUCATION
-    // =====================================================
+    console.log("🔥 PREPARANDO MULTICHARGE...");
+    console.log("🔥 OFFICES RECEBIDOS PARA SALVAR:", offices);
 
-    const cleanEducation = education.filter(
-      (e: any) => e.Major && e.Major.trim() !== ""
-    );
-
-    await supabase
-      .from("Education")
-      .delete()
-      .eq("User profile_id", profileId);
-
-    if (cleanEducation.length) {
-      const eduPayload = cleanEducation.map((e: any) => ({
-        University: e.University ?? null,
-        Major: e.Major,
-        "Graduation year": e["Graduation year"] ?? null,
-        "Education level": e["Education level"] ?? null,
-        Degree: e.Degree ?? null,
-        "User profile_id": profileId,
-      }));
-
-      const { error } = await supabase
-        .from("Education")
-        .insert(eduPayload);
-
-      if (error) {
-        console.error("Education insert error:", error);
-        return;
-      }
-    }
-
-    // =====================================================
-    // JOBS
-    // =====================================================
-
-    const cleanJobs = jobs.filter(
-      (j: any) => j.Company && j.Company.trim() !== ""
-    );
-
-    await supabase
-      .from("Charge")
-      .delete()
-      .eq("User profile_id", profileId);
-
-    if (cleanJobs.length) {
-      const jobsPayload = cleanJobs.map((j: any) => ({
-        Charge: j.Charge ?? null,
-        Company: j.Company,
-        "How long in office": j["How long in office"] ?? null,
-        "User profile_id": profileId,
-      }));
-
-      const { error } = await supabase
-        .from("Charge")
-        .insert(jobsPayload);
-
-      if (error) {
-        console.error("Charge insert error:", error);
-        return;
-      }
-    }
-
-    // =====================================================
-    // OFFICES (MULTISELECT CORRIGIDO)
-    // =====================================================
-
-    // 🔥 Remove todos primeiro
-    await supabase
+    // Limpa tudo antes (sentinela bruto)
+    console.log("🔥 DELETANDO OFFICES ANTIGOS...");
+    const { error: deleteError } = await supabase
       .from("Multicharge")
       .delete()
       .eq("User profile_id", profileId);
 
-    const cleanOffices = offices.filter(
-      (o: string) => o && o.trim() !== ""
-    );
+    console.log("🔥 DELETE ERROR:", deleteError);
 
-    if (cleanOffices.length) {
-      const officesPayload = cleanOffices.map((office: string) => ({
-        Office: office,
-        "User profile_id": profileId,
-      }));
-
-      const { error } = await supabase
-        .from("Multicharge")
-        .insert(officesPayload);
-
-      if (error) {
-        console.error("Multicharge insert error:", error);
-        return;
-      }
+    if (!offices || offices.length === 0) {
+      console.log("⚠️ NENHUM OFFICE PARA INSERIR");
+      router.replace("/a-find-a-business/");
+      return;
     }
 
-    // =========================
-    // FINAL
-    // =========================
+    const officesPayload = offices.map((office: string) => ({
+      Office: office,
+      "User profile_id": profileId,
+    }));
+
+    console.log("🔥 VAI INSERIR ISSO EM MULTICHARGE:", officesPayload);
+
+    const { data: insertedData, error: insertError } =
+      await supabase
+        .from("Multicharge")
+        .insert(officesPayload)
+        .select();
+
+    console.log("🔥 INSERT RESULT:", insertedData);
+    console.log("🔥 INSERT ERROR:", insertError);
+
+    if (!insertError) {
+      console.log(
+        "✅ MULTICHARGE SALVO COM SUCESSO. TOTAL:",
+        insertedData?.length
+      );
+    }
+
     router.replace("/a-find-a-business/");
   }
 

@@ -1530,7 +1530,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
                                                     index === currentIndex
                                                       ? {
                                                           ...item,
-                                                          Graduationyear: value
+                                                          ["Graduation year"]:
+                                                            value
                                                         }
                                                       : item
                                                 )
@@ -1580,7 +1581,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                               {
                                 name: "graduationYear[].value",
                                 initFunc: ({ $props, $state, $queries, $q }) =>
-                                  currentItem.Graduationyear
+                                  currentItem["Graduation year"]
                               }
                             ],
                             [__plasmic_idx_0]
@@ -1621,7 +1622,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                               projectcss.plasmic_mixins,
                               styleTokensClassNames
                             ),
-                            defaultValue: currentItem.Educationlevel,
+                            defaultValue: currentItem["Education level"],
 
                             dropdownMatchSelectWidth: false,
                             mode: "single",
@@ -1649,7 +1650,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
                                                     index === currentIndex
                                                       ? {
                                                           ...item,
-                                                          Educationlevel: value
+                                                          ["Education level"]:
+                                                            value
                                                         }
                                                       : item
                                                 )
@@ -1725,7 +1727,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                               {
                                 name: "educationLevel[].value",
                                 initFunc: ({ $props, $state, $queries, $q }) =>
-                                  currentItem.Educationlevel
+                                  currentItem["Education level"]
                               }
                             ],
                             [__plasmic_idx_0]
@@ -2060,7 +2062,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                                   const updated = {
                                     ...$props.formData,
                                     education: $props.formData.education.filter(
-                                      (_, index) => index !== $index
+                                      (_, index) => index !== currentIndex
                                     )
                                   };
                                   return $props.setFormData(updated);
@@ -2277,16 +2279,15 @@ function PlasmicAEditProfile__RenderFunc(props: {
                                             const value = event.target.value;
                                             return $props.setFormData({
                                               ...$props.formData,
-                                              education:
-                                                $props.formData.education.map(
-                                                  (item, index) =>
-                                                    index === currentIndex
-                                                      ? {
-                                                          ...item,
-                                                          Charge: value
-                                                        }
-                                                      : item
-                                                )
+                                              jobs: $props.formData.jobs.map(
+                                                (item, index) =>
+                                                  index === currentIndex
+                                                    ? {
+                                                        ...item,
+                                                        ["Charge"]: value
+                                                      }
+                                                    : item
+                                              )
                                             });
                                           })();
                                         }
@@ -2398,16 +2399,15 @@ function PlasmicAEditProfile__RenderFunc(props: {
                                             const value = event.target.value;
                                             return $props.setFormData({
                                               ...$props.formData,
-                                              education:
-                                                $props.formData.education.map(
-                                                  (item, index) =>
-                                                    index === currentIndex
-                                                      ? {
-                                                          ...item,
-                                                          Company: value
-                                                        }
-                                                      : item
-                                                )
+                                              jobs: $props.formData.jobs.map(
+                                                (item, index) =>
+                                                  index === currentIndex
+                                                    ? {
+                                                        ...item,
+                                                        ["Company"]: value
+                                                      }
+                                                    : item
+                                              )
                                             });
                                           })();
                                         }
@@ -2506,16 +2506,16 @@ function PlasmicAEditProfile__RenderFunc(props: {
                                             const value = event.target.value;
                                             return $props.setFormData({
                                               ...$props.formData,
-                                              education:
-                                                $props.formData.education.map(
-                                                  (item, index) =>
-                                                    index === currentIndex
-                                                      ? {
-                                                          ...item,
-                                                          Howlonginoffice: value
-                                                        }
-                                                      : item
-                                                )
+                                              jobs: $props.formData.jobs.map(
+                                                (item, index) =>
+                                                  index === currentIndex
+                                                    ? {
+                                                        ...item,
+                                                        ["How long in office"]:
+                                                          value
+                                                      }
+                                                    : item
+                                              )
                                             });
                                           })();
                                         }
@@ -2562,7 +2562,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                               {
                                 name: "howLongInOffice[].value",
                                 initFunc: ({ $props, $state, $queries, $q }) =>
-                                  currentItem.Howlonginoffice
+                                  currentItem["How long in office"]
                               }
                             ],
                             [__plasmic_idx_0]
@@ -2650,7 +2650,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                                   const updated = {
                                     ...$props.formData,
                                     jobs: $props.formData.jobs.filter(
-                                      (_, index) => index !== $index
+                                      (_, index) => index !== currentIndex
                                     )
                                   };
                                   return $props.setFormData(updated);

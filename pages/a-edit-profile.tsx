@@ -11,7 +11,7 @@ export default function AEditProfile() {
   const [formData, setFormData] = useState<any>({
     education: [],
     jobs: [],
-    offices: [],
+    offices: [], // agora é string[]
   });
   const [loading, setLoading] = useState(true);
 
@@ -68,7 +68,8 @@ export default function AEditProfile() {
         ...profileData,
         education: education ?? [],
         jobs: jobs ?? [],
-        offices: offices ?? [],
+        // 🔥 CONVERSÃO CRÍTICA
+        offices: offices?.map(o => o.Office) ?? [],
       });
 
       setLoading(false);
@@ -86,7 +87,7 @@ export default function AEditProfile() {
     const {
       education = [],
       jobs = [],
-      offices = [],
+      offices = [], // agora string[]
       ...profileFields
     } = payload;
 
@@ -111,164 +112,97 @@ export default function AEditProfile() {
     const profileId = savedProfile.id;
 
     // =====================================================
-    // EDUCATION (higienizado igual irmão mais velho)
-    // UNIQUE: User profile_id + Major
+    // EDUCATION
     // =====================================================
 
     const cleanEducation = education.filter(
       (e: any) => e.Major && e.Major.trim() !== ""
     );
 
-    const { data: existingEdu } = await supabase
+    await supabase
       .from("Education")
-      .select("id")
+      .delete()
       .eq("User profile_id", profileId);
 
-    const existingEduIds = existingEdu?.map(e => e.id) ?? [];
-    const incomingEduIds = cleanEducation
-      .filter((e: any) => e.id)
-      .map((e: any) => e.id);
-
-    const eduToDelete = existingEduIds.filter(
-      id => !incomingEduIds.includes(id)
-    );
-
-    if (eduToDelete.length) {
-      await supabase
-        .from("Education")
-        .delete()
-        .in("id", eduToDelete);
-    }
-
-    const eduPayload = cleanEducation.map((e: any) => {
-      const base = {
+    if (cleanEducation.length) {
+      const eduPayload = cleanEducation.map((e: any) => ({
         University: e.University ?? null,
         Major: e.Major,
         "Graduation year": e["Graduation year"] ?? null,
         "Education level": e["Education level"] ?? null,
         Degree: e.Degree ?? null,
         "User profile_id": profileId,
-      };
+      }));
 
-      if (e.id !== undefined && e.id !== null) {
-        return { ...base, id: e.id };
-      }
-
-      return base;
-    });
-
-    if (eduPayload.length) {
       const { error } = await supabase
         .from("Education")
-        .upsert(eduPayload, {
-          onConflict: "User profile_id,Major",
-        });
+        .insert(eduPayload);
 
       if (error) {
-        console.error("Education upsert error:", error);
+        console.error("Education insert error:", error);
         return;
       }
     }
 
     // =====================================================
-    // JOBS (Charge)
-    // UNIQUE: User profile_id + Company
+    // JOBS
     // =====================================================
 
     const cleanJobs = jobs.filter(
       (j: any) => j.Company && j.Company.trim() !== ""
     );
 
-    const { data: existingJobs } = await supabase
+    await supabase
       .from("Charge")
-      .select("id")
+      .delete()
       .eq("User profile_id", profileId);
 
-    const existingJobIds = existingJobs?.map(j => j.id) ?? [];
-    const incomingJobIds = cleanJobs
-      .filter((j: any) => j.id)
-      .map((j: any) => j.id);
-
-    const jobsToDelete = existingJobIds.filter(
-      id => !incomingJobIds.includes(id)
-    );
-
-    if (jobsToDelete.length) {
-      await supabase
-        .from("Charge")
-        .delete()
-        .in("id", jobsToDelete);
-    }
-
-    const jobsPayload = cleanJobs.map((j: any) => {
-      const base = {
+    if (cleanJobs.length) {
+      const jobsPayload = cleanJobs.map((j: any) => ({
         Charge: j.Charge ?? null,
         Company: j.Company,
         "How long in office": j["How long in office"] ?? null,
         "User profile_id": profileId,
-      };
+      }));
 
-      if (j.id !== undefined && j.id !== null) {
-        return { ...base, id: j.id };
-      }
-
-      return base;
-    });
-
-    if (jobsPayload.length) {
       const { error } = await supabase
         .from("Charge")
-        .upsert(jobsPayload, {
-          onConflict: "User profile_id,Company",
-        });
+        .insert(jobsPayload);
 
       if (error) {
-        console.error("Charge upsert error:", error);
+        console.error("Charge insert error:", error);
         return;
       }
     }
 
     // =====================================================
-    // OFFICES (sem constraint composta)
+    // OFFICES (MULTISELECT CORRIGIDO)
     // =====================================================
 
-    const { data: existingOffices } = await supabase
+    // 🔥 Remove todos primeiro
+    await supabase
       .from("Multicharge")
-      .select("id")
+      .delete()
       .eq("User profile_id", profileId);
 
-    const existingOfficeIds =
-      existingOffices?.map(o => o.id) ?? [];
-
-    const incomingOfficeIds =
-      offices.filter((o: any) => o.id).map((o: any) => o.id);
-
-    const officesToDelete = existingOfficeIds.filter(
-      id => !incomingOfficeIds.includes(id)
+    const cleanOffices = offices.filter(
+      (o: string) => o && o.trim() !== ""
     );
 
-    if (officesToDelete.length) {
-      await supabase
-        .from("Multicharge")
-        .delete()
-        .in("id", officesToDelete);
-    }
-
-    const officesPayload = offices.map((o: any) => {
-      const base = {
-        Office: o.Office ?? null,
+    if (cleanOffices.length) {
+      const officesPayload = cleanOffices.map((office: string) => ({
+        Office: office,
         "User profile_id": profileId,
-      };
+      }));
 
-      if (o.id !== undefined && o.id !== null) {
-        return { ...base, id: o.id };
+      const { error } = await supabase
+        .from("Multicharge")
+        .insert(officesPayload);
+
+      if (error) {
+        console.error("Multicharge insert error:", error);
+        return;
       }
-
-      return base;
-    });
-
-    if (officesPayload.length) {
-      await supabase.from("Multicharge").upsert(officesPayload);
     }
 
     // =========================

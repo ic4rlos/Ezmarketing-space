@@ -665,6 +665,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 >
                   <AntdButton
                     className={classNames("__wab_instance", sty.button__krzF)}
+                    type={"ghost"}
                   >
                     <div
                       className={classNames(
@@ -2058,15 +2059,12 @@ function PlasmicAEditProfile__RenderFunc(props: {
                         ? (() => {
                             const actionArgs = {
                               customFunction: async () => {
-                                return (() => {
-                                  const updated = {
-                                    ...$props.formData,
-                                    education: $props.formData.education.filter(
-                                      (_, index) => index !== currentIndex
-                                    )
-                                  };
-                                  return $props.setFormData(updated);
-                                })();
+                                return $props.setFormData({
+                                  ...$props.formData,
+                                  education: $props.formData.education.filter(
+                                    (_, index) => index !== $index
+                                  )
+                                });
                               }
                             };
                             return (({ customFunction }) => {
@@ -2646,15 +2644,12 @@ function PlasmicAEditProfile__RenderFunc(props: {
                         ? (() => {
                             const actionArgs = {
                               customFunction: async () => {
-                                return (() => {
-                                  const updated = {
-                                    ...$props.formData,
-                                    jobs: $props.formData.jobs.filter(
-                                      (_, index) => index !== currentIndex
-                                    )
-                                  };
-                                  return $props.setFormData(updated);
-                                })();
+                                return $props.setFormData({
+                                  ...$props.formData,
+                                  jobs: $props.formData.jobs.filter(
+                                    (_, index) => index !== $index
+                                  )
+                                });
                               }
                             };
                             return (({ customFunction }) => {

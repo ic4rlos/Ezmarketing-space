@@ -8,7 +8,6 @@ export default function AEditProfile() {
   const supabase = getSupabaseA();
 
   const [user, setUser] = useState<any>(null);
-  const [profile, setProfile] = useState<any>(null);
   const [formData, setFormData] = useState<any>({
     education: [],
     jobs: [],
@@ -16,17 +15,16 @@ export default function AEditProfile() {
   });
   const [loading, setLoading] = useState(true);
 
-  // 🔹 1️⃣ Pega usuário autenticado
+  // 🔹 1️⃣ AUTH
   useEffect(() => {
     async function loadUser() {
-      const { data, error } = await supabase.auth.getUser();
-      if (error) console.error("Auth error:", error);
+      const { data } = await supabase.auth.getUser();
       setUser(data.user ?? null);
     }
     loadUser();
   }, []);
 
-  // 🔹 2️⃣ Carrega profile + filhos
+  // 🔹 2️⃣ LOAD PROFILE + RELAÇÕES
   useEffect(() => {
     if (!user) {
       setLoading(false);
@@ -34,24 +32,16 @@ export default function AEditProfile() {
     }
 
     async function loadAll() {
-      const { data: profileData, error: profileError } = await supabase
+      const { data: profileData } = await supabase
         .from("User profile")
         .select("*")
         .eq("user_id", user.id)
         .single();
 
-      if (profileError && profileError.code !== "PGRST116") {
-        console.error("Profile error:", profileError);
-        setLoading(false);
-        return;
-      }
-
       if (!profileData) {
         setLoading(false);
         return;
       }
-
-      setProfile(profileData);
 
       const profileId = profileData.id;
 
@@ -83,18 +73,13 @@ export default function AEditProfile() {
     loadAll();
   }, [user]);
 
-  // 🔹 3️⃣ SAVE COMPLETO
+  // 🔹 3️⃣ SAVE
   async function handleSave(payload: any) {
     if (!user) return;
 
-    const {
-      education,
-      jobs,
-      offices,
-      ...profileFields
-    } = payload;
+    const { education = [], jobs = [], offices = [], ...profileFields } = payload;
 
-    // 1️⃣ Upsert User profile
+    // 1️⃣ USER PROFILE
     const { data: savedProfile, error: profileError } =
       await supabase
         .from("User profile")
@@ -106,23 +91,26 @@ export default function AEditProfile() {
         .single();
 
     if (profileError) {
-      console.error("Profile upsert error:", profileError);
+      console.error(profileError);
       return;
     }
 
     const profileId = savedProfile.id;
 
-    // ---------- EDUCATION ----------
+    // =========================
+    // EDUCATION
+    // =========================
+
     const { data: existingEdu } = await supabase
       .from("Education")
-      .select("id")
+      .select("id, Major")
       .eq("User profile_id", profileId);
 
-    const existingEduIds = existingEdu?.map((e) => e.id) ?? [];
+    const existingEduIds = existingEdu?.map(e => e.id) ?? [];
     const incomingEduIds = education.filter((e:any)=>e.id).map((e:any)=>e.id);
 
     const eduToDelete = existingEduIds.filter(
-      (id) => !incomingEduIds.includes(id)
+      id => !incomingEduIds.includes(id)
     );
 
     if (eduToDelete.length) {
@@ -137,23 +125,31 @@ export default function AEditProfile() {
       "User profile_id": profileId,
     }));
 
-    await supabase.from("Education").upsert(eduPayload);
+    await supabase.from("Education").upsert(eduPayload, {
+      onConflict: "User profile_id,Major"
+    });
 
-    // ---------- JOBS ----------
+    // =========================
+    // JOBS (Charge)
+    // =========================
+
     const { data: existingJobs } = await supabase
       .from("Charge")
-      .select("id")
+      .select("id, Company")
       .eq("User profile_id", profileId);
 
-    const existingJobIds = existingJobs?.map((j) => j.id) ?? [];
+    const existingJobIds = existingJobs?.map(j => j.id) ?? [];
     const incomingJobIds = jobs.filter((j:any)=>j.id).map((j:any)=>j.id);
 
     const jobsToDelete = existingJobIds.filter(
-      (id) => !incomingJobIds.includes(id)
+      id => !incomingJobIds.includes(id)
     );
 
     if (jobsToDelete.length) {
-      await supabase.from("Charge").delete().in("id", jobsToDelete);
+      await supabase
+        .from("Charge")
+        .delete()
+        .in("id", jobsToDelete);
     }
 
     const jobsPayload = jobs.map((j:any) => ({
@@ -161,22 +157,27 @@ export default function AEditProfile() {
       "User profile_id": profileId,
     }));
 
-    await supabase.from("Charge").upsert(jobsPayload);
+    await supabase.from("Charge").upsert(jobsPayload, {
+      onConflict: "User profile_id,Company"
+    });
 
-    // ---------- OFFICES ----------
+    // =========================
+    // OFFICES (sem constraint)
+    // =========================
+
     const { data: existingOffices } = await supabase
       .from("Multicharge")
       .select("id")
       .eq("User profile_id", profileId);
 
     const existingOfficeIds =
-      existingOffices?.map((o) => o.id) ?? [];
+      existingOffices?.map(o => o.id) ?? [];
 
     const incomingOfficeIds =
       offices.filter((o:any)=>o.id).map((o:any)=>o.id);
 
     const officesToDelete = existingOfficeIds.filter(
-      (id) => !incomingOfficeIds.includes(id)
+      id => !incomingOfficeIds.includes(id)
     );
 
     if (officesToDelete.length) {
@@ -193,7 +194,7 @@ export default function AEditProfile() {
 
     await supabase.from("Multicharge").upsert(officesPayload);
 
-    // ✅ FINAL
+    // 🔥 FINAL
     router.replace("/find-a-affiliate/");
   }
 

@@ -15,7 +15,9 @@ export default function AEditProfile() {
   });
   const [loading, setLoading] = useState(true);
 
-  // 🔹 1️⃣ AUTH
+  // =========================
+  // 1️⃣ AUTH
+  // =========================
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabase.auth.getUser();
@@ -24,7 +26,9 @@ export default function AEditProfile() {
     loadUser();
   }, []);
 
-  // 🔹 2️⃣ LOAD PROFILE + RELAÇÕES
+  // =========================
+  // 2️⃣ LOAD PROFILE + RELAÇÕES
+  // =========================
   useEffect(() => {
     if (!user) {
       setLoading(false);
@@ -36,7 +40,7 @@ export default function AEditProfile() {
         .from("User profile")
         .select("*")
         .eq("user_id", user.id)
-        .single();
+        .maybeSingle(); // evita 406
 
       if (!profileData) {
         setLoading(false);
@@ -73,13 +77,22 @@ export default function AEditProfile() {
     loadAll();
   }, [user]);
 
-  // 🔹 3️⃣ SAVE
+  // =========================
+  // 3️⃣ SAVE
+  // =========================
   async function handleSave(payload: any) {
     if (!user) return;
 
-    const { education = [], jobs = [], offices = [], ...profileFields } = payload;
+    const {
+      education = [],
+      jobs = [],
+      offices = [],
+      ...profileFields
+    } = payload;
 
-    // 1️⃣ USER PROFILE
+    // =========================
+    // USER PROFILE
+    // =========================
     const { data: savedProfile, error: profileError } =
       await supabase
         .from("User profile")
@@ -90,8 +103,8 @@ export default function AEditProfile() {
         .select()
         .single();
 
-    if (profileError) {
-      console.error(profileError);
+    if (profileError || !savedProfile) {
+      console.error("Profile error:", profileError);
       return;
     }
 
@@ -99,15 +112,18 @@ export default function AEditProfile() {
 
     // =========================
     // EDUCATION
+    // UNIQUE: User profile_id + Major
     // =========================
 
     const { data: existingEdu } = await supabase
       .from("Education")
-      .select("id, Major")
+      .select("id")
       .eq("User profile_id", profileId);
 
     const existingEduIds = existingEdu?.map(e => e.id) ?? [];
-    const incomingEduIds = education.filter((e:any)=>e.id).map((e:any)=>e.id);
+    const incomingEduIds = education
+      .filter((e: any) => e.id)
+      .map((e: any) => e.id);
 
     const eduToDelete = existingEduIds.filter(
       id => !incomingEduIds.includes(id)
@@ -120,26 +136,38 @@ export default function AEditProfile() {
         .in("id", eduToDelete);
     }
 
-    const eduPayload = education.map((e:any) => ({
-      ...e,
+    const eduPayload = education.map((e: any) => ({
+      id: e.id ?? undefined,
+      University: e.University ?? null,
+      Major: e.Major ?? null,
+      "Graduation year": e["Graduation year"] ?? null,
+      "Education level": e["Education level"] ?? null,
+      Degree: e.Degree ?? null,
       "User profile_id": profileId,
     }));
 
-    await supabase.from("Education").upsert(eduPayload, {
-      onConflict: "User profile_id,Major"
-    });
+    if (eduPayload.length) {
+      await supabase
+        .from("Education")
+        .upsert(eduPayload, {
+          onConflict: "User profile_id,Major",
+        });
+    }
 
     // =========================
     // JOBS (Charge)
+    // UNIQUE: User profile_id + Company
     // =========================
 
     const { data: existingJobs } = await supabase
       .from("Charge")
-      .select("id, Company")
+      .select("id")
       .eq("User profile_id", profileId);
 
     const existingJobIds = existingJobs?.map(j => j.id) ?? [];
-    const incomingJobIds = jobs.filter((j:any)=>j.id).map((j:any)=>j.id);
+    const incomingJobIds = jobs
+      .filter((j: any) => j.id)
+      .map((j: any) => j.id);
 
     const jobsToDelete = existingJobIds.filter(
       id => !incomingJobIds.includes(id)
@@ -152,17 +180,24 @@ export default function AEditProfile() {
         .in("id", jobsToDelete);
     }
 
-    const jobsPayload = jobs.map((j:any) => ({
-      ...j,
+    const jobsPayload = jobs.map((j: any) => ({
+      id: j.id ?? undefined,
+      Charge: j.Charge ?? null,
+      Company: j.Company ?? null,
+      "How long in office": j["How long in office"] ?? null,
       "User profile_id": profileId,
     }));
 
-    await supabase.from("Charge").upsert(jobsPayload, {
-      onConflict: "User profile_id,Company"
-    });
+    if (jobsPayload.length) {
+      await supabase
+        .from("Charge")
+        .upsert(jobsPayload, {
+          onConflict: "User profile_id,Company",
+        });
+    }
 
     // =========================
-    // OFFICES (sem constraint)
+    // OFFICES (Multicharge)
     // =========================
 
     const { data: existingOffices } = await supabase
@@ -174,7 +209,7 @@ export default function AEditProfile() {
       existingOffices?.map(o => o.id) ?? [];
 
     const incomingOfficeIds =
-      offices.filter((o:any)=>o.id).map((o:any)=>o.id);
+      offices.filter((o: any) => o.id).map((o: any) => o.id);
 
     const officesToDelete = existingOfficeIds.filter(
       id => !incomingOfficeIds.includes(id)
@@ -187,14 +222,21 @@ export default function AEditProfile() {
         .in("id", officesToDelete);
     }
 
-    const officesPayload = offices.map((o:any) => ({
-      ...o,
+    const officesPayload = offices.map((o: any) => ({
+      id: o.id ?? undefined,
+      Office: o.Office ?? null, // ajuste se sua coluna tiver outro nome
       "User profile_id": profileId,
     }));
 
-    await supabase.from("Multicharge").upsert(officesPayload);
+    if (officesPayload.length) {
+      await supabase
+        .from("Multicharge")
+        .upsert(officesPayload);
+    }
 
-    // 🔥 FINAL
+    // =========================
+    // FINAL
+    // =========================
     router.replace("/a-find-a-business/");
   }
 

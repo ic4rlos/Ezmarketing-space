@@ -2838,12 +2838,13 @@ function PlasmicAEditProfile__RenderFunc(props: {
                       ? (() => {
                           const actionArgs = {
                             customFunction: async () => {
-                              return (value, option) => {
-                                console.log("SELECT ALTERADO VALUE:", value);
-                                console.log("SELECT ALTERADO OPTION:", option);
+                              return value => {
+                                console.log("SELECT ALTERADO:", value);
+                                console.log("TIPO:", typeof value);
+                                console.log("É ARRAY?", Array.isArray(value));
                                 $props.setFormData({
                                   ...$props.formData,
-                                  offices: value
+                                  offices: [...value]
                                 });
                               };
                             }
@@ -2862,20 +2863,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                     }
                   }).apply(null, eventArgs);
                 }}
-                options={(() => {
-                  const __composite = [
-                    { type: "option", label: null, value: null },
-                    { type: "option", label: null, value: null },
-                    { type: "option", label: null, value: null }
-                  ];
-                  __composite["0"]["label"] = "Creative Director";
-                  __composite["0"]["value"] = "aaaaaa";
-                  __composite["1"]["label"] = "Art Director";
-                  __composite["1"]["value"] = "value";
-                  __composite["2"]["label"] = "Graphic Designer";
-                  __composite["2"]["value"] = "sssssssssssss";
-                  return __composite;
-                })()}
+                options={[]}
                 placeholder={
                   <div
                     className={classNames(

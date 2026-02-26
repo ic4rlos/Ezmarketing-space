@@ -16,7 +16,7 @@ export default function AEditProfile() {
   const [loading, setLoading] = useState(true);
 
   // =========================
-  // 1️⃣ AUTH
+  // AUTH
   // =========================
   useEffect(() => {
     async function loadUser() {
@@ -27,7 +27,7 @@ export default function AEditProfile() {
   }, []);
 
   // =========================
-  // 2️⃣ LOAD PROFILE + RELAÇÕES
+  // LOAD PROFILE + RELAÇÕES
   // =========================
   useEffect(() => {
     if (!user) {
@@ -40,7 +40,7 @@ export default function AEditProfile() {
         .from("User profile")
         .select("*")
         .eq("user_id", user.id)
-        .maybeSingle(); // evita 406
+        .maybeSingle();
 
       if (!profileData) {
         setLoading(false);
@@ -78,7 +78,7 @@ export default function AEditProfile() {
   }, [user]);
 
   // =========================
-  // 3️⃣ SAVE
+  // SAVE
   // =========================
   async function handleSave(payload: any) {
     if (!user) return;
@@ -110,10 +110,14 @@ export default function AEditProfile() {
 
     const profileId = savedProfile.id;
 
-    // =========================
-    // EDUCATION
+    // =====================================================
+    // EDUCATION (higienizado igual irmão mais velho)
     // UNIQUE: User profile_id + Major
-    // =========================
+    // =====================================================
+
+    const cleanEducation = education.filter(
+      (e: any) => e.Major && e.Major.trim() !== ""
+    );
 
     const { data: existingEdu } = await supabase
       .from("Education")
@@ -121,7 +125,7 @@ export default function AEditProfile() {
       .eq("User profile_id", profileId);
 
     const existingEduIds = existingEdu?.map(e => e.id) ?? [];
-    const incomingEduIds = education
+    const incomingEduIds = cleanEducation
       .filter((e: any) => e.id)
       .map((e: any) => e.id);
 
@@ -136,28 +140,44 @@ export default function AEditProfile() {
         .in("id", eduToDelete);
     }
 
-    const eduPayload = education.map((e: any) => ({
-      id: e.id ?? undefined,
-      University: e.University ?? null,
-      Major: e.Major ?? null,
-      "Graduation year": e["Graduation year"] ?? null,
-      "Education level": e["Education level"] ?? null,
-      Degree: e.Degree ?? null,
-      "User profile_id": profileId,
-    }));
+    const eduPayload = cleanEducation.map((e: any) => {
+      const base = {
+        University: e.University ?? null,
+        Major: e.Major,
+        "Graduation year": e["Graduation year"] ?? null,
+        "Education level": e["Education level"] ?? null,
+        Degree: e.Degree ?? null,
+        "User profile_id": profileId,
+      };
+
+      if (e.id !== undefined && e.id !== null) {
+        return { ...base, id: e.id };
+      }
+
+      return base;
+    });
 
     if (eduPayload.length) {
-      await supabase
+      const { error } = await supabase
         .from("Education")
         .upsert(eduPayload, {
           onConflict: "User profile_id,Major",
         });
+
+      if (error) {
+        console.error("Education upsert error:", error);
+        return;
+      }
     }
 
-    // =========================
+    // =====================================================
     // JOBS (Charge)
     // UNIQUE: User profile_id + Company
-    // =========================
+    // =====================================================
+
+    const cleanJobs = jobs.filter(
+      (j: any) => j.Company && j.Company.trim() !== ""
+    );
 
     const { data: existingJobs } = await supabase
       .from("Charge")
@@ -165,7 +185,7 @@ export default function AEditProfile() {
       .eq("User profile_id", profileId);
 
     const existingJobIds = existingJobs?.map(j => j.id) ?? [];
-    const incomingJobIds = jobs
+    const incomingJobIds = cleanJobs
       .filter((j: any) => j.id)
       .map((j: any) => j.id);
 
@@ -180,25 +200,37 @@ export default function AEditProfile() {
         .in("id", jobsToDelete);
     }
 
-    const jobsPayload = jobs.map((j: any) => ({
-      id: j.id ?? undefined,
-      Charge: j.Charge ?? null,
-      Company: j.Company ?? null,
-      "How long in office": j["How long in office"] ?? null,
-      "User profile_id": profileId,
-    }));
+    const jobsPayload = cleanJobs.map((j: any) => {
+      const base = {
+        Charge: j.Charge ?? null,
+        Company: j.Company,
+        "How long in office": j["How long in office"] ?? null,
+        "User profile_id": profileId,
+      };
+
+      if (j.id !== undefined && j.id !== null) {
+        return { ...base, id: j.id };
+      }
+
+      return base;
+    });
 
     if (jobsPayload.length) {
-      await supabase
+      const { error } = await supabase
         .from("Charge")
         .upsert(jobsPayload, {
           onConflict: "User profile_id,Company",
         });
+
+      if (error) {
+        console.error("Charge upsert error:", error);
+        return;
+      }
     }
 
-    // =========================
-    // OFFICES (Multicharge)
-    // =========================
+    // =====================================================
+    // OFFICES (sem constraint composta)
+    // =====================================================
 
     const { data: existingOffices } = await supabase
       .from("Multicharge")
@@ -222,16 +254,21 @@ export default function AEditProfile() {
         .in("id", officesToDelete);
     }
 
-    const officesPayload = offices.map((o: any) => ({
-      id: o.id ?? undefined,
-      Office: o.Office ?? null, // ajuste se sua coluna tiver outro nome
-      "User profile_id": profileId,
-    }));
+    const officesPayload = offices.map((o: any) => {
+      const base = {
+        Office: o.Office ?? null,
+        "User profile_id": profileId,
+      };
+
+      if (o.id !== undefined && o.id !== null) {
+        return { ...base, id: o.id };
+      }
+
+      return base;
+    });
 
     if (officesPayload.length) {
-      await supabase
-        .from("Multicharge")
-        .upsert(officesPayload);
+      await supabase.from("Multicharge").upsert(officesPayload);
     }
 
     // =========================

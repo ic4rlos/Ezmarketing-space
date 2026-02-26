@@ -2824,7 +2824,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 )}
                 defaultValue={$props.formData?.["Office"] ?? null}
                 dropdownMatchSelectWidth={false}
-                mode={"single"}
+                mode={"multiple"}
                 onChange={async (...eventArgs: any) => {
                   generateStateOnChangeProp($state, ["office", "value"]).apply(
                     null,

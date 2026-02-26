@@ -2838,13 +2838,10 @@ function PlasmicAEditProfile__RenderFunc(props: {
                       ? (() => {
                           const actionArgs = {
                             customFunction: async () => {
-                              return (() => {
-                                const value = event;
-                                return $props.setFormData({
-                                  ...$props.formData,
-                                  offices: value ?? []
-                                });
-                              })();
+                              return $props.setFormData({
+                                ...$props.formData,
+                                offices: event
+                              });
                             }
                           };
                           return (({ customFunction }) => {

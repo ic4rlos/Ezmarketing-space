@@ -2830,6 +2830,44 @@ function PlasmicAEditProfile__RenderFunc(props: {
                     null,
                     eventArgs
                   );
+
+                  (async (value, option) => {
+                    const $steps = {};
+
+                    $steps["runCode"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return (() => {
+                                const value = event.target.value;
+                                return $props.setFormData({
+                                  ...$props.formData,
+                                  offices: $props.formData.offices.map(
+                                    (item, index) =>
+                                      index === currentIndex
+                                        ? {
+                                            ...item,
+                                            Office: value
+                                          }
+                                        : item
+                                  )
+                                });
+                              })();
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
+                    ) {
+                      $steps["runCode"] = await $steps["runCode"];
+                    }
+                  }).apply(null, eventArgs);
                 }}
                 options={(() => {
                   const __composite = [

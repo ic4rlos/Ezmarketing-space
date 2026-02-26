@@ -386,7 +386,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.formData.offices || null
+          $props.formData.offices ?? []
       },
       {
         path: "impressive.value",
@@ -2822,7 +2822,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                   projectcss.plasmic_mixins,
                   styleTokensClassNames
                 )}
-                defaultValue={$props.formData.offices || null}
+                defaultValue={$props.formData.offices ?? []}
                 dropdownMatchSelectWidth={false}
                 mode={"multiple"}
                 onChange={async (...eventArgs: any) => {
@@ -2839,6 +2839,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                           const actionArgs = {
                             customFunction: async () => {
                               return value => {
+                                console.log("SELECT ALTERADO:", value);
                                 $props.setFormData({
                                   ...$props.formData,
                                   offices: value

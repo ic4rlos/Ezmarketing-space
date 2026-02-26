@@ -1557,7 +1557,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                             placeholder: "Graduation year (or expected)",
                             readOnly: false,
                             size: "middle",
-                            type: "text",
+                            type: "date",
                             value: generateStateValueProp($state, [
                               "graduationYear",
                               __plasmic_idx_0,
@@ -2059,12 +2059,14 @@ function PlasmicAEditProfile__RenderFunc(props: {
                         ? (() => {
                             const actionArgs = {
                               customFunction: async () => {
-                                return $props.setFormData({
-                                  ...$props.formData,
-                                  education: $props.formData.education.filter(
-                                    (_, index) => index !== $index
-                                  )
-                                });
+                                return (() => {
+                                  const updated =
+                                    $props.formData.education.slice(0, -1);
+                                  return $props.setFormData({
+                                    ...$props.formData,
+                                    education: updated
+                                  });
+                                })();
                               }
                             };
                             return (({ customFunction }) => {
@@ -2644,12 +2646,16 @@ function PlasmicAEditProfile__RenderFunc(props: {
                         ? (() => {
                             const actionArgs = {
                               customFunction: async () => {
-                                return $props.setFormData({
-                                  ...$props.formData,
-                                  jobs: $props.formData.jobs.filter(
-                                    (_, index) => index !== $index
-                                  )
-                                });
+                                return (() => {
+                                  const updated = $props.formData.jobs.slice(
+                                    0,
+                                    -1
+                                  );
+                                  return $props.setFormData({
+                                    ...$props.formData,
+                                    jobs: updated
+                                  });
+                                })();
                               }
                             };
                             return (({ customFunction }) => {

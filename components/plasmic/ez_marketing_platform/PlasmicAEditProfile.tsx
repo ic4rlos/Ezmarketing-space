@@ -2838,8 +2838,9 @@ function PlasmicAEditProfile__RenderFunc(props: {
                       ? (() => {
                           const actionArgs = {
                             customFunction: async () => {
-                              return value => {
-                                console.log("SELECT ALTERADO:", value);
+                              return (value, option) => {
+                                console.log("SELECT ALTERADO VALUE:", value);
+                                console.log("SELECT ALTERADO OPTION:", option);
                                 $props.setFormData({
                                   ...$props.formData,
                                   offices: value

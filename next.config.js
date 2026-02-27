@@ -1,13 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["antd", "@ant-design/icons"],
-  experimental: {
-    esmExternals: "loose",
-  },
-
   eslint: {
     ignoreDuringBuilds: true,
   },
+  trailingSlash: true,
+  reactStrictMode: true,
+
+  // 🔥 CORREÇÃO DO ANTD
+  transpilePackages: ["antd", "@ant-design/icons", "rc-util"],
 };
 
-module.exports = nextConfig;
+export default nextConfig;

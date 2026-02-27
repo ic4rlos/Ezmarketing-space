@@ -12,6 +12,7 @@
     "@ant-design/icons": "^6.1.0",
     "@ant-design/pro-components": "^2.6.4",
     "antd": "^5.22.0",
+    "react-easy-crop": "^4.5.1",
     "@plasmicapp/cli": "^0.1.359",
     "@plasmicapp/loader-nextjs": "^1.0.237",
     "@plasmicapp/react-web": "^0.2.422",

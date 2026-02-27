@@ -7,6 +7,8 @@ import CropUpload from "../components/CropUpload";
 
 registerComponent(CropUpload, {
   name: "CropUpload",
+  importPath: "../components/CropUpload",
+  isDefaultExport: true,
   props: {
     onChange: {
       type: "eventHandler",

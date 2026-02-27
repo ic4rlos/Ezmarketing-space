@@ -1,8 +1,16 @@
 import * as React from "react";
-import { PlasmicCanvasHost, registerComponent } from "@plasmicapp/react-web/lib/host";
+import dynamic from "next/dynamic";
+import { registerComponent } from "@plasmicapp/react-web/lib/host";
 import CropUpload from "../components/CropUpload";
 
-// Register the component for the classic host mode
+// 🔒 Carregar o PlasmicCanvasHost apenas no client (sem SSR)
+const PlasmicCanvasHost = dynamic(
+  () =>
+    import("@plasmicapp/react-web/lib/host").then((m) => m.PlasmicCanvasHost),
+  { ssr: false }
+);
+
+// Registrar o componente customizado
 registerComponent(CropUpload, {
   name: "CropUpload",
   importPath: "../components/CropUpload",
@@ -34,5 +42,5 @@ export default function PlasmicHost() {
   return <PlasmicCanvasHost />;
 }
 
-// prevent heavy pre-render behavior that can cause module resolution at build time
-export const dynamic = "force-dynamic";
+// Evita pré-render pesado que pode causar resolução de módulos no build
+export const dynamicConfig = "force-dynamic";

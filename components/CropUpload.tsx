@@ -1,9 +1,10 @@
 "use client";
 
-import React from 'react';
-import ImgCrop from 'antd-img-crop';
-import { Upload } from 'antd';
-import { UploadFile } from 'antd/lib/upload/interface';
+import React from "react";
+import ImgCrop from "antd-img-crop";
+import { Upload } from "antd";
+import { UploadFile } from "antd/lib/upload/interface";
+import { PlusOutlined } from "@ant-design/icons";
 
 export interface CropUploadProps {
   className?: string;
@@ -19,6 +20,26 @@ export default function CropUpload({
   children,
   ...props
 }: CropUploadProps) {
+  const hasChildren = React.Children.count(children) > 0;
+
+  const defaultUI = (
+    <div
+      style={{
+        width: 96,
+        height: 96,
+        border: "1px dashed #d9d9d9",
+        borderRadius: "50%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        cursor: "pointer",
+        background: "#fafafa",
+      }}
+    >
+      <PlusOutlined />
+    </div>
+  );
+
   return (
     <ImgCrop
       showGrid
@@ -39,7 +60,7 @@ export default function CropUpload({
         }}
         {...props}
       >
-        {children}
+        {hasChildren ? children : defaultUI}
       </Upload>
     </ImgCrop>
   );

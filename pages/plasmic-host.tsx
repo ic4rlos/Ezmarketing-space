@@ -1,3 +1,6 @@
+export const runtime = "edge";
+export const dynamic = "force-dynamic";
+
 import * as React from "react";
 import nextDynamic from "next/dynamic";
 import { registerComponent } from "@plasmicapp/react-web/lib/host";
@@ -41,6 +44,3 @@ registerComponent(CropUpload, {
 export default function PlasmicHost() {
   return <PlasmicCanvasHost />;
 }
-
-// Nota: export name correta para controlar comportamento de renderização do Next
-export const dynamic = "force-dynamic";

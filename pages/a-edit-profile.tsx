@@ -84,6 +84,13 @@ export default function AEditProfile() {
   }, [user]);
 
   // =========================
+  // MONITORAR MUDANÇAS NO FORMDATA
+  // =========================
+  useEffect(() => {
+    console.log("FORMDATA ATUALIZADO:", formData);
+  }, [formData]);
+
+  // =========================
   // SAVE
   // =========================
   async function handleSave(payload: any) {

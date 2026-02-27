@@ -1,10 +1,10 @@
 import * as React from "react";
-import dynamic from "next/dynamic";
+import nextDynamic from "next/dynamic";
 import { registerComponent } from "@plasmicapp/react-web/lib/host";
 import CropUpload from "../components/CropUpload";
 
 // Carregar o PlasmicCanvasHost apenas no client (sem SSR)
-const PlasmicCanvasHost = dynamic(
+const PlasmicCanvasHost = nextDynamic(
   () =>
     import("@plasmicapp/react-web/lib/host").then((m) => m.PlasmicCanvasHost),
   { ssr: false }

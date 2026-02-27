@@ -15,7 +15,7 @@
     "@plasmicapp/cli": "^0.1.359",
     "@plasmicapp/loader-nextjs": "^1.0.237",
     "@plasmicapp/react-web": "^0.2.422",
-    "@plasmicpkgs/antd5": "^0.0.251"
+    "@plasmicpkgs/antd5": "^0.0.251",
     "@plasmicpkgs/lottie-react": "^0.0.222",
     "@plasmicpkgs/plasmic-basic-components": "^0.0.259",
     "@plasmicpkgs/plasmic-cms": "^0.0.295",

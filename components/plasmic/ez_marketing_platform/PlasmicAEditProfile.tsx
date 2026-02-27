@@ -2874,8 +2874,36 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 value={generateStateValueProp($state, ["office", "value"])}
               >
                 <AntdOption
+                  className={classNames("__wab_instance", sty.option___0MHqu)}
+                  value={"Junior Marketing Associate"}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__guaiu
+                    )}
+                  >
+                    {"Junior Marketing Associate"}
+                  </div>
+                </AntdOption>
+                <AntdOption
+                  className={classNames("__wab_instance", sty.option__uExkv)}
+                  value={"Copywriter"}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___8G98J
+                    )}
+                  >
+                    {"Copywriter"}
+                  </div>
+                </AntdOption>
+                <AntdOption
                   className={classNames("__wab_instance", sty.option__emHlh)}
-                  value={"23"}
+                  value={"Business Development Manager"}
                 >
                   <div
                     className={classNames(
@@ -2889,7 +2917,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 </AntdOption>
                 <AntdOption
                   className={classNames("__wab_instance", sty.option___8Lqdl)}
-                  value={"22"}
+                  value={"Influencer Marketing Manager"}
                 >
                   <div
                     className={classNames(
@@ -2903,7 +2931,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 </AntdOption>
                 <AntdOption
                   className={classNames("__wab_instance", sty.option__esN4)}
-                  value={"21"}
+                  value={"Marketing Automation Specialist"}
                 >
                   <div
                     className={classNames(
@@ -2917,7 +2945,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 </AntdOption>
                 <AntdOption
                   className={classNames("__wab_instance", sty.option__xs2Mu)}
-                  value={"20"}
+                  value={"Email Marketing Specialist"}
                 >
                   <div
                     className={classNames(
@@ -2931,7 +2959,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 </AntdOption>
                 <AntdOption
                   className={classNames("__wab_instance", sty.option__eNSsz)}
-                  value={"19"}
+                  value={"Data Analyst"}
                 >
                   <div
                     className={classNames(
@@ -2944,22 +2972,8 @@ function PlasmicAEditProfile__RenderFunc(props: {
                   </div>
                 </AntdOption>
                 <AntdOption
-                  className={classNames("__wab_instance", sty.option___0MHqu)}
-                  value={"180"}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__guaiu
-                    )}
-                  >
-                    {"Junior Marketing Associate"}
-                  </div>
-                </AntdOption>
-                <AntdOption
                   className={classNames("__wab_instance", sty.option__ytyrg)}
-                  value={"18"}
+                  value={"Marketing Coordinator"}
                 >
                   <div
                     className={classNames(
@@ -2973,7 +2987,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 </AntdOption>
                 <AntdOption
                   className={classNames("__wab_instance", sty.option__oPwDy)}
-                  value={"17"}
+                  value={"Videographer"}
                 >
                   <div
                     className={classNames(
@@ -2987,7 +3001,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 </AntdOption>
                 <AntdOption
                   className={classNames("__wab_instance", sty.option___1F1Rr)}
-                  value={"16"}
+                  value={"Public Relations Specialist"}
                 >
                   <div
                     className={classNames(
@@ -3001,7 +3015,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 </AntdOption>
                 <AntdOption
                   className={classNames("__wab_instance", sty.option__s992A)}
-                  value={"15"}
+                  value={"Marketing Analyst"}
                 >
                   <div
                     className={classNames(
@@ -3015,7 +3029,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 </AntdOption>
                 <AntdOption
                   className={classNames("__wab_instance", sty.option__nvUnP)}
-                  value={"14"}
+                  value={"UX/UI Designer"}
                 >
                   <div
                     className={classNames(
@@ -3029,7 +3043,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 </AntdOption>
                 <AntdOption
                   className={classNames("__wab_instance", sty.option___7Xl45)}
-                  value={"13"}
+                  value={"Project Manager"}
                 >
                   <div
                     className={classNames(
@@ -3043,7 +3057,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 </AntdOption>
                 <AntdOption
                   className={classNames("__wab_instance", sty.option__grq09)}
-                  value={"12"}
+                  value={"Brand Strategist"}
                 >
                   <div
                     className={classNames(
@@ -3057,7 +3071,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 </AntdOption>
                 <AntdOption
                   className={classNames("__wab_instance", sty.option__m1Avi)}
-                  value={"11"}
+                  value={"Digital Marketing Manager"}
                 >
                   <div
                     className={classNames(
@@ -3071,7 +3085,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 </AntdOption>
                 <AntdOption
                   className={classNames("__wab_instance", sty.option___2UaRy)}
-                  value={"10"}
+                  value={"Media Planner"}
                 >
                   <div
                     className={classNames(
@@ -3085,7 +3099,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 </AntdOption>
                 <AntdOption
                   className={classNames("__wab_instance", sty.option__h3BcP)}
-                  value={"9"}
+                  value={"Client Services Director"}
                 >
                   <div
                     className={classNames(
@@ -3099,7 +3113,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 </AntdOption>
                 <AntdOption
                   className={classNames("__wab_instance", sty.option__hnMnF)}
-                  value={"8"}
+                  value={"Account Manager"}
                 >
                   <div
                     className={classNames(
@@ -3113,7 +3127,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 </AntdOption>
                 <AntdOption
                   className={classNames("__wab_instance", sty.option___354MB)}
-                  value={"7"}
+                  value={"PPC Especialist"}
                 >
                   <div
                     className={classNames(
@@ -3127,7 +3141,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 </AntdOption>
                 <AntdOption
                   className={classNames("__wab_instance", sty.option___8Kfkb)}
-                  value={"6"}
+                  value={"SEO Especialist"}
                 >
                   <div
                     className={classNames(
@@ -3141,7 +3155,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 </AntdOption>
                 <AntdOption
                   className={classNames("__wab_instance", sty.option__sfcuu)}
-                  value={"5"}
+                  value={"Social Media Manager"}
                 >
                   <div
                     className={classNames(
@@ -3155,7 +3169,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 </AntdOption>
                 <AntdOption
                   className={classNames("__wab_instance", sty.option__oTnWj)}
-                  value={"4"}
+                  value={"Content Strategist"}
                 >
                   <div
                     className={classNames(
@@ -3168,36 +3182,22 @@ function PlasmicAEditProfile__RenderFunc(props: {
                   </div>
                 </AntdOption>
                 <AntdOption
-                  className={classNames("__wab_instance", sty.option__uExkv)}
-                  value={"45404"}
+                  className={classNames("__wab_instance", sty.option__o6Guv)}
+                  value={"Graphic Designer"}
                 >
                   <div
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text___8G98J
+                      sty.text__qdvcx
                     )}
                   >
-                    {"Copywriter"}
-                  </div>
-                </AntdOption>
-                <AntdOption
-                  className={classNames("__wab_instance", sty.option__xBsIo)}
-                  value={"1"}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___3NrWm
-                    )}
-                  >
-                    {"Creative Director"}
+                    {"Graphic Designer"}
                   </div>
                 </AntdOption>
                 <AntdOption
                   className={classNames("__wab_instance", sty.option__hqYnv)}
-                  value={"2"}
+                  value={"Art Director"}
                 >
                   <div
                     className={classNames(
@@ -3210,17 +3210,17 @@ function PlasmicAEditProfile__RenderFunc(props: {
                   </div>
                 </AntdOption>
                 <AntdOption
-                  className={classNames("__wab_instance", sty.option__o6Guv)}
-                  value={"3"}
+                  className={classNames("__wab_instance", sty.option__xBsIo)}
+                  value={"Creative Director"}
                 >
                   <div
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__qdvcx
+                      sty.text___3NrWm
                     )}
                   >
-                    {"Graphic Designer"}
+                    {"Creative Director"}
                   </div>
                 </AntdOption>
               </AntdSelect>

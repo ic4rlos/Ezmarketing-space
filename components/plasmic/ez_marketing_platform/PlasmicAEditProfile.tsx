@@ -2838,16 +2838,7 @@ function PlasmicAEditProfile__RenderFunc(props: {
                       ? (() => {
                           const actionArgs = {
                             customFunction: async () => {
-                              return value => {
-                                console.log("SELECT DISPAROU");
-                                console.log("VALOR:", value);
-                                console.log("TIPO:", typeof value);
-                                console.log("ARRAY?", Array.isArray(value));
-                                $props.setFormData(prev => ({
-                                  ...prev,
-                                  offices: value
-                                }));
-                              };
+                              return $props.onOfficesChange(value);
                             }
                           };
                           return (({ customFunction }) => {

@@ -65,7 +65,7 @@ export default function AEditProfile() {
         .eq("User profile_id", profileId);
 
       // 🔥 CONVERSÃO CORRETA PARA O SELECT (string[])
-      const offices = officesDb?.map(o => o.Office) ?? [];
+      const offices = officesDb?.map((o) => o.Office) ?? [];
 
       console.log("🟣 MULTICHARGE LOAD RAW:", officesDb);
       console.log("🟣 MULTICHARGE LOAD CONVERTIDO:", offices);
@@ -98,15 +98,11 @@ export default function AEditProfile() {
 
     console.log("🟣 MULTICHARGE PAYLOAD RECEBIDO:", offices);
 
-    const { data: savedProfile, error: profileError } =
-      await supabase
-        .from("User profile")
-        .upsert(
-          { user_id: user.id, ...profileFields },
-          { onConflict: "user_id" }
-        )
-        .select()
-        .single();
+    const { data: savedProfile, error: profileError } = await supabase
+      .from("User profile")
+      .upsert({ user_id: user.id, ...profileFields }, { onConflict: "user_id" })
+      .select()
+      .single();
 
     if (profileError || !savedProfile) {
       console.error("Profile error:", profileError);
@@ -126,15 +122,15 @@ export default function AEditProfile() {
 
     console.log("🟣 MULTICHARGE EXISTENTES:", existingOffices);
 
-    const existingValues =
-      existingOffices?.map(o => o.Office) ?? [];
+    const existingValues = existingOffices?.map((o) => o.Office) ?? [];
 
     console.log("🟣 MULTICHARGE EXISTING VALUES:", existingValues);
 
     // Deletar o que não está mais selecionado
-    const toDelete = existingOffices
-      ?.filter(o => !offices.includes(o.Office))
-      .map(o => o.id) ?? [];
+    const toDelete =
+      existingOffices
+        ?.filter((o) => !offices.includes(o.Office))
+        .map((o) => o.id) ?? [];
 
     console.log("🟣 MULTICHARGE PARA DELETAR:", toDelete);
 
@@ -178,6 +174,17 @@ export default function AEditProfile() {
         formData,
         setFormData,
         onSave: handleSave,
+        // 🔥 Corrigido: função para atualizar offices corretamente
+        onOfficesChange: (value: any) => {
+          console.log("SELECT ALTERADO:", value);
+          console.log("TIPO:", typeof value);
+          console.log("É ARRAY?", Array.isArray(value));
+
+          setFormData((prev: any) => ({
+            ...prev,
+            offices: Array.isArray(value) ? [...value] : [value],
+          }));
+        },
       }}
     />
   );

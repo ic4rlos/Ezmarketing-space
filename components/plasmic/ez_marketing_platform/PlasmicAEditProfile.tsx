@@ -2839,13 +2839,14 @@ function PlasmicAEditProfile__RenderFunc(props: {
                           const actionArgs = {
                             customFunction: async () => {
                               return value => {
-                                console.log("SELECT ALTERADO:", value);
+                                console.log("SELECT DISPAROU");
+                                console.log("VALOR:", value);
                                 console.log("TIPO:", typeof value);
-                                console.log("É ARRAY?", Array.isArray(value));
-                                $props.setFormData({
-                                  ...$props.formData,
-                                  offices: [...value]
-                                });
+                                console.log("ARRAY?", Array.isArray(value));
+                                $props.setFormData(prev => ({
+                                  ...prev,
+                                  offices: value
+                                }));
                               };
                             }
                           };

@@ -1,9 +1,20 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 import supabase from "../lib/c-supabaseClient";
-import { PlasmicCEditProfile } from "../components/plasmic/ez_marketing_platform/PlasmicCEditProfile";
 
+// 🔥 PASSO 1: Forçar renderização dinâmica e definir o runtime
+export const dynamic_config = "force-dynamic"; // Variável renomeada para não conflitar com o import
 export const runtime = "nodejs";
+
+// 🔥 PASSO 2: Carregamento dinâmico do Plasmic (Desativa SSR para este componente)
+const PlasmicCEditProfile = dynamic(
+  () =>
+    import("../components/plasmic/ez_marketing_platform/PlasmicCEditProfile").then(
+      (m) => m.PlasmicCEditProfile
+    ),
+  { ssr: false }
+);
 
 export default function CEditProfile() {
   const router = useRouter();
@@ -100,7 +111,7 @@ export default function CEditProfile() {
 
     // ✅ 1. Verificar se há arquivo de logo
     const logoFile = companyValues.logoFile?.originFileObj;
-    let logoUrl = companyValues.Logo; // mantém URL existente
+    let logoUrl = companyValues.Logo; 
 
     if (logoFile) {
       const filePath = `logos/${user.id}/${Date.now()}-${logoFile.name}`;
@@ -119,7 +130,7 @@ export default function CEditProfile() {
       }
     }
 
-    // ✅ 2. Upsert Company com logo atualizado
+    // ✅ 2. Upsert Company
     const { data: savedCompany, error: companyError } = await supabase
       .from("companies")
       .upsert(
@@ -207,7 +218,7 @@ export default function CEditProfile() {
     // 5️⃣ Steps
     for (const sol of solutions) {
       const solutionId = solutionMap.get(sol.title);
-      if (!solutionId) return;
+      if (!solutionId) continue;
 
       const { data: existingSteps } = await supabase
         .from("solutions_steps")
@@ -246,7 +257,7 @@ export default function CEditProfile() {
         .upsert(stepsPayload, { onConflict: "solution_id,Step_order" });
     }
 
-    // ✅ FINAL SUCESSO → REDIRECIONA
+    // ✅ FINAL SUCESSO
     router.replace("/company-profile");
   }
 

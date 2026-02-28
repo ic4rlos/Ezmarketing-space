@@ -1,6 +1,4 @@
 /** @type {import('next').NextConfig} */
-import path from "path";
-
 const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
@@ -16,16 +14,14 @@ const nextConfig = {
     "rc-picker",
     "rc-tree",
     "rc-table",
-    "rc-notification"
+    "rc-notification",
+    "@ant-design/pro-components",
+    "@ant-design/pro-form",
+    "@ant-design/pro-table"
   ],
 
   experimental: {
     esmExternals: "loose"
-  },
-
-  webpack: (config) => {
-    config.resolve.alias["@"] = path.resolve(".");
-    return config;
   }
 };
 

@@ -1,3 +1,5 @@
+import path from "path";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
@@ -21,8 +23,18 @@ const nextConfig = {
   ],
 
   experimental: {
-    esmExternals: "loose"
-  }
+    esmExternals: "loose",
+  },
+
+  webpack: (config) => {
+    // ✅ Alias para usar @/ nos imports
+    config.resolve.alias["@"] = path.resolve(".");
+
+    // ✅ Blindagem extra contra imports quebrados em ESM
+    config.resolve.fullySpecified = false;
+
+    return config;
+  },
 };
 
 export default nextConfig;

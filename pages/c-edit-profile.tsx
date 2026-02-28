@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import supabase from "../lib/c-supabaseClient";
 import { PlasmicCEditProfile } from "../components/plasmic/ez_marketing_platform/PlasmicCEditProfile";
 
+export const runtime = "nodejs";
+
 export default function CEditProfile() {
   const router = useRouter();
 

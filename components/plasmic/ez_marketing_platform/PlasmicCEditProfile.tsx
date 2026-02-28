@@ -60,8 +60,7 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import { AntdSteps } from "@plasmicpkgs/antd5/skinny/registerSteps";
-import { UploadWrapper } from "@plasmicpkgs/antd5/skinny/registerUpload";
-import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
+import CropUpload from "../../../../components/CropUpload"; // plasmic-import: ecbzb0Hx7iSB/codeComponent
 import { AntdInput } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { inputHelpers as AntdInput_Helpers } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { AntdSelect } from "@plasmicpkgs/antd5/skinny/registerSelect";
@@ -71,6 +70,8 @@ import { AntdRadioGroup } from "@plasmicpkgs/antd5/skinny/registerRadio";
 import { AntdRadio } from "@plasmicpkgs/antd5/skinny/registerRadio";
 import { AntdTextArea } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { inputHelpers as AntdTextArea_Helpers } from "@plasmicpkgs/antd5/skinny/registerInput";
+import { UploadWrapper } from "@plasmicpkgs/antd5/skinny/registerUpload";
+import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: maKqnX1RyE1vKUCrTH51ZZ/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: maKqnX1RyE1vKUCrTH51ZZ/styleTokensProvider
 
@@ -146,7 +147,7 @@ export type PlasmicCEditProfile__OverridesType = {
   stepsStack?: Flex__<"div">;
   steps?: Flex__<typeof AntdSteps>;
   basicInfo?: Flex__<"div">;
-  companyLogo?: Flex__<typeof UploadWrapper>;
+  uploadDoCarlos?: Flex__<typeof CropUpload>;
   companyName?: Flex__<typeof AntdInput>;
   companyType?: Flex__<typeof AntdSelect>;
   location?: Flex__<typeof AntdInput>;
@@ -174,6 +175,7 @@ export type PlasmicCEditProfile__OverridesType = {
   hhhh?: Flex__<"div">;
   about?: Flex__<"div">;
   companyImage?: Flex__<typeof UploadWrapper>;
+  button?: Flex__<typeof AntdButton>;
   customerProblem?: Flex__<typeof AntdTextArea>;
   solutionDescription?: Flex__<typeof AntdTextArea>;
   whyShouldTheyChoose?: Flex__<typeof AntdTextArea>;
@@ -234,7 +236,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
-              return $props.company?.["Company name"] ?? "";
+              return $props.companyLogo?.["Company name"] ?? "";
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -278,7 +280,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.company?.Location ?? null,
+          $props.companyLogo?.Location ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -287,35 +289,16 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.company?.["Foundation date"] ?? null,
+          $props.companyLogo?.["Foundation date"] ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
-      },
-      {
-        path: "companyLogo.files",
-        type: "private",
-        variableType: "array",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          (() => {
-            try {
-              return $props.avatarFiles ?? [];
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return [];
-              }
-              throw e;
-            }
-          })()
       },
       {
         path: "linkedIn.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.company?.LinkedIn ?? null,
+          $props.companyLogo?.LinkedIn ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -324,7 +307,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.company?.Instagram ?? null,
+          $props.companyLogo?.Instagram ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -333,7 +316,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.company?.X ?? null,
+          $props.companyLogo?.X ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -356,7 +339,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.company?.["Customer problem"] ?? null,
+          $props.companyLogo?.["Customer problem"] ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
@@ -371,21 +354,21 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.company?.["Company type"] ?? null
+          $props.companyLogo?.["Company type"] ?? null
       },
       {
         path: "area.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.company?.Area ?? null
+          $props.companyLogo?.Area ?? null
       },
       {
         path: "companyTagline.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.company?.["Company tagline"] ?? null,
+          $props.companyLogo?.["Company tagline"] ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -394,7 +377,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.company?.["Sub area"] ?? null
+          $props.companyLogo?.["Sub area"] ?? null
       },
       {
         path: "selectedMainOption",
@@ -427,7 +410,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.company?.["Solution description"] ?? null,
+          $props.companyLogo?.["Solution description"] ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
@@ -436,7 +419,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.company?.["Why should they choose"] ?? null,
+          $props.companyLogo?.["Why should they choose"] ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
@@ -444,14 +427,27 @@ function PlasmicCEditProfile__RenderFunc(props: {
         path: "companyImage.files",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => []
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          (() => {
+            try {
+              return $props.companyLogo?.["Company image"] ?? null;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return [];
+              }
+              throw e;
+            }
+          })()
       },
       {
         path: "website.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.company?.Website ?? null,
+          $props.companyLogo?.Website ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -536,6 +532,12 @@ function PlasmicCEditProfile__RenderFunc(props: {
               throw e;
             }
           })()
+      },
+      {
+        path: "companyLogo",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       }
     ],
     [$props, $ctx, $refs]
@@ -734,61 +736,51 @@ function PlasmicCEditProfile__RenderFunc(props: {
                 </React.Fragment>
               </div>
               <div className={classNames(projectcss.all, sty.freeBox___7H2S4)}>
-                <UploadWrapper
-                  data-plasmic-name={"companyLogo"}
-                  data-plasmic-override={overrides.companyLogo}
+                <CropUpload
+                  data-plasmic-name={"uploadDoCarlos"}
+                  data-plasmic-override={overrides.uploadDoCarlos}
                   accept={"image/*"}
-                  className={classNames("__wab_instance", sty.companyLogo)}
-                  files={generateStateValueProp($state, [
-                    "companyLogo",
-                    "files"
-                  ])}
-                  listType={"picture-circle"}
-                  maxCount={1}
-                  onFilesChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "companyLogo",
-                      "files"
-                    ]).apply(null, eventArgs);
+                  className={classNames("__wab_instance", sty.uploadDoCarlos)}
+                  onChange={async file => {
+                    const $steps = {};
 
-                    (async files => {
-                      const $steps = {};
+                    $steps["updateCompanyLogo"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["companyLogo"]
+                            },
+                            operation: 0,
+                            value: $event
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
 
-                      $steps["runInteractionProp"] = true
-                        ? (() => {
-                            const actionArgs = {};
-                            return (({ eventRef, args }) => {
-                              return eventRef?.(...(args ?? []));
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["runInteractionProp"] != null &&
-                        typeof $steps["runInteractionProp"] === "object" &&
-                        typeof $steps["runInteractionProp"].then === "function"
-                      ) {
-                        $steps["runInteractionProp"] =
-                          await $steps["runInteractionProp"];
-                      }
-                    }).apply(null, eventArgs);
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateCompanyLogo"] != null &&
+                      typeof $steps["updateCompanyLogo"] === "object" &&
+                      typeof $steps["updateCompanyLogo"].then === "function"
+                    ) {
+                      $steps["updateCompanyLogo"] =
+                        await $steps["updateCompanyLogo"];
+                    }
                   }}
-                  showUploadList={true}
-                >
-                  <AntdButton
-                    className={classNames("__wab_instance", sty.button__aOGg)}
-                    type={"ghost"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__v7R2L
-                      )}
-                    >
-                      {"Upload"}
-                    </div>
-                  </AntdButton>
-                </UploadWrapper>
+                />
+
                 <div
                   className={classNames(
                     projectcss.all,
@@ -869,7 +861,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     projectcss.plasmic_mixins,
                     styleTokensClassNames
                   )}
-                  defaultValue={$props.company?.["Company type"] ?? null}
+                  defaultValue={$props.companyLogo?.["Company type"] ?? null}
                   dropdownMatchSelectWidth={false}
                   mode={"single"}
                   onChange={async (...eventArgs: any) => {
@@ -1613,7 +1605,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     projectcss.plasmic_mixins,
                     styleTokensClassNames
                   )}
-                  defaultValue={$props.company?.Area ?? null}
+                  defaultValue={$props.companyLogo?.Area ?? null}
                   dropdownMatchSelectWidth={false}
                   mode={"single"}
                   onChange={async (...eventArgs: any) => {
@@ -2357,7 +2349,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     projectcss.plasmic_mixins,
                     styleTokensClassNames
                   )}
-                  defaultValue={$props.company?.["Sub area"] ?? null}
+                  defaultValue={$props.companyLogo?.["Sub area"] ?? null}
                   dropdownMatchSelectWidth={false}
                   mode={"single"}
                   onChange={async (...eventArgs: any) => {
@@ -2702,7 +2694,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   {(() => {
                     try {
                       return (
-                        $props.company?.["Company nature"] ??
+                        $props.companyLogo?.["Company nature"] ??
                         $state.companyNature3
                       );
                     } catch (e) {
@@ -3704,7 +3696,9 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   showUploadList={true}
                 >
                   <AntdButton
-                    className={classNames("__wab_instance", sty.button__sbVvU)}
+                    data-plasmic-name={"button"}
+                    data-plasmic-override={overrides.button}
+                    className={classNames("__wab_instance", sty.button)}
                     type={"dashed"}
                   >
                     <div
@@ -3950,7 +3944,10 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                     $state.solutionDescription?.value ?? "",
                                   "Why should they choose":
                                     $state.whyShouldTheyChoose?.value ?? "",
-                                  "Company nature": $state.companyNature3 ?? ""
+                                  "Company nature": $state.companyNature3 ?? "",
+                                  logoFile: $state.companyLogo ?? null,
+                                  "Company image":
+                                    $props.company?.["Company image"] ?? null
                                 },
                                 solutions: $props.formData
                               });
@@ -3998,7 +3995,7 @@ const PlasmicDescendants = {
     "stepsStack",
     "steps",
     "basicInfo",
-    "companyLogo",
+    "uploadDoCarlos",
     "companyName",
     "companyType",
     "location",
@@ -4026,6 +4023,7 @@ const PlasmicDescendants = {
     "hhhh",
     "about",
     "companyImage",
+    "button",
     "customerProblem",
     "solutionDescription",
     "whyShouldTheyChoose",
@@ -4037,7 +4035,7 @@ const PlasmicDescendants = {
     "stepsStack",
     "steps",
     "basicInfo",
-    "companyLogo",
+    "uploadDoCarlos",
     "companyName",
     "companyType",
     "location",
@@ -4065,6 +4063,7 @@ const PlasmicDescendants = {
     "hhhh",
     "about",
     "companyImage",
+    "button",
     "customerProblem",
     "solutionDescription",
     "whyShouldTheyChoose",
@@ -4074,13 +4073,13 @@ const PlasmicDescendants = {
   steps: ["steps"],
   basicInfo: [
     "basicInfo",
-    "companyLogo",
+    "uploadDoCarlos",
     "companyName",
     "companyType",
     "location",
     "foundationDate"
   ],
-  companyLogo: ["companyLogo"],
+  uploadDoCarlos: ["uploadDoCarlos"],
   companyName: ["companyName"],
   companyType: ["companyType"],
   location: ["location"],
@@ -4135,12 +4134,14 @@ const PlasmicDescendants = {
   about: [
     "about",
     "companyImage",
+    "button",
     "customerProblem",
     "solutionDescription",
     "whyShouldTheyChoose",
     "done"
   ],
-  companyImage: ["companyImage"],
+  companyImage: ["companyImage", "button"],
+  button: ["button"],
   customerProblem: ["customerProblem"],
   solutionDescription: ["solutionDescription"],
   whyShouldTheyChoose: ["whyShouldTheyChoose"],
@@ -4156,7 +4157,7 @@ type NodeDefaultElementType = {
   stepsStack: "div";
   steps: typeof AntdSteps;
   basicInfo: "div";
-  companyLogo: typeof UploadWrapper;
+  uploadDoCarlos: typeof CropUpload;
   companyName: typeof AntdInput;
   companyType: typeof AntdSelect;
   location: typeof AntdInput;
@@ -4184,6 +4185,7 @@ type NodeDefaultElementType = {
   hhhh: "div";
   about: "div";
   companyImage: typeof UploadWrapper;
+  button: typeof AntdButton;
   customerProblem: typeof AntdTextArea;
   solutionDescription: typeof AntdTextArea;
   whyShouldTheyChoose: typeof AntdTextArea;
@@ -4257,7 +4259,7 @@ export const PlasmicCEditProfile = Object.assign(
     stepsStack: makeNodeComponent("stepsStack"),
     steps: makeNodeComponent("steps"),
     basicInfo: makeNodeComponent("basicInfo"),
-    companyLogo: makeNodeComponent("companyLogo"),
+    uploadDoCarlos: makeNodeComponent("uploadDoCarlos"),
     companyName: makeNodeComponent("companyName"),
     companyType: makeNodeComponent("companyType"),
     location: makeNodeComponent("location"),
@@ -4285,6 +4287,7 @@ export const PlasmicCEditProfile = Object.assign(
     hhhh: makeNodeComponent("hhhh"),
     about: makeNodeComponent("about"),
     companyImage: makeNodeComponent("companyImage"),
+    button: makeNodeComponent("button"),
     customerProblem: makeNodeComponent("customerProblem"),
     solutionDescription: makeNodeComponent("solutionDescription"),
     whyShouldTheyChoose: makeNodeComponent("whyShouldTheyChoose"),

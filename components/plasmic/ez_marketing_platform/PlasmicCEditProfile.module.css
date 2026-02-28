@@ -314,25 +314,15 @@
   min-width: 0;
   padding: 8px;
 }
-.companyLogo:global(.__wab_instance) {
+.uploadDoCarlos:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
-  text-align: left;
-  padding-left: 58px;
-  padding-right: 23px;
-  width: auto;
-}
-.button__aOGg:global(.__wab_instance) {
-  max-width: 100%;
-  object-fit: cover;
-  background: none;
-}
-.text__v7R2L {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
+  width: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
 }
 .text__kEe5D {
   position: relative;
@@ -2332,7 +2322,7 @@
   width: auto;
   padding-right: 23px;
 }
-.button__sbVvU:global(.__wab_instance) {
+.button:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
 }

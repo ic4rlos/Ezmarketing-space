@@ -4316,6 +4316,12 @@
           "name": "Fetcher",
           "displayName": "plasmic-data-source-fetcher",
           "componentImportPath": "@plasmicapp/react-web/lib/data-sources"
+        },
+        {
+          "id": "ecbzb0Hx7iSB",
+          "name": "CropUpload",
+          "displayName": "CropUpload",
+          "componentImportPath": "../components/CropUpload"
         }
       ],
       "customFunctions": [],

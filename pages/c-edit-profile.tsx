@@ -96,11 +96,32 @@ export default function CEditProfile() {
 
     const { company: companyValues, solutions } = payload;
 
-    // 1️⃣ Upsert Company
+    // ✅ 1. Verificar se há arquivo de logo
+    const logoFile = companyValues.logoFile?.originFileObj;
+    let logoUrl = companyValues.Logo; // mantém URL existente
+
+    if (logoFile) {
+      const filePath = `logos/${user.id}/${Date.now()}-${logoFile.name}`;
+      const { data, error } = await supabase.storage
+        .from("company-logos")
+        .upload(filePath, logoFile);
+
+      if (error) {
+        console.error("❌ Logo upload failed:", error);
+      } else {
+        const { data: publicUrlData } = supabase.storage
+          .from("company-logos")
+          .getPublicUrl(filePath);
+
+        logoUrl = publicUrlData.publicUrl;
+      }
+    }
+
+    // ✅ 2. Upsert Company com logo atualizado
     const { data: savedCompany, error: companyError } = await supabase
       .from("companies")
       .upsert(
-        { user_id: user.id, ...companyValues },
+        { user_id: user.id, ...companyValues, Logo: logoUrl },
         { onConflict: "user_id" }
       )
       .select()
@@ -113,21 +134,18 @@ export default function CEditProfile() {
 
     const companyId = savedCompany.id;
 
-    // 2️⃣ Buscar solutions existentes
-    const { data: existingSolutions, error: fetchSolError } =
-      await supabase
-        .from("solutions")
-        .select("id")
-        .eq("Company_id", companyId);
+    // 3️⃣ Buscar solutions existentes
+    const { data: existingSolutions, error: fetchSolError } = await supabase
+      .from("solutions")
+      .select("id")
+      .eq("Company_id", companyId);
 
     if (fetchSolError) {
       console.error("❌ Fetch existing solutions failed:", fetchSolError);
       return;
     }
 
-    const existingSolutionIds =
-      existingSolutions?.map((s) => s.id) ?? [];
-
+    const existingSolutionIds = existingSolutions?.map((s) => s.id) ?? [];
     const incomingSolutionIds = solutions
       .filter((s: any) => s.id)
       .map((s: any) => s.id);
@@ -148,7 +166,7 @@ export default function CEditProfile() {
       }
     }
 
-    // 3️⃣ Upsert Solutions
+    // 4️⃣ Upsert Solutions
     const solutionsPayload = solutions.map((sol: any) => {
       const base = {
         Company_id: companyId,
@@ -167,13 +185,12 @@ export default function CEditProfile() {
       return base;
     });
 
-    const { data: savedSolutions, error: solutionsError } =
-      await supabase
-        .from("solutions")
-        .upsert(solutionsPayload, {
-          onConflict: "Company_id,Title",
-        })
-        .select();
+    const { data: savedSolutions, error: solutionsError } = await supabase
+      .from("solutions")
+      .upsert(solutionsPayload, {
+        onConflict: "Company_id,Title",
+      })
+      .select();
 
     if (solutionsError) {
       console.error("❌ Solutions upsert failed:", solutionsError);
@@ -185,7 +202,7 @@ export default function CEditProfile() {
       solutionMap.set(s.Title, s.id);
     });
 
-    // 4️⃣ Steps
+    // 5️⃣ Steps
     for (const sol of solutions) {
       const solutionId = solutionMap.get(sol.title);
       if (!solutionId) return;
@@ -195,9 +212,7 @@ export default function CEditProfile() {
         .select("id")
         .eq("solution_id", solutionId);
 
-      const existingStepIds =
-        existingSteps?.map((s) => s.id) ?? [];
-
+      const existingStepIds = existingSteps?.map((s) => s.id) ?? [];
       const incomingStepIds = sol.steps
         .filter((st: any) => st.id)
         .map((st: any) => st.id);
@@ -207,33 +222,26 @@ export default function CEditProfile() {
       );
 
       if (stepsToDelete.length > 0) {
-        await supabase
-          .from("solutions_steps")
-          .delete()
-          .in("id", stepsToDelete);
+        await supabase.from("solutions_steps").delete().in("id", stepsToDelete);
       }
 
-      const stepsPayload = sol.steps.map(
-        (step: any, index: number) => {
-          const base = {
-            solution_id: solutionId,
-            step_text: step.step_text,
-            Step_order: index,
-          };
+      const stepsPayload = sol.steps.map((step: any, index: number) => {
+        const base = {
+          solution_id: solutionId,
+          step_text: step.step_text,
+          Step_order: index,
+        };
 
-          if (step.id !== undefined && step.id !== null) {
-            return { ...base, id: step.id };
-          }
-
-          return base;
+        if (step.id !== undefined && step.id !== null) {
+          return { ...base, id: step.id };
         }
-      );
+
+        return base;
+      });
 
       await supabase
         .from("solutions_steps")
-        .upsert(stepsPayload, {
-          onConflict: "solution_id,Step_order",
-        });
+        .upsert(stepsPayload, { onConflict: "solution_id,Step_order" });
     }
 
     // ✅ FINAL SUCESSO → REDIRECIONA

@@ -11,8 +11,6 @@
   "dependencies": {
     "@ant-design/icons": "^6.1.0",
     "@ant-design/pro-components": "2.6.4",
-    "@ant-design/pro-form": "2.15.0",
-    "@ant-design/pro-table": "3.11.0",
     "@plasmicapp/cli": "^0.1.359",
     "@plasmicapp/loader-nextjs": "^1.0.237",
     "@plasmicapp/react-web": "^0.2.422",
@@ -24,7 +22,7 @@
     "@plasmicpkgs/plasmic-embed-css": "^0.1.223",
     "@plasmicpkgs/plasmic-link-preview": "^1.0.137",
     "@plasmicpkgs/plasmic-nav": "^0.0.200",
-    "@plasmicpkgs/plasmic-rich-components": "^1.0.236",
+    "@plasmicpkgs/plasmic-rich-components": "1.0.236",
     "@plasmicpkgs/plasmic-tabs": "^0.0.71",
     "@plasmicpkgs/radix-ui": "^0.0.88",
     "@plasmicpkgs/react-aria": "^0.0.157",

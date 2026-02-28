@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+import path from "path";
+
 const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
@@ -19,6 +21,11 @@ const nextConfig = {
 
   experimental: {
     esmExternals: "loose"
+  },
+
+  webpack: (config) => {
+    config.resolve.alias["@"] = path.resolve(".");
+    return config;
   }
 };
 

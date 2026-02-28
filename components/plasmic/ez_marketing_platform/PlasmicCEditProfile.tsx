@@ -60,7 +60,7 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import { AntdSteps } from "@plasmicpkgs/antd5/skinny/registerSteps";
-import CropUpload from "../../../../components/CropUpload"; // plasmic-import: ecbzb0Hx7iSB/codeComponent
+import CropUpload from "@/components/CropUpload"; // plasmic-import: ecbzb0Hx7iSB/codeComponent
 import { AntdInput } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { inputHelpers as AntdInput_Helpers } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { AntdSelect } from "@plasmicpkgs/antd5/skinny/registerSelect";

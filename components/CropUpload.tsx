@@ -5,12 +5,13 @@ import ImgCrop from "antd-img-crop";
 import { Upload } from "antd";
 import type { UploadFile, UploadProps } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
+import supabase from "../lib/c-supabaseClient";
 
 export interface CropUploadProps {
   className?: string;
   accept?: string;
-  onChange?: (file: UploadFile) => void;
-  size?: number; // 👈 controle de tamanho no Plasmic se quiser
+  onChange?: (url: string) => void;
+  size?: number;
 }
 
 export default function CropUpload({
@@ -21,15 +22,45 @@ export default function CropUpload({
   ...props
 }: CropUploadProps) {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [uploading, setUploading] = useState(false);
 
-  const handleChange: UploadProps["onChange"] = ({ file }) => {
-    // preview local imediato
-    if (file.originFileObj) {
-      const url = URL.createObjectURL(file.originFileObj);
-      setImageUrl(url);
+  const handleChange: UploadProps["onChange"] = async ({ file }) => {
+    if (!file.originFileObj) return;
+
+    try {
+      setUploading(true);
+
+      // 🔹 nome único
+      const fileExt = file.name.split(".").pop();
+      const fileName = `${Date.now()}.${fileExt}`;
+      const filePath = `logos/${fileName}`;
+
+      // 🔹 upload
+      const { error: uploadError } = await supabase.storage
+        .from("company-logos")
+        .upload(filePath, file.originFileObj, {
+          upsert: true,
+        });
+
+      if (uploadError) throw uploadError;
+
+      // 🔹 pegar URL pública
+      const { data } = supabase.storage
+        .from("company-logos")
+        .getPublicUrl(filePath);
+
+      const publicUrl = data.publicUrl;
+
+      // preview imediato
+      setImageUrl(publicUrl);
+
+      // 🔥 envia para Plasmic
+      onChange?.(publicUrl);
+    } catch (err) {
+      console.error("❌ Upload failed:", err);
+    } finally {
+      setUploading(false);
     }
-
-    onChange?.(file);
   };
 
   const uploadUI = (
@@ -50,13 +81,11 @@ export default function CropUpload({
       {imageUrl ? (
         <img
           src={imageUrl}
-          alt="preview"
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
+          alt="logo"
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />
+      ) : uploading ? (
+        "..."
       ) : (
         <PlusOutlined />
       )}
@@ -64,15 +93,7 @@ export default function CropUpload({
   );
 
   return (
-    <ImgCrop
-      showGrid
-      showReset
-      rotationSlider
-      cropShape="round"
-      modalOk="Recortar"
-      modalCancel="Cancelar"
-      resetText="Restablecer"
-    >
+    <ImgCrop cropShape="round" showGrid rotationSlider>
       <Upload
         className={className}
         accept={accept}

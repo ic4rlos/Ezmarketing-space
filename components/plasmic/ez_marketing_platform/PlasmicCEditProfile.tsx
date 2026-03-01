@@ -60,7 +60,7 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import { AntdSteps } from "@plasmicpkgs/antd5/skinny/registerSteps";
-import CropUpload from "@/components/CropUpload"; // plasmic-import: ecbzb0Hx7iSB/codeComponent
+import CropUpload from "../../../../components/CropUpload"; // plasmic-import: ecbzb0Hx7iSB/codeComponent
 import { AntdInput } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { inputHelpers as AntdInput_Helpers } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { AntdSelect } from "@plasmicpkgs/antd5/skinny/registerSelect";
@@ -236,7 +236,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
-              return $props.companyLogo?.["Company name"] ?? "";
+              return $props.company?.["Company name"] ?? "";
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -280,7 +280,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyLogo?.Location ?? null,
+          $props.company?.Location ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -289,7 +289,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyLogo?.["Foundation date"] ?? null,
+          $props.company?.["Foundation date"] ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -298,7 +298,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyLogo?.LinkedIn ?? null,
+          $props.company?.LinkedIn ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -307,7 +307,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyLogo?.Instagram ?? null,
+          $props.company?.Instagram ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -316,7 +316,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyLogo?.X ?? null,
+          $props.company?.X ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -339,7 +339,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyLogo?.["Customer problem"] ?? null,
+          $props.company?.["Customer problem"] ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
@@ -354,21 +354,21 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyLogo?.["Company type"] ?? null
+          $props.company?.["Company type"] ?? null
       },
       {
         path: "area.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyLogo?.Area ?? null
+          $props.company?.Area ?? null
       },
       {
         path: "companyTagline.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyLogo?.["Company tagline"] ?? null,
+          $props.company?.["Company tagline"] ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -377,7 +377,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyLogo?.["Sub area"] ?? null
+          $props.company?.["Sub area"] ?? null
       },
       {
         path: "selectedMainOption",
@@ -410,7 +410,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyLogo?.["Solution description"] ?? null,
+          $props.company?.["Solution description"] ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
@@ -419,7 +419,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyLogo?.["Why should they choose"] ?? null,
+          $props.company?.["Why should they choose"] ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
@@ -430,7 +430,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
-              return $props.companyLogo?.["Company image"] ?? null;
+              return $props.company?.["Company image"] ?? null;
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -447,7 +447,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          $props.companyLogo?.Website ?? null,
+          $props.company?.Website ?? null,
 
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
@@ -861,7 +861,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     projectcss.plasmic_mixins,
                     styleTokensClassNames
                   )}
-                  defaultValue={$props.companyLogo?.["Company type"] ?? null}
+                  defaultValue={$props.company?.["Company type"] ?? null}
                   dropdownMatchSelectWidth={false}
                   mode={"single"}
                   onChange={async (...eventArgs: any) => {
@@ -1605,7 +1605,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     projectcss.plasmic_mixins,
                     styleTokensClassNames
                   )}
-                  defaultValue={$props.companyLogo?.Area ?? null}
+                  defaultValue={$props.company?.Area ?? null}
                   dropdownMatchSelectWidth={false}
                   mode={"single"}
                   onChange={async (...eventArgs: any) => {
@@ -2349,7 +2349,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     projectcss.plasmic_mixins,
                     styleTokensClassNames
                   )}
-                  defaultValue={$props.companyLogo?.["Sub area"] ?? null}
+                  defaultValue={$props.company?.["Sub area"] ?? null}
                   dropdownMatchSelectWidth={false}
                   mode={"single"}
                   onChange={async (...eventArgs: any) => {
@@ -2694,7 +2694,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   {(() => {
                     try {
                       return (
-                        $props.companyLogo?.["Company nature"] ??
+                        $props.company?.["Company nature"] ??
                         $state.companyNature3
                       );
                     } catch (e) {

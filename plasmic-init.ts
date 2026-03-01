@@ -22,7 +22,7 @@ try {
   console.log("🚨🚨 TENTANDO REGISTRAR CROPUPLOAD 🚨🚨");
   PLASMIC.registerComponent(CropUpload, {
     name: "CropUpload",
-    importPath: "./components/CropUpload",
+    importPath: "@/components/CropUpload",
     isDefaultExport: true,
     props: {}
   });

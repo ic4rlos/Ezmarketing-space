@@ -4,7 +4,7 @@ export const dynamic = "force-dynamic";
 import * as React from "react";
 import nextDynamic from "next/dynamic";
 import { registerComponent } from "@plasmicapp/react-web/lib/host";
-import CropUpload from "../components/CropUpload";
+import CropUpload from "@/components/CropUpload";  // ✅ alias
 
 // Carregar o PlasmicCanvasHost apenas no client (sem SSR)
 const PlasmicCanvasHost = nextDynamic(
@@ -16,7 +16,7 @@ const PlasmicCanvasHost = nextDynamic(
 // Registrar o componente customizado
 registerComponent(CropUpload, {
   name: "CropUpload",
-  importPath: "../components/CropUpload",
+  importPath: "@/components/CropUpload",  // ✅ alias
   isDefaultExport: true,
   props: {
     onChange: {

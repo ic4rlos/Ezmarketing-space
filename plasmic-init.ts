@@ -1,5 +1,5 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
-import CropUpload from "./components/CropUpload";
+import CropUpload from "@/components/CropUpload";
 
 console.log("🚨🚨 INICIANDO PLASMIC LOADER 🚨🚨");
 

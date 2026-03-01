@@ -20,17 +20,20 @@ jobs:
         with:
           persist-credentials: false
           fetch-depth: 0
+
       - id: node
         name: Setting up node v18...
         uses: actions/setup-node@v3
         with:
           node-version: "18"
+
       - id: cache
         name: Recovering cache...
         uses: actions/cache@v4
         with:
           key: lock-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}
           path: ${{ github.event.client_payload.data.directory }}/node_modules
+
       - id: init
         name: Initializing Plasmic app...
         uses: plasmicapp/plasmic-action@master
@@ -46,6 +49,12 @@ jobs:
           scheme: ${{ github.event.client_payload.data.scheme }}
           title: ${{ github.event.client_payload.data.title }}
           description: ${{ github.event.client_payload.data.description }}
+
+      - name: Clean old Plasmic generated files
+        run: |
+          rm -rf plasmic
+          rm -rf components/plasmic
+
       - id: sync
         name: Syncing Plasmic project...
         if: ${{ github.event.client_payload.data.scheme == 'codegen' && steps.init.outputs.synced != 'true' }}
@@ -60,6 +69,7 @@ jobs:
           sync_action: ${{ github.event.client_payload.data.syncAction }}
           title: ${{ github.event.client_payload.data.title }}
           description: ${{ github.event.client_payload.data.description }}
+
       - id: build
         name: Building Plasmic app...
         if: ${{ github.event.client_payload.data.publish }}
@@ -69,6 +79,7 @@ jobs:
           branch: ${{ github.event.client_payload.data.branch }}
           directory: ${{ github.event.client_payload.data.directory }}
           platform: ${{ github.event.client_payload.data.platform }}
+
       - id: pr
         name: Creating pull request...
         uses: repo-sync/pull-request@v2

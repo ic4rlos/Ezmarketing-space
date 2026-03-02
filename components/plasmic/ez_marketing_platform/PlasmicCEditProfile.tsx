@@ -744,39 +744,24 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   onChange={async file => {
                     const $steps = {};
 
-                    $steps["updateCompanyLogo"] = true
+                    $steps["runCode"] = true
                       ? (() => {
                           const actionArgs = {
-                            variable: {
-                              objRoot: $state,
-                              variablePath: ["companyLogo"]
-                            },
-                            operation: 0,
-                            value: $event.fileList
-                          };
-                          return (({
-                            variable,
-                            value,
-                            startIndex,
-                            deleteCount
-                          }) => {
-                            if (!variable) {
-                              return;
+                            customFunction: async () => {
+                              return console.log("EVENT:", $event);
                             }
-                            const { objRoot, variablePath } = variable;
-
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
                           })?.apply(null, [actionArgs]);
                         })()
                       : undefined;
                     if (
-                      $steps["updateCompanyLogo"] != null &&
-                      typeof $steps["updateCompanyLogo"] === "object" &&
-                      typeof $steps["updateCompanyLogo"].then === "function"
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
                     ) {
-                      $steps["updateCompanyLogo"] =
-                        await $steps["updateCompanyLogo"];
+                      $steps["runCode"] = await $steps["runCode"];
                     }
                   }}
                 />

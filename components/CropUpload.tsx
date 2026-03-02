@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ImgCrop from "antd-img-crop";
 import { Upload } from "antd";
 import type { UploadProps } from "antd";
@@ -12,6 +12,7 @@ export interface CropUploadProps {
   accept?: string;
   onChange?: (url: string) => void;
   size?: number;
+  value?: string | null;   // ✅ nova prop
 }
 
 export default function CropUpload({
@@ -19,10 +20,16 @@ export default function CropUpload({
   accept = "image/*",
   onChange,
   size = 96,
+  value = null,            // ✅ default
   ...props
 }: CropUploadProps) {
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [imageUrl, setImageUrl] = useState<string | null>(value ?? null);
   const [uploading, setUploading] = useState(false);
+
+  // ✅ sincronizar quando value mudar
+  useEffect(() => {
+    setImageUrl(value ?? null);
+  }, [value]);
 
   const handleChange: UploadProps["onChange"] = async (info) => {
     const rawFile = info.file.originFileObj || info.file;

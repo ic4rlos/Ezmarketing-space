@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import supabase from "../lib/c-supabaseClient";
 
 // 🔥 PASSO 1: Forçar renderização dinâmica e definir o runtime
-export const dynamic_config = "force-dynamic"; // Variável renomeada para não conflitar com o import
+export const dynamic_config = "force-dynamic";
 export const runtime = "nodejs";
 
 // 🔥 PASSO 2: Carregamento dinâmico do Plasmic (Desativa SSR para este componente)
@@ -109,13 +109,13 @@ export default function CEditProfile() {
 
     const { company: companyValues, solutions } = payload;
 
-    // ✅ 1. Verificar se há arquivo de logo
+    // ✅ 1. Upload logo
     const logoFile = companyValues.logoFile?.originFileObj;
     let logoUrl = companyValues.Logo;
 
     if (logoFile) {
       const filePath = `logos/${user.id}/${Date.now()}-${logoFile.name}`;
-      const { data, error } = await supabase.storage
+      const { error } = await supabase.storage
         .from("company-logos")
         .upload(filePath, logoFile);
 
@@ -125,12 +125,11 @@ export default function CEditProfile() {
         const { data: publicUrlData } = supabase.storage
           .from("company-logos")
           .getPublicUrl(filePath);
-
         logoUrl = publicUrlData.publicUrl;
       }
     }
 
-    // ✅ 2. Verificar se há arquivo de Company image (upload nativo do Plasmic)
+    // ✅ 2. Upload imagem da empresa
     const companyImageFile = companyValues["Company image"]?.[0]?.originFileObj;
     let companyImageUrl = companyValues["Company image"] ?? null;
 
@@ -140,7 +139,7 @@ export default function CEditProfile() {
       const filePath = `company-images/${fileName}`;
 
       const { error: uploadError } = await supabase.storage
-        .from("company-logos") // pode usar outro bucket se quiser
+        .from("company-logos")
         .upload(filePath, companyImageFile, { upsert: true });
 
       if (uploadError) {
@@ -149,7 +148,6 @@ export default function CEditProfile() {
         const { data } = supabase.storage
           .from("company-logos")
           .getPublicUrl(filePath);
-
         companyImageUrl = data.publicUrl;
       }
     }
@@ -162,7 +160,7 @@ export default function CEditProfile() {
           user_id: user.id,
           ...companyValues,
           Logo: logoUrl,
-          "Company image": companyImageUrl, // ✅ novo campo tratado
+          "Company image": companyImageUrl,
         },
         { onConflict: "user_id" }
       )
@@ -177,15 +175,10 @@ export default function CEditProfile() {
     const companyId = savedCompany.id;
 
     // 4️⃣ Buscar solutions existentes
-    const { data: existingSolutions, error: fetchSolError } = await supabase
+    const { data: existingSolutions } = await supabase
       .from("solutions")
       .select("id")
       .eq("Company_id", companyId);
-
-    if (fetchSolError) {
-      console.error("❌ Fetch existing solutions failed:", fetchSolError);
-      return;
-    }
 
     const existingSolutionIds = existingSolutions?.map((s) => s.id) ?? [];
     const incomingSolutionIds = solutions
@@ -197,15 +190,7 @@ export default function CEditProfile() {
     );
 
     if (solutionsToDelete.length > 0) {
-      const { error: deleteSolError } = await supabase
-        .from("solutions")
-        .delete()
-        .in("id", solutionsToDelete);
-
-      if (deleteSolError) {
-        console.error("❌ Delete solutions failed:", deleteSolError);
-        return;
-      }
+      await supabase.from("solutions").delete().in("id", solutionsToDelete);
     }
 
     // 5️⃣ Upsert Solutions
@@ -219,25 +204,13 @@ export default function CEditProfile() {
             ? null
             : Number(sol.price),
       };
-
-      if (sol.id !== undefined && sol.id !== null) {
-        return { ...base, id: sol.id };
-      }
-
-      return base;
+      return sol.id ? { ...base, id: sol.id } : base;
     });
 
-    const { data: savedSolutions, error: solutionsError } = await supabase
+    const { data: savedSolutions } = await supabase
       .from("solutions")
-      .upsert(solutionsPayload, {
-        onConflict: "Company_id,Title",
-      })
+      .upsert(solutionsPayload, { onConflict: "Company_id,Title" })
       .select();
-
-    if (solutionsError) {
-      console.error("❌ Solutions upsert failed:", solutionsError);
-      return;
-    }
 
     const solutionMap = new Map();
     savedSolutions?.forEach((s: any) => {
@@ -270,4 +243,28 @@ export default function CEditProfile() {
       const stepsPayload = sol.steps.map((step: any, index: number) => {
         const base = {
           solution_id: solutionId,
-          step
+          step_text: step.step_text,
+          Step_order: index,
+        };
+        return step.id ? { ...base, id: step.id } : base;
+      });
+
+      await supabase
+        .from("solutions_steps")
+        .upsert(stepsPayload, { onConflict: "solution_id,Step_order" });
+    }
+
+    // ✅ FINAL SUCESSO
+    router.replace("/company-profile");
+  }
+
+  return (
+    <PlasmicCEditProfile
+      user={user}
+      company={company}
+      formData={formData}
+      loading={loading}
+      onSave={handleSave}
+    />
+  );
+}

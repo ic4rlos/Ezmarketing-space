@@ -10,9 +10,9 @@ export const runtime = "nodejs";
 // 🔥 Plasmic sem SSR
 const PlasmicCEditProfile = dynamic(
   () =>
-    import("../components/plasmic/ez_marketing_platform/PlasmicCEditProfile").then(
-      (m) => m.PlasmicCEditProfile
-    ),
+    import(
+      "../components/plasmic/ez_marketing_platform/PlasmicCEditProfile"
+    ).then((m) => m.PlasmicCEditProfile),
   { ssr: false }
 );
 
@@ -103,25 +103,28 @@ export default function CEditProfile() {
     loadAll();
   }, [user]);
 
-  // 🔥 SAVE PRINCIPAL (CORRIGIDO)
+  // 🔥 SAVE PRINCIPAL
   async function handleSave(payload: any) {
     if (!user) return;
 
     const { company: companyValues, solutions } = payload;
 
-    // ✅ Company Logo já é URL do CropUpload
+    // ✅ Company Logo já vem como URL do CropUpload
     const logoUrl = companyValues.logoFile ?? null;
 
-    // ✅ Company image (upload nativo do Plasmic)
+    // ✅ Company image (upload nativo)
     const companyImageFile =
       companyValues["Company image"]?.[0]?.originFileObj;
 
-    let companyImageUrl = companyValues["Company image"] ?? null;
+    let companyImageUrl =
+      typeof companyValues["Company image"] === "string"
+        ? companyValues["Company image"]
+        : null;
 
     if (companyImageFile) {
       const fileExt = companyImageFile.name.split(".").pop();
       const fileName = `${Date.now()}-cover.${fileExt}`;
-      const filePath = `company-images/${fileName}`;
+      const filePath = `company-images/${user.id}/${fileName}`;
 
       const { error: uploadError } = await supabase.storage
         .from("company-logos")
@@ -256,9 +259,11 @@ export default function CEditProfile() {
 
   return (
     <PlasmicCEditProfile
-      company={company}
-      formData={formData}
-      onSave={handleSave}
+      args={{
+        company,
+        formData,
+        onSave: handleSave,
+      }}
     />
   );
 }

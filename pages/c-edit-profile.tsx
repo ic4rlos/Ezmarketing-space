@@ -29,7 +29,7 @@ export default function CEditProfile() {
     async function loadUser() {
       const { data, error } = await supabase.auth.getUser();
       if (error) console.error("❌ Error loading user:", error);
-      setUser(data.user ?? null);
+      setUser(data?.user ?? null);
     }
     loadUser();
   }, []);
@@ -105,61 +105,87 @@ export default function CEditProfile() {
 
   // 🔥 SAVE PRINCIPAL
   async function handleSave(payload: any) {
-    if (!user) return;
+    console.log("🔥🔥🔥 SAVE DISPARADO 🔥🔥🔥");
+    console.log("Payload bruto:", payload);
+
+    if (!user) {
+      console.error("🚨 USER NULL — SAVE ABORTADO");
+      return;
+    }
 
     const { company: companyValues, solutions } = payload;
 
+    console.log("Company recebido:", companyValues);
+    console.log("Solutions recebidas:", solutions);
+
     // ✅ Company Logo já vem como URL do CropUpload
-    const logoUrl = companyValues.logoFile ?? null;
+    const logoUrl = companyValues["Company Logo"] ?? null;
 
     // ✅ Company image (upload nativo)
     const companyImageFile =
       companyValues["Company image"]?.[0]?.originFileObj;
+
+    console.log("Company image raw:", companyValues["Company image"]);
+    console.log("Company image file:", companyImageFile);
 
     let companyImageUrl =
       typeof companyValues["Company image"] === "string"
         ? companyValues["Company image"]
         : null;
 
+    console.log("Company image URL inicial:", companyImageUrl);
+
     if (companyImageFile) {
+      console.log("📤 INICIANDO UPLOAD IMAGE");
+
       const fileExt = companyImageFile.name.split(".").pop();
       const fileName = `${Date.now()}-cover.${fileExt}`;
       const filePath = `company-images/${user.id}/${fileName}`;
+
+      console.log("Upload path:", filePath);
 
       const { error: uploadError } = await supabase.storage
         .from("company-logos")
         .upload(filePath, companyImageFile, { upsert: true });
 
       if (uploadError) {
-        console.error("❌ Company image upload failed:", uploadError);
+        console.error("❌ ERRO UPLOAD:", uploadError);
       } else {
+        console.log("✅ UPLOAD OK");
         const { data } = supabase.storage
           .from("company-logos")
           .getPublicUrl(filePath);
 
         companyImageUrl = data.publicUrl;
+        console.log("Public URL gerada:", companyImageUrl);
       }
     }
 
-    // ✅ UPSERT COMPANY
+    console.log("🚀 INICIANDO UPSERT COMPANY");
+
     const { data: savedCompany, error: companyError } = await supabase
       .from("companies")
       .upsert(
-  {
-    user_id: user.id,
-    ...companyValues,
-    "Company Logo": logoUrl,        // usar o nome exato da coluna
-    "Company image": companyImageUrl,
-  },
-  { onConflict: "user_id" }
-)
+        {
+          user_id: user.id,
+          ...companyValues,
+          "Company Logo": logoUrl,
+          "Company image": companyImageUrl,
+        },
+        { onConflict: "user_id" }
+      )
       .select()
       .single();
 
+    console.log("Resultado upsert:", savedCompany);
+    console.log("Erro upsert:", companyError);
+
     if (companyError) {
-      console.error("❌ Company upsert failed:", companyError);
+      console.error("🚨 UPSERT BLOQUEADO");
       return;
     }
+
+    console.log("✅ COMPANY SALVA COM ID:", savedCompany.id);
 
     const companyId = savedCompany.id;
 

@@ -3930,7 +3930,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                   "Why should they choose":
                                     $state.whyShouldTheyChoose?.value ?? "",
                                   "Company nature": $state.companyNature3 ?? "",
-                                  logoFile: $state.companyLogo ?? null,
+                                  "Company Logo": $state.companyLogo ?? null,
                                   "Company image":
                                     $props.company?.["Company image"] ?? null
                                 },

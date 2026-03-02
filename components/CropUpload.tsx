@@ -99,6 +99,7 @@ export default function CropUpload({
         accept={accept}
         multiple={false}
         showUploadList={false}
+        beforeUpload={() => false}   // ⭐ ESSENCIAL
         onChange={handleChange}
         {...props}
       >

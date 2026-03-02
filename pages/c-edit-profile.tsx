@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import supabase from "../lib/c-supabaseClient";
+import CropUpload from "@/components/CropUpload";
 
 // 🔥 PASSO 1: Forçar renderização dinâmica e definir o runtime
 export const dynamic_config = "force-dynamic"; // Variável renomeada para não conflitar com o import
@@ -23,6 +24,7 @@ export default function CEditProfile() {
   const [company, setCompany] = useState<any>(null);
   const [formData, setFormData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [companyLogo, setCompanyLogo] = useState<string | null>(null);
 
   // 🔹 1. Buscar usuário
   useEffect(() => {
@@ -60,6 +62,7 @@ export default function CEditProfile() {
       }
 
       setCompany(companyData);
+      setCompanyLogo(companyData?.["Company Logo"] ?? null);
 
       const { data: solutions, error: solutionsError } = await supabase
         .from("solutions")
@@ -111,7 +114,7 @@ export default function CEditProfile() {
 
     // ✅ 1. Verificar se há arquivo de logo
     const logoFile = companyValues.logoFile?.originFileObj;
-    let logoUrl = companyValues.Logo;
+    let logoUrl = companyLogo ?? companyValues.Logo;
 
     if (logoFile) {
       const filePath = `logos/${user.id}/${Date.now()}-${logoFile.name}`;
@@ -140,7 +143,7 @@ export default function CEditProfile() {
       const filePath = `company-images/${fileName}`;
 
       const { error: uploadError } = await supabase.storage
-        .from("company-logos") // pode usar outro bucket se quiser
+        .from("company-logos")
         .upload(filePath, companyImageFile, { upsert: true });
 
       if (uploadError) {
@@ -162,7 +165,7 @@ export default function CEditProfile() {
           user_id: user.id,
           ...companyValues,
           Logo: logoUrl,
-          "Company image": companyImageUrl, // ✅ novo campo tratado
+          "Company image": companyImageUrl,
         },
         { onConflict: "user_id" }
       )
@@ -270,22 +273,4 @@ export default function CEditProfile() {
       const stepsPayload = sol.steps.map((step: any, index: number) => {
         const base = {
           solution_id: solutionId,
-          step_text: step.step_text,
-          Step_order: index,
-        };
-
-        if (step.id !== undefined && step.id !== null) {
-          return { ...base, id: step.id };
-        }
-
-        return base;
-      });
-
-      await supabase
-        .from("solutions_steps")
-        .upsert(stepsPayload, { onConflict: "solution_id,Step_order" });
-    }
-
-    // ✅ FINAL SUCESSO
-    router.replace("/company-profile");
- 
+          step_text: step.step_text

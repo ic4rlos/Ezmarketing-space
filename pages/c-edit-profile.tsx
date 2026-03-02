@@ -111,7 +111,7 @@ export default function CEditProfile() {
 
     // ✅ 1. Verificar se há arquivo de logo
     const logoFile = companyValues.logoFile?.originFileObj;
-    let logoUrl = companyValues.Logo; 
+    let logoUrl = companyValues.Logo;
 
     if (logoFile) {
       const filePath = `logos/${user.id}/${Date.now()}-${logoFile.name}`;
@@ -130,11 +130,40 @@ export default function CEditProfile() {
       }
     }
 
-    // ✅ 2. Upsert Company
+    // ✅ 2. Verificar se há arquivo de Company image (upload nativo do Plasmic)
+    const companyImageFile = companyValues["Company image"]?.[0]?.originFileObj;
+    let companyImageUrl = companyValues["Company image"] ?? null;
+
+    if (companyImageFile) {
+      const fileExt = companyImageFile.name.split(".").pop();
+      const fileName = `${Date.now()}-cover.${fileExt}`;
+      const filePath = `company-images/${fileName}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from("company-logos") // pode usar outro bucket se quiser
+        .upload(filePath, companyImageFile, { upsert: true });
+
+      if (uploadError) {
+        console.error("❌ Company image upload failed:", uploadError);
+      } else {
+        const { data } = supabase.storage
+          .from("company-logos")
+          .getPublicUrl(filePath);
+
+        companyImageUrl = data.publicUrl;
+      }
+    }
+
+    // ✅ 3. Upsert Company
     const { data: savedCompany, error: companyError } = await supabase
       .from("companies")
       .upsert(
-        { user_id: user.id, ...companyValues, Logo: logoUrl },
+        {
+          user_id: user.id,
+          ...companyValues,
+          Logo: logoUrl,
+          "Company image": companyImageUrl, // ✅ novo campo tratado
+        },
         { onConflict: "user_id" }
       )
       .select()
@@ -147,7 +176,7 @@ export default function CEditProfile() {
 
     const companyId = savedCompany.id;
 
-    // 3️⃣ Buscar solutions existentes
+    // 4️⃣ Buscar solutions existentes
     const { data: existingSolutions, error: fetchSolError } = await supabase
       .from("solutions")
       .select("id")
@@ -179,7 +208,7 @@ export default function CEditProfile() {
       }
     }
 
-    // 4️⃣ Upsert Solutions
+    // 5️⃣ Upsert Solutions
     const solutionsPayload = solutions.map((sol: any) => {
       const base = {
         Company_id: companyId,
@@ -215,7 +244,7 @@ export default function CEditProfile() {
       solutionMap.set(s.Title, s.id);
     });
 
-    // 5️⃣ Steps
+    // 6️⃣ Steps
     for (const sol of solutions) {
       const solutionId = solutionMap.get(sol.title);
       if (!solutionId) continue;
@@ -259,18 +288,4 @@ export default function CEditProfile() {
 
     // ✅ FINAL SUCESSO
     router.replace("/company-profile");
-  }
-
-  if (loading) return null;
-
-  return (
-    <PlasmicCEditProfile
-      args={{
-        company,
-        formData,
-        setFormData,
-        onSave: handleSave,
-      }}
-    />
-  );
-}
+ 

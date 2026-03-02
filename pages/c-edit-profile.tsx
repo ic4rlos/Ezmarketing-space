@@ -145,14 +145,14 @@ export default function CEditProfile() {
     const { data: savedCompany, error: companyError } = await supabase
       .from("companies")
       .upsert(
-        {
-          user_id: user.id,
-          ...companyValues,
-          Logo: logoUrl,
-          "Company image": companyImageUrl,
-        },
-        { onConflict: "user_id" }
-      )
+  {
+    user_id: user.id,
+    ...companyValues,
+    "Company Logo": logoUrl,        // usar o nome exato da coluna
+    "Company image": companyImageUrl,
+  },
+  { onConflict: "user_id" }
+)
       .select()
       .single();
 

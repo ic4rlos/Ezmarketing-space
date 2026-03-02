@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import ImgCrop from "antd-img-crop";
 import { Upload } from "antd";
-import type { UploadFile, UploadProps } from "antd";
+import type { UploadProps } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import supabase from "../lib/c-supabaseClient";
 
@@ -24,37 +24,38 @@ export default function CropUpload({
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
 
-  const handleChange: UploadProps["onChange"] = async ({ file }) => {
-    if (!file.originFileObj) return;
+  const handleChange: UploadProps["onChange"] = async (info) => {
+    const rawFile = info.file.originFileObj || info.file;
+
+    if (!rawFile) {
+      console.log("🚨 No file detected", info);
+      return;
+    }
 
     try {
       setUploading(true);
 
-      // 🔹 nome único
-      const fileExt = file.name.split(".").pop();
+      const fileExt = rawFile.name?.split(".").pop() || "png";
       const fileName = `${Date.now()}.${fileExt}`;
       const filePath = `logos/${fileName}`;
 
-      // 🔹 upload
+      console.log("📤 Uploading:", filePath);
+
       const { error: uploadError } = await supabase.storage
         .from("company-logos")
-        .upload(filePath, file.originFileObj, {
-          upsert: true,
-        });
+        .upload(filePath, rawFile, { upsert: true });
 
       if (uploadError) throw uploadError;
 
-      // 🔹 pegar URL pública
       const { data } = supabase.storage
         .from("company-logos")
         .getPublicUrl(filePath);
 
       const publicUrl = data.publicUrl;
 
-      // preview imediato
-      setImageUrl(publicUrl);
+      console.log("✅ Uploaded URL:", publicUrl);
 
-      // 🔥 envia para Plasmic
+      setImageUrl(publicUrl);
       onChange?.(publicUrl);
     } catch (err) {
       console.error("❌ Upload failed:", err);

@@ -3,11 +3,11 @@ import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import supabase from "../lib/c-supabaseClient";
 
-// 🔥 PASSO 1: Forçar renderização dinâmica e definir o runtime
+// 🔥 força render dinâmico
 export const dynamic_config = "force-dynamic";
 export const runtime = "nodejs";
 
-// 🔥 PASSO 2: Carregamento dinâmico do Plasmic (Desativa SSR para este componente)
+// 🔥 Plasmic sem SSR
 const PlasmicCEditProfile = dynamic(
   () =>
     import("../components/plasmic/ez_marketing_platform/PlasmicCEditProfile").then(
@@ -34,7 +34,7 @@ export default function CEditProfile() {
     loadUser();
   }, []);
 
-  // 🔹 2. Buscar company + solutions + steps
+  // 🔹 2. Buscar company + solutions
   useEffect(() => {
     if (!user) {
       setLoading(false);
@@ -103,34 +103,19 @@ export default function CEditProfile() {
     loadAll();
   }, [user]);
 
-  // 🔹 3. Sincronização completa
+  // 🔥 SAVE PRINCIPAL (CORRIGIDO)
   async function handleSave(payload: any) {
     if (!user) return;
 
     const { company: companyValues, solutions } = payload;
 
-    // ✅ 1. Upload logo
-    const logoFile = companyValues.logoFile?.originFileObj;
-    let logoUrl = companyValues.Logo;
+    // ✅ Company Logo já é URL do CropUpload
+    const logoUrl = companyValues.logoFile ?? null;
 
-    if (logoFile) {
-      const filePath = `logos/${user.id}/${Date.now()}-${logoFile.name}`;
-      const { error } = await supabase.storage
-        .from("company-logos")
-        .upload(filePath, logoFile);
+    // ✅ Company image (upload nativo do Plasmic)
+    const companyImageFile =
+      companyValues["Company image"]?.[0]?.originFileObj;
 
-      if (error) {
-        console.error("❌ Logo upload failed:", error);
-      } else {
-        const { data: publicUrlData } = supabase.storage
-          .from("company-logos")
-          .getPublicUrl(filePath);
-        logoUrl = publicUrlData.publicUrl;
-      }
-    }
-
-    // ✅ 2. Upload imagem da empresa
-    const companyImageFile = companyValues["Company image"]?.[0]?.originFileObj;
     let companyImageUrl = companyValues["Company image"] ?? null;
 
     if (companyImageFile) {
@@ -148,11 +133,12 @@ export default function CEditProfile() {
         const { data } = supabase.storage
           .from("company-logos")
           .getPublicUrl(filePath);
+
         companyImageUrl = data.publicUrl;
       }
     }
 
-    // ✅ 3. Upsert Company
+    // ✅ UPSERT COMPANY
     const { data: savedCompany, error: companyError } = await supabase
       .from("companies")
       .upsert(
@@ -174,7 +160,7 @@ export default function CEditProfile() {
 
     const companyId = savedCompany.id;
 
-    // 4️⃣ Buscar solutions existentes
+    // 🔹 deletar solutions removidas
     const { data: existingSolutions } = await supabase
       .from("solutions")
       .select("id")
@@ -193,7 +179,7 @@ export default function CEditProfile() {
       await supabase.from("solutions").delete().in("id", solutionsToDelete);
     }
 
-    // 5️⃣ Upsert Solutions
+    // 🔹 upsert solutions
     const solutionsPayload = solutions.map((sol: any) => {
       const base = {
         Company_id: companyId,
@@ -204,12 +190,16 @@ export default function CEditProfile() {
             ? null
             : Number(sol.price),
       };
-      return sol.id ? { ...base, id: sol.id } : base;
+
+      if (sol.id) return { ...base, id: sol.id };
+      return base;
     });
 
     const { data: savedSolutions } = await supabase
       .from("solutions")
-      .upsert(solutionsPayload, { onConflict: "Company_id,Title" })
+      .upsert(solutionsPayload, {
+        onConflict: "Company_id,Title",
+      })
       .select();
 
     const solutionMap = new Map();
@@ -217,7 +207,7 @@ export default function CEditProfile() {
       solutionMap.set(s.Title, s.id);
     });
 
-    // 6️⃣ Steps
+    // 🔹 steps
     for (const sol of solutions) {
       const solutionId = solutionMap.get(sol.title);
       if (!solutionId) continue;
@@ -246,24 +236,28 @@ export default function CEditProfile() {
           step_text: step.step_text,
           Step_order: index,
         };
-        return step.id ? { ...base, id: step.id } : base;
+
+        if (step.id) return { ...base, id: step.id };
+        return base;
       });
 
       await supabase
         .from("solutions_steps")
-        .upsert(stepsPayload, { onConflict: "solution_id,Step_order" });
+        .upsert(stepsPayload, {
+          onConflict: "solution_id,Step_order",
+        });
     }
 
-    // ✅ FINAL SUCESSO
+    // ✅ SUCESSO FINAL
     router.replace("/company-profile");
   }
 
+  if (loading) return null;
+
   return (
     <PlasmicCEditProfile
-      user={user}
       company={company}
       formData={formData}
-      loading={loading}
       onSave={handleSave}
     />
   );

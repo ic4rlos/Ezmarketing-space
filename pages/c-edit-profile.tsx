@@ -110,7 +110,7 @@ export default function CEditProfile() {
     const { company: companyValues, solutions } = payload;
 
     // ✅ Company Logo já vem como URL do CropUpload
-    const logoUrl = companyValues.["Company Logo"] ?? null;
+    const logoUrl = companyValues.logoFile ?? null;
 
     // ✅ Company image (upload nativo)
     const companyImageFile =

@@ -748,7 +748,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       ? (() => {
                           const actionArgs = {
                             customFunction: async () => {
-                              return console.log("EVENT:", $event);
+                              return ($state.companyLogo = arguments[0]);
                             }
                           };
                           return (({ customFunction }) => {

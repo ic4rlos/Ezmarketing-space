@@ -3,11 +3,11 @@ import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import supabase from "../lib/c-supabaseClient";
 
-// 🔥 Configurações de Renderização
+// 🔥 Força render dinâmico e runtime Node.js para suporte ao Buffer (upload de imagens)
 export const dynamic_config = "force-dynamic";
 export const runtime = "nodejs";
 
-// 🔥 Plasmic sem SSR
+// 🔥 Plasmic sem SSR para evitar erros de hidratação
 const PlasmicCEditProfile = dynamic(
   () =>
     import("../components/plasmic/ez_marketing_platform/PlasmicCEditProfile").then(
@@ -24,7 +24,7 @@ export default function CEditProfile() {
   const [formData, setFormData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // 🔹 1. Buscar usuário
+  // 🔹 1. Buscar usuário autenticado
   useEffect(() => {
     async function loadUser() {
       const { data, error } = await supabase.auth.getUser();
@@ -34,7 +34,7 @@ export default function CEditProfile() {
     loadUser();
   }, []);
 
-  // 🔹 2. Buscar company + solutions
+  // 🔹 2. Buscar dados da Empresa + Soluções associadas
   useEffect(() => {
     if (!user) {
       if (!loading) setLoading(false);
@@ -49,6 +49,7 @@ export default function CEditProfile() {
         .single();
 
       if (companyError || !companyData) {
+        console.error("❌ Error loading company:", companyError);
         setLoading(false);
         return;
       }
@@ -95,18 +96,20 @@ export default function CEditProfile() {
     loadAll();
   }, [user]);
 
-  // 🔥 SAVE PRINCIPAL
+  // 🔥 FUNÇÃO DE SALVAMENTO PRINCIPAL
   async function handleSave(payload: any) {
-    if (!user) return;
+    console.log("🔥🔥🔥 SAVE DISPARADO 🔥🔥🔥");
+    if (!user) {
+      console.error("🚨 USER NULL — SAVE ABORTADO");
+      return;
+    }
 
-    // O payload do Plasmic costuma vir dentro de argumentos ou direto, 
-    // garantindo a extração correta:
-    const companyValues = payload.company || payload;
-    const solutions = payload.solutions || [];
+    const { company: companyValues, solutions } = payload;
 
-    // ✅ CORREÇÃO SEGURA LOGO
+    // ✅ CORREÇÃO SEGURA PARA O LOGO (Tratando múltiplos formatos do Plasmic)
     const rawLogo = companyValues["Company Logo"];
     let logoUrl: string | null = null;
+    
     if (typeof rawLogo === "string") {
       logoUrl = rawLogo;
     } else if (rawLogo?.url) {
@@ -115,7 +118,7 @@ export default function CEditProfile() {
       logoUrl = rawLogo.files[0].url;
     }
 
-    // ✅ BLOCO COMPANY IMAGE
+    // ✅ TRATAMENTO DA IMAGEM DA EMPRESA (Upload para Storage)
     const rawImage = companyValues["Company image"];
     let companyImageUrl: string | null = null;
 
@@ -144,7 +147,7 @@ export default function CEditProfile() {
       companyImageUrl = rawImage;
     }
 
-    // UPSERT COMPANY
+    // 🚀 UPSERT DA TABELA 'COMPANIES'
     const { data: savedCompany, error: companyError } = await supabase
       .from("companies")
       .upsert(
@@ -159,11 +162,14 @@ export default function CEditProfile() {
       .select()
       .single();
 
-    if (companyError) return;
+    if (companyError) {
+      console.error("🚨 ERRO NO UPSERT DA EMPRESA:", companyError);
+      return;
+    }
 
     const companyId = savedCompany.id;
 
-    // Sincronizar Solutions
+    // 🔹 1. Gerenciar Solutions (Deletar as que saíram e Upsert nas atuais)
     const { data: existingSolutions } = await supabase
       .from("solutions")
       .select("id")
@@ -190,7 +196,7 @@ export default function CEditProfile() {
       .upsert(solutionsPayload, { onConflict: "id" })
       .select();
 
-    // Steps
+    // 🔹 2. Gerenciar Steps para cada solução
     for (const sol of solutions) {
       const targetSolution = savedSolutions?.find((s: any) => s.Title === sol.title);
       if (!targetSolution) continue;
@@ -220,6 +226,7 @@ export default function CEditProfile() {
       await supabase.from("solutions_steps").upsert(stepsPayload, { onConflict: "id" });
     }
 
+    // ✅ SUCESSO FINAL: Redirecionar
     router.replace("/company-profile");
   }
 
@@ -227,15 +234,11 @@ export default function CEditProfile() {
 
   return (
     <PlasmicCEditProfile
-      // ✅ A correção principal para o erro de Type:
-      // No Plasmic, passamos os dados via 'args' para componentes data-driven
       args={{
         company: company,
-        solutionsData: formData,
+        formData: formData,
+        onSave: handleSave,
       }}
-      // Eventos/Overrides costumam ser aceitos no primeiro nível ou via props diretas
-      // dependendo de como você configurou o componente no Plasmic Studio
-      onSave={handleSave}
     />
   );
 }

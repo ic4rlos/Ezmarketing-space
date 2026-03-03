@@ -437,16 +437,16 @@ function PlasmicCEditProfile__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
-              return (files = $props.company?.["Company image"]
+              return $props.company?.["Company image"]
                 ? [
                     {
                       uid: "existing",
                       name: "existing.png",
                       status: "done",
-                      url: $props.company?.["Company image"]
+                      url: $props.company["Company image"]
                     }
                   ]
-                : []);
+                : [];
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -3690,117 +3690,66 @@ function PlasmicCEditProfile__RenderFunc(props: {
                 </React.Fragment>
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__b0Whj)}>
-                {(() => {
-                  const child$Props = {
-                    accept: "image/*",
-                    className: classNames("__wab_instance", sty.companyImage),
-                    files: generateStateValueProp($state, [
+                <UploadWrapper
+                  data-plasmic-name={"companyImage"}
+                  data-plasmic-override={overrides.companyImage}
+                  accept={"image/*"}
+                  className={classNames("__wab_instance", sty.companyImage)}
+                  files={generateStateValueProp($state, [
+                    "companyImage",
+                    "files"
+                  ])}
+                  listType={"text"}
+                  maxCount={1}
+                  onFilesChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
                       "companyImage",
                       "files"
-                    ]),
-                    listType: "text",
-                    maxCount: 1,
-                    onFilesChange: async (...eventArgs: any) => {
-                      generateStateOnChangeProp($state, [
-                        "companyImage",
-                        "files"
-                      ]).apply(null, eventArgs);
+                    ]).apply(null, eventArgs);
 
-                      (async files => {
-                        const $steps = {};
+                    (async files => {
+                      const $steps = {};
 
-                        $steps["runCode"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                customFunction: async () => {
-                                  return undefined;
-                                }
-                              };
-                              return (({ customFunction }) => {
-                                return customFunction();
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["runCode"] != null &&
-                          typeof $steps["runCode"] === "object" &&
-                          typeof $steps["runCode"].then === "function"
-                        ) {
-                          $steps["runCode"] = await $steps["runCode"];
-                        }
-                      }).apply(null, eventArgs);
-                    },
-                    showUploadList: true
-                  };
-                  initializeCodeComponentStates(
-                    $state,
-                    [
-                      {
-                        name: "files",
-                        plasmicStateName: "companyImage.files"
-                      }
-                    ],
-                    [],
-                    undefined ?? {},
-                    child$Props
-                  );
-                  initializePlasmicStates(
-                    $state,
-                    [
-                      {
-                        name: "companyImage.files",
-                        initFunc: ({ $props, $state, $queries, $q }) =>
-                          (() => {
-                            try {
-                              return (files = $props.company?.["Company image"]
-                                ? [
-                                    {
-                                      uid: "existing",
-                                      name: "existing.png",
-                                      status: "done",
-                                      url: $props.company?.["Company image"]
-                                    }
-                                  ]
-                                : []);
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return [];
+                      $steps["runCode"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return undefined;
                               }
-                              throw e;
-                            }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
                           })()
+                        : undefined;
+                      if (
+                        $steps["runCode"] != null &&
+                        typeof $steps["runCode"] === "object" &&
+                        typeof $steps["runCode"].then === "function"
+                      ) {
+                        $steps["runCode"] = await $steps["runCode"];
                       }
-                    ],
-                    []
-                  );
-                  return (
-                    <UploadWrapper
-                      data-plasmic-name={"companyImage"}
-                      data-plasmic-override={overrides.companyImage}
-                      {...child$Props}
+                    }).apply(null, eventArgs);
+                  }}
+                  showUploadList={true}
+                >
+                  <AntdButton
+                    data-plasmic-name={"button"}
+                    data-plasmic-override={overrides.button}
+                    className={classNames("__wab_instance", sty.button)}
+                    type={"dashed"}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__oEt0X
+                      )}
                     >
-                      <AntdButton
-                        data-plasmic-name={"button"}
-                        data-plasmic-override={overrides.button}
-                        className={classNames("__wab_instance", sty.button)}
-                        type={"dashed"}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__oEt0X
-                          )}
-                        >
-                          {"Upload"}
-                        </div>
-                      </AntdButton>
-                    </UploadWrapper>
-                  );
-                })()}
+                      {"Upload"}
+                    </div>
+                  </AntdButton>
+                </UploadWrapper>
                 <div
                   className={classNames(
                     projectcss.all,

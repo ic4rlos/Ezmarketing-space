@@ -121,48 +121,45 @@ export default function CEditProfile() {
     // ✅ Company Logo já vem como URL do CropUpload
     const logoUrl = companyValues["Company Logo"] ?? null;
 
-    // ✅ BLOCO COMPANY IMAGE CORRIGIDO
-    let companyImageUrl: string | null = null;
-    let companyImageFile: File | null = null;
-
+    // ✅ BLOCO COMPANY IMAGE (base64 contents)
     const rawImage = companyValues["Company image"];
+    let companyImageUrl: string | null = null;
+
     console.log("🔎 RAW COMPANY IMAGE:", rawImage);
 
-    // Se já for URL (edição sem trocar imagem)
-    if (typeof rawImage === "string") {
-      companyImageUrl = rawImage;
-    }
-
-    // Se for Upload do AntD (fileList)
     if (Array.isArray(rawImage) && rawImage.length > 0) {
-      const firstFile = rawImage[0];
-      if (firstFile.originFileObj) {
-        companyImageFile = firstFile.originFileObj;
-      }
-    }
+      const fileObj = rawImage[0];
 
-    // ✅ BLOCO DE UPLOAD ROBUSTO
-    if (companyImageFile) {
-      console.log("📤 INICIANDO UPLOAD COMPANY IMAGE");
+      if (fileObj.contents) {
+        console.log("📦 Base64 recebido");
 
-      const fileExt = companyImageFile.name.split(".").pop();
-      const fileName = `${Date.now()}-company.${fileExt}`;
-      const filePath = `company-images/${user.id}/${fileName}`;
+        const base64Data = fileObj.contents;
+        const fileExt = fileObj.name.split(".").pop();
+        const fileName = `${Date.now()}.${fileExt}`;
+        const filePath = `company-images/${user.id}/${fileName}`;
 
-      const { error: uploadError } = await supabase.storage
-        .from("company-logos")
-        .upload(filePath, companyImageFile, { upsert: true });
+        const buffer = Buffer.from(base64Data, "base64");
 
-      if (uploadError) {
-        console.error("❌ ERRO UPLOAD COMPANY IMAGE:", uploadError);
-      } else {
-        const { data } = supabase.storage
+        const { error: uploadError } = await supabase.storage
           .from("company-logos")
-          .getPublicUrl(filePath);
+          .upload(filePath, buffer, {
+            contentType: fileObj.type,
+            upsert: true,
+          });
 
-        companyImageUrl = data.publicUrl;
-        console.log("✅ URL COMPANY IMAGE:", companyImageUrl);
+        if (!uploadError) {
+          const { data } = supabase.storage
+            .from("company-logos")
+            .getPublicUrl(filePath);
+
+          companyImageUrl = data.publicUrl;
+          console.log("✅ URL gerada:", companyImageUrl);
+        } else {
+          console.error("❌ Erro upload:", uploadError);
+        }
       }
+    } else if (typeof rawImage === "string") {
+      companyImageUrl = rawImage;
     }
 
     console.log("🚀 INICIANDO UPSERT COMPANY");

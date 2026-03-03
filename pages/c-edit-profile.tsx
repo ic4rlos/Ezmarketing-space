@@ -119,19 +119,22 @@ export default function CEditProfile() {
     console.log("Solutions recebidas:", solutions);
 
     // ✅ Company Logo já vem como URL do CropUpload
-    const logoUrl = companyValues["Company Logo"] ?? null;
+    const logoUrl =
+      typeof companyValues["Company Logo"] === "string"
+        ? companyValues["Company Logo"]
+        : null;
 
-    // ✅ BLOCO COMPANY IMAGE (base64 contents)
+    // ✅ BLOCO COMPANY IMAGE (corrigido para .files)
     const rawImage = companyValues["Company image"];
     let companyImageUrl: string | null = null;
 
     console.log("🔎 RAW COMPANY IMAGE:", rawImage);
 
-    if (Array.isArray(rawImage) && rawImage.length > 0) {
-      const fileObj = rawImage[0];
+    if (rawImage?.files && rawImage.files.length > 0) {
+      const fileObj = rawImage.files[0];
 
       if (fileObj.contents) {
-        console.log("📦 Base64 recebido");
+        console.log("📦 Base64 detectado");
 
         const base64Data = fileObj.contents;
         const fileExt = fileObj.name.split(".").pop();

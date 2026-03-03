@@ -59,6 +59,7 @@ export default function CEditProfile() {
         return;
       }
 
+      console.log("🚀 COMPANY ENVIADA PARA O PLASMIC:", companyData);
       setCompany(companyData);
 
       const { data: solutions, error: solutionsError } = await supabase
@@ -118,11 +119,19 @@ export default function CEditProfile() {
     console.log("Company recebido:", companyValues);
     console.log("Solutions recebidas:", solutions);
 
-    // ✅ Company Logo já vem como URL do CropUpload
-    const logoUrl =
-      typeof companyValues["Company Logo"] === "string"
-        ? companyValues["Company Logo"]
-        : null;
+    // ✅ CORREÇÃO SEGURA PARA LOGO
+    const rawLogo = companyValues["Company Logo"];
+    let logoUrl: string | null = null;
+
+    if (typeof rawLogo === "string") {
+      logoUrl = rawLogo;
+    } else if (rawLogo?.url) {
+      logoUrl = rawLogo.url;
+    } else if (rawLogo?.files?.[0]?.url) {
+      logoUrl = rawLogo.files[0].url;
+    }
+
+    console.log("🔎 LOGO RECEBIDO DO PLASMIC:", logoUrl);
 
     // ✅ BLOCO COMPANY IMAGE (corrigido para .files)
     const rawImage = companyValues["Company image"];
@@ -282,18 +291,4 @@ export default function CEditProfile() {
     }
 
     // ✅ SUCESSO FINAL
-    router.replace("/company-profile");
-  }
-
-  if (loading) return null;
-
-  return (
-    <PlasmicCEditProfile
-      args={{
-        company,
-        formData,
-        onSave: handleSave,
-      }}
-    />
-  );
-}
+    router

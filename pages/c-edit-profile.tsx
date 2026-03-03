@@ -133,7 +133,7 @@ export default function CEditProfile() {
 
     console.log("🔎 LOGO RECEBIDO DO PLASMIC:", logoUrl);
 
-    // ✅ BLOCO COMPANY IMAGE (corrigido para .files)
+    // ✅ BLOCO COMPANY IMAGE
     const rawImage = companyValues["Company image"];
     let companyImageUrl: string | null = null;
 
@@ -288,6 +288,4 @@ export default function CEditProfile() {
         .upsert(stepsPayload, {
           onConflict: "solution_id,Step_order",
         });
-    }
-
-    // ✅
+   

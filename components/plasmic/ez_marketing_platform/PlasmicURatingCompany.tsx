@@ -93,7 +93,14 @@ function wrapQueriesWithLoadingProxy($q: any): any {
   });
 }
 
-export function generateDynamicMetadata($q: any, $ctx: any) {
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
   return {
     title: "Rating company",
 
@@ -287,7 +294,7 @@ function PlasmicURatingCompany__RenderFunc(props: {
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
-    $ctx
+    $ctx as PageCtx
   );
 
   const styleTokensClassNames = _useStyleTokens();
@@ -1244,9 +1251,10 @@ export const PlasmicURatingCompany = Object.assign(
     internalArgProps: PlasmicURatingCompany__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/u-rating-company",
       pagePath: "/u-rating-company",
-      searchParams: {},
-      params: {}
+      params: {},
+      query: {}
     })
   }
 );

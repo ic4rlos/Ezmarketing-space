@@ -98,7 +98,14 @@ function wrapQueriesWithLoadingProxy($q: any): any {
   });
 }
 
-export function generateDynamicMetadata($q: any, $ctx: any) {
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
   return {
     title: "Confirm order",
 
@@ -232,7 +239,7 @@ function PlasmicUAnalysisAtCompanyLocation__RenderFunc(props: {
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
-    $ctx
+    $ctx as PageCtx
   );
 
   const styleTokensClassNames = _useStyleTokens();
@@ -1246,9 +1253,10 @@ export const PlasmicUAnalysisAtCompanyLocation = Object.assign(
     internalArgProps: PlasmicUAnalysisAtCompanyLocation__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/u-analysis-at-company-location",
       pagePath: "/u-analysis-at-company-location",
-      searchParams: {},
-      params: {}
+      params: {},
+      query: {}
     })
   }
 );

@@ -92,7 +92,14 @@ function wrapQueriesWithLoadingProxy($q: any): any {
   });
 }
 
-export function generateDynamicMetadata($q: any, $ctx: any) {
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
   return {
     title: "Reset password",
 
@@ -216,7 +223,7 @@ function PlasmicLCResetPassword__RenderFunc(props: {
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
-    $ctx
+    $ctx as PageCtx
   );
 
   const styleTokensClassNames = _useStyleTokens();
@@ -632,9 +639,10 @@ export const PlasmicLCResetPassword = Object.assign(
     internalArgProps: PlasmicLCResetPassword__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/c-reset-password",
       pagePath: "/c-reset-password",
-      searchParams: {},
-      params: {}
+      params: {},
+      query: {}
     })
   }
 );

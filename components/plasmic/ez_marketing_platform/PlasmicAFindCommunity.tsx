@@ -101,7 +101,14 @@ function wrapQueriesWithLoadingProxy($q: any): any {
   });
 }
 
-export function generateDynamicMetadata($q: any, $ctx: any) {
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
   return {
     title: "Find community",
 
@@ -1633,7 +1640,7 @@ function PlasmicAFindCommunity__RenderFunc(props: {
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
-    $ctx
+    $ctx as PageCtx
   );
 
   const styleTokensClassNames = _useStyleTokens();
@@ -29861,9 +29868,10 @@ export const PlasmicAFindCommunity = Object.assign(
     internalArgProps: PlasmicAFindCommunity__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/a-find-community",
       pagePath: "/a-find-community",
-      searchParams: {},
-      params: {}
+      params: {},
+      query: {}
     })
   }
 );

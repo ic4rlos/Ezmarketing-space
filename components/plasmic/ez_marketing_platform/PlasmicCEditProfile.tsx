@@ -115,7 +115,14 @@ function wrapQueriesWithLoadingProxy($q: any): any {
   });
 }
 
-export function generateDynamicMetadata($q: any, $ctx: any) {
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
   return {
     title: "Edit profile",
 
@@ -552,7 +559,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
-    $ctx
+    $ctx as PageCtx
   );
 
   const styleTokensClassNames = _useStyleTokens();
@@ -3677,6 +3684,30 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       "companyImage",
                       "files"
                     ]).apply(null, eventArgs);
+
+                    (async files => {
+                      const $steps = {};
+
+                      $steps["runCode"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return undefined;
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["runCode"] != null &&
+                        typeof $steps["runCode"] === "object" &&
+                        typeof $steps["runCode"].then === "function"
+                      ) {
+                        $steps["runCode"] = await $steps["runCode"];
+                      }
+                    }).apply(null, eventArgs);
                   }}
                   showUploadList={true}
                 >
@@ -3932,7 +3963,9 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                   "Company nature": $state.companyNature3 ?? "",
                                   "Company Logo": $state.companyLogo ?? null,
                                   "Company image":
-                                    $props.company?.["Company image"] ?? null
+                                    $state.companyImage ??
+                                    $props.company?.["Company image"] ??
+                                    null
                                 },
                                 solutions: $props.formData
                               });
@@ -4283,9 +4316,10 @@ export const PlasmicCEditProfile = Object.assign(
     internalArgProps: PlasmicCEditProfile__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/c-edit-profile",
       pagePath: "/c-edit-profile",
-      searchParams: {},
-      params: {}
+      params: {},
+      query: {}
     })
   }
 );

@@ -103,7 +103,14 @@ function wrapQueriesWithLoadingProxy($q: any): any {
   });
 }
 
-export function generateDynamicMetadata($q: any, $ctx: any) {
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
   return {
     title: "Find a Business",
 
@@ -560,58 +567,58 @@ function PlasmicAFindABusiness__RenderFunc(props: {
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
-    $ctx
+    $ctx as PageCtx
   );
 
-  const [isN460804931FocusVisible, triggerN460804931FocusVisibleProps] =
-    useTrigger("useFocusVisible", {
+  const [isN6206156FocusVisible, triggerN6206156FocusVisibleProps] = useTrigger(
+    "useFocusVisible",
+    {
+      isTextInput: false
+    }
+  );
+  const [isN6206156FocusVisibleWithin, triggerN6206156FocusVisibleWithinProps] =
+    useTrigger("useFocusVisibleWithin", {
       isTextInput: false
     });
-  const [
-    isN460804931FocusVisibleWithin,
-    triggerN460804931FocusVisibleWithinProps
-  ] = useTrigger("useFocusVisibleWithin", {
-    isTextInput: false
-  });
-  const [isN460805352FocusVisible, triggerN460805352FocusVisibleProps] =
-    useTrigger("useFocusVisible", {
+  const [isN6206577FocusVisible, triggerN6206577FocusVisibleProps] = useTrigger(
+    "useFocusVisible",
+    {
+      isTextInput: false
+    }
+  );
+  const [isN6206577FocusVisibleWithin, triggerN6206577FocusVisibleWithinProps] =
+    useTrigger("useFocusVisibleWithin", {
       isTextInput: false
     });
-  const [
-    isN460805352FocusVisibleWithin,
-    triggerN460805352FocusVisibleWithinProps
-  ] = useTrigger("useFocusVisibleWithin", {
-    isTextInput: false
-  });
-  const [isN460805773FocusVisible, triggerN460805773FocusVisibleProps] =
-    useTrigger("useFocusVisible", {
+  const [isN6206998FocusVisible, triggerN6206998FocusVisibleProps] = useTrigger(
+    "useFocusVisible",
+    {
+      isTextInput: false
+    }
+  );
+  const [isN6206998FocusVisibleWithin, triggerN6206998FocusVisibleWithinProps] =
+    useTrigger("useFocusVisibleWithin", {
       isTextInput: false
     });
-  const [
-    isN460805773FocusVisibleWithin,
-    triggerN460805773FocusVisibleWithinProps
-  ] = useTrigger("useFocusVisibleWithin", {
-    isTextInput: false
-  });
-  const [isN460806194FocusVisible, triggerN460806194FocusVisibleProps] =
-    useTrigger("useFocusVisible", {
+  const [isN6207419FocusVisible, triggerN6207419FocusVisibleProps] = useTrigger(
+    "useFocusVisible",
+    {
+      isTextInput: false
+    }
+  );
+  const [isN6207419FocusVisibleWithin, triggerN6207419FocusVisibleWithinProps] =
+    useTrigger("useFocusVisibleWithin", {
       isTextInput: false
     });
-  const [
-    isN460806194FocusVisibleWithin,
-    triggerN460806194FocusVisibleWithinProps
-  ] = useTrigger("useFocusVisibleWithin", {
-    isTextInput: false
-  });
   const triggers = {
-    focusVisible_460804931: isN460804931FocusVisible,
-    focusVisibleWithin_460804931: isN460804931FocusVisibleWithin,
-    focusVisible_460805352: isN460805352FocusVisible,
-    focusVisibleWithin_460805352: isN460805352FocusVisibleWithin,
-    focusVisible_460805773: isN460805773FocusVisible,
-    focusVisibleWithin_460805773: isN460805773FocusVisibleWithin,
-    focusVisible_460806194: isN460806194FocusVisible,
-    focusVisibleWithin_460806194: isN460806194FocusVisibleWithin
+    focusVisible_6206156: isN6206156FocusVisible,
+    focusVisibleWithin_6206156: isN6206156FocusVisibleWithin,
+    focusVisible_6206577: isN6206577FocusVisible,
+    focusVisibleWithin_6206577: isN6206577FocusVisibleWithin,
+    focusVisible_6206998: isN6206998FocusVisible,
+    focusVisibleWithin_6206998: isN6206998FocusVisibleWithin,
+    focusVisible_6207419: isN6207419FocusVisible,
+    focusVisibleWithin_6207419: isN6207419FocusVisibleWithin
   };
 
   const styleTokensClassNames = _useStyleTokens();
@@ -3927,9 +3934,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link__nivf1,
                       {
                         [sty.link___focusVisibleWithin__nivf1Cbymz]:
-                          triggers.focusVisibleWithin_460804931,
+                          triggers.focusVisibleWithin_6206156,
                         [sty.link___focusVisible__nivf11HXt]:
-                          triggers.focusVisible_460804931
+                          triggers.focusVisible_6206156
                       }
                     )}
                     component={Link}
@@ -3939,8 +3946,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       "Companies with fixed prices that go to the location to provide services"
                     }
                     data-plasmic-trigger-props={[
-                      triggerN460804931FocusVisibleProps,
-                      triggerN460804931FocusVisibleWithinProps
+                      triggerN6206156FocusVisibleProps,
+                      triggerN6206156FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -4576,9 +4583,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link__yMdnq,
                       {
                         [sty.link___focusVisibleWithin__yMdnqA4Igd]:
-                          triggers.focusVisibleWithin_460805352,
+                          triggers.focusVisibleWithin_6206577,
                         [sty.link___focusVisible__yMdnqAl7Lf]:
-                          triggers.focusVisible_460805352
+                          triggers.focusVisible_6206577
                       }
                     )}
                     component={Link}
@@ -4586,8 +4593,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                     platform={"nextjs"}
                     title={"Fixed-price companies that welcome customers"}
                     data-plasmic-trigger-props={[
-                      triggerN460805352FocusVisibleProps,
-                      triggerN460805352FocusVisibleWithinProps
+                      triggerN6206577FocusVisibleProps,
+                      triggerN6206577FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -5223,9 +5230,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link__rZqAg,
                       {
                         [sty.link___focusVisibleWithin__rZqAgxz4J9]:
-                          triggers.focusVisibleWithin_460805773,
+                          triggers.focusVisibleWithin_6206998,
                         [sty.link___focusVisible__rZqAggBS]:
-                          triggers.focusVisible_460805773
+                          triggers.focusVisible_6206998
                       }
                     )}
                     component={Link}
@@ -5235,8 +5242,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       "Budget-priced companies that go to the location to provide services"
                     }
                     data-plasmic-trigger-props={[
-                      triggerN460805773FocusVisibleProps,
-                      triggerN460805773FocusVisibleWithinProps
+                      triggerN6206998FocusVisibleProps,
+                      triggerN6206998FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -5874,9 +5881,9 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                       sty.link___0TOi8,
                       {
                         [sty.link___focusVisibleWithin___0TOi8Oo41]:
-                          triggers.focusVisibleWithin_460806194,
+                          triggers.focusVisibleWithin_6207419,
                         [sty.link___focusVisible___0TOi8X6Nuk]:
-                          triggers.focusVisible_460806194
+                          triggers.focusVisible_6207419
                       }
                     )}
                     component={Link}
@@ -5884,8 +5891,8 @@ function PlasmicAFindABusiness__RenderFunc(props: {
                     platform={"nextjs"}
                     title={"Budget-priced companies that welcome customers"}
                     data-plasmic-trigger-props={[
-                      triggerN460806194FocusVisibleProps,
-                      triggerN460806194FocusVisibleWithinProps
+                      triggerN6207419FocusVisibleProps,
+                      triggerN6207419FocusVisibleWithinProps
                     ]}
                   >
                     <React.Fragment>
@@ -14861,9 +14868,10 @@ export const PlasmicAFindABusiness = Object.assign(
     internalArgProps: PlasmicAFindABusiness__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/a-find-a-business",
       pagePath: "/a-find-a-business",
-      searchParams: {},
-      params: {}
+      params: {},
+      query: {}
     })
   }
 );

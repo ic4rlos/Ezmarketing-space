@@ -97,7 +97,14 @@ function wrapQueriesWithLoadingProxy($q: any): any {
   });
 }
 
-export function generateDynamicMetadata($q: any, $ctx: any) {
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
   return {
     title: "Create Account",
 
@@ -245,7 +252,7 @@ function PlasmicLACreateAccount__RenderFunc(props: {
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
-    $ctx
+    $ctx as PageCtx
   );
 
   const styleTokensClassNames = _useStyleTokens();
@@ -847,9 +854,10 @@ export const PlasmicLACreateAccount = Object.assign(
     internalArgProps: PlasmicLACreateAccount__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/a-create-account",
       pagePath: "/a-create-account",
-      searchParams: {},
-      params: {}
+      params: {},
+      query: {}
     })
   }
 );

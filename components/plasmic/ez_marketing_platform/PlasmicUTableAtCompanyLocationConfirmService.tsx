@@ -88,7 +88,14 @@ function wrapQueriesWithLoadingProxy($q: any): any {
   });
 }
 
-export function generateDynamicMetadata($q: any, $ctx: any) {
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
   return {
     title: "Order tracking",
 
@@ -169,7 +176,7 @@ function PlasmicUTableAtCompanyLocationConfirmService__RenderFunc(props: {
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
-    $ctx
+    $ctx as PageCtx
   );
 
   const styleTokensClassNames = _useStyleTokens();
@@ -572,9 +579,10 @@ export const PlasmicUTableAtCompanyLocationConfirmService = Object.assign(
     internalArgProps: PlasmicUTableAtCompanyLocationConfirmService__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/u-table-at-company-location-confirm",
       pagePath: "/u-table-at-company-location-confirm",
-      searchParams: {},
-      params: {}
+      params: {},
+      query: {}
     })
   }
 );

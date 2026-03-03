@@ -7,7 +7,7 @@ import supabase from "../lib/c-supabaseClient";
 export const dynamic_config = "force-dynamic";
 export const runtime = "nodejs";
 
-// 🔥 Plasmic sem SSR para evitar conflitos de hidratação
+// 🔥 Plasmic sem SSR
 const PlasmicCEditProfile = dynamic(
   () =>
     import("../components/plasmic/ez_marketing_platform/PlasmicCEditProfile").then(
@@ -24,7 +24,7 @@ export default function CEditProfile() {
   const [formData, setFormData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // 🔹 1. Buscar usuário autenticado
+  // 🔹 1. Buscar usuário
   useEffect(() => {
     async function loadUser() {
       const { data, error } = await supabase.auth.getUser();
@@ -34,7 +34,7 @@ export default function CEditProfile() {
     loadUser();
   }, []);
 
-  // 🔹 2. Buscar dados da Empresa + Soluções
+  // 🔹 2. Buscar company + solutions
   useEffect(() => {
     if (!user) {
       if (!loading) setLoading(false);
@@ -49,7 +49,6 @@ export default function CEditProfile() {
         .single();
 
       if (companyError || !companyData) {
-        console.error("❌ Error loading company:", companyError);
         setLoading(false);
         return;
       }
@@ -96,17 +95,16 @@ export default function CEditProfile() {
     loadAll();
   }, [user]);
 
-  // 🔥 FUNÇÃO DE SALVAMENTO PRINCIPAL
+  // 🔥 SAVE PRINCIPAL
   async function handleSave(payload: any) {
-    console.log("🔥🔥🔥 SAVE DISPARADO 🔥🔥🔥");
-    if (!user) {
-      console.error("🚨 USER NULL — SAVE ABORTADO");
-      return;
-    }
+    if (!user) return;
 
-    const { company: companyValues, solutions } = payload;
+    // O payload do Plasmic costuma vir dentro de argumentos ou direto, 
+    // garantindo a extração correta:
+    const companyValues = payload.company || payload;
+    const solutions = payload.solutions || [];
 
-    // ✅ CORREÇÃO SEGURA PARA O LOGO (Trata String, Objeto Plasmic ou Array de Arquivos)
+    // ✅ CORREÇÃO SEGURA LOGO
     const rawLogo = companyValues["Company Logo"];
     let logoUrl: string | null = null;
     if (typeof rawLogo === "string") {
@@ -117,7 +115,7 @@ export default function CEditProfile() {
       logoUrl = rawLogo.files[0].url;
     }
 
-    // ✅ TRATAMENTO DA IMAGEM DA EMPRESA (Upload para Storage se necessário)
+    // ✅ BLOCO COMPANY IMAGE
     const rawImage = companyValues["Company image"];
     let companyImageUrl: string | null = null;
 
@@ -128,8 +126,6 @@ export default function CEditProfile() {
         const fileExt = fileObj.name.split(".").pop();
         const fileName = `${Date.now()}.${fileExt}`;
         const filePath = `company-images/${user.id}/${fileName}`;
-        
-        // Converter base64 para Buffer (Node runtime)
         const buffer = Buffer.from(base64Data, "base64");
 
         const { error: uploadError } = await supabase.storage
@@ -148,7 +144,7 @@ export default function CEditProfile() {
       companyImageUrl = rawImage;
     }
 
-    // 🚀 UPSERT DA TABELA 'COMPANIES'
+    // UPSERT COMPANY
     const { data: savedCompany, error: companyError } = await supabase
       .from("companies")
       .upsert(
@@ -163,14 +159,11 @@ export default function CEditProfile() {
       .select()
       .single();
 
-    if (companyError) {
-      console.error("🚨 ERRO NO UPSERT DA EMPRESA:", companyError);
-      return;
-    }
+    if (companyError) return;
 
     const companyId = savedCompany.id;
 
-    // 🔹 1. Deletar Solutions removidas no front-end
+    // Sincronizar Solutions
     const { data: existingSolutions } = await supabase
       .from("solutions")
       .select("id")
@@ -178,13 +171,12 @@ export default function CEditProfile() {
 
     const existingSolutionIds = existingSolutions?.map((s) => s.id) ?? [];
     const incomingSolutionIds = solutions.filter((s: any) => s.id).map((s: any) => s.id);
-    const solutionsToDelete = existingSolutionIds.filter((id) => !incomingSolutionIds.includes(id));
+    const solutionsToDelete = existingSolutionIds.filter(id => !incomingSolutionIds.includes(id));
 
     if (solutionsToDelete.length > 0) {
       await supabase.from("solutions").delete().in("id", solutionsToDelete);
     }
 
-    // 🔹 2. Upsert Solutions
     const solutionsPayload = solutions.map((sol: any) => ({
       ...(sol.id ? { id: sol.id } : {}),
       Company_id: companyId,
@@ -193,22 +185,18 @@ export default function CEditProfile() {
       Price: sol.price ? Number(sol.price) : null,
     }));
 
-    const { data: savedSolutions, error: solUpsertError } = await supabase
+    const { data: savedSolutions } = await supabase
       .from("solutions")
-      .upsert(solutionsPayload, { onConflict: "id" }) // Usando ID como conflito para garantir match
+      .upsert(solutionsPayload, { onConflict: "id" })
       .select();
 
-    if (solUpsertError) console.error("❌ Erro ao salvar soluções", solUpsertError);
-
-    // 🔹 3. Sincronizar Steps para cada solução
+    // Steps
     for (const sol of solutions) {
-      // Encontrar o ID da solução salva (especialmente útil para novas solutions)
       const targetSolution = savedSolutions?.find((s: any) => s.Title === sol.title);
       if (!targetSolution) continue;
 
       const solutionId = targetSolution.id;
 
-      // Deletar steps antigos
       const { data: existingSteps } = await supabase
         .from("solutions_steps")
         .select("id")
@@ -216,13 +204,12 @@ export default function CEditProfile() {
 
       const existingStepIds = existingSteps?.map((s) => s.id) ?? [];
       const incomingStepIds = sol.steps.filter((st: any) => st.id).map((st: any) => st.id);
-      const stepsToDelete = existingStepIds.filter((id) => !incomingStepIds.includes(id));
+      const stepsToDelete = existingStepIds.filter(id => !incomingStepIds.includes(id));
 
       if (stepsToDelete.length > 0) {
         await supabase.from("solutions_steps").delete().in("id", stepsToDelete);
       }
 
-      // Upsert nos novos steps
       const stepsPayload = sol.steps.map((step: any, index: number) => ({
         ...(step.id ? { id: step.id } : {}),
         solution_id: solutionId,
@@ -233,7 +220,6 @@ export default function CEditProfile() {
       await supabase.from("solutions_steps").upsert(stepsPayload, { onConflict: "id" });
     }
 
-    // ✅ REDIRECIONAR APÓS SUCESSO
     router.replace("/company-profile");
   }
 
@@ -241,8 +227,14 @@ export default function CEditProfile() {
 
   return (
     <PlasmicCEditProfile
-      company={company}
-      solutionsData={formData}
+      // ✅ A correção principal para o erro de Type:
+      // No Plasmic, passamos os dados via 'args' para componentes data-driven
+      args={{
+        company: company,
+        solutionsData: formData,
+      }}
+      // Eventos/Overrides costumam ser aceitos no primeiro nível ou via props diretas
+      // dependendo de como você configurou o componente no Plasmic Studio
       onSave={handleSave}
     />
   );

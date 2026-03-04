@@ -745,8 +745,9 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                   "\uD83D\uDD25 typeof:",
                                   typeof arguments[0]
                                 );
-                                return ($state.companyLogo =
-                                  arguments[0]?.url ?? arguments[0]);
+                                return value => {
+                                  $state.companyLogo = value;
+                                };
                               })();
                             }
                           };
@@ -3701,8 +3702,9 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                   "\uD83D\uDD25 typeof:",
                                   typeof arguments[0]
                                 );
-                                return ($state.companyImage =
-                                  arguments[0]?.url ?? arguments[0]);
+                                return value => {
+                                  $state.companyImage = value;
+                                };
                               })();
                             }
                           };

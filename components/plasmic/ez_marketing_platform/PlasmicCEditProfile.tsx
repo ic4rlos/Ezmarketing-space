@@ -440,10 +440,11 @@ function PlasmicCEditProfile__RenderFunc(props: {
               return $props.company?.["Company image"]
                 ? [
                     {
-                      uid: "existing",
-                      name: "existing.png",
+                      uid: "-1",
+                      name: "image.png",
                       status: "done",
-                      url: $props.company["Company image"]
+                      url: $props.company["Company image"],
+                      thumbUrl: $props.company["Company image"]
                     }
                   ]
                 : [];
@@ -3983,10 +3984,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                                   "Why should they choose":
                                     $state.whyShouldTheyChoose?.value ?? "",
                                   "Company nature": $state.companyNature3 ?? "",
-                                  "Company Logo":
-                                    $state.companyLogo ??
-                                    $props.company?.["Company Logo"] ??
-                                    null,
+                                  "Company Logo": $state.companyLogo ?? "",
                                   "Company image":
                                     $state.companyImage ??
                                     $props.company?.["Company image"] ??

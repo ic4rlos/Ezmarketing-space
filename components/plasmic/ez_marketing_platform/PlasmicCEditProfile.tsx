@@ -553,8 +553,8 @@ function PlasmicCEditProfile__RenderFunc(props: {
       {
         path: "companyLogo",
         type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]

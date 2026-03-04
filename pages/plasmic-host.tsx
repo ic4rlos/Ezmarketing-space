@@ -19,6 +19,10 @@ registerComponent(CropUpload, {
   importPath: "@/components/CropUpload",  // ✅ alias
   isDefaultExport: true,
   props: {
+    value: {
+      type: "string",
+      defaultValue: "",
+    },
     onChange: {
       type: "eventHandler",
       argTypes: [

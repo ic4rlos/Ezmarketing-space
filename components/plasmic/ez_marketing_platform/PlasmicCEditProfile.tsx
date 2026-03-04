@@ -758,7 +758,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   data-plasmic-override={overrides.uploadDoCarlos}
                   accept={"image/*"}
                   className={classNames("__wab_instance", sty.uploadDoCarlos)}
-                  onChange={async file => {
+                  onChange={async url => {
                     const $steps = {};
 
                     $steps["runCode"] = true

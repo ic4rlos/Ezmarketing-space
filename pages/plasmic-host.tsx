@@ -23,8 +23,8 @@ registerComponent(CropUpload, {
       type: "eventHandler",
       argTypes: [
         {
-          name: "file",
-          type: "object",
+          name: "url",
+          type: "string",
         },
       ],
     },

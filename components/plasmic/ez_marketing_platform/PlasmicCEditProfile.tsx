@@ -788,14 +788,14 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   value={(() => {
                     try {
                       return $state.companyLogo
-                        ? {
-                            url: $state.companyLogo,
-                            status: "done"
-                          }
+                        ? $state.companyLogo
                         : $props.company?.["Company Logo"]
                           ? {
                               url: $props.company["Company Logo"],
-                              status: "done"
+                              status: "done",
+                              name: "company-logo.jpg",
+                              type: "image/jpeg",
+                              uid: "existing-logo"
                             }
                           : null;
                     } catch (e) {

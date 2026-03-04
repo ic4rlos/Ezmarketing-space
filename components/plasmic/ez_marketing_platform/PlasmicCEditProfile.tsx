@@ -70,8 +70,6 @@ import { AntdRadioGroup } from "@plasmicpkgs/antd5/skinny/registerRadio";
 import { AntdRadio } from "@plasmicpkgs/antd5/skinny/registerRadio";
 import { AntdTextArea } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { inputHelpers as AntdTextArea_Helpers } from "@plasmicpkgs/antd5/skinny/registerInput";
-import { UploadWrapper } from "@plasmicpkgs/antd5/skinny/registerUpload";
-import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: maKqnX1RyE1vKUCrTH51ZZ/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: maKqnX1RyE1vKUCrTH51ZZ/styleTokensProvider
 
@@ -181,8 +179,7 @@ export type PlasmicCEditProfile__OverridesType = {
   stepText?: Flex__<typeof AntdInput>;
   hhhh?: Flex__<"div">;
   about?: Flex__<"div">;
-  companyImage?: Flex__<typeof UploadWrapper>;
-  button?: Flex__<typeof AntdButton>;
+  uploadDoCarlos2?: Flex__<typeof CropUpload>;
   customerProblem?: Flex__<typeof AntdTextArea>;
   solutionDescription?: Flex__<typeof AntdTextArea>;
   whyShouldTheyChoose?: Flex__<typeof AntdTextArea>;
@@ -431,25 +428,6 @@ function PlasmicCEditProfile__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
       {
-        path: "companyImage.files",
-        type: "private",
-        variableType: "array",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          (() => {
-            try {
-              return $state.companyImage.files;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return [];
-              }
-              throw e;
-            }
-          })()
-      },
-      {
         path: "website.value",
         type: "private",
         variableType: "text",
@@ -542,6 +520,12 @@ function PlasmicCEditProfile__RenderFunc(props: {
       },
       {
         path: "companyLogo",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
+      },
+      {
+        path: "companyImage",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
@@ -3698,92 +3682,66 @@ function PlasmicCEditProfile__RenderFunc(props: {
                 </React.Fragment>
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__b0Whj)}>
-                <UploadWrapper
-                  data-plasmic-name={"companyImage"}
-                  data-plasmic-override={overrides.companyImage}
-                  accept={"image/*"}
-                  className={classNames("__wab_instance", sty.companyImage)}
-                  files={generateStateValueProp($state, [
-                    "companyImage",
-                    "files"
-                  ])}
-                  listType={"text"}
-                  maxCount={1}
-                  onFilesChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "companyImage",
-                      "files"
-                    ]).apply(null, eventArgs);
+                <CropUpload
+                  data-plasmic-name={"uploadDoCarlos2"}
+                  data-plasmic-override={overrides.uploadDoCarlos2}
+                  accept={``}
+                  className={classNames("__wab_instance", sty.uploadDoCarlos2)}
+                  onChange={async url => {
+                    const $steps = {};
 
-                    (async files => {
-                      const $steps = {};
-
-                      $steps["runCode"] =
-                        !$state.companyImage?.length &&
-                        $props.company?.["Company image"]
-                          ? (() => {
-                              const actionArgs = {
-                                customFunction: async () => {
-                                  return (() => {
-                                    if (
-                                      !$state.companyImage?.length &&
-                                      $props.company?.["Company image"]
-                                    ) {
-                                      $state.companyImage = [
-                                        {
-                                          uid: "-1",
-                                          name: "image.png",
-                                          status: "done",
-                                          url: $props.company["Company image"],
-                                          thumbUrl:
-                                            $props.company["Company image"]
-                                        }
-                                      ];
-                                    }
-                                    console.log(
-                                      "\uD83D\uDD25 Upload files:",
-                                      $state.upload.files
-                                    );
-                                    return console.log(
-                                      "\uD83D\uDD25 Status:",
-                                      $state.upload.files?.[0]?.status
-                                    );
-                                  })();
-                                }
-                              };
-                              return (({ customFunction }) => {
-                                return customFunction();
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                      if (
-                        $steps["runCode"] != null &&
-                        typeof $steps["runCode"] === "object" &&
-                        typeof $steps["runCode"].then === "function"
-                      ) {
-                        $steps["runCode"] = await $steps["runCode"];
-                      }
-                    }).apply(null, eventArgs);
+                    $steps["runCode"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return (() => {
+                                console.log("\uD83D\uDD25 url:", arguments[0]);
+                                console.log(
+                                  "\uD83D\uDD25 typeof:",
+                                  typeof arguments[0]
+                                );
+                                return ($state.companyImage = arguments[0]);
+                              })();
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
+                    ) {
+                      $steps["runCode"] = await $steps["runCode"];
+                    }
                   }}
-                  showUploadList={true}
-                >
-                  <AntdButton
-                    data-plasmic-name={"button"}
-                    data-plasmic-override={overrides.button}
-                    className={classNames("__wab_instance", sty.button)}
-                    type={"dashed"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__oEt0X
-                      )}
-                    >
-                      {"Upload"}
-                    </div>
-                  </AntdButton>
-                </UploadWrapper>
+                  value={(() => {
+                    try {
+                      return $state.companyImage
+                        ? $state.companyImage
+                        : $props.company?.["Company image"]
+                          ? {
+                              url: $props.company["Company image"],
+                              status: "done",
+                              name: "image.png",
+                              type: "image/jpeg",
+                              uid: "existing-image"
+                            }
+                          : null;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()}
+                />
+
                 <div
                   className={classNames(
                     projectcss.all,
@@ -4129,8 +4087,7 @@ const PlasmicDescendants = {
     "stepText",
     "hhhh",
     "about",
-    "companyImage",
-    "button",
+    "uploadDoCarlos2",
     "customerProblem",
     "solutionDescription",
     "whyShouldTheyChoose",
@@ -4169,8 +4126,7 @@ const PlasmicDescendants = {
     "stepText",
     "hhhh",
     "about",
-    "companyImage",
-    "button",
+    "uploadDoCarlos2",
     "customerProblem",
     "solutionDescription",
     "whyShouldTheyChoose",
@@ -4240,15 +4196,13 @@ const PlasmicDescendants = {
   hhhh: ["hhhh"],
   about: [
     "about",
-    "companyImage",
-    "button",
+    "uploadDoCarlos2",
     "customerProblem",
     "solutionDescription",
     "whyShouldTheyChoose",
     "done"
   ],
-  companyImage: ["companyImage", "button"],
-  button: ["button"],
+  uploadDoCarlos2: ["uploadDoCarlos2"],
   customerProblem: ["customerProblem"],
   solutionDescription: ["solutionDescription"],
   whyShouldTheyChoose: ["whyShouldTheyChoose"],
@@ -4291,8 +4245,7 @@ type NodeDefaultElementType = {
   stepText: typeof AntdInput;
   hhhh: "div";
   about: "div";
-  companyImage: typeof UploadWrapper;
-  button: typeof AntdButton;
+  uploadDoCarlos2: typeof CropUpload;
   customerProblem: typeof AntdTextArea;
   solutionDescription: typeof AntdTextArea;
   whyShouldTheyChoose: typeof AntdTextArea;
@@ -4393,8 +4346,7 @@ export const PlasmicCEditProfile = Object.assign(
     stepText: makeNodeComponent("stepText"),
     hhhh: makeNodeComponent("hhhh"),
     about: makeNodeComponent("about"),
-    companyImage: makeNodeComponent("companyImage"),
-    button: makeNodeComponent("button"),
+    uploadDoCarlos2: makeNodeComponent("uploadDoCarlos2"),
     customerProblem: makeNodeComponent("customerProblem"),
     solutionDescription: makeNodeComponent("solutionDescription"),
     whyShouldTheyChoose: makeNodeComponent("whyShouldTheyChoose"),

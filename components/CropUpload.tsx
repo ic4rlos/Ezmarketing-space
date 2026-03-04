@@ -12,7 +12,7 @@ export interface CropUploadProps {
   accept?: string;
   onChange?: (url: string) => void;
   size?: number;
-  value?: string | null;   // ✅ nova prop
+  value?: string | null | { url?: string };   // ✅ aceita string ou objeto
 }
 
 export default function CropUpload({
@@ -20,16 +20,23 @@ export default function CropUpload({
   accept = "image/*",
   onChange,
   size = 96,
-  value = null,            // ✅ default
+  value = null,
   ...props
 }: CropUploadProps) {
-  const [imageUrl, setImageUrl] = useState<string | null>(value ?? null);
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
 
-  // 🧪 Teste decisivo
+  // 🧪 Teste decisivo + conversão automática
   useEffect(() => {
     console.log("🧪 CropUpload recebeu value:", value);
-    setImageUrl(value ?? null);
+
+    if (typeof value === "string" && value) {
+      setImageUrl(value);
+    } else if (value && typeof value === "object" && "url" in value) {
+      setImageUrl(value.url ?? null);
+    } else {
+      setImageUrl(null);
+    }
   }, [value]);
 
   // ✅ fileList controlado tipado corretamente
@@ -38,7 +45,7 @@ export default function CropUpload({
         {
           uid: "-1",
           name: "image.png",
-          status: "done",   // ✅ UploadFileStatus aceita "done"
+          status: "done",
           url: imageUrl,
         },
       ]

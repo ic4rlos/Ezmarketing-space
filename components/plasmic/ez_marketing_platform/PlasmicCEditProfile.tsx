@@ -766,9 +766,17 @@ function PlasmicCEditProfile__RenderFunc(props: {
                           const actionArgs = {
                             customFunction: async () => {
                               return (() => {
-                                console.log("\uD83D\uDD25 url:", url);
-                                console.log("\uD83D\uDD25 typeof:", typeof url);
-                                return ($state.companyLogo = url);
+                                if (arguments[0]?.status !== "done") {
+                                  console.log(
+                                    "\uD83D\uDD25 url:",
+                                    arguments[0]
+                                  );
+                                  console.log(
+                                    "\uD83D\uDD25 typeof:",
+                                    typeof arguments[0]
+                                  );
+                                  return ($state.companyLogo = arguments[0]);
+                                }
                               })();
                             }
                           };

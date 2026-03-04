@@ -740,14 +740,12 @@ function PlasmicCEditProfile__RenderFunc(props: {
                           const actionArgs = {
                             customFunction: async () => {
                               return (() => {
-                                console.log("\uD83D\uDD25 url:", arguments[0]);
-                                console.log(
-                                  "\uD83D\uDD25 typeof:",
-                                  typeof arguments[0]
-                                );
-                                return value => {
-                                  $state.companyLogo = value;
-                                };
+                                if (arguments[0]?.url) {
+                                  return ($state.companyLogo =
+                                    arguments[0].url);
+                                } else if (typeof arguments[0] === "string") {
+                                  return ($state.companyLogo = arguments[0]);
+                                }
                               })();
                             }
                           };
@@ -3697,14 +3695,12 @@ function PlasmicCEditProfile__RenderFunc(props: {
                           const actionArgs = {
                             customFunction: async () => {
                               return (() => {
-                                console.log("\uD83D\uDD25 url:", arguments[0]);
-                                console.log(
-                                  "\uD83D\uDD25 typeof:",
-                                  typeof arguments[0]
-                                );
-                                return value => {
-                                  $state.companyImage = value;
-                                };
+                                if (arguments[0]?.url) {
+                                  return ($state.companyImage =
+                                    arguments[0].url);
+                                } else if (typeof arguments[0] === "string") {
+                                  return ($state.companyImage = arguments[0]);
+                                }
                               })();
                             }
                           };

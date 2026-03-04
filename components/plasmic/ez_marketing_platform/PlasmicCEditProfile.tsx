@@ -758,8 +758,8 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   value={(() => {
                     try {
                       return (
-                        $state.companyImage ||
-                        $props.company?.["Company image"] ||
+                        $state.companyLogo ??
+                        $props.company?.["Company Logo"] ??
                         null
                       );
                     } catch (e) {

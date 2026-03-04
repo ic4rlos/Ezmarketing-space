@@ -443,8 +443,8 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       uid: "-1",
                       name: "image.png",
                       status: "done",
-                      url: $props.company["Company image"],
-                      thumbUrl: $props.company["Company image"]
+                      url: `https://dgijmhkauccgansjktwl.supabase.co/storage/v1/object/public/images/${$props.company["Company image"]}`,
+                      thumbUrl: `https://dgijmhkauccgansjktwl.supabase.co/storage/v1/object/public/images/${$props.company["Company image"]}`
                     }
                   ]
                 : [];
@@ -3728,11 +3728,22 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     (async files => {
                       const $steps = {};
 
-                      $steps["runCode"] = true
+                      $steps["runCode"] = $state.upload.files.every(
+                        f => f.status === "done"
+                      )
                         ? (() => {
                             const actionArgs = {
                               customFunction: async () => {
-                                return undefined;
+                                return (() => {
+                                  console.log(
+                                    "\uD83D\uDD25 Upload files:",
+                                    $state.upload.files
+                                  );
+                                  return console.log(
+                                    "\uD83D\uDD25 Status:",
+                                    $state.upload.files?.[0]?.status
+                                  );
+                                })();
                               }
                             };
                             return (({ customFunction }) => {

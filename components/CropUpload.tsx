@@ -26,10 +26,23 @@ export default function CropUpload({
   const [imageUrl, setImageUrl] = useState<string | null>(value ?? null);
   const [uploading, setUploading] = useState(false);
 
-  // ✅ sincronizar quando value mudar
+  // 🧪 Teste decisivo
   useEffect(() => {
+    console.log("🧪 CropUpload recebeu value:", value);
     setImageUrl(value ?? null);
   }, [value]);
+
+  // ✅ fileList controlado
+  const fileList = imageUrl
+    ? [
+        {
+          uid: "-1",
+          name: "image.png",
+          status: "done",
+          url: imageUrl,
+        },
+      ]
+    : [];
 
   const handleChange: UploadProps["onChange"] = async (info) => {
     const rawFile = info.file.originFileObj || info.file;
@@ -109,6 +122,7 @@ export default function CropUpload({
         showUploadList={false}
         beforeUpload={() => false}   // ⭐ ESSENCIAL
         onChange={handleChange}
+        fileList={fileList}          // ✅ agora controlado
         {...props}
       >
         {uploadUI}

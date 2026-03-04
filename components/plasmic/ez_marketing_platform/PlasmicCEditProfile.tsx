@@ -756,7 +756,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                 <CropUpload
                   data-plasmic-name={"uploadDoCarlos"}
                   data-plasmic-override={overrides.uploadDoCarlos}
-                  accept={"image/*"}
+                  accept={``}
                   className={classNames("__wab_instance", sty.uploadDoCarlos)}
                   onChange={async url => {
                     const $steps = {};
@@ -766,15 +766,9 @@ function PlasmicCEditProfile__RenderFunc(props: {
                           const actionArgs = {
                             customFunction: async () => {
                               return (() => {
-                                console.log(
-                                  "\uD83D\uDD25 onChange arguments[0]:",
-                                  arguments[0]
-                                );
-                                console.log(
-                                  "\uD83D\uDD25 typeof:",
-                                  typeof arguments[0]
-                                );
-                                return ($state.companyLogo = arguments[0]);
+                                console.log("\uD83D\uDD25 url:", url);
+                                console.log("\uD83D\uDD25 typeof:", typeof url);
+                                return ($state.companyLogo = url);
                               })();
                             }
                           };
@@ -791,6 +785,19 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       $steps["runCode"] = await $steps["runCode"];
                     }
                   }}
+                  value={(() => {
+                    try {
+                      return $state.companyLogo;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()}
                 />
 
                 <div

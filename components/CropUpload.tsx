@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import ImgCrop from "antd-img-crop";
 import { Upload } from "antd";
-import type { UploadProps } from "antd";
+import type { UploadProps, UploadFile } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import supabase from "../lib/c-supabaseClient";
 
@@ -32,13 +32,13 @@ export default function CropUpload({
     setImageUrl(value ?? null);
   }, [value]);
 
-  // ✅ fileList controlado
-  const fileList = imageUrl
+  // ✅ fileList controlado tipado corretamente
+  const fileList: UploadFile[] = imageUrl
     ? [
         {
           uid: "-1",
           name: "image.png",
-          status: "done",
+          status: "done",   // ✅ UploadFileStatus aceita "done"
           url: imageUrl,
         },
       ]
@@ -122,7 +122,7 @@ export default function CropUpload({
         showUploadList={false}
         beforeUpload={() => false}   // ⭐ ESSENCIAL
         onChange={handleChange}
-        fileList={fileList}          // ✅ agora controlado
+        fileList={fileList}          // ✅ agora tipado corretamente
         {...props}
       >
         {uploadUI}

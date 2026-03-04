@@ -437,17 +437,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
-              return $props.company?.["Company image"]
-                ? [
-                    {
-                      uid: "-1",
-                      name: "image.png",
-                      status: "done",
-                      url: `https://dgijmhkauccgansjktwl.supabase.co/storage/v1/object/public/images/${$props.company["Company image"]}`,
-                      thumbUrl: `https://dgijmhkauccgansjktwl.supabase.co/storage/v1/object/public/images/${$props.company["Company image"]}`
-                    }
-                  ]
-                : [];
+              return $state.companyImage.files;
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -3728,29 +3718,44 @@ function PlasmicCEditProfile__RenderFunc(props: {
                     (async files => {
                       const $steps = {};
 
-                      $steps["runCode"] = $state.upload.files.every(
-                        f => f.status === "done"
-                      )
-                        ? (() => {
-                            const actionArgs = {
-                              customFunction: async () => {
-                                return (() => {
-                                  console.log(
-                                    "\uD83D\uDD25 Upload files:",
-                                    $state.upload.files
-                                  );
-                                  return console.log(
-                                    "\uD83D\uDD25 Status:",
-                                    $state.upload.files?.[0]?.status
-                                  );
-                                })();
-                              }
-                            };
-                            return (({ customFunction }) => {
-                              return customFunction();
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
+                      $steps["runCode"] =
+                        !$state.companyImage?.length &&
+                        $props.company?.["Company image"]
+                          ? (() => {
+                              const actionArgs = {
+                                customFunction: async () => {
+                                  return (() => {
+                                    if (
+                                      !$state.companyImage?.length &&
+                                      $props.company?.["Company image"]
+                                    ) {
+                                      $state.companyImage = [
+                                        {
+                                          uid: "-1",
+                                          name: "image.png",
+                                          status: "done",
+                                          url: $props.company["Company image"],
+                                          thumbUrl:
+                                            $props.company["Company image"]
+                                        }
+                                      ];
+                                    }
+                                    console.log(
+                                      "\uD83D\uDD25 Upload files:",
+                                      $state.upload.files
+                                    );
+                                    return console.log(
+                                      "\uD83D\uDD25 Status:",
+                                      $state.upload.files?.[0]?.status
+                                    );
+                                  })();
+                                }
+                              };
+                              return (({ customFunction }) => {
+                                return customFunction();
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
                       if (
                         $steps["runCode"] != null &&
                         typeof $steps["runCode"] === "object" &&

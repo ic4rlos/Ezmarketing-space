@@ -3958,40 +3958,73 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       ? (() => {
                           const actionArgs = {
                             customFunction: async () => {
-                              return $props.onSave({
-                                company: {
-                                  "Company name":
-                                    $state.companyName.value ?? "",
-                                  Location: $state.location?.value ?? "",
-                                  "Company type":
-                                    $state.companyType?.value ?? "",
-                                  "Foundation date":
-                                    $state.foundationDate?.value ?? "",
-                                  LinkedIn: $state.linkedIn?.value ?? "",
-                                  Instagram: $state.instagram?.value ?? "",
-                                  Website: $state.website?.value ?? "",
-                                  X: $state.x?.value ?? "",
-                                  "Company tagline":
-                                    $state.companyTagline?.value ?? "",
-                                  Area: $state.area?.value ?? "",
-                                  "Sub area": $state.subArea?.value ?? "",
-                                  "Google calendar":
-                                    $state.googleCalendar?.value ?? "",
-                                  "Customer problem":
-                                    $state.customerProblem?.value ?? "",
-                                  "Solution description":
-                                    $state.solutionDescription?.value ?? "",
-                                  "Why should they choose":
-                                    $state.whyShouldTheyChoose?.value ?? "",
-                                  "Company nature": $state.companyNature3 ?? "",
-                                  "Company Logo": $state.companyLogo ?? "",
-                                  "Company image":
-                                    $state.companyImage ??
-                                    $props.company?.["Company image"] ??
-                                    null
-                                },
-                                solutions: $props.formData
-                              });
+                              return (() => {
+                                console.log(
+                                  "================================================="
+                                );
+                                console.log("\uD83E\uDDEA DONE CLICKADO");
+                                console.log(
+                                  "\uD83D\uDD0D STATE companyLogo:",
+                                  $state.companyLogo
+                                );
+                                console.log(
+                                  "\uD83D\uDD0D TYPEOF companyLogo:",
+                                  typeof $state.companyLogo
+                                );
+                                try {
+                                  console.log(
+                                    "\uD83D\uDD0D JSON companyLogo:",
+                                    JSON.stringify($state.companyLogo)
+                                  );
+                                } catch (e) {
+                                  console.log(
+                                    "\u26A0️ companyLogo não serializável (provável Proxy)"
+                                  );
+                                }
+                                console.log(
+                                  "\uD83D\uDD0D STATE companyImage:",
+                                  $state.companyImage
+                                );
+                                console.log(
+                                  "\uD83D\uDD0D TYPEOF companyImage:",
+                                  typeof $state.companyImage
+                                );
+                                return $props.onSave({
+                                  company: {
+                                    "Company name":
+                                      $state.companyName.value ?? "",
+                                    Location: $state.location?.value ?? "",
+                                    "Company type":
+                                      $state.companyType?.value ?? "",
+                                    "Foundation date":
+                                      $state.foundationDate?.value ?? "",
+                                    LinkedIn: $state.linkedIn?.value ?? "",
+                                    Instagram: $state.instagram?.value ?? "",
+                                    Website: $state.website?.value ?? "",
+                                    X: $state.x?.value ?? "",
+                                    "Company tagline":
+                                      $state.companyTagline?.value ?? "",
+                                    Area: $state.area?.value ?? "",
+                                    "Sub area": $state.subArea?.value ?? "",
+                                    "Google calendar":
+                                      $state.googleCalendar?.value ?? "",
+                                    "Customer problem":
+                                      $state.customerProblem?.value ?? "",
+                                    "Solution description":
+                                      $state.solutionDescription?.value ?? "",
+                                    "Why should they choose":
+                                      $state.whyShouldTheyChoose?.value ?? "",
+                                    "Company nature":
+                                      $state.companyNature3 ?? "",
+                                    "Company Logo": $state.companyLogo ?? "",
+                                    "Company image":
+                                      $state.companyImage ??
+                                      $props.company?.["Company image"] ??
+                                      null
+                                  },
+                                  solutions: $props.formData
+                                });
+                              })();
                             }
                           };
                           return (({ customFunction }) => {

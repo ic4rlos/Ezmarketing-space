@@ -554,20 +554,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
         path: "companyLogo",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          (() => {
-            try {
-              return $props.company?.["Company Logo"] ?? null;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return {};
-              }
-              throw e;
-            }
-          })()
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       }
     ],
     [$props, $ctx, $refs]
@@ -778,7 +765,17 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       ? (() => {
                           const actionArgs = {
                             customFunction: async () => {
-                              return ($state.companyLogo = arguments[0]);
+                              return (() => {
+                                console.log(
+                                  "\uD83D\uDD25 onChange arguments[0]:",
+                                  arguments[0]
+                                );
+                                console.log(
+                                  "\uD83D\uDD25 typeof:",
+                                  typeof arguments[0]
+                                );
+                                return ($state.companyLogo = arguments[0]);
+                              })();
                             }
                           };
                           return (({ customFunction }) => {

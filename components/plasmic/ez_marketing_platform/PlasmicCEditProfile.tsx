@@ -740,26 +740,15 @@ function PlasmicCEditProfile__RenderFunc(props: {
                           const actionArgs = {
                             customFunction: async () => {
                               return (() => {
-                                if (typeof arguments[0] === "string") {
-                                  $state.companyImage = arguments[0];
-                                  return console.log(
-                                    "\uD83D\uDD25 Upload novo:",
-                                    arguments[0]
-                                  );
-                                } else if (
-                                  arguments[0]?.url &&
-                                  typeof arguments[0].url === "string"
-                                ) {
-                                  $state.companyImage = arguments[0].url;
-                                  return console.log(
-                                    "\uD83D\uDD25 URL extraída:",
-                                    arguments[0].url
-                                  );
-                                } else if (arguments[0]?.originFileObj) {
-                                  return console.log(
-                                    "\uD83D\uDD25 Upload em progresso..."
-                                  );
-                                }
+                                console.log(
+                                  "\uD83D\uDD25 onChange recebeu:",
+                                  arguments[0]
+                                );
+                                console.log(
+                                  "\uD83D\uDD25 Tipo:",
+                                  typeof arguments[0]
+                                );
+                                return ($state.companyLogo = arguments[0]);
                               })();
                             }
                           };
@@ -779,9 +768,9 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   value={(() => {
                     try {
                       return (
-                        $state.companyImage ||
-                        ($props.company?.["Company image"]
-                          ? $props.company["Company image"]
+                        $state.companyLogo ||
+                        ($props.company?.["Company Logo"]
+                          ? $props.company["Company Logo"]
                           : null)
                       );
                     } catch (e) {
@@ -3704,26 +3693,15 @@ function PlasmicCEditProfile__RenderFunc(props: {
                           const actionArgs = {
                             customFunction: async () => {
                               return (() => {
-                                if (typeof arguments[0] === "string") {
-                                  $state.companyImage = arguments[0];
-                                  return console.log(
-                                    "\uD83D\uDD25 Upload novo:",
-                                    arguments[0]
-                                  );
-                                } else if (
-                                  arguments[0]?.url &&
-                                  typeof arguments[0].url === "string"
-                                ) {
-                                  $state.companyImage = arguments[0].url;
-                                  return console.log(
-                                    "\uD83D\uDD25 URL extraída:",
-                                    arguments[0].url
-                                  );
-                                } else if (arguments[0]?.originFileObj) {
-                                  return console.log(
-                                    "\uD83D\uDD25 Upload em progresso..."
-                                  );
-                                }
+                                console.log(
+                                  "\uD83D\uDD25 onChange recebeu:",
+                                  arguments[0]
+                                );
+                                console.log(
+                                  "\uD83D\uDD25 Tipo:",
+                                  typeof arguments[0]
+                                );
+                                return ($state.companyImage = arguments[0]);
                               })();
                             }
                           };

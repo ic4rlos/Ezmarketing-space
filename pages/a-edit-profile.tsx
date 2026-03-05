@@ -1,7 +1,20 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { PlasmicAEditProfile } from "../components/plasmic/ez_marketing_platform/PlasmicAEditProfile";
+import dynamic from "next/dynamic";
 import { getSupabaseA } from "../lib/a-supabaseClient";
+
+// 🔥 Mesma estratégia do primogênito
+export const dynamic_config = "force-dynamic";
+export const runtime = "nodejs";
+
+// 🔥 Plasmic sem SSR
+const PlasmicAEditProfile = dynamic(
+  () =>
+    import("../components/plasmic/ez_marketing_platform/PlasmicAEditProfile").then(
+      (m) => m.PlasmicAEditProfile
+    ),
+  { ssr: false }
+);
 
 export default function AEditProfile() {
   const router = useRouter();
@@ -114,10 +127,6 @@ export default function AEditProfile() {
       ...profileFields
     } = payload;
 
-    // =========================
-    // CROPUPLOAD
-    // =========================
-
     let avatarUrl = profileFields["Profile image"];
 
     if (
@@ -150,10 +159,6 @@ export default function AEditProfile() {
         avatarUrl = data.publicUrl;
       }
     }
-
-    // =========================
-    // SAVE PROFILE
-    // =========================
 
     const { data: savedProfile, error: profileError } = await supabase
       .from("User profile")
@@ -217,7 +222,6 @@ export default function AEditProfile() {
         formData,
         setFormData,
         onSave: handleSave,
-
         onOfficesChange: (value: any) => {
           setFormData((prev: any) => ({
             ...prev,

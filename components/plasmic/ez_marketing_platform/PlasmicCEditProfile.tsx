@@ -739,7 +739,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       ? (() => {
                           const actionArgs = {
                             customFunction: async () => {
-                              return ($state.companyImage = arguments[0]);
+                              return ($state.companyLogo = url);
                             }
                           };
                           return (({ customFunction }) => {
@@ -757,11 +757,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   }}
                   value={(() => {
                     try {
-                      return (
-                        $state.companyLogo ??
-                        $props.company?.["Company Logo"] ??
-                        null
-                      );
+                      return $state.companyLogo;
                     } catch (e) {
                       if (
                         e instanceof TypeError ||

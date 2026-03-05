@@ -13,11 +13,15 @@ export default function AEditProfile() {
     jobs: [],
     offices: [],
   });
+
   const [loading, setLoading] = useState(true);
+
+  const BUCKET = "agency-pics";
 
   // =========================
   // AUTH
   // =========================
+
   useEffect(() => {
     async function loadUser() {
       const { data } = await supabase.auth.getUser();
@@ -29,6 +33,7 @@ export default function AEditProfile() {
   // =========================
   // LOAD PROFILE + RELAÇÕES
   // =========================
+
   useEffect(() => {
     if (!user) {
       setLoading(false);
@@ -64,11 +69,7 @@ export default function AEditProfile() {
         .select("*")
         .eq("User profile_id", profileId);
 
-      // 🔥 CONVERSÃO CORRETA PARA O SELECT (string[])
       const offices = officesDb?.map((o) => o.Office) ?? [];
-
-      console.log("🟣 MULTICHARGE LOAD RAW:", officesDb);
-      console.log("🟣 MULTICHARGE LOAD CONVERTIDO:", offices);
 
       setFormData({
         ...profileData,
@@ -84,15 +85,25 @@ export default function AEditProfile() {
   }, [user]);
 
   // =========================
-  // MONITORAR MUDANÇAS NO FORMDATA
+  // BASE64 → FILE
   // =========================
-  useEffect(() => {
-    console.log("FORMDATA ATUALIZADO:", formData);
-  }, [formData]);
+
+  function base64ToFile(base64: string, filename: string, mime: string) {
+    const byteString = atob(base64);
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new File([ab], filename, { type: mime });
+  }
 
   // =========================
   // SAVE
   // =========================
+
   async function handleSave(payload: any) {
     if (!user) return;
 
@@ -103,54 +114,87 @@ export default function AEditProfile() {
       ...profileFields
     } = payload;
 
-    console.log("🟣 MULTICHARGE PAYLOAD RECEBIDO:", offices);
+    // =========================
+    // CROPUPLOAD
+    // =========================
+
+    let avatarUrl = profileFields["Profile image"];
+
+    if (
+      avatarUrl &&
+      typeof avatarUrl !== "string" &&
+      avatarUrl?.files?.[0]?.contents
+    ) {
+      const fileObj = avatarUrl.files[0];
+
+      const fileExt = fileObj.name.split(".").pop();
+      const fileName = `${user.id}-${Date.now()}.${fileExt}`;
+
+      const file = base64ToFile(
+        fileObj.contents,
+        fileName,
+        fileObj.type || "image/png"
+      );
+
+      const filePath = `avatars/${fileName}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from(BUCKET)
+        .upload(filePath, file, { upsert: true });
+
+      if (!uploadError) {
+        const { data } = supabase.storage
+          .from(BUCKET)
+          .getPublicUrl(filePath);
+
+        avatarUrl = data.publicUrl;
+      }
+    }
+
+    // =========================
+    // SAVE PROFILE
+    // =========================
 
     const { data: savedProfile, error: profileError } = await supabase
       .from("User profile")
-      .upsert({ user_id: user.id, ...profileFields }, { onConflict: "user_id" })
+      .upsert(
+        {
+          user_id: user.id,
+          ...profileFields,
+          "Profile image": avatarUrl,
+        },
+        { onConflict: "user_id" }
+      )
       .select()
       .single();
 
     if (profileError || !savedProfile) {
-      console.error("Profile error:", profileError);
+      console.error(profileError);
       return;
     }
 
     const profileId = savedProfile.id;
 
-    // =====================================================
-    // OFFICES (VERSÃO CORRETA PARA STRING[])
-    // =====================================================
+    // =========================
+    // OFFICES
+    // =========================
 
     const { data: existingOffices } = await supabase
       .from("Multicharge")
       .select("*")
       .eq("User profile_id", profileId);
 
-    console.log("🟣 MULTICHARGE EXISTENTES:", existingOffices);
-
     const existingValues = existingOffices?.map((o) => o.Office) ?? [];
 
-    console.log("🟣 MULTICHARGE EXISTING VALUES:", existingValues);
-
-    // Deletar o que não está mais selecionado
     const toDelete =
       existingOffices
         ?.filter((o) => !offices.includes(o.Office))
         .map((o) => o.id) ?? [];
 
-    console.log("🟣 MULTICHARGE PARA DELETAR:", toDelete);
-
     if (toDelete.length) {
-      const { error } = await supabase
-        .from("Multicharge")
-        .delete()
-        .in("id", toDelete);
-
-      console.log("🟣 MULTICHARGE DELETE ERROR:", error);
+      await supabase.from("Multicharge").delete().in("id", toDelete);
     }
 
-    // Inserir o que é novo
     const toInsert = offices
       .filter((office: string) => !existingValues.includes(office))
       .map((office: string) => ({
@@ -158,16 +202,8 @@ export default function AEditProfile() {
         "User profile_id": profileId,
       }));
 
-    console.log("🟣 MULTICHARGE PARA INSERIR:", toInsert);
-
     if (toInsert.length) {
-      const { data, error } = await supabase
-        .from("Multicharge")
-        .insert(toInsert)
-        .select();
-
-      console.log("🟣 MULTICHARGE INSERT RESULT:", data);
-      console.log("🟣 MULTICHARGE INSERT ERROR:", error);
+      await supabase.from("Multicharge").insert(toInsert);
     }
 
     router.replace("/a-find-a-business/");
@@ -181,12 +217,8 @@ export default function AEditProfile() {
         formData,
         setFormData,
         onSave: handleSave,
-        // 🔥 Corrigido: função para atualizar offices corretamente
-        onOfficesChange: (value: any) => {
-          console.log("SELECT ALTERADO:", value);
-          console.log("TIPO:", typeof value);
-          console.log("É ARRAY?", Array.isArray(value));
 
+        onOfficesChange: (value: any) => {
           setFormData((prev: any) => ({
             ...prev,
             offices: Array.isArray(value) ? [...value] : [value],

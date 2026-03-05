@@ -739,17 +739,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       ? (() => {
                           const actionArgs = {
                             customFunction: async () => {
-                              return (() => {
-                                console.log(
-                                  "\uD83D\uDD25 onChange recebeu:",
-                                  arguments[0]
-                                );
-                                console.log(
-                                  "\uD83D\uDD25 Tipo:",
-                                  typeof arguments[0]
-                                );
-                                return ($state.companyLogo = arguments[0]);
-                              })();
+                              return ($state.companyLogo = url);
                             }
                           };
                           return (({ customFunction }) => {
@@ -3692,17 +3682,7 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       ? (() => {
                           const actionArgs = {
                             customFunction: async () => {
-                              return (() => {
-                                console.log(
-                                  "\uD83D\uDD25 onChange recebeu:",
-                                  arguments[0]
-                                );
-                                console.log(
-                                  "\uD83D\uDD25 Tipo:",
-                                  typeof arguments[0]
-                                );
-                                return ($state.companyImage = arguments[0]);
-                              })();
+                              return ($state.companyImage = url);
                             }
                           };
                           return (({ customFunction }) => {

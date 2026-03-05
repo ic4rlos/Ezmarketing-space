@@ -60,13 +60,14 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import { AntdSteps } from "@plasmicpkgs/antd5/skinny/registerSteps";
-import { UploadWrapper } from "@plasmicpkgs/antd5/skinny/registerUpload";
-import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
+import CropUpload from "@/components/CropUpload"; // plasmic-import: ecbzb0Hx7iSB/codeComponent
 import { AntdInput } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { inputHelpers as AntdInput_Helpers } from "@plasmicpkgs/antd5/skinny/registerInput";
 import LoginButton from "../../LoginButton"; // plasmic-import: EirQVSsAP1l8/component
 import { AntdSelect } from "@plasmicpkgs/antd5/skinny/registerSelect";
 import { AntdOption } from "@plasmicpkgs/antd5/skinny/registerSelect";
+import { UploadWrapper } from "@plasmicpkgs/antd5/skinny/registerUpload";
+import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
 import { AntdTextArea } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { inputHelpers as AntdTextArea_Helpers } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: maKqnX1RyE1vKUCrTH51ZZ/projectModule
@@ -149,7 +150,7 @@ export type PlasmicAEditProfile__OverridesType = {
   stepsStack?: Flex__<"div">;
   steps?: Flex__<typeof AntdSteps>;
   basicInfo?: Flex__<"div">;
-  profilePic?: Flex__<typeof UploadWrapper>;
+  uploadDoCarlos?: Flex__<typeof CropUpload>;
   firstName?: Flex__<typeof AntdInput>;
   lastName?: Flex__<typeof AntdInput>;
   location?: Flex__<typeof AntdInput>;
@@ -165,6 +166,7 @@ export type PlasmicAEditProfile__OverridesType = {
   graduationYear?: Flex__<typeof AntdInput>;
   educationLevel?: Flex__<typeof AntdSelect>;
   degree?: Flex__<typeof UploadWrapper>;
+  button?: Flex__<typeof AntdButton>;
   experience?: Flex__<"div">;
   job?: Flex__<"section">;
   charge?: Flex__<typeof AntdInput>;
@@ -291,12 +293,6 @@ function PlasmicAEditProfile__RenderFunc(props: {
         onMutate: generateOnMutateForSpec("value", AntdInput_Helpers)
       },
       {
-        path: "profilePic.files",
-        type: "private",
-        variableType: "array",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => []
-      },
-      {
         path: "linkedIn.value",
         type: "private",
         variableType: "text",
@@ -414,6 +410,25 @@ function PlasmicAEditProfile__RenderFunc(props: {
         path: "educationLevel[].value",
         type: "private",
         variableType: "text"
+      },
+      {
+        path: "profilePic",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          (() => {
+            try {
+              return $props.company?.["Profile pic"] || "";
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -612,79 +627,54 @@ function PlasmicAEditProfile__RenderFunc(props: {
                 </React.Fragment>
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__oGhdP)}>
-                <UploadWrapper
-                  data-plasmic-name={"profilePic"}
-                  data-plasmic-override={overrides.profilePic}
-                  accept={"image/*"}
-                  className={classNames("__wab_instance", sty.profilePic)}
-                  files={generateStateValueProp($state, [
-                    "profilePic",
-                    "files"
-                  ])}
-                  listType={"picture-circle"}
-                  maxCount={1}
-                  onFilesChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "profilePic",
-                      "files"
-                    ]).apply(null, eventArgs);
+                <CropUpload
+                  data-plasmic-name={"uploadDoCarlos"}
+                  data-plasmic-override={overrides.uploadDoCarlos}
+                  accept={``}
+                  className={classNames("__wab_instance", sty.uploadDoCarlos)}
+                  onChange={async url => {
+                    const $steps = {};
 
-                    (async files => {
-                      const $steps = {};
-
-                      $steps["updateAvatarImage"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["avatarImage"]
-                              },
-                              operation: 0,
-                              value: event.file.url
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["updateAvatarImage"] != null &&
-                        typeof $steps["updateAvatarImage"] === "object" &&
-                        typeof $steps["updateAvatarImage"].then === "function"
-                      ) {
-                        $steps["updateAvatarImage"] =
-                          await $steps["updateAvatarImage"];
-                      }
-                    }).apply(null, eventArgs);
+                    $steps["runCode"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return ($state.profilePic = url);
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
+                    ) {
+                      $steps["runCode"] = await $steps["runCode"];
+                    }
                   }}
-                  showUploadList={false}
-                >
-                  <AntdButton
-                    className={classNames("__wab_instance", sty.button__krzF)}
-                    type={"ghost"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__vOvc5
-                      )}
-                    >
-                      {"Upload"}
-                    </div>
-                  </AntdButton>
-                </UploadWrapper>
+                  value={(() => {
+                    try {
+                      return (
+                        $state.profilePic ||
+                        ($props.company?.["Profile pic"]
+                          ? $props.company["Profile pic"]
+                          : null)
+                      );
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()}
+                />
+
                 <div
                   className={classNames(
                     projectcss.all,
@@ -1966,9 +1956,11 @@ function PlasmicAEditProfile__RenderFunc(props: {
                               {...child$Props}
                             >
                               <AntdButton
+                                data-plasmic-name={"button"}
+                                data-plasmic-override={overrides.button}
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.button__uuBym
+                                  sty.button
                                 )}
                               >
                                 <div
@@ -3385,7 +3377,7 @@ const PlasmicDescendants = {
     "stepsStack",
     "steps",
     "basicInfo",
-    "profilePic",
+    "uploadDoCarlos",
     "firstName",
     "lastName",
     "location",
@@ -3401,6 +3393,7 @@ const PlasmicDescendants = {
     "graduationYear",
     "educationLevel",
     "degree",
+    "button",
     "experience",
     "job",
     "charge",
@@ -3417,7 +3410,7 @@ const PlasmicDescendants = {
     "stepsStack",
     "steps",
     "basicInfo",
-    "profilePic",
+    "uploadDoCarlos",
     "firstName",
     "lastName",
     "location",
@@ -3433,6 +3426,7 @@ const PlasmicDescendants = {
     "graduationYear",
     "educationLevel",
     "degree",
+    "button",
     "experience",
     "job",
     "charge",
@@ -3447,13 +3441,13 @@ const PlasmicDescendants = {
   steps: ["steps"],
   basicInfo: [
     "basicInfo",
-    "profilePic",
+    "uploadDoCarlos",
     "firstName",
     "lastName",
     "location",
     "birthday"
   ],
-  profilePic: ["profilePic"],
+  uploadDoCarlos: ["uploadDoCarlos"],
   firstName: ["firstName"],
   lastName: ["lastName"],
   location: ["location"],
@@ -3469,7 +3463,8 @@ const PlasmicDescendants = {
     "major",
     "graduationYear",
     "educationLevel",
-    "degree"
+    "degree",
+    "button"
   ],
   education: [
     "education",
@@ -3477,13 +3472,15 @@ const PlasmicDescendants = {
     "major",
     "graduationYear",
     "educationLevel",
-    "degree"
+    "degree",
+    "button"
   ],
   university: ["university"],
   major: ["major"],
   graduationYear: ["graduationYear"],
   educationLevel: ["educationLevel"],
-  degree: ["degree"],
+  degree: ["degree", "button"],
+  button: ["button"],
   experience: ["experience", "job", "charge", "company", "howLongInOffice"],
   job: ["job", "charge", "company", "howLongInOffice"],
   charge: ["charge"],
@@ -3504,7 +3501,7 @@ type NodeDefaultElementType = {
   stepsStack: "div";
   steps: typeof AntdSteps;
   basicInfo: "div";
-  profilePic: typeof UploadWrapper;
+  uploadDoCarlos: typeof CropUpload;
   firstName: typeof AntdInput;
   lastName: typeof AntdInput;
   location: typeof AntdInput;
@@ -3520,6 +3517,7 @@ type NodeDefaultElementType = {
   graduationYear: typeof AntdInput;
   educationLevel: typeof AntdSelect;
   degree: typeof UploadWrapper;
+  button: typeof AntdButton;
   experience: "div";
   job: "section";
   charge: typeof AntdInput;
@@ -3598,7 +3596,7 @@ export const PlasmicAEditProfile = Object.assign(
     stepsStack: makeNodeComponent("stepsStack"),
     steps: makeNodeComponent("steps"),
     basicInfo: makeNodeComponent("basicInfo"),
-    profilePic: makeNodeComponent("profilePic"),
+    uploadDoCarlos: makeNodeComponent("uploadDoCarlos"),
     firstName: makeNodeComponent("firstName"),
     lastName: makeNodeComponent("lastName"),
     location: makeNodeComponent("location"),
@@ -3614,6 +3612,7 @@ export const PlasmicAEditProfile = Object.assign(
     graduationYear: makeNodeComponent("graduationYear"),
     educationLevel: makeNodeComponent("educationLevel"),
     degree: makeNodeComponent("degree"),
+    button: makeNodeComponent("button"),
     experience: makeNodeComponent("experience"),
     job: makeNodeComponent("job"),
     charge: makeNodeComponent("charge"),

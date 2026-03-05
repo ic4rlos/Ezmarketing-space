@@ -739,7 +739,28 @@ function PlasmicCEditProfile__RenderFunc(props: {
                       ? (() => {
                           const actionArgs = {
                             customFunction: async () => {
-                              return ($state.companyLogo = url);
+                              return (() => {
+                                if (typeof arguments[0] === "string") {
+                                  $state.companyImage = arguments[0];
+                                  return console.log(
+                                    "\uD83D\uDD25 Upload novo:",
+                                    arguments[0]
+                                  );
+                                } else if (
+                                  arguments[0]?.url &&
+                                  typeof arguments[0].url === "string"
+                                ) {
+                                  $state.companyImage = arguments[0].url;
+                                  return console.log(
+                                    "\uD83D\uDD25 URL extraída:",
+                                    arguments[0].url
+                                  );
+                                } else if (arguments[0]?.originFileObj) {
+                                  return console.log(
+                                    "\uD83D\uDD25 Upload em progresso..."
+                                  );
+                                }
+                              })();
                             }
                           };
                           return (({ customFunction }) => {
@@ -757,7 +778,12 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   }}
                   value={(() => {
                     try {
-                      return $state.companyLogo;
+                      return (
+                        $state.companyImage ||
+                        ($props.company?.["Company image"]
+                          ? $props.company["Company image"]
+                          : null)
+                      );
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
@@ -3678,11 +3704,25 @@ function PlasmicCEditProfile__RenderFunc(props: {
                           const actionArgs = {
                             customFunction: async () => {
                               return (() => {
-                                if (arguments[0]?.url) {
-                                  return ($state.companyImage =
-                                    arguments[0].url);
-                                } else if (typeof arguments[0] === "string") {
-                                  return ($state.companyImage = arguments[0]);
+                                if (typeof arguments[0] === "string") {
+                                  $state.companyImage = arguments[0];
+                                  return console.log(
+                                    "\uD83D\uDD25 Upload novo:",
+                                    arguments[0]
+                                  );
+                                } else if (
+                                  arguments[0]?.url &&
+                                  typeof arguments[0].url === "string"
+                                ) {
+                                  $state.companyImage = arguments[0].url;
+                                  return console.log(
+                                    "\uD83D\uDD25 URL extraída:",
+                                    arguments[0].url
+                                  );
+                                } else if (arguments[0]?.originFileObj) {
+                                  return console.log(
+                                    "\uD83D\uDD25 Upload em progresso..."
+                                  );
                                 }
                               })();
                             }
@@ -3702,17 +3742,12 @@ function PlasmicCEditProfile__RenderFunc(props: {
                   }}
                   value={(() => {
                     try {
-                      return $state.companyImage
-                        ? $state.companyImage
-                        : $props.company?.["Company image"]
-                          ? {
-                              url: $props.company["Company image"],
-                              status: "done",
-                              name: "image.png",
-                              type: "image/jpeg",
-                              uid: "existing-image"
-                            }
-                          : null;
+                      return (
+                        $state.companyImage ||
+                        ($props.company?.["Company image"]
+                          ? $props.company["Company image"]
+                          : null)
+                      );
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
